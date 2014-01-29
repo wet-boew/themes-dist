@@ -199,6 +199,8 @@
     background-image: url(../assets/header-leaf.jpg), url(../assets/header-bg.jpg);
     background-repeat: no-repeat, repeat-x;
     background-position: center 2.7em; }
+  #gcwu-sig {
+    position: absolute; }
   #wb-bar {
     line-height: 1; }
   #gc-bar {
