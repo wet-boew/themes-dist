@@ -2,3 +2,7 @@
 	path = theme-gcwu-fegc
 	url = ./
 	branch = theme-gcwu-fegc
+[submodule "theme-gc-intranet"]
+	path = theme-gc-intranet
+	url = ./
+	branch = theme-gc-intranet
