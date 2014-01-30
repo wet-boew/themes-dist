@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-01-29
+ * v4.0.0-b2-development - 2014-01-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.7.1",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e});
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.7.1",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -1857,39 +1857,36 @@ $document.on( "setFocus.wb-cal", setFocus );
 			chartslabels = [],
 			dataSeries = [],
 			nbBarChart = 0,
-			lowestFlotDelta,
-			$imgContainer, $placeHolder,
-			$WETChartContainer, htmlPlaceHolder, figurehtml,
 			$caption = $( "caption", $elm ),
 			captionHtml = $caption.html(),
-			cellValue,
-			datacolgroupfound, dataGroup, header,
-			i, iLength, j, jLength, parsedData,
-			rIndex,
-			currVectorOptions,
 			valuePoint = 0,
+			lowestFlotDelta, $imgContainer, $placeHolder,
+			$wetChartContainer, htmlPlaceHolder, figurehtml,
+			cellValue, datacolgroupfound, dataGroup, header,
+			i, iLength, j, jLength, parsedData, rIndex, currVectorOptions,
 			currentRowGroup, reverseTblParsing, dataGroupVector,
 			dataCell, previousDataCell, currDataVector,
-			pieQuaterFlotSeries,
-			optionFlot, optionsCharts,
+			pieQuaterFlotSeries, optionFlot, optionsCharts,
 			defaultsOptions = {
 				// Flot Global Options
 				flot: {
 					prefix: "wb-charts-",
 					defaults: {
-						colors: [ "#8d201c",
-								"#EE8310",
-								"#2a7da6",
-								"#5a306b",
-								"#285228",
-								"#154055",
-								"#555555",
-								"#f6d200",
-								"#d73d38",
-								"#418541",
-								"#87aec9",
-								"#23447e",
-								"#999999" ],
+						colors: [
+							"#8d201c",
+							"#EE8310",
+							"#2a7da6",
+							"#5a306b",
+							"#285228",
+							"#154055",
+							"#555555",
+							"#f6d200",
+							"#d73d38",
+							"#418541",
+							"#87aec9",
+							"#23447e",
+							"#999999"
+						],
 						canvas: true
 					},
 					line: { },
@@ -1950,6 +1947,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 						}
 					}
 				},
+
 				// Flot Series Options
 				series: {
 					prefix: "wb-charts-",
@@ -1972,26 +1970,51 @@ $document.on( "setFocus.wb-cal", setFocus );
 						base: "bar"
 					}
 				},
+
 				// Wet-boew Charts Options
 				charts: {
 					prefix: "wb-charts-",
 					defaults: {
-						graphclass: "wb-graph", // [string] Class name added at the figure element container
-						noencapsulation: false, // [boolean] Wrap or not the table in a details/summary elements
-						labelposition: false, // [number] false means the deepest vector will be used for labeling
-						referencevalue: false, // [number] false means the deepest vector will be used for calculate the reference
-						legendinline: false, // [boolean] false means to move the legend from inside the charts to next to it 
-						nolegend: false, // [boolean] true means that the legend will be destroyed and the label for pie chart will include the legend
-						decimal: 0, // [number] Literal number of displayed decimal for a pie charts 
-						width: $elm.width(), // [number] Provide a default width for the charts that will be rendered
-						height: $elm.height(), // [number] Provide a default height for the charts that will be rendered
-						reversettblparsing: false, // [boolean] Flag for defining if the data table should be read in reverse compared to HTML spec
+
+						// [string] Class name added at the figure element container
+						graphclass: "wb-graph",
+
+						// [boolean] Wrap or not the table in a details/summary elements
+						noencapsulation: false,
+
+						// [number] false means the deepest vector will be used for labelling
+						labelposition: false,
+
+						// [number] false means the deepest vector will be used for calculate the reference
+						referencevalue: false,
+
+						// [boolean] false means to move the legend from inside the charts to next to it
+						legendinline: false,
+
+						// [boolean] true means that the legend will be destroyed and the label for pie chart will include the legend
+						nolegend: false,
+
+						// [number] Literal number of displayed decimal for a pie charts 
+						decimal: 0,
+
+						// [number] Provide a default width for the charts that will be rendered
+						width: $elm.width(),
+
+						// [number] Provide a default height for the charts that will be rendered
+						height: $elm.height(),
+
+						// [boolean] Flag for defining if the data table should be read in reverse compared to HTML spec
+						reversettblparsing: false,
 						fn: {
 							"/getcellvalue": function( elem ) {
+
 								// Default Cell value extraction
 								var cellRawValue = $.trim( $( elem ).text() ).replace( /\s/g, "" );
 
-								return [ parseFloat( cellRawValue.match( /[\+\-0-9]+[0-9,\. ]*/ ) ), cellRawValue.match (/[^\+\-\.\, 0-9]+[^\-\+0-9]*/ ) ];
+								return [
+									parseFloat( cellRawValue.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
+									cellRawValue.match (/[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+								];
 							}
 						}
 						
@@ -2003,7 +2026,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 						fn: {
 							"/getcellvalue": function( elem ) {
 								var raw = $.trim( $( elem ).text() ).replace( /,/g, "" );
-								return [ parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ), raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ ) ];
+								return [
+									parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
+									raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+								];
 							}
 						}
 					},
@@ -2011,7 +2037,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 						fn: {
 							"/getcellvalue": function( elem ) {
 								var raw = $.trim( $( elem ).text() ).replace( /\./g, "" );
-								return [ parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ), raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ ) ];
+								return [
+									parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
+									raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+								];
 							}
 						}
 					}
@@ -2030,15 +2059,15 @@ $document.on( "setFocus.wb-cal", setFocus );
 		function overwriteDefaultsOptions( scopekey, target, object ) {
 			var cachedObj, key;
 			
-			cachedObj = object[scopekey];
-			if (!cachedObj) {
+			cachedObj = object[ scopekey ];
+			if ( !cachedObj ) {
 				return target;
 			}
 			for ( key in cachedObj ) {
 				if ( !cachedObj.hasOwnProperty( key ) ) {
 					continue;
 				}
-				target[scopekey][key] = cachedObj[key];
+				target[ scopekey ][ key ] = cachedObj[ key ];
 			}
 			return target;
 		}
@@ -2072,12 +2101,11 @@ $document.on( "setFocus.wb-cal", setFocus );
 			var config = $.extend( true, {}, baseline.defaults || baseline ),
 				fn = $.extend( true, {}, baseline.defaults && baseline.defaults.fn || { } ),
 				tokens = $elem.attr( "class" ) || "",
-				tblTokens,
-				i, iLength,
-				token, tokenLength,
-				prefix, prefixLength, // Prefix used in front of the token
-				preset,
-				key, tblFn, localKey, currObj;
+				tblTokens, i, iLength, token, tokenLength,
+
+				// Prefix used in front of the token
+				prefix, prefixLength,
+				preset, key, tblFn, localKey, currObj;
 			
 			if ( tokens.length ) {
 				
@@ -2090,19 +2118,21 @@ $document.on( "setFocus.wb-cal", setFocus );
 				for ( i = 0, iLength = tblTokens.length; i !== iLength; i += 1 ) {
 					
 					// Get the current token
-					token = tblTokens[i];
+					token = tblTokens[ i ];
 					tokenLength = token.length;
 					
 					// Remove the token is used
-					if ( tokenLength <= prefixLength || token.slice(0, prefixLength) !== prefix ) {
+					if ( tokenLength <= prefixLength || token.slice( 0, prefixLength ) !== prefix ) {
 						continue;
 					}
-					token = token.slice(prefixLength, tokenLength);
+					token = token.slice( prefixLength, tokenLength );
 					
 					preset = baseline[ token ];
+
 					// Apply the preset
 					if ( preset ) {
 						if ( preset.base ) {
+
 							// Like setting herited from a parent config
 							config = $.extend( true, config, baseline[ preset.base ] );
 							fn = $.extend( true, fn, baseline[ preset.base ].fn || { } );
@@ -2156,32 +2186,36 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 * @param {number} referenceValuePosition - Vector position use as reference for defining the steps, zero based position
 		 */
 		function getColumnGroupHeaderCalculateSteps( colGroupHead, referenceValuePosition ) {
+
 			// Get the appropriate ticks
-			var headerCell, i, _ilen,
+			var headerCell, i, iLen,
 				calcStep = 1,
 				colRefValue, colCurent;
 				
 				
 			if ( !colGroupHead ) {
-				return; // There is an error, may be each series do not have an header
+
+				// There is an error. Possibly the series are missing a header.
+				return;
 			}
 			
 			colRefValue = colGroupHead.col[ referenceValuePosition ];
 			colCurent = colGroupHead.col[ 0 ];
 
-			for ( i = 0, _ilen = colRefValue.cell.length; i !== _ilen; i += 1 ) {
+			for ( i = 0, iLen = colRefValue.cell.length; i !== iLen; i += 1 ) {
 
 				headerCell = colRefValue.cell[ i ];
 
 				if ( i === 0 || ( i > 0 && colCurent.cell[ i - 1 ].uid !== headerCell.uid ) ) {
 
 					if ( headerCell.rowgroup && headerCell.rowgroup.type === 3 ) {
+
 						// We only process the first column data group
 						break;
 					}
 
 					if ( headerCell.type === 1 || headerCell.type === 7 ) {
-						if ( headerCell.child.length > 0 ) {
+						if ( headerCell.child.length !== 0 ) {
 							calcStep = calcStep * groupHeaderCalculateStepsRecursive( headerCell, 1 );
 						}
 					}
@@ -2198,12 +2232,13 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 * @param {number} dataColgroupStart - Column position where the column data group start 
 		 */
 		function getRowGroupHeaderCalculateSteps( rowGroupHead, referenceValuePosition, dataColgroupStart ) {
+
 			// Find the range of the first data colgroup
-			var headerCell, i, _ilen,
+			var headerCell, i, iLen,
 				calcStep = 1,
 				rowRefValueCells = rowGroupHead[ referenceValuePosition ].elem.cells;
 
-			for ( i = 0, _ilen = rowRefValueCells.length; i !== _ilen; i += 1 ) {
+			for ( i = 0, iLen = rowRefValueCells.length; i !== iLen; i += 1 ) {
 
 				headerCell = $( rowRefValueCells[ i ] ).data().tblparser;
 
@@ -2213,7 +2248,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 				}
 
 				if ( headerCell.colpos >= dataColgroupStart && ( headerCell.type === 1 || headerCell.type === 7 ) ) {
-					if ( headerCell.child.length > 0 ) {
+					if ( headerCell.child.length !== 0 ) {
 						calcStep = calcStep * headerCell.child.length * groupHeaderCalculateStepsRecursive( headerCell, 1 );
 						
 					}
@@ -2230,22 +2265,20 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 */
 		function groupHeaderCalculateStepsRecursive( headerCell, refValue ) {
 			var childLength = headerCell.child.length,
-				kIndex,
-				subRefValue,
 				calcStep = 1,
-				headerCellChild;
+				kIndex, subRefValue, headerCellChild;
 
 			if ( childLength === 0 ) {
 				return calcStep;
 			}
 					
 			subRefValue = childLength * refValue;
-			
+
 			calcStep = calcStep * subRefValue;
 
 			for ( kIndex = 0; kIndex !== childLength; kIndex += 1 ) {
 				headerCellChild = headerCell.child[ kIndex ];
-				if ( headerCellChild.child.length > 0 ) {
+				if ( headerCellChild.child.length !== 0 ) {
 					calcStep = calcStep * groupHeaderCalculateStepsRecursive( headerCellChild, subRefValue );
 				}
 			}
@@ -2270,9 +2303,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			for ( i = 0, iLength = vectorHead.cell.length; i !== iLength; i += 1 ) {
 				headerCell = vectorHead.cell[ i ];
-				if ( i > 0 && headerCell.uid === vectorHead.cell[ i - 1 ].uid || ( dataColgroupStart && headerCell.colpos < dataColgroupStart ) ) {
+				if ( i !== 0 && headerCell.uid === vectorHead.cell[ i - 1 ].uid || ( dataColgroupStart && headerCell.colpos < dataColgroupStart ) ) {
 					continue;
 				}
+
 				// Only process the first data group
 				if ( !reverseTblParsing ) {
 					if ( headerCell.colgroup && headerCell.colgroup.type === 3 ) {
@@ -2314,10 +2348,11 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 * @param {number} referenceValue - Reference Value Vector ID
 		 */
 		function setInnerStepValuesChildRecursive( headerCell, headerLevel, stepsValue, referenceValue ) {
-			var i, iLength,
-				flotDelta, // Step Values for childs header in headerCell
-				cumulativeValue = 0,
-				currentHeaderCellChild;
+			var cumulativeValue = 0,
+
+				// Step Values for childs header in headerCell
+				flotDelta,
+				i, iLength,	currentHeaderCellChild;
 
 			headerLevel += 1;
 			cumulativeValue = headerCell.flotValue;
@@ -2351,18 +2386,21 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 * @param {number} referenceValue - Reference Value Vector ID
 		 */
 		function setUpperStepValues( vectorHead, referenceValue ) {
-			var i, k, m, _klen, _mlen,
+			var i, k, m, kLen, mLen,
 				cumulativeValue,
 				currentCell,
 				currentCellChild;
 			
-			// Calculate upper-step for cells that are less preceise than the reference value vector
+			// Calculate upper-step for cells that are
+			// less precise than the reference value vector
 			for ( i = referenceValue - 1; i !== -1; i -= 1 ){
 				
-				for ( k = 0, _klen = vectorHead[ i ].cell.length; k !== _klen; k += 1 ) {
+				for ( k = 0, kLen = vectorHead[ i ].cell.length; k !== kLen; k += 1 ) {
 					currentCell = vectorHead[ i ].cell[ k ];
 					
-					if ( currentCell.flotDelta || k > 0 && currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ){
+					if ( currentCell.flotDelta || k > 0 &&
+						currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ){
+
 						continue;
 					}
 
@@ -2371,36 +2409,34 @@ $document.on( "setFocus.wb-cal", setFocus );
 					}
 
 					cumulativeValue = 0;
-					for ( m = 0, _mlen = currentCell.child.length; m !== _mlen; m += 1 ) {
+					for ( m = 0, mLen = currentCell.child.length; m !== mLen; m += 1 ) {
 						currentCellChild = currentCell.child[ m ];
 						
 						cumulativeValue = currentCellChild.flotDelta;
-						if ( currentCell.flotValue === undefined ) {
+						if ( !currentCell.flotValue ) {
 							currentCell.flotValue = currentCellChild.flotValue;
 						}
 					}
 					currentCell.flotDelta = cumulativeValue;
-					
 				}
 			}
 		}
 
 		/**
-		 * Get lebels for a specific vector
+		 * Get labels for a specific vector
 		 * 
 		 * @method getLabels
 		 * @param {object} labelVector - Vector Header Object from the table parser
 		 * @param {number} dataColgroupStart - Column position where the column data group start 
 		 */
 		function getLabels( labelVector, dataColgroupStart ) {
-			var i, _ilen,
-				labels = [],
-				currentCell;
+			var labels = [],
+				i, iLen, currentCell;
 
-			for ( i = 0, _ilen = labelVector.cell.length; i !== _ilen; i += 1 ) {
+			for ( i = 0, iLen = labelVector.cell.length; i !== iLen; i += 1 ) {
 				currentCell = labelVector.cell[ i ];
 				
-				if ( ( i > 0 && currentCell.uid === labelVector.cell[ i - 1 ].uid ) ||
+				if ( ( i !== 0 && currentCell.uid === labelVector.cell[ i - 1 ].uid ) ||
 						( !( currentCell.type === 1 || currentCell.type === 7 ) ) ||
 						( dataColgroupStart && currentCell.colpos < dataColgroupStart ) ) {
 					continue;
@@ -2412,7 +2448,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 		}
 
 		/**
-		 * Get the vector that would be used for labeling x-axis
+		 * Get the vector that would be used for labelling x-axis
 		 * 
 		 * @method getlabelsVectorPosition
 		 * @param {object[]} arrVectorHeaders - Collection of vector headers
@@ -2431,9 +2467,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			// Get the appropriate ticks
 			var headerlevel = 0,
-				labelsVectorPosition,
-				stepsValue,
-				columnReferenceValue;
+				labelsVectorPosition, stepsValue, columnReferenceValue;
 
 			if ( !reverseTblParsing || ( reverseTblParsing && optionsCharts.referencevalue === false ) ) {
 				columnReferenceValue = parsedData.colgrouphead.col.length;
@@ -2456,10 +2490,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 			// Calculate inner-step for cells that are more precise than the reference value vector 
 			setInnerStepValues( parsedData.colgrouphead.col[ columnReferenceValue ], headerlevel, stepsValue, columnReferenceValue );
 			
-			// Calculate upper-step for cells that are less preceise than the reference value vector
+			// Calculate upper-step for cells that are less precise than the reference value vector
 			setUpperStepValues( parsedData.colgrouphead.col, columnReferenceValue );
 
-			// Get the labeling
+			// Get the labelling
 			return getLabels( parsedData.colgrouphead.col[ labelsVectorPosition ] );
 		}
 
@@ -2473,10 +2507,8 @@ $document.on( "setFocus.wb-cal", setFocus );
 			// Find the range of the first data colgroup
 			var dataColgroupStart = -1,
 				headerlevel = 0,
-				i, iLength,
-				labelsVectorPosition,
-				stepsValue,
-				rowReferenceValue;
+				i, iLength, labelsVectorPosition,
+				stepsValue, rowReferenceValue;
 
 			if ( !parsedData.theadRowStack ) {
 				return;
@@ -2501,7 +2533,6 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			if ( !reverseTblParsing ) {
 				labelsVectorPosition = getlabelsVectorPosition( parsedData.theadRowStack );
-				
 			} else {
 				labelsVectorPosition = parsedData.theadRowStack.length - 1;
 			}
@@ -2511,10 +2542,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 			// Calculate inner-step for cells that are more precise than the reference value vector 
 			setInnerStepValues( parsedData.theadRowStack[ rowReferenceValue ], headerlevel, stepsValue, rowReferenceValue, dataColgroupStart );
 
-			// Calculate upper-step for cells that are less preceise than the reference value vector
+			// Calculate upper-step for cells that are less precise than the reference value vector
 			setUpperStepValues( parsedData.theadRowStack, rowReferenceValue );
 
-			// Get the labeling
+			// Get the labelling
 			return getLabels( parsedData.theadRowStack[ labelsVectorPosition ], dataColgroupStart );
 			
 		}
@@ -2525,50 +2556,64 @@ $document.on( "setFocus.wb-cal", setFocus );
 		 * @method wrapTableIntoDetails
 		 */
 		function wrapTableIntoDetails() {
-			var $details = $("<details><summary>" +
+			var $details = $( "<details><summary>" +
 				captionHtml + i18nText.tableMention +
-				"</summary></details>");
+				"</summary></details>" );
 			
 			$elm.after( $details );
-			$details.append($elm);
-			
+			$details.append( $elm );
 		}
 
 		function createContainer(withDimension) {
 			
-			var $container = $("<figure class='" + optionsCharts.graphclass + "'><figcaption>" +
-				captionHtml + // Copy to the inner table caption
-				"</figcaption><div role='img' aria-label='" + $caption.text() + i18nText.tableFollowing + "'" +
-				(withDimension ? "style='height:" + optionsCharts.height + "px; width:" + optionsCharts.width + "px'": "") +
+			var $container = $( "<figure class='" + optionsCharts.graphclass +
+
+				// Copy to the inner table caption
+				"'><figcaption>" + captionHtml +
+				"</figcaption><div role='img' aria-label='" +
+				$caption.text() + i18nText.tableFollowing + "'" +
+				(withDimension ? "style='height:" + optionsCharts.height +
+				"px; width:" + optionsCharts.width + "px'": "") +
 				"></div></figure>");
-			
+
 			$container.insertBefore( $elm ).append( $elm );
 			
-			return $("div:eq(0)", $container);
-			
+			return $( "div:eq(0)", $container );
 		}
 		
-		
-		parsedData = $elm.data().tblparser; // Retrieve the parsed data
-		reverseTblParsing = optionsCharts.reversettblparsing; // Reverse table parsing
-		currentRowGroup = parsedData.lstrowgroup[ 0 ]; // first data row group
+		// Retrieve the parsed data
+		parsedData = $elm.data().tblparser;
+
+		// Reverse table parsing
+		reverseTblParsing = optionsCharts.reversettblparsing;
+
+		// first data row group
+		currentRowGroup = parsedData.lstrowgroup[ 0 ];
 
 		if ( optionFlot.series && optionFlot.series.pie ) {
 
-			// WET Charts Placeholder
-			$WETChartContainer = createContainer(false);
-			// Flot pie chart Placeholder
-			htmlPlaceHolder = "<div style='height:" + optionsCharts.height + "px; width:" + optionsCharts.width + "px'></div>";
+			// WET Charts placeholder
+			$wetChartContainer = createContainer( false );
+
+			// Flot pie chart placeholder
+			htmlPlaceHolder = "<div style='height:" + optionsCharts.height +
+				"px; width:" + optionsCharts.width + "px'></div>";
 
 			if ( !reverseTblParsing ) {
+
 				// If normal parsing
-				dataGroup = parsedData.colgroup[ 0 ].type === 1 ? parsedData.colgroup[ 1 ] : parsedData.colgroup[ 0 ];
+				dataGroup = parsedData.colgroup[ 0 ].type === 1 ?
+					parsedData.colgroup[ 1 ] :
+					parsedData.colgroup[ 0 ];
 
 				rIndex = currentRowGroup.row.length - 1;
 			} else {
+
 				// If reverse parsing
 				dataGroup = currentRowGroup;
-				rIndex = ( parsedData.colgroup[ 0 ].type === 1 ? parsedData.colgroup[ 1 ].col.length : parsedData.colgroup[ 0 ].col.length ) - 1;
+				rIndex = ( parsedData.colgroup[ 0 ].type === 1 ?
+					parsedData.colgroup[ 1 ].col.length :
+					parsedData.colgroup[ 0 ].col.length ) - 1;
 			}
 
 			for ( rIndex; rIndex >= 0; rIndex -= 1 ) {
@@ -2591,7 +2636,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 						}
 
 						previousDataCell = undefined;
-						if ( j > 0 ) {
+						if ( j !== 0 ) {
 							previousDataCell = dataGroupVector[ i ].cell[ j - 1 ];
 						}
 
@@ -2605,15 +2650,19 @@ $document.on( "setFocus.wb-cal", setFocus );
 							break;
 						}
 
-						// Get"s the value
+						// Gets the value
 						header = !reverseTblParsing ? dataCell.row.header : dataCell.col.header;
 
-						cellValue = optionsCharts.getcellvalue( !reverseTblParsing ? dataGroupVector[ i ].cell[ rIndex ].elem : dataGroupVector[ i ].datacell[ rIndex ].elem );
+						cellValue = optionsCharts.getcellvalue( !reverseTblParsing ?
+							dataGroupVector[ i ].cell[ rIndex ].elem :
+							dataGroupVector[ i ].datacell[ rIndex ].elem );
 
 						dataSeries.push(
 							[
 								valuePoint,
-								typeof cellValue === "object" ? cellValue[ 0 ] : cellValue
+								typeof cellValue === "object" ?
+									cellValue[ 0 ] :
+									cellValue
 							]);
 
 						valuePoint += header[ header.length - 1 ].flotDelta;
@@ -2624,17 +2673,22 @@ $document.on( "setFocus.wb-cal", setFocus );
 					pieQuaterFlotSeries = { };
 					
 					// Get the setting from the associative cell header
-					dataCell =  !reverseTblParsing ? dataGroupVector[ i ].cell[ rIndex ] : dataGroupVector[ i ].datacell[ rIndex ];
-					header = !reverseTblParsing ? dataCell.col.header : dataCell.row.header;
+					dataCell =  !reverseTblParsing ?
+						dataGroupVector[ i ].cell[ rIndex ] :
+						dataGroupVector[ i ].datacell[ rIndex ];
+					header = !reverseTblParsing ?
+						dataCell.col.header :
+						dataCell.row.header;
 					header = header[ header.length - 1 ];
 					
 					// Apply any preset
-					pieQuaterFlotSeries = applyPreset( defaultsOptions.series, $(header.elem), "flot" );
+					pieQuaterFlotSeries = applyPreset( defaultsOptions.series, $( header.elem ), "flot" );
 					
 					// Set the data issue from the table
 					pieQuaterFlotSeries.data = dataSeries;
-					pieQuaterFlotSeries.label = ( !reverseTblParsing ? $( dataGroupVector[ i ].dataheader[ dataGroupVector[ i ].dataheader.length - 1 ].elem ).text() :
-								$( dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ].elem ).text() );
+					pieQuaterFlotSeries.label = ( !reverseTblParsing ?
+						$( dataGroupVector[ i ].dataheader[ dataGroupVector[ i ].dataheader.length - 1 ].elem ).text() :
+						$( dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ].elem ).text() );
 					
 					// Add the series
 					allSeries.push(pieQuaterFlotSeries);
@@ -2642,43 +2696,50 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 				// Create a sub Figure or use the main one
 				if ( currentRowGroup.row.length === 1 &&
-					( $( currentRowGroup.row[ 0 ].header[ 0 ].elem ).html() === captionHtml ||
+					( currentRowGroup.row[ 0 ].header[ 0 ].elem.innerHTML === captionHtml ||
 					currentRowGroup.row[ 0 ].header.length === 0 ) ) {
 
-					$placeHolder = $WETChartContainer;
-					$placeHolder.css( { height: optionsCharts.height, width: optionsCharts.width } );
+					$placeHolder = $wetChartContainer;
+					$placeHolder.css({
+						height: optionsCharts.height,
+						width: optionsCharts.width
+					});
 
 				} else {
 
 					header = currentRowGroup.row[ rIndex ].header;
 
-					figurehtml = "<figure><figcaption>" + $( header[ header.length - 1 ].elem ).html() +
-							"</figcaption>" + htmlPlaceHolder + "</figure>";
-					
-					$WETChartContainer.append($(figurehtml));
-					
-					$placeHolder = $("div:last()", $WETChartContainer);
+					figurehtml = "<figure><figcaption>" +
+						header[ header.length - 1 ].elem.innerHTML +
+						"</figcaption>" + htmlPlaceHolder + "</figure>";
+
+					$wetChartContainer.append( $( figurehtml ) );
+
+					$placeHolder = $( "div:last()", $wetChartContainer );
 				}
-				
+
 				// Create the graphic
 				$.plot( $placeHolder, allSeries, optionFlot );
 
 				if ( !optionsCharts.legendinline ) {
+
 					// Move the legend under the graphic
-					$( ".legend", $placeHolder ).appendTo( $WETChartContainer );
+					$( ".legend", $placeHolder ).appendTo( $wetChartContainer );
 				}
-				
+		
 				allSeries = [];
 			}
 
 			if ( optionsCharts.nolegend ) {
+
 				// Remove the legend
-				$( ".legend", $WETChartContainer ).remove();
+				$( ".legend", $wetChartContainer ).remove();
 			}
 			if ( !optionsCharts.legendinline ) {
+
 				// Fix the legend that appear under the graphic
-				$( ".legend > div", $WETChartContainer ).remove();
-				$( ".legend > table", $WETChartContainer ).removeAttr( "style" ).addClass( "font-small" );
+				$( ".legend > div", $wetChartContainer ).remove();
+				$( ".legend > table", $wetChartContainer ).removeAttr( "style" ).addClass( "font-small" );
 				$( ".legend", $placeHolder ).appendTo( $imgContainer );
 			}
 
@@ -2688,17 +2749,22 @@ $document.on( "setFocus.wb-cal", setFocus );
 			if ( !optionsCharts.noencapsulation ) {
 				wrapTableIntoDetails();
 			}
+
 			return;
 		}
 
 		if ( !reverseTblParsing ) {
 			// If normal parsing
 			dataGroup = currentRowGroup;
-			rIndex = ( parsedData.colgroup[ 0 ].type === 1 ? parsedData.colgroup[ 1 ].col.length : parsedData.colgroup[ 0 ].col.length ) - 1;
+			rIndex = ( parsedData.colgroup[ 0 ].type === 1 ?
+				parsedData.colgroup[ 1 ].col.length :
+				parsedData.colgroup[ 0 ].col.length ) - 1;
 			chartslabels = horizontalLabels( parsedData );
 		} else {
 			// If reverse parsing
-			dataGroup = parsedData.colgroup[ 0 ].type === 1 ? parsedData.colgroup[ 1 ] : parsedData.colgroup[ 0 ];
+			dataGroup = parsedData.colgroup[ 0 ].type === 1 ?
+				parsedData.colgroup[ 1 ] :
+				parsedData.colgroup[ 0 ];
 			rIndex = currentRowGroup.row.length - 1;
 			chartslabels = verticalLabels( parsedData );
 		}
@@ -2711,13 +2777,14 @@ $document.on( "setFocus.wb-cal", setFocus );
 		dataGroupVector = !reverseTblParsing ? dataGroup.row : dataGroup.col;
 
 		// Count the number of bar charts,
-		for ( i = 0; i !== dataGroupVector.length; i++ ) {
+		for ( i = 0, iLength = dataGroupVector.length; i !== iLength; i += 1 ) {
 			currDataVector = dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ];
 
 			// Apply any preset
 			currVectorOptions = applyPreset( defaultsOptions.series, $(currDataVector.elem), "flot" );
 
 			if ( currVectorOptions.bars || ( optionFlot.bars && !currVectorOptions.lines ) ) {
+
 				// Count number of bars, this number is use to calculate the bar width.
 				nbBarChart += 1;
 
@@ -2747,7 +2814,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			currVectorOptions = currDataVector.header[ currDataVector.header.length - 1 ].chartOption;
 
 			// For each cells
-			for ( j = 0, jLength = currDataVector.cell.length; j !== jLength; j++ ) {
+			for ( j = 0, jLength = currDataVector.cell.length; j !== jLength; j += 1 ) {
 
 				dataCell = currDataVector.cell[ j ];
 				
@@ -2758,7 +2825,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 				if ( ( !reverseTblParsing && dataCell.col.groupstruct.type === 2 ) ||
 						( reverseTblParsing && dataCell.row.rowgroup.type === 2 ) ) {
 
-					// Get's the value
+					// Gets the value
 					header = !reverseTblParsing ? dataCell.col.header : dataCell.row.header;
 
 					cellValue = optionsCharts.getcellvalue( dataCell.elem );
@@ -2767,7 +2834,9 @@ $document.on( "setFocus.wb-cal", setFocus );
 					dataSeries.push(
 						[
 							valuePoint,
-							typeof cellValue === "object" ? cellValue[ 0 ] : cellValue
+							typeof cellValue === "object" ?
+								cellValue[ 0 ] :
+								cellValue
 						]
 					);
 					valuePoint += header[ header.length - 1 ].flotDelta;
@@ -2779,6 +2848,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			currVectorOptions.label = $( currDataVector.header[ currDataVector.header.length - 1 ].elem ).text();
 			
 			if ( currVectorOptions.bars ) {
+
 				// Adjust the bars width
 				currVectorOptions.bars.barWidth = currVectorOptions.bars.barWidth * ( 1 / nbBarChart );
 			}
@@ -2788,26 +2858,29 @@ $document.on( "setFocus.wb-cal", setFocus );
 		}
 	
 		if ( optionFlot.bars ) {
+
 			// Adjust the bars width
 			optionFlot.bars.barWidth = optionFlot.bars.barWidth * ( 1 / nbBarChart );
 		}
 
 		// WET Charts Placeholder
-		$placeHolder = createContainer(true);
-		
-		// Maximum widh
+		$placeHolder = createContainer( true );
+
+		// Maximum width
 		$placeHolder.css( "width", "100%" );
 
 		// Create the graphic
 		$.plot( $placeHolder, allSeries, optionFlot );
 
 		if ( !optionsCharts.legendinline ) {
+
 			// Move the legend under the graphic
 			$( ".legend > div", $placeHolder ).remove();
 			$( ".legend > table", $placeHolder ).removeAttr( "style" ).addClass( "font-small" );
 			$placeHolder.css( "height", "auto" );
 		}
 		if ( optionsCharts.nolegend ) {
+
 			// Remove the legend
 			$( ".legend", $placeHolder ).remove();
 		}
@@ -2870,6 +2943,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, selector, function( event ) {
 	var eventType = event.type,
 		elm = event.target,
+
 		// "this" is cached for all events to utilize
 		$elm = $( this );
 	
@@ -2887,7 +2961,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, sel
 		break;
 	
 	/*
-	 * Data Table Parsed
+	 * Data table parsed
 	 */
 	case "parsecomplete":
 		createCharts( $elm );
@@ -3910,7 +3984,6 @@ var pluginName = "wb-feeds",
 		var elm = event.target,
 			entries = [],
 			results = [],
-			deferred = [],
 			processEntries = function( data ) {
 				var k, len;
 
@@ -3925,11 +3998,6 @@ var pluginName = "wb-feeds",
 
 				last -= 1;
 				return last;
-			},
-			finalize = function() {
-
-				// TODO: Use CSS instead
-				$content.find( "li" ).show();
 			},
 			$content, limit, feeds, last, i;
 
@@ -3948,15 +4016,13 @@ var pluginName = "wb-feeds",
 			i = last;
 
 			while ( i >= 0 ) {
-				deferred[ i ] = $.ajax({
+				$.ajax({
 					url: jsonRequest( feeds[ i ].href, limit ),
 					dataType: "json",
 					timeout: 1000
 				}).done( processEntries );
 				results.push( i -= 1 );
 			}
-			$.when.apply( null, deferred ).always( finalize );
-
 			$.extend( {}, results );
 		}
 	},
