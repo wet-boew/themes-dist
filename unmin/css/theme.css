@@ -183,8 +183,7 @@
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc; }
   #wb-srch input, #wb-srch .btn {
-    border-radius: 2px;
-    height: 26px; }
+    border-radius: 2px; }
   #wb-sm .active a, #wb-sm .sm, #wb-sm .sm a {
     background-color: #cccccc;
     color: black; }
@@ -227,14 +226,12 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin-top: 0.7em; }
+    margin-top: 0.5em; }
     #wb-srch input {
       padding: 2px 0; }
     #wb-srch .btn {
       background-image: linear-gradient(#f0f0f0, #cccccc);
-      filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0f0f0', endColorstr='#cccccc');
-      padding: 2px 6px;
-      line-height: 1; }
+      filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0f0f0', endColorstr='#cccccc'); }
       #wb-srch .btn:hover, #wb-srch .btn:focus {
         background-image: linear-gradient(#cccccc, #f0f0f0);
         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#cccccc', endColorstr='#f0f0f0'); }
