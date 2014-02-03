@@ -1,0 +1,65 @@
+/*
+ *	Social media centre
+ */
+/* Re-usable rules */
+.backgroundsize.csstransitions .product-name, .backgroundsize.csstransitions .product-platforms, .backgroundsize.csstransitions .product-department, .backgroundsize.csstransitions .product-language, .backgroundsize.csstransitions .product-link-container {
+  display: block;
+  border: none; }
+
+
+
+.backgroundsize.csstransitions {
+  /* Layout of fields */ }
+  .backgroundsize.csstransitions #social-media-centre tbody {
+    padding-top: 2em; }
+    .backgroundsize.csstransitions #social-media-centre tbody tr {
+      display: inline-block;
+      margin-bottom: 0;
+      text-align: center;
+      vertical-align: middle;
+      padding: 5px;
+      margin-bottom: 20px;
+      background-color: #eeeeee;
+      border: none;
+      background-clip: content-box;
+      width: 100%;
+      background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==), url(data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==), url(data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==), url(data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==);
+      background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+      background-position: top left, top left, bottom left, top right;
+      background-origin: content-box; }
+      @media (min-width: 768px) {
+        .backgroundsize.csstransitions #social-media-centre tbody tr {
+          width: 50%; } }
+      @media (min-width: 1200px) {
+        .backgroundsize.csstransitions #social-media-centre tbody tr {
+          width: 33.333%; } }
+      .backgroundsize.csstransitions #social-media-centre tbody tr .product-department {
+        white-space: normal;
+        height: 3em; }
+  .backgroundsize.csstransitions .product-listing {
+    border: none;
+    width: 100%; }
+  .backgroundsize.csstransitions .product-record {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 100%; }
+    .backgroundsize.csstransitions .product-record:target {
+      height: auto !important; }
+  .backgroundsize.csstransitions .product-name {
+    min-height: 4em; }
+  .backgroundsize.csstransitions .product-department, .backgroundsize.csstransitions .product-language, .backgroundsize.csstransitions .product-link-container {
+    margin-top: 1em; }
+  .backgroundsize.csstransitions .product-department, .backgroundsize.csstransitions .product-language {
+    margin-top: 1em;
+    font-weight: bold; }
+  .backgroundsize.csstransitions .product-link {
+    display: block;
+    text-decoration: none;
+    white-space: normal;
+    padding: 6px 12px !important;
+    text-transform: none !important; }
+    .backgroundsize.csstransitions .product-link:hover, .backgroundsize.csstransitions .product-link:focus {
+      text-decoration: none; }
+
+.dataTables_wrapper {
+  margin-bottom: 3em; }

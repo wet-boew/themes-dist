@@ -1,0 +1,9 @@
+.splash object {
+  max-width: 33.333%; }
+.splash header {
+  margin: 4em 0 2em 0; }
+.splash .container {
+  background-color: #ccccff;
+  padding: 25px 5px; }
+.splash main .btn-primary {
+  padding: 1em 3em; }
