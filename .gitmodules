@@ -6,3 +6,7 @@
 	path = theme-gc-intranet
 	url = ./
 	branch = theme-gc-intranet
+[submodule "GCWeb"]
+	path = GCWeb
+	url = ./
+	branch = GCWeb
