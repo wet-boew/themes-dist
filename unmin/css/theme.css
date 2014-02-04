@@ -29,7 +29,7 @@
   @title: All screen views
  */
   #gcwu-sig, #wmms {
-    height: 22px; }
+    height: 1.5em; }
   #wb-bc li:first-child:before, [dir=rtl] #wb-bc li:before, [dir=rtl] #wb-bc li:first-child:after {
     content: "";
     padding: 0; }
@@ -190,7 +190,7 @@
     border-radius: 2px;
     height: 26px; }
   #wmms {
-    height: 33px; }
+    height: 2em; }
   [dir=rtl] #wmms, [dir=rtl] #gc-bar, [dir=rtl] #wb-srch, [dir=rtl] #canada-ca {
     float: left; }
   #wmms, #gc-bar, #wb-srch, #canada-ca {
