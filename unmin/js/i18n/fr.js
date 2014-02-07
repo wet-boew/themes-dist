@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-03
+ * v4.0.0-b2-development - 2014-02-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -165,7 +165,7 @@ wb.i18nDict = {
 	/* Table enhancement */
 	sortAsc: "&#160;: activer pour tri ascendant",
 	sortDesc: "&#160;: activer pour tri descendant",
-	emptyTbl: "Aucunes données sont disponibles dans la table",
+	emptyTbl: "Aucune donnée n'est disponible dans le tableau",
 	infoEntr: "Affiche _START_ à _END_ de _TOTAL_ entrées",
 	infoEmpty: "Affiche 0 à 0 de 0 entrées",
 	infoFilt: "(filtré de _MAX_ entrées totales)",

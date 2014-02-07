@@ -28,10 +28,13 @@
   /*
   @title: All screen views
  */
+  #wb-bc li:first-child:before {
+    content: none;
+    padding: 0; }
   #wb-sttl a, #wb-ss a {
     color: white; }
   #gcwu-sig, #wmms {
-    height: 22px; }
+    height: 1.4em; }
   #gcwu-sig {
     margin: 10px 0; }
   #wb-sttl a:link {
@@ -56,9 +59,7 @@
     font-size: 0.7em;
     color: #333333; }
   #wb-bc li:before {
-    content: "\e092"; }
-  #wb-bc li:first-child:before {
-    content: ""; } }
+    content: "\e092"; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -188,14 +189,14 @@
     background-color: #cccccc;
     color: black; }
   #wmms {
-    height: 33px;
+    height: 1.9em;
     top: 0;
     right: 0;
-    margin-top: -54px;
+    margin-top: -2.8em;
     position: absolute;
     z-index: 2; }
   #gcwu-sig {
-    margin-top: 45px; }
+    margin-top: 2.8em; }
   #wb-bnr {
     background: #29527d; }
   #wb-bar {
@@ -237,8 +238,7 @@
         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#cccccc', endColorstr='#f0f0f0'); }
   #wb-sttl {
     min-height: 2em;
-    margin: 5px 0;
-    position: relative; }
+    margin: 5px 0; }
     #wb-sttl a {
       font-size: 1.9em;
       text-shadow: 1px 1px 1px #333333; }
