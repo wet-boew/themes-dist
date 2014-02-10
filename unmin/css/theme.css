@@ -38,6 +38,8 @@
   #wb-bar {
     background: black;
     min-height: 2.6em; }
+    #wb-bar a {
+      color: white; }
   #gcwu-sig {
     margin: 10px 0; }
   #wb-sttl a {
