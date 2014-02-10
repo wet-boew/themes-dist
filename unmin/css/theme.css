@@ -55,9 +55,16 @@
     color: #333333; }
   #wb-bc li:before {
     content: "\e092"; }
+  #wb-dtmd {
+    float: right;
+    margin: 1em 0 0 0; }
+    #wb-dtmd dt, #wb-dtmd dd {
+      display: inline; }
   [dir=rtl] #wb-bc li:after {
     content: "\e091";
-    padding: 0 5px; } }
+    padding: 0 5px; }
+  [dir=rtl] #wb-dtmd {
+    float: left; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -89,7 +96,9 @@
     left: 0;
     top: -2.5em; }
   #wb-bnr {
-    background-image: linear-gradient(#4474ad, #4474ad, #174f88); }
+    background-color: #174f88;
+    background-image: linear-gradient(#4474ad, #4474ad, #174f88);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4474ad', endColorstr='#174f88'); }
     #wb-bnr .row {
       margin: 0; }
   #wb-sttl {
@@ -114,7 +123,9 @@
     #wb-glb-mn .lng-ofr {
       text-align: right; }
   #wb-bc {
-    background: linear-gradient(#f0efef, #dfdfdd) repeat scroll 0 0/100% auto #dfdfdd; }
+    background-color: #dfdfdd;
+    background-image: linear-gradient(#f0efef, #dfdfdd);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0efef', endColorstr='#dfdfdd'); }
   [dir=rtl] #wmms {
     right: 0; }
   [dir=rtl] #wb-glb-mn> ul {
@@ -243,6 +254,7 @@
     #wb-srch input {
       padding: 2px 0; }
     #wb-srch .btn {
+      background-color: #cccccc;
       background-image: linear-gradient(#f0f0f0, #cccccc);
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0f0f0', endColorstr='#cccccc');
       padding: 2px 6px;
@@ -273,8 +285,8 @@
       text-decoration: none; }
     #wb-sm .sm {
       border-bottom: 4px solid #0f315b;
-      box-shadow: 0 5px 5px -4px rgba(0, 0, 0, 0.5), 5px 5px 5px -4px rgba(0, 0, 0, 0.5), -5px 5px 5px -4px rgba(0, 0, 0, 0.5);
-      border-radius: 0 0 3px 3px; }
+      border-radius: 0 0 3px 3px;
+      box-shadow: 0 5px 5px -4px rgba(0, 0, 0, 0.5), 5px 5px 5px -4px rgba(0, 0, 0, 0.5), -5px 5px 5px -4px rgba(0, 0, 0, 0.5); }
       #wb-sm .sm a {
         font-weight: 400; }
         #wb-sm .sm a:link {
@@ -347,10 +359,10 @@
     [dir=rtl] #gc-info li:first-child {
       margin-right: 0; }
   [dir=rtl] #gc-tctr> :first-child {
-    border-right: 0;
-    padding-right: 0;
     border-left: 1px solid #999999;
-    padding-left: 10px; }
+    border-right: 0;
+    padding-left: 10px;
+    padding-right: 0; }
   [dir=rtl] #canada-ca a {
     border-left: 0;
     border-right: 1px solid #666666;
