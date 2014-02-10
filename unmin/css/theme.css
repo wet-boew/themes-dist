@@ -36,8 +36,11 @@
   .wb-slc a {
     color: white; }
   #wb-bar {
+    color: white;
     background: black;
     min-height: 2.6em; }
+    #wb-bar a {
+      color: white; }
   #gcwu-sig {
     margin: 10px 0; }
   #wb-sttl a {
@@ -111,7 +114,6 @@
     #wb-glb-mn > ul {
       margin: 10px 0; }
       #wb-glb-mn > ul a {
-        color: white;
         font-size: 1.5em; }
     #wb-glb-mn header {
       background-color: #174f88; }
@@ -219,7 +221,6 @@
     #gc-bar li {
       padding: 0; }
     #gc-bar a {
-      color: white;
       border-left: 1px solid white;
       padding: 0 0.5em; }
       #gc-bar a:link {
@@ -271,7 +272,7 @@
         margin-bottom: 0; }
         #wb-sm .nvbar ul.menu> li {
           padding: 0;
-          border-left: 1px solid #124b79;
+          border-left: 1px solid #15598f;
           border-right: 1px solid #15598f; }
           #wb-sm .nvbar ul.menu> li.active {
             border-left-color: #cccccc;
@@ -294,7 +295,7 @@
         #wb-sm .sm a:hover, #wb-sm .sm a:focus {
           text-decoration: underline; }
   #wb-info {
-    background: url(../assets/sft-deco.gif) repeat-x scroll center top #efefef; }
+    background: #efefef url(../assets/sft-deco.gif) repeat-x scroll center top; }
     #wb-info> .container {
       background: transparent url(../assets/sft-deco-leaf.gif) no-repeat top center; }
       #wb-info> .container> :before {
