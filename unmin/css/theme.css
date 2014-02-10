@@ -59,7 +59,12 @@
     font-size: 0.7em;
     color: #333333; }
   #wb-bc li:before {
-    content: "\e092"; } }
+    content: "\e092"; }
+  #wb-dtmd {
+    float: right;
+    margin: 1em 0 0 0; }
+    #wb-dtmd dt, #wb-dtmd dd {
+      display: inline; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
