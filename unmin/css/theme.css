@@ -115,14 +115,16 @@
       margin: 10px 0; }
       #wb-glb-mn > ul a {
         font-size: 1.5em; }
-    #wb-glb-mn header {
+  #mb-pnl {
+    color: black; }
+    #mb-pnl header {
       background-color: #174f88; }
-    #wb-glb-mn nav a {
+    #mb-pnl nav a {
       color: black;
       text-decoration: none; }
-    #wb-glb-mn summary:hover, #wb-glb-mn summary:focus {
+    #mb-pnl summary:hover, #mb-pnl summary:focus {
       background: transparent; }
-    #wb-glb-mn .lng-ofr {
+    #mb-pnl .lng-ofr {
       text-align: right; }
   #wb-bc {
     background-color: #dfdfdd;
