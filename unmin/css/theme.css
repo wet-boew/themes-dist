@@ -36,11 +36,8 @@
   .wb-slc a {
     color: white; }
   #wb-bar {
-    color: white;
     background: black;
     min-height: 2.6em; }
-    #wb-bar a {
-      color: white; }
   #gcwu-sig {
     margin: 10px 0; }
   #wb-sttl a {
@@ -114,18 +111,17 @@
     #wb-glb-mn > ul {
       margin: 10px 0; }
       #wb-glb-mn > ul a {
+        color: white;
         font-size: 1.5em; }
-  #mb-pnl {
-    color: black; }
-    #mb-pnl header {
-      background-color: #174f88; }
-    #mb-pnl nav a {
-      color: black;
-      text-decoration: none; }
-    #mb-pnl summary:hover, #mb-pnl summary:focus {
-      background: transparent; }
-    #mb-pnl .lng-ofr {
-      text-align: right; }
+  #mb-pnl header {
+    background-color: #174f88; }
+  #mb-pnl nav a {
+    color: black;
+    text-decoration: none; }
+  #mb-pnl summary:hover, #mb-pnl summary:focus {
+    background: transparent; }
+  #mb-pnl .lng-ofr {
+    text-align: right; }
   #wb-bc {
     background-color: #dfdfdd;
     background-image: linear-gradient(#f0efef, #dfdfdd);
