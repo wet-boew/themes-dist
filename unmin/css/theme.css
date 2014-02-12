@@ -517,17 +517,6 @@ main {
     padding: 2px 10px 2px 10px; }
 
 /*
- * Carousel-specific overrides
- */
-.wb-tabs.carousel-s2 {
-  margin-bottom: 80px; }
-  .wb-tabs.carousel-s2 [role="tablist"] li.control.prv a .glyphicon, .wb-tabs.carousel-s2 [role="tablist"] li.control.nxt a .glyphicon {
-    font-size: 1.5em;
-    height: 1.5em;
-    line-height: 1.5em;
-    width: 1.5em; }
-
-/*
  * Equal Heights overrides
  */
 .sect-lnks {
@@ -572,7 +561,7 @@ main {
   background: transparent; }
 
 /*
- * Share widget-specific overrides
+ * Share/feedback-specific overrides
  */
 a.shr-opn, a.shr-opn:hover {
   text-decoration: none; }
@@ -790,10 +779,20 @@ header .brand {
   WET-BOEW
   @title: All screen views
  */
+  /*
+ * Carousel-specific overrides
+ */
   body {
     background: #f9f9f9; }
   .overlay-def .modal-header {
-    background: #2e5274; } }
+    background: #2e5274; }
+  .wb-tabs.carousel-s2 {
+    margin-bottom: 80px; }
+    .wb-tabs.carousel-s2 [role="tablist"] li.control.prv a .glyphicon, .wb-tabs.carousel-s2 [role="tablist"] li.control.nxt a .glyphicon {
+      font-size: 1.5em;
+      height: 1.5em;
+      line-height: 1.5em;
+      width: 1.5em; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -1028,8 +1027,25 @@ header .brand {
 
 /* Print view */
 @media print {
-  @media print {
-    main.container * {
-      display: block; }
-    .features, .shr, .fdbck *, .followus, .wb-sec, .wb-menu, .glyphicon, .tofpg {
-      display: none !important; } } }
+  /*
+ Search (print view)
+ */
+  /*
+ Secondary menu (print view)
+*/
+  /*
+ * Share/feedback-specific overrides (print view)
+ */
+  /*
+ Site information (print view)
+*/
+  /*
+ Site menu (print view)
+*/
+  /* ------------------------------------------------------------------------------------
+-- Follow US (print view)
+------------------------------------------------------------------------------------ */
+  .features, .glyphicon, #wb-srch, #wb-sec, .shr, .fdbck *, #wb-info, .tofpg, #wb-sm, .followus {
+    display: none !important; }
+  .jumbotron.pagebrand figcaption {
+    position: static; } }
