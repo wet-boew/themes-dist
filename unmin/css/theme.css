@@ -114,15 +114,15 @@
       #wb-glb-mn > ul a {
         color: white;
         font-size: 1.5em; }
-    #wb-glb-mn header {
-      background-color: #174f88; }
-    #wb-glb-mn nav a {
-      color: black;
-      text-decoration: none; }
-    #wb-glb-mn summary:hover, #wb-glb-mn summary:focus {
-      background: transparent; }
-    #wb-glb-mn .lng-ofr {
-      text-align: right; }
+  #mb-pnl header {
+    background-color: #174f88; }
+  #mb-pnl nav a {
+    color: black;
+    text-decoration: none; }
+  #mb-pnl summary:hover, #mb-pnl summary:focus {
+    background: transparent; }
+  #mb-pnl .lng-ofr {
+    text-align: right; }
   #wb-bc {
     background: linear-gradient(#f0efef, #dfdfdd) repeat scroll 0 0/100% auto #dfdfdd; } }
 
