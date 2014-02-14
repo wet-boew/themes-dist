@@ -293,6 +293,20 @@
       background-color: #999999;
       background-image: linear-gradient(#cbcbcb, #999999);
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#cbcbcb', endColorstr='#999999'); }
+  #wb-sec> ul> li> a {
+    background: #dddddd; }
+  #wb-sec a {
+    border-radius: 0;
+    border: 1px solid #cccccc;
+    margin-top: -1px; }
+    #wb-sec a:link {
+      text-decoration: none; }
+    #wb-sec a:hover, #wb-sec a:focus {
+      text-decoration: underline; }
+  #wb-sec .list-group {
+    margin-bottom: 0; }
+    #wb-sec .list-group .list-group .list-group-item {
+      padding-left: 1.8em; }
   #gc-tctr {
     margin-top: 1em; } }
 
