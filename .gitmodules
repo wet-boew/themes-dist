@@ -10,3 +10,7 @@
 	path = GCWeb
 	url = ./
 	branch = GCWeb
+[submodule "theme-ogpl"]
+	path = theme-ogpl
+	url = ./
+	branch = theme-ogpl
