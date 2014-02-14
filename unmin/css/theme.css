@@ -218,8 +218,7 @@
     float: right;
     background-image: linear-gradient(#494949, #333333);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#494949', endColorstr='#333333');
-    padding: 0 1em;
-    border-radius: 0 0 0.5em 0.5em; }
+    padding: 0 1em; }
     #wb-lng ul {
       margin-bottom: 5px; }
     #wb-lng a {
