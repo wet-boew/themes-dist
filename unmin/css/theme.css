@@ -187,8 +187,10 @@
     background: #eeeeee; }
   #ogpl-logo {
     padding: 10px 0; }
-  #wb-bar a {
-    color: white; }
+  #wb-bar {
+    min-height: 2.25em; }
+    #wb-bar a {
+      color: white; }
   #wb-lng {
     float: right;
     margin: 0; }
