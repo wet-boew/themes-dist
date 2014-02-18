@@ -48,6 +48,9 @@
       text-decoration: none; }
     #wb-sttl a:hover, #wb-sttl a:focus {
       text-decoration: underline; }
+    #wb-sttl a span {
+      display: inline-block;
+      line-height: normal; }
   #wb-bc .breadcrumb {
     margin-bottom: 0;
     background: transparent; }
@@ -95,26 +98,33 @@
     display: none; }
   #wmms {
     position: absolute;
-    left: 0;
-    top: -2.5em; }
+    top: 0.35em;
+    margin-left: 15px; }
+  #wb-bar {
+    min-height: 2.2em; }
   #wb-bnr {
     background-color: #174f88;
     background-image: linear-gradient(#4474ad, #4474ad, #174f88);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4474ad', endColorstr='#174f88'); }
-    #wb-bnr .row {
-      margin: 0; }
   #wb-sttl {
     position: relative; }
     #wb-sttl a {
       font-size: 1.5em;
       text-shadow: 0 1px 1px #044062; }
-  #wb-glb-mn {
-    padding: 0; }
-    #wb-glb-mn > ul {
-      margin: 10px 0; }
-      #wb-glb-mn > ul a {
-        color: white;
-        font-size: 1.5em; }
+  #wb-glb-mn .pnl-btn {
+    position: relative;
+    float: right;
+    width: 50%;
+    z-index: 2;
+    margin-bottom: 0; }
+    #wb-glb-mn .pnl-btn li {
+      padding: 3px 0 0;
+      width: 100%; }
+    #wb-glb-mn .pnl-btn a {
+      color: white;
+      font-size: 1.5em;
+      display: block;
+      width: 100%; }
   #mb-pnl header {
     background-color: #174f88; }
   #mb-pnl nav a {
@@ -214,6 +224,9 @@
     background-position: center 2.7em; }
   #gcwu-sig {
     position: absolute; }
+  #wmms {
+    margin-top: 2.3em;
+    margin-right: 10px; }
   #wb-bar {
     line-height: 1; }
   #gc-bar {
@@ -233,24 +246,29 @@
       border-right: 1px solid white; }
     #gc-bar ul li:last-child a {
       border-right: 0; }
-  #wb-bnr {
-    min-height: 167px; }
+  #wb-bnr> .container {
+    position: relative; }
   #wb-sttl {
-    min-height: 2em;
-    margin-top: 40px;
-    margin-bottom: 5px; }
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: table-row; }
     #wb-sttl a {
-      position: absolute;
       font-size: 1.9em;
-      text-shadow: 1px 1px 1px #333333; }
+      text-shadow: 1px 1px 1px #333333;
+      display: table-cell;
+      vertical-align: middle;
+      height: 3.6em; }
+      #wb-sttl a span {
+        margin-left: -15px; }
   #wb-srch {
     background: #146094;
     border-left: 1px solid #15527d;
     border-right: 1px solid #15527d;
     border-top: 1px solid #87aec9;
     padding: 11px 10px 6px 12px;
-    margin-bottom: -1px;
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     z-index: 2; }
     #wb-srch input {
       padding: 2px 0; }
