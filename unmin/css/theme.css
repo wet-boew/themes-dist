@@ -314,7 +314,7 @@
           text-decoration: underline; }
   #wb-cont {
     margin-top: 0; }
-  #wb-sec> ul> li> a {
+  #wb-sec> ul> li> :first-child {
     background: #dddddd; }
   #wb-sec a {
     border-radius: 0;
