@@ -398,6 +398,8 @@
   [dir=rtl] #wb-srch {
     left: 0;
     right: auto; }
+  [dir=rtl] #gc-info ul {
+    padding-right: 0; }
   [dir=rtl] #gc-info li {
     margin: 12px 40px 13px 0; }
     [dir=rtl] #gc-info li:first-child {
