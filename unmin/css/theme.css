@@ -60,16 +60,9 @@
     color: #333333; }
   #wb-bc li:before {
     content: "\e092"; }
-  #wb-dtmd {
-    float: right;
-    margin: 1em 0 0 0; }
-    #wb-dtmd dt, #wb-dtmd dd {
-      display: inline; }
   [dir=rtl] #wb-bc li:after {
     content: "\e091";
-    padding: 0 5px; }
-  [dir=rtl] #wb-dtmd {
-    float: left; } }
+    padding: 0 5px; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {

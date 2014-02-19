@@ -11214,6 +11214,10 @@ details summary:hover {
     font-weight: normal;
   }
 
+  [dir=rtl] #wb-dtmd.text-right {
+    float: left;
+  }
+
   .typ,
   .atn,
   .dec,
