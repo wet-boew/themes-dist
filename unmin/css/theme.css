@@ -214,23 +214,24 @@
     height: 26px; }
   #wmms {
     height: 2em; }
-  [dir=rtl] #wmms, [dir=rtl] #gc-bar, [dir=rtl] #wb-srch, [dir=rtl] #canada-ca {
+  [dir=rtl] #wmms, [dir=rtl] #gc-bar, [dir=rtl] #canada-ca {
     float: left; }
-  #wmms, #gc-bar, #wb-srch, #canada-ca {
+  #wmms, #gc-bar, #wb-srch, #canada-ca, [dir=rtl] #wb-sttl {
     float: right; }
   body {
     background-image: url(../assets/header-leaf.jpg), url(../assets/header-bg.jpg);
     background-repeat: no-repeat, repeat-x;
     background-position: center 2.7em; }
   #gcwu-sig {
-    position: absolute; }
+    position: absolute;
+    margin-left: 15px; }
   #wmms {
     margin-top: 2.3em;
-    margin-right: 10px; }
+    margin-right: 15px; }
   #wb-bar {
     line-height: 1; }
   #gc-bar {
-    margin: 15px 0; }
+    margin: 15px 10px; }
     #gc-bar li {
       padding: 0; }
     #gc-bar a {
@@ -258,14 +259,12 @@
       display: table-cell;
       vertical-align: middle;
       height: 3.6em; }
-      #wb-sttl a span {
-        margin-left: -15px; }
   #wb-srch {
     background: #146094;
     border-left: 1px solid #15527d;
     border-right: 1px solid #15527d;
     border-top: 1px solid #87aec9;
-    padding: 11px 10px 6px 12px;
+    padding: 11px 15px 6px 15px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -358,7 +357,7 @@
       margin: 12px 0 13px 40px;
       line-height: normal; }
       #gc-info li:first-child {
-        margin-left: -5px; }
+        margin-left: 0; }
     #gc-info a {
       color: white; }
       #gc-info a span {
@@ -375,13 +374,18 @@
       padding-right: 10px;
       line-height: 1.5; }
   #canada-ca {
-    margin: 1em 0 !important; }
+    margin: 1em 0 !important;
+    padding-right: 0; }
     #canada-ca a {
       border-left: 1px solid #666666;
       padding-left: 44px;
       display: inline-block;
       vertical-align: middle;
       font-size: 160%; }
+  [dir=rtl] #wmms {
+    margin-left: 15px; }
+  [dir=rtl] #gcwu-sig {
+    margin-right: 15px; }
   [dir=rtl] #gc-bar a {
     border-left: 0;
     border-right: 1px solid white; }
@@ -391,6 +395,9 @@
     padding: 0; }
     [dir=rtl] #gc-bar ul li a {
       border-right: 1px solid white; }
+  [dir=rtl] #wb-srch {
+    left: 0;
+    right: auto; }
   [dir=rtl] #gc-info li {
     margin: 12px 40px 13px 0; }
     [dir=rtl] #gc-info li:first-child {
@@ -400,11 +407,14 @@
     border-right: 0;
     padding-left: 10px;
     padding-right: 0; }
-  [dir=rtl] #canada-ca a {
-    border-left: 0;
-    border-right: 1px solid #666666;
-    padding-left: 0;
-    padding-right: 44px; } }
+  [dir=rtl] #canada-ca {
+    padding-right: 0;
+    padding-left: 5px; }
+    [dir=rtl] #canada-ca a {
+      border-left: 0;
+      border-right: 1px solid #666666;
+      padding-left: 0;
+      padding-right: 44px; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
