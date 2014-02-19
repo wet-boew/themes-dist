@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-14
+ * v4.0.0-b2-development - 2014-02-19
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -5950,7 +5950,7 @@ var pluginName = "wb-menu",
 			// Add the secondary menu
 			if ( $secnav.length !== 0 ) {
 				allProperties.push([
-					$secnav.find( "> ul > li > a" ).get(),
+					$secnav.find( "> ul > li > *:first-child" ).get(),
 					"sec-pnl",
 					$secnav.find( "h2" ).html()
 				]);
@@ -9274,7 +9274,7 @@ var pluginName = "wb-tabs",
 								"aria-hidden": "false"
 							});
 						}
-					} else {
+					} else if ( oldIsSmallView ) {
 
 						// Switch to large view
 						$openDetails = $details.filter( "[open]" );
