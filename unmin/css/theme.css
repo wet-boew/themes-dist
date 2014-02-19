@@ -198,7 +198,7 @@
       border-left: 1px solid #777777;
       list-style-type: none;
       float: left;
-      padding: 6px 10px; }
+      padding: 6px 15px; }
       #wb-lng li:first-child {
         border-left: none; }
     #wb-lng a {
@@ -209,10 +209,17 @@
       color: #cccccc;
       background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAAAA6SURBVAiZY/z//z8DMvj14+s+BgYGBjYObicUif///8Pxz+9f9v2HAigbLodVETbFOBWhK8arCFkxABifl5syjffvAAAAAElFTkSuQmCC) no-repeat scroll center bottom; }
   #wb-sttl a {
-    font-size: 1.9em;
-    text-shadow: 1px 1px 1px #333333; }
+    font-size: 1.8em;
+    text-shadow: 1px 1px 1px #333333;
+    display: table-row; }
+    #wb-sttl a span {
+      display: table-cell;
+      vertical-align: middle;
+      line-height: normal;
+      padding-left: 10px; }
   #wb-srch {
-    margin-top: 1.2em; }
+    margin-top: 1.2em;
+    text-align: right; }
   #wb-sm {
     background: #202a33; }
     #wb-sm ul.menu {
