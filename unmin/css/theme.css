@@ -358,7 +358,7 @@
       margin: 12px 0 13px 40px;
       line-height: normal; }
       #gc-info li:first-child {
-        margin-left: 0; }
+        margin-left: -5px; }
     #gc-info a {
       color: white; }
       #gc-info a span {
