@@ -11204,6 +11204,15 @@ details summary:hover {
 
   /* a function name */
 
+  .wb-date {
+    margin: 2em 0 0 0;
+  }
+
+  .wb-date dt,
+  .wb-date dd {
+    display: inline;
+  }
+
   .typ,
   .atn,
   .dec,
@@ -11408,6 +11417,14 @@ details summary:hover {
     -webkit-column-count: 4;
     -moz-column-count: 4;
     column-count: 4;
+  }
+
+  [dir=rtl] main.col-md-push-3 {
+    left: auto;
+  }
+
+  [dir=rtl] #wb-sec.col-md-pull-9 {
+    right: auto;
   }
 
   .wb-tabs.carousel-s1 figcaption,
