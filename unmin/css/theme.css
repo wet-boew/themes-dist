@@ -65,9 +65,13 @@
     color: #333333; }
   #wb-bc li:before {
     content: "\e092"; }
+  #wb-dtmd {
+    float: right; }
   [dir=rtl] #wb-bc li:after {
     content: "\e091";
-    padding: 0 5px; } }
+    padding: 0 5px; }
+  [dir=rtl] #wb-dtmd {
+    float: left; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {

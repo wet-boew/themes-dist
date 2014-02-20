@@ -11220,10 +11220,6 @@ details summary:hover {
     margin-right: 0;
   }
 
-  [dir=rtl] #wb-dtmd.text-right {
-    float: left;
-  }
-
   .typ,
   .atn,
   .dec,
