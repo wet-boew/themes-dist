@@ -28,7 +28,7 @@
   /*
   @title: All screen views
  */
-  #wb-bc li:first-child:before {
+  #wb-bc li:first-child:before, [dir=rtl] #wb-bc li:before, [dir=rtl] #wb-bc li:first-child:after {
     content: none;
     padding: 0; }
   #wb-sttl a, #wb-ss a {
@@ -61,10 +61,12 @@
   #wb-bc li:before {
     content: "\e092"; }
   #wb-dtmd {
-    float: right;
-    margin: 1em 0 0 0; }
-    #wb-dtmd dt, #wb-dtmd dd {
-      display: inline; } }
+    float: right; }
+  [dir=rtl] #wb-bc li:after {
+    content: "\e091";
+    padding: 0 5px; }
+  [dir=rtl] #wb-dtmd {
+    float: left; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
