@@ -305,20 +305,24 @@
           text-decoration: underline; }
   #wb-cont {
     margin-top: 0; }
-  #wb-sec> ul> li> :first-child {
-    background: #dddddd; }
-  #wb-sec a {
-    border-radius: 0;
-    border: 1px solid #cccccc;
-    margin-top: -1px; }
-    #wb-sec a:link {
-      text-decoration: none; }
-    #wb-sec a:hover, #wb-sec a:focus {
-      text-decoration: underline; }
-  #wb-sec .list-group {
-    margin-bottom: 0; }
-    #wb-sec .list-group .list-group .list-group-item {
-      padding-left: 1.8em; }
+  #wb-sec {
+    margin-top: 20px;
+    padding-bottom: 2em; }
+    #wb-sec .list-group {
+      margin-bottom: 0; }
+      #wb-sec .list-group a.list-group-item {
+        background: white;
+        color: #555555;
+        border-radius: 0;
+        margin-top: -1px;
+        text-decoration: none; }
+        #wb-sec .list-group a.list-group-item.wb-navcurr, #wb-sec .list-group a.list-group-item[href]:hover, #wb-sec .list-group a.list-group-item[href]:focus {
+          background: grey;
+          color: white; }
+      #wb-sec .list-group .list-group .list-group-item {
+        background: #e6e6e6;
+        color: black;
+        padding-left: 1.8em; }
   #wb-info {
     background: #efefef url(../assets/sft-deco.gif) repeat-x scroll center top; }
     #wb-info> .container {
