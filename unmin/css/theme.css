@@ -93,13 +93,13 @@
  */
   #gcwu-sig, #wb-lng {
     display: none; }
-  #wb-bnr .row, #wb-bnr-ss .row {
-    margin: 0; }
   #wmms {
     position: absolute;
-    left: 0;
-    top: -2.5em;
+    left: 15px;
+    top: -1.9em;
     width: 90px; }
+  #wb-bar {
+    min-height: 2.2em; }
   #wb-bnr {
     background-image: linear-gradient(#4474ad, #4474ad, #174f88); }
   #wb-bar {
@@ -109,13 +109,20 @@
     #wb-sttl a {
       font-size: 1.5em;
       text-shadow: 0 1px 1px #044062; }
-  #wb-glb-mn {
-    padding: 0; }
-    #wb-glb-mn > ul {
-      margin: 10px 0; }
-      #wb-glb-mn > ul a {
-        color: white;
-        font-size: 1.5em; }
+  #wb-glb-mn .pnl-btn {
+    position: relative;
+    float: right;
+    width: 50%;
+    z-index: 2;
+    margin-bottom: 0; }
+    #wb-glb-mn .pnl-btn li {
+      padding: 3px 0 0;
+      width: 100%; }
+    #wb-glb-mn .pnl-btn a {
+      color: white;
+      font-size: 1.5em;
+      display: block;
+      width: 100%; }
   #mb-pnl header {
     background-color: #174f88; }
   #mb-pnl nav a {
@@ -125,8 +132,34 @@
     background: transparent; }
   #mb-pnl .lng-ofr {
     text-align: right; }
+  #mb-pnl .srch-pnl .form-group {
+    float: left;
+    margin-right: 5px;
+    width: 75%; }
   #wb-bc {
-    background: linear-gradient(#f0efef, #dfdfdd) repeat scroll 0 0/100% auto #dfdfdd; } }
+    background: linear-gradient(#f0efef, #dfdfdd) repeat scroll 0 0/100% auto #dfdfdd; }
+  [dir=rtl] #mb-pnl .lng-ofr {
+    text-align: left; }
+    [dir=rtl] #mb-pnl .lng-ofr ul {
+      margin-left: 0; }
+    [dir=rtl] #mb-pnl .lng-ofr li {
+      padding-left: 0;
+      padding-right: 10px; }
+  [dir=rtl] #mb-pnl .srch-pnl .form-group {
+    float: right;
+    margin-right: auto;
+    margin-left: 5px;
+    width: 75%; }
+  [dir=rtl] #mb-pnl ul li.no-sect {
+    padding-left: 0;
+    padding-right: 1.27em; }
+  [dir=rtl] #wmms {
+    left: auto;
+    right: 15px; }
+  [dir=rtl] #wb-glb-mn> ul {
+    text-align: left; }
+  [dir=rtl] #wb-glb-mn .pnl-btn {
+    float: left; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -313,7 +346,19 @@
         color: black;
         padding-left: 1.8em; }
   #gc-tctr {
-    margin-top: 1em; } }
+    margin-top: 1em; }
+  [dir=rtl] #wmms, [dir=rtl] #wb-srch {
+    left: 0;
+    right: auto; }
+  [dir=rtl] #gcwu-sig {
+    float: right; }
+  [dir=rtl] #wb-lng {
+    float: left;
+    padding-right: 5px; }
+  [dir=rtl] #gc-tctr {
+    padding-right: 0; }
+    [dir=rtl] #gc-tctr li:first-child {
+      padding-right: 0; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
