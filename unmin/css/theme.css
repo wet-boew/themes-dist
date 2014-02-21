@@ -223,7 +223,14 @@
       padding-left: 10px; }
   #wb-srch {
     margin-top: 1.2em;
-    text-align: right; }
+    text-align: right;
+    padding-right: 10px; }
+    #wb-srch .form-group {
+      width: 70%; }
+  #wb-srch .form-control, .srch-pnl .form-control {
+    width: 100%; }
+  [lang=fr] #wb-srch .form-group {
+    width: 60%; }
   #wb-sm {
     background: #202a33; }
     #wb-sm ul.menu {
@@ -271,7 +278,9 @@
         padding-left: 1.8em; }
   footer {
     background: #cccccc;
-    border-top: 1px solid #bbbbbb; } }
+    border-top: 1px solid #bbbbbb; }
+  [dir=rtl] #wb-srch {
+    text-align: left; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
