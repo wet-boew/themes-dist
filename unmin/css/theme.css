@@ -96,11 +96,6 @@
   /*
   @title: Small view and under (screen only)
  */
-  #ogpl-logo {
-    position: absolute;
-    width: 158px;
-    left: 0;
-    top: -50px; }
   #wb-glb-mn {
     padding: 0; }
     #wb-glb-mn > ul {
@@ -117,9 +112,41 @@
       background: transparent; }
     #wb-glb-mn .lng-ofr {
       text-align: right; }
+    #wb-glb-mn .pnl-btn {
+      position: relative;
+      float: right;
+      width: 50%;
+      z-index: 2; }
+      #wb-glb-mn .pnl-btn li {
+        padding: 3px 0 0;
+        width: 100%; }
+      #wb-glb-mn .pnl-btn a {
+        color: white;
+        font-size: 1.5em;
+        display: block;
+        width: 100%; }
   #wb-sttl a {
+    position: relative;
+    z-index: 1;
+    padding-top: 1.125em;
     font-size: 1.5em;
-    text-shadow: 0 1px 1px #044062; } }
+    text-shadow: 0 1px 1px #044062; }
+  #wb-sttl object, #wb-sttl img {
+    position: absolute;
+    top: -27px;
+    margin: 0;
+    width: 158px; }
+  [dir=rtl] #mb-pnl .lng-ofr {
+    text-align: left; }
+    [dir=rtl] #mb-pnl .lng-ofr ul {
+      margin-left: 0; }
+    [dir=rtl] #mb-pnl .lng-ofr li {
+      padding-left: 0;
+      padding-right: 10px; }
+  [dir=rtl] #wb-glb-mn> ul {
+    text-align: left; }
+  [dir=rtl] #wb-glb-mn .pnl-btn {
+    float: left; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
