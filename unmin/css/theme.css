@@ -132,6 +132,9 @@
     background: transparent; }
   #mb-pnl .lng-ofr {
     text-align: right; }
+    #mb-pnl .lng-ofr a {
+      color: black;
+      text-decoration: none; }
   #mb-pnl .srch-pnl .form-group {
     float: left;
     margin-right: 5px;
