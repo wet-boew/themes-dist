@@ -10,14 +10,14 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta name="description" content="" />
 <meta name="description" lang="fr" content="" />
-<meta name="dcterms.creator" content="English name of the content author" />
-<meta name="dcterms.creator" lang="fr" content="English name of the content author" />
+<meta name="dcterms.creator" content="Government of Canada, Service Canada, Citizen Service Branch, Integrated Channel Management, Web Strategies and Product Management" />
+<meta name="dcterms.creator" lang="fr" content="Government of Canada, Service Canada, Citizen Service Branch, Integrated Channel Management, Web Strategies and Product Management" />
 <meta name="dcterms.title" content="Canada.ca" />
 <meta name="dcterms.title" lang="fr" content="Canada.ca" />
 <meta name="dcterms.issued" title="W3CDTF" content="2013-12-13" />
 <meta name="dcterms.modified" title="W3CDTF" content="" />
-<meta name="dcterms.subject" title="scheme" content="English subject terms" />
-<meta name="dcterms.subject" lang="fr" title="scheme" content="Termes de sujet en anglais" />
+<meta name="dcterms.subject" title="scheme" content="Government of Canada, services" />
+<meta name="dcterms.subject" lang="fr" title="scheme" content="Gouvernement du Canada, services" />
 <meta name="dcterms.language" title="ISO639-2" content="eng" />
 <meta name="dcterms.language" lang="fr" title="ISO639-2" content="fra" />
 <meta name="robots" content="noindex, follow" />
@@ -30,6 +30,7 @@
 
 
 <!--[if lt IE 9]>
+<link rel="stylesheet" href="./css/messages-ie.css" />
 <link rel="stylesheet" href="./css/ie8-wet-boew.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
 <script src="./js/ie8-wet-boew.js"></script>
@@ -44,36 +45,37 @@
 </head>
 
 <body class="splash" vocab="http://schema.org/" typeof="WebPage">
-<header role="banner">
-<div class="row">
-
-<div class="col-sm-12 text-center">
-	<!--[if lt IE 9]>
-		<img src="././assets/wmms-spl.png" alt="Symbol of the Government of Canada / Symbole du gouvernement du Canada" />
-	<![endif]-->
-	<!--[if gte IE 9 | !IE ]><!-->
-		<object type="image/svg+xml" tabindex="-1" role="img" data="././assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada / Symbole du gouvernement du Canada"></object>
-	<!--<![endif]-->
-	</div>
-
-</div>
-</header>
+<div id="bg"><img src="./img/splash/sp-bg-2.jpg" alt=""></div>
 <main role="main">
 
-<h1 class="wb-invisible">{title}}</h1>
-<div class="container">
-	<div class="row text-center">
-		<p class="col-md-6">Government of Canada</p>
-		<p class="col-md-6">Gouvernement du Canada</p>
-	</div>
-	<div class="row">
-		<div class="col-md-offset-1 col-md-4 text-center">
-			<p><a class="btn btn-primary btn-sm" href="index-en.html">English</a></p>
-			<p><a href="/en/transparency/terms.html">Terms & conditions</a></p>
+
+<div class="sp-hb">
+	<div class="sp-bx col-xs-12">
+		<h1 class="wb-inv">{title}}</h1>
+		<div class="row">
+			<div class="col-xs-11 col-md-8">
+				<object type="image/svg+xml" tabindex="-1" role="img" data="./assets/sig-spl.svg" aria-label="Government of Canada / Gouvernement du Canada"></object>
+			</div>
 		</div>
-		<div class="col-md-offset-2 col-md-4 text-center" lang="fr">
-			<p><a class="btn btn-primary btn-sm" href="index-fr.html">Français</a></p>
-			<p><a href="/fr/transparence/avis.html">Avis</a></p>
+		<div class="row">
+			<section class="col-xs-6 text-right">
+				<h2 class="wb-inv">Government of Canada</h2>
+				<p><a href="/en/index.html" class="btn btn-primary">English</a></p>
+			</section>
+			<section class="col-xs-6" lang="fr">
+				<h2 class="wb-inv">Gouvernement du Canada</h2>
+				<p><a href="/fr/index.html" class="btn btn-primary">Français</a></p>
+			</section>
+		</div>
+	</div>
+	<div class="sp-bx-bt col-xs-12">
+		<div class="row">
+			<div class="col-xs-7 col-md-8">
+				<a href="/en/transparency/terms.html" class="sp-lk">Terms & conditions</a> <span class="glyphicon glyphicon-asterisk"></span> <a href="/fr/transparence/avis.html" class="sp-lk" lang="fr">Avis</a>
+			</div>
+			<div class="col-xs-5 col-md-4 text-right mrgn-bttm-md">
+				<object type="image/svg+xml" tabindex="-1" role="img" data="./assets/wmms-spl.svg" aria-label="Symbol of the Government of Canada / Symbole du gouvernement du Canada"></object>
+			</div>
 		</div>
 	</div>
 </div>
