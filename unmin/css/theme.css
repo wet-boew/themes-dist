@@ -143,11 +143,12 @@ aside.features {
 .pagedetails {
   padding-top: 2em;
   padding-bottom: 2em; }
-  .pagedetails .datemod {
-    padding-top: 7px;
-    padding-bottom: 7px; }
-    .pagedetails .datemod #wb-dtmd {
-      margin-top: 0; }
+
+.datemod {
+  padding-top: 7px;
+  padding-bottom: 7px; }
+  .datemod #wb-date {
+    margin-top: 0; }
 
 /* IE */
 .lt-ie9 {
