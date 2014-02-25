@@ -121,21 +121,44 @@
 			
 		</header>
 		
-	<aside class="jumbotron pagebrand promo-one visible-md visible-lg">
+	<aside class="jumbotron pagebrand flpr">
 	<div class="container">
 		<div class="row">
-			<h2 class="wb-inv">Promotions</h2>
-			<figure class="col-md-12">
-				<img src="../img/promos/one.jpg" alt="">
-				<figcaption>
-					<h2 class="h3">Banff National Park</h2>
-					<p><a href="#" class="learnmore">Learn More...</a></p>
-		    	</figcaption>
-			</figure>
+			<h2 class="wb-inv">Promotions</h2>            
+			<div class="wb-tabs carousel-s2 playing" data-speed="slow">
+				<ul role="tablist">
+					<li class="active"><a href="#tab1" title="Tab 1:  Parc national Banff "><img src="../img/promos/one.jpg" alt=""></a></li>
+					<li><a href="#tab2" title="Tab 2:  Parc Provincial Algonquin "><img src="../img/promos/two.jpg" alt=""></a></li>
+					<li><a href="#tab3" title="Tab 3:  Canal Rideau "><img src="../img/promos/three.jpg" alt=""></a></li>
+				</ul>
+				<div role="tabpanel" id="tab1" class="in fade">
+					<figure>
+						<img src="../img/promos/one.jpg" alt="">
+						<figcaption>
+							<p><a href="#" class="learnmore"> Parc national Banff </a></p>
+						</figcaption>
+					</figure>
+				</div>
+				<div role="tabpanel" id="tab2" class="out fade">
+					<figure>
+						<img src="../img/promos/two.jpg" alt="">
+						<figcaption>
+							<p><a href="#" class="learnmore"> Parc Provincial Algonquin </a></p>
+						</figcaption>
+					</figure>
+				</div>
+				<div role="tabpanel" id="tab3" class="out fade">
+					<figure>
+						<img src="../img/promos/three.jpg" alt="">
+						<figcaption>
+							<p><a href="#" class="learnmore"> Canal Rideau </a></p>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
 		</div>
-   </div>
+	</div>
 </aside>
-
 
 
 
