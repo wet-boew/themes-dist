@@ -14,3 +14,7 @@
 	path = theme-ogpl
 	url = ./
 	branch = theme-ogpl
+[submodule "theme-base"]
+	path = theme-base
+	url = ./
+	branch = theme-base
