@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-24
+ * v4.0.0-b2-development - 2014-02-25
  *
  *//*!
  * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
@@ -7207,47 +7207,54 @@ blockquote {
 .pstn-bttm-sm,
 .pstn-bttm-md,
 .pstn-bttm-lg {
-  position: absolute;
   margin: 0;
 }
 
 .pstn-lft-xs {
+  position: absolute;
   left: 0;
   right: auto;
 }
 
 .pstn-rght-xs {
+  position: absolute;
   right: 0;
   left: auto;
 }
 
 .pstn-tp-xs {
+  position: absolute;
   top: 0;
   bottom: auto;
 }
 
 .pstn-bttm-xs {
+  position: absolute;
   bottom: 0;
   top: auto;
 }
 
 @media screen and (min-width: 768px) {
   .pstn-lft-sm {
+    position: absolute;
     left: 0;
     right: auto;
   }
 
   .pstn-rght-sm {
+    position: absolute;
     right: 0;
     left: auto;
   }
 
   .pstn-tp-sm {
+    position: absolute;
     top: 0;
     bottom: auto;
   }
 
   .pstn-bttm-sm {
+    position: absolute;
     bottom: 0;
     top: auto;
   }
@@ -7255,21 +7262,25 @@ blockquote {
 
 @media screen and (min-width: 992px) {
   .pstn-lft-md {
+    position: absolute;
     left: 0;
     right: auto;
   }
 
   .pstn-rght-md {
+    position: absolute;
     right: 0;
     left: auto;
   }
 
   .pstn-tp-md {
+    position: absolute;
     top: 0;
     bottom: auto;
   }
 
   .pstn-bttm-md {
+    position: absolute;
     bottom: 0;
     top: auto;
   }
@@ -7277,21 +7288,25 @@ blockquote {
 
 @media screen and (min-width: 1200px) {
   .pstn-lft-lg {
+    position: absolute;
     left: 0;
     right: auto;
   }
 
   .pstn-rght-lg {
+    position: absolute;
     right: 0;
     left: auto;
   }
 
   .pstn-tp-lg {
+    position: absolute;
     top: 0;
     bottom: auto;
   }
 
   .pstn-bttm-lg {
+    position: absolute;
     bottom: 0;
     top: auto;
   }
@@ -7402,6 +7417,17 @@ blockquote {
 
 .brdr-rds-0 {
   border-radius: 0;
+}
+
+.tbl-gridify thead,
+.tbl-gridify tfoot {
+  display: none;
+}
+
+.tbl-gridify tbody,
+.tbl-gridify td,
+.tbl-gridify td {
+  display: block;
 }
 
 /*
