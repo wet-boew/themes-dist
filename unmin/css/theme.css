@@ -1181,7 +1181,7 @@ header .brand a {
   font-style: italic;
   font-weight: bold;
   color: white !important;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 .jumbotron.pagebrand figcaption p {
