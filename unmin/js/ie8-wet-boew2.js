@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-26
+ * v4.0.0-b2-development - 2014-02-27
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4592,7 +4592,7 @@ var pluginName = "wb-feeds",
 	/**
 	 * Returns a class-based set limit on plugin instances
 	 * @method getLimit
-	 * @param {DOM object} elm The element to search for a class of the form blimit-5
+	 * @param {DOM object} elm The element to search for a class of the form limit-5
 	 * @return {number} 0 if none found, which means the plugin default
 	 */
 	getLimit = function( elm ) {
