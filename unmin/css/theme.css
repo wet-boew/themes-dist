@@ -1269,6 +1269,11 @@ header .brand a {
   float: right;
 }
 
+.followus a:hover,
+.followus a:focus {
+  border: solid 3px #eeeeee;
+}
+
 .followus .flickr,
 .followus .facebook,
 .followus .twitter,
