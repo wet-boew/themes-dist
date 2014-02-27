@@ -151,10 +151,10 @@ caption {
 
 aside.features {
   background-color: #eaebed;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ebebed), color-stop(1, #eaebed));
-  background-image: -webkit-linear-gradient(top, #ebebed 0%, #eaebed 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebebed), to(#eaebed));
-  background-image: linear-gradient(to bottom, #ebebed 0%, #eaebed 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eaebed), color-stop(1, #eaebed));
+  background-image: -webkit-linear-gradient(top, #eaebed 0%, #eaebed 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#eaebed), to(#eaebed));
+  background-image: linear-gradient(to bottom, #eaebed 0%, #eaebed 100%);
   padding-bottom: 1.5em;
 }
 
@@ -503,7 +503,7 @@ header .brand img {
 }
 
 /*
- Site information
+Site information
 */
 
 footer {
@@ -874,11 +874,6 @@ main .subtitle {
   font-weight: 300;
 }
 
-main .btn-primary {
-  background-color: #335075;
-  border-color: #335075;
-}
-
 main .departments .learnmore {
   padding: 3em 0;
 }
@@ -890,6 +885,25 @@ main .priorities {
 main .priorities .thumbnail {
   margin-bottom: 1.5em;
   padding: 1em;
+}
+
+/*
+ WET button overwrites
+ */
+
+.btn-default {
+  background-color: #eaebed;
+  color: #335075;
+}
+
+.btn-default:hover {
+  background-color: #e1e4e7;
+  color: #243850;
+}
+
+.btn-primary {
+  background-color: #335075;
+  border-color: #335075;
 }
 
 #archived-bnr {
@@ -1003,25 +1017,7 @@ a.shr-opn:hover {
   text-decoration: none;
 }
 
-.shr .btn,
-.fdbck .btn {
-  background-color: #eeeeee;
-  color: #335075;
-}
-
-.shr .btn .glyphicon,
-.fdbck .btn .glyphicon {
-  margin-right: 3px;
-}
-
-.shr .btn:hover,
-.fdbck .btn:hover {
-  background-color: #e1e1e1;
-  color: #243850;
-}
-
-.shr.text-right .shr-pg,
-.fdbck.text-right .shr-pg {
+.pagedetails.text-right .shr-pg {
   text-align: left;
 }
 
@@ -1733,8 +1729,7 @@ header .brand a {
   .glyphicon,
   #wb-srch,
   #wb-sec,
-  .shr,
-  .fdbck *,
+  .pagedetails .btn,
   #wb-info,
   .tofpg,
   #wb-sm,
