@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-26
+ * v4.0.0-b2 - 2014-03-02
  *
  *//*!
  * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
@@ -7663,40 +7663,6 @@ figure .pieLabel {
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 
-.wb-fdbck #fbweb,
-.wb-fdbck #fbmob,
-.wb-fdbck #fbcomp,
-.wb-fdbck #fbinfo,
-.wb-fdbck-off,
-.wb-disable .wb-fdbck {
-  display: none;
-}
-
-.wb-fdbck #fbweb label[for=fbop] {
-  display: inline;
-}
-
-.wb-fdbck #fbcntc {
-  margin-bottom: 15px;
-}
-
-.wb-fdbck #fbcmplt {
-  text-align: center;
-}
-
-.wb-fdbck #fbcmplt p strong {
-  font-size: 110%;
-}
-
-.wb-disable .wb-fdbck-off {
-  display: block;
-}
-
-/*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -9383,6 +9349,13 @@ table.dataTable tr.even td.sorting_3 {
   background: rgba(204, 204, 204, 0.9);
 }
 
+.wb-tabs,
+.wb-tabs.carousel-s1 figure,
+.wb-tabs.carousel-s2 figure,
+.wb-tabs.carousel-s2.no-overlap figcaption {
+  position: relative;
+}
+
 .wb-tabs.carousel-s1 [role="tablist"],
 .wb-tabs.carousel-s2 [role="tablist"] {
   position: absolute;
@@ -9393,11 +9366,6 @@ table.dataTable tr.even td.sorting_3 {
 .wb-tabs.carousel-s2 figure {
   background: #243850;
   background: rgba(36, 56, 80, 0.9);
-}
-
-.wb-tabs.carousel-s1 figure,
-.wb-tabs.carousel-s2 figure {
-  position: relative;
 }
 
 .wb-tabs.carousel-s1 figure img,
@@ -9423,7 +9391,6 @@ table.dataTable tr.even td.sorting_3 {
   /**
 	 * Default, minimal, shared style
 	 */
-  position: relative;
   /**
 	 * Style 1 - Basic carousel style
 	 */
@@ -9865,6 +9832,11 @@ details summary:hover {
 
   /* a function name */
 
+  .nojs-show,
+  .wb-disable .nojs-hide {
+    display: none !important;
+  }
+
   #wb-dtmd {
     margin: 2em 0 0 0;
   }
@@ -9874,6 +9846,14 @@ details summary:hover {
     display: inline;
     font-weight: normal;
     margin-right: 0;
+  }
+
+  .nowrap {
+    white-space: nowrap;
+  }
+
+  .wb-disable .nojs-show {
+    display: block !important;
   }
 
   .typ,
@@ -9960,6 +9940,11 @@ details summary:hover {
     position: static;
   }
 
+  .wb-tabs.carousel-s2 [role="tablist"] li.prv a.prv,
+  .wb-tabs.carousel-s2 [role="tablist"] li.nxt a.nxt {
+    background: none;
+  }
+
   .wb-tabs.carousel-s2 [role="tablist"] li.prv a .glyphicon,
   .wb-tabs.carousel-s2 [role="tablist"] li.nxt a .glyphicon {
     bottom: -2em;
@@ -9980,7 +9965,6 @@ details summary:hover {
   }
 
   .wb-tabs.carousel-s2 figcaption {
-    position: relative;
     margin: auto;
   }
 
