@@ -3,7 +3,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-28
+ * v4.0.0-rc1-development - 2014-03-02
  *
  */
 
@@ -10719,6 +10719,13 @@ table.dataTable tr.even td.sorting_3 {
   background: rgba(204, 204, 204, 0.9);
 }
 
+.wb-tabs,
+.wb-tabs.carousel-s1 figure,
+.wb-tabs.carousel-s2 figure,
+.wb-tabs.carousel-s2.no-overlap figcaption {
+  position: relative;
+}
+
 .wb-tabs.carousel-s1 [role="tablist"],
 .wb-tabs.carousel-s2 [role="tablist"] {
   position: absolute;
@@ -10729,11 +10736,6 @@ table.dataTable tr.even td.sorting_3 {
 .wb-tabs.carousel-s2 figure {
   background: #243850;
   background: rgba(36, 56, 80, 0.9);
-}
-
-.wb-tabs.carousel-s1 figure,
-.wb-tabs.carousel-s2 figure {
-  position: relative;
 }
 
 .wb-tabs.carousel-s1 figure img,
@@ -10759,7 +10761,6 @@ table.dataTable tr.even td.sorting_3 {
   /**
 	 * Default, minimal, shared style
 	 */
-  position: relative;
   /**
 	 * Style 1 - Basic carousel style
 	 */
@@ -11309,6 +11310,11 @@ details summary:hover {
     position: static;
   }
 
+  .wb-tabs.carousel-s2 [role="tablist"] li.prv a.prv,
+  .wb-tabs.carousel-s2 [role="tablist"] li.nxt a.nxt {
+    background: none;
+  }
+
   .wb-tabs.carousel-s2 [role="tablist"] li.prv a .glyphicon,
   .wb-tabs.carousel-s2 [role="tablist"] li.nxt a .glyphicon {
     bottom: -2em;
@@ -11329,7 +11335,6 @@ details summary:hover {
   }
 
   .wb-tabs.carousel-s2 figcaption {
-    position: relative;
     margin: auto;
   }
 

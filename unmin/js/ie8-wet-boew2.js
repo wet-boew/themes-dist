@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-b2-development - 2014-02-28
+ * v4.0.0-rc1-development - 2014-03-02
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -8059,10 +8059,12 @@ var pluginName = "wb-share",
 			shareText = i18nText.shareText + ( settings.custType.length !== 0 ? settings.custType : i18nText[ settings.type ] );
 			pnlId = settings.pnlId;
 			id = "shr-pg" + ( pnlId.length !== 0 ? "-" + pnlId : panelCount );
-			pageHref = settings.url;
-			pageTitle = encodeURIComponent( settings.title );
+			pageHref = encodeURIComponent( settings.url );
+			pageTitle = encodeURIComponent( settings.title )
+							.replace( /\'|&#39;|&apos;/, "%27" );
 			pageImage = encodeURIComponent( settings.img );
-			pageDescription = encodeURIComponent( settings.desc );
+			pageDescription = encodeURIComponent( settings.desc )
+								.replace( /\'|&#39;|&apos;/, "%27" );
 
 			// Don't create the panel for the second link (class="link-only")
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {

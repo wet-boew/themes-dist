@@ -891,17 +891,17 @@ main .priorities .thumbnail {
  WET button overwrites
  */
 
-.btn-default {
+main .btn-default {
   background-color: #eaebed;
   color: #335075;
 }
 
-.btn-default:hover {
+main .btn-default:hover {
   background-color: #e1e4e7;
   color: #243850;
 }
 
-.btn-primary {
+main .btn-primary {
   background-color: #335075;
   border-color: #335075;
 }
