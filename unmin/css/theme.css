@@ -1658,6 +1658,10 @@ header .brand a {
     border-right: 1px solid #999999;
   }
 
+  #wb-sm .menu> li {
+    float: left;
+  }
+
   #wb-sm .menu> li:last-child {
     border-right: 0;
   }
