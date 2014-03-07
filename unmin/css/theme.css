@@ -891,16 +891,6 @@ main .priorities .thumbnail {
  WET button overwrites
  */
 
-main .btn-default {
-  background-color: #eaebed;
-  color: #335075;
-}
-
-main .btn-default:hover {
-  background-color: #e1e4e7;
-  color: #243850;
-}
-
 main .btn-primary {
   background-color: #335075;
   border-color: #335075;
