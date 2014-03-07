@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1-development - 2014-03-05
+ * v4.0.0-rc1-development - 2014-03-07
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -2429,21 +2429,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 				flot: {
 					prefix: "wb-charts-",
 					defaults: {
-						colors: [
-							"#8d201c",
-							"#EE8310",
-							"#2a7da6",
-							"#5a306b",
-							"#285228",
-							"#154055",
-							"#555555",
-							"#f6d200",
-							"#d73d38",
-							"#418541",
-							"#87aec9",
-							"#23447e",
-							"#999999"
-						],
+						colors: wb.drawColours,
 						canvas: true
 					},
 					line: { },
@@ -4447,7 +4433,7 @@ var pluginName = "wb-feeds",
 	 * @return {url} The URL for the JSON request
 	 */
 	jsonRequest = function( url, limit ) {
-		var requestURL = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent( decodeURIComponent( url ) );
+		var requestURL = wb.pageUrlParts.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent( decodeURIComponent( url ) );
 
 		// API returns a maximum of 4 entries by default so only override if more entries should be returned
 		if ( limit > 4 ) {
@@ -4903,6 +4889,65 @@ $document.on( "click vclick", selector + " .errCnt a", function( event ) {
 wb.add( selector );
 
 })( jQuery, window, document, wb );
+
+/*
+ * @title WET-BOEW Geomap
+ * @overview Displays a dynamic map over which information from additional sources can be overlaid.
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @pjackson28
+ */
+(function( $, wb ) {
+"use strict";
+
+var pluginName = "wb-geomap",
+	selector = "." + pluginName,
+	initedClass = pluginName + "-inited",
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+
+	/*
+	 * Init runs once per plugin element on the page. There may be multiple elements. 
+	 * It will run more than once per plugin if you don't remove the selector from the timer.
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered this handler
+	 */
+	init = function( event ) {
+		var elm = event.target,
+			$elm, modeJS;
+
+		// Filter out any events triggered by descendants
+		// and only initialize the element once
+		if ( event.currentTarget === elm &&
+			elm.className.indexOf( initedClass ) === -1 ) {
+
+			wb.remove( selector );
+			elm.className += " " + initedClass;
+
+			$elm = $( elm );
+			modeJS = wb.getMode() + ".js";
+
+			Modernizr.load([ {
+
+				// For loading multiple dependencies
+				both: [
+					"site!deps/proj4" + modeJS,
+					"site!deps/OpenLayers" + modeJS,
+					"site!deps/geomap-lib" + modeJS
+				],
+				complete: function() {
+					$elm.trigger( "geomap.wb" );
+				}
+			} ]);
+		}
+	};
+
+// Bind the init function to the timerpoke event
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+				
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+})( jQuery, wb );
 
 /**
  * @title WET-BOEW Lightbox
@@ -7034,7 +7079,7 @@ var pluginName = "wb-overlay",
 	 */
 	init = function( event ) {
 		var elm = event.target,
-			overlayClose;
+			$elm, $header, closeText, overlayClose;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -7043,20 +7088,34 @@ var pluginName = "wb-overlay",
 
 			wb.remove( selector );
 			elm.className += " " + initedClass;
+			$elm = $( elm );
 
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					close: i18n( closeClass ) + i18n( "space" ) + i18n( "esc-key" )
+					close: i18n( "close" ),
+					colon: i18n( "colon" ),
+					space: i18n( "space" ),
+					esc: i18n( "esc-key" ),
+					closeOverlay: i18n( closeClass )
 				};
 			}
 
 			// Add close button
+			$header = $elm.find( ".modal-title" );
+			if ( $header.length !== 0 ) {
+				closeText = i18nText.close + i18nText.colon + i18nText.space +
+					$header.text() + i18nText.space + i18nText.esc;
+			} else {
+				closeText = i18nText.closeOverlay;
+			}
+			closeText = closeText.replace( "'", "&#39;" );
 			overlayClose = "<button class='mfp-close " + closeClass +
-				"' title='" + i18nText.close + "'>×<span class='wb-inv'> " + i18nText.close + "</span></button>";
+				"' title='" + closeText + "'>×<span class='wb-inv'> " +
+				closeText + "</span></button>";
 
-			elm.appendChild( $( overlayClose )[ 0 ] );
+			$elm.append( overlayClose );
 			elm.setAttribute( "aria-hidden", "true" );
 		}
 	},
@@ -7951,7 +8010,7 @@ var pluginName = "wb-share",
 			// '{u}' for the page URL, '{t}' for the page title, {i} for the image, and '{d}' for the description
 			bitly: {
 				name: "bitly",
-				url: "http://bitly.com/?url={u}"
+				url: "https://bitly.com/a/bitmarklet?u={u}"
 			},
 			blogger: {
 				name: "Blogger",
@@ -7971,7 +8030,7 @@ var pluginName = "wb-share",
 			},
 			dzone: {
 				name: "DZone",
-				url: "http://www.dzone.com/link/add.html?url={u}&amp;title={t}"
+				url: "http://www.dzone.com/links/add.html?url={u}&amp;title={t}"
 			},
 			facebook: {
 				name: "Facebook",
@@ -7989,13 +8048,9 @@ var pluginName = "wb-share",
 				name: "MySpace",
 				url: "http://www.myspace.com/Modules/PostTo/Pages/?u={u}&amp;t={t}"
 			},
-			netvibes: {
-				name: "Netvibes",
-				url: "http://www.netvibes.com/share?url={u}&amp;title={t}"
-			},
 			pinterest: {
 				name: "Pinterest",
-				url: "http://www.pinterest.com/pin/create/button/?url={u}&amp;media={i}&amp;description={d}"
+				url: "http://www.pinterest.com/pin/create/link/?url={u}&amp;media={i}&amp;description={t}"
 			},
 			reddit: {
 				name: "reddit",
@@ -8011,7 +8066,7 @@ var pluginName = "wb-share",
 			},
 			tumblr: {
 				name: "tumblr",
-				url: "http://www.tumblr.com/share?v=3&amp;u={u}&amp;t={t}"
+				url: "http://www.tumblr.com/share/link?url={u}&amp;name={t}&amp;description={d}"
 			},
 			twitter: {
 				name: "Twitter",
@@ -8030,7 +8085,7 @@ var pluginName = "wb-share",
 		var elm = event.target,
 			sites, heading, settings, panel, link, $share, $elm,
 			pageHref, pageTitle, pageImage, pageDescription, site,
-			siteProperties, url, shareText, id, pnlId;
+			siteProperties, url, shareText, id, pnlId, regex;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -8060,11 +8115,13 @@ var pluginName = "wb-share",
 			pnlId = settings.pnlId;
 			id = "shr-pg" + ( pnlId.length !== 0 ? "-" + pnlId : panelCount );
 			pageHref = encodeURIComponent( settings.url );
+			
+			regex = /\'|&#39;|&apos;/;
 			pageTitle = encodeURIComponent( settings.title )
-							.replace( /\'|&#39;|&apos;/, "%27" );
+							.replace( regex, "%27" );
 			pageImage = encodeURIComponent( settings.img );
 			pageDescription = encodeURIComponent( settings.desc )
-								.replace( /\'|&#39;|&apos;/, "%27" );
+								.replace( regex, "%27" );
 
 			// Don't create the panel for the second link (class="link-only")
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {
@@ -8845,6 +8902,19 @@ var pluginName = "wb-tabs",
 	return true;
 });
 
+//Pause on escape
+$document.on( "keydown", selector, function( event ) {
+
+	// Escape key
+	if ( event.which === 27 ) {
+		var $sldr = $( event.target ).closest( selector );
+		if ( $sldr.hasClass( "playing" ) ) {
+			$sldr.find( ".plypause" ).trigger( "click" );
+		}
+		return false;
+	}
+});
+
 $document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
 	var currentTarget = event.currentTarget;
 
@@ -8858,7 +8928,6 @@ $document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
 					.trigger( "setfocus.wb" );
 	}
 });
-
 // Handling for links to tabs from within a panel
 $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	var currentTarget = event.currentTarget,
@@ -9668,3 +9737,189 @@ $document.on( clickEvents, linkSelector, function( event ) {
 });
 
 })( jQuery, wb );
+
+/**
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * @title Zebra
+ * @overview Apply Zebra stripping on a complex data table and simulate column hovering effect
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ *
+ */
+(function( $, window, document, wb ) {
+"use strict";
+
+/**
+ * Variable and function definitions.
+ * These are global to the plugin - meaning that they will be initialized once per page,
+ * not once per instance of plugin on the page. So, this is a good place to define
+ * variables that are common to all instances of the plugin on a page.
+ */
+ var pluginName = "wb-zebra",
+	selector = "." + pluginName,
+	hoverColClass = pluginName + "-col-hover",
+	selectorHoverCol = "." + hoverColClass + " td, " + hoverColClass + " th",
+	initedClass = pluginName + "-inited",
+	initEvent = "wb-init" + selector,
+	tableParsingEvent = "pasiveparse.wb-tableparser.wb",
+	tableParsingCompleteEvent = "parsecomplete.wb-tableparser.wb",
+	$document = wb.doc,
+	idCount = 0,
+	i18n, i18nText,
+
+	/**
+	 * Main Entry function to apply the complex zebra stripping
+	 * @method zebraTable
+	 * @param {jQuery DOM element} $elm table element use to apply complex zebra stripping
+	 */
+	zebraTable = function( $elm ) {
+		var i, iLength, tblGroup,
+			tblparser = $elm.data().tblparser; // Cache the table parsed results
+		
+		function addCellClass( arr, className ) {
+			var i, iLength;
+			
+			for ( i = 0, iLength = arr.length; i !== iLength; i += 1 ) {
+				$( arr[i].elem ).addClass( className );
+			}
+		}
+		// Key Cell
+		if ( tblparser.keycell ) {
+			addCellClass( tblparser.keycell, "wb-cell-key" );
+		}
+		// Description Cell
+		if ( tblparser.desccell ) {
+			addCellClass( tblparser.desccell, "wb-cell-desc" );
+		}
+		// Layout Cell
+		if ( tblparser.layoutCell ) {
+			addCellClass( tblparser.layoutCell, "wb-cell-layout" );
+		}
+
+		// Summary Row Group
+		if ( tblparser.lstrowgroup ) {
+			for ( i = 0, iLength = tblparser.lstrowgroup.length; i !== iLength; i += 1 ) {
+				tblGroup = tblparser.lstrowgroup[ i ];
+				// Add a class to the row
+				if ( tblGroup.type === 3 || tblGroup.row[ 0 ].type === 3) {
+					$( tblGroup.elem ).addClass( "wb-group-summary" );
+				}
+			}
+		}
+
+		// Summary Column Group
+		if ( tblparser.colgroup ) {
+			for ( i = 0, iLength = tblparser.colgroup.length; i !== iLength; i += 1 ) {
+				tblGroup = tblparser.colgroup[ i ];
+				// Add a class to the row
+				if ( tblGroup.type === 3 ) {
+					$( tblGroup.elem ).addClass( "wb-group-summary" );
+				}
+			}
+		}
+
+	},
+
+	/**
+	 * Init runs once per plugin element on the page. There may be multiple elements.
+	 * It will run more than once per plugin if you don't remove the selector from the timer.
+	 * @method init
+	 * @param {DOM element} elm The plugin element being initialized
+	 */
+	init = function( elm ) {
+		var elmId = elm.id,
+			modeJS = wb.getMode() + ".js",
+			deps = [
+				"site!deps/tableparser" + modeJS
+			];
+	
+		if ( elm.className.indexOf( initedClass ) === -1 ) {
+			wb.remove( selector );
+
+			elm.className += " " + initedClass;
+
+			// Ensure there is a unique id on the element
+			if ( !elmId ) {
+				elmId = pluginName + "-id-" + idCount;
+				idCount += 1;
+				elm.id = elmId;
+			}
+
+			// Only initialize the i18nText once
+			if ( !i18nText ) {
+				i18n = wb.i18n;
+				i18nText = {
+					tableMention: i18n( "hyphen" ) + i18n( "tbl-txt" ),
+					tableFollowing: i18n( "hyphen" ) + i18n( "tbl-dtls" )
+				};
+			}
+
+			// Load the required dependencies
+			Modernizr.load({
+
+				// For loading multiple dependencies
+				load: deps,
+				complete: function() {
+
+					// Let's parse the table
+					$( "#" + elmId ).trigger( tableParsingEvent );
+				}
+			});
+		}
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, selector, function( event ) {
+	var eventType = event.type,
+		elm = event.target;
+	
+	if ( event.currentTarget !== elm ) {
+		return true;
+	}
+	
+	switch ( eventType ) {
+
+	/*
+	 * Init
+	 */
+	case "timerpoke":
+		init( elm );
+		break;
+	
+	/*
+	 * Data table parsed
+	 */
+	case "parsecomplete":
+		zebraTable( $( elm ) );
+		break;
+	}
+
+	/*
+	 * Since we are working with events we want to ensure that we are being passive about our control,
+	 * so returning true allows for events to always continue
+	 */
+	return true;
+});
+
+// Applying the hover, Simulate Column Hovering Effect
+$document.on( "mouseenter focusin", selectorHoverCol, function( event ) {
+	var tblparserCell = $( event.currentTarget ).data().tblparser;
+	
+	if ( tblparserCell.col && tblparserCell.col.elem ) {
+		$( tblparserCell.col.elem ).addClass( "table-hover" );
+	}
+});
+
+// Removing the hover, Simulate Column Hovering Effect
+$document.on( "mouseleave focusout", selectorHoverCol, function( event ) {
+	var tblparserCell = $( event.currentTarget ).data().tblparser;
+	
+	if ( tblparserCell.col && tblparserCell.col.elem ) {
+		$( tblparserCell.col.elem ).removeClass( "table-hover" );
+	}
+});
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+})( jQuery, window, document, wb );

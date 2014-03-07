@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1-development - 2014-03-05
+ * v4.0.0-rc1-development - 2014-03-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -60,7 +60,7 @@ wb.i18nDict = {
 	last: "Dernier",
 	menu: "Menu",
 	"menu-close": "Fermer le menu",
-	"overlay-close": "Fermer l'incrustation",
+	"overlay-close": "Fermer la fenêtre superposée",
 	"esc-key": "(touche d'échappement)",
 	show: "Afficher",
 
