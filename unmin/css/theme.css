@@ -162,6 +162,11 @@ aside.features h2 {
   border: none;
 }
 
+aside.features figcaption {
+  font-weight: 700;
+  margin-top: 3px;
+}
+
 aside.features .thumbnail {
   padding: 10px 10px 0;
   background-color: transparent;
