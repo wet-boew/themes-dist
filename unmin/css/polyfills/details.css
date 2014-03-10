@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1-development - 2014-03-05
+ * v4.0.0-rc1-development - 2014-03-10
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -10,18 +10,6 @@
  */
 
 /* Details/summary polyfill */
-
-summary {
-  cursor: pointer;
-  /* Apply a pointer cursor upon hover to indicate it’s a clickable element. These styles can be applied regardless of whether the fallback is needed */
-}
-
-summary:hover,
-summary:focus {
-  /* Add focus styles (for keyboard accessibility) */
-  color: black;
-  background: #dddddd;
-}
 
 details> summary:before {
   /* Add the closed pointer */
