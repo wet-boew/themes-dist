@@ -90,32 +90,6 @@ h1 {
   border: none;
 }
 
-h2,
-.h2 {
-  font-size: 25px;
-}
-
-h3,
-.h3 {
-  font-size: 22px;
-}
-
-h4,
-.h4 {
-  font-size: 20px;
-}
-
-h5,
-.h5 {
-  font-size: 18px;
-}
-
-h6,
-.h6 {
-  font-size: 16px;
-  font-weight: bold;
-}
-
 table {
   margin-bottom: 20px;
   width: 100%;
@@ -1170,6 +1144,9 @@ header .brand a {
   color: white;
   padding: 20px 30px;
   background: none repeat scroll 0 0 rgba(36, 56, 80, 0.9);
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .jumbotron.pagebrand figcaption .learnmore {
@@ -1182,15 +1159,6 @@ header .brand a {
 .jumbotron.pagebrand figcaption p {
   margin: 0;
   line-height: 1;
-}
-
-.jumbotron.pagebrand figcaption.top {
-  top: 20px;
-}
-
-.jumbotron.pagebrand figcaption.right {
-  left: auto;
-  right: 20px;
 }
 
 .jumbotron.sub-promo {
