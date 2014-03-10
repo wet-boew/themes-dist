@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1-development - 2014-03-07
+ * v4.0.0-rc1-development - 2014-03-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.7.1",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1});
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.7.1",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t).matches;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -189,7 +189,7 @@ var getUrlParts = function( url ) {
 			var exists = false,
 				len = wb.selectors.length,
 				i;
-		
+
 			// Lets ensure we are not running if things are disabled
 			if ( wb.isDisabled && selector !== "#wb-tphp" ) {
 				return 0;
@@ -231,11 +231,11 @@ var getUrlParts = function( url ) {
 			for ( i = 0; i !== len; i += 1 ) {
 				selector = selectorsLocal[ i ];
 				$elms = $( selector );
-				
+
 				// If the selector returns elements, trigger a timerpoke event
 				if ( $elms.length !== 0 ) {
 					$elms.trigger( "timerpoke.wb" );
-					
+
 				// If the selector returns no elements, remove the selector
 				} else {
 					wb.remove( selector );
@@ -1502,14 +1502,14 @@ Modernizr.load([
 	"use strict";
 
 	var methods,
-		_settings = {
+		settings = {
 			"default": "wet-boew"
 		};
 
 	methods = {
 
 		init: function( options ) {
-			return $.extend( _settings, options || {} );
+			return $.extend( settings, options || {} );
 		},
 
 		show: function( onlyAria ) {
@@ -1645,14 +1645,12 @@ var $document = wb.doc,
 	 */
 	generateSerial = function( len ) {
 		var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz",
-			string_length = len,
+			stringLength = len,
 			randomstring = "",
 			counter = 0,
-			letterOrNumber,
-			newNum,
-			rnum;
+			letterOrNumber, newNum, rnum;
 
-		for ( counter; counter !== string_length; counter += 1 ) {
+		for ( counter; counter !== stringLength; counter += 1 ) {
 			letterOrNumber = Math.floor( Math.random( ) * 2 );
 			if ( letterOrNumber === 0 ) {
 				newNum = Math.floor( Math.random( ) * 9 );
@@ -2371,7 +2369,7 @@ var $document = wb.doc,
 			$monthNav[ buttonSpec[ 3 ] ]( $btn );
 
 			$btn.toggleClass( "active", !hideButton );
-			
+
 			if ( !hideButton ) {
 				$btn
 					.removeAttr( "disabled" )
@@ -2807,7 +2805,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 /**
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @title Charts and Graph
- * @overview Draw charts from an html simple and complex data table 
+ * @overview Draw charts from an html simple and complex data table
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @duboisp
  *
@@ -2966,7 +2964,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 						// [boolean] true means that the legend will be destroyed and the label for pie chart will include the legend
 						nolegend: false,
 
-						// [number] Literal number of displayed decimal for a pie charts 
+						// [number] Literal number of displayed decimal for a pie charts
 						decimal: 0,
 
 						// [number] Provide a default width for the charts that will be rendered
@@ -2989,7 +2987,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 								];
 							}
 						}
-						
+
 					},
 					donut: {
 						decimal: 1
@@ -3018,19 +3016,19 @@ $document.on( "setFocus.wb-cal", setFocus );
 					}
 				}
 			};
-		
+
 		/**
 		 * A little function to ovewrite and add preset into the default options
-		 * 
+		 *
 		 * @method overwriteDefaultsOptions
-		 * @param {string} scopekey - Key that represent the subject of the setting, [flot, charts, series,...] 
+		 * @param {string} scopekey - Key that represent the subject of the setting, [flot, charts, series,...]
 		 * @param {json object} target - DefaultOptions that wiil be overwritten
 		 * @param {json object} object - User defined object for overwritting options
 		 * @return {json object} - Return the new object
 		 */
 		function overwriteDefaultsOptions( scopekey, target, object ) {
 			var cachedObj, key;
-			
+
 			cachedObj = object[ scopekey ];
 			if ( !cachedObj ) {
 				return target;
@@ -3043,8 +3041,8 @@ $document.on( "setFocus.wb-cal", setFocus );
 			}
 			return target;
 		}
-		
-		// User defined options 
+
+		// User defined options
 		if ( !window.chartsGraphOpts ){
 			// Global setting
 			if ( window.wet_boew_charts !== undefined ) {
@@ -3056,20 +3054,20 @@ $document.on( "setFocus.wb-cal", setFocus );
 			window.chartsGraphOpts = defaultsOptions;
 		}
 		defaultsOptions = window.chartsGraphOpts;
-		
+
 		/**
 		 * A little function to ease the web editor life
-		 * 
+		 *
 		 * Apply preset defined by a set of space-separated tokens from a baseline json object and at the same time extend the result by using the HTML5 data attribute
-		 * 
+		 *
 		 * @method applyPreset
-		 * @param {json object} baseline - Base line json object that includes predefined and userdefined preset 
+		 * @param {json object} baseline - Base line json object that includes predefined and userdefined preset
 		 * @param {jQuery} $elem - Element on which the class attribute will be taken for a set of space-separated tokens
 		 * @param {string} attribute - Name of the HTML5 data attribute for extending the object at the end
 		 * @return {json object} - Return a new object build from the ```baseline``` or ```baseline.default``` object with the preset applied.
 		 */
 		function applyPreset( baseline, $elem, attribute ) {
-			
+
 			var config = $.extend( true, {}, baseline.defaults || baseline ),
 				fn = $.extend( true, {}, baseline.defaults && baseline.defaults.fn || { } ),
 				tokens = $elem.attr( "class" ) || "",
@@ -3078,27 +3076,27 @@ $document.on( "setFocus.wb-cal", setFocus );
 				// Prefix used in front of the token
 				prefix, prefixLength,
 				preset, key, tblFn, localKey, currObj;
-			
+
 			if ( tokens.length ) {
-				
+
 				prefix = ( baseline.prefix || "" );
 				prefixLength = prefix.length;
-				
+
 				// split the set of space-separated tokens
 				tblTokens = tokens.split( " " );
-				
+
 				for ( i = 0, iLength = tblTokens.length; i !== iLength; i += 1 ) {
-					
+
 					// Get the current token
 					token = tblTokens[ i ];
 					tokenLength = token.length;
-					
+
 					// Remove the token is used
 					if ( tokenLength <= prefixLength || token.slice( 0, prefixLength ) !== prefix ) {
 						continue;
 					}
 					token = token.slice( prefixLength, tokenLength );
-					
+
 					preset = baseline[ token ];
 
 					// Apply the preset
@@ -3115,10 +3113,9 @@ $document.on( "setFocus.wb-cal", setFocus );
 				}
 			}
 
-			
 			// Extend the config from the element @data attribute
 			config = $.extend( true, config, wb.getData( $elem, attribute ) );
-			
+
 			// Merge and Overide the function.
 			for ( key in fn ) {
 				if ( !fn.hasOwnProperty( key ) ) {
@@ -3152,7 +3149,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 		optionsCharts.width = optionsCharts.width | 250;
 		optionsCharts.height = optionsCharts.height | 250;
 
-		/** 
+		/**
 		 * @method getColumnGroupHeaderCalculateSteps
 		 * @param {object} colGroupHead - Column Group Header Object from the table parser
 		 * @param {number} referenceValuePosition - Vector position use as reference for defining the steps, zero based position
@@ -3163,14 +3160,13 @@ $document.on( "setFocus.wb-cal", setFocus );
 			var headerCell, i, iLen,
 				calcStep = 1,
 				colRefValue, colCurent;
-				
-				
+
 			if ( !colGroupHead ) {
 
 				// There is an error. Possibly the series are missing a header.
 				return;
 			}
-			
+
 			colRefValue = colGroupHead.col[ referenceValuePosition ];
 			colCurent = colGroupHead.col[ 0 ];
 
@@ -3197,11 +3193,11 @@ $document.on( "setFocus.wb-cal", setFocus );
 			return calcStep;
 		}
 
-		/** 
+		/**
 		 * @method getRowGroupHeaderCalculateSteps
 		 * @param {object} rowGroupHead - Row Group Header Object from the table parser
 		 * @param {number} referenceValuePosition - Vector position use as reference for defining the steps, zero based position
-		 * @param {number} dataColgroupStart - Column position where the column data group start 
+		 * @param {number} dataColgroupStart - Column position where the column data group start
 		 */
 		function getRowGroupHeaderCalculateSteps( rowGroupHead, referenceValuePosition, dataColgroupStart ) {
 
@@ -3222,11 +3218,11 @@ $document.on( "setFocus.wb-cal", setFocus );
 				if ( headerCell.colpos >= dataColgroupStart && ( headerCell.type === 1 || headerCell.type === 7 ) ) {
 					if ( headerCell.child.length !== 0 ) {
 						calcStep = calcStep * headerCell.child.length * groupHeaderCalculateStepsRecursive( headerCell, 1 );
-						
+
 					}
 				}
 			}
-			
+
 			return calcStep;
 		}
 
@@ -3243,7 +3239,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			if ( childLength === 0 ) {
 				return calcStep;
 			}
-					
+
 			subRefValue = childLength * refValue;
 
 			calcStep = calcStep * subRefValue;
@@ -3259,14 +3255,14 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 		/**
 		 * Set the inner step value (divisor) of an header cell and for his child
-		 * 
+		 *
 		 * @method setInnerStepValues
 		 * @param {object} vectorHead - Group Header Object from the table parser
 		 * @param {number} headerLevel - Hiearchical Level of heading
 		 * @param {number} stepsValue - Step Value for the reference value vector
 		 * @param {number} referenceValue - Reference Value Vector ID
-		 * @param {number} dataColgroupStart - Column position where the column data group start 
-		 * 
+		 * @param {number} dataColgroupStart - Column position where the column data group start
+		 *
 		 */
 		function setInnerStepValues( vectorHead, headerLevel, stepsValue, referenceValue, dataColgroupStart ) {
 			var i, iLength,
@@ -3300,19 +3296,19 @@ $document.on( "setFocus.wb-cal", setFocus );
 						lowestFlotDelta = headerCell.flotDelta;
 					}
 					headerCell.flotValue = cumulativeValue;
-					
+
 					cumulativeValue = cumulativeValue + stepsValue;
-					
+
 					if ( headerCell.child.length > 0 ) {
 						setInnerStepValuesChildRecursive( headerCell, headerLevel, stepsValue, referenceValue );
 					}
 				}
 			}
 		}
-		
+
 		/**
-		 * Recursize - Set the inner step value (divisor) of an sub header cell  
-		 * 
+		 * Recursize - Set the inner step value (divisor) of an sub header cell
+		 *
 		 * @method setInnerStepValuesChildRecursive
 		 * @param {object} headerCell - Header cell object from the table parser
 		 * @param {number} headerLevel - Hiearchical Level of heading
@@ -3351,8 +3347,8 @@ $document.on( "setFocus.wb-cal", setFocus );
 		}
 
 		/**
-		 * Set the header cell step value (flotDelta) for vector that regroup more than one reference 
-		 * 
+		 * Set the header cell step value (flotDelta) for vector that regroup more than one reference
+		 *
 		 * @method setUpperStepValues
 		 * @param {object} vectorHead - Group Header Object from the table parser
 		 * @param {number} referenceValue - Reference Value Vector ID
@@ -3362,14 +3358,14 @@ $document.on( "setFocus.wb-cal", setFocus );
 				cumulativeValue,
 				currentCell,
 				currentCellChild;
-			
+
 			// Calculate upper-step for cells that are
 			// less precise than the reference value vector
 			for ( i = referenceValue - 1; i !== -1; i -= 1 ){
-				
+
 				for ( k = 0, kLen = vectorHead[ i ].cell.length; k !== kLen; k += 1 ) {
 					currentCell = vectorHead[ i ].cell[ k ];
-					
+
 					if ( currentCell.flotDelta || k > 0 &&
 						currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ){
 
@@ -3383,7 +3379,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 					cumulativeValue = 0;
 					for ( m = 0, mLen = currentCell.child.length; m !== mLen; m += 1 ) {
 						currentCellChild = currentCell.child[ m ];
-						
+
 						cumulativeValue = currentCellChild.flotDelta;
 						if ( !currentCell.flotValue ) {
 							currentCell.flotValue = currentCellChild.flotValue;
@@ -3396,10 +3392,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 		/**
 		 * Get labels for a specific vector
-		 * 
+		 *
 		 * @method getLabels
 		 * @param {object} labelVector - Vector Header Object from the table parser
-		 * @param {number} dataColgroupStart - Column position where the column data group start 
+		 * @param {number} dataColgroupStart - Column position where the column data group start
 		 */
 		function getLabels( labelVector, dataColgroupStart ) {
 			var labels = [],
@@ -3407,7 +3403,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			for ( i = 0, iLen = labelVector.cell.length; i !== iLen; i += 1 ) {
 				currentCell = labelVector.cell[ i ];
-				
+
 				if ( ( i !== 0 && currentCell.uid === labelVector.cell[ i - 1 ].uid ) ||
 						( !( currentCell.type === 1 || currentCell.type === 7 ) ) ||
 						( dataColgroupStart && currentCell.colpos < dataColgroupStart ) ) {
@@ -3421,7 +3417,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 		/**
 		 * Get the vector that would be used for labelling x-axis
-		 * 
+		 *
 		 * @method getlabelsVectorPosition
 		 * @param {object[]} arrVectorHeaders - Collection of vector headers
 		 */
@@ -3431,7 +3427,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 		/**
 		 * Get the vertical label and set the appropriate header cell x-axis Value
-		 * 
+		 *
 		 * @method verticalLabels
 		 * @param {object} parsedData - Generic object generated by the table parser
 		 */
@@ -3446,9 +3442,9 @@ $document.on( "setFocus.wb-cal", setFocus );
 			} else {
 				columnReferenceValue = optionsCharts.referencevalue;
 			}
-			
+
 			columnReferenceValue = columnReferenceValue - 1;
-			
+
 			stepsValue = getColumnGroupHeaderCalculateSteps( parsedData.colgrouphead, columnReferenceValue );
 
 			if ( !reverseTblParsing ) {
@@ -3458,10 +3454,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 			}
 
 			headerlevel = columnReferenceValue;
-			
-			// Calculate inner-step for cells that are more precise than the reference value vector 
+
+			// Calculate inner-step for cells that are more precise than the reference value vector
 			setInnerStepValues( parsedData.colgrouphead.col[ columnReferenceValue ], headerlevel, stepsValue, columnReferenceValue );
-			
+
 			// Calculate upper-step for cells that are less precise than the reference value vector
 			setUpperStepValues( parsedData.colgrouphead.col, columnReferenceValue );
 
@@ -3471,7 +3467,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 		/**
 		 * Get the horizontal label and set the appropriate header cell x-axis Value
-		 * 
+		 *
 		 * @method horizontalLabels
 		 * @param {object} parsedData - Generic object generated by the table parser
 		 */
@@ -3511,7 +3507,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			headerlevel = rowReferenceValue;
 
-			// Calculate inner-step for cells that are more precise than the reference value vector 
+			// Calculate inner-step for cells that are more precise than the reference value vector
 			setInnerStepValues( parsedData.theadRowStack[ rowReferenceValue ], headerlevel, stepsValue, rowReferenceValue, dataColgroupStart );
 
 			// Calculate upper-step for cells that are less precise than the reference value vector
@@ -3519,25 +3515,25 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			// Get the labelling
 			return getLabels( parsedData.theadRowStack[ labelsVectorPosition ], dataColgroupStart );
-			
+
 		}
 
 		/**
 		 * Wrap the table into a smart details/summary element
-		 * 
+		 *
 		 * @method wrapTableIntoDetails
 		 */
 		function wrapTableIntoDetails() {
 			var $details = $( "<details><summary>" +
 				captionHtml + i18nText.tableMention +
 				"</summary></details>" );
-			
+
 			$elm.after( $details );
 			$details.append( $elm );
 		}
 
 		function createContainer(withDimension) {
-			
+
 			var $container = $( "<figure class='" + optionsCharts.graphclass +
 
 				// Copy to the inner table caption
@@ -3549,10 +3545,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 				"></div></figure>");
 
 			$container.insertBefore( $elm ).append( $elm );
-			
+
 			return $( "div:eq(0)", $container );
 		}
-		
+
 		// Retrieve the parsed data
 		parsedData = $elm.data().tblparser;
 
@@ -3599,10 +3595,10 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 					// For each cells
 					for ( j = 0, jLength = dataGroupVector[ i ].cell.length; j !== jLength; j += 1 ) {
-						
+
 						dataCell = dataGroupVector[ i ].cell[ j ];
-						
-						// Skip the column if 
+
+						// Skip the column if
 						if ( reverseTblParsing && dataCell.col.type === 1 ) {
 							continue;
 						}
@@ -3641,9 +3637,9 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 						break;
 					}
-					
+
 					pieQuaterFlotSeries = { };
-					
+
 					// Get the setting from the associative cell header
 					dataCell =  !reverseTblParsing ?
 						dataGroupVector[ i ].cell[ rIndex ] :
@@ -3652,16 +3648,16 @@ $document.on( "setFocus.wb-cal", setFocus );
 						dataCell.col.header :
 						dataCell.row.header;
 					header = header[ header.length - 1 ];
-					
+
 					// Apply any preset
 					pieQuaterFlotSeries = applyPreset( defaultsOptions.series, $( header.elem ), "flot" );
-					
+
 					// Set the data issue from the table
 					pieQuaterFlotSeries.data = dataSeries;
 					pieQuaterFlotSeries.label = ( !reverseTblParsing ?
 						$( dataGroupVector[ i ].dataheader[ dataGroupVector[ i ].dataheader.length - 1 ].elem ).text() :
 						$( dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ].elem ).text() );
-					
+
 					// Add the series
 					allSeries.push(pieQuaterFlotSeries);
 				}
@@ -3698,7 +3694,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 					// Move the legend under the graphic
 					$( ".legend", $placeHolder ).appendTo( $wetChartContainer );
 				}
-		
+
 				allSeries = [];
 			}
 
@@ -3764,13 +3760,13 @@ $document.on( "setFocus.wb-cal", setFocus );
 				if (!currVectorOptions.bars) {
 					currVectorOptions.bars = { show: true, barWidth: 0.9 };
 				}
-				
+
 				// Set a default order for orderBars flot plugin
 				if (!currVectorOptions.bars.order) {
 					currVectorOptions.bars.order = nbBarChart;
 				}
 			}
-			
+
 			// cache the compiled setting
 			currDataVector.chartOption = currVectorOptions;
 		}
@@ -3789,7 +3785,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			for ( j = 0, jLength = currDataVector.cell.length; j !== jLength; j += 1 ) {
 
 				dataCell = currDataVector.cell[ j ];
-				
+
 				if ( datacolgroupfound > 1 && dataCell.col.groupstruct.type !== 2 ) {
 					break;
 				}
@@ -3818,17 +3814,17 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 			currVectorOptions.data = dataSeries;
 			currVectorOptions.label = $( currDataVector.header[ currDataVector.header.length - 1 ].elem ).text();
-			
+
 			if ( currVectorOptions.bars ) {
 
 				// Adjust the bars width
 				currVectorOptions.bars.barWidth = currVectorOptions.bars.barWidth * ( 1 / nbBarChart );
 			}
-			
+
 			allSeries.push( currVectorOptions );
 
 		}
-	
+
 		if ( optionFlot.bars ) {
 
 			// Adjust the bars width
@@ -3882,7 +3878,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 				"site!deps/jquery.flot.orderBars" + modeJS,
 				"site!deps/tableparser" + modeJS
 			];
-	
+
 		if ( elm.className.indexOf( initedClass ) === -1 ) {
 			wb.remove( selector );
 
@@ -3922,11 +3918,11 @@ $document.on( "setFocus.wb-cal", setFocus );
 $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, selector, function( event ) {
 	var eventType = event.type,
 		elm = event.target;
-	
+
 	if ( event.currentTarget !== elm ) {
 		return true;
 	}
-	
+
 	switch ( eventType ) {
 
 	/*
@@ -3935,7 +3931,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, sel
 	case "timerpoke":
 		init( elm );
 		break;
-	
+
 	/*
 	 * Data table parsed
 	 */
@@ -4106,7 +4102,7 @@ var pluginName = "wb-ajax",
 	init = function( $elm, ajaxType ) {
 		var url = $elm.data( "ajax-" + ajaxType ),
 			initedClass = pluginName + ajaxType + inited;
-	
+
 		// Only initialize the element once for the ajaxType
 		if ( !$elm.hasClass( initedClass ) ) {
 			wb.remove( selector );
@@ -4944,7 +4940,7 @@ var pluginName = "wb-fnote",
 
 			wb.remove( selector );
 			elm.className += " " + initedClass;
-			
+
 			$elm = $( elm );
 			footnoteDd = elm.getElementsByTagName( "dd" );
 			footnoteDt = elm.getElementsByTagName( "dt" );
@@ -5090,20 +5086,19 @@ var pluginName = "wb-frmvld",
 						formDOM = $form.get( 0 ),
 						formId = $form.attr( "id" ),
 						labels = formDOM.getElementsByTagName( "label" ),
-						labels_len = labels.length,
 						$formElms = $form.find( "input, select, textarea" ),
 						$inputs = $formElms.filter( "input" ),
 						$pattern = $inputs.filter( "[pattern]" ),
 						submitted = false,
 						$required = $form.find( "[required]" ).attr( "aria-required", "true" ),
 						errorFormId = "errors-" + ( !formId ? "default" : formId ),
-						i, len,	validator;
+						i, len, validator;
 
 					// Append the aria-live region (for provide message updates to screen readers)
 					$elm.append( "<div class='arialive wb-inv' aria-live='polite' aria-relevant='all'></div>" );
 
 					// Add space to the end of the labels (so separation between label and error when CSS turned off)
-					len = labels_len;
+					len = labels.length;
 					for ( i = 0; i !== len; i += 1 ) {
 						labels[ i ].innerHTML += " ";
 					}
@@ -5166,13 +5161,12 @@ var pluginName = "wb-frmvld",
 						// Create our error summary that will appear before the form
 						showErrors: function( errorMap ) {
 							this.defaultShowErrors();
-							var _i18nText = i18nText,
-								$errors = $form.find( "strong.error" ).filter( ":not(:hidden)" ),
+							var $errors = $form.find( "strong.error" ).filter( ":not(:hidden)" ),
 								$errorfields = $form.find( "input.error, select.error, textarea.error" ),
 								$summaryContainer = $form.find( "#" + errorFormId ),
-								prefixStart = "<span class='prefix'>" + _i18nText.error + "&#160;",
-								prefixEnd = _i18nText.colon + " </span>",
-								separator = _i18nText.hyphen,
+								prefixStart = "<span class='prefix'>" + i18nText.error + "&#160;",
+								prefixEnd = i18nText.colon + " </span>",
+								separator = i18nText.hyphen,
 								ariaLive = $form.parent().find( ".arialive" )[ 0 ],
 								summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
 
@@ -5186,7 +5180,7 @@ var pluginName = "wb-frmvld",
 								}
 
 								// Post process
-								summary = "<p>" + _i18nText.formNotSubmitted + $errors.length + ( $errors.length !== 1 ? _i18nText.errorsFound : _i18nText.errorFound ) + "</p><ul>";
+								summary = "<p>" + i18nText.formNotSubmitted + $errors.length + ( $errors.length !== 1 ? i18nText.errorsFound : i18nText.errorFound ) + "</p><ul>";
 								$errorfields.attr( "aria-invalid", "true" );
 								len = $errors.length;
 								for ( i = 0; i !== len; i += 1 ) {
@@ -5334,7 +5328,7 @@ var pluginName = "wb-geomap",
 	$document = wb.doc,
 
 	/*
-	 * Init runs once per plugin element on the page. There may be multiple elements. 
+	 * Init runs once per plugin element on the page. There may be multiple elements.
 	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
 	 * @param {jQuery Event} event Event that triggered this handler
@@ -5371,7 +5365,7 @@ var pluginName = "wb-geomap",
 
 // Bind the init function to the timerpoke event
 $document.on( "timerpoke.wb " + initEvent, selector, init );
-				
+
 // Add the timer poke to initialize the plugin
 wb.add( selector );
 
@@ -5734,7 +5728,7 @@ var pluginName = "wb-menu",
 			panel = "",
 			sectionHtml, properties, sections, section, parent, items,
 			href, linkHtml, i, j, k, len, len2, len3;
-	
+
 		// Process the secondary and site menus
 		len = allProperties.length;
 		for ( i = 0; i !== len; i += 1 ) {
@@ -5771,7 +5765,7 @@ var pluginName = "wb-menu",
 					sectionHtml += "</ul>" + detailsClose;
 				} else {
 					parent = section.parentNode;
-					
+
 					// Menu item without a section
 					if ( parent.nodeName.toLowerCase() === "li" ) {
 						linkHtml = parent.innerHTML;
@@ -5782,7 +5776,7 @@ var pluginName = "wb-menu",
 							parent.getElementsByTagName( "a" )[ 0 ].href + "'>" +
 							section.innerHTML + "</a>";
 					}
-					
+
 					// Convert the list item to a WAI-ARIA menuitem
 					sectionHtml += "<li class='no-sect'>" +
 						linkHtml.replace(
@@ -5804,7 +5798,7 @@ var pluginName = "wb-menu",
 
 		return panel.replace( /list-group-item/gi, "" ) + "</div>";
 	},
-	
+
 	/**
 	 * @method onAjaxLoaded
 	 * @param {jQuery DOM element} $elm The plugin element
@@ -5888,7 +5882,7 @@ var pluginName = "wb-menu",
 					$info.trigger( navCurrentEvent, breadcrumb );
 				}
 			}
-			
+
 			panel += createMobilePanelMenu( allProperties );
 		}
 
@@ -6186,7 +6180,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 	// Tab key = Hide all sub-menus
 	if ( which === 9 ) {
 		menuClose( $( selector + " .active" ), true );
-		
+
 	// Menu item is within a menu bar
 	} else if ( inMenuBar ) {
 
@@ -6212,7 +6206,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 
 			// Set focus on the first submenu item
 			$subMenu.find( "a:first" ).trigger( focusEvent );
-		
+
 		// Hide sub-menus and set focus
 		} else if ( which === 27 ) {
 			event.preventDefault();
@@ -6230,7 +6224,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 	// Menu item is not within a menu bar
 	} else {
 		menuitemSelector = "> a, > details > summary";
-	
+
 		// Up / down arrow = Previous / next menu item
 		if ( which === 38 || which === 40 ) {
 			event.preventDefault();
@@ -6299,17 +6293,17 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 			// If the parent menu is a menubar
 			if ( $parentMenu.attr( "role" ) === "menubar" ) {
 				$menuLink = $parent.children( "[href=#" + $menu.attr( "id" ) + "]" );
-			
+
 				// Escape key = Close menu and return to menu bar item
 				if ( which === 27 ) {
 					event.preventDefault();
 					$menuLink.trigger( focusEvent );
-					
+
 					// Close the menu but keep the referring link active
 					setTimeout(function() {
 						menuClose( $menuLink.parent(), false );
 					}, 1 );
-				
+
 				// Left / right key = Next / previous menu bar item
 				} else if ( $parentMenu.attr( "role" ) === "menubar" ) {
 					menuIncrement(
@@ -6318,7 +6312,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 						which === 37 ? -1 : 1
 					);
 				}
-				
+
 			// Escape or left arrow: Go up a level if there is a higher-level
 			// menu or close the current submenu if there isn't
 			} else if ( which !== 39 ) {
@@ -6524,8 +6518,8 @@ var pluginName = "wb-mltmd",
 			data = $this.data( "properties" );
 
 		return withPlayer !== undef ?
-			 [ $this, data, data.player ] :
-			 [ $this, data ];
+			[ $this, data, data.player ] :
+			[ $this, data ];
 	},
 
 	/*
@@ -6926,7 +6920,7 @@ $document.on( initializedEvent, selector, function() {
 
 	$this.data( "properties", data );
 
-	if ( $media.find( "[type='video/youtube']" ).length > 0 ){
+	if ( $media.find( "[type='video/youtube']" ).length > 0 ) {
 		// lets tweak some variables and start the load sequence
 		url = wb.getUrlParts( $this.find( "[type='video/youtube']").attr( "src") );
 
@@ -6938,7 +6932,7 @@ $document.on( initializedEvent, selector, function() {
 
 			// lets bind youtubes global function
 			window.onYouTubeIframeAPIReady = function() {
-				  $this.trigger( youtubeEvent );
+				$this.trigger( youtubeEvent );
 			};
 		}
 
@@ -6960,7 +6954,7 @@ $document.on( fallbackEvent, selector, function() {
 		data = ref[ 1 ],
 		$media = data.media,
 		type = data.type,
-		source = $media.find( ( type === "video"  ? "[type='video/mp4']" : "[type='audio/mp3']" ) ).attr( "src" ),
+		source = $media.find( ( type === "video" ? "[type='video/mp4']" : "[type='audio/mp3']" ) ).attr( "src" ),
 		poster = $media.attr( "poster" ),
 		flashvars = "id=" + data.mId,
 		width = data.width,
@@ -8420,7 +8414,7 @@ var pluginName = "wb-share",
 
 		// Supported types are: "page" and "video"
 		type: "page",
-		
+
 		// For custom types
 		// custType = " this comment" results in "Share this comment"
 		custType: "",
@@ -8538,12 +8532,12 @@ var pluginName = "wb-share",
 			settings = $.extend( true, defaults, wb.getData( $elm, "wet-boew" ) );
 			sites = settings.sites;
 			heading = settings.hdLvl;
-			
+
 			shareText = i18nText.shareText + ( settings.custType.length !== 0 ? settings.custType : i18nText[ settings.type ] );
 			pnlId = settings.pnlId;
 			id = "shr-pg" + ( pnlId.length !== 0 ? "-" + pnlId : panelCount );
 			pageHref = encodeURIComponent( settings.url );
-			
+
 			regex = /\'|&#39;|&apos;/;
 			pageTitle = encodeURIComponent( settings.title )
 							.replace( regex, "%27" );
@@ -10001,7 +9995,7 @@ var pluginName = "wb-twitter",
 	init = function( event ) {
 		var eventTarget = event.target,
 			protocol = wb.pageUrlParts.protocol;
-	
+
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
 		if ( event.currentTarget === eventTarget &&
@@ -10203,10 +10197,10 @@ $document.on( clickEvents, linkSelector, function( event ) {
 	zebraTable = function( $elm ) {
 		var i, iLength, tblGroup,
 			tblparser = $elm.data().tblparser; // Cache the table parsed results
-		
+
 		function addCellClass( arr, className ) {
 			var i, iLength;
-			
+
 			for ( i = 0, iLength = arr.length; i !== iLength; i += 1 ) {
 				$( arr[i].elem ).addClass( className );
 			}
@@ -10260,7 +10254,7 @@ $document.on( clickEvents, linkSelector, function( event ) {
 			deps = [
 				"site!deps/tableparser" + modeJS
 			];
-	
+
 		if ( elm.className.indexOf( initedClass ) === -1 ) {
 			wb.remove( selector );
 
@@ -10300,11 +10294,11 @@ $document.on( clickEvents, linkSelector, function( event ) {
 $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, selector, function( event ) {
 	var eventType = event.type,
 		elm = event.target;
-	
+
 	if ( event.currentTarget !== elm ) {
 		return true;
 	}
-	
+
 	switch ( eventType ) {
 
 	/*
@@ -10313,7 +10307,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, sel
 	case "timerpoke":
 		init( elm );
 		break;
-	
+
 	/*
 	 * Data table parsed
 	 */
@@ -10332,7 +10326,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, sel
 // Applying the hover, Simulate Column Hovering Effect
 $document.on( "mouseenter focusin", selectorHoverCol, function( event ) {
 	var tblparserCell = $( event.currentTarget ).data().tblparser;
-	
+
 	if ( tblparserCell.col && tblparserCell.col.elem ) {
 		$( tblparserCell.col.elem ).addClass( "table-hover" );
 	}
@@ -10341,7 +10335,7 @@ $document.on( "mouseenter focusin", selectorHoverCol, function( event ) {
 // Removing the hover, Simulate Column Hovering Effect
 $document.on( "mouseleave focusout", selectorHoverCol, function( event ) {
 	var tblparserCell = $( event.currentTarget ).data().tblparser;
-	
+
 	if ( tblparserCell.col && tblparserCell.col.elem ) {
 		$( tblparserCell.col.elem ).removeClass( "table-hover" );
 	}

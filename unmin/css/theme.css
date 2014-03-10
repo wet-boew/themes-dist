@@ -1441,7 +1441,6 @@ header .brand a {
   }
 
   #wb-sm .menu {
-    text-transform: uppercase;
     display: table;
     width: 100%;
     text-shadow: 1px 1px 1px #222222;
@@ -1646,10 +1645,6 @@ header .brand a {
 
   #wb-sm .menu {
     border-right: 1px solid #999999;
-  }
-
-  #wb-sm .menu> li {
-    float: left;
   }
 
   #wb-sm .menu> li:last-child {
