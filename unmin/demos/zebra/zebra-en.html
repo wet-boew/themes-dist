@@ -167,7 +167,10 @@
 
 			
 
-<p>Zebra Stripping as provided with Twitter Bootstrap CSS</p>
+<h2>Striped rows</h2>
+
+<p>The following examples depends on the <a href="http://getbootstrap.com/css/#tables-striped">striped rows</a> functionality available from <strong>Twitter Bootstrap CSS</strong>.</p>
+
 
 <p><code>&lt;table class=&quot;table table-striped table-hover&quot;&gt;</code></p>
 
@@ -301,9 +304,9 @@
 
 <h2>Complex Table</h2>
 
-<p>Zebra stripping supported by the table parser. The goal of the zebra here is to emphasis the complex table relationship.</p>
+<p>Provide visual emphasis on relationship for table that was build with the 12 techniques for tables. Summary group are in gray. Key column and description column are in italic. A delimiter is added for subsequent column group. Row hovering effect on summary row group is in a lighter color. Provide support for column hovering effect.</p>
 
-<p>The <code>hassum</code> options is to let the table parser that the table contain summary group. You can read the technique for table in order to get more information around that feature.</p>
+<p>The <code>hassum</code> options is an indicator for the table parser to allow the support for summary group. The 12 techniques for tables contains explaination on how to build tables with summary group.</p>
  
 <p><code>&lt;table class=&quot;wb-zebra hassum table table-hover&quot;&gt;</code></p>
 
@@ -565,49 +568,253 @@
 <p><code>&lt;table class=&quot;wb-zebra wb-zebra-col-hover table table-bordered table-hover&quot;&gt;</code></p>
 
 <div class="row">
-<div class="col-sm-4">
-<table class="wb-zebra wb-zebra-col-hover table table-bordered table-hover">
-  <colgroup><col><col><col></colgroup>
-  <colgroup><col><col><col></colgroup>
-  <colgroup><col><col><col></colgroup>
-  <tbody>
-   <tr> <td> 1 </td><td>   </td><td> 3 </td><td> 6 </td><td>   </td><td> 4 </td><td> 7 </td><td>   </td><td> 9 </td> </tr>
-   <tr> <td>   </td><td> 2 </td><td>   </td><td>   </td><td> 9 </td><td>   </td><td>   </td><td> 1 </td><td>   </td> </tr>
-   <tr> <td> 7 </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td> 6 </td> </tr>
-  </tbody>
-  <tbody>
-   <tr> <td> 2 </td><td>   </td><td> 4 </td><td>   </td><td> 3 </td><td>   </td><td> 9 </td><td>   </td><td> 8 </td> </tr>
-   <tr> <td> &#160; </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td><td>   </td> </tr>
-   <tr> <td> 5 </td><td>   </td><td>   </td><td> 9 </td><td>   </td><td> 7 </td><td>   </td><td>   </td><td> 1 </td> </tr>
-  </tbody>
-  <tbody>
-   <tr> <td> 6 </td><td>   </td><td>   </td><td>   </td><td> 5 </td><td>   </td><td>   </td><td>   </td><td> 2 </td> </tr>
-   <tr> <td>   </td><td>   </td><td>   </td><td>   </td><td> 7 </td><td>   </td><td>   </td><td>   </td><td>   </td> </tr>
-   <tr> <td> 9 </td><td>   </td><td>   </td><td> 8 </td><td>   </td><td> 2 </td><td>   </td><td>   </td><td> 5 </td> </tr>
-  </tbody>
- </table>
-</div>
+	<div class="col-sm-4">
+		<table class="wb-zebra wb-zebra-col-hover table table-bordered table-hover">
+			<colgroup>
+				<col>
+				<col>
+				<col>
+			</colgroup>
+			<colgroup>
+				<col>
+				<col>
+				<col>
+			</colgroup>
+			<colgroup>
+				<col>
+				<col>
+				<col>
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td></td>
+					<td>3</td>
+					<td>6</td>
+					<td></td>
+					<td>4</td>
+					<td>7</td>
+					<td></td>
+					<td>9</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td>9</td>
+					<td></td>
+					<td></td>
+					<td>1</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>6</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>2</td>
+					<td></td>
+					<td>4</td>
+					<td></td>
+					<td>3</td>
+					<td></td>
+					<td>9</td>
+					<td></td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>&#160;</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td></td>
+					<td></td>
+					<td>9</td>
+					<td></td>
+					<td>7</td>
+					<td></td>
+					<td></td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td>6</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>5</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>7</td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td></td>
+					<td></td>
+					<td>8</td>
+					<td></td>
+					<td>2</td>
+					<td></td>
+					<td></td>
+					<td>5</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 <details>
 	<summary>Source Code</summary>
 <pre><code>&lt;table class=&quot;wb-zebra wb-zebra-col-hover table table-bordered table-hover&quot;&gt;
-	&lt;colgroup&gt;&lt;col&gt;&lt;col&gt;&lt;col&gt;&lt;/colgroup&gt;
-	&lt;colgroup&gt;&lt;col&gt;&lt;col&gt;&lt;col&gt;&lt;/colgroup&gt;
-	&lt;colgroup&gt;&lt;col&gt;&lt;col&gt;&lt;col&gt;&lt;/colgroup&gt;
+	&lt;colgroup&gt;
+		&lt;col&gt;
+		&lt;col&gt;
+		&lt;col&gt;
+	&lt;/colgroup&gt;
+		&lt;colgroup&gt;
+		&lt;col&gt;
+		&lt;col&gt;
+		&lt;col&gt;
+	&lt;/colgroup&gt;
+		&lt;colgroup&gt;
+		&lt;col&gt;
+		&lt;col&gt;
+		&lt;col&gt;
+	&lt;/colgroup&gt;
 	&lt;tbody&gt;
-		&lt;tr&gt; &lt;td&gt; 1 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 3 &lt;/td&gt;&lt;td&gt; 6 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 4 &lt;/td&gt;&lt;td&gt; 7 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 9 &lt;/td&gt; &lt;/tr&gt;
-		&lt;tr&gt; &lt;td&gt;   &lt;/td&gt;&lt;td&gt; 2 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 9 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 1 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt; &lt;/tr&gt;
-		&lt;tr&gt; &lt;td&gt; 7 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 6 &lt;/td&gt; &lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;1&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;3&lt;/td&gt;
+			&lt;td&gt;6&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;4&lt;/td&gt;
+			&lt;td&gt;7&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;9&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;2&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;9&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;1&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;7&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;6&lt;/td&gt;
+		&lt;/tr&gt;
 	&lt;/tbody&gt;
 	&lt;tbody&gt;
-		&lt;tr&gt; &lt;td&gt; 2 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 4 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 3 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 9 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 8 &lt;/td&gt; &lt;/tr&gt;
-		&lt;tr&gt; &lt;td&gt; &amp;#160; &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt; &lt;/tr&gt;
-		&lt;tr&gt; &lt;td&gt; 5 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 9 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 7 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 1 &lt;/td&gt; &lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;2&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;4&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;3&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;9&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;8&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&amp;#160;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;5&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;9&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;7&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;1&lt;/td&gt;
+		&lt;/tr&gt;
 	&lt;/tbody&gt;
 	&lt;tbody&gt;
-		&lt;tr&gt; &lt;td&gt; 6 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 5 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 2 &lt;/td&gt; &lt;/tr&gt;
-		&lt;tr&gt; &lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 7 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt; &lt;/tr&gt;
-		&lt;tr&gt; &lt;td&gt; 9 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 8 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 2 &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt;   &lt;/td&gt;&lt;td&gt; 5 &lt;/td&gt; &lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;6&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;5&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;2&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;7&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td&gt;9&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;8&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;2&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;/td&gt;
+			&lt;td&gt;5&lt;/td&gt;
+		&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 </details>

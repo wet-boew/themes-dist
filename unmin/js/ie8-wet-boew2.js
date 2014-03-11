@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1-development - 2014-03-10
+ * v4.0.0-rc1-development - 2014-03-11
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5653,10 +5653,11 @@ $document.on( "mouseleave", selector + " .menu", function( event ) {
 // Touchscreen "touches" on menubar items should close the submenu if it is open
 $document.on( "touchstart click", selector + " .item[aria-haspopup=true]", function( event ) {
 	var isTouchstart = event.type === "touchstart",
+		which = event.which,
 		$this, $parent;
 
 	// Ignore middle and right mouse buttons
-	if ( isTouchstart || event.which === 1 ) {
+	if ( isTouchstart || ( !which || which === 1 ) ) {
 		event.preventDefault();
 		$this = $( this );
 		$parent = $this.parent();
@@ -5706,10 +5707,11 @@ $document.on( "click", selector + " [role=menu] [aria-haspopup=true]", function(
 
 // Clicks and touches outside of menus should close any open menus
 $document.on( "click touchstart", function( event ) {
-	var $openMenus;
+	var $openMenus,
+		which = event.which;
 
 	// Ignore middle and right mouse buttons
-	if ( event.type === "touchstart" || event.which === 1 ) {
+	if ( event.type === "touchstart" || ( !which || which === 1 ) ) {
 		$openMenus = $( selector + " .sm-open" );
 		if ( $openMenus.length !== 0 &&
 			$( event.target ).closest( selector ).length === 0 ) {
@@ -7998,6 +8000,12 @@ var pluginName = "wb-share",
 		img: "",
 		desc: "",
 
+		// For filtering the sites that area displayed and controlling the order
+		// they are displayed. Empty array displays all sites in the default order.
+		// Otherwise, it displays the sites in the order in the array using the
+		// keys used by the sites object.
+		filter: [],
+
 		sites: {
 
 			// The definitions of the available bookmarking sites, in URL use
@@ -8079,7 +8087,8 @@ var pluginName = "wb-share",
 		var elm = event.target,
 			sites, heading, settings, panel, link, $share, $elm,
 			pageHref, pageTitle, pageImage, pageDescription, site,
-			siteProperties, url, shareText, id, pnlId, regex;
+			siteProperties, url, shareText, id, pnlId, regex,
+			filter, filterLen, filteredSites, i;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -8101,8 +8110,10 @@ var pluginName = "wb-share",
 			}
 
 			$elm = $( elm );
-			settings = $.extend( true, defaults, wb.getData( $elm, "wet-boew" ) );
+			settings = $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) );
 			sites = settings.sites;
+			filter = settings.filter;
+			filterLen = filter ? filter.length : 0;
 			heading = settings.hdLvl;
 
 			shareText = i18nText.shareText + ( settings.custType.length !== 0 ? settings.custType : i18nText[ settings.type ] );
@@ -8123,6 +8134,17 @@ var pluginName = "wb-share",
 					"'><header class='modal-header'><" + heading + " class='modal-title'>" +
 					shareText + "</" + heading + "></header><ul class='colcount-xs-2'>";
 
+				// If there is a site filter, then filter the sites in advance
+				if ( filterLen !== 0 ) {
+					filteredSites = {};
+					for ( i = 0; i !== filterLen; i += 1 ) {
+						site = filter[ i ];
+						filteredSites[ site ] = sites[ site ];
+					}
+					sites = filteredSites;
+				}
+
+				// Generate the panel
 				for ( site in sites ) {
 					siteProperties = sites[ site ];
 					url = siteProperties.url
@@ -8268,7 +8290,7 @@ var pluginName = "wb-tables",
 					$.fn.dataTableExt.oSort[ "string-case-asc" ] = i18nSortAscend;
 					$.fn.dataTableExt.oSort[ "string-case-desc" ] = i18nSortDescend;
 
-					$elm.dataTable( $.extend( true, defaults, wb.getData( $elm, "wet-boew" ) ) );
+					$elm.dataTable( $.extend( true, {}, defaults, wb.getData( $elm, "wet-boew" ) ) );
 				}
 			});
 		}
@@ -8926,10 +8948,11 @@ $document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
 $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	var currentTarget = event.currentTarget,
 		href = currentTarget.getAttribute( "href" ),
+		which = event.which,
 		$container, $panel, $summary;
 
 	// Ignore middle and right mouse buttons
-	if ( event.which === 1 && href.charAt( 0 ) === "#" ) {
+	if ( ( !which || which === 1 ) && href.charAt( 0 ) === "#" ) {
 		$container = $( currentTarget ).closest( selector );
 		$panel = $container.find( href );
 		if ( $panel.length !== 0 ) {
