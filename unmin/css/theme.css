@@ -445,6 +445,13 @@ header .brand img {
  Secondary Navigation
 */
 
+.wb-sec .list-group a .list-group-item.wb-navcurr,
+.wb-sec .list-group a .list-group-item[href]:hover,
+.wb-sec .list-group a .list-group-item[href]:focus {
+  background-color: grey;
+  color: white;
+}
+
 .wb-sec {
   margin-top: 20px;
   padding-bottom: 2em;
@@ -460,13 +467,6 @@ header .brand img {
   border-radius: 0;
   margin-top: -1px;
   text-decoration: none;
-}
-
-.wb-sec .list-group a .list-group-item.wb-navcurr,
-.wb-sec .list-group a .list-group-item[href]:hover,
-.wb-sec .list-group a .list-group-item[href]:focus {
-  background-color: grey;
-  color: white;
 }
 
 .wb-sec .list-group .list-group .list-group-item {
