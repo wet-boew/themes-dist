@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-rc1-development - 2014-03-15
+ * v4.0.0-rc1-development - 2014-03-17
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4742,7 +4742,11 @@ var pluginName = "wb-frmvld",
 								ariaLive = $form.parent().find( ".arialive" )[ 0 ],
 								summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
 
-							$form.find( "[aria-invalid=true]" ).removeAttr( "aria-invalid" );
+							$form
+								.find( "[aria-invalid=true]" )
+									.removeAttr( "aria-invalid" )
+									.closest( ".form-group" )
+										.removeClass( "has-error" );
 							if ( $errors.length !== 0 ) {
 								// Create our container if one doesn't already exist
 								if ( $summaryContainer.length === 0 ) {
@@ -4753,7 +4757,10 @@ var pluginName = "wb-frmvld",
 
 								// Post process
 								summary = "<p>" + i18nText.formNotSubmitted + $errors.length + ( $errors.length !== 1 ? i18nText.errorsFound : i18nText.errorFound ) + "</p><ul>";
-								$errorfields.attr( "aria-invalid", "true" );
+								$errorfields
+									.attr( "aria-invalid", "true" )
+									.closest( ".form-group" )
+										.addClass( "has-error" );
 								len = $errors.length;
 								for ( i = 0; i !== len; i += 1 ) {
 									$error = $errors.eq( i );

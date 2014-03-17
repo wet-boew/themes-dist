@@ -123,6 +123,11 @@ caption {
   font-weight: bold;
 }
 
+aside.site-related h2 {
+  margin-top: 0;
+  font-size: 28px;
+}
+
 aside.features {
   background-color: #eaebed;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eaebed), color-stop(1, #eaebed));
@@ -445,23 +450,39 @@ header .brand img {
  Secondary Navigation
 */
 
-.wb-sec .list-group a .list-group-item.wb-navcurr,
-.wb-sec .list-group a .list-group-item[href]:hover,
-.wb-sec .list-group a .list-group-item[href]:focus {
+#wb-sec .list-group a.list-group-item.wb-navcurr,
+#wb-sec .list-group a.list-group-item[href]:hover,
+#wb-sec .list-group a.list-group-item[href]:focus {
   background-color: grey;
   color: white;
 }
 
-.wb-sec {
+#wb-sec {
+  margin-top: 20px;
+  padding-bottom: 2em;
   margin-top: 20px;
   padding-bottom: 2em;
 }
 
-.wb-sec .list-group {
+#wb-sec h3 {
+  padding: 15px;
+  margin: 0;
+  border: 1px solid #dddddd;
+  border-bottom: 3px solid #666666;
+  line-height: 0.8;
+}
+
+#wb-sec h3 a {
+  color: #333333;
+  font-size: 0.7em;
+  text-decoration: none;
+}
+
+#wb-sec .list-group {
   margin-bottom: 0;
 }
 
-.wb-sec .list-group a .list-group-item {
+#wb-sec .list-group a.list-group-item {
   background-color: white;
   color: #555555;
   border-radius: 0;
@@ -469,14 +490,14 @@ header .brand img {
   text-decoration: none;
 }
 
-.wb-sec .list-group .list-group .list-group-item {
+#wb-sec .list-group .list-group .list-group-item {
   background-color: #e6e6e6;
   color: black;
   padding-left: 1.8em;
 }
 
 @media screen and (max-width: 991px) {
-  .wb-sec {
+  #wb-sec {
     display: none;
   }
 }
