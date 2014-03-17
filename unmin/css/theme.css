@@ -219,6 +219,10 @@
     color: white;
   }
 
+  #mb-pnl {
+    background: #efefef;
+  }
+
   #mb-pnl header {
     background-color: #174f88;
   }
