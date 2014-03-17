@@ -7410,10 +7410,6 @@ main :not(.dropdown):not(.btn-group):not(.nav):not(.navbar):not(.badge) a:not(.b
  *	specifications for the Web and mobile presence.
  */
 
-.alert {
-  margin-bottom: 23px;
-}
-
 .breadcrumb {
   margin-bottom: 23px;
 }
@@ -7432,7 +7428,7 @@ main :not(.dropdown):not(.btn-group):not(.nav):not(.navbar):not(.badge) a:not(.b
 .btn-lg,
 .btn-group-lg > .btn {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
@@ -7540,9 +7536,9 @@ textarea.input-sm,
 .input-group-lg > .form-control,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
-  height: 49px;
+  height: 46px;
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.33;
   border-radius: 6px;
 }
@@ -7551,8 +7547,8 @@ select.input-lg,
 .input-group-lg > select.form-control,
 .input-group-lg > select.input-group-addon,
 .input-group-lg > .input-group-btn > select.btn {
-  height: 49px;
-  line-height: 49px;
+  height: 46px;
+  line-height: 46px;
 }
 
 textarea.input-lg,
@@ -7585,7 +7581,7 @@ textarea.input-lg,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
   border-radius: 6px;
 }
 
@@ -7599,6 +7595,39 @@ textarea.input-lg,
   .jumbotron .h1 {
     font-size: 72px;
   }
+}
+
+.alert,
+.label {
+  border-radius: 0;
+  border-width: 0 0 0 4px;
+  border-style: solid;
+}
+
+.alert {
+  margin-bottom: 23px;
+}
+
+.alert > :first-child {
+  margin-top: auto;
+  margin-left: 1.2em;
+}
+
+.alert > :first-child:before {
+  position: absolute;
+  margin-left: -1.3em;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+}
+
+[dir=rtl] .alert > :first-child {
+  margin-left: auto;
+  margin-right: 1.2em;
+}
+
+[dir=rtl] .alert > :first-child:before {
+  margin-left: auto;
+  margin-right: -1.3em;
 }
 
 .label-default,
@@ -7653,13 +7682,6 @@ textarea.input-lg,
   text-decoration: underline;
 }
 
-.label,
-.alert {
-  border-radius: 0;
-  border-width: 0 0 0 4px;
-  border-style: solid;
-}
-
 .label-default,
 .label-default[href]:hover,
 .label-default[href]:focus,
@@ -7685,6 +7707,11 @@ textarea.input-lg,
   background: #d8eeca;
 }
 
+.alert-success > :first-child:before {
+  content: "\e084";
+  color: #278400;
+}
+
 .label-info,
 .label-info[href]:hover,
 .label-info[href]:focus,
@@ -7694,13 +7721,23 @@ textarea.input-lg,
   background: #d7faff;
 }
 
+.alert-info > :first-child:before {
+  content: "\e086";
+  color: #269abc;
+}
+
 .label-warning,
 .label-warning[href]:hover,
 .label-warning[href]:focus,
 .label-warning[href]:active,
 .alert-warning {
-  border-color: #f4e100;
+  border-color: #f90;
   background: #f9f4d4;
+}
+
+.alert-warning > :first-child:before {
+  content: "\e107";
+  color: #f90;
 }
 
 .label-danger,
@@ -7710,6 +7747,11 @@ textarea.input-lg,
 .alert-danger {
   border-color: #d3080c;
   background: #f3e9e8;
+}
+
+.alert-danger > :first-child:before {
+  content: "\e101";
+  color: #d3080c;
 }
 
 .modal-title {
@@ -7722,7 +7764,7 @@ textarea.input-lg,
 
 .navbar-brand {
   padding: 13.5px 15px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 23px;
 }
 
@@ -7788,7 +7830,7 @@ textarea.input-lg,
 .pagination-lg > li > a,
 .pagination-lg > li > span {
   padding: 10px 16px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .pagination-lg > li:first-child > a,
@@ -7916,22 +7958,22 @@ h6,
 
 h1,
 .h1 {
-  font-size: 41px;
+  font-size: 34px;
 }
 
 h2,
 .h2 {
-  font-size: 34px;
+  font-size: 26px;
 }
 
 h3,
 .h3 {
-  font-size: 28px;
+  font-size: 22px;
 }
 
 h4,
 .h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 h5,
@@ -8037,7 +8079,7 @@ input[type="submit"].input-lg,
 .input-group-lg > input[type="submit"].form-control,
 .input-group-lg > input[type="submit"].input-group-addon,
 .input-group-lg > .input-group-btn > input[type="submit"].btn {
-  height: 49px;
+  height: 46px;
 }
 
 input[type="reset"].btn-sm,
@@ -8940,6 +8982,18 @@ blockquote {
 
 [class*=colcount-] > li {
   margin-left: 1.3em;
+}
+
+[class*=colcount-].list-unstyled,
+[class*=colcount-].list-inline {
+  padding-left: 0;
+  list-style: none outside none;
+}
+
+[class*=colcount-].list-unstyled li,
+[class*=colcount-].list-unstyled [class*=colcount-].list-inline,
+[class*=colcount-].list-unstyled [class*=colcount-].list-inline {
+  margin-left: 0;
 }
 
 .colcount-xxs-2 {
@@ -10499,7 +10553,7 @@ ol.linenums li {
   display: inline-block;
   height: 32px;
   width: 32px;
-  margin-right: 12px;
+  margin-right: 0.6em;
   vertical-align: middle;
 }
 
@@ -10533,6 +10587,14 @@ ol.linenums li {
   background-position: 0 -160px;
 }
 
+.wb-share .email:before {
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-size: 32px;
+  content: "\2709";
+  margin-right: 0.3em;
+}
+
 .wb-share .facebook:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -192px;
@@ -10543,49 +10605,59 @@ ol.linenums li {
   background-position: 0 -224px;
 }
 
-.wb-share .googleplus:before {
+.wb-share .gmail:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -256px;
 }
 
-.wb-share .linkedin:before {
+.wb-share .googleplus:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -288px;
 }
 
-.wb-share .myspace:before {
+.wb-share .linkedin:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -320px;
 }
 
-.wb-share .pinterest:before {
+.wb-share .myspace:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -352px;
 }
 
-.wb-share .reddit:before {
+.wb-share .pinterest:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -384px;
 }
 
-.wb-share .stumbleupon:before {
+.wb-share .reddit:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -416px;
 }
 
-.wb-share .technorati:before {
+.wb-share .stumbleupon:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -448px;
 }
 
-.wb-share .tumblr:before {
+.wb-share .technorati:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -480px;
 }
 
-.wb-share .twitter:before {
+.wb-share .tumblr:before {
   background: url("../assets/sprites_share.png") no-repeat;
   background-position: 0 -512px;
+}
+
+.wb-share .twitter:before {
+  background: url("../assets/sprites_share.png") no-repeat;
+  background-position: 0 -544px;
+}
+
+.wb-share .yahoomail:before {
+  background: url("../assets/sprites_share.png") no-repeat;
+  background-position: 0 -576px;
 }
 
 .wb-share .shr-pg {
@@ -10604,7 +10676,12 @@ ol.linenums li {
 
 [dir=rtl] .wb-share .shr-lnk:before {
   margin-right: auto;
-  margin-left: 12px;
+  margin-left: 0.4em;
+}
+
+[dir=rtl] .wb-share .email:before {
+  margin-right: auto;
+  margin-left: 0.6em;
 }
 
 [dir=rtl] .wb-share .shr-pg {
