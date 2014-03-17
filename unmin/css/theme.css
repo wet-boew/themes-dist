@@ -1269,13 +1269,38 @@ header .brand a {
 ------------------------------------------------------------------------------------ */
 
 .followus {
-  line-height: 2;
-  float: right;
+  background-color: #eaebed;
+  display: inline-block;
+  padding: 20px 5px;
 }
 
-.followus a:hover,
-.followus a:focus {
-  border: solid 3px #eeeeee;
+.followus h2 {
+  font-size: 16px;
+  display: inline;
+  margin-left: 5px;
+}
+
+.followus ul {
+  display: inline;
+  padding-left: 0;
+  margin-left: 5px;
+}
+
+.followus ul li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.followus ul li a {
+  border: solid 2px #eaebed;
+  padding: 10px 20px;
+}
+
+.followus ul li a:hover,
+.followus ul li a:focus,
+.followus ul li a:active {
+  border: solid 2px #0535d2;
 }
 
 .followus .flickr,
@@ -1288,12 +1313,9 @@ header .brand a {
   min-height: 27px;
   min-width: 27px;
   vertical-align: text-bottom;
-  display: inline-block;
+  display: inline;
   position: relative;
   vertical-align: middle;
-  margin-right: 5px;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
 .followus .foursquare {
@@ -1529,13 +1551,6 @@ header .brand a {
   [dir=rtl] #wb-sm .menu> li {
     border-right: 1px solid #999999;
   }
-
-@media (min-width: 992px) {
-    .followus {
-      float: none;
-      margin-top: 4em;
-    }
-}
 }
 
 /* Large view and over */
