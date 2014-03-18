@@ -1151,118 +1151,10 @@ header .brand a {
   left: -1em;
 }
 
-.jumbotron {
-  /*
-	Pagebrand optic
-	*/
-  position: relative;
-  z-index: 15;
-  /*
-	Subpage Brand
-	*/
-}
-
-.jumbotron.flpr {
-  margin-bottom: 50px;
-}
-
-@media (max-width: 768px) {
-  .jumbotron.flpr {
-    margin-bottom: 0;
-  }
-}
-
-.jumbotron.pagebrand {
-  padding: 0;
-}
-
-.jumbotron.pagebrand figure {
-  position: relative;
-  padding: 0;
-}
-
-.jumbotron.pagebrand figure img {
-  width: 100%;
-}
-
-.jumbotron.pagebrand figcaption {
-  position: absolute;
-  color: white;
-  padding: 20px 30px;
-  background: none repeat scroll 0 0 rgba(36, 56, 80, 0.9);
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.jumbotron.pagebrand figcaption .learnmore {
-  font-style: italic;
-  font-weight: bold;
-  color: white !important;
-  font-size: 0.9em;
-}
-
-.jumbotron.pagebrand figcaption p {
-  margin: 0;
-  line-height: 1;
-}
-
-.jumbotron.sub-promo {
-  padding: 0;
-  height: 305px;
-  background: #d1d5d8;
-}
-
-.jumbotron.sub-promo figure {
-  position: relative;
-}
-
-.jumbotron.sub-promo figure img {
-  position: absolute;
-  max-width: 100%;
-  top: 0;
-  right: 0;
-}
-
-.jumbotron.sub-promo figure figcaption .h3 {
-  font-size: 44px;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-shadow: white 0 1px 0;
-}
-
-.jumbotron.sub-promo figure figcaption .subtext {
-  font-size: 0.7em;
-}
-
-.jumbotron.sub-promo figure figcaption .btn {
-  padding: 0.5em 3em;
-  background-color: #335075;
-  border-color: #335075;
-  font-weight: 700;
-}
-
-.jumbotron .profileimage {
-  padding-top: 10px;
-}
-
-.jumbotron .btn {
-  padding: 0.5em 3em;
-  background-color: #335075;
-  border-color: #335075;
-  font-weight: 700;
-}
-
 /* Profile on secondary pages */
 
 .secondary .profile .thumbnail {
   margin-top: 1.25em;
-}
-
-/* IE */
-
-.lt-ie9 .jumbotron.pagebrand figcaption {
-  background: url("../assets/backdrop.png");
 }
 
 /* ------------------------------------------------------------------------------------
@@ -1356,6 +1248,8 @@ header .brand a {
  * Carousel-specific overrides
  */
 
+  /* IE */
+
   body {
     background: #f9f9f9;
   }
@@ -1364,16 +1258,22 @@ header .brand a {
     background: #2e5274;
   }
 
-  .wb-tabs.carousel-s2 {
-    margin-bottom: 80px;
+  .prm-flpr {
+    background-color: #eeeeee;
   }
 
-  .wb-tabs.carousel-s2 [role="tablist"] li.control.prv a .glyphicon,
-  .wb-tabs.carousel-s2 [role="tablist"] li.control.nxt a .glyphicon {
-    font-size: 1.5em;
-    height: 1.5em;
-    line-height: 1.5em;
-    width: 1.5em;
+  .prm-flpr .carousel-s2 .plypause {
+    font-size: 1.2em;
+  }
+
+  .prm-flpr .carousel-s2 figure figcaption {
+    font-weight: 700;
+    font-size: 1.3em;
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  .lt-ie9 .prm-flpr .carousel-s2 figcaption {
+    background-color: black;
   }
 }
 
