@@ -1270,11 +1270,10 @@ header .brand a {
   .prm-flpr .carousel-s2 figure figcaption {
     font-weight: 700;
     font-size: 1.3em;
-    background-color: rgba(0, 0, 0, 0.85);
   }
 
   .lt-ie9 .prm-flpr .carousel-s2 figcaption {
-    background-color: black;
+    background: url(../assets/backdrop.png);
   }
 }
 
