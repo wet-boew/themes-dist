@@ -1248,7 +1248,9 @@ header .brand a {
  * Carousel-specific overrides
  */
 
-  /* IE */
+  /* 
+* IE 
+*/
 
   body {
     background: #f9f9f9;
@@ -1264,7 +1266,7 @@ header .brand a {
   }
 
   .prm-flpr .carousel-s2 .plypause {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
   .prm-flpr .carousel-s2 figure figcaption {
@@ -1274,6 +1276,16 @@ header .brand a {
 
   .lt-ie9 .prm-flpr .carousel-s2 figcaption {
     background: url(../assets/backdrop.png);
+  }
+
+  .wb-tabs.carousel-s2 [role="tablist"] li.tab-count .curr-count,
+  .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
+    font-size: 1.2em;
+  }
+
+  .wb-tabs.carousel-s2 [role="tablist"] li.nxt a .glyphicon,
+  .wb-tabs.carousel-s2 [role="tablist"] li.prv a .glyphicon {
+    font-size: 1.65em;
   }
 }
 

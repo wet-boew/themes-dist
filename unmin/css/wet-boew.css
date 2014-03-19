@@ -11141,6 +11141,7 @@ table.dataTable tr.even td.sorting_3 {
 }
 
 .wb-tabs.carousel-s2 [role="tablist"] li {
+  background: transparent;
   display: none;
   border: none;
 }
@@ -11590,6 +11591,20 @@ details summary {
 
 details summary:hover {
   cursor: pointer;
+}
+
+/* Details/summary polyfill */
+
+summary {
+  cursor: pointer;
+  /* Apply a pointer cursor upon hover to indicate it’s a clickable element. These styles can be applied regardless of whether the fallback is needed */
+}
+
+summary:hover,
+summary:focus {
+  /* Add focus styles (for keyboard accessibility) */
+  color: #000;
+  background: #ddd;
 }
 
 .wb-disable details > * {
