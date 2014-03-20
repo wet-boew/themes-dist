@@ -7629,6 +7629,12 @@ textarea.input-lg,
   font-family: "Glyphicons Halflings";
 }
 
+.alert > strong:first-child,
+.alert > em:first-child,
+.alert > span:first-child {
+  display: inline-block;
+}
+
 [dir=rtl] .alert > :first-child {
   margin-left: auto;
   margin-right: 1.2em;
