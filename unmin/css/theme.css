@@ -653,14 +653,6 @@ footer nav [class*="col-"] h3 {
   margin-top: 1px;
 }
 
-#mb-pnl section {
-  padding: 1em 20px;
-}
-
-#mb-pnl nav {
-  padding: 10px 20px;
-}
-
 #mb-pnl .modal-body {
   background: #0e4164;
   margin-left: 0;
@@ -698,17 +690,6 @@ footer nav [class*="col-"] h3 {
 
 #mb-pnl .mfp-close {
   top: 0.55em;
-}
-
-#mb-pnl .lng-ofr {
-  text-align: right;
-  padding-right: 30px;
-  padding-top: 2em;
-}
-
-#mb-pnl .lng-ofr li {
-  padding-left: 10px;
-  line-height: normal;
 }
 
 #mb-pnl .srch-pnl form button {
@@ -756,7 +737,6 @@ footer nav [class*="col-"] h3 {
 
 #mb-pnl .sm-pnl {
   background: #0e4164;
-  margin-bottom: 0;
 }
 
 #mb-pnl .info-pnl {
@@ -784,10 +764,6 @@ footer nav [class*="col-"] h3 {
   background: transparent;
 }
 
-[dir=rtl] #mb-pnl .lng-ofr ul {
-  text-align: left;
-}
-
 [dir=rtl] #mb-pnl .srch-pnl .form-group {
   float: right;
   margin-left: 0;
@@ -812,11 +788,6 @@ footer nav [class*="col-"] h3 {
   border-right: 1em solid rgba(0, 0, 0, 0);
   left: auto;
   right: -1em;
-}
-
-[dir=rtl] #mb-pnl ul li.no-sect {
-  padding-left: 0;
-  padding-right: 1.27em;
 }
 
 /*
