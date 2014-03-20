@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-18
+ * v4.0.0-development - 2014-03-20
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1367,10 +1367,7 @@ var pluginName = "wb-calevt",
 				events.maxDate
 			]
 		);
-		$containerId.attr({
-			role: "application",
-			"aria-label": i18nText.calendar
-		});
+		$containerId.attr( "aria-label", i18nText.calendar );
 	},
 
 	daysBetween = function( dateLow, dateHigh ) {
@@ -5982,8 +5979,8 @@ var pluginName = "wb-mltmd",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	seed = 0,
-	templatetriggered = false,
+	uniqueCount = 0,
+	template,
 	i18n, i18nText,
 	captionsLoadedEvent = "ccloaded" + selector,
 	captionsLoadFailedEvent = "ccloadfail" + selector,
@@ -6004,7 +6001,8 @@ var pluginName = "wb-mltmd",
 	 * @param {jQuery Event} event Event that triggered this handler
 	 */
 	init = function( event ) {
-		var eventTarget = event.target;
+		var eventTarget = event.target,
+			elmId = eventTarget.id;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -6032,12 +6030,22 @@ var pluginName = "wb-mltmd",
 				};
 			}
 
-			if ( !templatetriggered ) {
-				templatetriggered = true;
+			// Ensure there is an id on the element
+			if ( !elmId ) {
+				elmId = "wb-mm-" + uniqueCount;
+				eventTarget.id = elmId;
+				uniqueCount += 1;
+			}
+
+			if ( template === undef ) {
 				$document.trigger({
 					type: "ajax-fetch.wb",
-					element: $( selector ),
+					element: selector,
 					fetch: wb.getPath( "/assets" ) + "/mediacontrols.html"
+				});
+			} else {
+				$( eventTarget ).trigger({
+					type: "templateloaded.wb"
 				});
 			}
 		}
@@ -6476,9 +6484,12 @@ var pluginName = "wb-mltmd",
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-$document.on( "ajax-fetched.wb", selector, function( event ) {
-	var $this = $( this ),
+$document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
+	var $this = $( this );
+
+	if ( event.type === "ajax-fetched" ) {
 		template = event.pointer.html();
+	}
 
 	$this.data( "template", template );
 	$this.trigger({
@@ -6490,7 +6501,7 @@ $document.on( initializedEvent, selector, function() {
 	var $this = $( this ),
 		$media = $this.children( "audio, video" ).eq( 0 ),
 		captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
-		id = $this.attr( "id" ) || "wb-mm-" + ( seed++ ),
+		id = $this.attr( "id" ),
 		mId = $media.attr( "id" ) || id + "-md",
 		type = $media.is( "video" ) ? "video" : "audio",
 		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
@@ -6506,10 +6517,6 @@ $document.on( initializedEvent, selector, function() {
 		}, i18nText),
 		media = $media.get( 0 ),
 		url;
-
-	if ( !$this.attr( "id" ) ) {
-		$this.attr( "id", id );
-	}
 
 	if ( $media.attr( "id" ) === undef ) {
 		$media.attr( "id", mId );
@@ -8899,28 +8906,30 @@ var pluginName = "wb-tabs",
 	var eventType = event.type,
 
 		// "this" is cached for all events to utilize
-		$elm = $( this );
+		$elm = $( event.target );
 
-	switch ( eventType ) {
-	case "timerpoke":
-		onTimerPoke( $elm );
-		break;
+	// Filter out any events triggered by descendants
+	if ( event.currentTarget === event.target ) {
+		switch ( eventType ) {
+		case "timerpoke":
+			onTimerPoke( $elm );
+			break;
 
-	/*
-	 * Init
-	 */
-	case "wb-init":
-		init( $elm );
-		break;
+		/*
+		 * Init
+		 */
+		case "wb-init":
+			init( $elm );
+			break;
 
-	/*
-	 * Change Slides
-	 */
-	case "shift":
-		onShift( $elm, event );
-		break;
+		/*
+		 * Change Slides
+		 */
+		case "shift":
+			onShift( $elm, event );
+			break;
+		}
 	}
-
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
 	 * so returning true allows for events to always continue

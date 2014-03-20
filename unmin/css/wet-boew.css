@@ -1,8 +1,10 @@
+@charset "utf-8";
 /*!
-
-/*! WET-BOEW Core and Plugins */
-
-/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * v4.0.0-development - 2014-03-20
+ *
+ *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
@@ -7331,6 +7333,8 @@ button.close {
   text-decoration: none;
 }
 
+/*! WET-BOEW Core and Plugins */
+
 /*
   WET-BOEW
   @title: Accessibility Additions to WET-BOEW
@@ -7618,6 +7622,12 @@ textarea.input-lg,
   margin-left: -1.3em;
   display: inline-block;
   font-family: "Glyphicons Halflings";
+}
+
+.alert > strong:first-child,
+.alert > em:first-child,
+.alert > span:first-child {
+  display: inline-block;
 }
 
 [dir=rtl] .alert > :first-child {
@@ -10970,6 +10980,10 @@ table.dataTable tr.even td.sorting_3 {
 .wb-tabs.carousel-s1 [role="tablist"],
 .wb-tabs.carousel-s2 [role="tablist"] {
   position: absolute;
+}
+
+.wb-tabs.carousel-s1 [role="tablist"] li,
+.wb-tabs.carousel-s2 [role="tablist"] li {
   z-index: 100;
 }
 
@@ -11133,6 +11147,7 @@ table.dataTable tr.even td.sorting_3 {
 }
 
 .wb-tabs.carousel-s2 [role="tablist"] li {
+  background: transparent;
   display: none;
   border: none;
 }
@@ -11584,6 +11599,20 @@ details summary:hover {
   cursor: pointer;
 }
 
+/* Details/summary polyfill */
+
+summary {
+  cursor: pointer;
+  /* Apply a pointer cursor upon hover to indicate it’s a clickable element. These styles can be applied regardless of whether the fallback is needed */
+}
+
+summary:hover,
+summary:focus {
+  /* Add focus styles (for keyboard accessibility) */
+  color: #000;
+  background: #ddd;
+}
+
 .wb-disable details > * {
   display: block !important;
 }
@@ -11780,6 +11809,8 @@ details summary:hover {
   }
 
   .wb-tabs.carousel-s2 [role="tablist"] {
+    height: auto;
+    bottom: 0;
     margin-top: -4.375em;
   }
 
