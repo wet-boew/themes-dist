@@ -534,12 +534,11 @@
 
   #wb-sm .nvbar ul.menu> li {
     padding: 0;
-    border-left: 1px solid #1b5a9f;
-    border-right: 1px solid #3874bd;
+    border-right: 1px solid #999999;
   }
 
   #wb-sm .nvbar ul.menu> li.active {
-    border-left-color: #cccccc;
+    border-color: #cccccc;
     border-right-color: #cccccc;
   }
 
