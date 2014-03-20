@@ -475,12 +475,10 @@
 
   #wb-sm ul.menu> li {
     padding: 0;
-    border-left: 1px solid #202a33;
-    border-right: 1px solid #474747;
+    border-right: 1px solid #999999;
   }
 
   #wb-sm ul.menu> li.active {
-    border-left-color: #cccccc;
     border-right-color: #cccccc;
   }
 
