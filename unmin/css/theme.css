@@ -10,6 +10,10 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 
+/*
+ *	Overrides for Bootstrap variables
+ */
+
 /*!
  *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -84,6 +88,15 @@
     padding: 0;
   }
 
+  %all-view-navigation-links a:link {
+    text-decoration: none;
+  }
+
+  %all-view-navigation-links a:hover,
+  %all-view-navigation-links a:focus {
+    text-decoration: underline;
+  }
+
   .wb-slc a {
     color: white;
   }
@@ -105,17 +118,7 @@
     color: white !important;
   }
 
-  #wb-sttl a:link {
-    text-decoration: none;
-  }
-
-  #wb-sttl a:hover,
-  #wb-sttl a:focus {
-    text-decoration: underline;
-  }
-
   #wb-sttl a span {
-    display: inline-block;
     line-height: normal;
   }
 
@@ -434,6 +437,15 @@
     float: right;
   }
 
+  %medium-view-navigation-links a:link {
+    text-decoration: none;
+  }
+
+  %medium-view-navigation-links a:hover,
+  %medium-view-navigation-links a:focus {
+    text-decoration: underline;
+  }
+
   body {
     background-image: url(../assets/header-leaf.jpg), url(../assets/header-bg.jpg);
     background-repeat: no-repeat, repeat-x;
@@ -465,15 +477,6 @@
   #gc-bar a {
     border-left: 1px solid white;
     padding: 0 0.5em;
-  }
-
-  #gc-bar a:link {
-    text-decoration: none;
-  }
-
-  #gc-bar a:hover,
-  #gc-bar a:focus {
-    text-decoration: underline;
   }
 
   #gc-bar> li:first-child a {
@@ -576,15 +579,6 @@
     font-weight: 400;
   }
 
-  #wb-sm .sm a:link {
-    text-decoration: none;
-  }
-
-  #wb-sm .sm a:hover,
-  #wb-sm .sm a:focus {
-    text-decoration: underline;
-  }
-
   #wb-cont {
     margin-top: 0;
   }
@@ -658,19 +652,6 @@
 
   #wb-info li {
     line-height: 2;
-  }
-
-  #wb-info a {
-    color: black;
-  }
-
-  #wb-info a:link {
-    text-decoration: none;
-  }
-
-  #wb-info a:hover,
-  #wb-info a:focus {
-    text-decoration: underline;
   }
 
   #gc-info {
