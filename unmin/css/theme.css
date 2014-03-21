@@ -10,6 +10,10 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 
+/*
+ *	Overrides for Bootstrap variables
+ */
+
 /*!
  *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -392,6 +396,7 @@
 
   #gcwu-sig {
     margin-top: 2.8em;
+    margin-left: 15px;
   }
 
   #wb-bnr {

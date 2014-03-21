@@ -12,8 +12,6 @@
  * variables that are common to all instances of the plugin on a page.
  */
 var $document = wb.doc,
-	smallViews = "xxsmallview.wb xsmallview.wb smallview.wb",
-	largeViews = "mediumview.wb largeview.wb xlargeview.wb",
 	$fipImg,
 
 onSmallView = function () {
@@ -24,31 +22,19 @@ onMediumLargeView = function () {
 	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
 };
 
-$document.on( smallViews, function() {
-
-	//Disable event if SVG polyfill is not used for FIP
-	if ( $fipImg.length === 0 ) {
-		$document.off( smallViews );
-		return;
+$document.on( wb.resizeEvents, function() {
+	if ( $fipImg.length !== 0 ) {
+		if ( event.type.indexOf( "smallview" ) !== -1 ) {
+			onSmallView();
+		} else {
+			onMediumLargeView();
+		}
 	}
-
-	onSmallView();
-});
-
-$document.on( largeViews, function() {
-
-	//Disable event if SVG polyfill is not used for FIP
-	if ( $fipImg.length === 0 ) {
-		$document.off( largeViews );
-		return;
-	}
-
-	onMediumLargeView();
 });
 
 $document.one( "timerpoke.wb", function() {
 	$fipImg = $( "img#wmms" );
-	if ( document.documentElement.className.indexOf( "smallview" ) !== -1 ) {
+	if ( $fipImg.length !== 0 && document.documentElement.className.indexOf( "smallview" ) !== -1 ) {
 	    onSmallView();
 	}
 });
