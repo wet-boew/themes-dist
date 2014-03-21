@@ -173,14 +173,6 @@
 
   #mb-pnl .srch-pnl,
   #mb-pnl .lng-ofr,
-  #mb-pnl .sec-pnl,
-  #mb-pnl .sm-pnl,
-  #mb-pnl .info-pnl {
-    padding: 10px 20px;
-  }
-
-  #mb-pnl .srch-pnl,
-  #mb-pnl .lng-ofr,
   #mb-pnl .sec-pnl {
     background: #efefef;
   }
@@ -237,10 +229,6 @@
     border-color: #5367be;
   }
 
-  #mb-pnl .lng-ofr {
-    text-align: right;
-  }
-
   #mb-pnl .lng-ofr a {
     color: black;
     text-decoration: none;
@@ -266,17 +254,11 @@
     width: 158px;
   }
 
-  [dir=rtl] #mb-pnl .lng-ofr {
-    text-align: left;
-  }
-
-  [dir=rtl] #mb-pnl .lng-ofr ul {
-    margin-left: 0;
-  }
-
-  [dir=rtl] #mb-pnl .lng-ofr li {
-    padding-left: 0;
-    padding-right: 10px;
+  [dir=rtl] #mb-pnl .srch-pnl .form-group {
+    float: right;
+    margin-right: auto;
+    margin-left: 5px;
+    width: 75%;
   }
 
   [dir=rtl] #wb-glb-mn> ul {
