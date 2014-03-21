@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-20
+ * v4.0.0-development - 2014-03-21
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " gabime u gjetën.",
 	"err-fnd": " gabim u gjet.",
 	/* Date picker */
-	"date-hide": "Hide kalendar",
 	"date-show": "Zgjidh një datë nga një kalendar për fushën:",
 	"date-sel": "I zgjedhur",
 	/* Calendar */
