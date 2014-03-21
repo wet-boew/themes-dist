@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-20
+ * v4.0.0-development - 2014-03-21
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " lỗi đã được tìm thấy.",
 	"err-fnd": " lỗi đã được tìm thấy.",
 	/* Date picker */
-	"date-hide": "Ẩn lịch",
 	"date-show": "Chọn một ngày từ lịch cho lĩnh vực:",
 	"date-sel": "Chọn",
 	/* Calendar */

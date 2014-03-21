@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-20
+ * v4.0.0-development - 2014-03-21
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -107,7 +107,6 @@ wb.i18nDict = {
 	"errs-fnd": " tika atrastas kļūdas.",
 	"err-fnd": " tika atrasta kļūda.",
 	/* Date picker */
-	"date-hide": "Slēpt kalendāru",
 	"date-show": "Izvēlēties datumu no kalendāra lauka:",
 	"date-sel": "Atlasīts",
 	/* Calendar */
