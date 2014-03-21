@@ -737,16 +737,19 @@ footer nav [class*="col-"] h3 {
 
 #mb-pnl .lng-ofr {
   padding-right: 30px;
+  text-align: right;
 }
 
 #mb-pnl .sm-pnl {
   background: #0e4164;
+  padding-left: 15px;
 }
 
 #mb-pnl .info-pnl {
   border-top: 2px solid #061e38;
   background: #193451;
   color: #325375 !important;
+  padding-left: 15px;
 }
 
 #mb-pnl .active > a {
@@ -755,6 +758,7 @@ footer nav [class*="col-"] h3 {
 
 #mb-pnl .sec-pnl {
   background: #cdd4da !important;
+  padding-left: 15px;
 }
 
 #mb-pnl .sec-pnl a,
