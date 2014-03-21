@@ -735,6 +735,10 @@ footer nav [class*="col-"] h3 {
   margin-left: 0;
 }
 
+#mb-pnl .lng-ofr {
+  padding-right: 30px;
+}
+
 #mb-pnl .sm-pnl {
   background: #0e4164;
 }
