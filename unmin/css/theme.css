@@ -11,6 +11,10 @@
  */
 
 /*
+ *	Overrides for Bootstrap variables
+ */
+
+/*
  Default Mixins and namespace variables
  */
 
@@ -435,6 +439,12 @@
 
   [lang=fr] #wb-srch .form-group {
     width: 60%;
+  }
+
+  #wb-sm ul.menu> li> a.wb-navcurr,
+  #wb-sm .sm a.wb-navcurr {
+    background: #3853a6;
+    color: white;
   }
 
   #wb-sm {
