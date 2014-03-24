@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-21
+ * v4.0.0-development - 2014-03-24
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -6345,9 +6345,6 @@ var pluginName = "wb-mltmd",
 			}
 			$this.trigger( captionsVisibleChangeEvent );
 			break;
-		case "setPreviousTime":
-			this.object.previousTime = args;
-			break;
 		case "getBuffering":
 			return this.object.buffering || false;
 		case "setBuffering":
@@ -7141,7 +7138,7 @@ var pluginName = "wb-overlay",
 			}
 			closeText = closeText.replace( "'", "&#39;" );
 			overlayClose = "<button class='mfp-close " + closeClass +
-				"' title='" + closeText + "'>×<span class='wb-inv'> " +
+				"' title='" + closeText + "'>&#xd7;<span class='wb-inv'> " +
 				closeText + "</span></button>";
 
 			$elm.append( overlayClose );
@@ -7157,7 +7154,9 @@ var pluginName = "wb-overlay",
 			.attr( "aria-hidden", "false" );
 
 		if ( !noFocus ) {
-			$overlay.trigger( setFocusEvent );
+			$overlay
+				.scrollTop( 0 )
+				.trigger( setFocusEvent );
 		}
 	},
 
@@ -8030,6 +8029,7 @@ var pluginName = "wb-share",
 		title: document.title || $document.find( "h1:first" ).text(),
 
 		pnlId: "",
+		lnkClass: "",
 		img: "",
 		desc: "",
 
@@ -8180,7 +8180,7 @@ var pluginName = "wb-share",
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {
 				panel = "<section id='" + id  + "' class='shr-pg wb-overlay modal-content overlay-def wb-panel-r" +
 					"'><header class='modal-header'><" + heading + " class='modal-title'>" +
-					shareText + "</" + heading + "></header><ul class='colcount-xs-2'>";
+					shareText + "</" + heading + "></header><ul class='list-unstyled colcount-xs-2'>";
 
 				// If there is no filter array of site keys, then generate an array of site keys
 				if ( !filter || filter.length === 0 ) {
@@ -8218,7 +8218,7 @@ var pluginName = "wb-share",
 				panel += "</ul><div class='clearfix'></div><p class='col-sm-12'>" + i18nText.disclaimer + "</p></section>";
 				panelCount += 1;
 			}
-			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk'><span class='glyphicon glyphicon-share'></span> " +
+			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk " + settings.lnkClass + "'><span class='glyphicon glyphicon-share'></span> " +
 				shareText + "</a>";
 
 			$share = $( ( panel ? panel : "" ) + link );
