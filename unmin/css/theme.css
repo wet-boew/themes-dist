@@ -500,6 +500,10 @@
     text-decoration: underline;
   }
 
+  #wb-sm .sm .slflnk {
+    background: #bbbbbb;
+  }
+
   #wb-sec .list-group a.list-group-item.wb-navcurr,
   #wb-sec .list-group a.list-group-item[href]:hover,
   #wb-sec .list-group a.list-group-item[href]:focus {
