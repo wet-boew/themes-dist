@@ -594,6 +594,10 @@
     text-decoration: underline;
   }
 
+  #wb-sm .sm .slflnk {
+    background: #bbbbbb;
+  }
+
   #wb-cont {
     margin-top: 0;
   }
