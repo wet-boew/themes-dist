@@ -549,6 +549,10 @@
     text-decoration: underline;
   }
 
+  #wb-sm .sm .slflnk {
+    background: #bbbbbb;
+  }
+
   #wb-info {
     background: #eeeeee;
   }
