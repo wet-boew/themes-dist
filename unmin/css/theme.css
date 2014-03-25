@@ -489,6 +489,12 @@
     box-shadow: inset 0 1px 5px;
   }
 
+  #wb-sm .nvbar ul.menu> li> a.wb-navcurr,
+  #wb-sm .sm a.wb-navcurr {
+    background: #0f315b;
+    color: white;
+  }
+
   #wb-sm {
     margin-top: 15px;
   }
