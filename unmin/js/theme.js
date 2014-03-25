@@ -22,20 +22,23 @@ onMediumLargeView = function () {
 	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
 };
 
-$document.on( wb.resizeEvents, function() {
-	if ( $fipImg.length !== 0 ) {
-		if ( event.type.indexOf( "smallview" ) !== -1 ) {
-			onSmallView();
-		} else {
-			onMediumLargeView();
-		}
-	}
-});
-
 $document.one( "timerpoke.wb", function() {
 	$fipImg = $( "img#wmms" );
-	if ( $fipImg.length !== 0 && document.documentElement.className.indexOf( "smallview" ) !== -1 ) {
-	    onSmallView();
+
+	if ( $fipImg.length !== 0 ) {
+		if ( document.documentElement.className.indexOf( "smallview" ) !== -1 ) {
+			onSmallView();
+		}
+
+		$document.on( wb.resizeEvents, function( event ) {
+			if ( $fipImg.length !== 0 ) {
+				if ( event.type.indexOf( "smallview" ) !== -1 ) {
+					onSmallView();
+				} else {
+					onMediumLargeView();
+				}
+			}
+		});
 	}
 });
 
