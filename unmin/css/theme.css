@@ -196,7 +196,7 @@ aside.features .thumbnail img {
 
 /* Home page */
 
-.home h2,
+.home h2.h1,
 .home .departments h3 {
   font-size: 27px;
   border-bottom: 1px solid #af3c43;
