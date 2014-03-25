@@ -53,7 +53,7 @@
     margin-top: 1.2em;
   }
 
-  main> div {
+  main > div {
     background: url(../assets/sp-pe-bg.jpg) repeat-x center top;
     margin-top: 10px;
     padding-top: 20px;
@@ -107,7 +107,7 @@
     position: relative;
   }
 
-  main> div:before {
+  main > div:before {
     content: " ";
     position: absolute;
     display: block;
@@ -122,7 +122,7 @@
     min-height: 4em;
   }
 
-  main section+ section h2 {
+  main section + section h2 {
     text-align: right;
   }
 }

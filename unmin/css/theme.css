@@ -33,7 +33,7 @@
  */
 
 #archived-bnr {
-  background-color: #ffdd00;
+  background-color: #FD0;
 }
 
 #archived-bnr p {
@@ -44,7 +44,7 @@
 #archived-bnr a {
   display: block;
   padding: 0.75em 44px;
-  color: black;
+  color: #000;
   text-decoration: none;
   font-weight: 700;
 }
@@ -55,7 +55,7 @@
 }
 
 #archived-bnr .overlay-close {
-  color: black;
+  color: #000;
 }
 
 /*
@@ -88,26 +88,26 @@
     padding: 0;
   }
 
-  %all-view-navigation-links a:link {
+  %all-view-navigation-links #wb-sttl {
     text-decoration: none;
   }
 
-  %all-view-navigation-links a:hover,
-  %all-view-navigation-links a:focus {
+  %all-view-navigation-links #wb-sttl,
+  %all-view-navigation-links #wb-sttl {
     text-decoration: underline;
   }
 
   .wb-slc a {
-    color: white;
+    color: #FFF;
   }
 
   #wb-bar {
-    background: black;
+    background: #000;
     min-height: 2.6em;
   }
 
   #wb-bar a {
-    color: white;
+    color: #FFF;
   }
 
   #gcwu-sig {
@@ -115,7 +115,7 @@
   }
 
   #wb-sttl a {
-    color: white !important;
+    color: #FFFFFF !important;
   }
 
   #wb-sttl a span {
@@ -131,7 +131,7 @@
   #wb-bc li:after {
     font-family: "Glyphicons Halflings";
     font-size: 0.7em;
-    color: #333333;
+    color: #333;
   }
 
   #wb-bc li:before {
@@ -197,11 +197,11 @@
   }
 
   #wb-bnr {
-    background-color: #174f88;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#4474ad), color-stop(#4474ad), to(#174f88));
-    background-image: -webkit-linear-gradient(#4474ad, #4474ad, #174f88);
-    background-image: linear-gradient(#4474ad, #4474ad, #174f88);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4474ad', endColorstr='#174f88');
+    background-color: #174F88;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4474AD), color-stop(#4474AD), to(#174F88));
+    background-image: -webkit-linear-gradient(#4474AD, #4474AD, #174F88);
+    background-image: linear-gradient(#4474AD, #4474AD, #174F88);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4474AD', endColorstr='#174F88');
   }
 
   #wb-sttl {
@@ -227,7 +227,7 @@
   }
 
   #wb-glb-mn .pnl-btn a {
-    color: white;
+    color: #FFF;
     font-size: 1.5em;
     display: block;
     width: 100%;
@@ -241,7 +241,7 @@
   #mb-pnl .sm-pnl summary,
   #mb-pnl .sm-pnl summary:hover,
   #mb-pnl .sm-pnl summary:focus {
-    color: white;
+    color: #fff;
   }
 
   #mb-pnl {
@@ -249,11 +249,11 @@
   }
 
   #mb-pnl header {
-    background-color: #174f88;
+    background-color: #174F88;
   }
 
   #mb-pnl nav a {
-    color: black;
+    color: #000;
     text-decoration: none;
   }
 
@@ -281,12 +281,12 @@
   #mb-pnl #wb-srch-sub-imprt:hover,
   #mb-pnl #wb-srch-sub-imprt:focus,
   #mb-pnl #wb-srch-sub-imprt:active {
-    background-color: #3276b1;
-    border-color: #285e8e;
+    background-color: #3276B1;
+    border-color: #285E8E;
   }
 
   #mb-pnl .lng-ofr a {
-    color: black;
+    color: #000;
     text-decoration: none;
   }
 
@@ -295,11 +295,11 @@
   }
 
   #wb-bc {
-    background-color: #dfdfdd;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#f0efef), to(#dfdfdd));
-    background-image: -webkit-linear-gradient(#f0efef, #dfdfdd);
-    background-image: linear-gradient(#f0efef, #dfdfdd);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0efef', endColorstr='#dfdfdd');
+    background-color: #DFDFDD;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F0EFEF), to(#DFDFDD));
+    background-image: -webkit-linear-gradient(#F0EFEF, #DFDFDD);
+    background-image: linear-gradient(#F0EFEF, #DFDFDD);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0EFEF', endColorstr='#DFDFDD');
   }
 
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
@@ -314,7 +314,7 @@
     right: 15px;
   }
 
-  [dir=rtl] #wb-glb-mn> ul {
+  [dir=rtl] #wb-glb-mn > ul {
     text-align: left;
   }
 
@@ -398,19 +398,19 @@
  */
 
   #wb-bc .container,
-  body> main,
-  body> header + .container,
-  #wb-info> .container> :before {
-    background-color: white;
-    border-left: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
+  body > main,
+  body > header + .container,
+  #wb-info > .container > :before {
+    background-color: #FFF;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
   }
 
   #wb-sm .active a,
   #wb-sm .sm,
   #wb-sm .sm a {
-    background-color: #cccccc;
-    color: black;
+    background-color: #CCC;
+    color: #000;
   }
 
   #wb-srch input,
@@ -437,12 +437,18 @@
     float: right;
   }
 
-  %medium-view-navigation-links a:link {
+  %medium-view-navigation-links #gc-bar,
+  #wb-sm %medium-view-navigation-links .sm,
+  %medium-view-navigation-links #wb-info {
     text-decoration: none;
   }
 
-  %medium-view-navigation-links a:hover,
-  %medium-view-navigation-links a:focus {
+  %medium-view-navigation-links #gc-bar,
+  #wb-sm %medium-view-navigation-links .sm,
+  %medium-view-navigation-links #wb-info,
+  %medium-view-navigation-links #gc-bar,
+  #wb-sm %medium-view-navigation-links .sm,
+  %medium-view-navigation-links #wb-info {
     text-decoration: underline;
   }
 
@@ -475,23 +481,23 @@
   }
 
   #gc-bar a {
-    border-left: 1px solid white;
+    border-left: 1px solid #FFF;
     padding: 0 0.5em;
   }
 
-  #gc-bar> li:first-child a {
+  #gc-bar > li:first-child a {
     border-left: 0;
   }
 
   #gc-bar ul li a {
-    border-right: 1px solid white;
+    border-right: 1px solid #FFF;
   }
 
   #gc-bar ul li:last-child a {
     border-right: 0;
   }
 
-  #wb-bnr> .container {
+  #wb-bnr > .container {
     position: relative;
   }
 
@@ -503,7 +509,7 @@
 
   #wb-sttl a {
     font-size: 1.9em;
-    text-shadow: 1px 1px 1px #333333;
+    text-shadow: 1px 1px 1px #333;
     display: table-cell;
     vertical-align: middle;
     height: 3.6em;
@@ -511,9 +517,9 @@
 
   #wb-srch {
     background: #146094;
-    border-left: 1px solid #15527d;
-    border-right: 1px solid #15527d;
-    border-top: 1px solid #87aec9;
+    border-left: 1px solid #15527D;
+    border-right: 1px solid #15527D;
+    border-top: 1px solid #87AEC9;
     padding: 11px 15px 6px 15px;
     position: absolute;
     bottom: 0;
@@ -526,19 +532,19 @@
   }
 
   #wb-srch .btn {
-    background-color: #cccccc;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#f0f0f0), to(#cccccc));
-    background-image: -webkit-linear-gradient(#f0f0f0, #cccccc);
-    background-image: linear-gradient(#f0f0f0, #cccccc);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#f0f0f0', endColorstr='#cccccc');
+    background-color: #CCC;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#CCC));
+    background-image: -webkit-linear-gradient(#F0F0F0, #CCC);
+    background-image: linear-gradient(#F0F0F0, #CCC);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0F0F0', endColorstr='#CCC');
     padding: 2px 6px;
     line-height: 1;
   }
 
-  #wb-sm .nvbar ul.menu> li> a.wb-navcurr,
+  #wb-sm .nvbar ul.menu > li > a.wb-navcurr,
   #wb-sm .sm a.wb-navcurr {
-    background: #0f315b;
-    color: white;
+    background: #0F315B;
+    color: #fff;
   }
 
   #wb-sm {
@@ -547,37 +553,37 @@
 
   #wb-sm .nvbar {
     background-color: #146094;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#146094), to(#23447e));
-    background-image: -webkit-linear-gradient(#146094, #23447e);
-    background-image: linear-gradient(#146094, #23447e);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#146094', endColorstr='#23447e');
-    border-top: 1px solid #87aec9;
-    border-bottom: 4px solid #cccccc;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#146094), to(#23447E));
+    background-image: -webkit-linear-gradient(#146094, #23447E);
+    background-image: linear-gradient(#146094, #23447E);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#146094', endColorstr='#23447E');
+    border-top: 1px solid #87AEC9;
+    border-bottom: 4px solid #CCC;
   }
 
   #wb-sm .nvbar ul.menu {
     margin-bottom: 0;
   }
 
-  #wb-sm .nvbar ul.menu> li {
+  #wb-sm .nvbar ul.menu > li {
     padding: 0;
-    border-right: 1px solid #999999;
+    border-right: 1px solid #999;
   }
 
-  #wb-sm .nvbar ul.menu> li.active {
-    border-right-color: #cccccc;
+  #wb-sm .nvbar ul.menu > li.active {
+    border-right-color: #CCC;
   }
 
   #wb-sm a {
     display: block;
-    color: white;
+    color: #FFF;
     font-weight: 700;
     padding: 0.48em 1.17em 0.48em 0.79em;
     text-decoration: none;
   }
 
   #wb-sm .sm {
-    border-bottom: 4px solid #0f315b;
+    border-bottom: 4px solid #0F315B;
     border-radius: 0 0 3px 3px;
   }
 
@@ -595,7 +601,7 @@
   }
 
   #wb-sm .sm .slflnk {
-    background: #bbbbbb;
+    background: #bbb;
   }
 
   #wb-cont {
@@ -605,7 +611,7 @@
   #wb-sec .list-group a.list-group-item.wb-navcurr,
   #wb-sec .list-group a.list-group-item[href]:hover,
   #wb-sec .list-group a.list-group-item[href]:focus {
-    background: grey;
+    background: #808080;
     color: white;
   }
 
@@ -617,13 +623,13 @@
   #wb-sec h3 {
     padding: 15px;
     margin: 0;
-    border: 1px solid #dddddd;
-    border-bottom: 3px solid #666666;
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #666;
     line-height: 0.8;
   }
 
   #wb-sec h3 a {
-    color: #333333;
+    color: #333;
     font-size: 0.7em;
     text-decoration: none;
   }
@@ -633,8 +639,8 @@
   }
 
   #wb-sec .list-group a.list-group-item {
-    background: white;
-    color: #555555;
+    background: #FFF;
+    color: #555;
     border-radius: 0;
     margin-top: -1px;
     text-decoration: none;
@@ -647,14 +653,14 @@
   }
 
   #wb-info {
-    background: #efefef url(../assets/sft-deco.gif) repeat-x scroll center top;
+    background: #EFEFEF url(../assets/sft-deco.gif) repeat-x scroll center top;
   }
 
-  #wb-info> .container {
+  #wb-info > .container {
     background: transparent url(../assets/sft-deco-leaf.gif) no-repeat top center;
   }
 
-  #wb-info> .container> :before {
+  #wb-info > .container > :before {
     background: transparent;
     content: " ";
     margin-left: -15px;
@@ -674,7 +680,7 @@
   }
 
   #gc-info {
-    background-color: black;
+    background-color: #000;
     margin-top: 10px;
   }
 
@@ -692,7 +698,7 @@
   }
 
   #gc-info a {
-    color: white;
+    color: #FFF;
   }
 
   #gc-info a span {
@@ -710,8 +716,8 @@
     padding-right: 0;
   }
 
-  #gc-tctr> :first-child {
-    border-right: 1px solid #999999;
+  #gc-tctr > :first-child {
+    border-right: 1px solid #999;
     padding-right: 10px;
     line-height: 1.5;
   }
@@ -722,7 +728,7 @@
   }
 
   #canada-ca a {
-    border-left: 1px solid #666666;
+    border-left: 1px solid #666;
     padding-left: 44px;
     display: inline-block;
     vertical-align: middle;
@@ -739,10 +745,10 @@
 
   [dir=rtl] #gc-bar a {
     border-left: 0;
-    border-right: 1px solid white;
+    border-right: 1px solid #FFF;
   }
 
-  [dir=rtl] #gc-bar>:first-child a {
+  [dir=rtl] #gc-bar > :first-child a {
     border-right: 0;
   }
 
@@ -751,7 +757,7 @@
   }
 
   [dir=rtl] #gc-bar ul li a {
-    border-right: 1px solid white;
+    border-right: 1px solid #FFF;
   }
 
   [dir=rtl] #wb-srch {
@@ -771,8 +777,8 @@
     margin-right: 0;
   }
 
-  [dir=rtl] #gc-tctr> :first-child {
-    border-left: 1px solid #999999;
+  [dir=rtl] #gc-tctr > :first-child {
+    border-left: 1px solid #999;
     border-right: 0;
     padding-left: 10px;
     padding-right: 0;
@@ -785,7 +791,7 @@
 
   [dir=rtl] #canada-ca a {
     border-left: 0;
-    border-right: 1px solid #666666;
+    border-right: 1px solid #666;
     padding-left: 0;
     padding-right: 44px;
   }
