@@ -151,19 +151,10 @@
     padding: 0;
   }
 
-  #wb-glb-mn > ul {
-    margin: 10px 0;
-  }
-
-  #wb-glb-mn > ul a {
-    color: white;
-    font-size: 1.5em;
-  }
-
   #wb-glb-mn .pnl-btn {
     position: relative;
     z-index: 2;
-    margin: 0;
+    margin: 10px 0;
     float: right;
   }
 
