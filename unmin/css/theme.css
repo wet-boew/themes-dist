@@ -172,22 +172,22 @@
 
   #wb-glb-mn .pnl-btn {
     position: relative;
-    float: right;
-    width: 50%;
     z-index: 2;
+    margin: 0;
+    float: right;
   }
 
   #wb-glb-mn .pnl-btn li {
-    padding: 3px 0 0;
+    padding: 0 10px;
     width: 100%;
   }
 
   #wb-glb-mn .pnl-btn a {
-    color: white;
     font-size: 1.5em;
     display: block;
     width: 100%;
-    padding-right: 15px;
+    color: #474747;
+    line-height: 1em;
   }
 
   #mb-pnl .srch-pnl,
