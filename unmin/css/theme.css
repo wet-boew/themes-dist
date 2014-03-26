@@ -349,6 +349,33 @@
   /*
   @title: Small view and over (screen only)
  */
+
+  #wb-info {
+    background: #EEE;
+  }
+
+  #wb-info:after {
+    content: " ";
+    display: block;
+    height: 55px;
+    background-color: #999;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#CBCBCB), to(#999));
+    background-image: -webkit-linear-gradient(#CBCBCB, #999);
+    background-image: linear-gradient(#CBCBCB, #999);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#CBCBCB', endColorstr='#999');
+  }
+
+  #gc-tctr {
+    margin-top: 1em;
+  }
+
+  [dir=rtl] #gc-tctr {
+    padding-right: 0;
+  }
+
+  [dir=rtl] #gc-tctr li:first-child {
+    padding-right: 0;
+  }
 }
 
 /* Medium view and over */
@@ -553,21 +580,6 @@
     background: #bbb;
   }
 
-  #wb-info {
-    background: #EEE;
-  }
-
-  #wb-info:after {
-    content: " ";
-    display: block;
-    height: 55px;
-    background-color: #999;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#CBCBCB), to(#999));
-    background-image: -webkit-linear-gradient(#CBCBCB, #999);
-    background-image: linear-gradient(#CBCBCB, #999);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#CBCBCB', endColorstr='#999');
-  }
-
   #wb-sec {
     margin-top: 20px;
     padding-bottom: 2em;
@@ -605,10 +617,6 @@
     padding-left: 1.8em;
   }
 
-  #gc-tctr {
-    margin-top: 1em;
-  }
-
   [dir=rtl] #wmms,
   [dir=rtl] #wb-srch {
     left: 0;
@@ -622,14 +630,6 @@
   [dir=rtl] #wb-lng {
     float: left;
     padding-right: 5px;
-  }
-
-  [dir=rtl] #gc-tctr {
-    padding-right: 0;
-  }
-
-  [dir=rtl] #gc-tctr li:first-child {
-    padding-right: 0;
   }
 }
 
