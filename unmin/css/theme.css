@@ -332,6 +332,11 @@
   /*
   @title: Small view and over (screen only)
  */
+
+  footer {
+    background: #cccccc;
+    border-top: 1px solid #bbbbbb;
+  }
 }
 
 /* Medium view and over */
@@ -540,11 +545,6 @@
     background: #e6e6e6;
     color: black;
     padding-left: 1.8em;
-  }
-
-  footer {
-    background: #cccccc;
-    border-top: 1px solid #bbbbbb;
   }
 
   [dir=rtl] #wb-srch {
