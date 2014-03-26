@@ -142,6 +142,10 @@
     float: right;
   }
 
+  #wb-info li {
+    margin-bottom: 0.75em;
+  }
+
   [dir=rtl] #wb-bc li:after {
     content: "\e091";
     padding: 0 5px;
@@ -855,6 +859,10 @@
   /*
   @title: Small view (screen only)
  */
+
+  #wb-info h3 {
+    white-space: no-wrap;
+  }
 }
 
 /* Medium view */
