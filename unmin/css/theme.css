@@ -355,7 +355,7 @@
 
   #wb-bc .container,
   body> main,
-  body> header + .container {
+  body> header+ .container {
     background-color: white;
   }
 
