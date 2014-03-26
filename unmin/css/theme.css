@@ -183,6 +183,7 @@
     font-size: 1.5em;
     display: block;
     width: 100%;
+    padding-right: 15px;
   }
 
   #mb-pnl .srch-pnl,
@@ -347,6 +348,25 @@
   /*
   @title: Small view and over (screen only)
  */
+
+  #wb-bc .container,
+  body> main,
+  body> header + .container {
+    background-color: white;
+  }
+
+  body {
+    background: #eeeeee;
+  }
+
+  footer {
+    background: #cf3f0e;
+    border-top: 1px solid #bbbbbb;
+  }
+
+  footer> .container {
+    background: #cccccc;
+  }
 }
 
 /* Medium view and over */
@@ -363,25 +383,11 @@
   @title: Medium view and over (screen only)
  */
 
-  #wb-bc .container,
-  body> main,
-  body> header + .container {
-    background-color: white;
-  }
-
   #wb-sm .active a,
   #wb-sm .sm,
   #wb-sm .sm a {
     background-color: #cccccc;
     color: black;
-  }
-
-  body {
-    background: #eeeeee;
-  }
-
-  #ogpl-logo {
-    padding: 10px 0;
   }
 
   #wb-bar {
@@ -546,15 +552,6 @@
     background: #e6e6e6;
     color: black;
     padding-left: 1.8em;
-  }
-
-  footer {
-    background: #cf3f0e;
-    border-top: 1px solid #bbbbbb;
-  }
-
-  footer> .container {
-    background: #cccccc;
   }
 
   [dir=rtl] #wb-srch {
