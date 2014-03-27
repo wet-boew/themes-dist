@@ -572,7 +572,7 @@
     border-top: 1px solid #87AEC9;
     padding: 11px 15px 6px 15px;
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     right: 0;
     z-index: 2;
   }
