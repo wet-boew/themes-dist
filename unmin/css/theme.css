@@ -849,27 +849,6 @@ main {
   position: relative;
 }
 
-main a {
-  text-decoration: underline;
-}
-
-main ul li,
-main ol li {
-  line-height: 1.4375;
-  margin-bottom: 1em;
-}
-
-main ul li ul,
-main ul li ol,
-main ol li ul,
-main ol li ol {
-  margin-top: 1em;
-}
-
-main .btn {
-  text-decoration: none;
-}
-
 main .pagetag,
 main .subtitle {
   font-size: 1em;
