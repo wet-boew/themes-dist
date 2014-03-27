@@ -21,6 +21,8 @@
  *
  */
 
+/* Shorthand can't be used because it doesn't work with IE 8 & 9 gradients */
+
 /*
  *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -580,11 +582,11 @@
   }
 
   #wb-srch .btn {
-    background-color: #CCC;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#CCC));
-    background-image: -webkit-linear-gradient(#F0F0F0, #CCC);
-    background-image: linear-gradient(#F0F0F0, #CCC);
-    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0F0F0', endColorstr='#CCC');
+    background-color: #CCCCCC;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F0F0F0), to(#CCCCCC));
+    background-image: -webkit-linear-gradient(#F0F0F0, #CCCCCC);
+    background-image: linear-gradient(#F0F0F0, #CCCCCC);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0F0F0', endColorstr='#CCCCCC');
     padding: 2px 6px;
     line-height: 1;
   }
