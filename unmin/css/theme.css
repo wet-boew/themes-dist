@@ -476,6 +476,7 @@
     background-image: linear-gradient(#494949, #333333);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#494949', endColorstr='#333333');
     padding: 0 1em;
+    margin-right: 15px;
     float: right;
   }
 
