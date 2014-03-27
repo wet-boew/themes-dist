@@ -307,6 +307,10 @@
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#F0EFEF', endColorstr='#DFDFDD');
   }
 
+  #gc-info {
+    display: none;
+  }
+
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
     float: right;
     margin-right: auto;
@@ -404,15 +408,6 @@
     background: transparent url(../assets/sft-deco-leaf.gif) no-repeat top center;
   }
 
-  #wb-info > .container > :before {
-    background: transparent;
-    content: " ";
-    margin-left: -15px;
-    margin-right: -15px;
-    display: block;
-    height: 25px;
-  }
-
   #wb-info h2,
   #wb-info h3 {
     font-size: 120%;
@@ -429,10 +424,6 @@
     border-right: 1px solid #999;
     padding-right: 10px;
     line-height: 1.5;
-  }
-
-  #gc-info {
-    display: none;
   }
 
   [dir=rtl] #gc-tctr > :first-child {
@@ -457,10 +448,10 @@
   @title: Medium view and over (screen only)
  */
 
-  #wb-info > .container > :before,
   #wb-bc .container,
   body > main,
-  body > header + .container {
+  body > header + .container,
+  #wb-info > .container > :before {
     background-color: #FFF;
     border-left: 1px solid #CCC;
     border-right: 1px solid #CCC;
@@ -707,6 +698,15 @@
     background: #e6e6e6;
     color: black;
     padding-left: 1.8em;
+  }
+
+  #wb-info > .container > :before {
+    background: transparent;
+    content: " ";
+    margin-left: -15px;
+    margin-right: -15px;
+    display: block;
+    height: 25px;
   }
 
   #gc-info {
