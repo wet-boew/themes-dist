@@ -438,7 +438,7 @@
   #wmms {
     height: 1.9em;
     top: 0;
-    right: 0;
+    right: 15px;
     margin-top: -2.8em;
     position: absolute;
     z-index: 2;
@@ -491,7 +491,7 @@
   #wb-srch {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 15px;
     margin-top: 0.5em;
   }
 
