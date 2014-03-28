@@ -178,7 +178,7 @@
 	<details>
 		<summary>Visualiser le code</summary>
 		<pre><code>// PVI - La configuration en beigne est déjà définie par défauts, ceci est seulement un exemple afin de vous aider à le reproduire dans votre préréglage personalisé.
-var wet_boew_charts = {
+window[ "wb-charts" ] = {
 	flot: {
 		donut: {
 			series: {
@@ -204,7 +204,7 @@ var wet_boew_charts = {
 			decimal: 1
 		}
 	}
-}</code></pre>
+};</code></pre>
 	</details>
 
 	<table class="wb-charts wb-charts-donut table">
@@ -541,7 +541,7 @@ var wet_boew_charts = {
 <section>
 	<h2>Precision décimal</h2>
 	<p><strong>Paramètres de plugiciel&#160;:</strong></p>
-	<pre><code>data-wet-boew = '{
+	<pre><code>data-wb-charts = '{
 	"decimal": 1
 }'</code></pre>
 
@@ -563,9 +563,9 @@ var wet_boew_charts = {
 	}
 }'</code></pre>
 
-	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
+	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'>
 		<caption>Precision décimal</caption>
 		<thead>
 			<tr>
@@ -601,7 +601,7 @@ var wet_boew_charts = {
 <section>
 	<h2>Seuil d'étiquettage</h2>
 	<p><strong>Paramètres de plugiciel&#160;:</strong></p>
-	<pre><code>data-wet-boew = '{
+	<pre><code>data-wb-charts = '{
 	"decimal": 1
 }'</code></pre>
 
@@ -625,9 +625,9 @@ var wet_boew_charts = {
 }'
 </code></pre>
 
-	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
+	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'>
 		<caption>Seuil d'étiquettage</caption>
 		<thead>
 			<tr>
@@ -663,7 +663,7 @@ var wet_boew_charts = {
 <section>
 	<h2>Angle de démarrage</h2>
 	<p><strong>Paramètres de plugiciel&#160;:</strong></p>
-	<pre><code>data-wet-boew = '{
+	<pre><code>data-wb-charts = '{
 	"decimal": 1
 }'</code></pre>
 
@@ -687,9 +687,9 @@ var wet_boew_charts = {
 	}
 }'</code></pre>
 
-	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'&gt;</code></pre>
+	<pre><code>&lt;table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'&gt;</code></pre>
 
-	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wet-boew='{ "decimal": 1 }'>
+	<table class="wb-charts wb-charts-pie wb-charts-decimal-1 wb-charts-legendinline table" data-flot='{"series": { "pie": { "radius": 1,"label": { "radius": 1,"show": true, "threshold": 0.08 }, "innerRadius": 0.45, "tilt": 0.5, "startAngle": 1 } }, "grid": { "hoverable": true } }' data-wb-charts='{ "decimal": 1 }'>
 		<caption>Angle de démarrage</caption>
 		<thead>
 			<tr>
@@ -774,25 +774,25 @@ var wet_boew_charts = {
 	 <section class="col-sm-3 col-lg-3">
 	<h3>Gouvernement</h3>
 	<ul class="list-unstyled">
-		<li><a href="http://canada.ca/fr/gouv/systeme/index.html">Comment le gouvernement fonctionne</a></li>
-		<li><a href="http://canada.ca/fr/gouv/min/index.html">Ministères et organismes</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/systeme/index.html">Comment le gouvernement fonctionne</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/min/index.html">Ministères et organismes</a></li>
 		<li><a href="http://pm.gc.ca/fra">Premier ministre</a></li>
-		<li><a href="http://canada.ca/fr/gouv/ministres/index.html">Ministres</a></li>
-		<li><a href="http://canada.ca/fr/gouv/politique/index.html">Politiques, règlements et lois</a></li>
-		<li><a href="http://canada.ca/fr/gouv/bibliotheques/index.html">Bibliothèques</a></li>
-		<li><a href="http://canada.ca/fr/gouv/publications/index.html">Publications</a></li>
-		<li><a href="http://canada.ca/fr/gouv/statistiques/index.html">Statistiques et données</a></li>
-		<li><a href="http://canada.ca/fr/nouveausite.html">À propos de Canada.ca</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/ministres/index.html">Ministres</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/politique/index.html">Politiques, règlements et lois</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/bibliotheques/index.html">Bibliothèques</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/publications/index.html">Publications</a></li>
+		<li><a href="http://www.canada.ca/fr/gouv/statistiques/index.html">Statistiques et données</a></li>
+		<li><a href="http://www.canada.ca/fr/nouveausite.html">À propos de Canada.ca</a></li>
 	</ul>
 </section>
 <section class="col-sm-3 col-lg-3">
 	<h3>Transparence</h3>
 	<ul class="list-unstyled">
-		<li><a href="http://canada.ca/fr/transparence/rapports.html">Établissement de rapports à l'échelle du gouvernement</a></li>
-		<li><a href="http://canada.ca/fr/transparence/ouvert.html">Gouvernement ouvert</a></li>
-		<li><a href="http://www.tbs-sct.gc.ca/pd-dp/gr-rg/index-fra.asp">Divulgation proactive</a></li>
-		<li><a href="http://canada.ca/fr/transparence/avis.html">Avis</a></li>
-		<li><a href="http://canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li>
+		<li><a href="http://www.canada.ca/fr/transparence/rapports.html">Établissement de rapports à l'échelle du gouvernement</a></li>
+		<li><a href="http://www.canada.ca/fr/transparence/ouvert.html">Gouvernement ouvert</a></li>
+		<li><a href="http://www.canada.ca/fr/transparence/divulgation.html">Divulgation proactive</a></li>
+		<li><a href="http://www.canada.ca/fr/transparence/avis.html">Avis</a></li>
+		<li><a href="http://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li>
 	</ul>
 </section>
 <div class="col-sm-3 col-lg-3 brdr-lft">
@@ -818,15 +818,15 @@ var wet_boew_charts = {
 <div class="col-sm-3 col-lg-3 brdr-lft">
 	<section>
 		<h3>Rétroaction</h3>
-		<p><a href="http://canada.ca/fr/contact/retroaction.html"><img src="../../assets/feedback.png" class="img-responsive" alt="Rétroaction sur ce site Web"></a></p>
+		<p><a href="http://www.canada.ca/fr/contact/retroaction.html"><img src="../../assets/feedback.png" class="img-responsive" alt="Rétroaction sur ce site Web"></a></p>
 	</section>
 	<section>
 		<h3>Médias sociaux</h3>
-		<p><a href="http://canada.ca/fr/sociaux/index.html"><img src="../../assets/social.png" class="img-responsive" alt="Médias sociaux"></a></p>
+		<p><a href="http://www.canada.ca/fr/sociaux/index.html"><img src="../../assets/social.png" class="img-responsive" alt="Médias sociaux"></a></p>
 	</section>
 	<section>
 		<h3>Centre mobile</h3>
-		<p><a href="http://canada.ca/fr/mobile/index.html"><img src="../../assets/mobile.png" class="img-responsive" alt="Centre mobile"></a></p>
+		<p><a href="http://www.canada.ca/fr/mobile/index.html"><img src="../../assets/mobile.png" class="img-responsive" alt="Centre mobile"></a></p>
 	</section>
 </div>
 
