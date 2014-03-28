@@ -8670,8 +8670,8 @@ var pluginName = "wb-tabs",
 				nextText + "'>" + glyphiconStart + "chevron-right'></span>" +
 				wbInvStart + nextText + btnEnd,
 			playControl =  tabsToggleStart + "plypause'><a class='plypause" +
-				btnMiddle + state + "'>" + iconState + " <i>" + state +
-				"</i>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
+				btnMiddle + state + "'>" + iconState + " <span>" + state +
+				"</span>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
 				hidden + btnEnd;
 
 		$tablist.prepend( prevControl + tabCount + nextControl );
@@ -8993,7 +8993,7 @@ var pluginName = "wb-tabs",
 					.toggleClass( "glyphicon-play glyphicon-pause" );
 			$sldr.toggleClass( "playing" );
 
-			text = $plypause[ 0 ].getElementsByTagName( "i" )[ 0 ];
+			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 0 ];
 			text.innerHTML = text.innerHTML === playText ?
 				i18nText.pause :
 				playText;
