@@ -29,7 +29,7 @@
 <!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery//jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -395,7 +395,7 @@
 		<h3>Déclaration de votre préréglage personalisé</h3>
 
 		<pre><code>&lt;script&gt;
-var wet_boew_charts = {
+window[ "wb-charts" ] = {
 	charts: {
 		<strong>personlise</strong>: {
 			fn: {
@@ -406,13 +406,13 @@ var wet_boew_charts = {
 			}
 		}
 	}
-}
+};
 &lt;/script&gt;</code></pre>
 
 		<p>La cleft à l'intéreur de l'objet <code>fn</code> est similaire a un pointeur JSON tel que défini dans <a href="http://tools.ietf.org/html/rfc6901">RFC 6901</a>. La cleft représent le chemin vers où vous désirer remplacer la valeur par la fonction définie.</p>
 
 		<script>
-		var wet_boew_charts = {
+		window[ "wb-charts" ] = {
 			charts: {
 				personlise: {
 					fn: {
@@ -423,7 +423,7 @@ var wet_boew_charts = {
 					}
 				}
 			}
-		}
+		};
 		</script>
 
 
@@ -527,7 +527,7 @@ var wet_boew_charts = {
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery//jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>

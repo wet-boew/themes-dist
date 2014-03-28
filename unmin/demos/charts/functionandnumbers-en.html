@@ -29,7 +29,7 @@
 <!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery//jquery.js"></script>
 <script src="../../js/ie8-wet-boew.js"></script>
 <![endif]-->
 
@@ -395,7 +395,7 @@
 	<section>
 		<h3>Declaring your custom preset</h3>
 		<pre><code>&lt;script&gt;
-var wet_boew_charts = {
+window[ "wb-charts" ] = {
 	charts: {
 		<strong>custom</strong>: {
 			fn: {
@@ -406,13 +406,13 @@ var wet_boew_charts = {
 			}
 		}
 	}
-}
+};
 &lt;/script&gt;</code></pre>
 
 		<p>The key for the <code>fn</code> object is similar to the JSON pointer defined in <a href="http://tools.ietf.org/html/rfc6901">RFC 6901</a>. The key identifies what should be overwritten with the function.</p>
 
 		<script>
-		var wet_boew_charts = {
+		window[ "wb-charts" ] = {
 			charts: {
 				custom: {
 					fn: {
@@ -423,7 +423,7 @@ var wet_boew_charts = {
 					}
 				}
 			}
-		}
+		};
 		</script>
 
 		<p><code>&lt;table class=&quot;wb-charts wb-charts-custom table&quot;&gt;</code></p>
@@ -526,7 +526,7 @@ var wet_boew_charts = {
 		</footer>
 
 		<!--[if gte IE 9 | !IE ]><!-->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery//jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>
