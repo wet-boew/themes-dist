@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-27
+ * v4.0.0-development - 2014-03-28
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -5401,7 +5401,7 @@ input[type="button"].btn-block {
   padding: 5px 14px;
   background-color: #eaebed;
   border: 1px solid #dcdee1;
-  border-radius: 15px;
+  border-radius: 4px;
 }
 
 .pager li > a:hover,
@@ -7680,17 +7680,33 @@ blockquote {
  *	  * Increase size of the pagination buttons
  */
 
-.pagination [rel="prev"]:before {
+.pagination [rel="prev"]:before,
+.pager [rel="prev"]:before {
   content: "← ";
 }
 
-.pagination [rel="next"]:after {
+.pagination [rel="next"]:after,
+.pager [rel="next"]:after {
   content: " →";
 }
 
 .pagination > li > a,
-.pagination > li > span {
+.pagination > li > span,
+.pager > li > a,
+.pager > li > span {
   padding: 10px 16px;
+}
+
+.pager > li > a {
+  text-decoration: none;
+}
+
+.pager > li > a:hover,
+.pager > li > a:focus,
+.pager > li > span:hover,
+.pager > li > span:focus {
+  color: #335075;
+  border-color: #bbbfc5;
 }
 
 /*
@@ -8411,7 +8427,7 @@ blockquote {
 }
 
 .mrgn-lft-lg {
-  margin-left: 25px;
+  margin-left: 30px;
 }
 
 .mrgn-lft-xl {
@@ -8431,7 +8447,7 @@ blockquote {
 }
 
 .mrgn-bttm-lg {
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .mrgn-bttm-xl {
@@ -8451,7 +8467,7 @@ blockquote {
 }
 
 .mrgn-tp-lg {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
 .mrgn-tp-xl {
@@ -8471,7 +8487,7 @@ blockquote {
 }
 
 .mrgn-rght-lg {
-  margin-right: 25px;
+  margin-right: 30px;
 }
 
 .mrgn-rght-xl {
