@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-28
+ * v4.0.0-development - 2014-03-29
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -9552,6 +9552,7 @@ img.mfp-img {
 
 .wb-menu .sm.open {
   max-height: 1000px;
+  min-width: 12.5em;
   display: inline;
   position: absolute;
   z-index: 500;
