@@ -406,8 +406,10 @@
   }
 
   #wb-sm .active a,
+  #wb-sm .active summary,
   #wb-sm .sm,
-  #wb-sm .sm a {
+  #wb-sm .sm a,
+  #wb-sm .sm summary {
     background-color: #CCC;
     color: #000;
   }
@@ -420,7 +422,8 @@
   }
 
   #wb-sm .nvbar ul.menu > li > a.wb-navcurr,
-  #wb-sm .sm a.wb-navcurr {
+  #wb-sm .sm a.wb-navcurr,
+  #wb-sm .sm summary.wb-navcurr {
     background: #0F315B;
     color: #fff;
   }
@@ -561,7 +564,8 @@
     border-right-color: #CCC;
   }
 
-  #wb-sm a {
+  #wb-sm a,
+  #wb-sm summary {
     display: block;
     color: #FFF;
     font-weight: 700;
@@ -574,7 +578,8 @@
     border-radius: 0 0 3px 3px;
   }
 
-  #wb-sm .sm a {
+  #wb-sm .sm a,
+  #wb-sm .sm summary {
     font-weight: 400;
   }
 
