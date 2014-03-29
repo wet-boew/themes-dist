@@ -460,6 +460,7 @@
   }
 
   #wb-sm .active a,
+  #wb-sm .active summary,
   #wb-sm .sm,
   #wb-sm .sm a,
   #wb-sm .sm summary {
@@ -626,7 +627,8 @@
     border-right-color: #CCC;
   }
 
-  #wb-sm a {
+  #wb-sm a,
+  #wb-sm summary {
     display: block;
     color: #FFF;
     font-weight: 700;
