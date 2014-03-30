@@ -1,3 +1,9 @@
+/*
+ Global variables for GCWeb
+ */
+/*
+Left menu variables
+*/
 .splash object {
   max-width: 100%;
   height: auto; }
@@ -80,3 +86,50 @@
     .splash .sp-bx-bt {
       background-color: #e1e4e7;
       padding: 30px 30px 13px; } }
+
+.error .box {
+  background-color: #e1e4e7;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding: 30px; }
+.error .h1 {
+  border: medium none;
+  font-size: 27px;
+  margin-bottom: 0.2em;
+  padding-bottom: 0.2em; }
+  .error .h1 img {
+    margin-right: 10px; }
+.error .pagetag {
+  margin-left: 75px; }
+.error .srchbox .form-inline {
+  margin: 14px;
+  white-space: nowrap; }
+  .error .srchbox .form-inline .form-control {
+    width: 100%; }
+  .error .srchbox .form-inline .navbar-form {
+    width: 100%; }
+.error .srchbox .form-group {
+  display: inline-block; }
+.error .srchbox input {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: fff;
+  border-color: #ffffff-moz-use-text-color white white;
+  border-image: none;
+  border-style: solid none solid solid;
+  border-width: 1px 0 1px 1px;
+  color: #333333;
+  display: inline-block; }
+.error .srchbox button {
+  display: inline-block; }
+.error .tofpg {
+  line-height: 2em;
+  margin-top: 18px; }
+  .error .tofpg span {
+    margin-left: 0;
+    margin-right: 15px; }
+
+.xxsmallview .error .h1 img {
+  margin-bottom: 35px; }

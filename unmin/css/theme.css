@@ -1398,7 +1398,8 @@ header .brand a {
     background: #cccccc;
   }
 
-  #wb-sm .sm.open li a {
+  #wb-sm .sm.open li a,
+  #wb-sm .sm.open li summary {
     color: #444444;
     text-shadow: none;
     padding: 5px 10px;
@@ -1406,7 +1407,10 @@ header .brand a {
 
   #wb-sm .sm.open li a:hover,
   #wb-sm .sm.open li a:focus,
-  #wb-sm .sm.open li a:active {
+  #wb-sm .sm.open li a:active,
+  #wb-sm .sm.open li summary:hover,
+  #wb-sm .sm.open li summary:focus,
+  #wb-sm .sm.open li summary:active {
     background: #243850;
     color: white;
   }
