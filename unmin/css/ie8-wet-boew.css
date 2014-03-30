@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0-development - 2014-03-29
+ * v4.0.0-development - 2014-03-30
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -7553,11 +7553,25 @@ code {
   white-space: normal;
 }
 
-/* List unstyled RTL fix */
+/* 
+ * List unstyled RTL fix
+ */
 
 [dir=rtl] .list-unstyled,
 [dir=rtl] .list-inline {
   padding-right: 0;
+}
+
+/*
+ * Adding space for definition list items
+ */
+
+dt {
+  margin-bottom: 3px;
+}
+
+dd {
+  margin-bottom: 15px;
 }
 
 /*
@@ -9680,7 +9694,7 @@ img.mfp-img {
 }
 
 #mb-pnl details details {
-  margin-left: -1.28em;
+  margin-left: 6px 0 6px -1.28em;
 }
 
 #mb-pnl .srch-pnl form {
@@ -11438,6 +11452,10 @@ summary:focus {
     left: 0;
   }
 
+  .wb-tabs.carousel-s1 {
+    border-top: 0;
+  }
+
   .wb-tabs.carousel-s1 [role="tablist"] {
     position: static;
   }
@@ -11888,8 +11906,17 @@ summary:focus {
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+
   #mb-pnl {
     min-width: 65%;
+  }
+
+  .wb-tabs .tab-count {
+    display: none !important;
   }
 }
 
