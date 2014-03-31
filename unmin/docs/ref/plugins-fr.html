@@ -91,7 +91,14 @@
 
 					<section id="wb-srch" class="col-xs-6 text-right visible-md visible-lg">
 						<h2 class="wb-inv">Recherche</h2>
-						<form action="#" method="post" role="search" class="form-inline">
+						<form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript"> 
+		var autoCompletionOptions = { 'validLanguages' : 'fr', };
+		google.load( 'search', '1');
+		google.setOnLoadCallback( function() {google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q' ), 'cse-search-box', autoCompletionOptions );});
+		google.setOnLoadCallback( function() {setTimeout( function(){google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q-imprt' ), 'cse-search-box',autoCompletionOptions );}, 2000);});
+	</script>
 	<div class="form-group">
 		<label for="wb-srch-q" class="wb-inv">Rechercher dans le site Web</label>
 		<input id="wb-srch-q" class="wb-srch-q form-control" name="wb-srch-q" type="search" value="" size="27" maxlength="150" placeholder="Rechercher dans Canada.ca" />
@@ -169,7 +176,6 @@
 	<li><a href="twitter/twitter-fr.html">Chronologie intégrée Twitter</a> - Affiche des chronologies intégrées Twitter.</li>
 	<li><a href="country-content/country-content-fr.html">Contenu par pays</a> - Un enveloppeur de AjaxLoader qui insère de contenu télécharger via AJAX. Le contenu est basée sur l'emplacement des visiteurs comme déterminé par http://freegeoip.net</li>
 	<li><a href="overlay/overlay-fr.html">Contenu superposé</a> - Un plugiciel fournissant un modèle de contenu superposé flexible et réactif.</li>
-	<li><a href="data-ajax/data-ajax-fr.html">Data AJAX</a> - Un enveloppeur simple pour AjaxLoader qui insère de contenu télécharger via AJAX.</li>
 	<li><a href="data-inview/data-inview-fr.html">Data Inview</a> - Affiche de contenu superposé quand une section se déplace hors de la clôture.</li>
 	<li><a href="data-picture/data-picture-fr.html">Data Picture</a> - Conversion de Picturefill guidé par l'événement.</li>
 	<li><a href="equalheight/equalheight-fr.html">Égalisation des hauteurs</a> - Un plugiel d'égalisation des hauteurs réactif.</li>
@@ -197,7 +203,7 @@
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd" property="dateModified">
 			<dt>Date de modification&#160;:&#32;</dt>
-			<dd><time>2014-03-07</time></dd>
+			<dd><time>2014-03-31</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">

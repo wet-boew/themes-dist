@@ -91,7 +91,14 @@
 
 					<section id="wb-srch" class="col-xs-6 text-right visible-md visible-lg">
 						<h2 class="wb-inv">Search</h2>
-						<form action="#" method="post" role="search" class="form-inline">
+						<form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript"> 
+		var autoCompletionOptions = { 'validLanguages' : 'en', };
+		google.load( 'search', '1');
+		google.setOnLoadCallback( function() {google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q' ), 'cse-search-box', autoCompletionOptions );});
+		google.setOnLoadCallback( function() {setTimeout( function(){google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q-imprt' ), 'cse-search-box',autoCompletionOptions );}, 2000);});
+	</script>
 	<div class="form-group">
 		<label for="wb-srch-q" class="wb-inv">Search website</label>
 		<input id="wb-srch-q" class="wb-srch-q form-control" name="wb-srch-q" type="search" value="" size="27" maxlength="150" placeholder="Search Canada.ca" />
@@ -242,6 +249,10 @@
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				<td>2014-03-31</td>
+				<td><a href="v4.0/v4.0.0-en.html">v4.0.0 released</a></td>
+			</tr>
 			<tr>
 				<td rowspan="3">2014-03-28</td>
 				<td><a href="v3.1/v3.1.9-en.html">v3.1.9 released</a></td>
@@ -418,7 +429,7 @@
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd" property="dateModified">
 			<dt>Date modified:&#32;</dt>
-			<dd><time>2014-03-28</time></dd>
+			<dd><time>2014-03-31</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">
