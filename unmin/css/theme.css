@@ -545,10 +545,6 @@
     border-left: 0;
   }
 
-  #gc-bar ul li a {
-    border-right: 1px solid #FFF;
-  }
-
   #gc-bar ul li:last-child a {
     border-right: 0;
   }
