@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.1-development - 2014-04-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "hy",
-	"lang-nat": "Հայերեն",
+	"lang-native": "Հայերեն",
 	all: "Բոլորը",
 	tphp: "Էջի սկիզբ",
 	load: "բեռնման ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] հանդիպումները գտել"
 	},
-	curr: "(Ընթացիկ)",
+	current: "(Ընթացիկ)",
 	hide: "Թաքցնել",
 	err: "Սխալ",
 	colon: ":",
