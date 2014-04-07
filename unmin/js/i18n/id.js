@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.1-development - 2014-04-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "id",
-	"lang-nat": "Bahasa Indonesia",
+	"lang-native": "Bahasa Indonesia",
 	all: "Semua",
 	tphp: "Halaman Atas",
 	load: "memuat ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "Ditemukan [MIXIN] kecocokan"
 	},
-	curr: "(saat ini)",
+	current: "(saat ini)",
 	hide: "Sembunyikan",
 	err: "Error",
 	colon: ":",
@@ -116,7 +116,7 @@ wb.i18nDict = {
 		"Selasa",
 		"Rabu",
 		"Kamis",
-		"Jum'at",
+		"Jum\\'at",
 		"Sabtu"
 	],
 	mnths: [

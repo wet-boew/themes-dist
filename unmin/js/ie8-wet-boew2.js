@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.0 - 2014-03-31
+ * v4.0.1-development - 2014-04-07
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3656,7 +3656,7 @@ wb.add( selector );
  * place to define variables that are common to all instances of the plugin on a
  * page.
  */
-var pluginName = "wb-ajax",
+var pluginName = "wb-data-ajax",
 	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
 		"[data-ajax-prepend], [data-ajax-replace]",
 	inited = "-inited",
@@ -3673,7 +3673,7 @@ var pluginName = "wb-ajax",
 	 */
 	init = function( $elm, ajaxType ) {
 		var url = $elm.data( "ajax-" + ajaxType ),
-			initedClass = pluginName + ajaxType + inited;
+			initedClass = pluginName + "-" + ajaxType + inited;
 
 		// Only initialize the element once for the ajaxType
 		if ( !$elm.hasClass( initedClass ) ) {
@@ -3732,7 +3732,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 				$elm[ ajaxType ]( content );
 			}
 
-			$elm.trigger( "ajax-" + ajaxType + "-loaded.wb" );
+			$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
 		}
 	}
 
@@ -4191,9 +4191,9 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @patheard
  *
- * This plugin provides the ability to add and update the favicon's on a web page. Its default behaviour is to add a mobile favicon to web pages that have a favicon defined by a `<link rel="shortcut icon">` element.
+ * This plugin provides the ability to add and update the favicon's on a web page. Its default behaviour is to add a mobile favicon to web pages that have a favicon defined by a `<link rel='icon'>` element.
  *
- * The mobile favicon's file name, rel, path and sizes can be set with data attributes on the `<link rel="shortcut icon">`:
+ * The mobile favicon's file name, rel, path and sizes can be set with data attributes on the `<link rel='icon'>`:
  *
  * -**data-filename:** filename of the mobile favicon (defaults to "favicon-mobile.png"). This will be appended to the favicon's path.
  * -**data-path:** path to the mobile favicon (defaults to using the same path as the shortcut icon).
@@ -4202,7 +4202,7 @@ wb.add( selector );
  *
  * For example, the following overides the rel and file name attributes of the mobile favicon:
  *
- *     <link href="favion.ico" rel="shortcut icon" data-rel="apple-touch-icon-precomposed" data-filename="my-mobile-favicon.ico">
+ *     <link href="favion.ico" rel='icon' data-rel="apple-touch-icon-precomposed" data-filename="my-mobile-favicon.ico">
  */
 (function( $, window, wb ) {
 "use strict";
@@ -4214,7 +4214,7 @@ wb.add( selector );
  * variables that are common to all instances of the plugin on a page.
  */
 var pluginName = "wb-favicon",
-	selector = "link[rel='shortcut icon']",
+	selector = "link[rel='icon']",
 	initEvent = "wb-init." + pluginName,
 	mobileEvent = "mobile." + pluginName,
 	iconEvent = "icon." + pluginName,
@@ -5213,8 +5213,20 @@ $document.on( "focus", ".lbx-end", function( event ) {
 	return true;
 });
 
+// Outside focus detection (for screen readers that exit the lightbox
+// outside the normal means)
+$document.on( "focusin", "body", function( event ) {
+
+	if ( extendedGlobal && $.magnificPopup.instance.currItem &&
+		$( event.target ).closest( ".mfp-wrap" ).length === 0 ) {
+
+		// Close the popup
+		$.magnificPopup.close();
+	}
+});
+
 // Event handler for closing a modal popup
-$(document).on( "click", ".popup-modal-dismiss", function( event ) {
+$( document ).on( "click", ".popup-modal-dismiss", function( event ) {
 	event.preventDefault();
 	$.magnificPopup.close();
 });
@@ -9024,7 +9036,7 @@ var pluginName = "wb-tabs",
 					.toggleClass( "glyphicon-play glyphicon-pause" );
 			$sldr.toggleClass( "playing" );
 
-			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 0 ];
+			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 1 ];
 			text.innerHTML = text.innerHTML === playText ?
 				i18nText.pause :
 				playText;
