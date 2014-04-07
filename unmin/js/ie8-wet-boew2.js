@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-02
+ * v4.0.1-development - 2014-04-07
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3656,7 +3656,7 @@ wb.add( selector );
  * place to define variables that are common to all instances of the plugin on a
  * page.
  */
-var pluginName = "wb-ajax",
+var pluginName = "wb-data-ajax",
 	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
 		"[data-ajax-prepend], [data-ajax-replace]",
 	inited = "-inited",
@@ -3673,7 +3673,7 @@ var pluginName = "wb-ajax",
 	 */
 	init = function( $elm, ajaxType ) {
 		var url = $elm.data( "ajax-" + ajaxType ),
-			initedClass = pluginName + ajaxType + inited;
+			initedClass = pluginName + "-" + ajaxType + inited;
 
 		// Only initialize the element once for the ajaxType
 		if ( !$elm.hasClass( initedClass ) ) {
@@ -3732,7 +3732,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 				$elm[ ajaxType ]( content );
 			}
 
-			$elm.trigger( "ajax-" + ajaxType + "-loaded.wb" );
+			$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
 		}
 	}
 
@@ -5213,8 +5213,20 @@ $document.on( "focus", ".lbx-end", function( event ) {
 	return true;
 });
 
+// Outside focus detection (for screen readers that exit the lightbox
+// outside the normal means)
+$document.on( "focusin", "body", function( event ) {
+
+	if ( extendedGlobal && $.magnificPopup.instance.currItem &&
+		$( event.target ).closest( ".mfp-wrap" ).length === 0 ) {
+
+		// Close the popup
+		$.magnificPopup.close();
+	}
+});
+
 // Event handler for closing a modal popup
-$(document).on( "click", ".popup-modal-dismiss", function( event ) {
+$( document ).on( "click", ".popup-modal-dismiss", function( event ) {
 	event.preventDefault();
 	$.magnificPopup.close();
 });

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-02
+ * v4.0.1-development - 2014-04-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -16,7 +16,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "nl",
-	"lang-nat": "Nederlands",
+	"lang-native": "Nederlands",
 	all: "Allen",
 	tphp: "Bovenkant pagina",
 	load: "het laden van ...",
@@ -26,7 +26,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "[MIXIN] gevonden zoekresultaten"
 	},
-	curr: "(actueel)",
+	current: "(actueel)",
 	hide: "Verbergen",
 	err: "Fout",
 	colon: ":",
@@ -166,11 +166,11 @@ wb.i18nDict = {
 	sortAsc: ": activeren voor oplopende sortering",
 	sortDesc: ": activeren voor aflopende sortering",
 	emptyTbl: "Geen gegevens beschikbaar in de tabel",
-	infoEntr: "Toon _START_ tot _END_ van _TOTAL_ lemma's",
-	infoEmpty: "Toon 0 tot 0 van 0 lemma's",
-	infoFilt: "(gefilterd uit _MAX_ totaal aantal lemma's)",
+	infoEntr: "Toon _START_ tot _END_ van _TOTAL_ lemma\\'s",
+	infoEmpty: "Toon 0 tot 0 van 0 lemma\\'s",
+	infoFilt: "(gefilterd uit _MAX_ totaal aantal lemma\\'s)",
 	info1000: "&#160;",
-	lenMenu: "Toon _MENU_ lemma's",
+	lenMenu: "Toon _MENU_ lemma\\'s",
 	filter: "Artikelen filteren",
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
