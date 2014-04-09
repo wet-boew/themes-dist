@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-07
+ * v4.0.1-development - 2014-04-09
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3904,7 +3904,8 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-pic",
+var imgClass,
+	pluginName = "wb-pic",
 	selector = "[data-pic]",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init." + pluginName,
@@ -3923,6 +3924,10 @@ var pluginName = "wb-pic",
 		if ( !$elm.hasClass( initedClass ) ) {
 			wb.remove( selector );
 			$elm.addClass( initedClass );
+
+			// Store the class attribute of the plugin element.  It
+			// will be added to the image created by the plugin.
+			imgClass = $elm.data( "class" ) || "";
 
 			$elm.trigger( picturefillEvent );
 		}
@@ -3954,9 +3959,15 @@ var pluginName = "wb-pic",
 			if ( !img ) {
 				img = $document[ 0 ].createElement( "img" );
 				img.alt = elm.getAttribute( "data-alt" );
+				img.className = imgClass;
 			}
 			img.src = matchedElm.getAttribute( "data-src" );
 			matchedElm.appendChild( img );
+
+			// Fixes bug with IE8 constraining the height of the image
+			// when the .img-responsive class is used.
+			img.removeAttribute( "width" );
+			img.removeAttribute( "height" );
 
 		// No match and an image exists: delete it
 		} else if ( img ) {
@@ -5439,7 +5450,7 @@ var pluginName = "wb-menu",
 				sectionHtml + "</ul></nav>";
 		}
 
-		return panel.replace( /list-group-item/gi, "" ) + "</div>";
+		return panel.replace( /['"]?list-group-item['"]?/gi, "\"\"" ) + "</div>";
 	},
 
 	/**
@@ -8407,6 +8418,40 @@ var pluginName = "wb-tables",
 					$.fn.dataTableExt.oSort[ "html-desc" ] = i18nSortDescend;
 					$.fn.dataTableExt.oSort[ "string-case-asc" ] = i18nSortAscend;
 					$.fn.dataTableExt.oSort[ "string-case-desc" ] = i18nSortDescend;
+
+					/*
+					 * Extend sorting support
+					 */
+					$.extend( $.fn.dataTableExt.oSort, {
+
+						// Formatted number sorting
+						// Source: datatables.net/plug-ins/sorting#formatted_numbers
+						"formatted-num-pre": function( a ) {
+							a = ( a === "-" || a === "" ) ? 0 : a.replace( /[^\d\-\.]/g, "" );
+							return parseFloat( a );
+						},
+						"formatted-num-asc": function( a, b ) {
+							return a - b;
+						},
+						"formatted-num-desc": function( a, b ) {
+							return b - a;
+						}
+					} );
+
+					/*
+					 * Extend type detection
+					 */
+					// Formatted numbers detection
+					// Source: http://datatables.net/plug-ins/type-detection#formatted_numbers
+					$.fn.dataTableExt.aTypes.unshift(
+						function( sData ) {
+							var deformatted = sData.replace( /[^\d\-\.\/a-zA-Z]/g, "" );
+							if ( $.isNumeric( deformatted ) || deformatted === "-" ) {
+								return "formatted-num";
+							}
+							return null;
+						}
+					);
 
 					$elm.dataTable( $.extend( true, {}, defaults, window[ pluginName ], wb.getData( $elm, pluginName ) ) );
 				}
