@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-09
+ * v4.0.1-development - 2014-04-10
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -9856,6 +9856,8 @@ img.mfp-img {
   Multimedia Player Code
  */
 
+.wb-mltmd.audio .wb-mm-ovrly,
+.wb-mltmd.audio .btn.cc,
 .xxsmallview .wb-mm-prgrss,
 .mediumview .col-md-1 .wb-mm-prgrss,
 .mediumview .col-md-2 .wb-mm-prgrss,
@@ -9939,7 +9941,11 @@ img.mfp-img {
 
 .wb-mltmd progress:focus,
 .wb-mltmd .btn:focus {
-  outline: #fff thin dotted;
+  outline: 1px dotted #fff;
+}
+
+.wb-mltmd.audio .lastpnl {
+  width: 3em;
 }
 
 .wb-mltmd .display {
@@ -10085,19 +10091,19 @@ img.mfp-img {
   /* Important Thing */
   -webkit-appearance: none;
   border: 0;
-  /* DO NOT combine the following selector because WebKit does not support it */
-  /* Now the value part */
+  color: #176ca7;
+  background: #fff;
 }
 
 .wb-mm-ctrls progress::-webkit-progress-bar {
   background: #fff;
 }
 
-.wb-mm-ctrls progress::-moz-progress-bar {
-  background: #fff;
+.wb-mm-ctrls progress::-webkit-progress-value {
+  background: #176ca7;
 }
 
-.wb-mm-ctrls progress::-webkit-progress-value {
+.wb-mm-ctrls progress::-moz-progress-bar {
   background: #176ca7;
 }
 
@@ -10367,11 +10373,6 @@ ol.linenums li {
   background-position: 0 -128px;
 }
 
-.wb-share .dzone:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -160px;
-}
-
 .wb-share .email:before {
   display: inline-block;
   font-family: "Glyphicons Halflings";
@@ -10382,67 +10383,67 @@ ol.linenums li {
 
 .wb-share .facebook:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -192px;
+  background-position: 0 -160px;
 }
 
 .wb-share .feed:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -224px;
+  background-position: 0 -192px;
 }
 
 .wb-share .gmail:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -256px;
+  background-position: 0 -224px;
 }
 
 .wb-share .googleplus:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -288px;
+  background-position: 0 -256px;
 }
 
 .wb-share .linkedin:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -320px;
+  background-position: 0 -288px;
 }
 
 .wb-share .myspace:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -352px;
+  background-position: 0 -320px;
 }
 
 .wb-share .pinterest:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -384px;
+  background-position: 0 -352px;
 }
 
 .wb-share .reddit:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -416px;
+  background-position: 0 -384px;
 }
 
 .wb-share .stumbleupon:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -448px;
+  background-position: 0 -416px;
 }
 
 .wb-share .technorati:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -480px;
+  background-position: 0 -448px;
 }
 
 .wb-share .tumblr:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -512px;
+  background-position: 0 -480px;
 }
 
 .wb-share .twitter:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -544px;
+  background-position: 0 -512px;
 }
 
 .wb-share .yahoomail:before {
   background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -576px;
+  background-position: 0 -544px;
 }
 
 .wb-share .shr-pg {
