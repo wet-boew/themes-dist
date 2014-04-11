@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-09
+ * v4.0.1-development - 2014-04-11
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -6102,12 +6102,13 @@ var pluginName = "wb-mltmd",
 			}
 
 			if ( template === undef ) {
+				template = "";
 				$document.trigger({
 					type: "ajax-fetch.wb",
 					element: selector,
 					fetch: wb.getPath( "/assets" ) + "/mediacontrols.html"
 				});
-			} else {
+			} else if ( template !== "" ) {
 				$( eventTarget ).trigger({
 					type: "templateloaded.wb"
 				});
@@ -6564,7 +6565,7 @@ $document.on( initializedEvent, selector, function() {
 		captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
 		id = $this.attr( "id" ),
 		mId = $media.attr( "id" ) || id + "-md",
-		type = $media.is( "video" ) ? "video" : "audio",
+		type = $media.is( "audio" ) ? "audio" : "video",
 		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
 		height = type === "video" ? $media.attr( "height" ) || $media.height() : 0,
 		data = $.extend({
@@ -6582,6 +6583,8 @@ $document.on( initializedEvent, selector, function() {
 	if ( $media.attr( "id" ) === undef ) {
 		$media.attr( "id", mId );
 	}
+
+	$this.addClass( type );
 
 	$this.data( "properties", data );
 
@@ -6745,9 +6748,6 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 
 	$media.after( tmpl( $this.data( "template" ), data ) );
 	$overlay = $media.next().find( ".wb-mm-ovrly" ).after( $media );
-	if ( type !== "video" ) {
-		$overlay.remove();
-	}
 
 	$player = $( "#" + data.mId );
 	data.player = $player.is( "object" ) ? $player.children( ":first-child" ) : $player;
@@ -8125,10 +8125,6 @@ var pluginName = "wb-share",
 			diigo: {
 				name: "Diigo",
 				url: "http://www.diigo.com/post?url={u}&amp;title={t}"
-			},
-			dzone: {
-				name: "DZone",
-				url: "http://www.dzone.com/links/add.html?url={u}&amp;title={t}"
 			},
 			facebook: {
 				name: "Facebook",
