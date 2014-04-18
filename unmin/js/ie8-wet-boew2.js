@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-15
+ * v4.0.1-development - 2014-04-18
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5525,7 +5525,7 @@ var pluginName = "wb-menu",
 			// Add the site information
 			if ( $info.length !== 0 ) {
 				allProperties.push([
-					$info.find( "h3" ),
+					$info.find( "h3, a" ).not( "section a" ),
 					"info-pnl",
 					$info.find( "h2" ).html()
 				]);
@@ -6541,10 +6541,14 @@ var pluginName = "wb-mltmd",
 	},
 
 	onResize = function() {
-		$( selector + " object, " + selector + " iframe" ).trigger( resizeEvent );
+		$( selector + " object, " + selector + " iframe, " +  selector + " video" ).trigger( resizeEvent );
 	};
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
+
+$window.on( "resize", onResize );
+
+$document.on( "ready", onResize );
 
 $document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
 	var $this = $( this );
@@ -6649,7 +6653,6 @@ $document.on( fallbackEvent, selector, function() {
 		"<param name='wmode' value='opaque'/>" +
 		data.poster + "</object>" );
 	$this.data( "properties", data );
-	$window.on( "resize", onResize );
 	$this.trigger( renderUIEvent, type );
 });
 
@@ -6701,7 +6704,6 @@ $document.on( youtubeEvent, selector, function() {
 	data.ytPlayer = ytPlayer;
 
 	$this.data( "properties", data );
-	$window.on( "resize", onResize );
 	$this.trigger( renderUIEvent, "youtube" );
 });
 
@@ -6993,16 +6995,24 @@ $document.on( "progress", selector, function( event ) {
 });
 
 $document.on( resizeEvent, selector, function( event ) {
-	var $player = $( event.target ),
-		height = $player.attr( "height" ),
-		width = $player.attr( "width" ),
-		newHeight = Math.round( $player.width() * height / width );
+	var player = event.target,
+		$player = $( player ),
+		ratio, newHeight;
 
-	//TODO: Remove this when captions works in chromeless api with controls
-	if ( $player.is( "iframe") ) {
-		newHeight += 30;
+	if ( player.videoWidth === 0 ) {
+		ratio = $player.attr( "height" ) / $player.attr( "width" );
+
+		// Calculate the new height based on the specified ratio or assume a default 16:9 ratio
+		newHeight = Math.round( $player.width() * ( !isNaN( ratio ) ? ratio : 0.5625 ) );
+
+		//TODO: Remove this when captions works in chromeless api with controls
+		if ( $player.is( "iframe") ) {
+			newHeight += 30;
+		}
+		$player.css( "height", newHeight + "px" );
+	} else {
+		$player.css( "height", "" );
 	}
-	$player.attr( "style", "height:" + newHeight + "px" );
 });
 
 wb.add( selector );
@@ -8441,7 +8451,9 @@ var pluginName = "wb-tables",
 					// Source: http://datatables.net/plug-ins/type-detection#formatted_numbers
 					$.fn.dataTableExt.aTypes.unshift(
 						function( sData ) {
-							var deformatted = sData.replace( /[^\d\-\.\/a-zA-Z]/g, "" );
+
+							// Strip off HTML tags and all non-alpha-numeric characters (except minus sign)
+							var deformatted = sData.replace( /<[^>]*>/g, "" ).replace( /[^\d\-\/a-zA-Z]/g, "" );
 							if ( $.isNumeric( deformatted ) || deformatted === "-" ) {
 								return "formatted-num";
 							}
