@@ -469,10 +469,6 @@
     border-right: 1px solid #999999;
   }
 
-  #wb-sm ul.menu> li> a:hover .expicon {
-    border-top-color: black;
-  }
-
   #wb-sm ul.menu> li:last-child {
     border-left: 1px solid #999999;
   }
