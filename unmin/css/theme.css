@@ -463,6 +463,7 @@
     border-right: 1px solid #CCC;
   }
 
+  #wb-sm .nvbar ul.menu > li > a:hover,
   #wb-sm .active a,
   #wb-sm .active summary,
   #wb-sm .sm,
@@ -621,6 +622,10 @@
   #wb-sm .nvbar ul.menu > li {
     padding: 0;
     border-right: 1px solid #999;
+  }
+
+  #wb-sm .nvbar ul.menu > li > a:hover .expicon {
+    border-top-color: #000;
   }
 
   #wb-sm .nvbar ul.menu > li.active {
