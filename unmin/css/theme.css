@@ -1367,7 +1367,6 @@ header .brand a {
   #wb-sm .menu> li a:hover,
   #wb-sm .menu> li a:focus {
     background: #243850 !important;
-    text-decoration: none;
     text-shadow: none;
   }
 
