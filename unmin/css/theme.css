@@ -901,24 +901,6 @@ main .btn-primary {
   color: black;
 }
 
-#archived {
-  background-color: #ffffcc;
-  border: 1px solid #ffdd00;
-}
-
-#archived p {
-  float: none !important;
-  padding-bottom: 10px;
-  padding-top: 10px;
-}
-
-#archived h2 {
-  background-color: #ffdd00;
-  color: black;
-  margin: 0;
-  padding: 2px 10px;
-}
-
 /*
  * Equal Heights overrides
  */
