@@ -624,10 +624,6 @@
     border-right: 1px solid #999;
   }
 
-  #wb-sm .nvbar ul.menu > li > a:hover .expicon {
-    border-top-color: #000;
-  }
-
   #wb-sm .nvbar ul.menu > li.active {
     border-right-color: #CCC;
   }
