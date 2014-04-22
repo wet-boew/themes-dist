@@ -359,6 +359,7 @@
     background-color: white;
   }
 
+  #wb-sm ul.menu> li> a:hover,
   #wb-sm .active a,
   #wb-sm .active summary,
   #wb-sm .sm,
@@ -466,6 +467,10 @@
   #wb-sm ul.menu> li {
     padding: 0;
     border-right: 1px solid #999999;
+  }
+
+  #wb-sm ul.menu> li> a:hover .expicon {
+    border-top-color: black;
   }
 
   #wb-sm ul.menu> li:last-child {
