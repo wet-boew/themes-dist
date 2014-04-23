@@ -23,12 +23,12 @@
  */
 
 #wb-lng .curr span {
-  height: 1px;
-  width: 1px;
   clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
   overflow: hidden;
   position: absolute;
-  margin: 0;
+  width: 1px;
 }
 
 /*
@@ -482,7 +482,7 @@
     display: block;
     color: white;
     font-weight: 700;
-    padding: 0.48em 1.17em 0.48em 0.79em;
+    padding: 0.48em 0.79em;
     text-decoration: none;
   }
 
