@@ -491,11 +491,11 @@ header .brand img {
   border-bottom: 3px solid #666666;
   margin: 0;
   padding: 15px;
+  font-size: 1em;
 }
 
 #wb-sec h3 a {
   color: #333333;
-  font-size: 0.8em;
   text-decoration: none;
 }
 

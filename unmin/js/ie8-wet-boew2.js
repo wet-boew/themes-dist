@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.1-development - 2014-04-22
+ * v4.0.1 - 2014-04-23
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5566,7 +5566,7 @@ var pluginName = "wb-menu",
 			$menu[ 0 ].setAttribute( "tabindex", "0" );
 			$menu
 				.filter( "[href^=#]" )
-					.append( "<span class='expicon'></span>" );
+					.append( "<span class='expicon glyphicon glyphicon-chevron-down'></span>" );
 
 			drizzleAria( $menu );
 		}
@@ -6527,6 +6527,7 @@ var pluginName = "wb-mltmd",
 			break;
 		case 1:
 			$target.trigger( "canplay" );
+			$target.trigger( "durationchange" );
 			$target.trigger( "play" );
 			target.timeline = setInterval( timeline, 250 );
 			break;
@@ -6766,7 +6767,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 	$this.data( "properties", data );
 
 	// Trigger the duration change for cases where the event was called before the event binding
-	if ( !isNaN( this.player( "getDuration" ) ) && type !== "youtube" ) {
+	if ( type !== "youtube" && !isNaN( this.player( "getDuration" ) ) ) {
 		data.player.trigger( "durationchange" );
 	}
 
