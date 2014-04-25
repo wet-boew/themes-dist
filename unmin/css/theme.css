@@ -489,9 +489,9 @@ header .brand img {
 #wb-sec h3 {
   border: 1px solid #dddddd;
   border-bottom: 3px solid #666666;
+  font-size: 1em;
   margin: 0;
   padding: 15px;
-  font-size: 1em;
 }
 
 #wb-sec h3 a {
