@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.2-development - 2014-04-23
+ * v4.0.2-development - 2014-04-30
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -14,12 +14,6 @@
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-/*
- *	Font scales
- */
-/*
- *	Overrides for Bootstrap variables
  */
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
@@ -4606,11 +4600,10 @@ a {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: 700; }
 
-h1, .h1 {
-  margin-top: 0; }
-
-h2, .h2 {
+h1, .h1, h2, .h2 {
   margin-top: 38px; }
+
+
 
 h3, .h3 {
   margin-top: 32px; }
@@ -5155,12 +5148,6 @@ blockquote {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-/*
- *	Font scales
- */
-/*
- *	Overrides for Bootstrap variables
- */
 .opct-100 {
   opacity: 1; }
 
@@ -5430,10 +5417,10 @@ details[open] {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn {
+.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn, .cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn {
   position: relative; }
 
-.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn {
+.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn, .cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn {
   display: inline-block;
   margin: 10px 5px; }
 
@@ -5490,32 +5477,61 @@ details[open] {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-.cal-cnt .cal-hd, .cal-cnt .cal-nxtmnth.active:hover, .cal-cnt .cal-nxtmnth.active:focus, .cal-cnt .cal-prvmnth.active:hover, .cal-cnt .cal-prvmnth.active:focus, .cal-currday {
-  color: #fff; }
+.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn, .cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn {
+  position: relative; }
 
-.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr {
-  color: #000; }
+.cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn, .cal-cnt .cal-goto-mnth, .cal-cnt .cal-goto-yr, .cal-cnt .cal-goto-btn {
+  display: inline-block;
+  margin: 10px 5px; }
 
-.cal-cnt .cal-goto-lnk, .cal-days a:hover, .cal-days a:focus, .cal-currday a {
-  color: #fff !important; }
+.cal-cnt {
+  background: #fff;
+  text-shadow: none;
+  width: 18em; }
+  .cal-cnt * {
+    font-size: 100%; }
+  .cal-cnt .cal-hd {
+    overflow: hidden;
+    padding: 0.5em 4px;
+    position: relative;
+    text-align: center; }
+  .cal-cnt .cal-mnth {
+    font-size: 110%; }
+  .cal-cnt .cal-goto {
+    display: inline-block; }
+  .cal-cnt .cal-goto-btn input {
+    min-width: 5em;
+    padding: 0.1em 0.2em; }
+  .cal-cnt td {
+    border: 1px solid #aaa;
+    padding: 0;
+    text-align: center; }
 
-.cal-cnt .cal-hd, .cal-days a:hover, .cal-days a:focus {
-  background: #333; }
+.cal-nxtmnth, .cal-prvmnth {
+  background: none;
+  border: 0;
+  display: inline-block;
+  height: 2.5em;
+  width: 2.5em; }
+  .cal-nxtmnth:focus, .cal-prvmnth:focus {
+    outline: 1px dotted;
+    outline-offset: -2px; }
+  .cal-nxtmnth[disabled], .cal-prvmnth[disabled] {
+    opacity: 0.2; }
 
-.cal-currday, .cal-currday a {
-  background-color: #333; }
+.cal-wd {
+  border: 1px solid #333;
+  color: #fff;
+  padding: 0.5em 0;
+  text-align: center; }
 
-.cal-cnt .cal-wd {
-  background: #555;
-  border-color: #333; }
-.cal-cnt .cal-hd {
-  font-weight: 700; }
-.cal-cnt .cal-nxtmnth.active, .cal-cnt .cal-prvmnth.active {
-  color: #ccc; }
-
-.cal-days a {
-  color: #111; }
-
+.cal-days a, .cal-days div {
+  display: block;
+  height: 100%;
+  padding: 0.5em 0;
+  width: 100%; }
+.cal-days .cal-currday {
+  font-weight: bolder; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -5534,12 +5550,6 @@ figure .pieLabel {
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-/*
- *	Font scales
- */
-/*
- *	Overrides for Bootstrap variables
  */
 .fn-lnk:hover, .fn-lnk:focus, .wb-fnote dd:focus .fn-rtn a, .wb-fnote .fn-rtn a:hover, .wb-fnote .fn-rtn a:focus {
   background-color: #555;
@@ -5617,12 +5627,6 @@ figure .pieLabel {
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-/*
- *	Font scales
- */
-/*
- *	Overrides for Bootstrap variables
  */
 /* Magnific Popup CSS */
 .mfp-bg {
@@ -6336,6 +6340,9 @@ img.mfp-img {
   border: 0;
   border-radius: 0;
   display: none;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
   z-index: 1050; }
   .wb-overlay.wb-inview {
     display: block; }
@@ -6748,12 +6755,6 @@ table.dataTable {
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-/*
- *	Font scales
- */
-/*
- *	Overrides for Bootstrap variables
  */
 /**
  * Shared variables
@@ -7193,17 +7194,15 @@ datalist {
   display: none; }
 
 /*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+  WET-BOEW
+  @title: Details/summary polyfill pre-Modernizr CSS
  */
+summary {
+  display: block !important; }
+
 details:not([open]) > * {
   display: none; }
-details summary {
-  display: block !important; }
-  details summary:hover {
-    cursor: pointer; }
 
-/* Details/summary polyfill */
 .wb-disable details > * {
   display: block !important; }
 
@@ -7669,6 +7668,13 @@ details summary {
  */
   /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
+*/
+  /*
+  Multimedia Player Code (print view)
+ */
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
   /* Use higher contrast and text-weight for printable form. */
@@ -7679,10 +7685,6 @@ details summary {
   /**
  * Print styles
  */
-  /*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
-*/
   .fn-lnk, .wb-fnote .fn-rtn a {
     background-color: transparent;
     border: 0;
@@ -7699,6 +7701,10 @@ details summary {
       width: 100%; }
     .wb-fnote .fn-rtn {
       overflow: visible; }
+  .wb-geomap-detail, .olControlMousePosition, .olControlPanZoomBar {
+    visibility: hidden; }
+  .wb-mm-ctrls, .wb-mm-ovrly {
+    display: none; }
   .kwd, .typ, .tag {
     font-weight: 700; }
   .kwd, .tag {
@@ -7720,6 +7726,4 @@ details summary {
     display: block !important;
     opacity: 1 !important; }
     .wb-tabs [role="tabpanel"] figcaption {
-      position: static; }
-  .wb-geomap-detail, .olControlMousePosition, .olControlPanZoomBar {
-    visibility: hidden; } }
+      position: static; } }
