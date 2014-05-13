@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.2-development - 2014-05-02
+ * v4.0.2-development - 2014-05-13
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -4335,7 +4335,7 @@ button.close {
   position: static;
   width: inherit; }
 
-#mb-pnl .modal-body h2 {
+.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #mb-pnl .modal-body h2, table.dataTable thead .sorting_disabled .sorting-icons:after, table.dataTable thead .sorting_disabled .sorting-icons:before, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
   display: none; }
 
 .wb-menu .sm.open li {
@@ -4410,6 +4410,9 @@ a {
 .btn-danger:visited {
   color: #fff; }
 
+.dl-horizontal dt {
+  white-space: normal; }
+
 .dropdown-menu > li > a:visited {
   color: #333333; }
 
@@ -4453,19 +4456,6 @@ a {
     position: absolute; }
 .alert > strong:first-child, .alert > em:first-child, .alert > span:first-child {
   display: inline-block; }
-
-[dir=rtl] {
-  /*
-	 * List unstyled RTL fix
-	 */ }
-  [dir=rtl] .alert > :first-child {
-    margin-left: auto;
-    margin-right: 1.2em; }
-    [dir=rtl] .alert > :first-child:before {
-      margin-left: auto;
-      margin-right: -1.3em; }
-  [dir=rtl] .list-unstyled, [dir=rtl] .list-inline {
-    padding-right: 0; }
 
 .label-default, .label-default[href]:hover, .label-default[href]:focus, .label-default[href]:active, .label-primary, .label-primary[href]:hover, .label-primary[href]:focus, .label-primary[href]:active, .label-success, .label-success[href]:hover, .label-success[href]:focus, .label-success[href]:active, .alert-success, .label-info, .label-info[href]:hover, .label-info[href]:focus, .label-info[href]:active, .alert-info, .label-warning, .label-warning[href]:hover, .label-warning[href]:focus, .label-warning[href]:active, .alert-warning, .label-danger, .label-danger[href]:hover, .label-danger[href]:focus, .label-danger[href]:active, .alert-danger {
   color: #000; }
@@ -4608,12 +4598,32 @@ blockquote {
  *	  * Add left/right arrows to previous/next buttons
  *	  * Increase size of the pagination buttons
  */
-.pagination [rel="prev"]:before, .pager [rel="prev"]:before {
-  content: "← "; }
-.pagination [rel="next"]:after, .pager [rel="next"]:after {
-  content: " →"; }
-.pagination > li > a, .pagination > li > span, .pager > li > a, .pager > li > span {
+.pagination [rel="prev"]:before, .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:before, [dir=rtl] .pager [rel="next"]:before, .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:before, .pagination [rel="next"]:after, .pager [rel="next"]:after, [dir=rtl] .pagination [rel="prev"]:after, [dir=rtl] .pager [rel="prev"]:after, .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:after, table.dataTable thead .sorting-icons:before, table.dataTable thead .sorting-icons:after {
+  content: " ";
+  font-family: "Glyphicons Halflings";
+  font-weight: 400;
+  line-height: 1em;
+  position: relative;
+  top: 0.1em; }
+
+.pagination [rel="prev"]:before, .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:before, [dir=rtl] .pager [rel="next"]:before, .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:before {
+  content: "\e091";
+  margin-right: 0.5em; }
+
+.pagination [rel="next"]:after, .pager [rel="next"]:after, [dir=rtl] .pagination [rel="prev"]:after, [dir=rtl] .pager [rel="prev"]:after, .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:after {
+  content: "\e092";
+  margin-left: 0.5em; }
+
+.pagination > li > a, .pager > li > a {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 0.5em;
   padding: 10px 16px; }
+.pagination > li.active > a, .pager > li.active > a {
+  cursor: default; }
+.pagination > li.disabled + li > a, .pager > li.disabled + li > a {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px; }
 
 .pager > li > a {
   text-decoration: none; }
@@ -4628,6 +4638,35 @@ blockquote {
   border-style: outset; }
   .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
     border-style: solid; }
+
+/*
+ *  Right-to-left support
+ */
+[dir=rtl] .alert > :first-child {
+  margin-left: auto;
+  margin-right: 1.2em; }
+  [dir=rtl] .alert > :first-child:before {
+    margin-left: auto;
+    margin-right: -1.3em; }
+[dir=rtl] .list-unstyled, [dir=rtl] .list-inline {
+  padding-right: 0; }
+[dir=rtl] .pagination [rel="prev"], [dir=rtl] .pager [rel="prev"] {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px; }
+[dir=rtl] .pagination [rel="next"], [dir=rtl] .pager [rel="next"] {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0; }
+[dir=rtl] .pagination > li, [dir=rtl] .pager > li {
+  float: right; }
+  [dir=rtl] .pagination > li.disabled + li > a, [dir=rtl] .pager > li.disabled + li > a {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px; }
 
 /*
   WET-BOEW
@@ -6260,167 +6299,258 @@ ol.linenums {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
  */
-.paginate_disabled_previous:before, .paginate_enabled_previous:before, .paginate_disabled_next:after, .paginate_enabled_next:after, .sorting:after, .sorting_asc:after, .sorting_desc:after {
-  content: " ";
-  display: inline-block;
-  font-family: "Glyphicons Halflings";
-  font-weight: 400; }
-
-table.dataTable, .dataTables_wrapper, .dataTables_info, .dataTables_scroll {
+table.dataTable, .dataTables_wrapper .dataTables_scroll, .ie8 .dataTables_wrapper .dataTables_scroll {
   clear: both; }
 
-table.dataTable thead th:active, table.dataTable thead td:active, .paginate_disabled_previous:active, .paginate_enabled_previous:active, .paginate_disabled_next:active, .paginate_enabled_next:active, .paging_full_numbers a:active {
+table.dataTable thead th:active, table.dataTable thead td:active {
   outline: none; }
 
-.dataTables_length, .dataTables_info {
-  display: inline-block; }
-
-
-table.dataTable td.center, table.dataTable td.dataTables_empty {
-  text-align: center; }
-
-.dataTables_filter, .dataTables_paginate {
-  float: right;
-  text-align: right; }
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+  font-weight: 400; }
 
 table.dataTable thead th, table.dataTable tfoot th {
-  border-bottom: 1px solid #000;
-  font-weight: 700;
-  padding-right: 1.5em; }
+  font-weight: 700; }
 
-.sorting, .sorting_asc, .sorting_desc {
-  cursor: pointer; }
+table.dataTable thead th, table.dataTable thead td, table.dataTable tfoot th, table.dataTable tfoot td, table.dataTable.no-footer, .dataTables_wrapper.no-footer .dataTables_scrollBody {
+  border-bottom: 1px solid #111; }
 
-table.dataTable {
-  margin: 0 auto;
-  width: 100% !important; }
-  table.dataTable tr.odd {
-    background-color: #f0fcff; }
-    table.dataTable tr.odd td.sorting_1 {
-      background-color: #e6f1f4; }
-    table.dataTable tr.odd td.sorting_2 {
-      background-color: #dadcff; }
-    table.dataTable tr.odd td.sorting_3 {
-      background-color: #e0e2ff; }
-  table.dataTable tr.even {
-    background-color: #fff; }
-    table.dataTable tr.even td.sorting_1 {
-      background-color: #e8f6f6; }
-    table.dataTable tr.even td.sorting_2 {
-      background-color: #f2f3ff; }
-    table.dataTable tr.even td.sorting_3 {
-      background-color: #f9f9ff; }
-
-.dataTables_wrapper {
-  position: relative; }
-
-
-.dataTables_filter input::-ms-clear {
-  display: none; }
-
-
-
-/* Two button pagination - previous / next */
-.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
-  color: #111 !important;
-  cursor: pointer; }
-
-.paginate_disabled_next, .paginate_disabled_previous, .sorting_asc_disabled, .sorting_desc_disabled {
-  color: #757575 !important;
-  cursor: default;
-  text-decoration: none; }
-
-
-
-.paginate_disabled_previous, .paginate_enabled_previous {
-  padding-right: 5px; }
-  .paginate_disabled_previous:before, .paginate_enabled_previous:before {
-    content: "\e091";
-    margin-right: 5px; }
-
-.paginate_disabled_next, .paginate_enabled_next {
-  padding-left: 5px; }
-  .paginate_disabled_next:after, .paginate_enabled_next:after {
-    content: "\e092";
-    margin-left: 5px; }
-
-/* Full number pagination */
-.paging_full_numbers a.paginate_button, .paging_full_numbers a.paginate_active {
-  border: 1px solid #aaa;
-  color: #333 !important;
-  cursor: pointer;
-  margin: 0 3px;
-  padding: 2px 5px; }
-
-.paging_full_numbers {
-  height: 22px;
-  line-height: 22px; }
-  .paging_full_numbers a.paginate_button {
-    background-color: #ddd; }
-    .paging_full_numbers a.paginate_button:hover, .paging_full_numbers a.paginate_button:focus {
-      background-color: #ccc;
-      text-decoration: none !important; }
-  .paging_full_numbers a.paginate_active {
-    background-color: #99b3ff; }
-
-/*
- * Processing indicator
- */
-.dataTables_processing {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  color: #999;
-  font-size: 14px;
-  height: 30px;
-  left: 50%;
-  margin-left: -125px;
-  margin-top: -15px;
-  padding: 14px 0 2px;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 250px; }
-
-/*
- * Sorting
- */
-.sorting:after, .sorting_asc:after, .sorting_desc:after {
-  margin-left: 5px;
-  position: absolute; }
-
-.sorting_asc, .sorting_desc {
-  background: #e7e7e7; }
-
-.sorting:after {
-  color: #757575;
-  content: "\e151"; }
-
-.sorting_asc:after {
-  content: "\e152"; }
-
-.sorting_desc:after {
-  content: "\e151"; }
-
-
-
-/*
- * Scrolling
- */
-
-.dataTables_scrollBody {
-  -webkit-overflow-scrolling: touch; }
-
-[dir=rtl] .sorting, [dir=rtl] .sorting_asc, [dir=rtl] .sorting_desc {
+table.dataTable th.right, table.dataTable td.right {
   text-align: right; }
 
-[dir=rtl] .sorting:after, [dir=rtl] .sorting_asc:after, [dir=rtl] .sorting_desc:after {
+table.dataTable th.center, table.dataTable td.center, table.dataTable td.dataTables_empty {
+  text-align: center; }
+
+table.dataTable.rowborder tbody th, table.dataTable.rowborder tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
+  border-top: 1px solid #ddd; }
+
+table.dataTable.rowborder tbody tr:first-child th, table.dataTable.rowborder tbody tr:first-child td, table.dataTable.display tbody tr:first-child th, table.dataTable.display tbody tr:first-child td, table.dataTable.cell-border tbody tr:first-child th, table.dataTable.cell-border tbody tr:first-child td {
+  border-top: 0; }
+
+table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd; }
+
+table.dataTable.cell-border tbody tr th:first-child, table.dataTable.cell-border tbody tr td:first-child {
+  border-left: 1px solid #ddd; }
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing {
+  color: #333; }
+
+table.dataTable.display tbody tr:hover.selected > .sorting_1, table.dataTable.display tbody tr.odd:hover.selected > .sorting_1, table.dataTable.display tbody tr.even:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_1 {
+  background-color: #a1aec7; }
+
+table.dataTable.display tbody tr:hover.selected > .sorting_2, table.dataTable.display tbody tr.odd:hover.selected > .sorting_2, table.dataTable.display tbody tr.even:hover.selected > .sorting_2, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_2, table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_2, table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_2 {
+  background-color: #a2afc8; }
+
+table.dataTable.display tbody tr:hover.selected > .sorting_3, table.dataTable.display tbody tr.odd:hover.selected > .sorting_3, table.dataTable.display tbody tr.even:hover.selected > .sorting_3, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_3, table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_3, table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_3 {
+  background-color: #a4b2cb; }
+
+table.dataTable.display tbody tr.odd.selected > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_1 {
+  background-color: #a6b3cd; }
+
+table.dataTable.display tbody tr.odd.selected > .sorting_2, table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_2 {
+  background-color: #a7b5ce; }
+
+table.dataTable.display tbody tr.odd.selected > .sorting_3, table.dataTable.order-column.stripe tbody tr.odd.selected > .sorting_3 {
+  background-color: #a9b6d0; }
+
+table.dataTable.display tbody tr:hover.selected, table.dataTable.display tbody tr.odd:hover.selected, table.dataTable.display tbody tr.even:hover.selected, table.dataTable.hover tbody tr:hover.selected, table.dataTable.hover tbody tr.odd:hover.selected, table.dataTable.hover tbody tr.even:hover.selected {
+  background-color: #a9b7d1; }
+
+table.dataTable.display tbody tr.odd.selected, table.dataTable.stripe tbody tr.odd.selected {
+  background-color: #abb9d3; }
+
+table.dataTable.display tbody tr.even.selected > .sorting_1, table.dataTable.display tbody tr.selected > .sorting_1, table.dataTable.display tbody tr.selected > .sorting_2, table.dataTable.display tbody tr.selected > .sorting_3, table.dataTable.order-column tbody tr.selected > .sorting_1, table.dataTable.order-column tbody tr.selected > .sorting_2, table.dataTable.order-column tbody tr.selected > .sorting_3, table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_1 {
+  background-color: #acbad4; }
+
+table.dataTable.display tbody tr.even.selected > .sorting_2, table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_2 {
+  background-color: #adbbd6; }
+
+table.dataTable.display tbody tr.even.selected > .sorting_3, table.dataTable.order-column.stripe tbody tr.even.selected > .sorting_3 {
+  background-color: #afbdd8; }
+
+table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+  background-color: #e7e7e7; }
+
+table.dataTable.display tbody tr:hover > .sorting_1, table.dataTable.display tbody tr.odd:hover > .sorting_1, table.dataTable.display tbody tr.even:hover > .sorting_1, table.dataTable.order-column.hover tbody tr:hover > .sorting_1, table.dataTable.order-column.hover tbody tr.odd:hover > .sorting_1, table.dataTable.order-column.hover tbody tr.even:hover > .sorting_1 {
+  background-color: #eaeaea; }
+
+table.dataTable.display tbody tr:hover > .sorting_2, table.dataTable.display tbody tr.odd:hover > .sorting_2, table.dataTable.display tbody tr.even:hover > .sorting_2, table.dataTable.order-column.hover tbody tr:hover > .sorting_2, table.dataTable.order-column.hover tbody tr.odd:hover > .sorting_2, table.dataTable.order-column.hover tbody tr.even:hover > .sorting_2 {
+  background-color: #ebebeb; }
+
+table.dataTable.display tbody tr:hover > .sorting_3, table.dataTable.display tbody tr.odd:hover > .sorting_3, table.dataTable.display tbody tr.even:hover > .sorting_3, table.dataTable.order-column.hover tbody tr:hover > .sorting_3, table.dataTable.order-column.hover tbody tr.odd:hover > .sorting_3, table.dataTable.order-column.hover tbody tr.even:hover > .sorting_3 {
+  background-color: #eee; }
+
+table.dataTable.display tbody tr.odd > .sorting_1, table.dataTable.order-column.stripe tbody tr.odd > .sorting_1 {
+  background-color: #f1f1f1; }
+
+table.dataTable.display tbody tr.odd > .sorting_2, table.dataTable.order-column.stripe tbody tr.odd > .sorting_2 {
+  background-color: #f3f3f3; }
+
+table.dataTable.display tbody tr:hover, table.dataTable.display tbody tr.odd:hover, table.dataTable.display tbody tr.odd > .sorting_3, table.dataTable.display tbody tr.even:hover, table.dataTable.hover tbody tr:hover, table.dataTable.hover tbody tr.odd:hover, table.dataTable.hover tbody tr.even:hover, table.dataTable.order-column.stripe tbody tr.odd > .sorting_3 {
+  background-color: #f5f5f5; }
+
+table.dataTable.display tbody tr.odd, table.dataTable.display tbody tr.even > .sorting_1, table.dataTable.display tbody tr > .sorting_1, table.dataTable.display tbody tr > .sorting_2, table.dataTable.display tbody tr > .sorting_3, table.dataTable.stripe tbody tr.odd, table.dataTable.order-column tbody tr > .sorting_1, table.dataTable.order-column tbody tr > .sorting_2, table.dataTable.order-column tbody tr > .sorting_3, table.dataTable.order-column.stripe tbody tr.even > .sorting_1 {
+  background-color: #f9f9f9; }
+
+table.dataTable.display tbody tr.even > .sorting_2, table.dataTable.order-column.stripe tbody tr.even > .sorting_2 {
+  background-color: #fbfbfb; }
+
+table.dataTable.display tbody tr.even > .sorting_3, table.dataTable.order-column.stripe tbody tr.even > .sorting_3 {
+  background-color: #fdfdfd; }
+
+table.dataTable, table.dataTable th, table.dataTable td {
+  box-sizing: content-box; }
+
+table.dataTable thead .sorting_asc .sorting-icons:before, table.dataTable thead .sorting_desc .sorting-icons:after {
+  background: #ccc;
+  border: 1px solid #111; }
+
+table.dataTable thead .sorting .sorting-icons:before, table.dataTable thead .sorting .sorting-icons:after, table.dataTable thead .sorting_asc .sorting-icons:after, table.dataTable thead .sorting_desc .sorting-icons:before {
+  background: #fff;
+  border: 1px solid #aaa;
+  color: #757575; }
+
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
+  cursor: pointer; }
+
+/*
+ * Table styles
+ */
+table.dataTable {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 auto;
+  width: 100% !important; }
+  table.dataTable thead .sorting-cnt {
+    white-space: nowrap; }
+    table.dataTable thead .sorting-cnt:before {
+      content: " ";
+      padding-left: 5px; }
+  table.dataTable thead .sorting-icons {
+    display: inline-block;
+    margin-top: 2px; }
+    table.dataTable thead .sorting-icons:before {
+      content: "\e093";
+      padding: 0 0.2em; }
+    table.dataTable thead .sorting-icons:after {
+      content: "\e094";
+      padding: 0 0.2em; }
+  table.dataTable tbody tr {
+    background-color: #fff; }
+    table.dataTable tbody tr.selected {
+      background-color: #b0bed9; }
+
+/*
+ * Control feature layout
+ */
+
+
+.dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th > div.dataTables_sizing, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody td > div.dataTables_sizing {
+  height: 0;
+  margin: 0 !important;
+  overflow: hidden;
+  padding: 0 !important; }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous, .dataTables_wrapper .dataTables_paginate .paginate_button.current:first-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  margin-left: 0; }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next, .dataTables_wrapper .dataTables_paginate .paginate_button.current:last-child {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px; }
+
+.dataTables_wrapper {
+  clear: both;
+  position: relative;
+  zoom: 1; }
+  .dataTables_wrapper .dataTables_length {
+    float: left; }
+  .dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right; }
+    .dataTables_wrapper .dataTables_filter input {
+      margin-left: 0.5em; }
+  .dataTables_wrapper .dataTables_info {
+    clear: both;
+    float: left; }
+  .dataTables_wrapper .dataTables_paginate {
+    padding-top: 1.25em;
+    text-align: center; }
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+      background-color: #eaebed;
+      border: 1px solid #dcdee1;
+      color: #335075;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 1.4375;
+      margin-bottom: 0.5em;
+      margin-left: -1px;
+      padding: 10px 16px;
+      position: relative;
+      text-decoration: none; }
+      .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #2572b4;
+        border-color: #2572b4;
+        color: #fff;
+        cursor: default;
+        z-index: 2; }
+      .dataTables_wrapper .dataTables_paginate .paginate_button:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:focus, .dataTables_wrapper .dataTables_paginate .paginate_button:active {
+        background-color: #d4d6da;
+        border-color: #bbbfc5;
+        color: #335075; }
+  .dataTables_wrapper .dataTables_processing {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+    background-color: #fff;
+    font-size: 1.2em;
+    height: 40px;
+    left: 50%;
+    margin-left: -50%;
+    margin-top: -25px;
+    padding-top: 20px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%; }
+  .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    -webkit-overflow-scrolling: touch; }
+  .dataTables_wrapper.no-footer div.dataTables_scrollHead table, .dataTables_wrapper.no-footer div.dataTables_scrollBody table {
+    border-bottom: 0; }
+  .dataTables_wrapper:after {
+    clear: both;
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden; }
+
+[dir=rtl] table.dataTable thead .sorting, [dir=rtl] table.dataTable thead .sorting_asc, [dir=rtl] table.dataTable thead .sorting_desc, [dir=rtl] table.dataTable thead .sorting_asc_disabled, [dir=rtl] table.dataTable thead .sorting_desc_disabled {
+  text-align: right; }
+
+[dir=rtl] table.dataTable thead .sorting:after, [dir=rtl] table.dataTable thead .sorting_asc:after, [dir=rtl] table.dataTable thead .sorting_desc:after, [dir=rtl] table.dataTable thead .sorting_asc_disabled:after, [dir=rtl] table.dataTable thead .sorting_desc_disabled:after {
   margin-left: 0;
   margin-right: 5px; }
 
-[dir=rtl] table.dataTable thead th, [dir=rtl] table.dataTable tfoot th {
-  padding-left: 15em;
-  padding-right: 8px; }
+[dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.current:first-child {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px; }
 
+[dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.current:last-child {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0; }
+
+[dir=rtl] .dataTables_wrapper .dataTables_info, [dir=rtl] .dataTables_wrapper .dataTables_length {
+  float: right; }
+[dir=rtl] .dataTables_wrapper .dataTables_filter {
+  float: left;
+  text-align: left; }
+  [dir=rtl] .dataTables_wrapper .dataTables_filter input {
+    margin-left: auto;
+    margin-right: 0.5em; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -6945,9 +7075,22 @@ details:not([open]) > * {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
   /**
  * Mobile-friendly styles
  */
+  .dataTables_wrapper .dataTables_info {
+    padding-bottom: 5px; }
+  .dataTables_wrapper .dataTables_filter {
+    float: left;
+    text-align: left;
+    width: 100%; }
+  [dir=rtl] .dataTables_wrapper .dataTables_filter {
+    float: right;
+    text-align: right; }
   .wb-tabs.carousel-s1 [role="tablist"] li[role="presentation"], .wb-tabs.carousel-s2 [role="tablist"] li[role="presentation"], .wb-tabs.tabs-acc > ul {
     display: none; }
   .wb-tabs.carousel-s2 [role="tablist"] li.tab-count .curr-count, .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
@@ -7050,6 +7193,10 @@ details:not([open]) > * {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
   .colcount-xs-2 {
     column-count: 2; }
   .colcount-xs-3 {
@@ -7057,7 +7204,12 @@ details:not([open]) > * {
   .colcount-xs-4 {
     column-count: 4; }
   #mb-pnl {
-    min-width: 300px; } }
+    min-width: 300px; }
+  .dataTables_wrapper .dataTables_info:after {
+    content: "|";
+    font-size: 1.2em;
+    line-height: 1em;
+    padding: 0 0.25em; } }
 
 /* Small view and over */
 @media screen and (min-width: 768px) {
@@ -7228,8 +7380,14 @@ details:not([open]) > * {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
   #mb-pnl {
     min-width: 65%; }
+  .dataTables_wrapper .dataTables_length {
+    width: 100%; }
   .wb-tabs .tab-count {
     display: none !important; } }
 
@@ -7356,7 +7514,11 @@ details:not([open]) > * {
  */
 @media print {
   .lt-ie9 abbr[title]:after {
-    content: ""; } }
+    content: ""; }
+  .lt-ie9 .pagination > li > a, .lt-ie9 .pagination > li > span, .lt-ie9 .pager > li > a, .lt-ie9 .pager > li > span {
+    cursor: hand; }
+  .lt-ie9 .pagination > li.active > a, .lt-ie9 .pagination > li.active > span, .lt-ie9 .pager > li.active > a, .lt-ie9 .pager > li.active > span {
+    cursor: default; } }
 
 /*
  Plugins
@@ -7382,6 +7544,19 @@ details:not([open]) > * {
   border-right: 0; }
 .ie8[dir=rtl] .wb-panel-r {
   border-left: 0; }
+
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
+*/
+.ie8 table.dataTable thead .sorting, .ie8 table.dataTable thead .sorting_asc, .ie8 table.dataTable thead .sorting_desc {
+  cursor: hand; }
+.ie8 .dataTables_wrapper {
+  zoom: 1; }
+  .ie8 .dataTables_wrapper .dataTables_paginate .paginate_button {
+    cursor: hand; }
+  .ie8 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
+    margin-top: -1px; }
 
 /*
  Polyfills
