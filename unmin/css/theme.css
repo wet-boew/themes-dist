@@ -86,7 +86,8 @@
     padding: 0;
   }
 
-  #wb-sttl a:link {
+  #wb-sttl a:link,
+  #wb-sttl a:visited {
     text-decoration: none;
   }
 
@@ -393,7 +394,8 @@
     background: #EFEFEF url(../assets/sft-deco.gif) repeat-x scroll center top;
   }
 
-  #wb-info a:link {
+  #wb-info a:link,
+  #wb-info a:visited {
     text-decoration: none;
   }
 
@@ -490,7 +492,9 @@
   }
 
   #gc-bar a:link,
-  #wb-sm .sm a:link {
+  #wb-sm .sm a:link,
+  #gc-bar a:visited,
+  #wb-sm .sm a:visited {
     text-decoration: none;
   }
 
