@@ -53,7 +53,9 @@
   }
 
   #wb-sttl a:link,
-  #wb-ss a:link {
+  #wb-ss a:link,
+  #wb-sttl a:visited,
+  #wb-ss a:visited {
     text-decoration: none;
   }
 
@@ -426,7 +428,9 @@
   }
 
   #wb-lng a:link,
-  #wb-sm .sm a:link {
+  #wb-sm .sm a:link,
+  #wb-lng a:visited,
+  #wb-sm .sm a:visited {
     text-decoration: none;
   }
 
