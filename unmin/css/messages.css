@@ -29,6 +29,27 @@ Left menu variables
 .splash .sp-bx {
   background-color: #f8f8f8;
   padding: 30px 30px 19px; }
+  .splash .sp-bx .btn {
+    box-shadow: 0 4px #dddddd;
+    margin: 35px 0 14px;
+    min-width: 110px; }
+    @media (min-width: 768px) {
+      .splash .sp-bx .btn {
+        box-shadow: 0 4px #dddddd;
+        margin: 35px 0 14px;
+        min-width: 110px; } }
+    @media (min-width: 992px) {
+      .splash .sp-bx .btn {
+        box-shadow: 0 4px #dddddd;
+        margin: 35px 0 14px;
+        min-width: 138px;
+        padding: 0.5em 1.5em; } }
+    @media (min-width: 1200px) {
+      .splash .sp-bx .btn {
+        box-shadow: 0 4px #dddddd;
+        margin: 35px 0 14px;
+        min-width: 138px;
+        padding: 0.5em 1.5em; } }
 .splash .glyphicon {
   color: #9e9e9e;
   font-size: 5px;
@@ -54,27 +75,6 @@ Left menu variables
     .splash .sp-hb {
       margin: 175px auto;
       width: 500px; } }
-.splash .sp-bx .btn {
-  box-shadow: 0 4px #dddddd;
-  margin: 35px 0 14px;
-  min-width: 110px; }
-  @media (min-width: 768px) {
-    .splash .sp-bx .btn {
-      box-shadow: 0 4px #dddddd;
-      margin: 35px 0 14px;
-      min-width: 110px; } }
-  @media (min-width: 992px) {
-    .splash .sp-bx .btn {
-      box-shadow: 0 4px #dddddd;
-      margin: 35px 0 14px;
-      min-width: 138px;
-      padding: 0.5em 1.5em; } }
-  @media (min-width: 1200px) {
-    .splash .sp-bx .btn {
-      box-shadow: 0 4px #dddddd;
-      margin: 35px 0 14px;
-      min-width: 138px;
-      padding: 0.5em 1.5em; } }
 .splash .sp-bx-bt {
   background-color: #e1e4e7;
   padding: 30px; }

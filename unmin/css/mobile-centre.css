@@ -6,11 +6,11 @@
   border: 0;
   display: block; }
 
-.backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription, .backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container, .backgroundsize.csstransitions #mobile-centre tbody tr .product-department, .record-close, .product-data-hidden, :target .product-data-compressed, .product-data-expanded {
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription, .backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container, .backgroundsize.csstransitions #mobile-centre tbody tr .product-department, .record-close, :target .product-data-compressed, .product-data-hidden, .product-data-expanded {
   display: none;
   visibility: hidden; }
 
-.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription, .backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container, .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, :target .record-close, .product-data-compressed, :target .product-data-expanded {
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription, .backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container, .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, :target .record-close, :target .product-data-expanded, .product-data-compressed {
   display: block;
   visibility: visible; }
 
@@ -159,7 +159,5 @@
 
 
 /* Data visibility */
-
-
 
 
