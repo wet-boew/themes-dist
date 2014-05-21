@@ -92,15 +92,15 @@
   }
 
   #wb-bc .breadcrumb {
-    margin-bottom: 0;
     background: transparent;
+    margin-bottom: 0;
   }
 
   #wb-bc li:before,
   #wb-bc li:after {
+    color: #333333;
     font-family: "Glyphicons Halflings";
     font-size: 0.7em;
-    color: #333333;
   }
 
   #wb-bc li:before {
@@ -159,10 +159,10 @@
   }
 
   #wb-glb-mn .pnl-btn {
+    float: right;
+    margin: 0;
     position: relative;
     z-index: 2;
-    margin: 0;
-    float: right;
   }
 
   #wb-glb-mn .pnl-btn li {
@@ -171,11 +171,11 @@
   }
 
   #wb-glb-mn .pnl-btn a {
-    font-size: 1.5em;
-    display: block;
-    width: 100%;
     color: #474747;
+    display: block;
+    font-size: 1.5em;
     line-height: 1em;
+    width: 100%;
   }
 
   #mb-pnl .srch-pnl,
@@ -246,18 +246,18 @@
   }
 
   #wb-sttl a {
-    position: relative;
-    z-index: 1;
-    padding-top: 1.125em;
     font-size: 1.9em;
+    padding-top: 1.125em;
+    position: relative;
     text-shadow: 0 1px 1px #044062;
+    z-index: 1;
   }
 
   #wb-sttl object,
   #wb-sttl img {
+    margin: 0;
     position: absolute;
     top: -27px;
-    margin: 0;
     width: 158px;
   }
 
@@ -268,8 +268,8 @@
 
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
     float: right;
-    margin-right: auto;
     margin-left: 5px;
+    margin-right: auto;
     width: 75%;
   }
 
@@ -341,9 +341,9 @@
   @title: Small view and over (screen only)
  */
 
-  #wb-bc .container,
   body> main,
-  body> header+ .container {
+  body> header+ .container,
+  #wb-bc .container {
     background-color: white;
   }
 
@@ -410,13 +410,13 @@
 
   #wb-lng li {
     border-left: 1px solid #777777;
-    list-style-type: none;
     float: left;
+    list-style-type: none;
     padding: 6px 15px;
   }
 
   #wb-lng li:first-child {
-    border-left: none;
+    border-left: 0;
   }
 
   #wb-lng a {
@@ -425,28 +425,28 @@
   }
 
   #wb-lng .curr {
-    display: block;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAAAA6SURBVAiZY/z//z8DMvj14+s+BgYGBjYObicUif///8Pxz+9f9v2HAigbLodVETbFOBWhK8arCFkxABifl5syjffvAAAAAElFTkSuQmCC") no-repeat scroll center bottom;
     color: #cccccc;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB90RVh0U29mdHdhcmUATWFjcm9tZWRpYSBGaXJld29ya3MgOLVo0ngAAAA6SURBVAiZY/z//z8DMvj14+s+BgYGBjYObicUif///8Pxz+9f9v2HAigbLodVETbFOBWhK8arCFkxABifl5syjffvAAAAAElFTkSuQmCC) no-repeat scroll center bottom;
+    display: block;
   }
 
   #wb-sttl a {
+    display: table-row;
     font-size: 1.8em;
     text-shadow: 1px 1px 1px #333333;
-    display: table-row;
   }
 
   #wb-sttl a span {
     display: table-cell;
-    vertical-align: middle;
     line-height: normal;
     padding-left: 10px;
+    vertical-align: middle;
   }
 
   #wb-srch {
     margin: 0.5em 0;
-    text-align: right;
     padding-right: 10px;
+    text-align: right;
   }
 
   #wb-srch .form-group {
@@ -478,8 +478,8 @@
   }
 
   #wb-sm ul.menu> li {
-    padding: 0;
     border-right: 1px solid #999999;
+    padding: 0;
   }
 
   #wb-sm ul.menu> li.active {
@@ -488,8 +488,8 @@
 
   #wb-sm a,
   #wb-sm summary {
-    display: block;
     color: white;
+    display: block;
     font-weight: 700;
     padding: 0.48em 0.79em;
     text-decoration: none;
@@ -522,11 +522,11 @@
   }
 
   #wb-sec h3 {
-    padding: 15px;
-    margin: 0;
     border: 1px solid #dddddd;
     border-bottom: 3px solid #666666;
     font-size: 1em;
+    margin: 0;
+    padding: 15px;
   }
 
   #wb-sec h3 a {
@@ -540,8 +540,8 @@
 
   #wb-sec .list-group a.list-group-item {
     background: white;
-    color: #555555;
     border-radius: 0;
+    color: #555555;
     margin-top: -1px;
     text-decoration: none;
   }
