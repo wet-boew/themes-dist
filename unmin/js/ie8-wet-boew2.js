@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.3-development - 2014-05-21
+ * v4.0.3-development - 2014-06-04
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -37,7 +37,7 @@
 	wb.jqEscape = function( selector ) {
 		return selector.replace( /([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, "\\$1" );
 	};
-	
+
 	// RegEx used by formattedNumCompare
 	wb.formattedNumCompareRegEx = /(<[^>]*>|[^\d\.])/g;
 
@@ -64,7 +64,7 @@
 	wb.i18nTextCompare = function( a, b ) {
 		return wb.normalizeDiacritics( a ).localeCompare( wb.normalizeDiacritics( b ) );
 	};
-	
+
 	// Based upon https://gist.github.com/instanceofme/1731620
 	// Licensed under WTFPL v2 http://sam.zoy.org/wtfpl/COPYING
 	wb.normalizeDiacritics = function( str ) {
@@ -1986,7 +1986,7 @@ var $document = wb.doc,
 			maxDate = eventData.maxDate,
 			$monthField = eventData.$monthField,
 			minMonth = 0,
-			maxMonth = 11,
+			maxMonth = 12,
 			monthNames = i18nText.monthNames,
 			month, i;
 
@@ -2007,7 +2007,7 @@ var $document = wb.doc,
 		}
 
 		for ( i = minMonth; i !== maxMonth; i += 1 ) {
-			$monthField.append( "<option value='" + i + "'" + ( (i === month ) ? " selected='selected'" : "" ) +
+			$monthField.append( "<option value='" + i + "'" + ( ( i === month ) ? " selected='selected'" : "" ) +
 				">" + monthNames[ i ] + "</option>" );
 		}
 	},
@@ -4364,6 +4364,71 @@ var pluginName = "wb-feeds",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
+	patt = /\\u([\d\w]{4})/g,
+
+    /**
+     * Helper function that returns the string representaion of a unicode character
+     * @method decode
+     * @param  {regex} match  unicode pattern
+     * @param  {string} code  string where unicode is needed to be converted
+     * @return {string}	unicode string character
+     */
+    decode = function( match, code ) {
+        return String.fromCharCode( parseInt( code, 16 ) );
+    },
+
+    /**
+     * Helper wrapper function that performs unicode decodes on a string
+     * @method fromCharCode
+     * @param  {string} s string to sanitize with escaped unicode characters
+     * @return {string}	sanitized string
+     */
+    fromCharCode = function(s) {
+        return s.replace( patt, decode );
+    },
+
+	/**
+	 * @object Templates
+	 * @properties {function}
+	 * @param {object} requires a entry object of various ATOM based properties
+	 * @returns {string} modified string with appropiate markup/format for a entry object
+	 */
+	Templates = {
+
+		/**
+		 * [facebook template]
+		 * @param  {entry object} data
+		 * @return {string}	HTML string of formatted using Media Object (twitter bootstrap)
+		 */
+		facebook: function( data ) {
+
+			// Facebook feeds does not really do titles in ATOM RSS. It simply truncates content at 150 characters. We are using a JS based sentence
+			// detection algorithm to better split content and titles
+			var content = fromCharCode( data.content ),
+				title = content.replace( /(<([^>]+)>)/ig,"" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g );
+
+			// Sanitize the HTML from Facebook - extra 'br' tags
+			content = content.replace( /(<br>\n?)+/gi,"<br>" );
+
+			return "<li class='media'><a class='pull-left' href=''><img src='" + data.fIcon + "' alt='" + data.author +
+				"' height='64px' width='64px' class='media-object'/></a><div class='media-body'>" +
+				"<h4 class='media-heading'><a href='" + data.link + "'><span class='wb-inv'>" + title[0] + " - </span>" + data.author + "</a>  " +
+				( data.publishedDate !== "" ? " <small class='feeds-date text-right'>[" +
+				wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) +
+				"</h4><p>" + content + "</p></div></li>";
+		},
+		/**
+		 * [generic template]
+		 * @param  {entry object}	data
+		 * @return {string}	HTML string of formatted using a simple list / anchor view
+		 */
+		generic: function( data ) {
+
+			return "<li><a href='" + data.link + "'>" + data.title + "</a>" +
+				( data.publishedDate !== "" ? " <span class='feeds-date'>[" +
+				wb.date.toDateISO( data.publishedDate, true ) + "]</span>" : "" ) + "</li>";
+		}
+	},
 
 	/**
 	 * Init runs once per plugin element on the page. There may be multiple elements.
@@ -4374,23 +4439,32 @@ var pluginName = "wb-feeds",
 	init = function( event ) {
 		var elm = event.target,
 			entries = [],
-			results = [],
 			processEntries = function( data ) {
-				var k, len;
+				var feedUrl = data.responseData.feed.feedUrl,
+					items = data.responseData.feed.entries,
+					icon = this.fIcon,
+					k, len, feedtype;
 
-				data = data.responseData.feed.entries;
-				len = data.length;
+				// lets bind the template to the Entries
+				if ( feedUrl && feedUrl.indexOf( "facebook.com" ) > -1 ) {
+					feedtype = "facebook";
+				} else {
+					feedtype = "generic";
+				}
+
+				len = items.length;
 				for ( k = 0; k !== len; k += 1 ) {
-					entries.push( data[ k ] );
+					items[ k ].fIcon =  icon ;
+					entries.push( items[ k ] );
 				}
 				if ( !last ) {
-					parseEntries( entries, limit, $content );
+					parseEntries( entries, limit, $content, feedtype );
 				}
 
 				last -= 1;
 				return last;
 			},
-			$content, limit, feeds, last, i;
+			$content, limit, feeds, last, i,  fElem, fIcon;
 
 		// Filter out any events triggered by descendants
 		// and only initialize the element once
@@ -4402,19 +4476,24 @@ var pluginName = "wb-feeds",
 
 			$content = $( elm ).find( ".feeds-cont" );
 			limit = getLimit( elm );
-			feeds = elm.getElementsByTagName( "a" );
+			feeds = $content.find( "li > a" );
 			last = feeds.length - 1;
 			i = last;
 
 			while ( i >= 0 ) {
+				fElem = feeds.eq( i );
+				fIcon = fElem.find( "> img" );
+
 				$.ajax({
-					url: jsonRequest( feeds[ i ].href, limit ),
+					url: jsonRequest( fElem.attr( "href" ), limit ),
 					dataType: "json",
+					fIcon: ( fIcon.length > 0 )  ? fIcon.attr( "src" ) : "",
 					timeout: 1000
-				}).done( processEntries );
-				results.push( i -= 1 );
+					}).done( processEntries );
+
+				i -= 1;
 			}
-			$.extend( {}, results );
+			//$.extend( {}, results );
 		}
 	},
 
@@ -4435,11 +4514,13 @@ var pluginName = "wb-feeds",
 	/**
 	 * Builds the URL for the JSON request
 	 * @method jsonRequest
+	 * http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fwww.facebook.com%2Ffeeds%2Fpage.php%3Fid%3D318424514044%26format%3Drss20&num=20
 	 * @param {url} url URL of the feed.
 	 * @param {integer} limit Limit on the number of results for the JSON request to return.
 	 * @return {url} The URL for the JSON request
 	 */
 	jsonRequest = function( url, limit ) {
+
 		var requestURL = wb.pageUrlParts.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent( decodeURIComponent( url ) );
 
 		// API returns a maximum of 4 entries by default so only override if more entries should be returned
@@ -4457,10 +4538,9 @@ var pluginName = "wb-feeds",
 	 * @param {jQuery DOM element} $elm Element to which the elements will be appended.
 	 * @return {url} The URL for the JSON request
 	 */
-	parseEntries = function( entries, limit, $elm ) {
+	parseEntries = function( entries, limit, $elm, feedtype ) {
 		var cap = ( limit > 0 && limit < entries.length ? limit : entries.length ),
 			result = "",
-			toDateISO = wb.date.toDateISO,
 			compare = wb.date.compare,
 			i, sorted, sortedEntry;
 
@@ -4470,9 +4550,7 @@ var pluginName = "wb-feeds",
 
 		for ( i = 0; i !== cap; i += 1 ) {
 			sortedEntry = sorted[ i ];
-			result += "<li><a href='" + sortedEntry.link + "'>" + sortedEntry.title + "</a>" +
-				( sortedEntry.publishedDate !== "" ? " <span class='feeds-date'>[" +
-				toDateISO( sortedEntry.publishedDate, true ) + "]</span>" : "" ) + "</li>";
+			result += Templates[ feedtype ]( sortedEntry );
 		}
 		return $elm.empty().append( result );
 	};
@@ -4615,7 +4693,8 @@ var pluginName = "wb-frmvld",
 	i18n, i18nText,
 
 	defaults = {
-		hdLvl: "h2"
+		hdLvl: "h2",
+		ignore: ":hidden"
 	},
 
 	/**
@@ -4725,6 +4804,7 @@ var pluginName = "wb-frmvld",
 					validator = $form.validate({
 						meta: "validate",
 						focusInvalid: false,
+						ignore: settings.ignore,
 
 						// Set the element which will wrap the inline error messages
 						errorElement: "strong",
@@ -7059,13 +7139,13 @@ var $document = wb.doc,
 			pageUrl = windowLocation.hostname + windowLocation.pathname.replace( /^([^\/])/, "/$1" ),
 			pageUrlQuery = windowLocation.search,
 			match = false,
-			len = menuLinks.length,
-			i, j, link, linkHref, linkUrl, linkQuery, linkQueryLen,
+			len, i, j, link, linkHref, linkUrl, linkQuery, linkQueryLen,
 			localBreadcrumbLinks, localBreadcrumbLinksArray, localBreadcrumbLinksUrlArray,
 			localBreadcrumbQuery, localBreadcrumbLinkUrl;
 
 		// Try to find a match with the page Url and cache link + Url for later if no match found
-		for ( i = 0; i !== len; i += 1 ) {
+		// Perform the check and caching in reverse to go from more specific links to more general links
+		for ( i = menuLinks.length - 1; i !== -1; i -= 1 ) {
 			link = menuLinks[ i ];
 			linkHref = link.getAttribute( "href" );
 			if ( linkHref !== null ) {
@@ -7094,7 +7174,7 @@ var $document = wb.doc,
 				localBreadcrumbLinksUrlArray = [];
 				localBreadcrumbLinks = ( breadcrumb.jquery ? breadcrumb[ 0 ] : breadcrumb ).getElementsByTagName( "a" );
 				len = localBreadcrumbLinks.length;
-				for ( i = 0; i !== len; i += 1) {
+				for ( i = 0; i !== len; i += 1 ) {
 					link = localBreadcrumbLinks[ i ];
 					linkHref = link.getAttribute( "href" );
 					if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
@@ -8173,10 +8253,6 @@ var pluginName = "wb-share",
 				name: "StumbleUpon",
 				url: "http://www.stumbleupon.com/submit?url={u}&amp;title={t}"
 			},
-			technorati: {
-				name: "Technorati",
-				url: "http://www.technorati.com/faves?add={u}"
-			},
 			tumblr: {
 				name: "tumblr",
 				url: "http://www.tumblr.com/share/link?url={u}&amp;name={t}&amp;description={d}"
@@ -8521,7 +8597,8 @@ var pluginName = "wb-tabs",
 
 	defaults = {
 		addControls: true,
-		excludePlay: false
+		excludePlay: false,
+		interval: 6
 	},
 
 	/*
@@ -8534,16 +8611,26 @@ var pluginName = "wb-tabs",
 		if ( !$elm.hasClass( initedClass ) ) {
 			$elm.addClass( initedClass );
 
-			var interval = $elm.hasClass( "slow" ) ? 9 : $elm.hasClass( "fast" ) ? 3 : 6,
-				$panels = $elm.children( "[role=tabpanel], details" ),
+			var $panels = $elm.children( "[role=tabpanel], details" ),
 				$tablist = $elm.children( "[role=tablist]" ),
-				addControls = defaults.addControls,
-				excludePlay = defaults.excludePlay,
 				activeId = wb.pageUrlParts.hash.substring( 1 ),
 				$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined,
 				elmId = $elm.attr( "id" ),
 				hashFocus = false,
 				open = "open",
+				settings = $.extend(
+					true,
+					{},
+					defaults,
+					{ interval: $elm.hasClass( "slow" ) ?
+									9 : $elm.hasClass( "fast" ) ?
+										3 : defaults.interval },
+					window[ pluginName ],
+					wb.getData( $elm, pluginName )
+				),
+				interval = settings.interval,
+				addControls = settings.addControls,
+				excludePlay = settings.excludePlay,
 				$panel, i, len, tablist, isOpen, newId, positionY, groupClass;
 
 			// Ensure there is an id on the element
@@ -9123,7 +9210,6 @@ var pluginName = "wb-tabs",
 				onCycle( $elm, className.indexOf( "prv" ) !== -1 ? -1 : 1 );
 			}
 		}
-		return false;
 	}
 
 	/*
@@ -9139,10 +9225,12 @@ $document.on( "keydown", selector, function( event ) {
 	// Escape key
 	if ( event.which === 27 ) {
 		var $sldr = $( event.target ).closest( selector );
+
+		event.preventDefault();
+
 		if ( $sldr.hasClass( "playing" ) ) {
 			$sldr.find( ".plypause" ).trigger( "click" );
 		}
-		return false;
 	}
 });
 
@@ -9171,13 +9259,13 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 		$container = $( currentTarget ).closest( selector );
 		$panel = $container.find( href );
 		if ( $panel.length !== 0 ) {
+			event.preventDefault();
 			$summary = $panel.children( "summary" );
 			if ( $summary.length !== 0 && $summary.attr( "aria-hidden" ) !== "true" ) {
 				$summary.trigger( "click" );
 			} else {
 				$container.find( href + "-lnk" ).trigger( "click" );
 			}
-			return false;
 		}
 	}
 });
