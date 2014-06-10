@@ -603,62 +603,62 @@ header .brand a {
  Site information
 */
 
-footer {
+#wb-info {
   background: #e1e4e7;
   position: relative;
   z-index: 5;
 }
 
-footer a {
+#wb-info a {
   font-size: 0.875em;
   text-decoration: none;
 }
 
-footer a.wb-navcurr {
+#wb-info a.wb-navcurr {
   font-weight: 800;
 }
 
-footer .brand {
+#wb-info .brand {
   background: #f8f8f8;
   border-top: 4px solid #335175;
   line-height: 30px;
 }
 
-footer .brand object,
-footer .brand img {
+#wb-info .brand object,
+#wb-info .brand img {
   height: 40px;
   margin-bottom: 10px;
   margin-top: 20px;
   width: auto;
 }
 
-footer .brand a {
+#wb-info .brand a {
   color: black;
 }
 
-footer .brand a span {
+#wb-info .brand a span {
   margin-left: 10px;
 }
 
-footer .brand a:hover {
+#wb-info .brand a:hover {
   text-decoration: none;
 }
 
-footer .tofpg {
+#wb-info .tofpg {
   line-height: 90px;
 }
 
-footer nav {
+#wb-info nav {
   padding-bottom: 1em;
   padding-top: 0.75em;
   position: relative;
 }
 
-footer nav li {
+#wb-info nav li {
   margin-bottom: 0.75em;
 }
 
-footer nav [class*="col-"] h3 {
+#wb-info nav [class*="col-"] h3 {
   font-size: 1.1em;
   font-weight: 700;
   margin-top: 20px;
