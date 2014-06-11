@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.3-development - 2014-06-04
+ * v4.0.3-development - 2014-06-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.2",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.2",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -1688,11 +1688,14 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	if ( event.currentTarget === event.target ) {
 
 		$( "<div id='" + wb.guid() + "' />" )
-			.load( url, function() {
+			.load( url, function( response, status, xhr ) {
 				$( caller )
 					.trigger( {
 						type: "ajax-fetched.wb",
-						pointer: $( this )
+						pointer: $( this ),
+						response: response,
+						status: status,
+						xhr: xhr
 					});
 			});
 	}
@@ -1717,10 +1720,8 @@ $document.on( "ajax-fetch.wb", function( event ) {
  */
 var pluginName = "wb-calevt",
 	selector = "." + pluginName,
-	calendarSelector = selector + "-cal",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	setFocusEvent = "setfocus.wb",
 	evDetails = "ev-details",
 	$document = wb.doc,
 	i18n, i18nText,
@@ -1782,7 +1783,7 @@ var pluginName = "wb-calevt",
 			month = date.getMonth(),
 			elmYear = $elm.find( ".year" ),
 			elmMonth = $elm.find( ".month" ),
-			events, containerId, $containerId;
+			events, containerId, $container;
 
 		if ( elmYear.length > 0 && elmMonth.length > 0 ) {
 
@@ -1794,12 +1795,10 @@ var pluginName = "wb-calevt",
 
 		events = getEvents( $elm );
 		containerId = $elm.data( "calevtSrc" );
-		$containerId = $( "#" + containerId ).addClass( calendarSelector );
+		$container = $( "#" + containerId )
+			.addClass( pluginName + "-cal" )
+			.data( "calEvents", events );
 
-		$document.on( "displayed.wb-cal", "#" + containerId, function( event, year, month, days ) {
-			addEvents( year, month, days, containerId, events.list );
-			showOnlyEventsFor( year, month, containerId );
-		});
 		$document.trigger( "create.wb-cal", [
 				containerId,
 				year,
@@ -1809,7 +1808,7 @@ var pluginName = "wb-calevt",
 				events.maxDate
 			]
 		);
-		$containerId.attr( "aria-label", i18nText.calendar );
+		$container.attr( "aria-label", i18nText.calendar );
 	},
 
 	daysBetween = function( dateLow, dateHigh ) {
@@ -1890,12 +1889,8 @@ var pluginName = "wb-calevt",
 					link = "#" + linkId;
 				}
 
-				/*
-				 * Modification XHTML 1.0 strict compatible
-				 *   - XHTML 1.0 Strict does not contain the time element
-				 */
 				date = new Date();
-				tCollection = event.find( "time, span.datetime" );
+				tCollection = event.find( "time" );
 
 				/*
 				 * Date spanning capability
@@ -1982,120 +1977,13 @@ var pluginName = "wb-calevt",
 		return events;
 	},
 
-	keyboardNavEvents = function( event ) {
-		var $this = $( this ),
-			length, $children;
-
-		switch ( event.keyCode ) {
-
-		// Up arrow
-		case 38:
-			$children = $this.closest( "ul" ).children( "li" );
-			length = $children.length;
-			$children.eq( ( $this.closest( "li" ).index() - 1 ) % length )
-				.children( "a" ).trigger( setFocusEvent );
-			return false;
-
-		// Down arrow
-		case 40:
-			$children = $this.closest( "ul" ).children( "li" );
-			length = $children.length;
-			$children.eq( ( $this.closest( "li" ).index() + 1 ) % length )
-				.children( "a" ).trigger( setFocusEvent );
-			return false;
-
-		// Left arrow
-		case 37:
-			$this.closest( "ol" )
-				.children( "li:lt(" + $this.closest( "li[id^=cal-]" ).index() + ")" )
-				.children( "a" ).last().trigger( setFocusEvent );
-			return false;
-
-		// Right arrow
-		case 39:
-			$this.closest( "ol" )
-				.children( "li:gt(" + $this.closest( "li[id^=cal-]" ).index() + ")" )
-				.children( "a" ).first().trigger( setFocusEvent );
-			return false;
-
-		// Escape
-		case 27:
-			$this.closest( "li[id^=cal-]" ).children( ".cal-evt" ).trigger( setFocusEvent );
-			return false;
-		}
-	},
-
-	mouseOnDay = function( dayEvents ) {
-		dayEvents.dequeue()
-			.removeClass( "wb-inv" )
-			.addClass( evDetails );
-	},
-
-	mouseOutDay = function( dayEvents ) {
-		dayEvents.delay( 100 ).queue(function() {
-			$( this ).removeClass( evDetails )
-				.addClass( "wb-inv" )
-				.dequeue();
-		});
-	},
-
-	focus = function( dayEvents ) {
-		dayEvents.removeClass( "wb-inv" )
-			.addClass( evDetails );
-	},
-
-	blur = function( dayEvents ) {
-		setTimeout(function() {
-			var $elm = dayEvents;
-
-			if ( $elm.find( "a:focus" ).length === 0 ) {
-				$elm.removeClass( evDetails )
-					.addClass( "wb-inv" );
-			}
-		}, 5);
-	},
-
-	keyboardEvents = function( event ) {
-		var eventType = event.type,
-			dayEvents = event.data.details;
-
-		switch ( eventType ) {
-		case "keydown":
-			keyboardNavEvents( event );
-			break;
-
-		case "blur":
-			blur( dayEvents );
-			break;
-
-		case "focus":
-			focus( dayEvents );
-			break;
-		}
-	},
-
-	mouseEvents = function( event ) {
-		var eventType = event.type,
-			dayEvents = event.data.details;
-
-		switch ( eventType ) {
-		case "mouseover":
-			mouseOnDay( dayEvents );
-			break;
-
-		case "mouseout":
-			mouseOutDay( dayEvents );
-			break;
-		}
-	},
-
 	addEvents = function( year, month, days, containerId, eventsList ) {
-		var i, eLen, date, day, content, dayEvents, link, eventDetails, itemLink;
+		var i, eLen, date, day, dayEvents, content;
 
-		// Fix required to make up with the IE z-index behavior mismatch
-		days.each(function( index, day ) {
-			$( day ).css( "z-index", 31 - index );
-		});
+		// Fix required to make up with the IE z-index behaviour mismatch
+		for ( i = 0, eLen = days.length; i !== eLen; i += 1 ) {
+			days.eq( i ).css( "z-index", 31 - i );
+		}
 
 		/*
 		 * Determines for each event, if it occurs in the display month
@@ -2110,22 +1998,20 @@ var pluginName = "wb-calevt",
 			if ( date.getMonth() === month && date.getFullYear() === year ) {
 				day = $( days[ date.getDate() - 1 ] );
 
-				// Gets the day cell to display an event
-				content = day.children( "div" ).html();
-
-				// Lets see if the cell is empty is so lets create the cell
-				if ( day.children( "a" ).length < 1 ) {
-					day.empty();
-					link = $( "<a href='#ev-" + day.attr( "id" ) + "' class='cal-evt'>" + content + "</a>" );
-					day.append( link );
+				// Lets see if the cell is empty. If so lets create the cell
+				if ( day.children( "a" ).length === 0 ) {
 					dayEvents = $( "<ul class='wb-inv'></ul>" );
-
-					link.on( "keydown blur focus", { details: dayEvents }, keyboardEvents );
-
-					day.on( "mouseover mouseout", { details: dayEvents }, mouseEvents )
-						.append( dayEvents );
-
+					content = day.children( "div" ).html();
+					day
+						.empty()
+						.append(
+							"<a href='#ev-" + day.attr( "id" ) +
+								"' class='cal-evt' tabindex='-1'>" +
+								content + "</a>",
+							dayEvents
+						);
 				} else {
+
 					/*
 					 * Modification - added an else to the date find due to
 					 * event collisions not being handled. So the pointer was
@@ -2134,15 +2020,13 @@ var pluginName = "wb-calevt",
 					dayEvents = day.find( "ul.wb-inv" );
 				}
 
-				eventDetails = $( "<li><a tabindex='-1' href='" + eventsList[ i ].href + "'>" + eventsList[ i ].title + "</a></li>" );
-
-				dayEvents.append( eventDetails );
-
-				itemLink = eventDetails.children( "a" );
-
-				itemLink.on( "keydown blur focus", { details: dayEvents }, keyboardEvents );
+				dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" +
+					eventsList[ i ].href + "'>" + eventsList[ i ].title + "</a></li>" );
+				day.data( "dayEvents", dayEvents );
 			}
 		}
+
+		days.find( ".cal-evt" ).first().attr( "tabindex", "0" );
 	},
 
 	showOnlyEventsFor = function( year, month, calendarId ) {
@@ -2162,6 +2046,75 @@ $document.on( "timerpoke.wb " + initEvent, selector, function() {
 	 * so returning true allows for events to always continue
 	 */
 	return true;
+});
+
+$document.on( "displayed.wb-cal", selector + "-cal", function( event, year, month, days, day ) {
+	var target = event.target,
+		$target = $( target ),
+		containerId = target.id,
+		events = $target.data( "calEvents" );
+
+	addEvents( year, month, days, containerId, events.list );
+	showOnlyEventsFor( year, month, containerId );
+	$target.find( ".cal-index-" + day + " .cal-evt" ).trigger( "setfocus.wb" );
+});
+
+$document.on( "focusin focusout", ".wb-calevt-cal .cal-days a", function( event ) {
+	var eventType = event.type,
+		dayEvents = $( event.target ).closest( "td" ).data( "dayEvents" );
+
+	switch ( eventType ) {
+	case "focusin":
+		dayEvents
+			.closest( ".cal-days" )
+				.find( "a[tabindex=0]" )
+					.attr( "tabindex", "-1" );
+		dayEvents
+			.removeClass( "wb-inv" )
+			.addClass( evDetails )
+			.find( "a" )
+				.attr( "tabindex", "0" );
+		dayEvents.prev( "a" ).attr( "tabindex", "0" );
+		break;
+
+	case "focusout":
+		setTimeout(function() {
+			if ( dayEvents.find( "a:focus" ).length === 0 ) {
+				dayEvents.removeClass( evDetails )
+					.addClass( "wb-inv" )
+					.find( "a" )
+						.attr( "tabindex", "-1" );
+			}
+		}, 5 );
+		break;
+	}
+});
+
+$document.on( "mouseover mouseout", ".wb-calevt-cal .cal-days td", function( event ) {
+	var target = event.currentTarget,
+		eventType = event.type,
+		dayEvents;
+
+	// Only handle calendar cells with events
+	if ( target.getElementsByTagName( "a" ).length !== 0 ) {
+		dayEvents = $( target ).data( "dayEvents" );
+
+		switch ( eventType ) {
+		case "mouseover":
+			dayEvents.dequeue()
+				.removeClass( "wb-inv" )
+				.addClass( evDetails );
+			break;
+
+		case "mouseout":
+			dayEvents.delay( 100 ).queue(function() {
+				$( this ).removeClass( evDetails )
+					.addClass( "wb-inv" )
+					.dequeue();
+			});
+			break;
+		}
+	}
 });
 
 // Add the timer poke to initialize the plugin
@@ -2577,10 +2530,14 @@ var $document = wb.doc,
 					className += " cal-index-" + dayCount;
 					isCurrentDate = ( dayCount === currDay && month === currMonth && year === currYear );
 
-					cells += "<td id='" + id + "' class='" + ( isCurrentDate ? "cal-currday " : "" ) + className + "'><div><time datetime='" + year + "-" +
-						( month < 9 ? "0" : "" ) + ( month + 1 ) + "-" + ( dayCount < 10 ? "0" : "" ) + dayCount + "'><span class='wb-inv'>" + textWeekDayNames[ day ] +
-						( frenchLang ? ( " </span>" + dayCount + "<span class='wb-inv'> " + textMonthNames[ month ].toLowerCase() + " " ) :
-						( " " + textMonthNames[ month ] + " </span>" + dayCount + "<span class='wb-inv'>&nbsp;" ) ) + year +
+					cells += "<td id='" + id + "' class='" + ( isCurrentDate ? "cal-currday " : "" ) +
+						className + "'><div><time datetime='" + year + "-" +
+						( month < 9 ? "0" : "" ) + ( month + 1 ) + "-" + ( dayCount < 10 ? "0" : "" ) +
+						dayCount + "'><span class='wb-inv'>" + textWeekDayNames[ day ] +
+						( frenchLang ? ( " </span>" + dayCount + "<span class='wb-inv'> " +
+						textMonthNames[ month ].toLowerCase() + " " ) :
+						( " " + textMonthNames[ month ] + " </span>" + dayCount +
+						"<span class='wb-inv'>&#160;" ) ) + year +
 						( isCurrentDate ? textCurrentDay : "" ) + "</span></time></div></td>";
 
 					if ( dayCount > lastDay ) {
@@ -2691,13 +2648,16 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 		fieldId = $container.attr( "aria-controls" ),
 		which = event.which,
 		fromDateISO = wb.date.fromDateISO,
-		date = fromDateISO( elm.getElementsByTagName( "time" )[ 0 ].getAttribute( "datetime" ) ),
+		date = fromDateISO(
+			(
+				elm.className.indexOf( "cal-evt-lnk" ) === -1 ?
+					elm : elm.parentNode.parentNode.previousSibling
+			).getElementsByTagName( "time" )[ 0 ].getAttribute( "datetime" )
+		),
 		currYear = date.getFullYear(),
 		currMonth = date.getMonth(),
 		currDay = date.getDate(),
-		days = $monthContainer.find( "td > a" ).get(),
-		maxDay = days.length,
-		field, minDate, maxDate, modifier;
+		field, minDate, maxDate, modifier, $links, $link;
 
 	if ( fieldId ) {
 		field = document.getElementById( fieldId );
@@ -2731,14 +2691,12 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 			}
 			break;
 
-		// end key
+		// end / home
 		case 35:
-			date.setDate( maxDay );
-			break;
-
-		// home key
 		case 36:
-			date.setDate( 1 );
+			$links = $monthContainer.find( "td > a" );
+			$link = which === 35 ? $links.last() : $links.first();
+			date.setDate( fromDateISO( $link.find( "time" ).attr( "datetime" ) ).getDate() );
 			break;
 
 		// left arrow key
@@ -2774,7 +2732,7 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 				]
 			);
 		} else if ( currDay !== date.getDate() ) {
-			$( days[ date.getDate() - 1 ] ).trigger( "setfocus.wb" );
+			$monthContainer.find( ".cal-index-" + date.getDate() + " > a" ).trigger( "setfocus.wb" );
 		}
 
 		return false;
@@ -4154,14 +4112,18 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 			content = event.pointer.html();
 			$elm.removeAttr( "data-ajax-" + ajaxType );
 
-			// "replace" is the only event that doesn't map to a jQuery function
-			if ( ajaxType === "replace") {
-				$elm.html( content );
-			} else {
-				$elm[ ajaxType ]( content );
-			}
+			// Only complete the action if there wasn't an error
+			if ( event.status !== "error" ) {
 
-			$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
+				// "replace" is the only event that doesn't map to a jQuery function
+				if ( ajaxType === "replace") {
+					$elm.html( content );
+				} else {
+					$elm[ ajaxType ]( content );
+				}
+
+				$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
+			}
 		}
 	}
 
@@ -6214,7 +6176,12 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 
 		// Filter out any events triggered by descendants
 		if ( event.currentTarget === elm ) {
-			onAjaxLoaded( $elm, event.pointer );
+
+			// Only replace the menu if there isn't an error
+			onAjaxLoaded(
+				$elm,
+				event.status !== "error" ? event.pointer : $elm
+			);
 		}
 		return false;
 
@@ -6593,10 +6560,9 @@ var pluginName = "wb-mltmd",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					rewind: i18n( "rew" ),
-					ff: i18n( "ffwd" ),
 					play: i18n( "play" ),
 					pause: i18n( "pause" ),
+					volume: i18n( "volume" ),
 					cc_on: i18n( "cc", "on" ),
 					cc_off: i18n( "cc", "off" ),
 					cc_error: i18n ( "cc-err" ),
@@ -6875,10 +6841,10 @@ var pluginName = "wb-mltmd",
 		var caption, i,
 			captionsLength = captions.length;
 
-		// added &nbsp; to prevent caption space from collapsing
+		// added &#160; (non-breaking space) to prevent caption space from collapsing
 		// Used .html() instead of .append for performance purposes
 		// http://jsperf.com/jquery-append-vs-html-list-performance/2
-		area.html( "&nbsp;" );
+		area.html( "&#160;" );
 
 		for ( i = 0; i < captionsLength; i += 1 ) {
 			caption = captions[ i ];
@@ -7015,7 +6981,7 @@ var pluginName = "wb-mltmd",
 	},
 
 	/**
-	 * @method youTubeEvennts
+	 * @method youTubeEvents
 	 * @description Youtube API event manager
 	 * @param {object} event The event object fior the triggered event
 	 */
@@ -7084,14 +7050,17 @@ $document.on( initializedEvent, selector, function() {
 		id = $this.attr( "id" ),
 		mId = $media.attr( "id" ) || id + "-md",
 		type = $media.is( "audio" ) ? "audio" : "video",
+		title = $media.attr( "title" ) || "",
 		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
 		height = type === "video" ? $media.attr( "height" ) || $media.height() : 0,
+		settings = wb.getData( $this, pluginName ),
 		data = $.extend({
 			media: $media,
 			captions: captions,
 			id: id,
 			mId: mId,
 			type: type,
+			title: title,
 			height: height,
 			width: width
 		}, i18nText),
@@ -7100,6 +7069,10 @@ $document.on( initializedEvent, selector, function() {
 
 	if ( $media.attr( "id" ) === undef ) {
 		$media.attr( "id", mId );
+	}
+
+	if ( settings !== undef ) {
+		data.shareUrl = settings.shareUrl;
 	}
 
 	$this.addClass( type );
@@ -7260,7 +7233,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		captionsUrl = wb.getUrlParts( data.captions ),
 		currentUrl = wb.getUrlParts( window.location.href ),
 		$media = $this.find( "video, audio, iframe, object" ),
-		$player, $overlay;
+		$player, $overlay, $share;
 
 	$media.after( tmpl( $this.data( "template" ), data ) );
 	$overlay = $media.next().find( ".wb-mm-ovrly" ).after( $media );
@@ -7287,14 +7260,26 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 	// Load the progress polyfill if needed
 	$this.find( "progress" ).trigger( "wb-init.wb-progress" );
 
+	// Load the slider polyfill if needed
+	$this.find( "input[type='range']" ).trigger( "wb-init.wb-slider" );
+
 	if ( data.captions === undef ) {
 		return 1;
 	}
 
+	// Load the captions
 	if ( currentUrl.absolute.replace( currentUrl.hash, "" ) !== captionsUrl.absolute.replace( captionsUrl.hash, "" ) ) {
 		loadCaptionsExternal( $player, captionsUrl.absolute );
 	} else {
 		loadCaptionsInternal( $player, $( captionsUrl.hash ) );
+	}
+
+	// Create the share widgets if needed
+	// TODO: Remove .parent() when getting rid of the overlay
+	if ( data.shareUrl !== undef ) {
+		$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"video\", \"title\": \"" + data.title + "\", \"url\": \"" + data.shareUrl + "\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
+		$media.parent().before( $share );
+		wb.add( $share );
 	}
 });
 
@@ -7311,7 +7296,7 @@ $document.on( "click", selector, function( event ) {
 		return true;
 	}
 
-	// Opitmized multiple class tests to include child glyphicon because Safari was reporting the click event
+	// Optimized multiple class tests to include child glyphicon because Safari was reporting the click event
 	// from the child span not the parent button, forcing us to have to check for both elements
 	// JSPerf for multiple class matching http://jsperf.com/hasclass-vs-is-stackoverflow/7
 	if ( className.match( /playpause|-play|-pause|wb-mm-ovrly/ ) || $target.is( "object" ) ) {
@@ -7329,13 +7314,23 @@ $document.on( "click", selector, function( event ) {
 	}
 });
 
+$document.on( "input change", selector, function(event) {
+	var target = event.target;
+
+	if ( $( target ).hasClass( "volume" ) ) {
+		event.currentTarget.player( "setMuted", false );
+		event.currentTarget.player( "setVolume", target.value / 100 );
+	}
+});
+
 $document.on( "keydown", selector, function( event ) {
 	var playerTarget = event.currentTarget,
 		which = event.which,
 		ctrls = ".wb-mm-ctrls",
 		ref = expand( playerTarget ),
 		$this = ref[ 0 ],
-		volume = 0;
+		volume = 0,
+		step = 0.05;
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
 		switch ( which ) {
@@ -7344,20 +7339,20 @@ $document.on( "keydown", selector, function( event ) {
 			break;
 
 		case 37:
-			$this.find( ctrls + " .rewind" ).trigger( "click" );
+			playerTarget.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05);
 			break;
 
 		case 39:
-			$this.find( ctrls + " .fastforward" ).trigger( "click" );
+			playerTarget.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05);
 			break;
 
 		case 38:
-			volume = Math.round( playerTarget.player( "getVolume" ) * 10 ) / 10 + 0.1;
+			volume = Math.round( playerTarget.player( "getVolume" ) * 100 ) / 100 + step;
 			playerTarget.player( "setVolume", volume < 1 ? volume : 1 );
 			break;
 
 		case 40:
-			volume = Math.round( playerTarget.player( "getVolume" ) * 10 ) / 10 - 0.1;
+			volume = Math.round( playerTarget.player( "getVolume" ) * 100 ) / 100 - step;
 			playerTarget.player( "setVolume", volume > 0 ? volume : 0 );
 			break;
 
@@ -7386,7 +7381,7 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		$this = $( eventTarget ),
 		invStart = "<span class='wb-inv'>",
 		invEnd = "</span>",
-		currentTime, $button, buttonData, isPlay, getMuted, ref, skipTo;
+		currentTime, $button, $slider, buttonData, isPlay, isMuted, isCCVisible, ref, skipTo, volume;
 	switch ( eventType ) {
 	case "play":
 	case "pause":
@@ -7410,15 +7405,22 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "volumechange":
-		getMuted = eventTarget.player( "getMuted" );
+		isMuted = eventTarget.player( "getMuted" );
 		$button = $this.find( ".mute" );
-		buttonData = $button.data( "state-" + ( getMuted ? "off" : "on" ) );
+		buttonData = $button.data( "state-" + ( isMuted ? "off" : "on" ) );
+		volume = eventTarget.player( "getVolume" ) * 100;
 		$button
-			.attr( "title", buttonData )
+			.attr( {
+				title: buttonData,
+				"aria-pressed": isMuted
+			} )
 			.children( "span" )
-				.toggleClass( "glyphicon-volume-up", !getMuted )
-				.toggleClass( "glyphicon-volume-off", getMuted )
+				.toggleClass( "glyphicon-volume-up", !isMuted )
+				.toggleClass( "glyphicon-volume-off", isMuted )
 				.html( invStart + buttonData + invEnd );
+		$slider = $this.find( "input[type='range']" );
+		$slider[0].value = isMuted ? 0 : volume;
+		$slider.trigger( "wb-update.wb-slider" );
 		break;
 
 	case "timeupdate":
@@ -7467,9 +7469,13 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "ccvischange":
+		isCCVisible = eventTarget.player( "getCaptionsVisible" );
 		$button = $this.find( ".cc" );
-		buttonData = $button.data( "state-" + ( eventTarget.player( "getCaptionsVisible" ) ? "off" : "on" ) );
-		$button.attr( "title", buttonData ).children( "span" ).html( invStart + buttonData + invEnd );
+		buttonData = $button.data( "state-" + ( isCCVisible ? "off" : "on" ) );
+		$button.attr( {
+			title: buttonData,
+			"aria-pressed": isCCVisible
+		} ).children( "span" ).html( invStart + buttonData + invEnd );
 		break;
 
 	case "waiting":
@@ -8763,9 +8769,10 @@ var pluginName = "wb-share",
 
 			// Don't create the panel for the second link (class="link-only")
 			if ( elm.className.indexOf( "link-only" ) === -1 ) {
-				panel = "<section id='" + id  + "' class='shr-pg wb-overlay modal-content overlay-def wb-panel-r" +
+				panel = "<section id='" + id  + "' class='shr-pg mfp-hide modal-dialog modal-content overlay-def" +
 					"'><header class='modal-header'><" + heading + " class='modal-title'>" +
-					shareText + "</" + heading + "></header><ul class='list-unstyled colcount-xs-2'>";
+					shareText + "</" + heading + "></header><div class='modal-body'>" +
+					"<ul class='list-unstyled colcount-xs-2'>";
 
 				// If there is no filter array of site keys, then generate an array of site keys
 				if ( !filter || filter.length === 0 ) {
@@ -8800,10 +8807,13 @@ var pluginName = "wb-share",
 						siteProperties.name + "</a></li>";
 				}
 
-				panel += "</ul><div class='clearfix'></div><p class='col-sm-12'>" + i18nText.disclaimer + "</p></section>";
+				panel += "</ul><p class='col-sm-12 shr-dscl'>" + i18nText.disclaimer +
+					"</p><div class='clearfix'></div></div></section>";
 				panelCount += 1;
 			}
-			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn overlay-lnk " + settings.lnkClass + "'><span class='glyphicon glyphicon-share'></span> " +
+			link = "<a href='#" + id + "' aria-controls='" + id +
+				"' class='shr-opn wb-lbx " + settings.lnkClass +
+				"'><span class='glyphicon glyphicon-share'></span>" +
 				shareText + "</a>";
 
 			$share = $( ( panel ? panel : "" ) + link );
@@ -8812,7 +8822,7 @@ var pluginName = "wb-share",
 
 			$share
 				.trigger( initEvent )
-				.trigger( "wb-init.wb-overlay" );
+				.trigger( "wb-init.wb-lbx" );
 		}
 	};
 
@@ -9343,16 +9353,24 @@ var pluginName = "wb-tabs",
 
 	updateNodes = function( $panels, $controls, $next, $control ) {
 		var $tabs = $controls.find( "[role=tab]" ),
-			newIndex = $tabs.index( $control ) + 1;
+			newIndex = $tabs.index( $control ) + 1,
+			$currPanel = $panels.filter( ".in" ),
+			mPlayers = $currPanel.find( ".wb-mltmd" ).get(),
+			mPlayersLen = mPlayers.length,
+			i;
 
-		$panels
-			.filter( ".in" )
-				.removeClass( "in" )
-				.addClass( "out" )
-				.attr({
-					"aria-hidden": "true",
-					"aria-expanded": "false"
-				});
+		$currPanel
+			.removeClass( "in" )
+			.addClass( "out" )
+			.attr({
+				"aria-hidden": "true",
+				"aria-expanded": "false"
+			});
+
+		// Pause all multimedia players in the current panel
+		for ( i = 0; i !== mPlayersLen; i += 1 ) {
+			mPlayers[ i ].player( "pause" );
+		}
 
 		$next
 			.removeClass( "out" )
@@ -9676,6 +9694,23 @@ $document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
 					.trigger( "setfocus.wb" );
 	}
 });
+
+// Stop the carousel if there is a click within the panel
+$document.on( "click", selector + " [role=tabpanel]", function( event ) {
+	var which = event.which,
+		$container;
+
+	// Ignore middle and right mouse buttons
+	if ( ( !which || which === 1 ) ) {
+		$container = $( event.currentTarget ).closest( selector );
+
+		// Stop the carousel if there is a click within a panel
+		if ( $container.hasClass( "playing" ) ) {
+			$container.find( ".plypause" ).trigger( "click" );
+		}
+	}
+});
+
 // Handling for links to tabs from within a panel
 $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	var currentTarget = event.currentTarget,
