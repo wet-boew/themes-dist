@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.3-development - 2014-06-04
+ * v4.0.3-development - 2014-06-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -79,8 +79,7 @@ wb.i18nDict = {
 	pause: "暫停",
 	open: "打開",
 	close: "停止",
-	rew: "倒轉",
-	ffwd: "快轉",
+	volume: "Volume",
 	mute: {
 		on: "靜音",
 		off: "聲音"
