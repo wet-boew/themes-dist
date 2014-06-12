@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.3-development - 2014-06-10
+ * v4.0.3-development - 2014-06-12
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -61,7 +61,7 @@ var getUrlParts = function( url ) {
 	 * @variable $src
 	 * @return {jQuery Element} of wb script element
 	 */
-	$src = $( "script[src$='wet-boew.js'],script[src$='wet-boew.min.js']" )
+	$src = $( "script[src*='wet-boew.js'],script[src*='wet-boew.min.js']" )
 		.last(),
 
 	/**
@@ -6560,10 +6560,9 @@ var pluginName = "wb-mltmd",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					rewind: i18n( "rew" ),
-					ff: i18n( "ffwd" ),
 					play: i18n( "play" ),
 					pause: i18n( "pause" ),
+					volume: i18n( "volume" ),
 					cc_on: i18n( "cc", "on" ),
 					cc_off: i18n( "cc", "off" ),
 					cc_error: i18n ( "cc-err" ),
@@ -6982,7 +6981,7 @@ var pluginName = "wb-mltmd",
 	},
 
 	/**
-	 * @method youTubeEvennts
+	 * @method youTubeEvents
 	 * @description Youtube API event manager
 	 * @param {object} event The event object fior the triggered event
 	 */
@@ -7051,14 +7050,17 @@ $document.on( initializedEvent, selector, function() {
 		id = $this.attr( "id" ),
 		mId = $media.attr( "id" ) || id + "-md",
 		type = $media.is( "audio" ) ? "audio" : "video",
+		title = $media.attr( "title" ) || "",
 		width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
 		height = type === "video" ? $media.attr( "height" ) || $media.height() : 0,
+		settings = wb.getData( $this, pluginName ),
 		data = $.extend({
 			media: $media,
 			captions: captions,
 			id: id,
 			mId: mId,
 			type: type,
+			title: title,
 			height: height,
 			width: width
 		}, i18nText),
@@ -7067,6 +7069,10 @@ $document.on( initializedEvent, selector, function() {
 
 	if ( $media.attr( "id" ) === undef ) {
 		$media.attr( "id", mId );
+	}
+
+	if ( settings !== undef ) {
+		data.shareUrl = settings.shareUrl;
 	}
 
 	$this.addClass( type );
@@ -7227,7 +7233,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		captionsUrl = wb.getUrlParts( data.captions ),
 		currentUrl = wb.getUrlParts( window.location.href ),
 		$media = $this.find( "video, audio, iframe, object" ),
-		$player, $overlay;
+		$player, $overlay, $share;
 
 	$media.after( tmpl( $this.data( "template" ), data ) );
 	$overlay = $media.next().find( ".wb-mm-ovrly" ).after( $media );
@@ -7254,14 +7260,26 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 	// Load the progress polyfill if needed
 	$this.find( "progress" ).trigger( "wb-init.wb-progress" );
 
+	// Load the slider polyfill if needed
+	$this.find( "input[type='range']" ).trigger( "wb-init.wb-slider" );
+
 	if ( data.captions === undef ) {
 		return 1;
 	}
 
+	// Load the captions
 	if ( currentUrl.absolute.replace( currentUrl.hash, "" ) !== captionsUrl.absolute.replace( captionsUrl.hash, "" ) ) {
 		loadCaptionsExternal( $player, captionsUrl.absolute );
 	} else {
 		loadCaptionsInternal( $player, $( captionsUrl.hash ) );
+	}
+
+	// Create the share widgets if needed
+	// TODO: Remove .parent() when getting rid of the overlay
+	if ( data.shareUrl !== undef ) {
+		$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"video\", \"title\": \"" + data.title + "\", \"url\": \"" + data.shareUrl + "\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
+		$media.parent().before( $share );
+		wb.add( $share );
 	}
 });
 
@@ -7278,7 +7296,7 @@ $document.on( "click", selector, function( event ) {
 		return true;
 	}
 
-	// Opitmized multiple class tests to include child glyphicon because Safari was reporting the click event
+	// Optimized multiple class tests to include child glyphicon because Safari was reporting the click event
 	// from the child span not the parent button, forcing us to have to check for both elements
 	// JSPerf for multiple class matching http://jsperf.com/hasclass-vs-is-stackoverflow/7
 	if ( className.match( /playpause|-play|-pause|wb-mm-ovrly/ ) || $target.is( "object" ) ) {
@@ -7296,13 +7314,23 @@ $document.on( "click", selector, function( event ) {
 	}
 });
 
+$document.on( "input change", selector, function(event) {
+	var target = event.target;
+
+	if ( $( target ).hasClass( "volume" ) ) {
+		event.currentTarget.player( "setMuted", false );
+		event.currentTarget.player( "setVolume", target.value / 100 );
+	}
+});
+
 $document.on( "keydown", selector, function( event ) {
 	var playerTarget = event.currentTarget,
 		which = event.which,
 		ctrls = ".wb-mm-ctrls",
 		ref = expand( playerTarget ),
 		$this = ref[ 0 ],
-		volume = 0;
+		volume = 0,
+		step = 0.05;
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
 		switch ( which ) {
@@ -7311,20 +7339,20 @@ $document.on( "keydown", selector, function( event ) {
 			break;
 
 		case 37:
-			$this.find( ctrls + " .rewind" ).trigger( "click" );
+			playerTarget.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05);
 			break;
 
 		case 39:
-			$this.find( ctrls + " .fastforward" ).trigger( "click" );
+			playerTarget.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05);
 			break;
 
 		case 38:
-			volume = Math.round( playerTarget.player( "getVolume" ) * 10 ) / 10 + 0.1;
+			volume = Math.round( playerTarget.player( "getVolume" ) * 100 ) / 100 + step;
 			playerTarget.player( "setVolume", volume < 1 ? volume : 1 );
 			break;
 
 		case 40:
-			volume = Math.round( playerTarget.player( "getVolume" ) * 10 ) / 10 - 0.1;
+			volume = Math.round( playerTarget.player( "getVolume" ) * 100 ) / 100 - step;
 			playerTarget.player( "setVolume", volume > 0 ? volume : 0 );
 			break;
 
@@ -7353,7 +7381,7 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		$this = $( eventTarget ),
 		invStart = "<span class='wb-inv'>",
 		invEnd = "</span>",
-		currentTime, $button, buttonData, isPlay, getMuted, ref, skipTo;
+		currentTime, $button, $slider, buttonData, isPlay, isMuted, isCCVisible, ref, skipTo, volume;
 	switch ( eventType ) {
 	case "play":
 	case "pause":
@@ -7377,15 +7405,22 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "volumechange":
-		getMuted = eventTarget.player( "getMuted" );
+		isMuted = eventTarget.player( "getMuted" );
 		$button = $this.find( ".mute" );
-		buttonData = $button.data( "state-" + ( getMuted ? "off" : "on" ) );
+		buttonData = $button.data( "state-" + ( isMuted ? "off" : "on" ) );
+		volume = eventTarget.player( "getVolume" ) * 100;
 		$button
-			.attr( "title", buttonData )
+			.attr( {
+				title: buttonData,
+				"aria-pressed": isMuted
+			} )
 			.children( "span" )
-				.toggleClass( "glyphicon-volume-up", !getMuted )
-				.toggleClass( "glyphicon-volume-off", getMuted )
+				.toggleClass( "glyphicon-volume-up", !isMuted )
+				.toggleClass( "glyphicon-volume-off", isMuted )
 				.html( invStart + buttonData + invEnd );
+		$slider = $this.find( "input[type='range']" );
+		$slider[0].value = isMuted ? 0 : volume;
+		$slider.trigger( "wb-update.wb-slider" );
 		break;
 
 	case "timeupdate":
@@ -7434,9 +7469,13 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "ccvischange":
+		isCCVisible = eventTarget.player( "getCaptionsVisible" );
 		$button = $this.find( ".cc" );
-		buttonData = $button.data( "state-" + ( eventTarget.player( "getCaptionsVisible" ) ? "off" : "on" ) );
-		$button.attr( "title", buttonData ).children( "span" ).html( invStart + buttonData + invEnd );
+		buttonData = $button.data( "state-" + ( isCCVisible ? "off" : "on" ) );
+		$button.attr( {
+			title: buttonData,
+			"aria-pressed": isCCVisible
+		} ).children( "span" ).html( invStart + buttonData + invEnd );
 		break;
 
 	case "waiting":
@@ -8076,7 +8115,7 @@ var id = "wb-rsz",
 
 			// Change the breakpoint class on the html element
 			wb.html
-				.removeClass( currentView )
+				.removeClass( currentView || "" )
 				.addClass( viewName );
 
 			// Update the current view
@@ -8772,7 +8811,9 @@ var pluginName = "wb-share",
 					"</p><div class='clearfix'></div></div></section>";
 				panelCount += 1;
 			}
-			link = "<a href='#" + id + "' aria-controls='" + id + "' class='shr-opn wb-lbx " + settings.lnkClass + "'><span class='glyphicon glyphicon-share'></span> " +
+			link = "<a href='#" + id + "' aria-controls='" + id +
+				"' class='shr-opn wb-lbx " + settings.lnkClass +
+				"'><span class='glyphicon glyphicon-share'></span>" +
 				shareText + "</a>";
 
 			$share = $( ( panel ? panel : "" ) + link );

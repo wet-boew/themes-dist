@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.3-development - 2014-06-10
+ * v4.0.3-development - 2014-06-12
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -3190,7 +3190,7 @@ var getUrlParts = function( url ) {
 	 * @variable $src
 	 * @return {jQuery Element} of wb script element
 	 */
-	$src = $( "script[src$='wet-boew.js'],script[src$='wet-boew.min.js']" )
+	$src = $( "script[src*='wet-boew.js'],script[src*='wet-boew.min.js']" )
 		.last(),
 
 	/**
