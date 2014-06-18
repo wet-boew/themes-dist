@@ -4,23 +4,18 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
 /*
  *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-
 /* Shorthand can't be used because it doesn't work with IE 8 & 9 gradients */
-
 /* Medium view and over */
-
 @media screen and (min-width: 992px) {
   /*
  *
@@ -28,17 +23,11 @@
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-
   /*
   @title: Medium view and over (screen only) for IE8
  */
-
   body {
     background-image: url(../assets/header-bg-ie.jpg);
-    background-repeat: repeat-x;
-  }
-
+    background-repeat: repeat-x; }
   #wb-bnr {
-    min-height: 165px;
-  }
-}
+    min-height: 165px; } }
