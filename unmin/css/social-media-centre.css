@@ -6,15 +6,13 @@
   border: 0;
   display: block; }
 
-
-
 .backgroundsize.csstransitions {
   /* Layout of fields */ }
   .backgroundsize.csstransitions #social-media-centre tbody {
     padding-top: 2em; }
     .backgroundsize.csstransitions #social-media-centre tbody tr {
       background-clip: content-box;
-      background-color: #eeeeee;
+      background-color: #eee;
       background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==");
       background-origin: content-box;
       background-position: top left, top left, bottom left, top right;
