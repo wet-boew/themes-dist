@@ -361,7 +361,7 @@
       border-radius: 0 0 3px 3px; }
       #wb-sm .sm a, #wb-sm .sm summary {
         font-weight: 400; }
-      #wb-sm .sm .slflnk {
+      #wb-sm .sm .slflnk a {
         background: #bbb; }
   #wb-sec {
     margin-top: 20px;

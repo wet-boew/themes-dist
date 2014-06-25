@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.3 - 2014-06-18
+ * v4.0.4-development - 2014-06-25
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1253,22 +1253,38 @@ var $document = wb.doc;
 // Event binding
 $document.on( "ajax-fetch.wb", function( event ) {
 	var caller = event.element,
-		url = event.fetch;
+		fetchOpts = event.fetch,
+		fetchData;
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === event.target ) {
-
-		$( "<div id='" + wb.guid() + "' />" )
-			.load( url, function( response, status, xhr ) {
-				$( caller )
-					.trigger( {
-						type: "ajax-fetched.wb",
-						pointer: $( this ),
+			$.ajax( fetchOpts )
+				.done( function( response, status, xhr ) {
+					fetchData = {
 						response: response,
 						status: status,
 						xhr: xhr
+					};
+
+					if ( typeof response === "string" ) {
+						fetchData.pointer = $( "<div id='" + wb.guid() + "' />" ).append(response);
+					}
+
+					$( caller ).trigger({
+						type: "ajax-fetched.wb",
+						fetch: fetchData
 					});
-			});
+				})
+				.fail( function(xhr, status, error) {
+					$( caller ).trigger({
+						type: "ajax-failed.wb",
+						fetch: {
+							xhr: xhr,
+							status: status,
+							error: error
+						}
+					});
+				});
 	}
 });
 
@@ -3064,7 +3080,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 			var $container = $( "<figure class='" + optionsCharts.graphclass + "'>" +
 
 				// Copy to the inner table caption
-				( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>": "" ) +
+				( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>" : "" ) +
 
 				// Image Container
 				"<div role='img' aria-label='" +
@@ -3072,7 +3088,7 @@ $document.on( "setFocus.wb-cal", setFocus );
 
 				// Add Dimension
 				( withDimension ? "style='height:" + optionsCharts.height +
-				"px; width:" + optionsCharts.width + "px'": "" ) +
+				"px; width:" + optionsCharts.width + "px'" : "" ) +
 
 				"></div></figure>");
 
@@ -3641,7 +3657,9 @@ var pluginName = "wb-data-ajax",
 			$document.trigger({
 				type: "ajax-fetch.wb",
 				element: $elm,
-				fetch: url
+				fetch: {
+					url: url
+				}
 			});
 		}
 	};
@@ -3680,21 +3698,17 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 		default:
 
 			// ajax-fetched event
-			content = event.pointer.html();
+			content = event.fetch.pointer.html();
 			$elm.removeAttr( "data-ajax-" + ajaxType );
 
-			// Only complete the action if there wasn't an error
-			if ( event.status !== "error" ) {
-
-				// "replace" is the only event that doesn't map to a jQuery function
-				if ( ajaxType === "replace") {
-					$elm.html( content );
-				} else {
-					$elm[ ajaxType ]( content );
-				}
-
-				$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
+			// "replace" is the only event that doesn't map to a jQuery function
+			if ( ajaxType === "replace") {
+				$elm.html( content );
+			} else {
+				$elm[ ajaxType ]( content );
 			}
+
+			$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
 		}
 	}
 
@@ -4367,10 +4381,10 @@ var pluginName = "wb-feeds",
 			// Facebook feeds does not really do titles in ATOM RSS. It simply truncates content at 150 characters. We are using a JS based sentence
 			// detection algorithm to better split content and titles
 			var content = fromCharCode( data.content ),
-				title = content.replace( /(<([^>]+)>)/ig,"" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g );
+				title = content.replace( /(<([^>]+)>)/ig, "" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g );
 
 			// Sanitize the HTML from Facebook - extra 'br' tags
-			content = content.replace( /(<br>\n?)+/gi,"<br>" );
+			content = content.replace( /(<br>\n?)+/gi, "<br>" );
 
 			return "<li class='media'><a class='pull-left' href=''><img src='" + data.fIcon + "' alt='" + data.author +
 				"' height='64px' width='64px' class='media-object'/></a><div class='media-body'>" +
@@ -5351,7 +5365,9 @@ var pluginName = "wb-menu",
 				$document.trigger({
 					type: "ajax-fetch.wb",
 					element: $elm,
-					fetch: $elm.data( "ajax-fetch" )
+					fetch: {
+						url: $elm.data( "ajax-fetch" )
+					}
 				});
 			} else {
 				onAjaxLoaded( $elm, $elm );
@@ -5736,7 +5752,7 @@ var pluginName = "wb-menu",
 	};
 
 // Bind the events of the plugin
-$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, function( event ) {
+$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb ajax-failed.wb", selector, function( event ) {
 
 	var elm = event.target,
 		eventType = event.type,
@@ -5744,6 +5760,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 
 	switch ( eventType ) {
 	case "ajax-fetched":
+	case "ajax-failed":
 
 		// Filter out any events triggered by descendants
 		if ( event.currentTarget === elm ) {
@@ -5751,7 +5768,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 			// Only replace the menu if there isn't an error
 			onAjaxLoaded(
 				$elm,
-				event.status !== "error" ? event.pointer : $elm
+				eventType === "ajax-fetched" ? event.fetch.pointer : $elm
 			);
 		}
 		return false;
@@ -6156,7 +6173,9 @@ var pluginName = "wb-mltmd",
 				$document.trigger({
 					type: "ajax-fetch.wb",
 					element: selector,
-					fetch: wb.getPath( "/assets" ) + "/mediacontrols.html"
+					fetch: {
+						url: wb.getPath( "/assets" ) + "/mediacontrols.html"
+					}
 				});
 			} else if ( template !== "" ) {
 				$( eventTarget ).trigger({
@@ -6605,7 +6624,7 @@ $document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
 	var $this = $( this );
 
 	if ( event.type === "ajax-fetched" ) {
-		template = event.pointer.html();
+		template = event.fetch.pointer.html();
 	}
 
 	$this.data( "template", template );
