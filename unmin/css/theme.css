@@ -1000,7 +1000,7 @@ a.shr-opn, a.shr-opn:hover {
         #wb-sm .sm.open li a:hover, #wb-sm .sm.open li a:focus, #wb-sm .sm.open li a:active, #wb-sm .sm.open li summary:hover, #wb-sm .sm.open li summary:focus, #wb-sm .sm.open li summary:active {
           background: #243850;
           color: #fff; }
-      #wb-sm .sm.open .slflnk {
+      #wb-sm .sm.open .slflnk a {
         background: #bbb; }
     #wb-sm .sm .row {
       background: transparent; }
