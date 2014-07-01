@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.4-development - 2014-06-26
+ * v4.0.4-development - 2014-07-01
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1258,33 +1258,33 @@ $document.on( "ajax-fetch.wb", function( event ) {
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === event.target ) {
-			$.ajax( fetchOpts )
-				.done( function( response, status, xhr ) {
-					fetchData = {
-						response: response,
-						status: status,
-						xhr: xhr
-					};
+		$.ajax( fetchOpts )
+			.done( function( response, status, xhr ) {
+				fetchData = {
+					response: response,
+					status: status,
+					xhr: xhr
+				};
 
-					if ( typeof response === "string" ) {
-						fetchData.pointer = $( "<div id='" + wb.guid() + "' />" ).append(response);
-					}
+				if ( typeof response === "string" ) {
+					fetchData.pointer = $( "<div id='" + wb.guid() + "' />" ).append( response );
+				}
 
-					$( caller ).trigger({
-						type: "ajax-fetched.wb",
-						fetch: fetchData
-					});
-				})
-				.fail( function(xhr, status, error) {
-					$( caller ).trigger({
-						type: "ajax-failed.wb",
-						fetch: {
-							xhr: xhr,
-							status: status,
-							error: error
-						}
-					});
+				$( caller ).trigger({
+					type: "ajax-fetched.wb",
+					fetch: fetchData
 				});
+			})
+			.fail(function( xhr, status, error ) {
+				$( caller ).trigger({
+					type: "ajax-failed.wb",
+					fetch: {
+						xhr: xhr,
+						status: status,
+						error: error
+					}
+				});
+			});
 	}
 });
 
@@ -5340,6 +5340,7 @@ var pluginName = "wb-menu",
 	 * @param {jQuery DOM element} $elm The plugin element
 	 */
 	init = function( $elm ) {
+		var ajaxFetch;
 
 		// Only initialize the element once
 		if ( !$elm.hasClass( initedClass ) ) {
@@ -5361,12 +5362,13 @@ var pluginName = "wb-menu",
 			}
 
 			// Lets test to see if we have any menus to fetch
-			if ( $elm.data( "ajax-fetch" ) ) {
+			ajaxFetch = $elm.data( "ajax-fetch" );
+			if ( ajaxFetch ) {
 				$document.trigger({
 					type: "ajax-fetch.wb",
 					element: $elm,
 					fetch: {
-						url: $elm.data( "ajax-fetch" )
+						url: ajaxFetch
 					}
 				});
 			} else {
@@ -5514,10 +5516,11 @@ var pluginName = "wb-menu",
 	/**
 	 * @method onAjaxLoaded
 	 * @param {jQuery DOM element} $elm The plugin element
-	 * @param {jQuery DOM element} $ajaxed The AJAX'd in menu content to import
+	 * @param {jQuery DOM element} $ajaxResult The AJAXed in menu content to import
 	 */
-	onAjaxLoaded = function( $elm, $ajaxed ) {
-		var $menubar = $ajaxed.find( ".menu" ),
+	onAjaxLoaded = function( $elm, $ajaxResult ) {
+		var $ajaxed = !$ajaxResult ? $elm : $ajaxResult,
+			$menubar = $ajaxed.find( ".menu" ),
 			$menu = $menubar.find( "> li > a" ),
 			target = $elm.data( "trgt" ),
 			$secnav = $( "#wb-sec" ),
@@ -5577,6 +5580,12 @@ var pluginName = "wb-menu",
 
 			// Add the site menu
 			if ( $menubar.length !== 0 ) {
+
+				// Add the menubar role if it is missing
+				if ( !$menubar.attr( "role" ) ) {
+					$menubar.attr( "role", "menubar" );
+				}
+
 				allProperties.push([
 					$menu.get(),
 					"sm-pnl",
@@ -5626,11 +5635,10 @@ var pluginName = "wb-menu",
 
 		if ( $menu.length !== 0 ) {
 			$menu[ 0 ].setAttribute( "tabindex", "0" );
-			$menu
-				.filter( "[href^=#]" )
-					.append( "<span class='expicon glyphicon glyphicon-chevron-down'></span>" );
-
 			drizzleAria( $menu );
+			$menu
+				.filter( "[aria-haspopup=true]" )
+					.append( "<span class='expicon glyphicon glyphicon-chevron-down'></span>" );
 		}
 
 		// Replace elements
@@ -9309,7 +9317,7 @@ $document.on( "click", selector + " [role=tabpanel]", function( event ) {
 		$container;
 
 	// Ignore middle and right mouse buttons
-	if ( ( !which || which === 1 ) ) {
+	if ( !which || which === 1 ) {
 		$container = $( event.currentTarget ).closest( selector );
 
 		// Stop the carousel if there is a click within a panel
