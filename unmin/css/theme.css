@@ -877,6 +877,9 @@ a.shr-opn, a.shr-opn:hover {
     background: #f9f9f9; }
   .overlay-def .modal-header {
     background: #2e5274; }
+  .wb-sl {
+    background: #335075;
+    color: #fff !important; }
   .prm-flpr {
     background-color: #eee;
     margin-top: 1px; }
