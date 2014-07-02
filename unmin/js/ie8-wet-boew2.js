@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.4-development - 2014-07-01
+ * v4.0.4-development - 2014-07-02
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1088,8 +1088,7 @@
 			var date = null;
 
 			if ( dateISO && dateISO.match( /\d{4}-\d{2}-\d{2}/ ) ) {
-				date = new Date();
-				date.setFullYear( dateISO.substr( 0, 4 ), dateISO.substr( 5, 2 ) - 1, dateISO.substr( 8, 2 ) );
+				date = new Date( dateISO.substr( 0, 4 ), dateISO.substr( 5, 2 ) - 1, dateISO.substr( 8, 2 ), 0, 0, 0, 0 );
 			}
 			return date;
 		}
@@ -1477,6 +1476,7 @@ var pluginName = "wb-calevt",
 				}
 
 				date = new Date();
+				date.setHours( 0, 0, 0, 0 );
 				tCollection = event.find( "time" );
 
 				/*
@@ -1954,10 +1954,14 @@ var $document = wb.doc,
 			minDate = eventData.minDate,
 			maxDate = eventData.maxDate,
 			$monthField = eventData.$monthField,
+			value = $monthField.val(),
+			month = value ? value : eventData.month,
 			minMonth = 0,
 			maxMonth = 12,
 			monthNames = i18nText.monthNames,
-			month, i;
+			newMonthField = "<select id='" + $monthField.attr( "id" ) +
+				"' title='" + $monthField.attr( "title" ) + "'>",
+			i;
 
 		if ( year === minDate.getFullYear() ) {
 			minMonth = minDate.getMonth();
@@ -1967,25 +1971,17 @@ var $document = wb.doc,
 			maxMonth = maxDate.getMonth() + 1;
 		}
 
-		month = $monthField.val();
-
-		// Can't use $monthField.empty() or .html("") on <select> in IE
-		// http://stackoverflow.com/questions/3252382/why-does-dynamically-populating-a-select-drop-down-list-element-using-javascript
-		for ( i = $monthField.length - 1 ; i !== -1; i -= 1 ) {
-			$monthField[ i ].remove( i );
-		}
-
 		for ( i = minMonth; i !== maxMonth; i += 1 ) {
-			$monthField.append( "<option value='" + i + "'" + ( ( i === month ) ? " selected='selected'" : "" ) +
-				">" + monthNames[ i ] + "</option>" );
+			newMonthField += "<option value='" + i + "'" + ( ( i === month ) ? " selected='selected'" : "" ) +
+				">" + monthNames[ i ] + "</option>";
 		}
+		$monthField.replaceWith( newMonthField + "</select>" );
 	},
 
 	createGoToForm = function( calendarId, year, month, minDate, maxDate ) {
 		var $goToForm = $( "<div class='cal-goto'></div>" ),
 			$form = $( "<form id='cal-" + calendarId + "-goto' role='form' style='display:none;' action=''></form>" ),
-			$yearContainer, $yearField, y, ylen, $monthContainer, $monthField, $buttonSubmit,
-			$buttonCancel, $goToLink;
+			$yearContainer, yearField, $yearField, y, ylen, $monthContainer, $monthField;
 
 		$form.on( "submit", function( event ) {
 			event.preventDefault();
@@ -1995,10 +1991,11 @@ var $document = wb.doc,
 
 		// Create the year field
 		$yearContainer = $( "<div class='cal-goto-yr'></div>" );
-		$yearField = $( "<select title='" + i18nText.goToYear + "' id='cal-" + calendarId + "-goto-year'></select>" );
-		for ( y = minDate.getFullYear(), ylen = maxDate.getFullYear(); y <= ylen; y += 1 ) {
-			$yearField.append( $( "<option value='" + y + "'" + (y === year ? " selected='selected'" : "" ) + ">" + y + "</option>" ) );
+		yearField = "<select title='" + i18nText.goToYear + "' id='cal-" + calendarId + "-goto-year'>";
+		for ( y = minDate.getFullYear(), ylen = maxDate.getFullYear() + 1; y !== ylen; y += 1 ) {
+			yearField += "<option value='" + y + "'" + ( y === year ? " selected='selected'" : "" ) + ">" + y + "</option>";
 		}
+		$yearField = $( yearField + "</select>" );
 
 		// Create the month field
 		$monthContainer = $( "<div class='cal-goto-mnth'></div>" );
@@ -2010,49 +2007,25 @@ var $document = wb.doc,
 		$yearContainer.append( $yearField );
 
 		// Update the list of available months when changing the year
-		$yearField.on( "change", { minDate: minDate, maxDate: maxDate, $monthField: $monthField }, yearChanged );
+		$yearField.on( "change", { minDate: minDate, maxDate: maxDate, month: month, $monthField: $monthField }, yearChanged );
 
 		// Populate initial month list
 		$yearField.trigger( "change" );
 
-		$buttonSubmit = $( "<div class='cal-goto-btn'><input type='submit' class='btn btn-primary' value='" +
-			i18nText.goToBtn + "' /></div>" );
-
-		$buttonCancel = $( "<div class='cal-goto-btn'><input type='button' class='btn btn-default' value='" +
-			i18nText.cancelBtn + "' /></div>" );
-		$buttonCancel.on( "click", "input", function( event ) {
-			var which = event.which;
-
-			// Ignore middle/right mouse buttons
-			if ( !which || which === 1 ) {
-				$( "#" + calendarId ).trigger( "hideGoToFrm.wb-cal" );
-			}
-		});
-
 		$form
 			.append( $monthContainer )
 			.append( $yearContainer )
-			.append( "<div class='clearfix'></div>" )
-			.append( $buttonSubmit )
-			.append( $buttonCancel );
-
-		$goToLink = $( "<div id='cal-" +
-			calendarId + "-goto-lnk'><a href='javascript:;' role='button' aria-controls='cal-" +
-			calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
-			i18nText.monthNames[ month ] + " " + year + "</a></div>" );
-		$goToLink.on( "click", "a", function( event ) {
-			event.preventDefault();
-
-			var which = event.which;
-
-			// Ignore middle/right mouse buttons
-			if ( !which || which === 1 ) {
-				showGoToForm( calendarId );
-			}
-		} );
+			.append( "<div class='clearfix'></div>" +
+				"<div class='cal-goto-btn'><input type='submit' class='btn btn-primary' value='" +
+				i18nText.goToBtn + "' /></div>" +
+				"<div class='cal-goto-btn'><input type='button' class='btn btn-default cal-goto-cancel' value='" +
+				i18nText.cancelBtn + "' /></div>" );
 
 		$goToForm
-			.append( $goToLink )
+			.append( "<div id='cal-" +
+				calendarId + "-goto-lnk'><a href='javascript:;' role='button' aria-controls='cal-" +
+				calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
+				i18nText.monthNames[ month ] + " " + year + "</a></div>" )
 			.append( $form );
 
 		return $goToForm;
@@ -2181,7 +2154,7 @@ var $document = wb.doc,
 			month = parseInt( $form.find( ".cal-goto-mnth select option:selected" ).val(), 10 ),
 			year = parseInt( $form.find( ".cal-goto-yr select" ).val(), 10 );
 
-		if (!(month < minDate.getMonth() && year <= minDate.getFullYear()) && !(month > maxDate.getMonth() && year >= maxDate.getFullYear())) {
+		if ( !( month < minDate.getMonth() && year <= minDate.getFullYear() ) && !( month > maxDate.getMonth() && year >= maxDate.getFullYear() ) ) {
 			$document.trigger( "create.wb-cal", [
 				calendarId,
 				year,
@@ -2241,10 +2214,14 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 					elm : elm.parentNode.parentNode.previousSibling
 			).getElementsByTagName( "time" )[ 0 ].getAttribute( "datetime" )
 		),
-		currYear = date.getFullYear(),
-		currMonth = date.getMonth(),
-		currDay = date.getDate(),
-		field, minDate, maxDate, modifier, $links, $link;
+
+		// Clone the date to keep a copy of the current date
+		currDate = new Date( date.getTime() ),
+		currYear = currDate.getFullYear(),
+		currMonth = currDate.getMonth(),
+		currDay = currDate.getDate(),
+		field, minDate, maxDate, modifier, $links, $link,
+		events, i, len, eventDate;
 
 	if ( fieldId ) {
 		field = document.getElementById( fieldId );
@@ -2307,6 +2284,48 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 			break;
 		}
 
+		// If in a calendar of events then correct the date to the
+		// appropriate event date if the new date is in a different year
+		// or month or the date in the current month doesn't have a link
+		if ( $container.hasClass( "wb-calevt-cal" ) &&
+			( currYear !== date.getFullYear() || currMonth !== date.getMonth() ||
+			$monthContainer.find( ".cal-index-" + date.getDate() + " > a" ).length === 0 ) ) {
+
+			events = $container.data( "calEvents" ).list;
+			len = events.length;
+
+			// New date is later than the current date so find
+			// the first event date after the new date
+			if ( currDate < date ) {
+				for ( i = 0; i !== len; i += 1 ) {
+					eventDate = events[ i ].date;
+					if ( eventDate.getTime() >= date.getTime() ) {
+						break;
+					}
+				}
+
+			// New date is earlier than the current date so find
+			// the first event date before the new date
+			} else {
+				for ( i = len - 1; i !== -1; i -= 1 ) {
+					eventDate = events[ i ].date;
+					if ( eventDate.getTime() <= date.getTime() ) {
+						break;
+					}
+				}
+			}
+
+			// Update new date if appropriate event date was found
+			if ( ( i !== len && i !== -1 ) ||
+				( i === len && currDate < eventDate ) ||
+				( i === -1 && currDate > eventDate ) ) {
+
+				date = eventDate;
+			} else {
+				date = currDate;
+			}
+		}
+
 		// Move focus to the new date
 		if ( currYear !== date.getFullYear() || currMonth !== date.getMonth() ) {
 			$document.trigger( "setFocus.wb-cal", [
@@ -2329,6 +2348,26 @@ $document.on( "keydown", ".cal-days a", function( event ) {
 $document.on( "hideGoToFrm.wb-cal", ".cal-cnt", hideGoToFrm );
 
 $document.on( "setFocus.wb-cal", setFocus );
+
+$document.on( "click", ".cal-goto-lnk", function( event ) {
+	event.preventDefault();
+
+	var which = event.which;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		showGoToForm( $( event.currentTarget ).closest( ".cal-cnt" ).attr( "id" ) );
+	}
+});
+
+$document.on( "click", ".cal-goto-cancel", function( event ) {
+	var which = event.which;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		$( event.currentTarget ).closest( ".cal-cnt" ).trigger( "hideGoToFrm.wb-cal" );
+	}
+});
 
 })( jQuery, window, document, wb );
 
