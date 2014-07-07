@@ -55,7 +55,8 @@
   #wb-bnr > .container {
     background: #cf3f0e; }
   #wb-sttl a {
-    color: #fff !important; }
+    color: #fff !important;
+    text-decoration: none; }
   #wb-sttl small {
     display: block;
     font-size: 0.4em;
