@@ -55,7 +55,8 @@
     background-image: linear-gradient(#4065b3, #4065b3, #33479e);
     filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr="#FF4065B3", endColorstr="#FF33479E"); }
   #wb-sttl a {
-    color: #fff !important; }
+    color: #fff !important;
+    text-decoration: none; }
   #wb-bc .breadcrumb {
     background: transparent;
     margin-bottom: 0; }
@@ -274,7 +275,7 @@
       padding-left: 10px;
       vertical-align: middle; }
   #wb-srch {
-    margin-top: 1.2em;
+    margin-top: 1.4em;
     padding-right: 10px;
     text-align: right; }
     #wb-srch .form-group {
