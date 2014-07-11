@@ -49,13 +49,12 @@
   body > header {
     background: #ccc; }
   .wb-sl {
+    background: #000;
     color: #fff;
-    font-weight: 700;
-    padding: 5px; }
+    font-weight: 700; }
     .wb-sl:focus {
       color: #fff;
-      text-decoration: none;
-      z-index: 501; }
+      text-decoration: none; }
   #wb-bar {
     background: #555; }
     #wb-bar > .container {
@@ -111,25 +110,23 @@
   /*
   @title: Small view and under (screen only)
  */
-  #wb-glb-mn {
-    padding: 0; }
-    #wb-glb-mn .pnl-btn {
-      float: right;
-      margin: 0;
-      position: relative;
-      z-index: 2; }
-      #wb-glb-mn .pnl-btn li {
-        padding: 0 0 0 10px;
-        width: 100%; }
-      #wb-glb-mn .pnl-btn a {
-        color: #474747;
-        display: block;
-        font-size: 1.9em;
-        line-height: 1em;
-        width: 100%; }
-      #wb-glb-mn .pnl-btn span .glyphicon-th-list {
-        padding-left: 10px;
-        top: 0; }
+  #wb-glb-mn .pnl-btn {
+    float: right;
+    margin: 0;
+    position: relative;
+    z-index: 2; }
+    #wb-glb-mn .pnl-btn li {
+      padding: 0 0 0 10px;
+      width: 100%; }
+    #wb-glb-mn .pnl-btn a {
+      color: #474747;
+      display: block;
+      font-size: 1.9em;
+      line-height: 1em;
+      width: 100%; }
+    #wb-glb-mn .pnl-btn span .glyphicon-th-list {
+      padding-left: 10px;
+      top: 0; }
   #mb-pnl .srch-pnl, #mb-pnl .lng-ofr, #mb-pnl .sec-pnl {
     background: #efefef; }
   #mb-pnl #wb-srch-sub-imprt, #mb-pnl #wb-srch-sub-imprt:hover, #mb-pnl #wb-srch-sub-imprt:focus, #mb-pnl #wb-srch-sub-imprt:active, #mb-pnl .sm-pnl a, #mb-pnl .sm-pnl summary, #mb-pnl .sm-pnl summary:hover, #mb-pnl .sm-pnl summary:focus {
