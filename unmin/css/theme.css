@@ -250,7 +250,7 @@ header {
           line-height: 1.7em;
           padding: 5px 10px 0 0; }
       #wb-glb-mn ul.chvrn span .glyphicon-th-list {
-        padding-left: 10px;
+        padding-left: 12px;
         top: 0; }
       #wb-glb-mn ul.chvrn:before {
         border-bottom: 1.375em solid transparent;
@@ -928,8 +928,8 @@ a.shr-opn, a.shr-opn:hover {
     #wb-glb-mn ul.chvrn li a {
       background: #335075;
       color: #fff;
-      font-size: 1.9em;
-      line-height: 1.7em;
+      font-size: 1.7em;
+      line-height: 1.8em;
       padding: 5px 10px 0 20px; } }
 
 /* Small view and under */
@@ -1078,8 +1078,12 @@ a.shr-opn, a.shr-opn:hover {
     width: auto !important; }
   header .brand object, header .brand img {
     max-height: 25px; }
-  #wb-glb-mn ul.chvrn {
-    margin-left: auto; }
+  #wb-glb-mn ul {
+    width: 100%; }
+    #wb-glb-mn ul.chvrn {
+      margin-left: auto; }
+      #wb-glb-mn ul.chvrn:before {
+        border: 0; }
   footer .brand object, footer .brand img {
     height: 25px;
     margin-top: 15px;
