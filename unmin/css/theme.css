@@ -116,7 +116,7 @@
     position: relative;
     z-index: 2; }
     #wb-glb-mn .pnl-btn li {
-      padding: 0 0 0 10px;
+      padding: 10px 0 10px 10px;
       width: 100%; }
     #wb-glb-mn .pnl-btn a {
       color: #474747;
