@@ -62,7 +62,8 @@
     text-decoration: none; }
   #wb-sttl a:hover, #wb-sttl a:focus {
     text-decoration: underline; }
-  .wb-slc a {
+  .wb-sl {
+    background: #000;
     color: #fff; }
   #wb-bar {
     background: #000;
@@ -120,6 +121,7 @@
   #gcwu-sig, #gc-bar {
     display: none; }
   #wmms {
+    height: 2em;
     margin-left: 15px;
     margin-top: 4px;
     position: absolute;
@@ -143,14 +145,17 @@
     position: relative;
     z-index: 2; }
     #wb-glb-mn .pnl-btn li {
-      padding: 4px 10px;
+      padding: 4px 0 4px 10px;
       width: 100%; }
     #wb-glb-mn .pnl-btn a {
       color: #000;
       display: block;
-      font-size: 1.5em;
+      font-size: 1.7em;
       line-height: 1em;
       width: 100%; }
+    #wb-glb-mn .pnl-btn span .glyphicon-th-list {
+      padding-left: 10px;
+      top: 0; }
   #mb-pnl #wb-srch-sub-imprt, #mb-pnl #wb-srch-sub-imprt:hover, #mb-pnl #wb-srch-sub-imprt:focus, #mb-pnl #wb-srch-sub-imprt:active, #mb-pnl .sm-pnl a, #mb-pnl .sm-pnl summary, #mb-pnl .sm-pnl summary:hover, #mb-pnl .sm-pnl summary:focus {
     color: #fff; }
   #mb-pnl {
@@ -199,7 +204,10 @@
   [dir=rtl] #wb-glb-mn > ul {
     text-align: left; }
   [dir=rtl] #wb-glb-mn .pnl-btn {
-    float: left; } }
+    float: left; }
+    [dir=rtl] #wb-glb-mn .pnl-btn span .glyphicon-th-list {
+      padding-left: 0;
+      padding-right: 10px; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
