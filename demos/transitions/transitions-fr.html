@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" dir="ltr"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
 
 <title>Transitions - Canada.ca</title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
-<meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities"/>
+<meta name="description" content="Transitions CSS"/>
 
 <!--[if gte IE 9 | !IE ]><!--> <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon"/> <link rel="stylesheet" href="../../css/wet-boew.min.css"/> <!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.min.css"/>
@@ -27,8 +27,8 @@
 <li class="wb-slc">
 <a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
 </li>
-<li class="wb-slc visible-md visible-lg">
-<a class="wb-sl" href="#wb-info">Passer aux informations sur le site</a>
+<li class="wb-slc visible-sm visible-md visible-lg">
+<a class="wb-sl" href="#wb-info">Passer à «&#160;À propos de ce site&#160;»</a>
 </li>
 </ul>
 <header role="banner">
@@ -44,14 +44,14 @@
 </div>
 </section>
 <div class="row">
-<div class="brand col-xs-9 col-md-6">
+<div class="brand col-xs-8 col-sm-9 col-md-6">
 <a href="http://www.canada.ca/fr/index.html"><object type="image/svg+xml" tabindex="-1" role="img" data="../../assets/sig-blk-fr.svg" aria-label="Gouvernement du Canada"></object>
 </a>
 </div>
-<section class="wb-mb-links col-xs-3 visible-sm visible-xs" id="wb-glb-mn">
-<h2>Menu</h2>
+<section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+<h2>Recherche et menus</h2>
 <ul class="list-inline text-right chvrn">
-<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+<li><a href="#mb-pnl" title="Recherche et menus" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Recherche et menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 </section>
@@ -77,7 +77,7 @@
 </div>
 </div>
 <nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-fetch="../../ajax/sitemenu-fr.html" typeof="SiteNavigationElement">
-<h2 class="wb-inv">Menu du site</h2>
+<h2 class="wb-inv">Menu des sujets</h2>
 <div class="container visible-md visible-lg nvbar">
 <div class="row">
 <ul class="list-inline menu">
@@ -107,33 +107,63 @@
 <main role="main" property="mainContentOfPage" class="container">
 <h1 property="name" id="wb-cont">Transitions</h1>
 <div lang="en">
-<div class="alert alert-info">
-<p><strong>Purpose:</strong> create a transition class with optional states.</p>
-</div>
+<section class="alert alert-info">
+<h2 class="h3">Purpose</h2>
+<p>Create a transition class with optional states.</p>
+</section>
+<section>
 <h2>Fade</h2>
-<div class="">
+<section>
+<h3>Fade-in</h3>
 <p>Hover mouse over space below to trigger fade-in (300ms)</p>
 <img src="http://placehold.it/350x150&amp;text=fade-in+test" class="wb-fade-in-test" alt="placeholder" tabindex="0"/>
 <img src="http://placehold.it/350x150&amp;text=fade-in+test" class="" alt="placeholder"/>
-</div>
-<div class="">
+</section>
+<section>
+<h3>Fade-out</h3>
 <p>Hover mouse over space below to trigger fade-out (500ms)</p>
 <img src="http://placehold.it/350x150&amp;text=fade-out+test" class="wb-fade-out-test" alt="placeholder" tabindex="0"/>
 <img src="http://placehold.it/350x150&amp;text=fade-out+test" class="" alt="placeholder"/>
-</div>
-<br>
-<br>
+</section>
+<section>
+<h3>Tabbed interface (Carousel) examples</h3>
+<ul>
+<li><a href="../tabs/tabs-carousel-en.html#fade">Fade</a></li>
+</ul>
+</section>
+</section>
+<section>
 <h2>Slide</h2>
-<div class="">
+<section>
+<h3>Slide-left</h3>
 <p>Hover mouse over space below to trigger slide-left (300ms)</p>
 <img src="http://placehold.it/350x150&amp;text=slide-left+test" class="wb-slide-left-test" alt="placeholder" tabindex="0"/>
 <img src="http://placehold.it/350x150&amp;text=slide-left+test" class="" alt="placeholder"/>
-</div>
-<br>
-<div class="">
+</section>
+<section>
+<h3>Slide-right</h3>
 <p>Hover mouse over space below to trigger slide-right (500ms)</p>
 <img src="http://placehold.it/350x150&amp;text=slide-right+test" class="wb-slide-right-test" alt="placeholder" tabindex="0"/>
 <img src="http://placehold.it/350x150&amp;text=slide-left+test" class="" alt="placeholder"/>
+</section>
+<section>
+<h3>Tabbed interface (Carousel) examples</h3>
+<ul>
+<li><a href="../tabs/tabs-carousel-en.html#slide">Slide - Horizontal</a></li>
+<li><a href="../tabs/tabs-carousel-en.html#slidevert">Slide - Vertical</a></li>
+</ul>
+</section>
+</section>
+</div>
+<div class="row pagedetails">
+<div class="col-xs-6 datemod">
+<dl id="wb-dtmd">
+<dt>Date de modification&#160;:&#32;</dt>
+<dd><time property="dateModified">2014-07-08</time></dd>
+</dl>
+</div>
+<div class="col-xs-6 text-right">
+<a href="http://www.canada.ca/fr/contact/retroaction.html" class="btn btn-default"><span class="glyphicon glyphicon-comment mrgn-rght-sm"></span>Rétroaction<span class="wb-inv"> sur ce site Web</span></a>
 </div>
 </div>
 </main>
@@ -168,7 +198,7 @@
 </aside>
 <footer role="contentinfo" id="wb-info">
 <nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
-<h2 class="wb-inv">Information du site</h2>
+<h2 class="wb-inv">À propos de ce site</h2>
 <div class="row">
 <section class="col-sm-3 col-lg-3">
 <h3>Gouvernement</h3>

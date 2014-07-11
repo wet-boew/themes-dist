@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" dir="ltr">
 <!--<![endif]-->
 	<head>
 		<meta charset="utf-8" />
@@ -10,7 +10,7 @@
 		<title>Form validation - Canada.ca</title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<!-- Meta data -->
-		<meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities" />
+		<meta name="description" content="Provides generic validation and error message handling for Web forms." />
 		<!-- Meta data-->
 		<!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon" />
@@ -38,7 +38,6 @@
 <script>dataLayer1 = [];</script>
 
 	</head>
-
 	<body vocab="http://schema.org/" typeof="WebPage">
 		<!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -49,11 +48,12 @@
 			<li class="wb-slc">
 				<a class="wb-sl" href="#wb-cont">Skip to main content</a>
 			</li>
-			<li class="wb-slc visible-md visible-lg">
-				<a class="wb-sl" href="#wb-info">Skip to site information</a>
-			</li>
-		</ul>
 
+			<li class="wb-slc visible-sm visible-md visible-lg">
+				<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
+			</li>
+
+		</ul>
 		<header role="banner">
 			<div id="wb-bnr" class="container">
 
@@ -74,20 +74,22 @@
 
 				<div class="row">
 					
-	<div class="brand col-xs-9 col-md-6">
+	<div class="brand col-xs-8 col-sm-9 col-md-6">
 		<a href="http://www.canada.ca/en/index.html"><object type="image/svg+xml" tabindex="-1" role="img" data="../../assets/sig-blk-en.svg" aria-label="Government of Canada"></object>
 		</a>
 	</div>
 
 
-					<section class="wb-mb-links col-xs-3 visible-sm visible-xs" id="wb-glb-mn" >
-						<h2>Menu</h2>
+
+					<section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn" >
+						<h2>Search and menus</h2>
 						<ul class="list-inline text-right chvrn">
-	<li><a href="#mb-pnl" title="Menu" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Menu</span></span></a></li>
+	<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
 </ul>
 <div id="mb-pnl"></div>
 
 					</section>
+
 
 					<section id="wb-srch" class="col-xs-6 text-right visible-md visible-lg">
 						<h2 class="wb-inv">Search</h2>
@@ -114,7 +116,7 @@
 			</div>
 
 			<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-fetch="../../ajax/sitemenu-en.html" typeof="SiteNavigationElement">
-				<h2 class="wb-inv">Site menu</h2>
+				<h2 class="wb-inv">Topics menu</h2>
 				
 <div class="container visible-md visible-lg nvbar">
     <div class="row">
@@ -143,7 +145,8 @@
 
 			</nav>
 
-			
+
+	
 			<nav role="navigation" id="wb-bc" class="" property="breadcrumb">
 				<h2 class="wb-inv">You are here:</h2>
 				<div class="container">
@@ -156,7 +159,8 @@
 
 
 			</nav>
-			
+	
+
 		</header>
 		
 
@@ -343,9 +347,10 @@
 </div>
 		</aside>
 
+
 		<footer role="contentinfo" id="wb-info">
 			<nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
-				<h2 class="wb-inv">Site Information</h2>
+				<h2 class="wb-inv">About this site</h2>
 				<div class="row">
 	
 	<section class="col-sm-3 col-lg-3">
@@ -428,6 +433,7 @@
 
 
 		</footer>
+
 		<!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 <script src="../../js/wet-boew.js"></script>

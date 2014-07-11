@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.4-development - 2014-07-04
+ * v4.0.4-development - 2014-07-11
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -4357,7 +4357,8 @@ button.close {
   z-index: 3; }
 
 .wb-sl {
-  padding: 5px; }
+  padding: 5px;
+  z-index: 501; }
 
 q:before, q:after {
   content: ""; }
@@ -4662,21 +4663,22 @@ blockquote {
   float: right; }
 
 /*
-* jQuery Mobile v1.3.2
-* http://jquerymobile.com
+* Based upon jQuery Mobile Transitions (http://jquerymobile.com)
 *
 * Copyright 2010, 2013 jQuery Foundation, Inc. and other contributors
 * Released under the MIT license.
 * http://jquery.org/license
 *
 */
-.in {
-  animation-duration: 350ms;
-  animation-timing-function: ease-out; }
+.pop.in, .fade.in {
+  opacity: 1;
+  visibility: visible; }
+
+.pop.out, .fade.out {
+  opacity: 0;
+  visibility: hidden; }
 
 .out {
-  animation-duration: 225ms;
-  animation-timing-function: ease-in;
   display: none !important; }
 
 .csstransitions .out {
@@ -4684,199 +4686,192 @@ blockquote {
 
 .pop {
   transform-origin: 50% 50%; }
-  .pop .in {
+  .pop.in {
     animation-duration: 350ms;
     animation-name: popin;
-    opacity: 1;
-    transform: scale(1); }
-  .pop .out {
+    transform: scale(1);
+    visibility: visible; }
+  .pop.out {
     animation-duration: 100ms;
     animation-name: fadeout;
-    opacity: 0; }
-  .pop.reverse .in {
+    visibility: hidden; }
+  .pop.reverse.in {
     animation-name: fadein; }
-  .pop.reverse .out {
+  .pop.reverse.out {
     animation-name: popout;
     transform: scale(0.8); }
 
 @keyframes popin {
-  from {
-    opacity: 0;
+  0% {
+    opacity: 1;
+    visibility: visible;
     transform: scale(0.8); }
 
-  to {
-    opacity: 1;
+  100% {
+    opacity: 0;
+    visibility: hidden;
     transform: scale(1); } }
 
 @keyframes popout {
-  from {
+  0% {
     opacity: 1;
+    visibility: visible;
     transform: scale(1); }
 
-  to {
+  100% {
     opacity: 0;
+    visibility: hidden;
     transform: scale(0.8); } }
+
+.fade.in {
+  animation-duration: 225ms;
+  animation-name: fadein; }
+.fade.out {
+  animation-duration: 125ms;
+  animation-name: fadeout; }
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    visibility: hidden; }
+
+  100% {
+    opacity: 1;
+    visibility: visible; } }
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+    visibility: visible; }
+
+  100% {
+    opacity: 0;
+    visibility: hidden; } }
+
+.slide.out, .slide.in {
+  animation-duration: 350ms;
+  animation-timing-function: ease-out; }
+.slide.out {
+  animation-name: slideouttoleft;
+  transform: translateX(-100%);
+  visibility: hidden; }
+.slide.in {
+  animation-name: slideinfromright;
+  transform: translateX(0);
+  visibility: visible; }
+.slide.reverse.out {
+  animation-name: slideouttoright;
+  transform: translateX(100%); }
+.slide.reverse.in {
+  animation-name: slideinfromleft; }
 
 /* keyframes for slidein from sides */
 @keyframes slideinfromright {
-  from {
+  0% {
     transform: translateX(100%); }
 
-  to {
+  100% {
     transform: translateX(0); } }
 
 @keyframes slideinfromleft {
-  from {
+  0% {
     transform: translateX(-100%); }
 
-  to {
+  100% {
     transform: translateX(0); } }
 
 /* keyframes for slideout to sides */
 @keyframes slideouttoleft {
-  from {
-    transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    visibility: visible; }
 
-  to {
-    transform: translateX(-100%); } }
+  99% {
+    visibility: visible; }
+
+  100% {
+    transform: translateX(-100%);
+    visibility: hidden; } }
 
 @keyframes slideouttoright {
-  from {
-    transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+    visibility: visible; }
 
-  to {
-    transform: translateX(100%); } }
+  99% {
+    visibility: visible; }
 
-.slide .out, .slide .in {
-  animation-duration: 350ms;
-  animation-timing-function: ease-out; }
-.slide .out {
+  100% {
+    transform: translateX(100%);
+    visibility: hidden; } }
+
+.slidefade.out {
+  animation-duration: 225ms;
   animation-name: slideouttoleft;
   transform: translateX(-100%); }
-.slide .in {
-  animation-name: slideinfromright;
+.slidefade.in {
+  animation-duration: 200ms;
+  animation-name: fadein;
   transform: translateX(0); }
-.slide.reverse .out {
-  animation-name: slideouttoright;
-  transform: translateX(100%); }
-.slide.reverse .in {
+.slidefade.reverse.out {
   animation-name: slideouttoright;
   transform: translateX(100%); }
 
-/* slide down */
-.slidedown .out {
-  animation-duration: 100ms;
-  animation-name: fadeout; }
-.slidedown .in {
-  animation-duration: 250ms;
+/* slide up/down */
+.slidevert.out, .slidevert.in {
+  animation-duration: 350ms;
+  animation-timing-function: ease-out; }
+.slidevert.out {
+  animation-name: slideouttobottom;
+  transform: translateY(100%);
+  visibility: hidden; }
+.slidevert.in {
   animation-name: slideinfromtop;
-  transform: translateY(0); }
-.slidedown.reverse .out {
-  animation-duration: 200ms;
+  transform: translateY(0);
+  visibility: visible; }
+.slidevert.reverse.out {
   animation-name: slideouttotop;
   transform: translateY(-100%); }
-.slidedown.reverse .in {
-  animation-duration: 150ms;
-  animation-name: fadein; }
+.slidevert.reverse.in {
+  animation-name: slideinfrombottom; }
 
 @keyframes slideinfromtop {
-  from {
+  0% {
     transform: translateY(-100%); }
 
-  to {
+  100% {
     transform: translateY(0); } }
 
 @keyframes slideouttotop {
-  from {
-    transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+    visibility: visible; }
 
-  to {
-    transform: translateY(-100%); } }
+  99% {
+    visibility: visible; }
 
-@keyframes fadein {
-  from {
-    opacity: 0; }
-
-  to {
-    opacity: 1; } }
-
-@keyframes fadeout {
-  from {
-    opacity: 1; }
-
-  to {
-    opacity: 0; } }
-
-.fade .out {
-  animation-duration: 125ms;
-  animation-name: fadeout;
-  opacity: 0; }
-.fade .in {
-  animation-duration: 225ms;
-  animation-name: fadein;
-  opacity: 1; }
-
-/* keyframes for slideout to sides */
-@keyframes slideouttoleft {
-  from {
-    transform: translateX(0); }
-
-  to {
-    transform: translateX(-100%); } }
-
-@keyframes slideouttoright {
-  from {
-    transform: translateX(0); }
-
-  to {
-    transform: translateX(100%); } }
-
-.slidefade .out {
-  animation-duration: 225ms;
-  animation-name: slideouttoleft;
-  transform: translateX(-100%); }
-.slidefade .in {
-  animation-duration: 200ms;
-  animation-name: fadein;
-  transform: translateX(0); }
-.slidefade.reverse .out {
-  animation-duration: 200ms;
-  animation-name: slideouttoright;
-  transform: translateX(100%); }
-.slidefade.reverse .in {
-  animation-duration: 200ms;
-  animation-name: fadein;
-  transform: translateX(0); }
-
-/* slide up */
-.slideup .out {
-  animation-duration: 100ms;
-  animation-name: fadeout; }
-.slideup .in {
-  animation-duration: 250ms;
-  animation-name: slideinfrombottom;
-  transform: translateY(0); }
-.slideup.reverse .in {
-  animation-duration: 150ms;
-  animation-name: fadein; }
-.slideup.reverse .out {
-  animation-duration: 200ms;
-  animation-name: slideouttobottom;
-  transform: translateY(100%); }
+  100% {
+    transform: translateY(-100%);
+    visibility: hidden; } }
 
 @keyframes slideinfrombottom {
-  from {
+  0% {
     transform: translateY(100%); }
 
-  to {
+  100% {
     transform: translateY(0); } }
 
 @keyframes slideouttobottom {
-  from {
-    transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+    visibility: visible; }
 
-  to {
-    transform: translateY(100%); } }
+  99% {
+    visibility: visible; }
+
+  100% {
+    transform: translateY(100%);
+    visibility: hidden; } }
 
 /*
   WET-BOEW
@@ -5335,8 +5330,11 @@ figure .pieLabel {
 .fn-lnk, .wb-fnote .fn-rtn a {
   background-color: #eee;
   border: 1px solid #ccc;
-  padding: 0 4px 1px;
+  padding: 1px 10px 2px;
   white-space: nowrap; }
+
+.fn-lnk {
+  margin-left: 5px; }
 
 .wb-fnote {
   border-color: #ccc;
@@ -5357,7 +5355,7 @@ figure .pieLabel {
       background-color: #eee;
       border-color: #555; }
   .wb-fnote p {
-    margin: 0 0 0 3.125em;
+    margin: 0 0 0 3.75em;
     padding: 0 0.375em 0.375em; }
     .wb-fnote p:first-child {
       padding-top: 0.375em; }
@@ -5368,17 +5366,17 @@ figure .pieLabel {
     padding-top: 0.375em;
     position: absolute;
     top: 0;
-    width: 2.75em; }
+    width: 3.375em; }
     .wb-fnote .fn-rtn a {
       display: inline-block;
       padding-bottom: 0; }
 
 /* Right to left (RTL) SCSS */
-[dir="rtl"] .wb-fnote p {
+[dir="rtl"] sup .fn-lnk {
   margin-left: 0;
-  margin-right: 3.125em;
-  padding-left: 0;
-  padding-right: 0.375em; }
+  margin-right: 5px; }
+[dir="rtl"] .wb-fnote p {
+  margin: 0 3.75em 0 0; }
 [dir="rtl"] .wb-fnote .fn-rtn {
   margin-right: 0;
   padding-right: 0; }
@@ -5858,14 +5856,14 @@ img.mfp-img {
   #mb-pnl nav ul li.no-sect .list-group {
     margin-bottom: 0; }
   #mb-pnl nav ul li.no-sect a {
-    margin: 0;
-    padding: 0; }
+    margin: 0 0 0 -6px; }
 #mb-pnl nav .mb-menu > li {
   padding: 10px 0 2px; }
 #mb-pnl nav a {
   display: inline-block;
   margin: 6px 0 6px -6px;
-  padding: 0 6px; }
+  padding: 0 6px;
+  width: 100%; }
 #mb-pnl nav summary {
   margin-left: -3px;
   padding-left: 3px; }
@@ -6298,6 +6296,60 @@ ol.linenums {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
+.shr-pg .bitly:before, .shr-pg .blogger:before, .shr-pg .delicious:before, .shr-pg .digg:before, .shr-pg .diigo:before, .shr-pg .facebook:before, .shr-pg .feed:before, .shr-pg .gmail:before, .shr-pg .googleplus:before, .shr-pg .linkedin:before, .shr-pg .myspace:before, .shr-pg .pinterest:before, .shr-pg .reddit:before, .shr-pg .stumbleupon:before, .shr-pg .tumblr:before, .shr-pg .twitter:before, .shr-pg .yahoomail:before {
+  background: url("../assets/sprites_share.png") no-repeat; }
+
+.shr-pg .bitly:before {
+  background-position: 0 0; }
+
+.shr-pg .blogger:before {
+  background-position: 0 -32px; }
+
+.shr-pg .delicious:before {
+  background-position: 0 -64px; }
+
+.shr-pg .digg:before {
+  background-position: 0 -96px; }
+
+.shr-pg .diigo:before {
+  background-position: 0 -128px; }
+
+.shr-pg .facebook:before {
+  background-position: 0 -160px; }
+
+.shr-pg .feed:before {
+  background-position: 0 -192px; }
+
+.shr-pg .gmail:before {
+  background-position: 0 -224px; }
+
+.shr-pg .googleplus:before {
+  background-position: 0 -256px; }
+
+.shr-pg .linkedin:before {
+  background-position: 0 -288px; }
+
+.shr-pg .myspace:before {
+  background-position: 0 -320px; }
+
+.shr-pg .pinterest:before {
+  background-position: 0 -352px; }
+
+.shr-pg .reddit:before {
+  background-position: 0 -384px; }
+
+.shr-pg .stumbleupon:before {
+  background-position: 0 -416px; }
+
+.shr-pg .tumblr:before {
+  background-position: 0 -448px; }
+
+.shr-pg .twitter:before {
+  background-position: 0 -480px; }
+
+.shr-pg .yahoomail:before {
+  background-position: 0 -512px; }
+
 .shr-opn span {
   padding-right: 0.2em; }
 
@@ -6318,63 +6370,12 @@ ol.linenums {
     width: 32px; }
 .shr-pg .shr-dscl {
   padding-bottom: 0; }
-.shr-pg .bitly:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 0; }
-.shr-pg .blogger:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -32px; }
-.shr-pg .delicious:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -64px; }
-.shr-pg .digg:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -96px; }
-.shr-pg .diigo:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -128px; }
 .shr-pg .email:before {
   content: "\2709";
   display: inline-block;
   font-family: "Glyphicons Halflings";
   font-size: 32px;
   margin-right: 0.3em; }
-.shr-pg .facebook:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -160px; }
-.shr-pg .feed:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -192px; }
-.shr-pg .gmail:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -224px; }
-.shr-pg .googleplus:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -256px; }
-.shr-pg .linkedin:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -288px; }
-.shr-pg .myspace:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -320px; }
-.shr-pg .pinterest:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -352px; }
-.shr-pg .reddit:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -384px; }
-.shr-pg .stumbleupon:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -416px; }
-.shr-pg .tumblr:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -448px; }
-.shr-pg .twitter:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -480px; }
-.shr-pg .yahoomail:before {
-  background: url("../assets/sprites_share.png") no-repeat;
-  background-position: 0 -512px; }
 .shr-pg .shr-pg {
   text-align: left; }
 .shr-pg ul {
@@ -6674,10 +6675,9 @@ table.dataTable {
 .wb-tabs.carousel-s1 figure, .wb-tabs.carousel-s2 figure {
   background: #243850;
   background: rgba(36, 56, 80, 0.9); }
-
-.wb-tabs.carousel-s1 figure img, .wb-tabs.carousel-s2 figure img {
-  height: auto;
-  width: 100%; }
+  .wb-tabs.carousel-s1 figure img, .wb-tabs.carousel-s2 figure img {
+    height: auto;
+    width: 100%; }
 
 .wb-tabs.carousel-s1 figcaption, .wb-tabs.carousel-s2 figcaption {
   bottom: 0;
@@ -6687,9 +6687,8 @@ table.dataTable {
   position: relative;
   right: 0;
   z-index: 101; }
-
-.wb-tabs.carousel-s1 figcaption a, .wb-tabs.carousel-s2 figcaption a {
-  color: #fff; }
+  .wb-tabs.carousel-s1 figcaption a, .wb-tabs.carousel-s2 figcaption a {
+    color: #fff; }
 
 .wb-tabs.carousel-s2 [role="tablist"] li.prv, .wb-tabs.carousel-s2 [role="tablist"] li.nxt {
   background: none;
@@ -7097,6 +7096,11 @@ table.dataTable {
   z-index: 10000; }
   .geomap-geoloc input[type="text"] {
     width: 80%; }
+
+.geomap-aoi legend {
+  border: 0;
+  font-size: 1em;
+  margin-bottom: 1em; }
 
 button.geomap-geoloc-aoi-btn {
   background-color: #fff;
@@ -7596,9 +7600,12 @@ details:not([open]) > * {
     display: none !important; }
   .wb-tabs [role="tabpanel"] {
     display: block !important;
-    opacity: 1 !important; }
+    opacity: 1 !important;
+    position: static !important; }
     .wb-tabs [role="tabpanel"] figcaption {
-      position: static; } }
+      position: static; }
+    .wb-tabs [role="tabpanel"] summary {
+      display: block !important; } }
 
 /*
   WET-BOEW

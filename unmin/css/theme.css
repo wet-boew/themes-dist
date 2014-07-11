@@ -233,24 +233,35 @@ header {
  */
 #wb-glb-mn {
   margin-top: 20px; }
-  #wb-glb-mn ul.chvrn {
-    background: #335075;
-    height: 44px;
-    padding-right: 1.5em; }
-    #wb-glb-mn ul.chvrn li a {
-      color: #fff;
-      font-size: 1.5em;
-      line-height: 2; }
-    #wb-glb-mn ul.chvrn:before {
-      border-bottom: 22px solid transparent;
-      border-left: 11px solid #f8f8f8;
-      border-top: 22px solid transparent;
-      content: " ";
-      display: block;
-      float: left;
-      height: 0;
-      position: relative;
-      width: 0; }
+  #wb-glb-mn ul {
+    min-width: 150px; }
+    #wb-glb-mn ul.chvrn {
+      background: #335075;
+      display: inline-block;
+      float: right;
+      height: 2.75em;
+      padding-right: 10px; }
+      #wb-glb-mn ul.chvrn li {
+        padding-right: 0; }
+        #wb-glb-mn ul.chvrn li a {
+          background: #335075;
+          color: #fff;
+          font-size: 1.9em;
+          line-height: 1.7em;
+          padding: 5px 10px 0 0; }
+      #wb-glb-mn ul.chvrn span .glyphicon-th-list {
+        padding-left: 10px;
+        top: 0; }
+      #wb-glb-mn ul.chvrn:before {
+        border-bottom: 1.375em solid transparent;
+        border-left: 0.6875em solid #f8f8f8;
+        border-top: 1.375em solid transparent;
+        content: " ";
+        display: block;
+        float: left;
+        height: 0;
+        position: relative;
+        width: 0; }
 
 /* IE Tweaks */
 .lt-ie9 header .brand a {
@@ -264,6 +275,9 @@ header {
   padding-left: 1.5em;
   padding-right: 0;
   text-align: left; }
+  [dir=rtl] #wb-glb-mn ul.chvrn span .glyphicon-th-list {
+    padding-left: 0;
+    padding-right: 10px; }
   [dir=rtl] #wb-glb-mn ul.chvrn:before {
     border-left: 0;
     border-right: 11px solid #f8f8f8;
@@ -903,7 +917,20 @@ a.shr-opn, a.shr-opn:hover {
   /*
   WET-BOEW
   @title: Extra-small view and under (screen only)
- */ }
+ */
+  /*
+ Banner (small view and under)
+ */
+  header .brand a {
+    margin-top: 15px; }
+  #wb-glb-mn {
+    margin-top: 20px; }
+    #wb-glb-mn ul.chvrn li a {
+      background: #335075;
+      color: #fff;
+      font-size: 1.9em;
+      line-height: 1.7em;
+      padding: 5px 10px 0 20px; } }
 
 /* Small view and under */
 @media screen and (max-width: 991px) {
@@ -1046,22 +1073,13 @@ a.shr-opn, a.shr-opn:hover {
   /*
  Carousel (extra-extra-small view)
  */
+  header .brand, #wb-glb-mn {
+    float: none !important;
+    width: auto !important; }
   header .brand object, header .brand img {
-    height: auto;
-    max-height: 20px; }
-  header .brand a {
-    margin-top: 15px; }
-  #wb-glb-mn .overlay-lnk {
-    font-size: 1.1em !important; }
+    max-height: 25px; }
   #wb-glb-mn ul.chvrn {
-    height: 33px;
-    margin-left: auto;
-    padding-right: 10px;
-    width: 3.5em; }
-    #wb-glb-mn ul.chvrn:before {
-      border-bottom: 16px solid transparent;
-      border-left: 8px solid #f8f8f8;
-      border-top: 16px solid transparent; }
+    margin-left: auto; }
   footer .brand object, footer .brand img {
     height: 25px;
     margin-top: 15px;
