@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.4-development - 2014-07-07
+ * v4.0.4-development - 2014-07-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -5956,7 +5956,7 @@ var pluginName = "wb-menu",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					menu: i18n( "menu" )
+					searchMenus: i18n( "srch-menus" )
 				};
 			}
 
@@ -6212,7 +6212,7 @@ var pluginName = "wb-menu",
 
 		// Let's now populate the DOM since we have done all the work in a documentFragment
 		panelDOM.innerHTML = "<header class='modal-header'><div class='modal-title'>" +
-				i18nText.menu  + "</div></header><div class='modal-body'>" +
+				i18nText.searchMenus + "</div></header><div class='modal-body'>" +
 				panel + "</div>";
 		panelDOM.className += " wb-overlay modal-content overlay-def wb-panel-r";
 		$panel
@@ -9588,7 +9588,19 @@ var pluginName = "wb-tabs",
 			$currPanel = $panels.filter( ".in" ),
 			mPlayers = $currPanel.find( ".wb-mltmd-inited" ).get(),
 			mPlayersLen = mPlayers.length,
-			i;
+			i, j, last;
+
+		// Handle the direction of the slide transitions
+		if ( $currPanel[ 0 ].className.indexOf( "slide" ) !== -1 ) {
+			i = $panels.index( $currPanel );
+			j = $panels.index( $next );
+			last = $panels.length - 1;
+
+			$panels.toggleClass(
+				"reverse",
+				( i > j && ( i !== last || j !== 0 ) ) || ( i === 0 && j === last )
+			);
+		}
 
 		$currPanel
 			.removeClass( "in" )
