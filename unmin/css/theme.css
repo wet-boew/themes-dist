@@ -49,13 +49,12 @@
   body > header {
     background: #ccc; }
   .wb-sl {
+    background: #000;
     color: #fff;
-    font-weight: 700;
-    padding: 5px; }
+    font-weight: 700; }
     .wb-sl:focus {
       color: #fff;
-      text-decoration: none;
-      z-index: 501; }
+      text-decoration: none; }
   #wb-bar {
     background: #555; }
     #wb-bar > .container {
@@ -122,7 +121,7 @@
     #wb-glb-mn .pnl-btn a {
       color: #474747;
       display: block;
-      font-size: 1.9em;
+      font-size: 1.7em;
       line-height: 1em;
       width: 100%; }
     #wb-glb-mn .pnl-btn span .glyphicon-th-list {
