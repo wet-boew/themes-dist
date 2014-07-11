@@ -46,6 +46,13 @@
   #wb-bc li:first-child:before, [dir=rtl] #wb-bc li:before, [dir=rtl] #wb-bc li:first-child:after {
     content: none;
     padding: 0; }
+  .wb-sl {
+    background: #000;
+    color: #fff;
+    font-weight: 700; }
+    .wb-sl:focus {
+      color: #fff;
+      text-decoration: none; }
   #wb-bar {
     background: #474747; }
   #wb-bnr {
@@ -99,22 +106,23 @@
   /*
   @title: Small view and under (screen only)
  */
-  #wb-glb-mn {
-    padding: 0; }
-    #wb-glb-mn .pnl-btn {
-      float: right;
-      margin: 10px 0;
-      position: relative;
-      z-index: 2; }
-      #wb-glb-mn .pnl-btn li {
-        padding: 4px 10px 0;
-        width: 100%; }
-      #wb-glb-mn .pnl-btn a {
-        color: #474747;
-        display: block;
-        font-size: 1.5em;
-        line-height: 1em;
-        width: 100%; }
+  #wb-glb-mn .pnl-btn {
+    float: right;
+    margin: 0;
+    position: relative;
+    z-index: 2; }
+    #wb-glb-mn .pnl-btn li {
+      padding: 4px 0 4px 10px;
+      width: 100%; }
+    #wb-glb-mn .pnl-btn a {
+      color: #474747;
+      display: block;
+      font-size: 1.9em;
+      line-height: 1em;
+      width: 100%; }
+    #wb-glb-mn .pnl-btn span .glyphicon-th-list {
+      padding-left: 10px;
+      top: 0; }
   #mb-pnl .srch-pnl, #mb-pnl .lng-ofr, #mb-pnl .sec-pnl {
     background: #efefef; }
   #mb-pnl #wb-srch-sub-imprt, #mb-pnl #wb-srch-sub-imprt:hover, #mb-pnl #wb-srch-sub-imprt:focus, #mb-pnl #wb-srch-sub-imprt:active, #mb-pnl .sm-pnl a, #mb-pnl .sm-pnl summary, #mb-pnl .sm-pnl summary:hover, #mb-pnl .sm-pnl summary:focus {
@@ -148,15 +156,15 @@
       background: #202a33; }
   #wb-sttl a {
     font-size: 1.5em;
-    padding-top: 1.125em;
+    padding-top: 1.65em;
     position: relative;
     text-shadow: 0 1px 1px #044062;
     z-index: 1; }
   #wb-sttl object, #wb-sttl img {
     margin: 0;
     position: absolute;
-    top: -27px;
-    width: 158px; }
+    top: -6px;
+    width: 5.5em; }
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
     float: right;
     margin-left: 5px;
@@ -165,7 +173,10 @@
   [dir=rtl] #wb-glb-mn > ul {
     text-align: left; }
   [dir=rtl] #wb-glb-mn .pnl-btn {
-    float: left; } }
+    float: left; }
+    [dir=rtl] #wb-glb-mn .pnl-btn span .glyphicon-th-list {
+      padding-left: 0;
+      padding-right: 10px; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
