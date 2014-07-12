@@ -40,8 +40,12 @@
   #wb-sttl a:hover, #wb-ss a:hover, #wb-sttl a:focus, #wb-ss a:focus {
     text-decoration: underline; }
   .wb-sl {
-    background: #000;
-    color: #fff; }
+    background-color: #000;
+    color: #fff;
+    font-weight: 700; }
+    .wb-sl:focus {
+      color: #fff;
+      text-decoration: none; }
   #gcwu-sig {
     margin: 10px 0; }
   #wb-bnr-ss {
