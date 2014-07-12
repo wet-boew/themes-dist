@@ -63,8 +63,12 @@
   #wb-sttl a:hover, #wb-sttl a:focus {
     text-decoration: underline; }
   .wb-sl {
-    background: #000;
-    color: #fff; }
+    background-color: #000;
+    color: #fff;
+    font-weight: 700; }
+    .wb-sl:focus {
+      color: #fff;
+      text-decoration: none; }
   #wb-bar {
     background: #000;
     min-height: 2.6em; }
