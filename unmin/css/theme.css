@@ -893,7 +893,11 @@ a.shr-opn, a.shr-opn:hover {
     background: #2e5274; }
   .wb-sl {
     background: #335075;
-    color: #fff !important; }
+    color: #fff;
+    font-weight: 700; }
+    .wb-sl:focus {
+      color: #fff;
+      text-decoration: none; }
   .prm-flpr {
     background-color: #eee;
     margin-top: 1px; }
