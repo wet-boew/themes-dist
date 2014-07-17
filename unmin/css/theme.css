@@ -244,7 +244,7 @@
     text-decoration: none; }
   #wb-sm .sm a a:hover, #wb-sm .sm summary a:hover, #wb-sm .sm a a:focus, #wb-sm .sm summary a:focus {
     text-decoration: underline; }
-  body > main, body > header + .container, #wb-bc .container {
+  body main, body > header + .container, #wb-bc .container {
     background-color: #fff; }
   #wb-sm ul.menu > li > a:hover, #wb-sm .active a, #wb-sm .active summary, #wb-sm .sm, #wb-sm .sm a, #wb-sm .sm summary {
     background-color: #ccc;
