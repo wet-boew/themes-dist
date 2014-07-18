@@ -272,6 +272,24 @@
 				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-lbx" );</code>).</td>
 				<td>Used to manually initialize the Lightbox plugin. <strong>Note:</strong> The Lightbox plugin will be initialized automatically unless the Lightbox markup is added after the page has already loaded.</td>
 			</tr>
+			<tr>
+				<td>wb-open.wb-lbx</td>
+				<td>Triggered manually:
+					<pre><code>$( document ).trigger( "open.wb-lbx", [
+	[
+		{
+			src: "demo/1_b.jpg",
+			type: "image"
+		}
+	],
+	false,
+	[
+		"Image 1"
+	]
+]);</code></pre>
+				</td>
+				<td>Used to manually open a Lightbox popup. Can be used to load single popups, galleries and modal popups. See <a href="../../../demos/lightbox/lightbox-en.html#examples5">Opening popups through JavaScript</a> for working examples.</td>
+			</tr>
 		</tbody>
 	</table>
 </section>
@@ -288,7 +306,7 @@
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd">
 			<dt>Date de modification&#160;:&#32;</dt>
-			<dd><time property="dateModified">2014-03-30</time></dd>
+			<dd><time property="dateModified">2014-07-17</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">
@@ -339,7 +357,27 @@
 				<h2 class="wb-inv">À propos de ce site</h2>
 				<div class="row">
 	
-	 <section class="col-sm-3 col-lg-3">
+	 <div class="col-sm-3 col-lg-3 brdr-lft">
+	<section>
+		<h3>Coordonnées</h3>
+		<ul class="list-unstyled">
+			<li><a href="#">Lien 1</a></li>
+			<li><a href="#">Lien 2</a></li>
+			<li><a href="#">Lien 3</a></li>
+		</ul>
+	</section>
+	<section>
+		<h3>Nouvelles</h3>
+		<ul class="list-unstyled">
+			<li><a href="http://nouvelles.gc.ca/web/index-fr.do">Salle de presse</a></li>
+			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=1">Communiqués de presse</a></li>
+			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=3">Avis aux médias</a></li>
+			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=970">Discours</a></li>
+			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=980">Déclarations</a></li>
+		</ul>
+	</section>
+</div>
+<section class="col-sm-3 col-lg-3">
 	<h3>Gouvernement</h3>
 	<ul class="list-unstyled">
 		<li><a href="http://www.canada.ca/fr/gouv/systeme/index.html">Comment le gouvernement fonctionne</a></li>
@@ -363,26 +401,6 @@
 		<li><a href="http://www.canada.ca/fr/transparence/confidentialite.html">Confidentialité</a></li>
 	</ul>
 </section>
-<div class="col-sm-3 col-lg-3 brdr-lft">
-	<section>
-		<h3>Nouvelles</h3>
-		<ul class="list-unstyled">
-			<li><a href="http://nouvelles.gc.ca/web/index-fr.do">Salle de presse</a></li>
-			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=1">Communiqués de presse</a></li>
-			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=3">Avis aux médias</a></li>
-			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=970">Discours</a></li>
-			<li><a href="http://nouvelles.gc.ca/web/nwsprdct-fr.do?mthd=tp&amp;crtr.tp1D=980">Déclarations</a></li>
-		</ul>
-	</section>
-	<section>
-		<h3>Coordonnées</h3>
-		<ul class="list-unstyled">
-			<li><a href="#">Lien 1</a></li>
-			<li><a href="#">Lien 2</a></li>
-			<li><a href="#">Lien 3</a></li>
-		</ul>
-	</section>
-</div>
 <div class="col-sm-3 col-lg-3 brdr-lft">
 	<section>
 		<h3>Rétroaction</h3>
