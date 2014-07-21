@@ -488,11 +488,126 @@
 </details>
 </section>
 </section>
+<section>
+<h3 id="examples5">Ouvrir de contenu superposé via JavaScript</h3>
+<p>Le contenu surperposé peut être ouverte via JavaScript avec&#160;:</p>
+<pre><code>$( document ).trigger( "open.wb-lbx", [
+	[
+		{
+			src: "demo/1_b.jpg",
+			type: "image"
+		}
+	],
+	false,
+	[
+		"Image 1"
+	]
+]);</code></pre>
+<section>
+<h4>Example</h4>
+<label for="lbx-select">Contenu superposé à ouvrir</label>
+<select id="lbx-select">
+<option value="1">Image</option>
+<option value="2">AJAX</option>
+<option value="3">Contenu incorporé</option>
+<option value="4">Contenu superposé modal</option>
+<option value="5">Galerie d'images</option>
+</select>
+<button id="lbx-open-btn">Ouvrir le contenu superposé</button>
+<details>
+<summary>Visualiser le code</summary>
+<section>
+<h5>HTML</h5>
+<pre><code>&lt;label for=&quot;lbx-select&quot;&gt;Contenu superposé à ouvrir&lt;/label&gt;
+&lt;select id=&quot;lbx-select&quot;&gt;
+	&lt;option value=&quot;1&quot;&gt;Image&lt;/option&gt;
+	&lt;option value=&quot;2&quot;&gt;AJAX&lt;/option&gt;
+	&lt;option value=&quot;3&quot;&gt;Contenu incorporé&lt;/option&gt;
+	&lt;option value=&quot;4&quot;&gt;Contenu superposé modal&lt;/option&gt;
+	&lt;option value=&quot;5&quot;&gt;Galerie d'images&lt;/option&gt;
+&lt;/select&gt;
+&lt;button id=&quot;lbx-open-btn&quot;&gt;Ouvrir le contenu superposé&lt;/button&gt;</code></pre>
+</section>
+<section>
+<h5>JavaScript</h5>
+<pre><code>$( document ).on( &quot;click vclick&quot;, &quot;#lbx-open-btn&quot;, function( event ) {
+	var value = $( &quot;#lbx-select&quot; ).val();
+
+	if ( value === &quot;1&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;demo/1_b.jpg&quot;,
+					type: &quot;image&quot;
+				}
+			],
+			false,
+			[
+				&quot;Image 1&quot;
+			]
+		]);
+	} else if ( value === &quot;2&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;ajax/ajax1-en.html&quot;,
+					type: &quot;ajax&quot;
+				}
+			]
+		]);
+	} else if ( value === &quot;3&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;#inline_content&quot;,
+					type: &quot;inline&quot;
+				}
+			]
+		]);
+	} else if ( value === &quot;4&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;#inline_content_modal&quot;,
+					type: &quot;inline&quot;
+				}
+			],
+			true
+		]);
+	} else if ( value === &quot;5&quot; ) {
+		wb.doc.trigger( &quot;wb-open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;demo/1_b.jpg&quot;,
+					type: &quot;image&quot;
+				}, {
+					src: &quot;demo/2_b.jpg&quot;,
+					type: &quot;image&quot;
+				}, {
+					src: &quot;demo/3_b.jpg&quot;,
+					type: &quot;image&quot;
+				}
+			],
+			false,
+			[
+				&quot;Image 1&quot;,
+				&quot;Image 2&quot;,
+				&quot;Image 3&quot;
+			]
+		]);
+	}
+});
+
+})( jQuery, wb );</code></pre>
+</section>
+</details>
+</section>
+</section>
 </section>
 </div>
 <dl id="wb-dtmd">
 <dt>Date de modification&#160;:&#32;</dt>
-<dd><time property="dateModified">2014-02-19</time></dd>
+<dd><time property="dateModified">2014-07-17</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
@@ -551,5 +666,6 @@
 </footer>
 <!--[if gte IE 9 | !IE ]><!--> <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <script src="../../js/wet-boew.min.js"></script> <!--<![endif]-->
 <!--[if lt IE 9]><script src="../../js/ie8-wet-boew2.min.js"></script><![endif]-->
+<script src="demo/lightbox.min.js"></script>
 </body>
 </html>
