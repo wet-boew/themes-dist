@@ -161,9 +161,11 @@
 
 
 			
-<p>The <code>datalist</code> tag specifies a list of pre-defined options for an <code>input</code> element.</p>
+<section>
+	<h2>Purpose</h2>
+	<p>The HTML5 <code>input list</code> attribute and the <code>datalist</code> element add auto-complete functionality to specific text input fields by dynamically displaying a list of words that match the user’s input. Because some browsers do not support this functionality natively, this polyfill emulates the same functionality using generic HTML and WAI-ARIA. Browsers that do not support the <code>input list</code> attribute and the <code>datalist</code> element natively ignore the auto-complete functionality and therefore, the text input field behaves like it normally does.</p>
+</section>
 
-<!-- Start of Datalist content -->
 <section>
 	<h2>Example</h2>
 	<form action="#" method="get">
@@ -234,7 +236,7 @@
 
 			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time property="dateModified">2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-07-20</time></dd>
 </dl>
 
 
@@ -247,17 +249,17 @@
 				<nav role="navigation" class="row">
 					<h2>About this site</h2>
 					<section class="col-sm-3">
-	<h3>About OGPL</h3>
-	<ul class="list-unstyled">
-		<li><a href="http//ogpl.github.io/about/governance-en.html">OGPL Governance on Github</a></li>
-		<li><a href="http//ogpl.github.io/about/licensing-en.html">Licenses</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
 	<h3>Contact us</h3>
 	<ul class="list-unstyled">
 		<li><a href="https://github.com/ogpl/ogpl.github.io/issues/new">Questions or comments?</a></li>
 		<li><a rel="external" href="http://ogpl.gov.in/contactus">Contact Us form (ogpl.gov.in)</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>About OGPL</h3>
+	<ul class="list-unstyled">
+		<li><a href="http//ogpl.github.io/about/governance-en.html">OGPL Governance on Github</a></li>
+		<li><a href="http//ogpl.github.io/about/licensing-en.html">Licenses</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">

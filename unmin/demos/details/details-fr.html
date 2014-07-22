@@ -165,101 +165,125 @@
 <section>
 	<h2>Exemples</h2>
 
-	<details>
-		<summary>Exemple 1</summary>
-		<p>Le contenu d'exemple qui fournit plus de détails.</p>
-		<table>
-			<caption>Tasses de café bues par chaque député</caption>
-			<thead>
-			<tr>
-				<th scope="col">Nom</th>
-				<th scope="col">Tasses</th>
-				<th scope="col">Type de café</th>
-				<th scope="col">Sucre?</th>
-			</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>T. Sexton</td>
-					<td>10</td>
-					<td>Expresso</td>
-					<td>Non</td>
-				</tr>
-				<tr>
-					<td>J. Dinnen</td>
-					<td>5</td>
-					<td>Déca</td>
-					<td>Oui</td>
-				</tr>
-			</tbody>
-		</table>
-	</details>
+	<ul class="list-unstyled">
+		<li>
+			<details>
+				<summary>Exemple 1</summary>
+				<p>Le contenu d'exemple qui fournit plus de détails.</p>
+				<table>
+					<caption>Tasses de café bues par chaque député</caption>
+					<thead>
+					<tr>
+						<th scope="col">Nom</th>
+						<th scope="col">Tasses</th>
+						<th scope="col">Type de café</th>
+						<th scope="col">Sucre?</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>T. Sexton</td>
+							<td>10</td>
+							<td>Expresso</td>
+							<td>Non</td>
+						</tr>
+						<tr>
+							<td>J. Dinnen</td>
+							<td>5</td>
+							<td>Déca</td>
+							<td>Oui</td>
+						</tr>
+					</tbody>
+				</table>
+			</details>
+		</li>
+		<li>
+			<details open="open">
+				<summary>Exemple 2</summary>
+				<p>Le contenu d'exemple qui fournit plus de détails.</p>
+				<table>
+					<caption>Tasses de café bues par chaque député</caption>
+					<thead>
+					<tr>
+						<th scope="col">Nom</th>
+						<th scope="col">Tasses</th>
+						<th scope="col">Type de café</th>
+						<th scope="col">Sucre?</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>T. Sexton</td>
+							<td>10</td>
+							<td>Expresso</td>
+							<td>Non</td>
+						</tr>
+						<tr>
+							<td>J. Dinnen</td>
+							<td>5</td>
+							<td>Déca</td>
+							<td>Oui</td>
+						</tr>
+					</tbody>
+				</table>
+			</details>
+		</li>
+		<li>
+			<details>
+				<summary>Exemple 3</summary>
+				<p>Le contenu d'exemple qui fournit plus de détails.</p>
+				<table>
+					<caption>Tasses de café bues par chaque député</caption>
+					<thead>
+					<tr>
+						<th scope="col">Nom</th>
+						<th scope="col">Tasses</th>
+						<th scope="col">Type de café</th>
+						<th scope="col">Sucre?</th>
+					</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>T. Sexton</td>
+							<td>10</td>
+							<td>Expresso</td>
+							<td>Non</td>
+						</tr>
+						<tr>
+							<td>J. Dinnen</td>
+							<td>5</td>
+							<td>Déca</td>
+							<td>Oui</td>
+						</tr>
+					</tbody>
+				</table>
+			</details>
+		</li>
+	</ul>
 
-	<details>
-		<summary>Exemple 2</summary>
-		<p>Le contenu d'exemple qui fournit plus de détails.</p>
-		<table>
-			<caption>Tasses de café bues par chaque député</caption>
-			<thead>
-			<tr>
-				<th scope="col">Nom</th>
-				<th scope="col">Tasses</th>
-				<th scope="col">Type de café</th>
-				<th scope="col">Sucre?</th>
-			</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>T. Sexton</td>
-					<td>10</td>
-					<td>Expresso</td>
-					<td>Non</td>
-				</tr>
-				<tr>
-					<td>J. Dinnen</td>
-					<td>5</td>
-					<td>Déca</td>
-					<td>Oui</td>
-				</tr>
-			</tbody>
-		</table>
-	</details>
-
-	<details>
-		<summary>Exemple 3</summary>
-		<p>Le contenu d'exemple qui fournit plus de détails.</p>
-		<table>
-			<caption>Tasses de café bues par chaque député</caption>
-			<thead>
-			<tr>
-				<th scope="col">Nom</th>
-				<th scope="col">Tasses</th>
-				<th scope="col">Type de café</th>
-				<th scope="col">Sucre?</th>
-			</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>T. Sexton</td>
-					<td>10</td>
-					<td>Expresso</td>
-					<td>Non</td>
-				</tr>
-				<tr>
-					<td>J. Dinnen</td>
-					<td>5</td>
-					<td>Déca</td>
-					<td>Oui</td>
-				</tr>
-			</tbody>
-		</table>
-	</details>
+	<section>
+		<h3>Code</h3>
+		<pre><code>&lt;ul class=&quot;list-unstyled&quot;&gt;
+	&lt;li&gt;
+		&lt;details&gt;
+			&lt;summary&gt;Exemple 1&lt;/summary&gt;
+			...
+		&lt;/details&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;details open="open"&gt;
+			&lt;summary&gt;Exemple 2&lt;/summary&gt;
+		&lt;/details&gt;
+	&lt;/li&gt;
+	...
+&lt;/ul&gt;</code></pre>
+	</section>
 </section>
 
 
 			<dl id="wb-dtmd">
 	<dt>Date de modification&#160;:&#32;</dt>
-	<dd><time property="dateModified">2014-02-19</time></dd>
+	<dd><time property="dateModified">2014-07-21</time></dd>
 </dl>
 
 
@@ -272,17 +296,17 @@
 				<nav role="navigation" class="row">
 					<h2>À propos de ce site</h2>
 					<section class="col-sm-3">
-	<h3>À propos de la PGO</h3>
-	<ul class="list-unstyled">
-		<li><a href="http//ogpl.github.io/about/governance-fr.html">Gouvernance de la PGO sur Github</a></li>
-		<li><a href="http//ogpl.github.io/about/licensing-fr.html">Licences</a></li>
-	</ul>
-</section>
-<section class="col-sm-3">
 	<h3>Contactez-nous</h3>
 	<ul class="list-unstyled">
 		<li><a href="https://github.com/ogpl/ogpl.github.io/issues/new">Questions ou commentaires?</a></li>
 		<li><a rel="external" href="http://ogpl.gov.in/contactus">Formulaire contactez-nous (ogpl.gov.in)</a></li>
+	</ul>
+</section>
+<section class="col-sm-3">
+	<h3>À propos de la PGO</h3>
+	<ul class="list-unstyled">
+		<li><a href="http//ogpl.github.io/about/governance-fr.html">Gouvernance de la PGO sur Github</a></li>
+		<li><a href="http//ogpl.github.io/about/licensing-fr.html">Licences</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">

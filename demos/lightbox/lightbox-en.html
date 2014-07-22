@@ -114,6 +114,7 @@
 <li><a href="#examples2">Item gallery</a></li>
 <li><a href="#examples3">Hidden item gallery</a></li>
 <li><a href="#examples4">Alternative image title</a></li>
+<li><a href="#examples5">Open through JavaScript</a></li>
 </ul>
 </li>
 </ul>
@@ -134,8 +135,6 @@
 </details>
 <section>
 <h3 id="examples1">Single items</h3>
-<section>
-<h4>Example</h4>
 <ul class="list-inline">
 <li>
 <a class="wb-lbx" href="demo/1_b.jpg" title="Image 1">
@@ -195,6 +194,8 @@
 </section>
 </li>
 </ul>
+<section>
+<h4>Code</h4>
 <details>
 <summary>View code</summary>
 <pre><code>&lt;ul class="list-inline"&gt;
@@ -213,21 +214,7 @@
 				&lt;h2 class="modal-title"&gt;Title&lt;/h2&gt;
 			&lt;/header&gt;
 			&lt;div class="modal-body"&gt;
-				&lt;ol&gt;
-					&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) first level default appearance&lt;/li&gt;
-					&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) first level default appearance
-						&lt;ol&gt;
-							&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) second level default appearance&lt;/li&gt;
-							&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) second level default appearance
-								&lt;ol&gt;
-									&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) third level default appearance&lt;/li&gt;
-									&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) third level default appearance&lt;/li&gt;
-								&lt;/ol&gt;
-							&lt;/li&gt;
-						&lt;/ol&gt;
-					&lt;/li&gt;
-				&lt;/ol&gt;
-				&lt;p&gt;&lt;a href="#"&gt;Link default appearance&lt;/a&gt;&lt;/p&gt;
+				...
 			&lt;/div&gt;
 		&lt;/section&gt;
 	&lt;/li&gt;
@@ -238,20 +225,7 @@
 				&lt;h2 class="modal-title"&gt;Title&lt;/h2&gt;
 			&lt;/header&gt;
 			&lt;div class="modal-body"&gt;
-				&lt;ol&gt;
-					&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) first level default appearance&lt;/li&gt;
-					&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) first level default appearance
-						&lt;ol&gt;
-							&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) second level default appearance&lt;/li&gt;
-							&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) second level default appearance
-								&lt;ol&gt;
-									&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) third level default appearance&lt;/li&gt;
-									&lt;li&gt;ordered list (&lt;code&gt;ol&lt;/code&gt;) third level default appearance&lt;/li&gt;
-								&lt;/ol&gt;
-							&lt;/li&gt;
-						&lt;/ol&gt;
-					&lt;/li&gt;
-				&lt;/ol&gt;
+				...
 				&lt;button class="btn btn-primary popup-modal-dismiss"&gt;Close modal popup&lt;/button&gt;
 			&lt;/div&gt;
 		&lt;/section&gt;
@@ -262,10 +236,8 @@
 </section>
 <section>
 <h3 id="examples2">Galleries</h3>
-<section>
-<h4>Examples</h4>
 <section class="wb-lbx lbx-gal">
-<h5>Image gallery</h5>
+<h4>Image gallery</h4>
 <ul class="list-inline">
 <li>
 <a href="demo/1_b.jpg" title="Image 1">
@@ -288,25 +260,12 @@
 </a>
 </li>
 </ul>
-</section>
-<section class="wb-lbx lbx-gal">
-<h5>AJAX gallery</h5>
-<ul class="list-inline">
-<li class="box">
-<a title="AJAX - Example 1 of AJAX content" href="ajax/ajax1-en.html">AJAX - Example 1</a>
-</li>
-<li class="box">
-<a title="AJAX - Example 2 of AJAX content" href="ajax/ajax2-en.html">AJAX - Example 2</a>
-</li>
-<li class="box">
-<a title="AJAX - Example 3 of AJAX content" href="ajax/ajax3-en.html">AJAX - Example 3</a>
-</li>
-</ul>
-</section>
+<section>
+<h5>Code</h5>
 <details>
 <summary>View code</summary>
 <pre><code>&lt;section class="wb-lbx lbx-gal"&gt;
-	&lt;h5&gt;Image gallery&lt;/h5&gt;
+	&lt;h4&gt;Image gallery&lt;/h4&gt;
 	&lt;ul class="list-inline"&gt;
 		&lt;li&gt;
 			&lt;a href="demo/1_b.jpg" title="Image 1"&gt;
@@ -329,9 +288,29 @@
 			&lt;/a&gt;
 		&lt;/li&gt;
 	&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section class="wb-lbx lbx-gal"&gt;
-	&lt;h5&gt;AJAX gallery&lt;/h5&gt;
+&lt;/section&gt;</code></pre>
+</details>
+</section>
+</section>
+<section class="wb-lbx lbx-gal">
+<h4>AJAX gallery</h4>
+<ul class="list-inline">
+<li class="box">
+<a title="AJAX - Example 1 of AJAX content" href="ajax/ajax1-en.html">AJAX - Example 1</a>
+</li>
+<li class="box">
+<a title="AJAX - Example 2 of AJAX content" href="ajax/ajax2-en.html">AJAX - Example 2</a>
+</li>
+<li class="box">
+<a title="AJAX - Example 3 of AJAX content" href="ajax/ajax3-en.html">AJAX - Example 3</a>
+</li>
+</ul>
+<section>
+<h5>Code</h5>
+<details>
+<summary>View code</summary>
+<pre><code>&lt;section class="wb-lbx lbx-gal"&gt;
+	&lt;h4&gt;AJAX gallery&lt;/h4&gt;
 	&lt;ul class="list-inline"&gt;
 		&lt;li&gt;
 			&lt;a title="AJAX - Example 1 of AJAX content" href="ajax/ajax1-en.html"&gt;AJAX - Example 1&lt;/a&gt;
@@ -345,14 +324,13 @@
 	&lt;/ul&gt;
 &lt;/section&gt;</code></pre>
 </details>
+</section>
 </section>
 </section>
 <section>
 <h3 id="examples3">Hidden image galleries</h3>
-<section>
-<h4>Examples</h4>
 <section class="wb-lbx lbx-hide-gal">
-<h5>Image gallery</h5>
+<h4>Image gallery</h4>
 <ul class="list-inline">
 <li>
 <a href="demo/1_b.jpg" title="Image 1">
@@ -375,25 +353,12 @@
 </a>
 </li>
 </ul>
-</section>
-<section class="wb-lbx lbx-hide-gal">
-<h5>AJAX gallery</h5>
-<ul class="list-inline">
-<li class="box">
-<a title="AJAX - Example 1 of AJAX content" href="ajax/ajax1-en.html">AJAX - Example 1</a>
-</li>
-<li class="box">
-<a title="AJAX - Example 2 of AJAX content" href="ajax/ajax2-en.html">AJAX - Example 2</a>
-</li>
-<li class="box">
-<a title="AJAX - Example 3 of AJAX content" href="ajax/ajax3-en.html">AJAX - Example 3</a>
-</li>
-</ul>
-</section>
+<section>
+<h5>Code</h5>
 <details>
 <summary>View code</summary>
 <pre><code>&lt;section class="wb-lbx lbx-hide-gal"&gt;
-	&lt;h5&gt;Image gallery&lt;/h5&gt;
+	&lt;h4&gt;Image gallery&lt;/h4&gt;
 	&lt;ul class="list-inline"&gt;
 		&lt;li&gt;
 			&lt;a href="demo/1_b.jpg" title="Image 1"&gt;
@@ -416,9 +381,29 @@
 			&lt;/a&gt;
 		&lt;/li&gt;
 	&lt;/ul&gt;
-&lt;/section&gt;
-&lt;section class="wb-lbx lbx-hide-gal"&gt;
-	&lt;h5&gt;AJAX gallery&lt;/h5&gt;
+&lt;/section&gt;</code></pre>
+</details>
+</section>
+</section>
+<section class="wb-lbx lbx-hide-gal">
+<h4>AJAX gallery</h4>
+<ul class="list-inline">
+<li class="box">
+<a title="AJAX - Example 1 of AJAX content" href="ajax/ajax1-en.html">AJAX - Example 1</a>
+</li>
+<li class="box">
+<a title="AJAX - Example 2 of AJAX content" href="ajax/ajax2-en.html">AJAX - Example 2</a>
+</li>
+<li class="box">
+<a title="AJAX - Example 3 of AJAX content" href="ajax/ajax3-en.html">AJAX - Example 3</a>
+</li>
+</ul>
+<section>
+<h5>Code</h5>
+<details>
+<summary>View code</summary>
+<pre><code>&lt;section class="wb-lbx lbx-hide-gal"&gt;
+	&lt;h4&gt;AJAX gallery&lt;/h4&gt;
 	&lt;ul class="list-inline"&gt;
 		&lt;li&gt;
 			&lt;a title="AJAX - Example 1 of AJAX content" href="ajax/ajax1-en.html"&gt;AJAX - Example 1&lt;/a&gt;
@@ -434,10 +419,9 @@
 </details>
 </section>
 </section>
+</section>
 <section>
 <h3 id="examples4">Alternative image title</h3>
-<section>
-<h4>Example</h4>
 <div class="wb-lbx lbx-gal">
 <ul class="list-inline">
 <li>
@@ -454,6 +438,8 @@
 </div>
 <p id="image_1_b"><strong>Image 1:</strong> Lorem ipsum consectetur <em>adipiscing elit</em>.</p>
 <p id="image_2_b"><strong>Image 2:</strong> Nulla mollis dolor leo. Quisque laoreet tincidunt mollis. Duis posuere scelerisque lectus quis lobortis.</p>
+<section>
+<h4>Code</h4>
 <details>
 <summary>View code</summary>
 <pre><code>&lt;div class="wb-lbx lbx-gal"&gt;
@@ -475,11 +461,126 @@
 </details>
 </section>
 </section>
+<section>
+<h3 id="examples5">Opening popups through JavaScript</h3>
+<p>Popups can be opened through JavaScript with:</p>
+<pre><code>$( document ).trigger( "open.wb-lbx", [
+	[
+		{
+			src: "demo/1_b.jpg",
+			type: "image"
+		}
+	],
+	false,
+	[
+		"Image 1"
+	]
+]);</code></pre>
+<label for="lbx-select">Lightbox to open</label>
+<select id="lbx-select">
+<option value="1">Image</option>
+<option value="2">AJAX</option>
+<option value="3">Inline content</option>
+<option value="4">Modal popup</option>
+<option value="5">Image gallery</option>
+</select>
+<button id="lbx-open-btn">Open lightbox</button>
+<section>
+<h4>Code</h4>
+<details>
+<summary>View code</summary>
+<section>
+<h5>HTML</h5>
+<pre><code>&lt;label for=&quot;lbx-select&quot;&gt;Lightbox to open&lt;/label&gt;
+&lt;select id=&quot;lbx-select&quot;&gt;
+	&lt;option value=&quot;1&quot;&gt;Image&lt;/option&gt;
+	&lt;option value=&quot;2&quot;&gt;AJAX&lt;/option&gt;
+	&lt;option value=&quot;3&quot;&gt;Inline content&lt;/option&gt;
+	&lt;option value=&quot;4&quot;&gt;Modal popup&lt;/option&gt;
+	&lt;option value=&quot;5&quot;&gt;Image gallery&lt;/option&gt;
+&lt;/select&gt;
+&lt;button id=&quot;lbx-open-btn&quot;&gt;Open lightbox&lt;/button&gt;</code></pre>
+</section>
+<section>
+<h5>JavaScript</h5>
+<pre><code>$( document ).on( &quot;click vclick&quot;, &quot;#lbx-open-btn&quot;, function( event ) {
+	var value = $( &quot;#lbx-select&quot; ).val();
+
+	if ( value === &quot;1&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;demo/1_b.jpg&quot;,
+					type: &quot;image&quot;
+				}
+			],
+			false,
+			[
+				&quot;Image 1&quot;
+			]
+		]);
+	} else if ( value === &quot;2&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;ajax/ajax1-en.html&quot;,
+					type: &quot;ajax&quot;
+				}
+			]
+		]);
+	} else if ( value === &quot;3&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;#inline_content&quot;,
+					type: &quot;inline&quot;
+				}
+			]
+		]);
+	} else if ( value === &quot;4&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;#inline_content_modal&quot;,
+					type: &quot;inline&quot;
+				}
+			],
+			true
+		]);
+	} else if ( value === &quot;5&quot; ) {
+		wb.doc.trigger( &quot;open.wb-lbx&quot;, [
+			[
+				{
+					src: &quot;demo/1_b.jpg&quot;,
+					type: &quot;image&quot;
+				}, {
+					src: &quot;demo/2_b.jpg&quot;,
+					type: &quot;image&quot;
+				}, {
+					src: &quot;demo/3_b.jpg&quot;,
+					type: &quot;image&quot;
+				}
+			],
+			false,
+			[
+				&quot;Image 1&quot;,
+				&quot;Image 2&quot;,
+				&quot;Image 3&quot;
+			]
+		]);
+	}
+});
+
+})( jQuery, wb );</code></pre>
+</section>
+</details>
+</section>
+</section>
 </section>
 </div>
 <dl id="wb-dtmd">
 <dt>Date modified:&#32;</dt>
-<dd><time property="dateModified">2014-02-19</time></dd>
+<dd><time property="dateModified">2014-07-21</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
@@ -487,17 +588,17 @@
 <nav role="navigation" class="row">
 <h2>About this site</h2>
 <section class="col-sm-3">
-<h3>About OGPL</h3>
-<ul class="list-unstyled">
-<li><a href="http//ogpl.github.io/about/governance-en.html">OGPL Governance on Github</a></li>
-<li><a href="http//ogpl.github.io/about/licensing-en.html">Licenses</a></li>
-</ul>
-</section>
-<section class="col-sm-3">
 <h3>Contact us</h3>
 <ul class="list-unstyled">
 <li><a href="https://github.com/ogpl/ogpl.github.io/issues/new">Questions or comments?</a></li>
 <li><a rel="external" href="http://ogpl.gov.in/contactus">Contact Us form (ogpl.gov.in)</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>About OGPL</h3>
+<ul class="list-unstyled">
+<li><a href="http//ogpl.github.io/about/governance-en.html">OGPL Governance on Github</a></li>
+<li><a href="http//ogpl.github.io/about/licensing-en.html">Licenses</a></li>
 </ul>
 </section>
 <section class="col-sm-3">
@@ -519,5 +620,6 @@
 </footer>
 <!--[if gte IE 9 | !IE ]><!--> <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <script src="../../js/wet-boew.min.js"></script> <!--<![endif]-->
 <!--[if lt IE 9]><script src="../../js/ie8-wet-boew2.min.js"></script><![endif]-->
+<script src="demo/lightbox.min.js"></script>
 </body>
 </html>

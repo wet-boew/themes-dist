@@ -106,6 +106,8 @@
 <p>The HTML5 <code>details</code> and <code>summary</code> elements are used to provide expandable/collapsible content. This component adds support for these elements in browsers that do not already have native support.</p>
 <section>
 <h2>Examples</h2>
+<ul class="list-unstyled">
+<li>
 <details>
 <summary>Example 1</summary>
 <p>Example content that provides more details.</p>
@@ -135,7 +137,9 @@
 </tbody>
 </table>
 </details>
-<details>
+</li>
+<li>
+<details open="open">
 <summary>Example 2</summary>
 <p>Example content that provides more details.</p>
 <table>
@@ -164,6 +168,8 @@
 </tbody>
 </table>
 </details>
+</li>
+<li>
 <details>
 <summary>Example 3</summary>
 <p>Example content that provides more details.</p>
@@ -193,10 +199,30 @@
 </tbody>
 </table>
 </details>
+</li>
+</ul>
+<section>
+<h3>Code</h3>
+<pre><code>&lt;ul class=&quot;list-unstyled&quot;&gt;
+	&lt;li&gt;
+		&lt;details&gt;
+			&lt;summary&gt;Example 1&lt;/summary&gt;
+			...
+		&lt;/details&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;details open="open"&gt;
+			&lt;summary&gt;Example 2&lt;/summary&gt;
+			...
+		&lt;/details&gt;
+	&lt;/li&gt;
+	...
+&lt;/ul&gt;</code></pre>
+</section>
 </section>
 <dl id="wb-dtmd">
 <dt>Date modified:&#32;</dt>
-<dd><time property="dateModified">2014-02-19</time></dd>
+<dd><time property="dateModified">2014-07-21</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
@@ -204,17 +230,17 @@
 <nav role="navigation" class="row">
 <h2>About this site</h2>
 <section class="col-sm-3">
-<h3>About OGPL</h3>
-<ul class="list-unstyled">
-<li><a href="http//ogpl.github.io/about/governance-en.html">OGPL Governance on Github</a></li>
-<li><a href="http//ogpl.github.io/about/licensing-en.html">Licenses</a></li>
-</ul>
-</section>
-<section class="col-sm-3">
 <h3>Contact us</h3>
 <ul class="list-unstyled">
 <li><a href="https://github.com/ogpl/ogpl.github.io/issues/new">Questions or comments?</a></li>
 <li><a rel="external" href="http://ogpl.gov.in/contactus">Contact Us form (ogpl.gov.in)</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>About OGPL</h3>
+<ul class="list-unstyled">
+<li><a href="http//ogpl.github.io/about/governance-en.html">OGPL Governance on Github</a></li>
+<li><a href="http//ogpl.github.io/about/licensing-en.html">Licenses</a></li>
 </ul>
 </section>
 <section class="col-sm-3">
