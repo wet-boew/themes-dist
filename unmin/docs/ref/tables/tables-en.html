@@ -232,9 +232,19 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>wb-init.wb-tables</td>
+				<td><code>wb-init.wb-tables</code></td>
 				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-inview" );</code>).</td>
 				<td>Used to manually initialize the Tables plugin. <strong>Note:</strong> The Tables plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
+			</tr>
+			<tr>
+				<td><code>wb-ready.wb-tables</code> (v4.0.5+)</td>
+				<td>Triggered automatically after a DataTable table draws.</td>
+				<td>Used to identify which table was drawn (target of the event) and to pass along the DataTables instance and the settings object.
+					<pre><code>$( document ).on( "wb-ready.wb-tables", ".wb-tables", function( event, instance, settings ) {
+});</code></pre>
+					<pre><code>$elm.on( "wb-ready.wb-tables", function( event, instance, settings ) {
+});</code></pre>
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -251,7 +261,7 @@
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd">
 			<dt>Date modified:&#32;</dt>
-			<dd><time property="dateModified">2014-07-18</time></dd>
+			<dd><time property="dateModified">2014-07-28</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">

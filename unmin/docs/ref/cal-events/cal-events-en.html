@@ -216,7 +216,7 @@
 				<li>The event date must be provided in an HTML5 time element contained within a paragraph element (following the heading element). The date to be displayed is contained in the time element and an ISO-8601 date (e.g., 2010-03-11) is provided in the datetime attribute.</li>
 			</ol>
 		</li>
-		<li>Add a second div element to the Web page with an id attribute containing your unique class name from above (e.g.: <pre><code>&lt;div id="unique-class"&gt;&lt;/div&gt;</code></pre>). This will hold the calendar interface.</li>
+		<li>Add a second div element to the Web page with an id attribute containing your unique class name from above (e.g., <code>&lt;div id="unique-class"&gt;&lt;/div&gt;</code>). This will hold the calendar interface.</li>
 	</ol>
 	
 	<h3>Example Code</h3>
@@ -344,25 +344,20 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>create.wb-cal</td>
-				<td>After the year or month is changed and after the "Go to" form is submitted.</td>
-				<td>Creates the calendar interface.</td>
+				<td><code>wb-init.wb-calevt</code></td>
+				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-calevt" );</code>).</td>
+				<td>Used to manually initialize the Calendar of events plugin. <strong>Note:</strong> The Calendar of events plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
 			</tr>
 			<tr>
-				<td>displayed.wb-cal</td>
-				<td>After the calendar interface is created.</td>
-				<td>Triggers the event for components (ex: the date picker polyfill) that need it.</td>
+				<td><code>wb-ready.wb-calevt</code> (v4.0.5+)</td>
+				<td>Triggered automatically after a calendar of events draws.</td>
+				<td>Used to identify which calendar of events was drawn (target of the event)
+					<pre><code>$( document ).on( "wb-ready.wb-calevt", ".wb-calevt", function( event ) {
+});</code></pre>
+					<pre><code>$elm.on( "wb-ready.wb-calevt", function( event ) {
+});</code></pre>
+				</td>
 			</tr>
-			<tr>
-				<td>hideGoToFrm.wb-cal</td>
-				<td>After the "Cancel" button on the "Go to" form is pressed and after the "Go to" form is submitted.</td>
-				<td>Hides the "Go To" form in the calendar interface.</td>
-			</tr>
-			<tr>
-				<td>setFocus.wb-cal</td>
-				<td>When navigating the calendar interface via keyboard.</td>
-				<td>Places focus on the targetted date.</td>
-			</tr>			
 		</tbody>
 	</table>
 </section>
@@ -378,7 +373,7 @@
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd">
 			<dt>Date modified:&#32;</dt>
-			<dd><time property="dateModified">2014-03-10</time></dd>
+			<dd><time property="dateModified">2014-07-23</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">

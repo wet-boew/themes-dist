@@ -208,7 +208,7 @@
 				<li>La date de l’événement doit être fournie dans un élément time en HTML5 contenu au sein d’un élément de paragraphe (à la suite de l’élément d’en-tête). La date à afficher est contenue dans l’élément time et une date de norme ISO-8601 (p. ex., 2010-03-11) est indiquée dans l’attribut datetime.</li>
 			</ol>
 		</li>
-		<li>Ajouter un deuxième élément div à la page Web avec une valeur d’attribut à identification contenant votre classe unique ci-haut (e.g.: <code>&lt;div id="unique-class"&gt;&lt;/div&gt;</code>). Cela permettra de maintenir en place l’interface de calendrier.</li>
+		<li>Ajouter un deuxième élément div à la page Web avec une valeur d’attribut à identification contenant votre classe unique ci-haut (p.ex., <code>&lt;div id="unique-class"&gt;&lt;/div&gt;</code>). Cela permettra de maintenir en place l’interface de calendrier.</li>
 	</ol>
 	<p>Exemple code :</p>
 	<pre><code>&lt;div id="calendar1"&gt;&lt;/div&gt;
@@ -324,41 +324,36 @@
 	</section>
 </section>
 
-<section>
-	<h2>Événements</h2>
+<section lang="en">
+	<p><strong>Needs translation</strong></p>
+	<h2>Events</h2>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Événement</th>
-				<th>Déclencheur</th>
-				<th>Fonction</th>
+				<th>Event</th>
+				<th>Trigger</th>
+				<th>What it does</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>create.wb-cal</td>
-				<td>Après que l'année ou le mois soit modifié et après que le formulaire « Aller à » soit soumis.</td>
-				<td>Crée l'interface du calendrier.</td>
+				<td><code>wb-init.wb-calevt</code></td>
+				<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-calevt" );</code>).</td>
+				<td>Used to manually initialize the Calendar of events plugin. <strong>Note:</strong> The Calendar of events plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
 			</tr>
 			<tr>
-				<td>displayed.wb-cal</td>
-				<td>Après que l'interface du calendrier soit créé.</td>
-				<td>Déclenche l'événement pour les composantes (ex : le sélecteur de date) qui en ont besoin.</td>
-			</tr>
-			<tr>
-				<td>hideGoToFrm.wb-cal</td>
-				<td>Après que le bouton "Annuler" sur le formulaire « Aller à » soit activé et après que le formulaire « Aller à » soit soumis.</td>
-				<td>Cache le formulaire "Aller à" dans l'interface du calendrier.</td>
-			</tr>
-			<tr>
-				<td>setFocus.wb-cal</td>
-				<td>Lors de la navigation de l'interface du calendrier à partir du clavier.</td>
-				<td>Places le « focus » sur la date ciblée.</td>
+				<td><code>wb-ready.wb-calevt</code> (v4.0.5+)</td>
+				<td>Triggered automatically after a calendar of events draws.</td>
+				<td>Used to identify which calendar of events was drawn (target of the event)
+					<pre><code>$( document ).on( "wb-ready.wb-calevt", ".wb-calevt", function( event ) {
+});</code></pre>
+					<pre><code>$elm.on( "wb-ready.wb-calevt", function( event ) {
+});</code></pre>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 </section>
-
 <section>
 	<h2>Code source</h2>
 	<p><a href="https://github.com/wet-boew/wet-boew/tree/master/src/plugins/cal-events">Code source pour le calendrier d'événements</a></p>
@@ -370,7 +365,7 @@
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd">
 			<dt>Date de modification&#160;:&#32;</dt>
-			<dd><time property="dateModified">2014-03-10</time></dd>
+			<dd><time property="dateModified">2014-07-23</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">

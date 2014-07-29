@@ -634,6 +634,47 @@ a.shr-opn, a.shr-opn:hover {
 /*
  * Site menu
  */
+#wb-sm {
+  background: #335075; }
+  #wb-sm .menu {
+    display: table;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 1px #222;
+    width: 100%; }
+    #wb-sm .menu .active, #wb-sm .menu .selected, #wb-sm .menu .wb-navcurr {
+      background: #243850 !important;
+      color: #fff !important; }
+    #wb-sm .menu > li {
+      border-left: 1px solid #999;
+      display: table-cell;
+      float: none; }
+      #wb-sm .menu > li:last-child {
+        border-right: 1px solid #999; }
+      #wb-sm .menu > li a {
+        color: #fff; }
+        #wb-sm .menu > li a:hover, #wb-sm .menu > li a:focus {
+          background: #243850 !important;
+          text-shadow: none; }
+  #wb-sm .sm.open {
+    background: #ccc;
+    border-bottom: 5px solid #243850; }
+    #wb-sm .sm.open li a, #wb-sm .sm.open li summary {
+      color: #444;
+      padding: 5px 10px;
+      text-shadow: none; }
+      #wb-sm .sm.open li a:hover, #wb-sm .sm.open li a:focus, #wb-sm .sm.open li a:active, #wb-sm .sm.open li summary:hover, #wb-sm .sm.open li summary:focus, #wb-sm .sm.open li summary:active {
+        background: #243850;
+        color: #fff; }
+    #wb-sm .sm.open .slflnk a {
+      background: #bbb; }
+  #wb-sm .sm .row {
+    background: transparent; }
+    #wb-sm .sm .row a {
+      color: #6e6e6e; }
+
+.wb-disable #wb-sm .nvbar {
+  display: block !important; }
+
 /*
  * Mobile panel
  */
@@ -743,6 +784,8 @@ a.shr-opn, a.shr-opn:hover {
     #mb-pnl .sec-pnl a, #mb-pnl .sec-pnl summary {
       color: #2e5576 !important; }
 
+[dir=rtl] #wb-sm .menu > li {
+  border-right: 1px solid #999; }
 [dir=rtl] #mb-pnl {
   background: transparent;
   padding-left: 0;
@@ -968,7 +1011,17 @@ a.shr-opn, a.shr-opn:hover {
   /*
   WET-BOEW
   @title: Medium view and under (screen only)
- */ }
+ */
+  /*
+ * Site menu (medium view and under)
+ */
+  /*
+ * Accessibility tweak for menu based overlapping at lowest desktop setting (text size 200%)
+ */
+  #wb-sm .menu {
+    border-right: 1px solid #999; }
+    #wb-sm .menu > li:last-child {
+      border-right: 0; } }
 
 /* Large view and under */
 @media screen and (max-width: 1599px) {
@@ -998,50 +1051,8 @@ a.shr-opn, a.shr-opn:hover {
   @title: Medium view and over (screen only)
  */
   /*
- * Site menu (medium view and over)
- */
-  /*
  Social Media Icons Medium View and over
-*/
-  #wb-sm {
-    background: #335075; }
-    #wb-sm .menu {
-      display: table;
-      margin-bottom: 0;
-      text-shadow: 1px 1px 1px #222;
-      width: 100%; }
-      #wb-sm .menu .active, #wb-sm .menu .selected, #wb-sm .menu .wb-navcurr {
-        background: #243850 !important;
-        color: #fff !important; }
-      #wb-sm .menu > li {
-        border-left: 1px solid #999;
-        display: table-cell;
-        float: none; }
-        #wb-sm .menu > li:last-child {
-          border-right: 1px solid #999; }
-        #wb-sm .menu > li a {
-          color: #fff; }
-          #wb-sm .menu > li a:hover, #wb-sm .menu > li a:focus {
-            background: #243850 !important;
-            text-shadow: none; }
-    #wb-sm .sm.open {
-      background: #ccc;
-      border-bottom: 5px solid #243850; }
-      #wb-sm .sm.open li a, #wb-sm .sm.open li summary {
-        color: #444;
-        padding: 5px 10px;
-        text-shadow: none; }
-        #wb-sm .sm.open li a:hover, #wb-sm .sm.open li a:focus, #wb-sm .sm.open li a:active, #wb-sm .sm.open li summary:hover, #wb-sm .sm.open li summary:focus, #wb-sm .sm.open li summary:active {
-          background: #243850;
-          color: #fff; }
-      #wb-sm .sm.open .slflnk a {
-        background: #bbb; }
-    #wb-sm .sm .row {
-      background: transparent; }
-      #wb-sm .sm .row a {
-        color: #6e6e6e; }
-  [dir=rtl] #wb-sm .menu > li {
-    border-right: 1px solid #999; } }
+*/ }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
@@ -1127,12 +1138,6 @@ a.shr-opn, a.shr-opn:hover {
   /*
  * Equal Heights overrides (medium view)
  */
-  /*
- * Site menu (medium view)
- */
-  /*
- * Accessibility tweak for menu based overlapping at lowest desktop setting (text size 200%)
- */
   .sect-lnks {
     margin-right: 15px;
     width: 48.1%; }
@@ -1141,11 +1146,7 @@ a.shr-opn, a.shr-opn:hover {
   .lt-ie9 .sect-lnks {
     width: 47%; }
   .lt-ie9 main.col-md-9 .sect-lnks {
-    width: 46%; }
-  #wb-sm .menu {
-    border-right: 1px solid #999; }
-    #wb-sm .menu > li:last-child {
-      border-right: 0; } }
+    width: 46%; } }
 
 /* Large view */
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
