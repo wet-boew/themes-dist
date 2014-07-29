@@ -991,6 +991,10 @@ a.shr-opn, a.shr-opn:hover {
   /*
  Details Summary Styling (small view and under)
 */
+  /*
+  WET-BOEW
+  @title: Search Small view and under (screen only)
+ */
   header .brand a {
     margin-top: 10px; }
   .dshbrd details {
@@ -1004,7 +1008,15 @@ a.shr-opn, a.shr-opn:hover {
       padding: 1em; }
     .dshbrd details .cntnt {
       border: 1px solid #335075;
-      padding: 15px; } }
+      padding: 15px; }
+  #wb-srch {
+    width: 100%; }
+    #wb-srch .form-group {
+      display: inline-block; }
+      #wb-srch .form-group.submit {
+        float: right; }
+  [dir=rtl] #wb-srch .form-group.submit {
+    float: left; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -1127,7 +1139,13 @@ a.shr-opn, a.shr-opn:hover {
   /*
   WET-BOEW
   @title: Small view (screen only)
- */ }
+ */
+  /*
+  WET-BOEW
+  @title: Search Small view and under (screen only)
+ */
+  #wb-srch {
+    margin-bottom: 15px; } }
 
 /* Medium view */
 @media screen and (min-width: 992px) and (max-width: 1199px) {
