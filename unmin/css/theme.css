@@ -64,6 +64,40 @@
   #wb-sttl a {
     color: #fff !important;
     text-decoration: none; }
+  #wb-sm ul.menu > li > a:hover, #wb-sm .active a, #wb-sm .active summary, #wb-sm .sm, #wb-sm .sm a, #wb-sm .sm summary {
+    background-color: #ccc;
+    color: #000; }
+  #wb-sm ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr, #wb-sm .sm summary.wb-navcurr {
+    background: #3853a6;
+    color: #fff; }
+  #wb-sm .sm a a:link, #wb-sm .sm summary a:link, #wb-sm .sm a a:visited, #wb-sm .sm summary a:visited {
+    text-decoration: none; }
+  #wb-sm .sm a a:hover, #wb-sm .sm summary a:hover, #wb-sm .sm a a:focus, #wb-sm .sm summary a:focus {
+    text-decoration: underline; }
+  #wb-sm {
+    background: #202a33; }
+    #wb-sm ul.menu {
+      margin-bottom: 0; }
+      #wb-sm ul.menu > li {
+        border-right: 1px solid #999;
+        padding: 0; }
+        #wb-sm ul.menu > li:last-child {
+          border-left: 1px solid #999; }
+        #wb-sm ul.menu > li.active {
+          border-color: #ccc; }
+    #wb-sm a, #wb-sm summary {
+      color: #fff;
+      display: block;
+      font-weight: 700;
+      padding: 0.48em 0.79em;
+      text-decoration: none; }
+    #wb-sm .sm {
+      border-bottom: 4px solid #0f315b;
+      border-radius: 0 0 3px 3px; }
+      #wb-sm .sm a, #wb-sm .sm summary {
+        font-weight: 400; }
+      #wb-sm .sm .slflnk a {
+        background: #bbb; }
   #wb-bc .breadcrumb {
     background: transparent;
     margin-bottom: 0; }
@@ -106,6 +140,8 @@
   /*
   @title: Small view and under (screen only)
  */
+  #wb-bar {
+    min-height: 3em; }
   #wb-glb-mn .pnl-btn {
     float: right;
     margin: 0;
@@ -165,6 +201,21 @@
     position: absolute;
     top: -8px;
     width: 5.5em; }
+  #wb-srch {
+    margin-right: 15px;
+    text-align: right; }
+    #wb-srch .form-group {
+      display: inline-block; }
+  #wb-srch-sub {
+    float: right;
+    margin-left: 5px; }
+  [dir=rtl] #wb-srch {
+    margin-left: 15px;
+    text-align: left; }
+  [dir=rtl] #wb-srch-sub {
+    float: right;
+    margin-left: 5px;
+    margin-right: 0; }
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
     float: right;
     margin-left: 5px;
@@ -240,15 +291,8 @@
   /*
   @title: Medium view and over (screen only)
  */
-  #wb-sm .sm a a:link, #wb-sm .sm summary a:link, #wb-sm .sm a a:visited, #wb-sm .sm summary a:visited {
-    text-decoration: none; }
-  #wb-sm .sm a a:hover, #wb-sm .sm summary a:hover, #wb-sm .sm a a:focus, #wb-sm .sm summary a:focus {
-    text-decoration: underline; }
   body main, body > header + .container, #wb-bc .container {
     background-color: #fff; }
-  #wb-sm ul.menu > li > a:hover, #wb-sm .active a, #wb-sm .active summary, #wb-sm .sm, #wb-sm .sm a, #wb-sm .sm summary {
-    background-color: #ccc;
-    color: #000; }
   #wb-bar, #wb-bnr {
     border-bottom: 1px solid #fff; }
   body {
@@ -295,33 +339,6 @@
     width: 100%; }
   [lang=fr] #wb-srch .form-group {
     width: 60%; }
-  #wb-sm ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr, #wb-sm .sm summary.wb-navcurr {
-    background: #3853a6;
-    color: #fff; }
-  #wb-sm {
-    background: #202a33; }
-    #wb-sm ul.menu {
-      margin-bottom: 0; }
-      #wb-sm ul.menu > li {
-        border-right: 1px solid #999;
-        padding: 0; }
-        #wb-sm ul.menu > li:last-child {
-          border-left: 1px solid #999; }
-        #wb-sm ul.menu > li.active {
-          border-color: #ccc; }
-    #wb-sm a, #wb-sm summary {
-      color: #fff;
-      display: block;
-      font-weight: 700;
-      padding: 0.48em 0.79em;
-      text-decoration: none; }
-    #wb-sm .sm {
-      border-bottom: 4px solid #0f315b;
-      border-radius: 0 0 3px 3px; }
-      #wb-sm .sm a, #wb-sm .sm summary {
-        font-weight: 400; }
-      #wb-sm .sm .slflnk a {
-        background: #bbb; }
   #wb-sec .list-group a.list-group-item.wb-navcurr, #wb-sec .list-group a.list-group-item[href]:hover, #wb-sec .list-group a.list-group-item[href]:focus {
     background: #808080;
     color: white; }
@@ -399,6 +416,8 @@
   /*
   @title: Small view (screen only)
  */
+  #wb-srch {
+    margin-bottom: 15px; }
   #wb-info h3 {
     white-space: nowrap; } }
 
