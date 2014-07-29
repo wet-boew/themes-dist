@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-07-25
+ * v4.0.5-development - 2014-07-29
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3963,6 +3963,7 @@ var imgClass,
 	selector = "[data-pic]",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init." + pluginName,
+	readyEvent = "wb-ready." + pluginName,
 	picturefillEvent = "picfill." + pluginName,
 	$document = wb.doc,
 
@@ -4020,13 +4021,17 @@ var imgClass,
 
 			// Fixes bug with IE8 constraining the height of the image
 			// when the .img-responsive class is used.
-			img.removeAttribute( "width" );
-			img.removeAttribute( "height" );
+			if ( wb.ielt9 ) {
+				img.removeAttribute( "width" );
+				img.removeAttribute( "height" );
+			}
 
 		// No match and an image exists: delete it
 		} else if ( img ) {
 			img.parentNode.removeChild( img );
 		}
+
+		$( elm ).trigger( readyEvent );
 	};
 
 // Bind the init event of the plugin
@@ -4073,9 +4078,13 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var selector = ".wb-eqht",
+var pluginName = "wb-eqht",
+	selector = "." + pluginName,
 	$document = wb.doc,
 	eventTimerpoke = "timerpoke.wb",
+	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
+	updateEvent = "wb-update" + selector,
 	vAlignCSS = "vertical-align",
 	vAlignDefault = "top",
 	minHeightCSS = "min-height",
@@ -4174,6 +4183,8 @@ var selector = ".wb-eqht",
 				}
 			}
 			$elm = reattachElement( $anchor );
+
+			$elm.trigger( readyEvent );
 		}
 	},
 
@@ -4240,10 +4251,10 @@ var selector = ".wb-eqht",
 	};
 
 // Bind the init event of the plugin
-$document.on( eventTimerpoke, selector, init );
+$document.on( eventTimerpoke + " " + initEvent, selector, init );
 
 // Handle text and window resizing
-$document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb wb-ready.wb-tables", onResize );
+$document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb wb-ready.wb-tables " + updateEvent, onResize );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -4281,6 +4292,7 @@ wb.add( selector );
 var pluginName = "wb-favicon",
 	selector = "link[rel='icon']",
 	initEvent = "wb-init." + pluginName,
+	readyEvent = "wb-ready." + pluginName,
 	mobileEvent = "mobile." + pluginName,
 	iconEvent = "icon." + pluginName,
 	$document = wb.doc,
@@ -4341,6 +4353,8 @@ var pluginName = "wb-favicon",
 				favicon.parentNode.insertBefore( faviconMobile[ 0 ], favicon );
 			}
 		}
+
+		$document.trigger( readyEvent, [ "mobile" ] );
 	},
 
 	/**
@@ -4353,6 +4367,8 @@ var pluginName = "wb-favicon",
 	icon = function( favicon, event, data ) {
 		var faviconPath = data.path !== null ? data.path : getPath( favicon.getAttribute( "href" ) );
 		favicon.setAttribute( "href", faviconPath + data.filename );
+
+		$document.trigger( readyEvent, [ "icon" ] );
 	},
 
 	/**
@@ -4418,6 +4434,8 @@ var pluginName = "wb-feeds",
 	feedLinkSelector = "li > a",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
+	feedReadyEvent = "wb-feed-ready" + selector,
 	$document = wb.doc,
 	patt = /\\u([\d\w]{4})/g,
 
@@ -4701,6 +4719,7 @@ var pluginName = "wb-feeds",
 					wb.add( postProcess[ i ] );
 				}
 			}
+			$elm.trigger( feedReadyEvent );
 		} else if ( this.className.indexOf( "waiting" ) === -1 ) {
 			$elm.empty().addClass( "waiting" );
 		}
@@ -4761,12 +4780,15 @@ var pluginName = "wb-feeds",
 
 $document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( event, context ) {
 	var response = event.fetch.response,
+		eventTarget = event.target,
 		data;
 
 	// Filter out any events triggered by descendants
-	if ( event.currentTarget === event.target ) {
+	if ( event.currentTarget === eventTarget ) {
 		data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry,
 		processEntries.apply( context, [ data ] );
+
+		$( eventTarget ).closest( selector ).trigger( readyEvent );
 	}
 });
 
@@ -4796,6 +4818,7 @@ var pluginName = "wb-fnote",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
 
@@ -4837,6 +4860,8 @@ var pluginName = "wb-fnote",
 
 			// Remove "first/premier/etc"-style text from certain footnote return links (via the child spans that hold those bits of text)
 			$returnLinks = $elm.find( "dd p.fn-rtn a span span" ).remove();
+
+			$elm.trigger( readyEvent );
 		}
 	};
 
@@ -5433,6 +5458,10 @@ var pluginName = "wb-lbx",
 						$elm = $( elm ),
 						settings = {},
 						firstLink;
+
+					if ( !elm ) {
+						return;
+					}
 
 					// Set the dependency i18nText only once
 					if ( !extendedGlobal ) {
@@ -7938,6 +7967,7 @@ var pluginName = "wb-prettify",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	prettyPrintEvent = "prettyprint" + selector,
 	$document = wb.doc,
 
@@ -8017,6 +8047,8 @@ var pluginName = "wb-prettify",
 			typeof window.prettyPrint === "function" ) {
 
 			window.prettyPrint();
+
+			$document.trigger( readyEvent );
 		}
 	};
 
@@ -8189,6 +8221,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	confirmClass = pluginName + "-confirm",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	resetEvent = "reset" + selector,
 	keepaliveEvent = "keepalive" + selector,
 	inactivityEvent = "inactivity" + selector,
@@ -8254,7 +8287,10 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			initRefreshOnClick( $elm, settings );
 
 			// Initialize the keepalive and inactive timeouts of the plugin
-			$elm.trigger( resetEvent, settings );
+			// then fire the wb-ready event
+			$elm
+				.trigger( resetEvent, settings )
+				.trigger( readyEvent );
 		}
 	},
 
@@ -8610,6 +8646,7 @@ var pluginName = "wb-share",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	shareLink = "shr-lnk",
 	panelCount = 0,
 	$document = wb.doc,
@@ -8834,6 +8871,8 @@ var pluginName = "wb-share",
 			$share
 				.trigger( initEvent )
 				.trigger( "wb-init.wb-lbx" );
+
+			$elm.trigger( readyEvent );
 		}
 	};
 
@@ -9829,6 +9868,7 @@ var pluginName = "wb-txthl",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 
 	/**
@@ -9863,6 +9903,8 @@ var pluginName = "wb-txthl",
 					return ( !group2 ? "" : group2 ) + "<span class='txthl'><mark>" + group3 + "</mark></span>";
 				});
 				elm.innerHTML = newText;
+
+				$( elm ).trigger( readyEvent );
 			}
 		}
 	};
@@ -10399,6 +10441,7 @@ var pluginName = "wb-twitter",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 
 	/**
@@ -10420,7 +10463,10 @@ var pluginName = "wb-twitter",
 			eventTarget.className += " " + initedClass;
 
 			Modernizr.load( {
-				load: ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//platform.twitter.com/widgets.js"
+				load: ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//platform.twitter.com/widgets.js",
+				complete: function() {
+					$document.trigger( readyEvent );
+				}
 			});
 		}
 	};
