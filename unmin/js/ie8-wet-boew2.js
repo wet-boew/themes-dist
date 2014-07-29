@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.4 - 2014-07-23
+ * v4.0.5-development - 2014-07-29
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1308,6 +1308,7 @@ var pluginName = "wb-calevt",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	evDetails = "ev-details",
 	$document = wb.doc,
 	i18n, i18nText,
@@ -1651,6 +1652,9 @@ $document.on( "displayed.wb-cal", selector + "-cal", function( event, year, mont
 		addEvents( year, month, days, containerId, events.list );
 		showOnlyEventsFor( year, month, containerId );
 		$target.find( ".cal-index-" + day + " .cal-evt" ).trigger( "setfocus.wb" );
+
+		// Identify that the plugin is ready
+		$target.trigger( readyEvent );
 	}
 });
 
@@ -2412,6 +2416,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	tableParsingEvent = "passiveparse.wb-tableparser",
 	tableParsingCompleteEvent = "parsecomplete.wb-tableparser",
 	$document = wb.doc,
@@ -3465,6 +3470,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		$( "canvas:eq(1)", $placeHolder ).css( "position", "static" );
 		$( "canvas:eq(0)", $placeHolder ).css( "width", "100%" );
 
+		$elm.trigger( readyEvent );
 	},
 
 	/**
@@ -3574,6 +3580,7 @@ wb.add( selector );
 var pluginName = "wb-ctrycnt",
 	selector = "[data-ctrycnt]",
 	initEvent = "wb-init." + pluginName,
+	readyEvent = "wb-ready." + pluginName,
 	initedClass = pluginName + "-inited",
 	$document = wb.doc,
 
@@ -3599,10 +3606,12 @@ var pluginName = "wb-ctrycnt",
 
 			$.when( getCountry() ).then( function( countryCode ) {
 
-				if ( countryCode === "") {
-					// Leave default content since we couldn"t find the country
+				if ( countryCode === "" ) {
+
+					// Leave default content since we couldn't find the country
 					return;
 				} else {
+
 					// @TODO: Handle bad country values or any whitelist of countries.
 				}
 
@@ -3610,7 +3619,9 @@ var pluginName = "wb-ctrycnt",
 
 				$elm.removeAttr( "data-ctrycnt" );
 
-				$elm.load(url);
+				$elm.load( url, function() {
+					$elm.trigger( readyEvent );
+				});
 			});
 		}
 	},
@@ -3692,6 +3703,7 @@ var pluginName = "wb-data-ajax",
 		"[data-ajax-prepend], [data-ajax-replace]",
 	inited = "-inited",
 	initEvent = "wb-init." + pluginName,
+	readyEvent = "wb-ready." + pluginName,
 	$document = wb.doc,
 
 	/**
@@ -3765,7 +3777,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 				$elm[ ajaxType ]( content );
 			}
 
-			$elm.trigger( pluginName + "-" + ajaxType + "-loaded.wb" );
+			$elm.trigger( readyEvent, [ ajaxType ] );
 		}
 	}
 
@@ -3801,6 +3813,7 @@ var pluginName = "wb-inview",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	scrollEvent = "scroll" + selector,
 	$elms = $( selector ),
 	$document = wb.doc,
@@ -3822,6 +3835,7 @@ var pluginName = "wb-inview",
 			// Allow other plugins to run first
 			setTimeout(function() {
 				onInView( $elm );
+				$elm.trigger( readyEvent );
 			}, 1 );
 		}
 	},
@@ -3949,6 +3963,7 @@ var imgClass,
 	selector = "[data-pic]",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init." + pluginName,
+	readyEvent = "wb-ready." + pluginName,
 	picturefillEvent = "picfill." + pluginName,
 	$document = wb.doc,
 
@@ -4006,13 +4021,17 @@ var imgClass,
 
 			// Fixes bug with IE8 constraining the height of the image
 			// when the .img-responsive class is used.
-			img.removeAttribute( "width" );
-			img.removeAttribute( "height" );
+			if ( wb.ielt9 ) {
+				img.removeAttribute( "width" );
+				img.removeAttribute( "height" );
+			}
 
 		// No match and an image exists: delete it
 		} else if ( img ) {
 			img.parentNode.removeChild( img );
 		}
+
+		$( elm ).trigger( readyEvent );
 	};
 
 // Bind the init event of the plugin
@@ -4059,9 +4078,13 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var selector = ".wb-eqht",
+var pluginName = "wb-eqht",
+	selector = "." + pluginName,
 	$document = wb.doc,
 	eventTimerpoke = "timerpoke.wb",
+	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
+	updateEvent = "wb-update" + selector,
 	vAlignCSS = "vertical-align",
 	vAlignDefault = "top",
 	minHeightCSS = "min-height",
@@ -4160,6 +4183,8 @@ var selector = ".wb-eqht",
 				}
 			}
 			$elm = reattachElement( $anchor );
+
+			$elm.trigger( readyEvent );
 		}
 	},
 
@@ -4226,10 +4251,10 @@ var selector = ".wb-eqht",
 	};
 
 // Bind the init event of the plugin
-$document.on( eventTimerpoke, selector, init );
+$document.on( eventTimerpoke + " " + initEvent, selector, init );
 
 // Handle text and window resizing
-$document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb tables-draw.wb", onResize );
+$document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb wb-ready.wb-tables " + updateEvent, onResize );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -4267,6 +4292,7 @@ wb.add( selector );
 var pluginName = "wb-favicon",
 	selector = "link[rel='icon']",
 	initEvent = "wb-init." + pluginName,
+	readyEvent = "wb-ready." + pluginName,
 	mobileEvent = "mobile." + pluginName,
 	iconEvent = "icon." + pluginName,
 	$document = wb.doc,
@@ -4327,6 +4353,8 @@ var pluginName = "wb-favicon",
 				favicon.parentNode.insertBefore( faviconMobile[ 0 ], favicon );
 			}
 		}
+
+		$document.trigger( readyEvent, [ "mobile" ] );
 	},
 
 	/**
@@ -4339,6 +4367,8 @@ var pluginName = "wb-favicon",
 	icon = function( favicon, event, data ) {
 		var faviconPath = data.path !== null ? data.path : getPath( favicon.getAttribute( "href" ) );
 		favicon.setAttribute( "href", faviconPath + data.filename );
+
+		$document.trigger( readyEvent, [ "icon" ] );
 	},
 
 	/**
@@ -4404,6 +4434,8 @@ var pluginName = "wb-feeds",
 	feedLinkSelector = "li > a",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
+	feedReadyEvent = "wb-feed-ready" + selector,
 	$document = wb.doc,
 	patt = /\\u([\d\w]{4})/g,
 
@@ -4687,6 +4719,7 @@ var pluginName = "wb-feeds",
 					wb.add( postProcess[ i ] );
 				}
 			}
+			$elm.trigger( feedReadyEvent );
 		} else if ( this.className.indexOf( "waiting" ) === -1 ) {
 			$elm.empty().addClass( "waiting" );
 		}
@@ -4747,12 +4780,15 @@ var pluginName = "wb-feeds",
 
 $document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( event, context ) {
 	var response = event.fetch.response,
+		eventTarget = event.target,
 		data;
 
 	// Filter out any events triggered by descendants
-	if ( event.currentTarget === event.target ) {
+	if ( event.currentTarget === eventTarget ) {
 		data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry,
 		processEntries.apply( context, [ data ] );
+
+		$( eventTarget ).closest( selector ).trigger( readyEvent );
 	}
 });
 
@@ -4782,6 +4818,7 @@ var pluginName = "wb-fnote",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
 
@@ -4823,6 +4860,8 @@ var pluginName = "wb-fnote",
 
 			// Remove "first/premier/etc"-style text from certain footnote return links (via the child spans that hold those bits of text)
 			$returnLinks = $elm.find( "dd p.fn-rtn a span span" ).remove();
+
+			$elm.trigger( readyEvent );
 		}
 	};
 
@@ -4888,6 +4927,7 @@ var pluginName = "wb-frmvld",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
 	idCount = 0,
@@ -5166,6 +5206,8 @@ var pluginName = "wb-frmvld",
 
 					// Tell the i18n file to execute to run any $.validator extends
 					$form.trigger( "formLanguages.wb" );
+
+					$( eventTarget ).trigger( readyEvent );
 				}
 			});
 		}
@@ -5281,6 +5323,8 @@ var pluginName = "wb-lbx",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
+	setFocusEvent = "setfocus.wb",
 	extendedGlobal = false,
 	$document = wb.doc,
 	idCount = 0,
@@ -5415,6 +5459,10 @@ var pluginName = "wb-lbx",
 						settings = {},
 						firstLink;
 
+					if ( !elm ) {
+						return;
+					}
+
 					// Set the dependency i18nText only once
 					if ( !extendedGlobal ) {
 						$.extend( true, $.magnificPopup.defaults, i18nText );
@@ -5461,7 +5509,7 @@ var pluginName = "wb-lbx",
 							window[ pluginName ],
 							wb.getData( $elm, pluginName )
 						)
-					);
+					).trigger( readyEvent );
 				}
 			});
 		}
@@ -5485,7 +5533,7 @@ $document.on( "keydown", ".mfp-wrap", function( event ) {
 		} else if ( index === length - 1 ) {
 			index = 0;
 		}
-		$focusable.eq( index ).trigger( "setfocus.wb" );
+		$focusable.eq( index ).trigger( setFocusEvent );
 	}
 
 	/*
@@ -5504,7 +5552,7 @@ $document.on( "focus", ".lbx-end", function( event ) {
 		.closest( ".mfp-wrap" )
 			.find( ":focusable" )
 				.eq( 0 )
-					.trigger( "setfocus.wb" );
+					.trigger( setFocusEvent );
 
 	/*
 	 * Since we are working with events we want to ensure that we are being passive about our control,
@@ -5518,10 +5566,44 @@ $document.on( "focus", ".lbx-end", function( event ) {
 $document.on( "focusin", "body", function( event ) {
 
 	if ( extendedGlobal && $.magnificPopup.instance.currItem &&
-		$( event.target ).closest( ".mfp-wrap" ).length === 0 ) {
+		$( event.target ).closest( ".mfp-wrap" ).length === 0 &&
+		$( ".popup-modal-dismiss" ).length === 0 ) {
 
 		// Close the popup
 		$.magnificPopup.close();
+	}
+});
+
+// Handler for clicking on a same page link within the overlay to outside the overlay
+$document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
+	var which = event.which,
+		eventTarget = event.target,
+		href, $lightbox, linkTarget;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		$lightbox = $( eventTarget ).closest( ".mfp-wrap" );
+		href = eventTarget.getAttribute( "href" );
+		linkTarget = document.getElementById( href.substring( 1 ) );
+
+		// Ignore same page links to within the overlay and modal popups
+		if ( href.length > 1 && !$.contains( $lightbox[ 0 ], linkTarget ) ) {
+			if ( $lightbox.find( ".popup-modal-dismiss" ).length === 0 ) {
+
+				// Stop propagation of the click event
+				if ( event.stopPropagation ) {
+					event.stopImmediatePropagation();
+				} else {
+					event.cancelBubble = true;
+				}
+
+				// Close the overlay and set focus to the same page link
+				$.magnificPopup.close();
+				$( linkTarget ).trigger( setFocusEvent );
+			} else {
+				return false;
+			}
+		}
 	}
 });
 
@@ -5579,6 +5661,7 @@ var pluginName = "wb-menu",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	breadcrumb = document.getElementById( "wb-bc" ),
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
@@ -5929,6 +6012,8 @@ var pluginName = "wb-menu",
 					.parent()
 						.prop( "open", "open" );
 			}
+
+			$elm.trigger( readyEvent );
 		}, 1 );
 	},
 
@@ -7579,6 +7664,7 @@ var pluginName = "wb-overlay",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	closeClass = "overlay-close",
 	linkClass = "overlay-lnk",
 	ignoreOutsideClass = "outside-off",
@@ -7633,6 +7719,8 @@ var pluginName = "wb-overlay",
 
 			$elm.append( overlayClose );
 			elm.setAttribute( "aria-hidden", "true" );
+
+			$elm.trigger( readyEvent );
 		}
 	},
 
@@ -7776,6 +7864,35 @@ $document.on( "click vclick", "." + linkClass, function( event ) {
 	}
 });
 
+// Handler for clicking on a same page link within the overlay to outside the overlay
+$document.on( "click vclick", selector + " a[href^='#']", function( event ) {
+	var which = event.which,
+		eventTarget = event.target,
+		href, overlay, linkTarget;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		overlay = $( eventTarget ).closest( selector )[ 0 ];
+		href = eventTarget.getAttribute( "href" );
+		linkTarget = document.getElementById( href.substring( 1 ) );
+
+		// Ignore same page links to within the overlay
+		if ( href.length > 1 && !$.contains( overlay, linkTarget ) ) {
+
+			// Stop propagation of the click event
+			if ( event.stopPropagation ) {
+				event.stopImmediatePropagation();
+			} else {
+				event.cancelBubble = true;
+			}
+
+			// Close the overlay and set focus to the same page link
+			closeOverlay( overlay.id, true );
+			$( linkTarget ).trigger( setFocusEvent );
+		}
+	}
+});
+
 // Outside activity detection
 $document.on( "click vclick touchstart focusin", "body", function( event ) {
 	var eventTarget = event.target,
@@ -7850,6 +7967,7 @@ var pluginName = "wb-prettify",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	prettyPrintEvent = "prettyprint" + selector,
 	$document = wb.doc,
 
@@ -7929,6 +8047,8 @@ var pluginName = "wb-prettify",
 			typeof window.prettyPrint === "function" ) {
 
 			window.prettyPrint();
+
+			$document.trigger( readyEvent );
 		}
 	};
 
@@ -8101,6 +8221,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	confirmClass = pluginName + "-confirm",
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	resetEvent = "reset" + selector,
 	keepaliveEvent = "keepalive" + selector,
 	inactivityEvent = "inactivity" + selector,
@@ -8166,7 +8287,10 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			initRefreshOnClick( $elm, settings );
 
 			// Initialize the keepalive and inactive timeouts of the plugin
-			$elm.trigger( resetEvent, settings );
+			// then fire the wb-ready event
+			$elm
+				.trigger( resetEvent, settings )
+				.trigger( readyEvent );
 		}
 	},
 
@@ -8522,6 +8646,7 @@ var pluginName = "wb-share",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	shareLink = "shr-lnk",
 	panelCount = 0,
 	$document = wb.doc,
@@ -8746,6 +8871,8 @@ var pluginName = "wb-share",
 			$share
 				.trigger( initEvent )
 				.trigger( "wb-init.wb-lbx" );
+
+			$elm.trigger( readyEvent );
 		}
 	};
 
@@ -8787,6 +8914,7 @@ var pluginName = "wb-tables",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 	idCount = 0,
 	i18n, i18nText, defaults,
@@ -8847,7 +8975,7 @@ var pluginName = "wb-tables",
 				asStripeClasses: [],
 				language: i18nText,
 				dom: "<'top'ilf>rt<'bottom'p><'clear'>",
-				drawCallback: function() {
+				drawCallback: function( settings ) {
 
 					// Update the aria-pressed properties on the pagination buttons
 					// Should be pushed upstream to DataTables
@@ -8858,8 +8986,8 @@ var pluginName = "wb-tables",
 							.filter( ".current" )
 								.attr( "aria-pressed", "true" );
 
-					// Trigger the tables-draw.wb callback event
-					$( "#" + elmId ).trigger( "tables-draw.wb" );
+					// Trigger the wb-ready.wb-tables callback event
+					$( "#" + elmId ).trigger( readyEvent, [ this, settings ] );
 				}
 			};
 
@@ -9461,7 +9589,6 @@ var pluginName = "wb-tabs",
 						$active = $tablist.find( ".active a" );
 						$details
 							.removeAttr( "role aria-expanded aria-hidden" )
-							.removeAttr( "role" )
 							.removeClass( "fade out in" );
 						$openDetails = $details
 											.filter( "#" + $active.attr( "href" ).substring( 1 ) )
@@ -9741,6 +9868,7 @@ var pluginName = "wb-txthl",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 
 	/**
@@ -9775,6 +9903,8 @@ var pluginName = "wb-txthl",
 					return ( !group2 ? "" : group2 ) + "<span class='txthl'><mark>" + group3 + "</mark></span>";
 				});
 				elm.innerHTML = newText;
+
+				$( elm ).trigger( readyEvent );
 			}
 		}
 	};
@@ -10311,6 +10441,7 @@ var pluginName = "wb-twitter",
 	selector = "." + pluginName,
 	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
+	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 
 	/**
@@ -10332,7 +10463,10 @@ var pluginName = "wb-twitter",
 			eventTarget.className += " " + initedClass;
 
 			Modernizr.load( {
-				load: ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//platform.twitter.com/widgets.js"
+				load: ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//platform.twitter.com/widgets.js",
+				complete: function() {
+					$document.trigger( readyEvent );
+				}
 			});
 		}
 	};
