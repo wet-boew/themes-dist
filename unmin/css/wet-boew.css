@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.4 - 2014-07-23
+ * v4.0.5-development - 2014-07-29
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -4396,7 +4396,7 @@ button.close {
   position: absolute;
   width: 1px; }
 
-.wb-show-onfocus:focus, .wb-sl:focus {
+.wb-show-onfocus:focus, .wb-sl:focus, .wb-disable .wb-slc .wb-sl {
   clip: rect(auto, auto, auto, auto);
   height: inherit;
   margin: inherit;
@@ -4436,6 +4436,17 @@ button.close {
 .wb-sl {
   padding: 5px;
   z-index: 501; }
+
+.wb-disable #wb-tphp {
+  background: #fff; }
+.wb-disable .wb-slc {
+  position: static; }
+  .wb-disable .wb-slc .wb-sl {
+    background: none;
+    color: #295376;
+    font-weight: 400; }
+    .wb-disable .wb-slc .wb-sl:hover, .wb-disable .wb-slc .wb-sl:focus {
+      color: #0535d2; }
 
 q:before, q:after {
   content: ""; }
@@ -7498,17 +7509,6 @@ button.geomap-geoloc-aoi-btn {
   right: 0;
   top: 0;
   width: 50px; }
-
-#details-facebook .tgl-panel, #details-flickr .tgl-panel, #details-youtube .tgl-panel {
-  margin-left: 0; }
-#details-facebook .feeds-cont, #details-flickr .feeds-cont, #details-youtube .feeds-cont {
-  border: 0; }
-  #details-facebook .feeds-cont li, #details-flickr .feeds-cont li, #details-youtube .feeds-cont li {
-    border: 0; }
-    #details-facebook .feeds-cont li:nth-child(even), #details-flickr .feeds-cont li:nth-child(even), #details-youtube .feeds-cont li:nth-child(even) {
-      background-color: #f9f9f9; }
-#details-facebook[open] summary, #details-flickr[open] summary, #details-youtube[open] summary {
-  border-bottom: 1px solid #eee; }
 
 .feeds-cont.waiting {
   min-height: 100px;
