@@ -68,6 +68,10 @@
     text-decoration: none; }
   #wb-sttl a:hover, #wb-sttl a:focus {
     text-decoration: underline; }
+  .wb-disable body {
+    background: none !important; }
+  .wb-disable header {
+    background: #3f698f; }
   .wb-sl {
     background-color: #000;
     color: #fff;
@@ -137,13 +141,44 @@
     content: "\e092"; }
   #wb-dtmd {
     float: right; }
-  #wb-info li {
-    margin-bottom: 0.75em; }
+  #wb-info {
+    background: #efefef url("../assets/sft-deco.gif") repeat-x scroll center top; }
+    #wb-info a:link, #wb-info a:visited {
+      text-decoration: none; }
+    #wb-info a:hover, #wb-info a:focus {
+      text-decoration: underline; }
+    #wb-info > .container {
+      background: transparent url("../assets/sft-deco-leaf.gif") no-repeat top center; }
+      #wb-info > .container > :before {
+        background: transparent;
+        content: " ";
+        display: block;
+        height: 25px;
+        margin-left: -15px;
+        margin-right: -15px; }
+    #wb-info h2, #wb-info h3 {
+      font-size: 120%;
+      font-weight: 700; }
+    #wb-info li {
+      margin-bottom: 0.75em; }
+  #gc-tctr {
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-right: 0; }
+    #gc-tctr > :first-child {
+      border-right: 1px solid #999;
+      line-height: 1.5;
+      padding-right: 10px; }
   [dir=rtl] #wb-bc li:after {
     content: "\e091";
     padding: 0 5px; }
   [dir=rtl] #wb-dtmd {
-    float: left; } }
+    float: left; }
+  [dir=rtl] #gc-tctr > :first-child {
+    border-left: 1px solid #999;
+    border-right: 0;
+    padding-left: 10px;
+    padding-right: 0; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -176,6 +211,10 @@
     margin-top: 4px;
     position: absolute;
     top: 0.3em; }
+  .wb-disable header {
+    background: #ebeae9; }
+  .wb-disable #wmms {
+    position: static; }
   #wb-bar {
     min-height: 3em; }
   #wb-bnr {
@@ -320,31 +359,7 @@
  */
   /*
   @title: Small view and over (screen only)
- */
-  #wb-info {
-    background: #efefef url("../assets/sft-deco.gif") repeat-x scroll center top; }
-    #wb-info a:link, #wb-info a:visited {
-      text-decoration: none; }
-    #wb-info a:hover, #wb-info a:focus {
-      text-decoration: underline; }
-    #wb-info > .container {
-      background: transparent url("../assets/sft-deco-leaf.gif") no-repeat top center; }
-    #wb-info h2, #wb-info h3 {
-      font-size: 120%;
-      font-weight: 700; }
-  #gc-tctr {
-    margin-bottom: 0;
-    padding-top: 5px;
-    padding-right: 0; }
-    #gc-tctr > :first-child {
-      border-right: 1px solid #999;
-      line-height: 1.5;
-      padding-right: 10px; }
-  [dir=rtl] #gc-tctr > :first-child {
-    border-left: 1px solid #999;
-    border-right: 0;
-    padding-left: 10px;
-    padding-right: 0; } }
+ */ }
 
 /* Medium view and over */
 @media screen and (min-width: 992px) {
@@ -357,7 +372,7 @@
   /*
   @title: Medium view and over (screen only)
  */
-  body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
+  #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
     background-color: #fff;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; }
@@ -644,7 +659,7 @@
   /*
   @title: Medium view and over (screen only)
  */
-  body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
+  #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
     background-color: #fff;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; }
