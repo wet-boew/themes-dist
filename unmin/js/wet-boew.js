@@ -9681,7 +9681,7 @@ var pluginName = "wb-tabs",
 				$tablist = $( tablist + "</ul>" );
 				$elm
 					.prepend( $tablist )
-					.find( "> details > summary" )
+					.find( "> .tabpanels > details > summary" )
 						.addClass( "wb-toggle tgl-tab" )
 						.attr( "data-toggle", "{\"parent\": \"#" + elmId +
 							"\", \"group\": \"." + groupClass + "\"}" )
@@ -10255,7 +10255,7 @@ $document.on( wb.resizeEvents, onResize );
 // This event only fires on the window
 $window.on( "hashchange", onHashChange );
 
-$document.on( activateEvent, selector + " > details > summary", function( event ) {
+$document.on( activateEvent, selector + " .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode;
 
