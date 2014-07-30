@@ -372,7 +372,7 @@
   /*
   @title: Medium view and over (screen only)
  */
-  #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
+  #wb-info > .container > :before, body main.container, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main.container, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
     background-color: #fff;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; }
@@ -659,7 +659,7 @@
   /*
   @title: Medium view and over (screen only)
  */
-  #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
+  #wb-info > .container > :before, body main.container, body > header + .container, #wb-bc .container, #wb-info > .container > :before, body main.container, body > header + .container, #wb-bc .container, #wb-info > .container > :before {
     background-color: #fff;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; }
