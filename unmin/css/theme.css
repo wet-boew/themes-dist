@@ -67,7 +67,7 @@
   #wb-sm ul.menu > li > a:hover, #wb-sm .active a, #wb-sm .active summary, #wb-sm .sm, #wb-sm .sm a, #wb-sm .sm summary {
     background-color: #ccc;
     color: #000; }
-  #wb-sm ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr, #wb-sm .sm summary.wb-navcurr {
+  #wb-sm ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr, #wb-sm .sm summary.wb-navcurr, #wb-sm .sm .slflnk a.wb-navcurr {
     background: #3853a6;
     color: #fff; }
   #wb-sm .sm a a:link, #wb-sm .sm summary a:link, #wb-sm .sm a a:visited, #wb-sm .sm summary a:visited {
