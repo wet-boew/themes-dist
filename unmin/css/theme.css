@@ -87,7 +87,7 @@
   #wb-sm .nvbar ul.menu > li > a:hover, #wb-sm .active a, #wb-sm .active summary, #wb-sm .sm, #wb-sm .sm a, #wb-sm .sm summary {
     background-color: #ccc;
     color: #000; }
-  #wb-sm .nvbar ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr, #wb-sm .sm summary.wb-navcurr {
+  #wb-sm .nvbar ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr, #wb-sm .sm summary.wb-navcurr, #wb-sm .sm .slflnk a.wb-navcurr {
     background: #0f315b;
     color: #fff; }
   #wb-sm {
