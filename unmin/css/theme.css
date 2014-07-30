@@ -315,7 +315,7 @@
   /*
   @title: Medium view and over (screen only)
  */
-  #wb-bc .container, body main, body > header + .container {
+  #wb-bc .container, body main.container, body > header + .container {
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; }
   #wb-srch input, #wb-srch .btn {
