@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-07-30
+ * v4.0.5-development - 2014-07-31
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -9252,7 +9252,7 @@ var pluginName = "wb-tabs",
 				$tablist = $( tablist + "</ul>" );
 				$elm
 					.prepend( $tablist )
-					.find( "> details > summary" )
+					.find( "> .tabpanels > details > summary" )
 						.addClass( "wb-toggle tgl-tab" )
 						.attr( "data-toggle", "{\"parent\": \"#" + elmId +
 							"\", \"group\": \"." + groupClass + "\"}" )
@@ -9826,7 +9826,7 @@ $document.on( wb.resizeEvents, onResize );
 // This event only fires on the window
 $window.on( "hashchange", onHashChange );
 
-$document.on( activateEvent, selector + " > details > summary", function( event ) {
+$document.on( activateEvent, selector + " .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode;
 
