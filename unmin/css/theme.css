@@ -329,7 +329,6 @@
     #wb-sttl a span {
       display: table-cell;
       line-height: normal;
-      padding-left: 10px;
       vertical-align: middle; }
   #wb-srch {
     margin: 0.5em 0;
@@ -369,7 +368,9 @@
         color: black;
         padding-left: 1.8em; }
   [dir=rtl] #wb-srch {
-    text-align: left; } }
+    text-align: left; }
+  [dir=rtl] #wb-sttl {
+    float: right; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
