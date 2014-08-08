@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-01
+ * v4.0.5-development - 2014-08-08
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -99,6 +99,7 @@ wb.i18nDict = {
 	"shr-txt": "Κοινή χρήση",
 	"shr-pg": " αυτής της σελίδας",
 	"shr-vid": " αυτής της βίντεο",
+	"shr-aud": " αυτό το αρχείο ήχου",
 	"shr-hnt": " με {s} ",
 	"shr-disc": "Δεν οπισθογράφηση των οποιωνδήποτε τα προϊόντα ή υπηρεσίες αυτών δεν εκφράζονται ή σιωπηρή.",
 	/* Form validation */

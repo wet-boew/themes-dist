@@ -50,7 +50,7 @@
 <div class="row">
 <div id="wb-sttl" class="col-md-8">
 <a href="../../../index-en.html">
-<object type="image/svg+xml" tabindex="-1" role="img" data="../../../assets/logo.svg" aria-label="Web Experience Toolkit"></object>
+<object type="image/svg+xml" tabindex="-1" data="../../../assets/logo.svg"></object>
 <span>Web Experience Toolkit<span class="wb-inv">, </span><small>Collaborative open source project led by the Government of Canada</small></span>
 </a>
 </div>
@@ -288,8 +288,8 @@
 </thead>
 <tbody>
 <tr>
-<td>wb-init.wb-frmvld</td>
-<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-frmvld" );</code>).</td>
+<td><code>wb-init.wb-frmvld</code></td>
+<td>Triggered manually (e.g., <code>$( ".wb-frmvld" ).trigger( "wb-init.wb-frmvld" );</code>).</td>
 <td>Used to manually initialize the form validation. <strong>Note:</strong> The Form validation plugin will be initialized automatically unless the form elements are added after the page has already loaded.</td>
 </tr>
 <tr>
@@ -298,7 +298,15 @@
 <td>Used to identify the element where form validation has initialized (target of the event)
 <pre><code>$( document ).on( "wb-ready.wb-frmvld", ".wb-frmvld", function( event ) {
 });</code></pre>
-<pre><code>$elm.on( "wb-ready.wb-frmvld", function( event ) {
+<pre><code>$( ".wb-frmvld" ).on( "wb-ready.wb-frmvld", function( event ) {
+});</code></pre>
+</td>
+</tr>
+<tr>
+<td><code>wb-ready.wb</code> (v4.0.5+)</td>
+<td>Triggered automatically when WET has finished loading and executing.</td>
+<td>Used to identify when all WET plugins and polyfills have finished loading and executing.
+<pre><code>$( document ).on( "wb-ready.wb", function( event ) {
 });</code></pre>
 </td>
 </tr>
@@ -312,7 +320,7 @@
 </section>
 <dl id="wb-dtmd">
 <dt>Date modified:&#32;</dt>
-<dd><time property="dateModified">2014-07-23</time></dd>
+<dd><time property="dateModified">2014-08-04</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">

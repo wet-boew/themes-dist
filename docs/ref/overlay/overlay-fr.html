@@ -50,7 +50,7 @@
 <div class="row">
 <div id="wb-sttl" class="col-md-8">
 <a href="../../../index-fr.html">
-<object type="image/svg+xml" tabindex="-1" role="img" data="../../../assets/logo.svg" aria-label="Boîte à outils de l'expérience Web"></object>
+<object type="image/svg+xml" tabindex="-1" data="../../../assets/logo.svg"></object>
 <span>Boîte à outils de l'expérience Web<span class="wb-inv">, </span><small>Projet à source ouverte collaboratif dirigé par le Gouvernement du Canada</small></span>
 </a>
 </div>
@@ -114,7 +114,7 @@
 <p><strong>Needs translation</strong></p>
 <section>
 <h2>Purpose</h2>
-<p>A flexible, responsive overlay plugin.</p>
+<p>A flexible, responsive overlay plugin. Implements the <a href="http://www.w3.org/TR/wai-aria-practices/#dialog_modal">WAI-ARIA Dialog (Modal) design pattern</a>.</p>
 </section>
 <section>
 <h2>Working example</h2>
@@ -125,7 +125,7 @@
 </section>
 <section>
 <h2>How to implement</h2>
-<p>For centred popups, please see the <a href="../lightbox/ligthbox-en.html">Lightbox documentation</a>.</p>
+<p>For centred popups, please see the <a href="../lightbox/lightbox-en.html">Lightbox documentation</a>.</p>
 <ol>
 <li>
 <p>Create a <code>section</code> element with a unique id and the following classes <code>wb-overlay modal-content overlay-def</code>.</p>
@@ -223,7 +223,7 @@
 <tbody>
 <tr>
 <td><code>wb-init.wb-overlay</code></td>
-<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-overlay" );</code>).</td>
+<td>Triggered manually (e.g., <code>$( ".wb-overlay" ).trigger( "wb-init.wb-overlay" );</code>).</td>
 <td>Used to manually initialize the Overlay plugin. <strong>Note:</strong> The Overlay plugin will be initialized automatically unless the required markup is added after the page has already loaded.</td>
 </tr>
 <tr>
@@ -232,19 +232,27 @@
 <td>Used to identify when an overlay has initialized (target of the event)
 <pre><code>$( document ).on( "wb-ready.wb-overlay", ".wb-overlay", function( event ) {
 });</code></pre>
-<pre><code>$elm.on( "wb-ready.wb-overlay", function( event ) {
+<pre><code>$( ".wb-overlay" ).on( "wb-ready.wb-overlay", function( event ) {
 });</code></pre>
 </td>
 </tr>
 <tr>
 <td><code>open.wb-overlay</code></td>
-<td>Triggered manually (e.g., <code>$elm.trigger( "open.wb-overlay" );</code>).</td>
+<td>Triggered manually (e.g., <code>$( ".wb-overlay" ).trigger( "open.wb-overlay" );</code>).</td>
 <td>Used to manually open an overlay (event must be triggered on the <code>section</code> element of the overlay).</td>
 </tr>
 <tr>
 <td><code>close.wb-overlay</code></td>
-<td>Triggered manually (e.g., <code>$elm.trigger( "close.wb-overlay" );</code>).</td>
+<td>Triggered manually (e.g., <code>$( ".wb-overlay" ).trigger( "close.wb-overlay" );</code>).</td>
 <td>Used to manually close an overlay (event must be triggered on the <code>section</code> element of the overlay).</td>
+</tr>
+<tr>
+<td><code>wb-ready.wb</code> (v4.0.5+)</td>
+<td>Triggered automatically when WET has finished loading and executing.</td>
+<td>Used to identify when all WET plugins and polyfills have finished loading and executing.
+<pre><code>$( document ).on( "wb-ready.wb", function( event ) {
+});</code></pre>
+</td>
 </tr>
 </tbody>
 </table>
@@ -256,7 +264,7 @@
 </div>
 <dl id="wb-dtmd">
 <dt>Date de modification&#160;:&#32;</dt>
-<dd><time property="dateModified">2014-07-23</time></dd>
+<dd><time property="dateModified">2014-08-06</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">

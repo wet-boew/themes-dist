@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-01
+ * v4.0.5-development - 2014-08-08
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -99,6 +99,7 @@ wb.i18nDict = {
 	"shr-txt": "Deila",
 	"shr-pg": " þessari síðu",
 	"shr-vid": " þessu myndbandi",
+	"shr-aud": " þetta hljóðskrá",
 	"shr-hnt": " með {s} ",
 	"shr-disc": "Engin áritun allar vörur eða þjónustu er gefið eða gefið í skyn.",
 	/* Form validation */
