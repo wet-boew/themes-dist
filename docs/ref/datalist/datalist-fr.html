@@ -50,7 +50,7 @@
 <div class="row">
 <div id="wb-sttl" class="col-md-8">
 <a href="../../../index-fr.html">
-<object type="image/svg+xml" tabindex="-1" role="img" data="../../../assets/logo.svg"></object>
+<object type="image/svg+xml" tabindex="-1" data="../../../assets/logo.svg"></object>
 <span>Boîte à outils de l'expérience Web<span class="wb-inv">, </span><small>Projet à source ouverte collaboratif dirigé par le Gouvernement du Canada</small></span>
 </a>
 </div>
@@ -112,7 +112,7 @@
 <span class="wb-prettify all-pre hide"></span>
 <section>
 <h2>But</h2>
-<p>L'attribut <code>input list</code> et l'élément <code>datalist</code> de HTML5 ajoutent des fonctionnalités de saisie automatique en affichant dynamiquement une liste de mots qui correspondent à l'entrée de l'utilisateur. Étant donné que certains navigateurs ne prennent pas en charge cette fonctionnalité à l'origine, ce correctif émule la même fonctionnalité en utilisant HTML générique et WAI-ARIA.</p>
+<p>L'attribut <code>input list</code> et l'élément <code>datalist</code> de HTML5 ajoutent des fonctionnalités de saisie automatique en affichant dynamiquement une liste de mots qui correspondent à l'entrée de l'utilisateur. Étant donné que certains navigateurs ne prennent pas en charge cette fonctionnalité à l'origine, ce correctif émule la même fonctionnalité en utilisant HTML générique et WAI-ARIA. Met en œuvre le <a href="http://www.w3.org/TR/wai-aria-practices/#datepicker">modèle de conception &#171;&#160;<span lang="en">Auto Complete</span>&#160;&#187; de WAI-ARIA (anglais seulement)</a>.</p>
 </section>
 <div lang="en">
 <p><strong>Needs translation</strong></p>
@@ -167,9 +167,27 @@
 </thead>
 <tbody>
 <tr>
-<td>wb-init.wb-datalist</td>
-<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-datalist" );</code>).</td>
-<td>Used to manually initialize the datalist polyfill on an <code>input</code> element with a <code>list</code> attribute. <strong>Note:</strong> The datalist polyfill will be initialized automatically unless the <code>input list</code> attribute and <code>datalist</code> element are added after the page has already loaded.</td>
+<td><code>wb-init.wb-datalist</code></td>
+<td>Triggered manually (e.g., <code>$( "input[type=list]" ).trigger( "wb-init.wb-datalist" );</code>).</td>
+<td>Used to manually initialize the <code>datalist</code> polyfill on an <code>input</code> element with a <code>list</code> attribute. <strong>Note:</strong> The <code>datalist</code> polyfill will be initialized automatically unless the <code>input list</code> attribute and <code>datalist</code> element are added after the page has already loaded.</td>
+</tr>
+<tr>
+<td><code>wb-ready.wb-datalist</code> (v4.0.5+)</td>
+<td>Triggered automatically after the <code>datalist</code> polyfill initializes. <strong>Note:</strong> This event will only be triggered if the polyfill is loaded. The polyfill will not load for browsers with native <code>datalist</code> support.</td>
+<td>Used to identify where the <code>datalist</code> polyfill initialized (target of the event)
+<pre><code>$( document ).on( "wb-ready.wb-datalist", "input[type=list]", function( event ) {
+});</code></pre>
+<pre><code>$( "input[type=list]" ).on( "wb-ready.wb-datalist", function( event ) {
+});</code></pre>
+</td>
+</tr>
+<tr>
+<td><code>wb-ready.wb</code> (v4.0.5+)</td>
+<td>Triggered automatically when WET has finished loading and executing.</td>
+<td>Used to identify when all WET plugins and polyfills have finished loading and executing.
+<pre><code>$( document ).on( "wb-ready.wb", function( event ) {
+});</code></pre>
+</td>
 </tr>
 </tbody>
 </table>
@@ -181,7 +199,7 @@
 </div>
 <dl id="wb-dtmd">
 <dt>Date de modification&#160;:&#32;</dt>
-<dd><time property="dateModified">2014-07-20</time></dd>
+<dd><time property="dateModified">2014-08-06</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">

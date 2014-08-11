@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-01
+ * v4.0.5-development - 2014-08-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -99,6 +99,7 @@ wb.i18nDict = {
 	"shr-txt": "Dalytis ",
 	"shr-pg": " šiuo puslapiu",
 	"shr-vid": " šiuo vaizdo",
+	"shr-aud": " tai garso failas",
 	"shr-hnt": " su {s} ",
 	"shr-disc": "Išreikštų ar numanomų ne bet kokius produktus ar paslaugas įrašas.",
 	/* Form validation */

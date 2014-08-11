@@ -93,7 +93,7 @@
 
 						<div id="wb-sttl" class="col-md-8">
 							<a href="../../../index-en.html">
-	<object type="image/svg+xml" tabindex="-1" role="img" data="../../../assets/logo.svg"></object>
+	<object type="image/svg+xml" tabindex="-1" data="../../../assets/logo.svg"></object>
 	<span>Web Experience Toolkit<span class="wb-inv">, </span><small>Collaborative open source project led by the Government of Canada</small></span>
 </a>
 
@@ -217,7 +217,7 @@
 
 <section>
 	<h2>Purpose</h2>
-	<p>Provide an interface for selecting a date in a form.</p>
+	<p>Provide an interface for selecting a date in a form. Implements the <a href="http://www.w3.org/TR/wai-aria-practices/#datepicker">WAI-ARIA Date Picker design pattern</a>.</p>
 </section>
 
 <section>
@@ -305,19 +305,27 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>create.wb-cal</td>
-				<td>Before the calendar interface becomes visible.</td>
-				<td>Creates the calendar interface.</td>
+				<td><code>wb-init.wb-date</code></td>
+				<td>Triggered manually (e.g., <code>$( "input[type=date]" ).trigger( "wb-init.wb-date" );</code>).</td>
+				<td>Used to manually initialize the <code>input type="date"</code> polyfill. <strong>Note:</strong> The <code>input type="date"</code> polyfill will be initialized automatically unless the <code>input type="date"</code> element is added after the page has already loaded.</td>
 			</tr>
 			<tr>
-				<td>setFocus.wb-cal</td>
-				<td>After the calendar interface is displayed.</td>
-				<td>Sets focus on the date in the input field, if defined.</td>
+				<td><code>wb-ready.wb-date</code> (v4.0.5+)</td>
+				<td>Triggered automatically after the <code>input type="date"</code> polyfill initializes. <strong>Note:</strong> This event will only be triggered if the polyfill is loaded. The polyfill will not load for browsers with native <code>input type="date"</code> support.</td>
+				<td>Used to identify where the <code>input type="date"</code> polyfill initialized (target of the event)
+					<pre><code>$( document ).on( "wb-ready.wb-date", "input[type=date]", function( event ) {
+});</code></pre>
+					<pre><code>$( "input[type=date]" ).on( "wb-ready.wb-date", function( event ) {
+});</code></pre>
+				</td>
 			</tr>
 			<tr>
-				<td>hideGoToFrm.wb-cal</td>
-				<td>Before the calendar interface is hidden.</td>
-				<td>Hides the "Go To" form in the calendar interface.</td>
+				<td><code>wb-ready.wb</code> (v4.0.5+)</td>
+				<td>Triggered automatically when WET has finished loading and executing.</td>
+				<td>Used to identify when all WET plugins and polyfills have finished loading and executing. 
+					<pre><code>$( document ).on( "wb-ready.wb", function( event ) {
+});</code></pre>
+				</td>
 			</tr>
 		</tbody>
 	</table>
@@ -331,7 +339,7 @@
 
 			<dl id="wb-dtmd">
 	<dt>Date modified:&#32;</dt>
-	<dd><time property="dateModified">2014-07-20</time></dd>
+	<dd><time property="dateModified">2014-08-06</time></dd>
 </dl>
 
 
