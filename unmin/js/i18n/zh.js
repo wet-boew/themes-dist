@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-07-30
+ * v4.0.5-development - 2014-08-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -99,6 +99,7 @@ wb.i18nDict = {
 	"shr-txt": "分享",
 	"shr-pg": "此頁",
 	"shr-vid": "該視頻",
+	"shr-aud": "這個音頻文件",
 	"shr-hnt": "與{s}",
 	"shr-disc": "沒有明示或暗示保證代言任何產品或服務。",
 	/* Form validation */
