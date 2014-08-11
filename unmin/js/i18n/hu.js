@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-07-30
+ * v4.0.5-development - 2014-08-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -99,6 +99,7 @@ wb.i18nDict = {
 	"shr-txt": "Oszd",
 	"shr-pg": " meg a oldal",
 	"shr-vid": " meg a videót",
+	"shr-aud": " ezt a hangfájlt",
 	"shr-hnt": " a {s} ",
 	"shr-disc": "I jóváhagyását olyan termékek vagy szolgáltatások kifejezett vagy hallgatólagos.",
 	/* Form validation */
