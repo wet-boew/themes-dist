@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-08
+ * v4.0.5-development - 2014-08-12
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -8024,6 +8024,12 @@ var componentName = "wb-prettify",
 		}
 	},
 
+	prettifyDone = function() {
+
+		// Identify that initialization has completed
+		wb.ready( $document, componentName );
+	},
+
 	/*
 	 * Invoke the Google pretty print library if it has been initialized
 	 * @method prettyprint
@@ -8032,10 +8038,7 @@ var componentName = "wb-prettify",
 		if ( event.namespace === componentName &&
 			typeof window.prettyPrint === "function" ) {
 
-			window.prettyPrint();
-
-			// Identify that initialization has completed
-			wb.ready( $document, componentName );
+			window.prettyPrint( prettifyDone );
 		}
 	};
 
@@ -8987,10 +8990,10 @@ var componentName = "wb-tables",
 
 						// Formatted number sorting
 						"formatted-num-asc": function( a, b ) {
-							return wb.formattedNumCompare( b, a );
+							return wb.formattedNumCompare( a, b );
 						},
 						"formatted-num-desc": function( a, b ) {
-							return wb.formattedNumCompare( a, b );
+							return wb.formattedNumCompare( b, a );
 						}
 					} );
 

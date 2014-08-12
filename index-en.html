@@ -3,12 +3,15 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"/>
-<title>Web Experience Toolkit (WET)
+
+<title>Base theme
 - Working examples
 - Web Experience Toolkit
 </title>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
 <meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities"/>
+
 <!--[if gte IE 9 | !IE ]><!--> <link href="./assets/favicon.ico" rel="icon" type="image/x-icon"/> <link rel="stylesheet" href="./css/wet-boew.min.css"/> <!--<![endif]-->
 <link rel="stylesheet" href="./css/theme.min.css"/>
 <!--[if lt IE 9]><link href="./assets/favicon.ico" rel="shortcut icon"/> <link rel="stylesheet" href="./css/ie8-wet-boew.min.css"/> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <script src="./js/ie8-wet-boew.min.js"></script><![endif]-->
@@ -48,8 +51,7 @@
 <div class="container">
 <div class="row">
 <div id="wb-sttl" class="col-md-8">
-<a href="./index-en.html">
-<object type="image/svg+xml" tabindex="-1" data="./assets/logo.svg"></object>
+<a href="http://wet-boew.github.io/v4.0-ci/index-en.html">
 <span>Web Experience Toolkit<span class="wb-inv">, </span><small>Collaborative open source project led by the Government of Canada</small></span>
 </a>
 </div>
@@ -79,147 +81,391 @@
 </div>
 </div>
 </nav>
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+<h2>You are here:</h2>
+<div class="container">
+<div class="row">
+<ol class="breadcrumb">
+<li>
+<a href="http://wet-boew.github.io/v4.0-ci/index-en.html">Home</a>
+</li>
+<li>
+<a href="http://wet-boew.github.io/v4.0-ci/demos/index-en.html">Working examples</a>
+</li>
+<li>Base theme</li>
+</ol>
+</div>
+</div>
+</nav>
 </header>
 <main role="main" property="mainContentOfPage" class="container">
-<h1 id="wb-cont" property="name">Web Experience Toolkit (WET)</h1>
-<section class="alert alert-info">
-<h2 class="h3">Looking for WET v3.1?</h2>
-<p>WET v4.0 is now the current version. There is a new location for the <a href="http://wet-boew.github.io/v3.1-ci/index-en.html">current page in WET v3.1</a>.</p>
-</section>
+<h1 id="wb-cont" property="name">Base theme</h1>
+<p>
+<a class="btn btn-primary" href="docs/ref/theme-base/theme-base-en.html">Documentation</a>
+<a class="btn btn-primary" href="https://github.com/wet-boew/theme-base/issues/new?title=Base%20theme:%20">Questions or comments?</a>
+</p>
 <section>
-<h2 id="about">What is the Web Experience Toolkit?</h2>
+<h2>Table of contents</h2>
 <ul>
-<li>An <a href="docs/ref/accolades-en.html#awards">award-winning</a> front-end framework for building websites that are <a href="#accessibility">accessible</a>, <a href="#usability">usable</a>, <a href="#interoperability">interoperable</a>, <a href="#mobile-friendly-responsive-design">mobile friendly</a> and <a href="#multilingual">multilingual</a></li>
-<li>A collection of <a href="#themeable-and-reusable">flexible and themeable templates and reusable components</a></li>
-<li>A <a href="#collaborative-approach">collaborative open source project led by the Government of Canada</a></li>
-</ul>
-</section>
-<section>
-<h2 id="key">Key resources</h2>
-<ul>
-<li><a href="docs/index-en.html">Documentation</a></li>
-<li><a href="docs/versions/dwnld-en.html">Downloads</a></li>
-<li><a href="demos/index-en.html">Examples</a></li>
-<li><a href="docs/versions/index-en.html">Version history</a> and <a href="docs/versions/rdmp-en.html">roadmap</a></li>
-<li><a href="License-en.html">Terms and conditions</a> (MIT license)</li>
-<li><a href="https://github.com/wet-boew/wet-boew/">Source code repository</a> and <a href="docs/start-en.html#develop">contributing guidelines</a></li>
-<li><a href="docs/comms-en.html">Communications material</a></li>
-<li><a href="docs/ref/wetsites-en.html">Websites using WET</a></li>
-</ul>
-</section>
-<section>
-<h2 id="benefits">Benefits</h2>
-<section>
-<h3 id="accessibility">Accessibility</h3>
-<ul>
-<li>Conforms to <a href="http://www.w3.org/TR/WCAG20/">WCAG 2.0</a> level AA</li>
-<li>Leverages <a href="http://www.w3.org/TR/wai-aria/">WAI-ARIA</a> to further enhance accessibility</li>
-<li>Assistive technology testing (Access Working Group)</li>
-</ul>
-</section>
-<section>
-<h3 id="usability">Usability</h3>
-<ul>
-<li>Iterative approach to design</li>
-<li>Design patterns and usability testing (User Experience Working Group)</li>
-</ul>
-</section>
-<section>
-<h3 id="interoperability">Interoperability</h3>
-<ul>
-<li><a href="http://www.w3.org/TR/html5/">HTML5</a>-first approach (leveraging native HTML5 support and filling support gaps with “polyfills”)</li>
-<li>Supporting a wide variety of browsers (IE, Firefox, Chrome, Safari, Opera)</li>
-<li>Building support for HTML data (<a href="http://www.w3.org/TR/rdfa-lite/">RDFa 1.1 Lite</a>, <a href="http://www.schema.org/">Schema.org</a>)</li>
+<li><a href="#af">Afrikaans</a></li>
+<li><a href="#sq">Albanian</a></li>
+<li><a href="#ar">Arabic</a></li>
+<li><a href="#hy">Armenian</a></li>
+<li><a href="#bg">Bulgarian</a></li>
+<li><a href="#zh">Chinese</a></li>
+<li><a href="#zb-Hans">Chinese (Simplified)</a></li>
+<li><a href="#cs">Czech</a></li>
+<li><a href="#nl">Dutch</a></li>
+<li><a href="#en">English</a></li>
+<li><a href="#et">Estonian</a></li>
+<li><a href="#fr">French</a></li>
+<li><a href="#de">German</a></li>
+<li><a href="#el">Greek</a></li>
+<li><a href="#hi">Hindi</a></li>
+<li><a href="#hu">Hungarian</a></li>
+<li><a href="#is">Icelandic</a></li>
+<li><a href="#id">Indonesian</a></li>
+<li><a href="#it">Italian</a></li>
+<li><a href="#ja">Japanese</a></li>
+<li><a href="#ko">Korean</a></li>
+<li><a href="#lv">Latvian</a></li>
+<li><a href="#lt">Lithuanian</a></li>
+<li><a href="#pl">Polish</a></li>
+<li><a href="#pt">Portuguese</a></li>
+<li><a href="#pt-BR">Portuguese (Brazilian)</a></li>
+<li><a href="#ru">Russian</a></li>
+<li><a href="#sk">Slovak</a></li>
+<li><a href="#th">Thai</a></li>
+<li><a href="#tr">Turkish</a></li>
+<li><a href="#uk">Ukrainian</a></li>
+<li><a href="#vi">Vietnamese</a></li>
 </ul>
 </section>
 <section>
-<h3 id="mobile-friendly-responsive-design">Mobile friendly responsive design</h3>
+<h2 id="af">Afrikaans</h2>
 <ul>
-<li>Adapts to different screen sizes and device capabilities</li>
-<li>Touchscreen support</li>
-<li>Optimized for performance</li>
-<li>Building support for device-based mobile applications</li>
+<li><a href="content/index-af.html">Content page</a></li>
+<li><a href="content/sec-menu-af.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-af.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-af.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-af.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
 </ul>
 </section>
 <section>
-<h3 id="multilingual">Multilingual</h3>
+<h2 id="sq">Albanian</h2>
 <ul>
-<li>Currently supports 33 languages (including right-to-left languages)
-<ul>
-<li>English</li>
-<li>French</li>
-<li>Afrikaans</li>
-<li>Albanian</li>
-<li>Arabic</li>
-<li>Armenian</li>
-<li>Bulgarian</li>
-<li>Chinese</li>
-<li>Chinese (Simplified)</li>
-<li>Czech</li>
-<li>Dutch</li>
-<li>Estonian</li>
-<li>German</li>
-<li>Greek</li>
-<li>Hindi</li>
-<li>Hungarian</li>
-<li>Icelandic</li>
-<li>Indonesian</li>
-<li>Italian</li>
-<li>Japanese</li>
-<li>Korean</li>
-<li>Latvian</li>
-<li>Lithuanian</li>
-<li>Polish</li>
-<li>Portuguese</li>
-<li>Portuguese (Brazilian)</li>
-<li>Russian</li>
-<li>Slovak</li>
-<li>Spanish</li>
-<li>Thai</li>
-<li>Turkish</li>
-<li>Ukranian</li>
-<li>Vietnamese</li>
-</ul>
-</li>
+<li><a href="content/index-sq.html">Content page</a></li>
+<li><a href="content/sec-menu-sq.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-sq.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-sq.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-sq.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
 </ul>
 </section>
 <section>
-<h3 id="themeable-and-reusable">Themeable and reusable</h3>
+<h2 id="ar">Arabic</h2>
 <ul>
-<li>Flexible framework that supports custom themes</li>
-<li>Includes support for <a href="docs/ref/themesstyle-en.html">5 different themes</a> including a <a href="http://wet-boew.github.io/themes-dist/theme-base/docs/ref/theme-base/theme-base-en.html">“Base” theme</a> to use as a template</li>
-<li>Reusable templates, <a href="docs/ref/plugins-en.html">plugins</a> and widgets</li>
-<li><a href="docs/ref/variants-en.html">Adapted to various CMS and programming frameworks</a> (Drupal, WordPress, SharePoint (in development), DotNetNuke (in development), PHP, SSI and Java/Maven)
+<li><a href="content/index-ar.html">Content page</a></li>
+<li><a href="content/sec-menu-ar.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-ar.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-ar.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-ar.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
 </ul>
 </section>
 <section>
-<h3>Reduces costs by openly sharing and collaborating</h3>
+<h2 id="hy">Armenian</h2>
 <ul>
-<li>Drives down research and development costs</li>
-<li>Avoids duplication of effort</li>
-<li>Produces better quality results</li>
+<li><a href="content/index-hy.html">Content page</a></li>
+<li><a href="content/sec-menu-hy.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-hy.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-hy.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-hy.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
 </ul>
 </section>
 <section>
-<h3 id="collaborative-approach">Collaborative approach</h3>
+<h2 id="bg">Bulgarian</h2>
 <ul>
-<li>Project managed openly on GitHub, including discussion through the issues tracker</li>
-<li>Encouraging a free flow of ideas, dialogue and innovation including sharing of challenges and ideas</li>
-<li>External contributions welcome
-<ul>
-<li>Pull requests</li>
-<li>Design patterns</li>
-<li>Issues and suggestions</li>
-<li>Documentation</li>
-<li>Testing</li>
-</ul>
-<li>Multi-level review process for contributions to ensure code integrity (combination of automated and manual reviews)</li>
+<li><a href="content/index-bg.html">Content page</a></li>
+<li><a href="content/sec-menu-bg.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-bg.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-bg.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-bg.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
 </ul>
 </section>
+<section>
+<h2 id="zh">Chinese</h2>
+<ul>
+<li><a href="content/index-zh.html">Content page</a></li>
+<li><a href="content/sec-menu-zh.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-zh.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-zh.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-zh.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="zb-Hans">Chinese (Simplified)</h2>
+<ul>
+<li><a href="content/index-zb-Hans.html">Content page</a></li>
+<li><a href="content/sec-menu-zb-Hans.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-zb-Hans.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-zb-Hans.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-zb-Hans.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="cs">Czech</h2>
+<ul>
+<li><a href="content/index-cs.html">Content page</a></li>
+<li><a href="content/sec-menu-cs.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-cs.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-cs.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-cs.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="nl">Dutch</h2>
+<ul>
+<li><a href="content/index-nl.html">Content page</a></li>
+<li><a href="content/sec-menu-nl.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-nl.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-nl.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-nl.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="en">English</h2>
+<ul>
+<li><a href="content/index-en.html">Content page</a></li>
+<li><a href="content/sec-menu-en.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-en.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-en.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-en.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+<li><a href="splash-page/splashpage-en.html">Splash page</a></li>
+</ul>
+</section>
+<section>
+<h2 id="et">Estonian</h2>
+<ul>
+<li><a href="content/index-et.html">Content page</a></li>
+<li><a href="content/sec-menu-et.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-et.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-et.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-et.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="fr">French</h2>
+<ul>
+<li><a href="content/index-fr.html">Content page</a></li>
+<li><a href="content/sec-menu-fr.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-fr.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-fr.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-fr.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+<li><a href="splash-page/splashpage-fr.html">Splash page</a></li>
+</ul>
+</section>
+<section>
+<h2 id="de">German</h2>
+<ul>
+<li><a href="content/index-de.html">Content page</a></li>
+<li><a href="content/sec-menu-de.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-de.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-de.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-de.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="el">Greek</h2>
+<ul>
+<li><a href="content/index-el.html">Content page</a></li>
+<li><a href="content/sec-menu-el.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-el.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-el.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-el.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="hi">Hindi</h2>
+<ul>
+<li><a href="content/index-hi.html">Content page</a></li>
+<li><a href="content/sec-menu-hi.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-hi.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-hi.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-hi.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="hu">Hungarian</h2>
+<ul>
+<li><a href="content/index-hu.html">Content page</a></li>
+<li><a href="content/sec-menu-hu.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-hu.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-hu.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-hu.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="is">Icelandic</h2>
+<ul>
+<li><a href="content/index-is.html">Content page</a></li>
+<li><a href="content/sec-menu-is.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-is.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-is.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-is.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="id">Indonesian</h2>
+<ul>
+<li><a href="content/index-id.html">Content page</a></li>
+<li><a href="content/sec-menu-id.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-id.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-id.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-id.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="it">Italian</h2>
+<ul>
+<li><a href="content/index-it.html">Content page</a></li>
+<li><a href="content/sec-menu-it.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-it.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-it.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-it.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="ja">Japanese</h2>
+<ul>
+<li><a href="content/index-ja.html">Content page</a></li>
+<li><a href="content/sec-menu-ja.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-ja.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-ja.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-ja.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="ko">Korean</h2>
+<ul>
+<li><a href="content/index-ko.html">Content page</a></li>
+<li><a href="content/sec-menu-ko.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-ko.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-ko.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-ko.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="lv">Latvian</h2>
+<ul>
+<li><a href="content/index-lv.html">Content page</a></li>
+<li><a href="content/sec-menu-lv.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-lv.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-lv.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-lv.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="lt">Lithuanian</h2>
+<ul>
+<li><a href="content/index-lt.html">Content page</a></li>
+<li><a href="content/sec-menu-lt.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-lt.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-lt.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-lt.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="pl">Polish</h2>
+<ul>
+<li><a href="content/index-pl.html">Content page</a></li>
+<li><a href="content/sec-menu-pl.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-pl.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-pl.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-pl.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="pt">Portuguese</h2>
+<ul>
+<li><a href="content/index-pt.html">Content page</a></li>
+<li><a href="content/sec-menu-pt.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-pt.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-pt.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-pt.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="pt-BR">Portuguese (Brazilian)</h2>
+<ul>
+<li><a href="content/index-pt-BR.html">Content page</a></li>
+<li><a href="content/sec-menu-pt-BR.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-pt-BR.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-pt-BR.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-pt-BR.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="ru">Russian</h2>
+<ul>
+<li><a href="content/index-ru.html">Content page</a></li>
+<li><a href="content/sec-menu-ru.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-ru.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-ru.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-ru.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="sk">Slovak</h2>
+<ul>
+<li><a href="content/index-sk.html">Content page</a></li>
+<li><a href="content/sec-menu-sk.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-sk.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-sk.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-sk.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="th">Thai</h2>
+<ul>
+<li><a href="content/index-th.html">Content page</a></li>
+<li><a href="content/sec-menu-th.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-th.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-th.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-th.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="tr">Turkish</h2>
+<ul>
+<li><a href="content/index-tr.html">Content page</a></li>
+<li><a href="content/sec-menu-tr.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-tr.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-tr.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-tr.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="uk">Ukrainian</h2>
+<ul>
+<li><a href="content/index-uk.html">Content page</a></li>
+<li><a href="content/sec-menu-uk.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-uk.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-uk.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-uk.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
+</section>
+<section>
+<h2 id="vi">Vietnamese</h2>
+<ul>
+<li><a href="content/index-vi.html">Content page</a></li>
+<li><a href="content/sec-menu-vi.html">Content page - Secondary menu</a></li>
+<li><a href="content/no-search-lang-vi.html">Content page - No search or language selection link</a></li>
+<li><a href="content/no-site-menu-bc-vi.html">Content page - No site menu or breadcrumb trail</a></li>
+<li><a href="content/no-search-lang-site-menu-bc-vi.html">Content page - No search, language selection link, site menu or breadcrumb trail</a></li>
+</ul>
 </section>
 <dl id="wb-dtmd">
 <dt>Date modified:&#32;</dt>
-<dd><time property="dateModified">2014-04-13</time></dd>
+<dd><time property="dateModified">2014-08-08</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
@@ -235,7 +481,7 @@
 <section class="col-sm-3">
 <h3>About</h3>
 <ul class="list-unstyled">
-<li><a href="./index-en.html#about">About the Web Experience Toolkit</a></li>
+<li><a href="http://wet-boew.github.io/v4.0-ci/index-en.html#about">About the Web Experience Toolkit</a></li>
 <li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-eng.asp">About the Web Standards</a></li>
 </ul>
 </section>
