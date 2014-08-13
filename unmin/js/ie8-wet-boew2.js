@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-11
+ * v4.0.5-development - 2014-08-13
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4121,6 +4121,11 @@ var componentName = "wb-eqht",
 				currentChild = $children[ j ];
 				childCSS = currentChild.style.cssText.toLowerCase();
 
+				//Ensure the CSS string ends by a seperator
+				if ( childCSS.length > 0 && childCSS.substr( childCSS.length - 1 ) !== cssPropertySeparator ) {
+					childCSS += cssPropertySeparator;
+				}
+
 				// Ensure all children that are on the same baseline have the same 'top' value.
 				if ( childCSS.indexOf( vAlignCSS ) !== -1 ) {
 					childCSS = childCSS.replace( regexVAlign, vAlignCSS + cssValueSeparator + vAlignDefault + cssPropertySeparator );
@@ -8024,6 +8029,12 @@ var componentName = "wb-prettify",
 		}
 	},
 
+	prettifyDone = function() {
+
+		// Identify that initialization has completed
+		wb.ready( $document, componentName );
+	},
+
 	/*
 	 * Invoke the Google pretty print library if it has been initialized
 	 * @method prettyprint
@@ -8032,10 +8043,7 @@ var componentName = "wb-prettify",
 		if ( event.namespace === componentName &&
 			typeof window.prettyPrint === "function" ) {
 
-			window.prettyPrint();
-
-			// Identify that initialization has completed
-			wb.ready( $document, componentName );
+			window.prettyPrint( prettifyDone );
 		}
 	};
 
@@ -8987,10 +8995,10 @@ var componentName = "wb-tables",
 
 						// Formatted number sorting
 						"formatted-num-asc": function( a, b ) {
-							return wb.formattedNumCompare( b, a );
+							return wb.formattedNumCompare( a, b );
 						},
 						"formatted-num-desc": function( a, b ) {
-							return wb.formattedNumCompare( a, b );
+							return wb.formattedNumCompare( b, a );
 						}
 					} );
 
@@ -9682,7 +9690,7 @@ var componentName = "wb-tabs",
 		/*
 		 * Change Slides
 		 */
-		case "shift":
+		case "wb-shift":
 
 			// Filter out any events triggered by descendants
 			if ( eventCurrentTarget === eventTarget ) {
