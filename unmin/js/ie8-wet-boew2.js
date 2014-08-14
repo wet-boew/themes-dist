@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-01
+ * v4.0.5-development - 2014-08-14
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1258,21 +1258,20 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === event.target ) {
 		$.ajax( fetchOpts )
-			.done( function( response, status, xhr ) {
+			.done(function( response, status, xhr ) {
 				fetchData = {
 					response: response,
 					status: status,
 					xhr: xhr
 				};
 
-				if ( typeof response === "string" ) {
-					fetchData.pointer = $( "<div id='" + wb.guid() + "' />" ).append( response );
-				}
+				fetchData.pointer = $( "<div id='" + wb.guid() + "' />" )
+										.append( typeof response === "string" ? response : "" );
 
 				$( caller ).trigger({
 					type: "ajax-fetched.wb",
 					fetch: fetchData
-				}, this);
+				}, this );
 			})
 			.fail(function( xhr, status, error ) {
 				$( caller ).trigger({
@@ -1282,8 +1281,8 @@ $document.on( "ajax-fetch.wb", function( event ) {
 						status: status,
 						error: error
 					}
-				});
-			}, this);
+				}, this );
+			}, this );
 	}
 });
 
@@ -1304,25 +1303,27 @@ $document.on( "ajax-fetch.wb", function( event ) {
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-calevt",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-calevt",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	evDetails = "ev-details",
 	$document = wb.doc,
 	i18n, i18nText,
 
 	/**
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element
+	 * @param {jQuery Event} event Event that triggered this handler
 	 */
-	init = function( $elm ) {
+	init = function( event ) {
 
-		// Only initialize the element once
-		if ( !$elm.hasClass( initedClass ) ) {
-			wb.remove( selector );
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm;
+
+		if ( elm ) {
+			$elm = $( elm );
 
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
@@ -1337,6 +1338,9 @@ var pluginName = "wb-calevt",
 			$.when.apply( $, $.map( $elm.find( "[data-calevt]" ), getAjax ) )
 				.always( function() {
 					processEvents( $elm );
+
+					// Identify that initialization has completed
+					wb.ready( $elm, componentName );
 				});
 		}
 	},
@@ -1383,7 +1387,7 @@ var pluginName = "wb-calevt",
 		events = getEvents( $elm );
 		containerId = $elm.data( "calevtSrc" );
 		$container = $( "#" + containerId )
-			.addClass( pluginName + "-cal" )
+			.addClass( componentName + "-cal" )
 			.data( "calEvents", events );
 
 		$document.trigger( "create.wb-cal", [
@@ -1626,19 +1630,7 @@ var pluginName = "wb-calevt",
 	};
 
 // Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector, function( event ) {
-
-	// Filter out any events triggered by descendants
-	if ( event.currentTarget === event.target ) {
-		init( $( this ) );
-	}
-
-	/*
-	 * Since we are working with events we want to ensure that we are being passive about our control,
-	 * so returning true allows for events to always continue
-	 */
-	return true;
-});
+$document.on( "timerpoke.wb " + initEvent, selector, init );
 
 $document.on( "displayed.wb-cal", selector + "-cal", function( event, year, month, days, day ) {
 
@@ -1653,8 +1645,7 @@ $document.on( "displayed.wb-cal", selector + "-cal", function( event, year, mont
 		showOnlyEventsFor( year, month, containerId );
 		$target.find( ".cal-index-" + day + " .cal-evt" ).trigger( "setfocus.wb" );
 
-		// Identify that the plugin is ready
-		$target.trigger( readyEvent );
+		$target.trigger( "wb-updated" + selector );
 	}
 });
 
@@ -2412,11 +2403,9 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
- var pluginName = "wb-charts",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+ var componentName = "wb-charts",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	tableParsingEvent = "passiveparse.wb-tableparser",
 	tableParsingCompleteEvent = "parsecomplete.wb-tableparser",
 	$document = wb.doc,
@@ -2642,7 +2631,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 
 		// User defined options
 		if ( !window.chartsGraphOpts ) {
-			globalOptions = window[ pluginName ];
+			globalOptions = window[ componentName ];
 
 			// Global setting
 			if ( globalOptions ) {
@@ -2744,7 +2733,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		optionFlot = applyPreset( defaultsOptions.flot, $elm, "flot" );
 
 		// Apply any preset
-		optionsCharts = applyPreset( defaultsOptions.charts, $elm, pluginName );
+		optionsCharts = applyPreset( defaultsOptions.charts, $elm, componentName );
 
 		// Fix default width and height in case the table is hidden or too small.
 		optionsCharts.width = ( optionsCharts.width && optionsCharts.width > 250 ? optionsCharts.width : 250 );
@@ -3470,18 +3459,24 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		$( "canvas:eq(1)", $placeHolder ).css( "position", "static" );
 		$( "canvas:eq(0)", $placeHolder ).css( "width", "100%" );
 
-		$elm.trigger( readyEvent );
+		$elm.trigger( "wb-updated" + selector );
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {DOM element} elm The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered this handler
 	 */
-	init = function( elm ) {
-		var elmId = elm.id,
-			modeJS = wb.getMode() + ".js",
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			elmId, modeJS, deps;
+
+		if ( elm ) {
+			elmId = elm.id;
+			modeJS = wb.getMode() + ".js";
 			deps = [
 				"site!deps/jquery.flot" + modeJS,
 				"site!deps/jquery.flot.pie" + modeJS,
@@ -3490,14 +3485,9 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				"site!deps/tableparser" + modeJS
 			];
 
-		if ( elm.className.indexOf( initedClass ) === -1 ) {
-			wb.remove( selector );
-
-			elm.className += " " + initedClass;
-
 			// Ensure there is a unique id on the element
 			if ( !elmId ) {
-				elmId = pluginName + "-id-" + idCount;
+				elmId = componentName + "-id-" + idCount;
 				idCount += 1;
 				elm.id = elmId;
 			}
@@ -3517,9 +3507,13 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				// For loading multiple dependencies
 				load: deps,
 				complete: function() {
+					var $elm = $( "#" + elmId );
 
 					// Let's parse the table
-					$( "#" + elmId ).trigger( tableParsingEvent );
+					$elm.trigger( tableParsingEvent );
+
+					// Identify that initialization has completed
+					wb.ready( $elm, componentName );
 				}
 			});
 		}
@@ -3530,23 +3524,24 @@ $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, sel
 	var eventType = event.type,
 		elm = event.target;
 
-	if ( event.currentTarget === elm ) {
-		switch ( eventType ) {
+	switch ( eventType ) {
 
-		/*
-		 * Init
-		 */
-		case "timerpoke":
-			init( elm );
-			break;
+	/*
+	 * Init
+	 */
+	case "timerpoke":
+	case "wb-init":
+		init( event );
+		break;
 
-		/*
-		 * Data table parsed
-		 */
-		case "parsecomplete":
+	/*
+	 * Data table parsed
+	 */
+	case "parsecomplete":
+		if ( event.currentTarget === elm ) {
 			createCharts( $( elm ) );
-			break;
 		}
+		break;
 	}
 
 	/*
@@ -3577,32 +3572,26 @@ wb.add( selector );
  * place to define variables that are common to all instances of the plugin on a
  * page.
  */
-var pluginName = "wb-ctrycnt",
+var componentName = "wb-ctrycnt",
 	selector = "[data-ctrycnt]",
-	initEvent = "wb-init." + pluginName,
-	readyEvent = "wb-ready." + pluginName,
-	initedClass = pluginName + "-inited",
+	initEvent = "wb-init." + componentName,
 	$document = wb.doc,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple
-	 * elements. It will run more than once per plugin if you don"t remove the
-	 * selector from the timer.
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered this handler
 	 */
-	init = function( $elm ) {
+	init = function( event ) {
 
-		// Only initialize the element once
-		if ( !$elm.hasClass( initedClass ) ) {
-			wb.remove( selector );
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm, url;
 
-			var url = $elm.data( "ctrycnt" );
-
-			// All plugins need to remove their reference from the timer in the init
-			// sequence unless they have a requirement to be poked every 0.5 seconds
-			wb.remove( selector );
+		if ( elm ) {
+			$elm = $( elm );
+			url = $elm.data( "ctrycnt" );
 
 			$.when( getCountry() ).then( function( countryCode ) {
 
@@ -3617,10 +3606,10 @@ var pluginName = "wb-ctrycnt",
 
 				url = url.replace( "{country}", countryCode.toLowerCase() );
 
-				$elm.removeAttr( "data-ctrycnt" );
-
 				$elm.load( url, function() {
-					$elm.trigger( readyEvent );
+
+					// Identify that initialization has completed
+					wb.ready( $elm, componentName );
 				});
 			});
 		}
@@ -3660,21 +3649,8 @@ var pluginName = "wb-ctrycnt",
 		return dfd.promise();
 	};
 
-$document.on( "timerpoke.wb " + initEvent, selector, function( event ) {
-	var eventTarget = event.target;
-
-	// Filter out any events triggered by descendants
-	if ( event.currentTarget === eventTarget ) {
-		init( $( eventTarget ) );
-	}
-
-	/*
-	 * Since we are working with events we want to ensure that we are being
-	 * passive about our control, so returning true allows for events to always
-	 * continue
-	 */
-	return true;
-} );
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -3698,36 +3674,33 @@ wb.add( selector );
  * place to define variables that are common to all instances of the plugin on a
  * page.
  */
-var pluginName = "wb-data-ajax",
+var componentName = "wb-data-ajax",
 	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
 		"[data-ajax-prepend], [data-ajax-replace]",
-	inited = "-inited",
-	initEvent = "wb-init." + pluginName,
-	readyEvent = "wb-ready." + pluginName,
+	initEvent = "wb-init." + componentName,
 	$document = wb.doc,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple
-	 * elements. It will run more than once per plugin if you don't remove the
-	 * selector from the timer.
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered this handler
 	 * @param {string} ajaxType The type of AJAX operation, either after, append, before or replace
 	 */
-	init = function( $elm, ajaxType ) {
-		var url = $elm.data( "ajax-" + ajaxType ),
-			initedClass = pluginName + "-" + ajaxType + inited;
+	init = function( event, ajaxType ) {
 
-		// Only initialize the element once for the ajaxType
-		if ( !$elm.hasClass( initedClass ) ) {
-			wb.remove( selector );
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName + "-" + ajaxType, selector ),
+			$elm;
+
+		if ( elm ) {
+			$elm = $( elm );
 
 			$document.trigger({
 				type: "ajax-fetch.wb",
-				element: $elm,
+				element: $( elm ),
 				fetch: {
-					url: url
+					url: $elm.data( "ajax-" + ajaxType )
 				}
 			});
 		}
@@ -3735,7 +3708,6 @@ var pluginName = "wb-data-ajax",
 
 $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, function( event ) {
 	var eventTarget = event.target,
-		eventType = event.type,
 		ajaxTypes = [
 			"before",
 			"replace",
@@ -3744,40 +3716,43 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 			"prepend"
 		],
 		len = ajaxTypes.length,
-		$elm, ajaxType, i, content;
+		$elm, ajaxType, i, content, pointer;
 
-	// Filter out any events triggered by descendants
-	if ( event.currentTarget === eventTarget ) {
-		$elm = $( eventTarget );
-
-		for ( i = 0; i !== len; i += 1 ) {
-			ajaxType = ajaxTypes[ i ];
-			if ( this.getAttribute( "data-ajax-" + ajaxType ) !== null ) {
-				break;
-			}
-		}
-
-		switch ( eventType ) {
-
-		case "timerpoke":
-		case "wb-init":
-			init( $elm, ajaxType );
+	for ( i = 0; i !== len; i += 1 ) {
+		ajaxType = ajaxTypes[ i ];
+		if ( this.getAttribute( "data-ajax-" + ajaxType ) !== null ) {
 			break;
+		}
+	}
 
-		default:
+	switch ( event.type ) {
+
+	case "timerpoke":
+	case "wb-init":
+		init( event, ajaxType );
+		break;
+
+	default:
+
+		// Filter out any events triggered by descendants
+		if ( event.currentTarget === eventTarget ) {
+			$elm = $( eventTarget );
 
 			// ajax-fetched event
-			content = event.fetch.pointer.html();
-			$elm.removeAttr( "data-ajax-" + ajaxType );
+			pointer = event.fetch.pointer;
+			if ( pointer ) {
+				content = pointer.html();
 
-			// "replace" is the only event that doesn't map to a jQuery function
-			if ( ajaxType === "replace") {
-				$elm.html( content );
-			} else {
-				$elm[ ajaxType ]( content );
+				// "replace" is the only event that doesn't map to a jQuery function
+				if ( ajaxType === "replace") {
+					$elm.html( content );
+				} else {
+					$elm[ ajaxType ]( content );
+				}
 			}
 
-			$elm.trigger( readyEvent, [ ajaxType ] );
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName, [ ajaxType ] );
 		}
 	}
 
@@ -3809,33 +3784,36 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-inview",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-inview",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	scrollEvent = "scroll" + selector,
-	$elms = $( selector ),
 	$document = wb.doc,
 	$window = wb.win,
+	$elms = $(),
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered this handler
 	 */
-	init = function( $elm ) {
+	init = function( event ) {
 
-		// Only initialize the element once
-		if ( !$elm.hasClass( initedClass ) ) {
-			wb.remove( selector );
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm;
+
+		if ( elm ) {
+			$elm = $( elm );
+			$elms = $elms.add( $elm );
 
 			// Allow other plugins to run first
 			setTimeout(function() {
 				onInView( $elm );
-				$elm.trigger( readyEvent );
+
+				// Identify that initialization has completed
+				wb.ready( $elm, componentName );
 			}, 1 );
 		}
 	},
@@ -3905,22 +3883,21 @@ var pluginName = "wb-inview",
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent + " " + scrollEvent, selector, function( event ) {
 	var eventTarget = event.target,
-		eventType = event.type,
-		$elm;
+		eventType = event.type;
 
-	// Filter out any events triggered by descendants
-	if ( event.currentTarget === eventTarget ) {
-		$elm = $( eventTarget );
+	switch ( eventType ) {
+	case "timerpoke":
+	case "wb-init":
+		init( event );
+		break;
 
-		switch ( eventType ) {
-		case "timerpoke":
-		case "wb-init":
-			init( $elm );
-			break;
-		case "scroll":
-			onInView( $elm );
-			break;
+	case "scroll":
+
+		// Filter out any events triggered by descendants
+		if ( event.currentTarget === eventTarget ) {
+			onInView( $( eventTarget ) );
 		}
+		break;
 	}
 
 	/*
@@ -3959,32 +3936,35 @@ wb.add( selector );
  * variables that are common to all instances of the plugin on a page.
  */
 var imgClass,
-	pluginName = "wb-pic",
+	componentName = "wb-pic",
 	selector = "[data-pic]",
-	initedClass = pluginName + "-inited",
-	initEvent = "wb-init." + pluginName,
-	readyEvent = "wb-ready." + pluginName,
-	picturefillEvent = "picfill." + pluginName,
+	initEvent = "wb-init." + componentName,
+	picturefillEvent = "picfill." + componentName,
 	$document = wb.doc,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered this handler
 	 */
-	init = function( $elm ) {
+	init = function( event ) {
 
-		// Only initialize the element once
-		if ( !$elm.hasClass( initedClass ) ) {
-			wb.remove( selector );
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm;
+
+		if ( elm ) {
+			$elm = $( elm );
 
 			// Store the class attribute of the plugin element.  It
 			// will be added to the image created by the plugin.
 			imgClass = $elm.data( "class" ) || "";
 
 			$elm.trigger( picturefillEvent );
+
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}
 	},
 
@@ -4031,7 +4011,8 @@ var imgClass,
 			img.parentNode.removeChild( img );
 		}
 
-		$( elm ).trigger( readyEvent );
+		// Identify that the picture has been updated
+		$( elm ).trigger( "wb-updated." + componentName );
 	};
 
 // Bind the init event of the plugin
@@ -4039,17 +4020,19 @@ $document.on( "timerpoke.wb " + initEvent + " " + picturefillEvent, selector, fu
 	var eventTarget = event.target,
 		eventType = event.type;
 
-	// Filter out any events triggered by descendants
-	if ( event.currentTarget === eventTarget ) {
-		switch ( eventType ) {
-		case "timerpoke":
-		case "wb-init":
-			init( $( eventTarget ) );
-			break;
-		case "picfill":
+	switch ( eventType ) {
+	case "timerpoke":
+	case "wb-init":
+		init( event );
+		break;
+
+	case "picfill":
+
+		// Filter out any events triggered by descendants
+		if ( event.currentTarget === eventTarget ) {
 			picturefill( eventTarget );
-			break;
 		}
+		break;
 	}
 });
 
@@ -4078,13 +4061,11 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-eqht",
-	selector = "." + pluginName,
+var componentName = "wb-eqht",
+	selector = "." + componentName,
 	$document = wb.doc,
 	eventTimerpoke = "timerpoke.wb",
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
-	updateEvent = "wb-update" + selector,
 	vAlignCSS = "vertical-align",
 	vAlignDefault = "top",
 	minHeightCSS = "min-height",
@@ -4096,21 +4077,25 @@ var pluginName = "wb-eqht",
 	regexMinHeight = new RegExp( minHeightCSS + cssValueSeparator + " ?" + regexCSSValue + cssPropertySeparator + "?", "i" ),
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
 
-		// Filter out any events triggered by descendants
-		if ( event.currentTarget === event.target ) {
-			wb.remove( selector );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
 
 			// Remove the event handler since only want init fired once per page (not per element)
 			$document.off( eventTimerpoke, selector );
 
 			onResize();
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
 		}
 	},
 
@@ -4135,6 +4120,11 @@ var pluginName = "wb-eqht",
 			for ( j = $children.length - 1; j !== -1; j -= 1 ) {
 				currentChild = $children[ j ];
 				childCSS = currentChild.style.cssText.toLowerCase();
+
+				//Ensure the CSS string ends by a seperator
+				if ( childCSS.length > 0 && childCSS.substr( childCSS.length - 1 ) !== cssPropertySeparator ) {
+					childCSS += cssPropertySeparator;
+				}
 
 				// Ensure all children that are on the same baseline have the same 'top' value.
 				if ( childCSS.indexOf( vAlignCSS ) !== -1 ) {
@@ -4184,7 +4174,8 @@ var pluginName = "wb-eqht",
 			}
 			$elm = reattachElement( $anchor );
 
-			$elm.trigger( readyEvent );
+			// Identify that the height equalization was updated
+			$document.trigger( "wb-updated" + selector );
 		}
 	},
 
@@ -4254,7 +4245,7 @@ var pluginName = "wb-eqht",
 $document.on( eventTimerpoke + " " + initEvent, selector, init );
 
 // Handle text and window resizing
-$document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb wb-ready.wb-tables " + updateEvent, onResize );
+$document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb wb-updated.wb-tables wb-update" + selector, onResize );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -4289,12 +4280,12 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-favicon",
+var componentName = "wb-favicon",
 	selector = "link[rel='icon']",
-	initEvent = "wb-init." + pluginName,
-	readyEvent = "wb-ready." + pluginName,
-	mobileEvent = "mobile." + pluginName,
-	iconEvent = "icon." + pluginName,
+	initEvent = "wb-init." + componentName,
+	updatedEvent = "wb-updated." + componentName,
+	mobileEvent = "mobile." + componentName,
+	iconEvent = "icon." + componentName,
 	$document = wb.doc,
 
 	/*
@@ -4310,20 +4301,28 @@ var pluginName = "wb-favicon",
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery DOM element} $favicon The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
-	init = function( $favicon ) {
+	init = function( event ) {
 
-		// Merge default settings with overrides from the selected plugin element.
-		var settings = $.extend( {}, defaults, $favicon.data() );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$favicon, settings;
 
-		// All plugins need to remove their reference from the timer in the init sequence unless they have a requirement to be poked every 0.5 seconds
-		wb.remove( selector );
+		if ( elm ) {
+			$favicon = $( elm );
 
-		$favicon.trigger( mobileEvent, settings );
+			// Merge default settings with overrides from the selected plugin element.
+			settings = $.extend( {}, defaults, $favicon.data() );
+
+			$favicon.trigger( mobileEvent, settings );
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
+		}
 	},
 
 	/**
@@ -4341,11 +4340,11 @@ var pluginName = "wb-favicon",
 
 		// Create the mobile favicon if it doesn't exist
 		if ( !isFaviconMobile ) {
-			faviconMobile = $( "<link rel='" + data.rel + "' sizes='" + data.sizes + "' class='" + pluginName + "'>" );
+			faviconMobile = $( "<link rel='" + data.rel + "' sizes='" + data.sizes + "' class='" + componentName + "'>" );
 		}
 
 		// Only add/update a mobile favicon that was created by the plugin
-		if ( faviconMobile.hasClass( pluginName ) ) {
+		if ( faviconMobile.hasClass( componentName ) ) {
 			faviconPath = data.path !== null ? data.path : getPath( favicon.getAttribute( "href" ) );
 			faviconMobile.attr( "href", faviconPath + data.filename );
 
@@ -4354,7 +4353,7 @@ var pluginName = "wb-favicon",
 			}
 		}
 
-		$document.trigger( readyEvent, [ "mobile" ] );
+		$document.trigger( updatedEvent, [ "mobile" ] );
 	},
 
 	/**
@@ -4368,7 +4367,7 @@ var pluginName = "wb-favicon",
 		var faviconPath = data.path !== null ? data.path : getPath( favicon.getAttribute( "href" ) );
 		favicon.setAttribute( "href", faviconPath + data.filename );
 
-		$document.trigger( readyEvent, [ "icon" ] );
+		$document.trigger( updatedEvent, [ "icon" ] );
 	},
 
 	/**
@@ -4381,21 +4380,20 @@ var pluginName = "wb-favicon",
 		return filepath.substring( 0, filepath.lastIndexOf( "/" ) + 1 );
 	};
 
-// Bind the plugin events
-$document.on( "timerpoke.wb " + initEvent + " " + mobileEvent + " " + iconEvent, selector, function( event, data ) {
+// Bind the init event
+$document.on( "timerpoke.wb " + initEvent, selector, init );
 
+// Bind the mobile and icon events
+$document.on( mobileEvent + " " + iconEvent, selector, function( event, data ) {
 	var eventTarget = event.target;
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === eventTarget ) {
 		switch ( event.type ) {
-		case "timerpoke":
-		case "wb-init":
-			init( $( eventTarget ) );
-			break;
 		case "mobile":
 			mobile( eventTarget, event, data );
 			break;
+
 		case "icon":
 			icon( eventTarget, event, data );
 			break;
@@ -4429,13 +4427,10 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-feeds",
-	selector = "." + pluginName,
+var componentName = "wb-feeds",
+	selector = "." + componentName,
 	feedLinkSelector = "li > a",
-	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
-	feedReadyEvent = "wb-feed-ready" + selector,
 	$document = wb.doc,
 	patt = /\\u([\d\w]{4})/g,
 
@@ -4596,23 +4591,18 @@ var pluginName = "wb-feeds",
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			fetch, url, $content, limit, feeds, fType, last, i, callback, fElem, fIcon;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
-
+		if ( elm ) {
 			$content = $( elm ).find( ".feeds-cont" );
 			limit = getLimit( elm );
 			feeds = $content.find( feedLinkSelector );
@@ -4638,15 +4628,15 @@ var pluginName = "wb-feeds",
 					if ( fElem.attr( "href" ).indexOf( "flickr" ) !== -1 ) {
 						fType =  "flickr";
 						callback = "jsoncallback";
-						$content.data( "postProcess", [ ".wb-lbx" ] );
+						$content.data( componentName + "-postProcess", [ ".wb-lbx" ] );
 					} else {
 						fType = "youtube";
-						$content.data( "postProcess", [ ".wb-lbx", ".wb-mltmd" ] );
+						$content.data( componentName + "-postProcess", [ ".wb-lbx", ".wb-mltmd" ] );
 					}
 
 					// We need a Gallery so lets add another plugin
 					// #TODO: Lightbox review for more abstraction we should not have to add a wb.add() for overlaying
-					fetch.url = fElem.attr( "data-ajax");
+					fetch.url = fElem.attr( "data-ajax" );
 					fetch.jsonp = callback;
 				} else {
 					url = jsonRequest( fElem.attr( "href" ), limit );
@@ -4692,39 +4682,30 @@ var pluginName = "wb-feeds",
 	},
 
 	/**
-	 * Activates results view
-	 * @method checkIfVisible
-	 * @param = {jQuery EventObject}
+	 * Activates feed results view
+	 * @method activateFeed
+	 * @param = {jQuery object} $elm Feed container
 	 */
-	activateIfVisible = function() {
-		var $elm = $( this ),
-			$details = $elm.closest( "details" ),
-			needTimer = $details.length !== 0,
-			isTabPanel = $details.attr( "role" ) === "tabpanel",
-			isHidden = ( isTabPanel && $details.attr( "aria-hidden" ) === "true" ) ||
-						( !isTabPanel && !$details.attr( "open" ) ),
-			result, postProcess, i;
+	activateFeed = function( $elm ) {
+		var result = $elm.data( componentName + "-result" ),
+			postProcess = $elm.data( componentName + "-postProcess" ),
+			i, postProcessSelector;
 
-		if ( !needTimer || ( needTimer && !isHidden ) ) {
-			postProcess = $elm.data( "postProcess" );
-			result = $elm.data( "result" );
+		$elm.empty()
+			.removeClass( "waiting" )
+			.addClass( "feed-active" )
+			.append( result );
 
-			$elm.empty()
-				.removeClass( "waiting" )
-				.append( result )
-				.off( "timerpoke.wb", activateIfVisible );
-
-			if ( postProcess ) {
-				for ( i = postProcess.length - 1; i !== -1; i -= 1 ) {
-					wb.add( postProcess[ i ] );
-				}
+		if ( postProcess ) {
+			for ( i = postProcess.length - 1; i !== -1; i -= 1 ) {
+				postProcessSelector = postProcess[ i ];
+				$elm.find( postProcessSelector )
+					.trigger( "wb-init" + postProcessSelector );
 			}
-			$elm.trigger( feedReadyEvent );
-		} else if ( this.className.indexOf( "waiting" ) === -1 ) {
-			$elm.empty().addClass( "waiting" );
 		}
 
-		return false;
+		// Identify that the feed has now been displayed
+		$elm.trigger( "wb-feed-ready" + selector );
 	},
 
 	/**
@@ -4758,7 +4739,11 @@ var pluginName = "wb-feeds",
 		var cap = ( limit > 0 && limit < entries.length ? limit : entries.length ),
 			result = "",
 			compare = wb.date.compare,
-			i, sorted, sortedEntry;
+			$details = $elm.closest( "details" ),
+			activate = true,
+			feedContSelector = ".feeds-cont",
+			hasVisibilityHandler = "vis-handler",
+			i, sorted, sortedEntry, $tabs;
 
 		sorted = entries.sort( function( a, b ) {
 			return compare( b.publishedDate, a.publishedDate );
@@ -4768,12 +4753,42 @@ var pluginName = "wb-feeds",
 			sortedEntry = sorted[ i ];
 			result += Templates[ feedtype ]( sortedEntry );
 		}
+		$elm.data( componentName + "-result", result );
 
-		wb.selectors.push( $elm );
+		// Check to see if feed should be activated (only if visible)
+		// and add handler to determine visibility
+		if ( $details.length !== 0 ) {
+			if ( $details.attr( "role" ) === "tabpanel" ) {
+				if ( $details.attr( "aria-hidden" ) === "true" ) {
+					activate = false;
+					$elm.empty().addClass( "waiting" );
+					$tabs = $details.closest( ".wb-tabs" );
+					if ( !$tabs.hasClass( hasVisibilityHandler ) ) {
+						$tabs
+							.on( "wb-updated.wb-tabs", function( event, $newPanel ) {
+								var $feedCont = $newPanel.find( feedContSelector );
+								if ( !$feedCont.hasClass( "feed-active" ) ) {
+									activateFeed( $feedCont );
+								}
+							})
+							.addClass( hasVisibilityHandler );
+					}
+				}
+			} else if ( !$details.attr( "open" ) ) {
+				activate = false;
+				$elm.empty().addClass( "waiting" );
+				$details
+					.children( "summary" )
+						.on( "click.wb-feeds", function( event ) {
+							var $summary = $( event.currentTarget ).off( "click.wb-feeds" );
+							activateFeed( $summary.parent().find( feedContSelector ) );
+						});
+			}
+		}
 
-		$elm.data( "result", result );
-
-		$elm.on( "timerpoke.wb", activateIfVisible );
+		if ( activate ) {
+			activateFeed( $elm );
+		}
 
 		return true;
 	};
@@ -4785,13 +4800,17 @@ $document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( ev
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === eventTarget ) {
-		data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry,
-		processEntries.apply( context, [ data ] );
+		data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry;
 
-		$( eventTarget ).closest( selector ).trigger( readyEvent );
+		// Identify that initialization has completed
+		// if there are no entries left to process
+		if ( processEntries.apply( context, [ data ] ) === 0 ) {
+			wb.ready( $( eventTarget ).closest( selector ), componentName );
+		}
 	}
 });
 
+// Bind the init event to the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Add the timer poke to initialize the plugin
@@ -4814,38 +4833,28 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-fnote",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-fnote",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			$elm, footnoteDd, footnoteDt, i, len, dd, dt, dtId, $returnLinks;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
-
+		if ( elm ) {
 			$elm = $( elm );
 			footnoteDd = elm.getElementsByTagName( "dd" );
 			footnoteDt = elm.getElementsByTagName( "dt" );
-
-			// All plugins need to remove their reference from the timer in the init sequence unless they have a requirement to be poked every 0.5 seconds
-			wb.remove( selector );
 
 			// Apply aria-labelledby and set initial event handlers for return to referrer links
 			len = footnoteDd.length;
@@ -4861,7 +4870,8 @@ var pluginName = "wb-fnote",
 			// Remove "first/premier/etc"-style text from certain footnote return links (via the child spans that hold those bits of text)
 			$returnLinks = $elm.find( "dd p.fn-rtn a span span" ).remove();
 
-			$elm.trigger( readyEvent );
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}
 	};
 
@@ -4923,11 +4933,9 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-frmvld",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-frmvld",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
 	idCount = 0,
@@ -4939,27 +4947,23 @@ var pluginName = "wb-frmvld",
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var eventTarget = event.target,
-			elmId = eventTarget.id,
-			modeJS;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === eventTarget &&
-			eventTarget.className.indexOf( initedClass ) === -1 ) {
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var eventTarget = wb.init( event, componentName, selector ),
+			elmId, modeJS;
 
-			wb.remove( selector );
-			eventTarget.className += " " + initedClass;
+		if ( eventTarget ) {
+			elmId = eventTarget.id;
 
 			// Ensure there is a unique id on the element
 			if ( !elmId ) {
-				elmId = pluginName + "-id-" + idCount;
+				elmId = componentName + "-id-" + idCount;
 				idCount += 1;
 				eventTarget.id = elmId;
 			}
@@ -5003,8 +5007,8 @@ var pluginName = "wb-frmvld",
 							true,
 							{},
 							defaults,
-							window[ pluginName ],
-							wb.getData( $elm, pluginName )
+							window[ componentName ],
+							wb.getData( $elm, componentName )
 						),
 						summaryHeading = settings.hdLvl,
 						i, len, validator;
@@ -5207,7 +5211,8 @@ var pluginName = "wb-frmvld",
 					// Tell the i18n file to execute to run any $.validator extends
 					$form.trigger( "formLanguages.wb" );
 
-					$( eventTarget ).trigger( readyEvent );
+					// Identify that initialization has completed
+					wb.ready( $( eventTarget ), componentName );
 				}
 			});
 		}
@@ -5254,30 +5259,24 @@ wb.add( selector );
 (function( $, wb ) {
 "use strict";
 
-var pluginName = "wb-geomap",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-geomap",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
 
-	/*
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
+	/**
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			$elm, modeJS;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
-
+		if ( elm ) {
 			$elm = $( elm );
 			modeJS = wb.getMode() + ".js";
 
@@ -5319,11 +5318,9 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-lbx",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-lbx",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	setFocusEvent = "setfocus.wb",
 	extendedGlobal = false,
 	$document = wb.doc,
@@ -5331,33 +5328,28 @@ var pluginName = "wb-lbx",
 	callbacks, i18n, i18nText,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
-			elmId = elm.id,
-			modeJS;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			elmId;
 
-			wb.remove( selector );
-			elm.className += " " + initedClass;
+		if ( elm ) {
+			elmId = elm.id;
 
 			// Ensure there is a unique id on the element
 			if ( !elmId ) {
-				elmId = pluginName + "-id-" + idCount;
+				elmId = componentName + "-id-" + idCount;
 				idCount += 1;
 				elm.id = elmId;
 			}
 
 			// read the selector node for parameters
-			modeJS = wb.getMode() + ".js";
 
 			// Only initialize the i18nText and callbacks once
 			if ( !i18nText ) {
@@ -5452,7 +5444,7 @@ var pluginName = "wb-lbx",
 
 			// Load Magnific Popup dependency and bind the init event handler
 			Modernizr.load({
-				load: "site!deps/jquery.magnific-popup" + modeJS,
+				load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
 				complete: function() {
 					var elm = document.getElementById( elmId ),
 						$elm = $( elm ),
@@ -5506,10 +5498,13 @@ var pluginName = "wb-lbx",
 						$.extend(
 							true,
 							settings,
-							window[ pluginName ],
-							wb.getData( $elm, pluginName )
+							window[ componentName ],
+							wb.getData( $elm, componentName )
 						)
-					).trigger( readyEvent );
+					);
+
+					// Identify that initialization has completed
+					wb.ready( $elm, componentName );
 				}
 			});
 		}
@@ -5615,7 +5610,7 @@ $( document ).on( "click", ".popup-modal-dismiss", function( event ) {
 
 // Event handler for opening a popup without a link
 $( document ).on( "open" + selector, function( event, items, modal, title ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var isGallery = items.length > 1,
 			isModal = modal && !isGallery ? modal : false,
 			titleSrc = title ? function() {
@@ -5657,11 +5652,9 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-menu",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-menu",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	breadcrumb = document.getElementById( "wb-bc" ),
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
@@ -5675,21 +5668,23 @@ var pluginName = "wb-menu",
 	globalTimeout,
 
 	/**
-	 * Lets set some aria states and attributes
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
-	init = function( $elm ) {
-		var ajaxFetch;
+	init = function( event ) {
 
-		// Only initialize the element once
-		if ( !$elm.hasClass( initedClass ) ) {
-			wb.remove( selector );
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm, ajaxFetch;
+
+		if ( elm ) {
+			$elm = $( elm );
 
 			// Ensure the container has an id attribute
 			if ( !$elm.attr( "id" ) ) {
-				$elm.attr( "id", pluginName + "-" + menuCount );
+				$elm.attr( "id", componentName + "-" + menuCount );
 			}
 			menuCount += 1;
 
@@ -6013,7 +6008,8 @@ var pluginName = "wb-menu",
 						.prop( "open", "open" );
 			}
 
-			$elm.trigger( readyEvent );
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}, 1 );
 	},
 
@@ -6104,16 +6100,17 @@ var pluginName = "wb-menu",
 // Bind the events of the plugin
 $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb ajax-failed.wb", selector, function( event ) {
 
-	var elm = event.target,
-		eventType = event.type,
-		$elm = $( elm );
+	var eventType = event.type,
+		elm, $elm;
 
 	switch ( eventType ) {
 	case "ajax-fetched":
 	case "ajax-failed":
+		elm = event.target;
 
 		// Filter out any events triggered by descendants
 		if ( event.currentTarget === elm ) {
+			$elm = $( elm );
 
 			// Only replace the menu if there isn't an error
 			onAjaxLoaded(
@@ -6125,11 +6122,7 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb ajax-failed.wb", s
 
 	case "timerpoke":
 	case "wb-init":
-
-		// Filter out any events triggered by descendants
-		if ( event.currentTarget === elm ) {
-			init( $elm );
-		}
+		init( event );
 		break;
 	}
 
@@ -6457,9 +6450,8 @@ wb.add( selector );
 "use strict";
 
 /* Local scoped variables*/
-var pluginName = "wb-mltmd",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-mltmd",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	uniqueCount = 0,
 	template,
@@ -6472,27 +6464,25 @@ var pluginName = "wb-mltmd",
 	fallbackEvent = "fallback" + selector,
 	youtubeEvent = "youtube" + selector,
 	resizeEvent = "resize" + selector,
+	templateLoadedEvent = "templateloaded" + selector,
 	captionClass = "cc_on",
 	$document = wb.doc,
 	$window = wb.win,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @function init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var eventTarget = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var eventTarget = wb.init( event, componentName, selector ),
+			elmId;
+
+		if ( eventTarget ) {
 			elmId = eventTarget.id;
-
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === eventTarget &&
-			eventTarget.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			eventTarget.className += " " + initedClass;
 
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
@@ -6528,9 +6518,7 @@ var pluginName = "wb-mltmd",
 					}
 				});
 			} else if ( template !== "" ) {
-				$( eventTarget ).trigger({
-					type: "templateloaded.wb"
-				});
+				$( eventTarget ).trigger( templateLoadedEvent );
 			}
 		}
 	},
@@ -6976,7 +6964,7 @@ $window.on( "resize", onResize );
 
 $document.on( "ready", onResize );
 
-$document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
+$document.on( "ajax-fetched.wb " + templateLoadedEvent, selector, function( event ) {
 	var $this = $( this );
 
 	if ( event.type === "ajax-fetched" ) {
@@ -6990,7 +6978,7 @@ $document.on( "ajax-fetched.wb templateloaded.wb", selector, function( event ) {
 });
 
 $document.on( initializedEvent, selector, function( event ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var $this = $( this ),
 			$media = $this.children( "audio, video" ).eq( 0 ),
 			captions = $media.children( "track[kind='captions']" ).attr( "src" ) || undef,
@@ -7000,7 +6988,7 @@ $document.on( initializedEvent, selector, function( event ) {
 			title = $media.attr( "title" ) || "",
 			width = type === "video" ? $media.attr( "width" ) || $media.width() : 0,
 			height = type === "video" ? $media.attr( "height" ) || $media.height() : 0,
-			settings = wb.getData( $this, pluginName ),
+			settings = wb.getData( $this, componentName ),
 			data = $.extend({
 				media: $media,
 				captions: captions,
@@ -7056,11 +7044,14 @@ $document.on( initializedEvent, selector, function( event ) {
 		} else {
 			$this.trigger( fallbackEvent );
 		}
+
+		// Identify that initialization has completed
+		wb.ready( $this, componentName );
 	}
 });
 
 $document.on( fallbackEvent, selector, function( event ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var ref = expand( this ),
 			$this = ref[ 0 ],
 			data = ref[ 1 ],
@@ -7101,7 +7092,7 @@ $document.on( fallbackEvent, selector, function( event ) {
  *  Youtube Video mode Event
  */
 $document.on( youtubeEvent, selector, function( event ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var ref = expand( this ),
 			ytPlayer,
 			$this = ref[ 0 ],
@@ -7154,7 +7145,7 @@ $document.on( youtubeEvent, selector, function( event ) {
  *  Native Video mode Event
  */
 $document.on( "video" + selector, selector, function( event ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var ref = expand( this ),
 			$this = ref[ 0 ],
 			data = ref[ 1 ];
@@ -7173,7 +7164,7 @@ $document.on( "video" + selector, selector, function( event ) {
  *  Native Audio mode Event
  */
 $document.on( "audio" + selector, selector, function( event ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var ref = expand (this ),
 			$this = ref[ 0 ],
 			data = ref[ 1 ];
@@ -7187,7 +7178,7 @@ $document.on( "audio" + selector, selector, function( event ) {
 });
 
 $document.on( renderUIEvent, selector, function( event, type ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var ref = expand( this ),
 			$this = ref[ 0 ],
 			data = ref[ 1 ],
@@ -7224,6 +7215,17 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		// Load the slider polyfill if needed
 		$this.find( "input[type='range']" ).trigger( "wb-init.wb-slider" );
 
+		// Create the share widgets if needed
+		// TODO: Remove .parent() when getting rid of the overlay
+		if ( data.shareUrl !== undef ) {
+			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
+				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
+				data.title + "\", \"url\": \"" + data.shareUrl +
+				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
+			$media.parent().before( $share );
+			wb.add( $share );
+		}
+
 		if ( data.captions === undef ) {
 			return 1;
 		}
@@ -7233,14 +7235,6 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 			loadCaptionsExternal( $player, captionsUrl.absolute );
 		} else {
 			loadCaptionsInternal( $player, $( captionsUrl.hash ) );
-		}
-
-		// Create the share widgets if needed
-		// TODO: Remove .parent() when getting rid of the overlay
-		if ( data.shareUrl !== undef ) {
-			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"video\", \"title\": \"" + data.title + "\", \"url\": \"" + data.shareUrl + "\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
-			$media.parent().before( $share );
-			wb.add( $share );
 		}
 	}
 });
@@ -7420,13 +7414,13 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "ccloaded":
-		if ( eventNamespace === pluginName ) {
+		if ( eventNamespace === componentName ) {
 			$.data( eventTarget, "captions", event.captions );
 		}
 		break;
 
 	case "ccloadfail":
-		if ( eventNamespace === pluginName ) {
+		if ( eventNamespace === componentName ) {
 			$this.find( ".wb-mm-cc" )
 				.append( "<p class='errmsg'><span>" + i18nText.cc_error + "</span></p>" )
 				.end()
@@ -7436,7 +7430,7 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		break;
 
 	case "ccvischange":
-		if ( eventNamespace === pluginName ) {
+		if ( eventNamespace === componentName ) {
 			isCCVisible = eventTarget.player( "getCaptionsVisible" );
 			$button = $this.find( ".cc" );
 			buttonData = $button.data( "state-" + ( isCCVisible ? "off" : "on" ) );
@@ -7484,7 +7478,7 @@ $document.on( "progress", selector, function( event ) {
 });
 
 $document.on( resizeEvent, selector, function( event ) {
-	if ( event.namespace === pluginName ) {
+	if ( event.namespace === componentName ) {
 		var player = event.target,
 			$player = $( player ),
 			ratio, newHeight;
@@ -7533,20 +7527,23 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var $document = wb.doc,
+var componentName = "wb-navcurr",
+	selector = "." + componentName,
+	$document = wb.doc,
 	breadcrumbLinksArray, breadcrumbLinksUrlArray,
-	navClass = "wb-navcurr",
 
 	/**
-	 * We start the logic for what the plugin truly does
-	 * For demonstration purposes lets display some text with an alert
-	 * @method otherEvent
-	 * @param {jQuery Event} event The event that triggered this method call
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
 	 * @param {jQuery DOM element | DOM element} breadcrumb Optional breadcrumb element
 	 */
-	navCurrent = function( event, breadcrumb ) {
+	init = function( event, breadcrumb ) {
 		if ( event.namespace === "wb" ) {
-			var menu = event.target,
+
+			// Start initialization
+			// returns DOM object = proceed with init
+			// returns undefined = do not proceed with init (e.g., already initialized)
+			var menu = wb.init( event.target, componentName, selector ),
 				menuLinks = menu.getElementsByTagName( "a" ),
 				menuLinksArray = [],
 				menuLinksUrlArray = [],
@@ -7558,90 +7555,96 @@ var $document = wb.doc,
 				localBreadcrumbLinks, localBreadcrumbLinksArray, localBreadcrumbLinksUrlArray,
 				localBreadcrumbQuery, localBreadcrumbLinkUrl;
 
-			// Try to find a match with the page Url and cache link + Url for later if no match found
-			// Perform the check and caching in reverse to go from more specific links to more general links
-			for ( i = menuLinks.length - 1; i !== -1; i -= 1 ) {
-				link = menuLinks[ i ];
-				linkHref = link.getAttribute( "href" );
-				if ( linkHref !== null ) {
-					if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
-						linkUrl = link.hostname + link.pathname.replace( /^([^\/])/, "/$1" );
-						linkQuery = link.search;
-						linkQueryLen = linkQuery.length;
-						if ( pageUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || pageUrlQuery.slice( -linkQueryLen ) === linkQuery ) ) {
-							match = true;
-							break;
-						}
-						menuLinksArray.push( link );
-						menuLinksUrlArray.push( linkUrl );
-					}
-				}
-			}
+			if ( menu ) {
 
-			// No page Url match found, try a breadcrumb link match instead
-			if ( !match && breadcrumb ) {
-
-				// Check to see if the data has been cached already
-				if ( !breadcrumbLinksArray ) {
-
-					// Pre-process the breadcrumb links
-					localBreadcrumbLinksArray = [];
-					localBreadcrumbLinksUrlArray = [];
-					localBreadcrumbLinks = ( breadcrumb.jquery ? breadcrumb[ 0 ] : breadcrumb ).getElementsByTagName( "a" );
-					len = localBreadcrumbLinks.length;
-					for ( i = 0; i !== len; i += 1 ) {
-						link = localBreadcrumbLinks[ i ];
-						linkHref = link.getAttribute( "href" );
+				// Try to find a match with the page Url and cache link + Url for later if no match found
+				// Perform the check and caching in reverse to go from more specific links to more general links
+				for ( i = menuLinks.length - 1; i !== -1; i -= 1 ) {
+					link = menuLinks[ i ];
+					linkHref = link.getAttribute( "href" );
+					if ( linkHref !== null ) {
 						if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
-							localBreadcrumbLinksArray.push( link );
-							localBreadcrumbLinksUrlArray.push( link.hostname + link.pathname.replace( /^([^\/])/, "/$1" ) );
+							linkUrl = link.hostname + link.pathname.replace( /^([^\/])/, "/$1" );
+							linkQuery = link.search;
+							linkQueryLen = linkQuery.length;
+							if ( pageUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || pageUrlQuery.slice( -linkQueryLen ) === linkQuery ) ) {
+								match = true;
+								break;
+							}
+							menuLinksArray.push( link );
+							menuLinksUrlArray.push( linkUrl );
 						}
 					}
-
-					// Cache the data in case of more than one execution (e.g., site menu + secondary navigation)
-					breadcrumbLinksArray = localBreadcrumbLinksArray;
-					breadcrumbLinksUrlArray = localBreadcrumbLinksUrlArray;
-				} else {
-
-					// Retrieve the cached data
-					localBreadcrumbLinksArray = breadcrumbLinksArray;
-					localBreadcrumbLinksUrlArray = breadcrumbLinksUrlArray;
 				}
 
-				// Try to match each breadcrumb link
-				len = menuLinksArray.length;
-				for ( j = localBreadcrumbLinksArray.length - 1; j !== -1; j -= 1 ) {
-					localBreadcrumbLinkUrl = localBreadcrumbLinksUrlArray[ j ];
-					localBreadcrumbQuery = localBreadcrumbLinksArray[ j ].search;
+				// No page Url match found, try a breadcrumb link match instead
+				if ( !match && breadcrumb ) {
 
-					for ( i = 0; i !== len; i += 1 ) {
-						link = menuLinksArray[ i ];
-						linkUrl = menuLinksUrlArray[ i ];
-						linkQuery = link.search;
-						linkQueryLen = linkQuery.length;
+					// Check to see if the data has been cached already
+					if ( !breadcrumbLinksArray ) {
 
-						if ( localBreadcrumbLinkUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || localBreadcrumbQuery.slice( -linkQueryLen ) === linkQuery ) ) {
-							match = true;
+						// Pre-process the breadcrumb links
+						localBreadcrumbLinksArray = [];
+						localBreadcrumbLinksUrlArray = [];
+						localBreadcrumbLinks = ( breadcrumb.jquery ? breadcrumb[ 0 ] : breadcrumb ).getElementsByTagName( "a" );
+						len = localBreadcrumbLinks.length;
+						for ( i = 0; i !== len; i += 1 ) {
+							link = localBreadcrumbLinks[ i ];
+							linkHref = link.getAttribute( "href" );
+							if ( linkHref.length !== 0 && linkHref.charAt( 0 ) !== "#" ) {
+								localBreadcrumbLinksArray.push( link );
+								localBreadcrumbLinksUrlArray.push( link.hostname + link.pathname.replace( /^([^\/])/, "/$1" ) );
+							}
+						}
+
+						// Cache the data in case of more than one execution (e.g., site menu + secondary navigation)
+						breadcrumbLinksArray = localBreadcrumbLinksArray;
+						breadcrumbLinksUrlArray = localBreadcrumbLinksUrlArray;
+					} else {
+
+						// Retrieve the cached data
+						localBreadcrumbLinksArray = breadcrumbLinksArray;
+						localBreadcrumbLinksUrlArray = breadcrumbLinksUrlArray;
+					}
+
+					// Try to match each breadcrumb link
+					len = menuLinksArray.length;
+					for ( j = localBreadcrumbLinksArray.length - 1; j !== -1; j -= 1 ) {
+						localBreadcrumbLinkUrl = localBreadcrumbLinksUrlArray[ j ];
+						localBreadcrumbQuery = localBreadcrumbLinksArray[ j ].search;
+
+						for ( i = 0; i !== len; i += 1 ) {
+							link = menuLinksArray[ i ];
+							linkUrl = menuLinksUrlArray[ i ];
+							linkQuery = link.search;
+							linkQueryLen = linkQuery.length;
+
+							if ( localBreadcrumbLinkUrl.slice( -linkUrl.length ) === linkUrl && ( linkQueryLen === 0 || localBreadcrumbQuery.slice( -linkQueryLen ) === linkQuery ) ) {
+								match = true;
+								break;
+							}
+						}
+						if ( match ) {
 							break;
 						}
 					}
-					if ( match ) {
-						break;
+				}
+
+				if ( match ) {
+					link.className += " " + componentName;
+					if ( menu.className.indexOf( "wb-menu" ) !== -1 && link.className.indexOf( "item" ) === -1 ) {
+						$( link ).closest( ".sm" ).parent().children( "a" ).addClass( componentName );
 					}
 				}
-			}
 
-			if ( match ) {
-				link.className += " " + navClass;
-				if ( menu.className.indexOf( "wb-menu" ) !== -1 && link.className.indexOf( "item" ) === -1 ) {
-					$( link ).closest( ".sm" ).parent().children( "a" ).addClass( navClass );
-				}
+				// Identify that initialization has completed
+				wb.ready( $( menu ), componentName );
 			}
 		}
 	};
 
 // Bind the navcurrent event of the plugin
-$document.on( "navcurr.wb", navCurrent );
+$document.on( "navcurr.wb", init );
 
 })( jQuery, window, wb );
 
@@ -7660,11 +7663,9 @@ $document.on( "navcurr.wb", navCurrent );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-overlay",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-overlay",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	closeClass = "overlay-close",
 	linkClass = "overlay-lnk",
 	ignoreOutsideClass = "outside-off",
@@ -7674,22 +7675,18 @@ var pluginName = "wb-overlay",
 	i18n, i18nText,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			$elm, $header, closeText, overlayClose;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
+		if ( elm ) {
 			$elm = $( elm );
 
 			// Only initialize the i18nText once
@@ -7720,7 +7717,8 @@ var pluginName = "wb-overlay",
 			$elm.append( overlayClose );
 			elm.setAttribute( "aria-hidden", "true" );
 
-			$elm.trigger( readyEvent );
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}
 	},
 
@@ -7963,11 +7961,9 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-prettify",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-prettify",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	prettyPrintEvent = "prettyprint" + selector,
 	$document = wb.doc,
 
@@ -7980,26 +7976,21 @@ var pluginName = "wb-prettify",
 		allpre: false
 	},
 
-	/*
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
+	/**
 	 * @method init
-	 * @param {jQuery Event} event Event that triggered this handler
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			modeJS = wb.getMode() + ".js",
 			deps = [ "site!deps/prettify" + modeJS ],
 			$elm, classes, settings, i, len, $pre;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
-
+		if ( elm ) {
 			$elm = $( elm );
 			classes = elm.className.split( " " );
 
@@ -8038,17 +8029,21 @@ var pluginName = "wb-prettify",
 		}
 	},
 
+	prettifyDone = function() {
+
+		// Identify that initialization has completed
+		wb.ready( $document, componentName );
+	},
+
 	/*
 	 * Invoke the Google pretty print library if it has been initialized
 	 * @method prettyprint
 	 */
 	prettyprint = function( event ) {
-		if ( event.namespace === pluginName &&
+		if ( event.namespace === componentName &&
 			typeof window.prettyPrint === "function" ) {
 
-			window.prettyPrint();
-
-			$document.trigger( readyEvent );
+			window.prettyPrint( prettifyDone );
 		}
 	};
 
@@ -8077,8 +8072,9 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var id = "wb-rsz",
-	selector = "#" + id,
+var componentName = "wb-rsz",
+	selector = "#" + componentName,
+	initEvent = "wb-init" + selector,
 	$document = wb.doc,
 	sizes = [],
 	events = [
@@ -8096,36 +8092,45 @@ var id = "wb-rsz",
 		largeview: 1200,
 		xlargeview: 1600
 	},
-	initialized = false,
 	eventsAll, resizeTest, currentView,
 
 	/**
-	 * Init runs once
 	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
-	init = function() {
-		var localResizeTest = document.createElement( "span" );
+	init = function( event ) {
 
-		// Set up the DOM element used for resize testing
-		localResizeTest.innerHTML = "&#160;";
-		localResizeTest.setAttribute( "id", id );
-		document.body.appendChild( localResizeTest );
-		resizeTest = localResizeTest;
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			localResizeTest;
 
-		// Get a snapshot of the current sizes
-		sizes = [
-			localResizeTest.offsetHeight,
-			window.innerWidth || $document.width(),
-			window.innerHeight || $document.height()
-		];
+		if ( elm ) {
 
-		// Create a string containing all the events
-		eventsAll = events.join( " " );
+			// Set up the DOM element used for resize testing
+			localResizeTest = document.createElement( "span" );
+			localResizeTest.innerHTML = "&#160;";
+			localResizeTest.setAttribute( "id", componentName );
+			document.body.appendChild( localResizeTest );
+			resizeTest = localResizeTest;
 
-		// Determine the current view
-		viewChange( sizes[ 1 ] );
+			// Get a snapshot of the current sizes
+			sizes = [
+				localResizeTest.offsetHeight,
+				window.innerWidth || $document.width(),
+				window.innerHeight || $document.height()
+			];
 
-		initialized = true;
+			// Create a string containing all the events
+			eventsAll = events.join( " " );
+
+			// Determine the current view
+			viewChange( sizes[ 1 ] );
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
+		}
 	},
 
 	viewChange = function( viewportWidth ) {
@@ -8163,36 +8168,38 @@ var id = "wb-rsz",
 	 * @method test
 	 */
 	test = function() {
-		if ( initialized ) {
-			var currentSizes = [
-					resizeTest.offsetHeight,
-					window.innerWidth || $document.width(),
-					window.innerHeight || $document.height()
-				],
-				len = currentSizes.length,
-				i;
+		var currentSizes = [
+				resizeTest.offsetHeight,
+				window.innerWidth || $document.width(),
+				window.innerHeight || $document.height()
+			],
+			len = currentSizes.length,
+			i;
 
-			// Check for a viewport or text size change
-			for ( i = 0; i !== len; i += 1 ) {
-				if ( currentSizes[ i ] !== sizes[ i ] ) {
+		// Check for a viewport or text size change
+		for ( i = 0; i !== len; i += 1 ) {
+			if ( currentSizes[ i ] !== sizes[ i ] ) {
 
-					// Change detected so trigger related event
-					$document.trigger( events[ i ], currentSizes );
+				// Change detected so trigger related event
+				$document.trigger( events[ i ], currentSizes );
 
-					// Check for a view change
-					viewChange( currentSizes[ 1 ] );
-				}
+				// Check for a view change
+				viewChange( currentSizes[ 1 ] );
 			}
-			sizes = currentSizes;
-			return;
 		}
+		sizes = currentSizes;
+
+		return;
 	};
+
+// Bind the init event to the plugin
+$document.on( initEvent, init );
 
 // Re-test on each timerpoke
 $document.on( "timerpoke.wb", selector, test );
 
 // Initialize the resources
-init();
+$document.trigger( initEvent );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -8216,12 +8223,10 @@ wb.add( selector );
  */
 var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	$document = wb.doc,
-	pluginName = "wb-sessto",
-	selector = "." + pluginName,
-	confirmClass = pluginName + "-confirm",
-	initedClass = pluginName + "-inited",
+	componentName = "wb-sessto",
+	selector = "." + componentName,
+	confirmClass = componentName + "-confirm",
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	resetEvent = "reset" + selector,
 	keepaliveEvent = "keepalive" + selector,
 	inactivityEvent = "inactivity" + selector,
@@ -8242,23 +8247,18 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @function init
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			$elm, settings;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
-
+		if ( elm ) {
 			$elm = $( elm );
 
 			// Merge default settings with overrides from the plugin element
@@ -8287,10 +8287,10 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			initRefreshOnClick( $elm, settings );
 
 			// Initialize the keepalive and inactive timeouts of the plugin
-			// then fire the wb-ready event
-			$elm
-				.trigger( resetEvent, settings )
-				.trigger( readyEvent );
+			$elm.trigger( resetEvent, settings );
+
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}
 	},
 
@@ -8323,8 +8323,8 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			temp = document.createElement( "div" );
 
 		// Create the modal dialog.  A temp <div> element is used so that its innerHTML can be set as a string.
-		temp.innerHTML = "<a class='wb-lbx lbx-modal mfp-hide' href='#" + pluginName + "-modal'></a>" +
-			"<section id='" + pluginName + "-modal' class='mfp-hide modal-dialog modal-content overlay-def'>" +
+		temp.innerHTML = "<a class='wb-lbx lbx-modal mfp-hide' href='#" + componentName + "-modal'></a>" +
+			"<section id='" + componentName + "-modal' class='mfp-hide modal-dialog modal-content overlay-def'>" +
 			"<header class='modal-header'><h2 class='modal-title'>" + i18nText.timeoutTitle + "</h2></header>" +
 			"<div class='modal-body'></div>" +
 			"<div class='modal-footer'></div>" +
@@ -8337,7 +8337,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 		document.body.appendChild( modal );
 
 		// Get object references to the modal and its triggering link
-		$modal = $document.find( "#" + pluginName + "-modal" );
+		$modal = $document.find( "#" + componentName + "-modal" );
 		$modalLink = $modal.prev().trigger( "wb-init.wb-lbx" );
 	},
 
@@ -8642,11 +8642,9 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-share",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-share",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	shareLink = "shr-lnk",
 	panelCount = 0,
 	$document = wb.doc,
@@ -8659,7 +8657,7 @@ var pluginName = "wb-share",
 	defaults = {
 		hdLvl: "h2",
 
-		// Supported types are: "page" and "video"
+		// Supported types are: "page", "video" and "audio"
 		type: "page",
 
 		// For custom types
@@ -8752,25 +8750,21 @@ var pluginName = "wb-share",
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			sites, heading, settings, panel, link, $share, $elm,
 			pageHref, pageTitle, pageImage, pageDescription,
 			siteProperties, url, shareText, id, pnlId, regex,
 			filter, i, len, keys, key;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
+		if ( elm ) {
 
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
@@ -8779,6 +8773,7 @@ var pluginName = "wb-share",
 					shareText: i18n( "shr-txt" ),
 					page: i18n( "shr-pg" ),
 					video: i18n( "shr-vid" ),
+					audio: i18n( "shr-aud" ),
 					disclaimer: i18n( "shr-disc" ),
 					email: i18n( "email" )
 				};
@@ -8796,8 +8791,8 @@ var pluginName = "wb-share",
 				true,
 				{},
 				defaults,
-				window[ pluginName ],
-				wb.getData( $elm, pluginName )
+				window[ componentName ],
+				wb.getData( $elm, componentName )
 			);
 			sites = settings.sites;
 			filter = settings.filter;
@@ -8872,7 +8867,8 @@ var pluginName = "wb-share",
 				.trigger( initEvent )
 				.trigger( "wb-init.wb-lbx" );
 
-			$elm.trigger( readyEvent );
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}
 	};
 
@@ -8910,36 +8906,31 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-tables",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-tables",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 	idCount = 0,
 	i18n, i18nText, defaults,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			elmId;
+
+		if ( elm ) {
 			elmId = elm.id;
-
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
 
 			// Ensure there is a unique id on the element
 			if ( !elmId ) {
-				elmId = pluginName + "-id-" + idCount;
+				elmId = componentName + "-id-" + idCount;
 				idCount += 1;
 				elm.id = elmId;
 			}
@@ -8974,21 +8965,7 @@ var pluginName = "wb-tables",
 			defaults = {
 				asStripeClasses: [],
 				language: i18nText,
-				dom: "<'top'ilf>rt<'bottom'p><'clear'>",
-				drawCallback: function( settings ) {
-
-					// Update the aria-pressed properties on the pagination buttons
-					// Should be pushed upstream to DataTables
-					$( ".dataTables_paginate a" )
-						.attr( "role", "button" )
-						.not( ".previous, .next" )
-							.attr( "aria-pressed", "false" )
-							.filter( ".current" )
-								.attr( "aria-pressed", "true" );
-
-					// Trigger the wb-ready.wb-tables callback event
-					$( "#" + elmId ).trigger( readyEvent, [ this, settings ] );
-				}
+				dom: "<'top'ilf>rt<'bottom'p><'clear'>"
 			};
 
 			Modernizr.load({
@@ -9018,10 +8995,10 @@ var pluginName = "wb-tables",
 
 						// Formatted number sorting
 						"formatted-num-asc": function( a, b ) {
-							return wb.formattedNumCompare( b, a );
+							return wb.formattedNumCompare( a, b );
 						},
 						"formatted-num-desc": function( a, b ) {
-							return wb.formattedNumCompare( a, b );
+							return wb.formattedNumCompare( b, a );
 						}
 					} );
 
@@ -9051,7 +9028,7 @@ var pluginName = "wb-tables",
 					$elm.find( "th" ).append( "<span class='sorting-cnt'><span class='sorting-icons'></span></span>" );
 
 					// Create the DataTable object
-					$elm.dataTable( $.extend( true, {}, defaults, window[ pluginName ], wb.getData( $elm, pluginName ) ) );
+					$elm.dataTable( $.extend( true, {}, defaults, window[ componentName ], wb.getData( $elm, componentName ) ) );
 				}
 			});
 		}
@@ -9059,6 +9036,29 @@ var pluginName = "wb-tables",
 
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Handle the draw.dt event
+$document.on( "init.dt draw.dt", selector, function( event, settings ) {
+	var $elm = $( event.target );
+
+	// Update the aria-pressed properties on the pagination buttons
+	// Should be pushed upstream to DataTables
+	$( ".dataTables_paginate a" )
+		.attr( "role", "button" )
+		.not( ".previous, .next" )
+			.attr( "aria-pressed", "false" )
+			.filter( ".current" )
+				.attr( "aria-pressed", "true" );
+
+	if ( event.type === "init" ) {
+
+		// Identify that initialization has completed
+		wb.ready( $elm, componentName );
+	}
+
+	// Identify that the table has been updated
+	$elm.trigger( "wb-updated" + selector, [ settings ] );
+});
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -9080,11 +9080,11 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-tabs",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-tabs",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	shiftEvent = "shift" + selector,
+	shiftEvent = "wb-shift" + selector,
+	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
 	controls = selector + " [role=tablist] a",
 	uniqueCount = 0,
@@ -9092,7 +9092,7 @@ var pluginName = "wb-tabs",
 	equalHeightClass = "wb-eqht",
 	equalHeightOffClass = equalHeightClass + "-off",
 	activePanel = "-activePanel",
-	activateEvent = "click vclick keydown",
+	activateEvent = "click keydown",
 	$document = wb.doc,
 	$window = wb.win,
 	i18n, i18nText,
@@ -9102,47 +9102,55 @@ var pluginName = "wb-tabs",
 	isSmallView, oldIsSmallView,
 
 	defaults = {
-		addControls: true,
 		excludePlay: false,
 		interval: 6
 	},
 
-	/*
+	/**
 	 * @method init
-	 * @param {jQuery DOM element} $elm The plugin element
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
-	init = function( $elm ) {
+	init = function( event ) {
 
-		// Only initialize the element once
-		if ( !$elm.hasClass( initedClass ) ) {
-			$elm.addClass( initedClass );
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			hashFocus = false,
+			isCarousel = true,
+			open = "open",
+			$panels, $tablist, activeId, $openPanel, $elm, elmId,
+			settings, $panel, i, len, tablist, isOpen,
+			newId, positionY, groupClass;
+
+		if ( elm ) {
+			$elm = $( elm );
 
 			// For backwards compatibility. Should be removed in WET v4.1
 			if ( $elm.children( ".tabpanels" ).length === 0 ) {
 				$elm.children( "[role=tabpanel], details" ).wrapAll( "<div class='tabpanels'/>" );
 			}
 
-			var $panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" ),
-				$tablist = $elm.children( "[role=tablist]" ),
-				activeId = wb.pageUrlParts.hash.substring( 1 ),
-				$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined,
-				elmId = $elm.attr( "id" ),
-				hashFocus = false,
-				open = "open",
-				settings = $.extend(
-					true,
-					{},
-					defaults,
-					{ interval: $elm.hasClass( "slow" ) ?
-									9 : $elm.hasClass( "fast" ) ?
-										3 : defaults.interval },
-					window[ pluginName ],
-					wb.getData( $elm, pluginName )
-				),
-				interval = settings.interval,
-				addControls = settings.addControls,
-				excludePlay = settings.excludePlay,
-				$panel, i, len, tablist, isOpen, newId, positionY, groupClass;
+			$panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" );
+			$tablist = $elm.children( "[role=tablist]" );
+			isCarousel = $tablist.length !== 0;
+			activeId = wb.pageUrlParts.hash.substring( 1 );
+			$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined;
+			elmId = elm.id;
+			settings = $.extend(
+				true,
+				{},
+				defaults,
+				{
+					interval: $elm.hasClass( "slow" ) ?
+								9 : $elm.hasClass( "fast" ) ?
+									3 : defaults.interval,
+					excludePlay: $elm.hasClass( "exclude-play" ),
+					playing: $elm.hasClass( "playing" )
+				},
+				window[ componentName ],
+				wb.getData( $elm, componentName )
+			);
 
 			// Ensure there is an id on the element
 			if ( !elmId ) {
@@ -9192,10 +9200,9 @@ var pluginName = "wb-tabs",
 			}
 
 			// Build the tablist and enhance the panels as needed for details/summary
-			if ( $tablist.length === 0 ) {
+			if ( !isCarousel ) {
 				$elm.addClass( "tabs-acc" );
 				groupClass = elmId + "-grp";
-				addControls = false;
 				$panels = $elm.find( "> .tabpanels > details" );
 				len = $panels.length;
 
@@ -9274,8 +9281,14 @@ var pluginName = "wb-tabs",
 
 			drizzleAria( $panels, $tablist );
 
-			if ( addControls ) {
-				createControls( $tablist, excludePlay );
+			if ( isCarousel ) {
+
+				// Returns true if the tabs should be rotating automatically
+				if ( createControls( $tablist, settings ) ) {
+
+					// Register this specific tabs instance for timerpoke.wb events
+					wb.add( "#" + elmId + selector );
+				}
 			}
 
 			// If focus is being set by the URL hash, then ensure the tabs are
@@ -9292,58 +9305,52 @@ var pluginName = "wb-tabs",
 			}
 
 			$elm.data({
-				panels: $panels,
-				tablist: $tablist,
-				delay: interval,
-				ctime: 0
+				"wb-tabs": {
+					panels: $panels,
+					tablist: $tablist,
+					settings: settings,
+					ctime: 0
+				}
 			});
 
 			initialized = true;
 			onResize();
+
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
 		}
 	},
 
-	/*
+	/**
 	 * @method onTimerPoke
 	 * @param {jQuery DOM element} $elm The plugin element
 	 */
 	onTimerPoke = function( $elm ) {
-		var dataDelay = $elm.data( "delay" ),
-			setting, delay;
+		var data = $elm.data( componentName ),
+			delayCurrent = parseFloat( data.ctime ) + 0.5;
 
-		if ( !dataDelay ) {
-			$elm.trigger( initEvent );
-			return false;
-		}
-
-		// State playing
-		if ( !$elm.hasClass( "playing" ) ) {
-			return false;
-		}
-
-		// Add settings and counter
-		setting = parseFloat( dataDelay );
-		delay = parseFloat( $elm.data( "ctime" ) ) + 0.5;
-
-		// Check if we need
-		if ( setting < delay ) {
+		// Check if we need to rotate panels
+		if ( parseFloat( data.settings.interval ) <= delayCurrent ) {
 			$elm.trigger( shiftEvent );
-			delay = 0;
+			delayCurrent = 0;
 		}
-		$elm.data( "ctime", delay );
+
+		data.ctime = delayCurrent;
+		$elm.data( componentName, data );
 	},
 
-	/*
+	/**
 	 * @method createControls
 	 * @param {jQuery DOM element} $tablist The plugin element
-	 * @param {boolean} excludePlay Whether or not to exclude the play/pause control
+	 * @param {object} settings Settings for the tabs instance
+	 * @returns {boolean} Whether or not the tabs should be rotating initially
 	 */
-	createControls = function( $tablist, excludePlay ) {
-		var $sldr = $tablist.parents( selector ),
-			prevText = i18nText.prev,
+	createControls = function( $tablist, settings ) {
+		var prevText = i18nText.prev,
 			nextText = i18nText.next,
 			spaceText = i18nText.space,
-			isPlaying = $sldr.hasClass( "playing" ),
+			excludePlay = settings.excludePlay,
+			isPlaying = !excludePlay && settings.playing,
 			state = isPlaying ? i18nText.pause : i18nText.play,
 			hidden = isPlaying ? i18nText.rotStop : i18nText.rotStart,
 			glyphiconStart = "<span class='glyphicon glyphicon-",
@@ -9380,15 +9387,18 @@ var pluginName = "wb-tabs",
 		if ( !excludePlay ) {
 			$tablist.append( playControl );
 		}
+
+		return isPlaying;
 	},
 
-	/*
+	/**
 	 * @method drizzleAria
-	 * @param {2 jQuery DOM element} $panels for the tabpanel grouping, and $tablist for the pointers to the groupings
+	 * @param {jQuery DOM element} $panels Tabpanel groupings
+	 * @param {jQuery DOM element} $tablist Pointers to the groupings
 	 */
 	drizzleAria = function( $panels, $tabList ) {
 
-		// lets process the elements for aria
+		// Let's process the elements for aria
 		var panels = $panels.get(),
 			tabCounter = panels.length - 1,
 			listItems = $tabList.children().get(),
@@ -9427,6 +9437,7 @@ var pluginName = "wb-tabs",
 		var $tabs = $controls.find( "[role=tab]" ),
 			newIndex = $tabs.index( $control ) + 1,
 			$currPanel = $panels.filter( ".in" ),
+			$container = $next.closest( selector ),
 			mPlayers = $currPanel.find( ".wb-mltmd-inited" ).get(),
 			mPlayersLen = mPlayers.length,
 			mPlayer, i, j, last;
@@ -9492,34 +9503,39 @@ var pluginName = "wb-tabs",
 		// Update sessionStorage with the current active panel
 		try {
 			sessionStorage.setItem(
-				$next.parent().attr( "id" ) + activePanel,
+				$container.attr( "id" ) + activePanel,
 				$next.attr( "id" )
 			);
 		} catch ( error ) {
 		}
+
+		// Identify that the tabbed interface/carousel was updated
+		$container.trigger( updatedEvent, [ $next ] );
 	},
 
-	/*
+	/**
 	 * @method onPick
 	 * @param {jQuery DOM element} $sldr The plugin element
 	 * @param {jQuery DOM element} $elm The selected link from the tablist
 	 */
 	onPick = function( $sldr, $elm ) {
-		var $panels = $sldr.data( "panels" ),
-			$controls =  $sldr.data( "tablist" ),
+		var data = $sldr.data( componentName ),
+			$panels = data.panels,
+			$controls = data.tablist,
 			$next = $panels.filter( "#" + $elm.attr( "aria-controls" ) );
 
 		updateNodes( $panels, $controls, $next, $elm );
 	},
 
-	/*
+	/**
 	 * @method onShift
-	 * @param {jQuery DOM element} $elm The plugin element
 	 * @param (jQuery event} event Current event
+	 * @param {jQuery DOM element} $elm The plugin element
 	 */
-	onShift = function( $elm, event ) {
-		var $panels = $elm.data( "panels" ),
-			$controls = $elm.data( "tablist" ),
+	onShift = function( event, $elm ) {
+		var data = $elm.data( componentName ),
+			$panels = data.panels,
+			$controls = data.tablist,
 			len = $panels.length,
 			current = $elm.find( ".in" ).prevAll( "[role=tabpanel]" ).length,
 			shiftto = event.shiftto ? event.shiftto : 1,
@@ -9532,8 +9548,8 @@ var pluginName = "wb-tabs",
 		);
 	},
 
-	/*
-	 * @method onShift
+	/**
+	 * @method onCycle
 	 * @param {jQuery DOM element} $elm The plugin element
 	 * @param {integer} shifto The item to shift to
 	 */
@@ -9544,6 +9560,10 @@ var pluginName = "wb-tabs",
 		});
 	},
 
+	/**
+	 * @method onHashChange
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
 	onHashChange = function( event ) {
 		if ( initialized ) {
 			var hash = window.location.hash,
@@ -9642,19 +9662,21 @@ var pluginName = "wb-tabs",
 
  // Bind the init event of the plugin
  $document.on( "timerpoke.wb " + initEvent + " " + shiftEvent, selector, function( event ) {
-	var eventType = event.type,
-		currentTarget = event.currentTarget,
-		isOrigin = currentTarget === event.target,
+	var eventTarget = event.target,
+		eventCurrentTarget = event.currentTarget,
+		$elm;
 
-		// "this" is cached for all events to utilize
-		$elm = $( currentTarget );
-
-		switch ( eventType ) {
+		switch ( event.type ) {
 		case "timerpoke":
+			$elm = $( eventTarget );
+			if ( !$elm.hasClass( componentName + "-inited" ) ) {
+				init( event );
+			} else if ( $elm.hasClass( "playing" ) ) {
 
-			// Filter out any events triggered by descendants
-			if ( isOrigin ) {
-				onTimerPoke( $elm );
+				// Filter out any events triggered by descendants
+				if ( eventCurrentTarget === eventTarget ) {
+					onTimerPoke( $elm );
+				}
 			}
 			break;
 
@@ -9662,18 +9684,18 @@ var pluginName = "wb-tabs",
 		 * Init
 		 */
 		case "wb-init":
-
-			// Filter out any events triggered by descendants
-			if ( isOrigin ) {
-				init( $elm );
-			}
+			init( event );
 			break;
 
 		/*
 		 * Change Slides
 		 */
-		case "shift":
-			onShift( $elm, event );
+		case "wb-shift":
+
+			// Filter out any events triggered by descendants
+			if ( eventCurrentTarget === eventTarget ) {
+				onShift( event, $( eventTarget ) );
+			}
 			break;
 		}
 
@@ -9693,7 +9715,7 @@ var pluginName = "wb-tabs",
 		className = elm.className,
 		rotStopText = i18nText.rotStop,
 		playText = i18nText.play,
-		$elm, text, inv, $sldr, $plypause;
+		$elm, text, inv, $sldr, sldrId, $plypause, data, isPlaying, isPlayPause;
 
 	// Ignore middle and right mouse buttons and modified keys
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) &&
@@ -9702,20 +9724,32 @@ var pluginName = "wb-tabs",
 
 		event.preventDefault();
 		$elm = $( elm );
-		$sldr = $elm
-			.parents( selector )
-			.attr( "data-ctime", 0 );
+		$sldr = $elm.closest( selector );
+		sldrId = $sldr[ 0 ].id;
+		isPlaying = $sldr.hasClass( "playing" ),
+		isPlayPause = className.indexOf( "plypause" ) !== -1;
+
+		// Reset ctime to 0
+		data = $sldr.data( componentName );
+		data.ctime = 0;
+		$sldr.data( componentName, data );
 
 		// Stop the slider from playing unless it is already stopped
 		// and the play button is activated
-		if ( $sldr.hasClass( "playing" ) ||
-			( which < 37 && className.indexOf( "plypause" ) !== -1 ) ) {
+		if ( isPlaying || ( which < 37 && isPlayPause ) ) {
+			if ( isPlaying ) {
+				wb.remove( "#" + sldrId + selector );
+			} else {
+				wb.add( "#" + sldrId + selector );
+			}
 
 			$plypause = $sldr.find( "a.plypause" );
 			$plypause
 				.find( ".glyphicon" )
 					.toggleClass( "glyphicon-play glyphicon-pause" );
+
 			$sldr.toggleClass( "playing" );
+			isPlaying = !isPlaying;
 
 			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 1 ];
 			text.innerHTML = text.innerHTML === playText ?
@@ -9729,18 +9763,17 @@ var pluginName = "wb-tabs",
 		}
 
 		if ( which > 36 ) {
-			onCycle( $elm, which < 39 ? -1 : 1 );
+			onCycle( $sldr, which < 39 ? -1 : 1 );
 			$sldr.find( ".active a" ).trigger( setFocusEvent );
 		} else {
 			if ( elm.getAttribute( "role" ) === "tab" ) {
 				onPick( $sldr, $elm );
 				if ( which > 1 ) {
-					$sldr.find( $elm.attr( "href" ) ).trigger( "setfocus.wb" );
+					$sldr.find( elm.getAttribute( "href" ) )
+						.trigger( setFocusEvent );
 				}
-			} else if ( !$sldr.hasClass( "playing" ) &&
-				className.indexOf( "plypause" ) === -1 ) {
-
-				onCycle( $elm, className.indexOf( "prv" ) !== -1 ? -1 : 1 );
+			} else if ( !isPlaying && !isPlayPause ) {
+				onCycle( $sldr, className.indexOf( "prv" ) !== -1 ? -1 : 1 );
 			}
 		}
 	}
@@ -9807,7 +9840,7 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	// Ignore middle and right mouse buttons
 	if ( ( !which || which === 1 ) && href.charAt( 0 ) === "#" ) {
 		$container = $( currentTarget ).closest( selector );
-		$panel = $container.find( href );
+		$panel = $container.find( href + "[role=tabpanel]" );
 		if ( $panel.length !== 0 ) {
 			event.preventDefault();
 			$summary = $panel.children( "summary" );
@@ -9828,19 +9861,25 @@ $window.on( "hashchange", onHashChange );
 
 $document.on( activateEvent, selector + " .tabpanels > details > summary", function( event ) {
 	var which = event.which,
-		details = event.currentTarget.parentNode;
+		details = event.currentTarget.parentNode,
+		$details;
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) &&
 		( !which || which === 1 || which === 13 || which === 32 ) ) {
 
+		$details = $( details );
+
 		// Update sessionStorage with the current active panel
 		try {
 			sessionStorage.setItem(
-				details.parentNode.id + activePanel,
+				$details.closest( selector ).attr( "id" ) + activePanel,
 				details.id
 			);
 		} catch ( error ) {
 		}
+
+		// Identify that the tabbed interface was updated
+		$details.closest( selector ).trigger( updatedEvent, [ $details ] );
 	}
 });
 
@@ -9864,30 +9903,24 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-txthl",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-txthl",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var elm = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			searchCriteria, newText;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === elm &&
-			elm.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			elm.className += " " + initedClass;
+		if ( elm ) {
 
 			searchCriteria = wb.pageUrlParts.params.txthl;
 
@@ -9904,7 +9937,8 @@ var pluginName = "wb-txthl",
 				});
 				elm.innerHTML = newText;
 
-				$( elm ).trigger( readyEvent );
+				// Identify that initialization has completed
+				wb.ready( $( elm ), componentName );
 			}
 		}
 	};
@@ -9932,11 +9966,10 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-toggle",
-	selector = "." + pluginName,
+var componentName = "wb-toggle",
+	selector = "." + componentName,
 	selectorPanel = ".tgl-panel",
 	selectorTab = ".tgl-tab",
-	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
 	toggleEvent = "toggle" + selector,
 	toggledEvent = "toggled" + selector,
@@ -9952,22 +9985,18 @@ var pluginName = "wb-toggle",
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var $link, data,
-			link = event.target;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === link &&
-			link.className.indexOf( initedClass ) === -1 ) {
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var link = wb.init( event, componentName, selector ),
+			$link, data;
 
-			wb.remove( selector );
-			link.className += " " + initedClass;
+		if ( link ) {
 			elmIdx += 1;
 
 			// Merge the elements settings with the defaults
@@ -9987,6 +10016,9 @@ var pluginName = "wb-toggle",
 			if ( data.print ) {
 				initPrint( $link, data );
 			}
+
+			// Identify that initialization has completed
+			wb.ready( $link, componentName );
 		}
 	},
 
@@ -10081,7 +10113,7 @@ var pluginName = "wb-toggle",
 
 		// Store the persistence type and key for later use
 		data.persist = data.persist === "session" ? sessionStorage : localStorage;
-		data.persistKey = pluginName + ( data.group ? data.group : "" ) + link.id;
+		data.persistKey = componentName + ( data.group ? data.group : "" ) + link.id;
 
 		// If there's a saved toggle state, trigger the change to that state
 		state = data.persist.getItem( data.persistKey );
@@ -10136,7 +10168,7 @@ var pluginName = "wb-toggle",
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
 	 */
 	toggle = function( event, data ) {
-		if ( event.namespace === pluginName ) {
+		if ( event.namespace === componentName ) {
 			var dataGroup, key, $elmsGroup,
 				isGroup = !!data.group,
 				isPersist = !!data.persist,
@@ -10171,7 +10203,7 @@ var pluginName = "wb-toggle",
 				// Remove all grouped persistence keys
 				if ( isPersist ) {
 					for ( key in data.persist ) {
-						if ( key.indexOf( pluginName + data.group ) === 0 ) {
+						if ( key.indexOf( componentName + data.group ) === 0 ) {
 							data.persist.removeItem( key );
 						}
 					}
@@ -10207,7 +10239,7 @@ var pluginName = "wb-toggle",
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
 	 */
 	toggleDetails = function( event, data ) {
-		if ( event.namespace === pluginName ) {
+		if ( event.namespace === componentName ) {
 			var top,
 				isOn = data.isOn,
 				$elms = data.elms,
@@ -10280,7 +10312,7 @@ var pluginName = "wb-toggle",
 
 		// When no selector, use the data attribute of the link
 		} else if ( !selector ) {
-			return $link.data( "state" ) || data.stateOff;
+			return $link.data( componentName + "-state" ) || data.stateOff;
 
 		// Get the current on/off state of the elements specified by the selector and parent
 		} else if ( states.hasOwnProperty( selector ) ) {
@@ -10328,7 +10360,7 @@ var pluginName = "wb-toggle",
 		}
 
 		// Store the state on the elements as well. This allows a link to toggle itself.
-		$elms.data( "state", state );
+		$elms.data( componentName + "-state", state );
 	};
 
 // Bind the plugin's events
@@ -10341,9 +10373,11 @@ $document.on( "timerpoke.wb " + initEvent + " " + toggleEvent +
 	case "click":
 		click( event );
 		break;
+
 	case "toggle":
 		toggle( event, data );
 		break;
+
 	case "timerpoke":
 	case "wb-init":
 		init( event );
@@ -10437,35 +10471,30 @@ wb.add( selector );
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var pluginName = "wb-twitter",
-	selector = "." + pluginName,
-	initedClass = pluginName + "-inited",
+var componentName = "wb-twitter",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	readyEvent = "wb-ready" + selector,
 	$document = wb.doc,
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
-		var eventTarget = event.target,
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var eventTarget = wb.init( event, componentName, selector ),
 			protocol = wb.pageUrlParts.protocol;
 
-		// Filter out any events triggered by descendants
-		// and only initialize the element once
-		if ( event.currentTarget === eventTarget &&
-			eventTarget.className.indexOf( initedClass ) === -1 ) {
-
-			wb.remove( selector );
-			eventTarget.className += " " + initedClass;
-
+		if ( eventTarget ) {
 			Modernizr.load( {
 				load: ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//platform.twitter.com/widgets.js",
 				complete: function() {
-					$document.trigger( readyEvent );
+
+					// Identify that initialization has completed
+					wb.ready( $( eventTarget ), componentName );
 				}
 			});
 		}
@@ -10492,28 +10521,27 @@ wb.add( selector );
  * These are global to the event - meaning that they will be initialized once per page,
  * not once per instance of event on the page.
  */
-var selector = "#wb-tphp",
+var componentName = "wb-disable",
+	selector = "#wb-tphp",
 	$document = wb.doc,
 
 	/**
-	 * createOffer runs once per plugin element on the page.
-	 * @method createOffer
-	 * @param {jQuery Event} event `timerpoke.wb` event that triggered the function call
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
-	createOffer = function( event ) {
-		var elm = event.target,
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			nQuery = "?",
 			$html = wb.html,
 			i18n = wb.i18n,
 			pageUrl = wb.pageUrlParts,
 			li, param;
 
-		// Filter out any events triggered by descendants
-		if ( event.currentTarget === elm ) {
-
-			// Let remove ourselves from the queue we only run once
-			wb.remove( selector );
-
+		if ( elm ) {
 			li = document.createElement( "li" );
 			li.className = "wb-slc";
 
@@ -10549,12 +10577,17 @@ var selector = "#wb-tphp",
 
 			// Append the Basic HTML version link version
 			li.innerHTML = "<a class='wb-sl' href='" + nQuery + "wbdisable=true'>" + i18n( "wb-disable" ) + "</a>";
-			elm.appendChild( li ); // Add link to disable WET plugins and polyfills
+
+			// Add link to disable WET plugins and polyfills
+			elm.appendChild( li );
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
 		}
 	};
 
 // Bind the events
-$document.on( "timerpoke.wb", selector, createOffer );
+$document.on( "timerpoke.wb", selector, init );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -10640,11 +10673,10 @@ $document.on( clickEvents, linkSelector, function( event ) {
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
- var pluginName = "wb-zebra",
-	selector = "." + pluginName,
-	hoverColClass = pluginName + "-col-hover",
+ var componentName = "wb-zebra",
+	selector = "." + componentName,
+	hoverColClass = componentName + "-col-hover",
 	selectorHoverCol = "." + hoverColClass + " td, " + hoverColClass + " th",
-	initedClass = pluginName + "-inited",
 	initEvent = "wb-init" + selector,
 	tableParsingEvent = "passiveparse.wb-tableparser",
 	tableParsingCompleteEvent = "parsecomplete.wb-tableparser",
@@ -10659,23 +10691,28 @@ $document.on( clickEvents, linkSelector, function( event ) {
 	 */
 	zebraTable = function( $elm ) {
 		var i, iLength, tblGroup,
-			tblparser = $elm.data().tblparser; // Cache the table parsed results
+
+			// Cache the table parsed results
+			tblparser = $elm.data().tblparser;
 
 		function addCellClass( arr, className ) {
 			var i, iLength;
 
 			for ( i = 0, iLength = arr.length; i !== iLength; i += 1 ) {
-				$( arr[i].elem ).addClass( className );
+				$( arr[ i ].elem ).addClass( className );
 			}
 		}
+
 		// Key Cell
 		if ( tblparser.keycell ) {
 			addCellClass( tblparser.keycell, "wb-cell-key" );
 		}
+
 		// Description Cell
 		if ( tblparser.desccell ) {
 			addCellClass( tblparser.desccell, "wb-cell-desc" );
 		}
+
 		// Layout Cell
 		if ( tblparser.layoutCell ) {
 			addCellClass( tblparser.layoutCell, "wb-cell-layout" );
@@ -10686,7 +10723,7 @@ $document.on( clickEvents, linkSelector, function( event ) {
 			for ( i = 0, iLength = tblparser.lstrowgroup.length; i !== iLength; i += 1 ) {
 				tblGroup = tblparser.lstrowgroup[ i ];
 				// Add a class to the row
-				if ( tblGroup.type === 3 || tblGroup.row[ 0 ].type === 3) {
+				if ( tblGroup.type === 3 || tblGroup.row[ 0 ].type === 3 ) {
 					$( tblGroup.elem ).addClass( "wb-group-summary" );
 				}
 			}
@@ -10703,29 +10740,31 @@ $document.on( clickEvents, linkSelector, function( event ) {
 			}
 		}
 
+		// Identify that initialization has completed
+		wb.ready( $elm, componentName );
 	},
 
 	/**
-	 * Init runs once per plugin element on the page. There may be multiple elements.
-	 * It will run more than once per plugin if you don't remove the selector from the timer.
 	 * @method init
-	 * @param {DOM element} elm The plugin element being initialized
+	 * @param {jQuery Event} event Event that triggered the function call
 	 */
-	init = function( elm ) {
-		var elmId = elm.id,
-			modeJS = wb.getMode() + ".js",
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
 			deps = [
-				"site!deps/tableparser" + modeJS
-			];
+				"site!deps/tableparser" + wb.getMode() + ".js"
+			],
+			elmId;
 
-		if ( elm.className.indexOf( initedClass ) === -1 ) {
-			wb.remove( selector );
-
-			elm.className += " " + initedClass;
+		if ( elm ) {
+			elmId = elm.id;
 
 			// Ensure there is a unique id on the element
 			if ( !elmId ) {
-				elmId = pluginName + "-id-" + idCount;
+				elmId = componentName + "-id-" + idCount;
 				idCount += 1;
 				elm.id = elmId;
 			}
@@ -10755,27 +10794,25 @@ $document.on( clickEvents, linkSelector, function( event ) {
 
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent + " " + tableParsingCompleteEvent, selector, function( event ) {
-	var eventType = event.type,
-		elm = event.target;
+	var eventTarget = event.target;
 
-	if ( event.currentTarget !== elm ) {
-		return true;
-	}
-
-	switch ( eventType ) {
+	switch ( event.type ) {
 
 	/*
 	 * Init
 	 */
 	case "timerpoke":
-		init( elm );
+	case "wb-init":
+		init( event );
 		break;
 
 	/*
 	 * Data table parsed
 	 */
 	case "parsecomplete":
-		zebraTable( $( elm ) );
+		if ( event.currentTarget === eventTarget ) {
+			zebraTable( $( eventTarget ) );
+		}
 		break;
 	}
 

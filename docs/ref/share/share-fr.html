@@ -218,6 +218,8 @@
 <dd>Shares the current page</dd>
 <dt><code>video</code>:</dt>
 <dd>Shares the specified video</dd>
+<dt><code>audio</code>:</dt>
+<dd>Shares the specified audio file</dd>
 </dl>
 </td>
 </tr>
@@ -356,7 +358,7 @@ the page URL, "{t}" is the page title, {i} is the image URL, and '{d}' is the de
 <tbody>
 <tr>
 <td><code>wb-init.wb-share</code></td>
-<td>Triggered manually (e.g., <code>$elm.trigger( "wb-init.wb-share" );</code>).</td>
+<td>Triggered manually (e.g., <code>$( ".wb-share" ).trigger( "wb-init.wb-share" );</code>).</td>
 <td>Used to manually initialize the share widget. <strong>Note:</strong> The share widget will be initialized automatically unless it is added after the page has already loaded.</td>
 </tr>
 <tr>
@@ -365,7 +367,15 @@ the page URL, "{t}" is the page title, {i} is the image URL, and '{d}' is the de
 <td>Used to identify where the Share plugin was initialized (target of the event).
 <pre><code>$( document ).on( "wb-ready.wb-share", ".wb-share", function( event ) {
 });</code></pre>
-<pre><code>$elm.on( "wb-ready.wb-share", function( event ) {
+<pre><code>$( ".wb-share" ).on( "wb-ready.wb-share", function( event ) {
+});</code></pre>
+</td>
+</tr>
+<tr>
+<td><code>wb-ready.wb</code> (v4.0.5+)</td>
+<td>Triggered automatically when WET has finished loading and executing.</td>
+<td>Used to identify when all WET plugins and polyfills have finished loading and executing.
+<pre><code>$( document ).on( "wb-ready.wb", function( event ) {
 });</code></pre>
 </td>
 </tr>
@@ -381,7 +391,7 @@ the page URL, "{t}" is the page title, {i} is the image URL, and '{d}' is the de
 <div class="col-xs-6 datemod">
 <dl id="wb-dtmd">
 <dt>Date de modification&#160;:&#32;</dt>
-<dd><time property="dateModified">2014-07-28</time></dd>
+<dd><time property="dateModified">2014-08-04</time></dd>
 </dl>
 </div>
 <div class="col-xs-6 text-right">

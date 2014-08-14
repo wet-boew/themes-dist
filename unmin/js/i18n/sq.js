@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-01
+ * v4.0.5-development - 2014-08-14
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -99,6 +99,7 @@ wb.i18nDict = {
 	"shr-txt": "Share",
 	"shr-pg": " këtë faqe",
 	"shr-vid": " këtë video",
+	"shr-aud": " hierdie audio",
 	"shr-hnt": " me {s} ",
 	"shr-disc": "Asnjë miratimi i ndonjë produkteve apo shërbimeve është shprehur apo të nënkuptuar",
 	/* Form validation */
