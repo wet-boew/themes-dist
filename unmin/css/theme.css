@@ -125,11 +125,24 @@ aside.features {
       max-width: 100%; }
 
 /* Heading with links inside of rows */
-.sect-lnks h2 a, .sect-lnks h3 a, .sect-lnks h4 a, .departments a h4, .priorities a h2 {
+.departments a h2, .departments a h3, .departments a h4, .priorities a h2, .priorities a h3, .priorities a h4 {
+  font-size: 16px; }
+
+.sect-lnks h2 a, .sect-lnks h3 a, .sect-lnks h4 a {
+  font-size: 16px; }
+
+.gc-prtts a h2, .gc-prtts a h3, .gc-prtts a h4, .gc-nttvs a h2, .gc-nttvs a h3, .gc-nttvs a h4 {
+  font-size: 16px; }
+
+.gc-nws a h2, .gc-nws a h3, .gc-nws a h4 {
+  font-size: 16px;
+  margin-top: 15px; }
+
+.secondary .row h2 a, .secondary .row h3 a, .secondary .row h4 a, .home .row h2 a, .home .row h3 a, .home .row h4 a {
   font-size: 16px; }
 
 /* Home page */
-.home h2.h1, .home .departments h3 {
+.home h2.h1 h3, .home .departments h3 {
   border-bottom: 1px solid #af3c43;
   font-size: 27px;
   margin-bottom: 0.2em;
@@ -144,11 +157,6 @@ aside.features {
   .thumbnail:hover img {
     -webkit-box-shadow: 1px 1px 5px #999;
     box-shadow: 1px 1px 5px #999; }
-
-/* Secondary pages */
-.secondary section.profile .thumbnail {
-  border: 0;
-  padding: 5px; }
 
 .pagedetails {
   padding-bottom: 2em;
@@ -813,6 +821,7 @@ a.shr-opn, a.shr-opn:hover {
 .followus {
   background-color: #eaebed;
   display: inline-block;
+  margin-bottom: 15px;
   padding: 20px 5px; }
   .followus h2 {
     display: inline;
