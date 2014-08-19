@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-12
+ * v4.0.5-development - 2014-08-19
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4120,6 +4120,11 @@ var componentName = "wb-eqht",
 			for ( j = $children.length - 1; j !== -1; j -= 1 ) {
 				currentChild = $children[ j ];
 				childCSS = currentChild.style.cssText.toLowerCase();
+
+				//Ensure the CSS string ends by a seperator
+				if ( childCSS.length > 0 && childCSS.substr( childCSS.length - 1 ) !== cssPropertySeparator ) {
+					childCSS += cssPropertySeparator;
+				}
 
 				// Ensure all children that are on the same baseline have the same 'top' value.
 				if ( childCSS.indexOf( vAlignCSS ) !== -1 ) {
@@ -9685,7 +9690,7 @@ var componentName = "wb-tabs",
 		/*
 		 * Change Slides
 		 */
-		case "shift":
+		case "wb-shift":
 
 			// Filter out any events triggered by descendants
 			if ( eventCurrentTarget === eventTarget ) {
@@ -9835,7 +9840,7 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	// Ignore middle and right mouse buttons
 	if ( ( !which || which === 1 ) && href.charAt( 0 ) === "#" ) {
 		$container = $( currentTarget ).closest( selector );
-		$panel = $container.find( href );
+		$panel = $container.find( href + "[role=tabpanel]" );
 		if ( $panel.length !== 0 ) {
 			event.preventDefault();
 			$summary = $panel.children( "summary" );
