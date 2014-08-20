@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.5-development - 2014-08-18
+ * v4.0.5-development - 2014-08-20
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -45,7 +45,7 @@ wb.i18nDict = {
 	},
 	"hour-ago": "Satu jam yang lalu",
 	"hours-ago": {
-		mixin: "[MIXIN] jam yang lalu"
+		mixin: "[MIXIN] hours ago"
 	},
 	"days-ago": {
 		mixin: "[MIXIN] hari yang lalu"
@@ -70,8 +70,8 @@ wb.i18nDict = {
 		off: "Hentikan rotasi tab",
 		on: "Mulai rotasi tab"
 	},
-	"tab-list": "Tab daftar",
-	"tab-pnl-end1": "Akhir ini panel tab.",
+	"tab-list": "Daftar tab",
+	"tab-pnl-end1": "Akhir panel tab ini.",
 	"tab-pnl-end2": "Kembali ke daftar tab",
 	"tab-pnl-end3": "atau melanjutkan ke seluruh halaman.",
 	/* Multimedia player */
@@ -203,7 +203,7 @@ wb.i18nDict = {
 	"geo-aoi-btndraw": "Menarik",
 	"geo-aoi-btnclear": "Menghapus",
 	"geo-geoloc-btn": "Zoom ke lokasi saat ini",
-	"geo-geoloc-fail": "Lokasi gagal. Pastikan bahwa layanan lokasi diaktifkan.",
+	"geo-geoloc-fail": "Lokalisasi gagal. Pastikan bahwa layanan lokasi diaktifkan.",
 	"geo-geoloc-uncapable": "Lokalisasi tidak didukung oleh browser Anda.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Versi HTML dasar",
