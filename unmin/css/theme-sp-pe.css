@@ -86,4 +86,6 @@
     main h2 {
       min-height: 4em; }
     main section + section h2 {
-      text-align: right; } }
+      text-align: right; }
+    main section .list-unstyled {
+      margin-top: 120px; } }

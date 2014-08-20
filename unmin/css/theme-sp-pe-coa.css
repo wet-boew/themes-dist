@@ -92,39 +92,14 @@
     main h2 {
       min-height: 4em; }
     main section + section h2 {
-      text-align: right; } }
+      text-align: right; }
+    main section .list-unstyled {
+      margin-top: 120px; } }
 
 /*
  Views
  */
 /* All screen views */
 @media screen {
-  /*
- *
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- *
- */
-  /*
-  @title: All screen views - Splash page
- */
-  #gcwu-sig {
-    height: 1.5em; }
-  #wmms {
-    float: right;
-    height: 2.1em;
-    margin-top: 10px; }
-  header {
-    margin-top: 1.2em; }
-  main > div {
-    background: url("../assets/sp-pe-bg.jpg") repeat-x center top;
-    margin-top: 10px;
-    padding-top: 20px; }
-  main h1 {
-    margin: 0 0 30px;
-    position: relative;
-    text-align: center; }
-  main h2 {
-    font-size: 180%; }
   #gcwu-sig {
     height: 65px; } }
