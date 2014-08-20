@@ -444,13 +444,13 @@
       filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr="#FFF0F0F0", endColorstr="#FFCCCCCC");
       line-height: 1;
       padding: 2px 6px; }
-  #wb-cont {
-    margin-top: 20px; }
   #wb-sec .list-group a.list-group-item.wb-navcurr, #wb-sec .list-group a.list-group-item[href]:hover, #wb-sec .list-group a.list-group-item[href]:focus {
     background: #808080;
     color: white; }
+  #wb-cont {
+    margin-top: 38px; }
   #wb-sec {
-    margin-top: 20px;
+    margin-top: 38px;
     padding-bottom: 2em; }
     #wb-sec h3 {
       border: 1px solid #ddd;
