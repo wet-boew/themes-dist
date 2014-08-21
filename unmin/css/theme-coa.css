@@ -447,8 +447,6 @@
   #wb-sec .list-group a.list-group-item.wb-navcurr, #wb-sec .list-group a.list-group-item[href]:hover, #wb-sec .list-group a.list-group-item[href]:focus {
     background: #808080;
     color: white; }
-  #wb-cont {
-    margin-top: 38px; }
   #wb-sec {
     margin-top: 38px;
     padding-bottom: 2em; }
