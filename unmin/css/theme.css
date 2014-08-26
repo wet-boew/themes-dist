@@ -895,7 +895,8 @@ a.shr-opn, a.shr-opn:hover {
 .fd-wdgt .media {
   border-top: 1px solid #ddd;
   margin-top: 0;
-  padding: 15px 15px 0 5px; }
+  padding: 15px 15px 0 5px;
+  position: relative; }
   .fd-wdgt .media:first-child {
     border-top: 0; }
   .fd-wdgt .media p {
