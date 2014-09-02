@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-08-22
+ * v4.0.6-development - 2014-09-02
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -4758,7 +4758,7 @@ a {
   background: #e8f2f4;
   border-color: #083c6c; }
 
-.label-success, .label-success[href]:hover, .label-success[href]:focus, .label-success[href]:active, .alert-success {
+.label-success, .label-success[href]:hover, .label-success[href]:focus, .label-success[href]:active, .alert-success, details.alert-success {
   background: #d8eeca;
   border-color: #278400; }
 
@@ -4766,7 +4766,7 @@ a {
   color: #278400;
   content: "\e084"; }
 
-.label-info, .label-info[href]:hover, .label-info[href]:focus, .label-info[href]:active, .alert-info {
+.label-info, .label-info[href]:hover, .label-info[href]:focus, .label-info[href]:active, .alert-info, details.alert-info {
   background: #d7faff;
   border-color: #269abc; }
 
@@ -4774,7 +4774,7 @@ a {
   color: #269abc;
   content: "\e086"; }
 
-.label-warning, .label-warning[href]:hover, .label-warning[href]:focus, .label-warning[href]:active, .alert-warning {
+.label-warning, .label-warning[href]:hover, .label-warning[href]:focus, .label-warning[href]:active, .alert-warning, details.alert-warning {
   background: #f9f4d4;
   border-color: #f90; }
 
@@ -4782,11 +4782,41 @@ a {
   color: #f90;
   content: "\e107"; }
 
-.label-danger, .label-danger[href]:hover, .label-danger[href]:focus, .label-danger[href]:active, .alert-danger {
+.label-danger, .label-danger[href]:hover, .label-danger[href]:focus, .label-danger[href]:active, .alert-danger, details.alert-danger {
   background: #f3e9e8;
   border-color: #d3080c; }
 
 .alert-danger > :first-child:before {
+  color: #d3080c;
+  content: "\e101"; }
+
+details.alert {
+  padding-left: 45px; }
+  details.alert:before {
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-size: 24px;
+    margin-left: -1.3em;
+    margin-top: -3px;
+    position: absolute; }
+  details.alert > * {
+    margin-left: 0.7em; }
+  details.alert > :first-child {
+    margin-left: 0.4em; }
+    details.alert > :first-child:before {
+      color: #000;
+      content: "";
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+details.alert-success:before {
+  color: #278400;
+  content: "\e084"; }
+details.alert-info:before {
+  color: #269abc;
+  content: "\e086"; }
+details.alert-warning:before {
+  color: #f90;
+  content: "\e107"; }
+details.alert-danger:before {
   color: #d3080c;
   content: "\e101"; }
 
@@ -4932,6 +4962,14 @@ blockquote {
   [dir=rtl] .alert > :first-child:before {
     margin-left: auto;
     margin-right: -1.3em; }
+[dir=rtl] details.alert {
+  padding-right: 45px; }
+  [dir=rtl] details.alert:before {
+    margin-right: -1.3em; }
+  [dir=rtl] details.alert > * {
+    margin-right: 0.7em; }
+  [dir=rtl] details.alert > :first-child {
+    margin-right: 0.4em; }
 [dir=rtl] .list-unstyled, [dir=rtl] .list-inline {
   padding-right: 0; }
 [dir=rtl] .pagination [rel="prev"], [dir=rtl] .pager [rel="prev"] {
@@ -5624,17 +5662,20 @@ summary {
   summary:hover, summary:focus {
     background: #ddd;
     color: #000; }
+  summary > :first-child {
+    display: inline; }
 
 details[open] {
   padding-bottom: 1em; }
 details > * {
-  margin-left: 1.3em; }
+  margin-left: 1.5em;
+  margin-right: auto; }
 details > summary {
   margin-left: auto; }
 
 [dir=rtl] details > * {
   margin-left: auto;
-  margin-right: 1.3em; }
+  margin-right: 1.5em; }
 [dir=rtl] details > summary {
   margin-right: auto; }
 
@@ -7664,6 +7705,9 @@ table.dataTable {
 
 .geomap-legend-label {
   display: inline; }
+
+.geomap-lgnd-layer {
+  margin-top: 20px !important; }
 
 .geomap-geoloc {
   left: 60px;
