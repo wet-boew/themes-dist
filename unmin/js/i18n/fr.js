@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-02
+ * v4.0.6-development - 2014-09-04
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -54,8 +54,8 @@ wb.i18nDict = {
 
 	nxt: "Suivant",
 	"nxt-r": "Suivant (touche droite)",
-	prv: "Précedent",
-	"prv-l": "Précedent (touche gauche)",
+	prv: "Précédent",
+	"prv-l": "Précédent (touche gauche)",
 	first: "Premier",
 	last: "Dernier",
 	"srch-menus": "Recherche et menus",
