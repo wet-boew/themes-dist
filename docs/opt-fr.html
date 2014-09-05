@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="fr" dir="ltr"> <!--<![endif]-->
+<!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="fr" dir="ltr"> <!--<![endif]-->
 <head>
-<meta charset="utf-8"/>
-
+<meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Optimiser votre code JavaScript, CSS et HTML - Canada.ca</title>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
+<meta name="description" content="Comment optimiser votre code JavaScript, CSS et HTML"> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
+<link href="../assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="../css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="../css/theme.min.css"> <!--[if lt IE 9]>
+<link href="../assets/favicon.ico" rel="shortcut icon" />
 
-<meta name="description" content="Comment optimiser votre code JavaScript, CSS et HTML"/>
+<link rel="stylesheet" href="../css/ie8-wet-boew.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../js/ie8-wet-boew.min.js"></script>
+<![endif]--> <!--[if lte IE 9]>
 
-<!--[if gte IE 9 | !IE ]><!--> <link href="../assets/favicon.ico" rel="icon" type="image/x-icon"/> <link rel="stylesheet" href="../css/wet-boew.min.css"/> <!--<![endif]-->
-<link rel="stylesheet" href="../css/theme.min.css"/>
-<!--[if lt IE 9]><link href="../assets/favicon.ico" rel="shortcut icon"/> <link rel="stylesheet" href="../css/ie8-wet-boew.min.css"/> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <script src="../js/ie8-wet-boew.min.js"></script><![endif]-->
-<!--[if lte IE 9]>
+
 <![endif]-->
-<noscript><link rel="stylesheet" href="../css/noscript.min.css"/></noscript>
+<noscript><link rel="stylesheet" href="../css/noscript.min.css" /></noscript>
 <script>dataLayer1 = [];</script>
 </head>
-<body vocab="http://schema.org/" typeof="WebPage">
-
+<body vocab="http://schema.org/" typeof="WebPage"> <!-- Google Tag Manager -->
 <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
-
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script> <!-- End Google Tag Manager-->
 <ul id="wb-tphp">
 <li class="wb-slc">
 <a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
@@ -57,15 +59,13 @@
 <h2 class="wb-inv">Recherche</h2>
 <form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript"> 
-		var autoCompletionOptions = { 'validLanguages' : 'fr', };
+<script type="text/javascript">var autoCompletionOptions = { 'validLanguages' : 'fr', };
 		google.load( 'search', '1');
 		google.setOnLoadCallback( function() {google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q' ), 'cse-search-box', autoCompletionOptions );});
-		google.setOnLoadCallback( function() {setTimeout( function(){google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q-imprt' ), 'cse-search-box',autoCompletionOptions );}, 2000);});
-	</script>
+		google.setOnLoadCallback( function() {setTimeout( function(){google.search.CustomSearchControl.attachAutoCompletionWithOptions( '008724028898028201144:knjjdikrhq0', document.getElementById( 'wb-srch-q-imprt' ), 'cse-search-box',autoCompletionOptions );}, 2000);});</script>
 <div class="form-group">
 <label for="wb-srch-q" class="wb-inv">Recherchez le site Web</label>
-<input id="wb-srch-q" class="wb-srch-q form-control" name="wb-srch-q" type="search" value="" size="27" maxlength="150" placeholder="Rechercher dans Canada.ca"/>
+<input id="wb-srch-q" class="wb-srch-q form-control" name="wb-srch-q" type="search" value="" size="27" maxlength="150" placeholder="Rechercher dans Canada.ca">
 </div>
 <div class="form-group submit">
 <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Recherche</span></button>
@@ -114,28 +114,15 @@
 <p>Comment optimiser votre code JavaScript, CSS et HTML. Veuillez ajouter et apporter des améliorations aux techniques qui sont déjà énumérées.</p>
 <section>
 <h2>Synthèse</h2>
-<p>L'optimisation de la programmation est une tâche importante de la Boîte à outils de l'expérience Web maintenant qu'elle adopte une approche mobilité d'abord dans la version 4.0.
-Là où la programmation molle pourrait avoir un impact minimal sur les performances dans un fureteur d'ordinateur de bureau,
-elle peut résulter en des délais vraiment significatifs sur les appreils mobiles.
-C'est pourquoi une des priorités de la BOEW v4.x est l'optimisation de la performance.</p>
-<p>Le cadre de la BOEW v4.x est déjà fortement optimisé en utilisant la minification de code, la consolidation, le scriptage CSS et l'encodage Base64.
-Tout ca résulte dans une augmentation de la performance significative mais peut encore s'enliser par du code gonflé et mou.
-Cette page fournie plusieurs conseils pour vous assurer que votre programmation est aussi efficace que possible.</p>
+<p>L'optimisation de la programmation est une tâche importante de la Boîte à outils de l'expérience Web maintenant qu'elle adopte une approche mobilité d'abord dans la version 4.0. Là où la programmation molle pourrait avoir un impact minimal sur les performances dans un fureteur d'ordinateur de bureau, elle peut résulter en des délais vraiment significatifs sur les appreils mobiles. C'est pourquoi une des priorités de la BOEW v4.x est l'optimisation de la performance.</p>
+<p>Le cadre de la BOEW v4.x est déjà fortement optimisé en utilisant la minification de code, la consolidation, le scriptage CSS et l'encodage Base64. Tout ca résulte dans une augmentation de la performance significative mais peut encore s'enliser par du code gonflé et mou. Cette page fournie plusieurs conseils pour vous assurer que votre programmation est aussi efficace que possible.</p>
 </section>
 <section>
 <h2>Optimisation du code JavaScript</h2>
 <ul>
-<li><strong>Minimiser l'utilisation du jQuery :</strong> jQuery peut être d'un grand aide avec la traversée DOM
-et les scénarios complexes de scrptage mais peut ralentir lorsqu'on travaille avec des scénarios de code simple et direct.
-Il y a un coût a la performance pour chaque objet jQuery créé et méthode d'emballage jQuery
-pour les opérations JavaScript de base. Évitez de créer des objets jQuery chaque fois que possible,
-spécialement dans les boucles.</li>
+<li><strong>Minimiser l'utilisation du jQuery :</strong> jQuery peut être d'un grand aide avec la traversée DOM et les scénarios complexes de scrptage mais peut ralentir lorsqu'on travaille avec des scénarios de code simple et direct. Il y a un coût a la performance pour chaque objet jQuery créé et méthode d'emballage jQuery pour les opérations JavaScript de base. Évitez de créer des objets jQuery chaque fois que possible, spécialement dans les boucles.</li>
 <li>
-<strong>Optimiser vos boucles :</strong> La boucle la plus rapide en JavaScript est en mémoire tampon pour boucles
-(longueur en mémoire tampon en dehors de la boucle). Évitez d'utiliser des boucles jQuery (p.e., <code>each()</code>)
-lorsque possible car il y a beaucoup de frais système. Dans le cas d'objets jQuery, utilisez <code>.get()</code> pour
-accéder à une collection d'objets DOM pour lesquels une condition « while » renversée et mémoire tampon pour boucles peuvent être utilisés.
-'''En mémoire tampon pour boucle (longueur en mémoire tampon en dehors de la boucle):'''
+<strong>Optimiser vos boucles :</strong> La boucle la plus rapide en JavaScript est en mémoire tampon pour boucles (longueur en mémoire tampon en dehors de la boucle). Évitez d'utiliser des boucles jQuery (p.e., <code>each()</code>) lorsque possible car il y a beaucoup de frais système. Dans le cas d'objets jQuery, utilisez <code>.get()</code> pour accéder à une collection d'objets DOM pour lesquels une condition « while » renversée et mémoire tampon pour boucles peuvent être utilisés. '''En mémoire tampon pour boucle (longueur en mémoire tampon en dehors de la boucle):'''
 <pre><code>var i,
 	len = myArray.length;
 for ( i = 0; i !== len; i += 1 ) {
@@ -144,42 +131,21 @@ for ( i = 0; i !== len; i += 1 ) {
 	console.log( myArray[ i ] );
 }</code></pre>
 </li>
-<li><strong>« if/else » versus déclarations « switch » :</strong> Lorsque vous décidez comment contrôler le flot de votre programmation,
-il est important de considérer le nombre de conditions à comparer. Si il n'y a qu'une ou deux conditions, les déclarations « if/else » sont généralement plus rapides.
-Cependant, lorsque vous avez 3 conditions ou plus à comparer, une déclaration « switch » est l'option la plus rapide.
-Vos déclarations « if/else » et « switch » devraient aussi être organisées pour que les conditions les plus communes
-apparaissent au haut du bloc de déclaration « if/else » ou « switch » (Voir jsPerf <a rel="external" href="http://jsperf.com/program-flow-statements" lang="en">if/else versus switch test case</a>).</li>
+<li><strong>« if/else » versus déclarations « switch » :</strong> Lorsque vous décidez comment contrôler le flot de votre programmation, il est important de considérer le nombre de conditions à comparer. Si il n'y a qu'une ou deux conditions, les déclarations « if/else » sont généralement plus rapides. Cependant, lorsque vous avez 3 conditions ou plus à comparer, une déclaration « switch » est l'option la plus rapide. Vos déclarations « if/else » et « switch » devraient aussi être organisées pour que les conditions les plus communes apparaissent au haut du bloc de déclaration « if/else » ou « switch » (Voir jsPerf <a rel="external" href="http://jsperf.com/program-flow-statements" lang="en">if/else versus switch test case</a>).</li>
 <li><strong>Éléments DOM en mémoire tampon, objets jQuery et valeurs objet/collection :</strong>
-Il y a beaucoup de frais système à faire des recherches DOM, créer des objets jQuery, et retrouver des valeurs objet/collection.
-Minimisez l'impact en ajoutant à la mémoire tampon les résultats où ces résultats seront utilisés plus d'une fois.
-Il est préférable d'emmagasiner ces résultats dans des variables locales et de réutiliser ces variables.</li>
+Il y a beaucoup de frais système à faire des recherches DOM, créer des objets jQuery, et retrouver des valeurs objet/collection. Minimisez l'impact en ajoutant à la mémoire tampon les résultats où ces résultats seront utilisés plus d'une fois. Il est préférable d'emmagasiner ces résultats dans des variables locales et de réutiliser ces variables.</li>
 <li>
-<strong>Minimiser le refoulement :</strong> Chaque modification apportée au DOM a un coût significatif à la performace car elle
-le refoulement de page. Minimisez ce coût en effectuant tout les changements dans une seule opération
-pour actionner le refoulement qu'une seule fois plutôt que plusieurs opérations qui activent le refoulement plusieurs fois.
-Ca peut être effectuer de la manière suivante :
+<strong>Minimiser le refoulement :</strong> Chaque modification apportée au DOM a un coût significatif à la performace car elle le refoulement de page. Minimisez ce coût en effectuant tout les changements dans une seule opération pour actionner le refoulement qu'une seule fois plutôt que plusieurs opérations qui activent le refoulement plusieurs fois. Ca peut être effectuer de la manière suivante :
 <ul>
-<li>Mettre tout les changements dans une chaîne de caractères ou objet et ensuite le joindre
-au DOM ou remplacer en partie le DOM avec cette chaîne de caractères ou objet.</li>
+<li>Mettre tout les changements dans une chaîne de caractères ou objet et ensuite le joindre au DOM ou remplacer en partie le DOM avec cette chaîne de caractères ou objet.</li>
 <li>Détachez un élément du DOM, apportez-y le changement, réattachez le ensuite au DOM.</li>
 </ul>
 </li>
-<li><strong>Éviter les recherches DOM globales :</strong> Le coût à la performance est beaucoup plus grand
-lorsqu'on recherche le DOM au complet plutôt que de rechercher seulement une partie de celui-ci.
-Si vous avez déjà une recherche en mémoire tampon, veuillez en prendre avantage et recherchez de ce point
-plutôt que de rechercher le DOM au complet à nouveau. Par exemple si vous avez déjà la recherche pour la classe <code>.button</code> en mémoire tampon
-dans la variable $buttons, faites alors <code>$buttons.find( "a.mybutton" )</code> pour trouver les éléments
-a plutôt que <code>$( "a.mybutton" )</code>. Lorsque possible, utilisez du JavaScript natif pour rechercher
-tel que <code>getElementById</code> et <code>getElementsByTagName</code>.</li>
-<li><strong>Recherches DOM optimisées tout d'adord, filtrage ensuite:</strong> Les recherches DOM les plus rapides
-en JavaScript sont par id et nom de balise à cause des fonctions JavaScript natives <code>getElementById</code>
-et <code>getElementsByTagName</code>. Prenez avantage de cette performance en exécutant d'abord des recherches optimisées
-et filtrez ensuite. Par exemple, au lieu de <code>.find( "a[href=*'url_fragment']" )</code> effectuez <code>.find( "a" ).filter( "[href=*'url_fragment']" )</code>.</li>
+<li><strong>Éviter les recherches DOM globales :</strong> Le coût à la performance est beaucoup plus grand lorsqu'on recherche le DOM au complet plutôt que de rechercher seulement une partie de celui-ci. Si vous avez déjà une recherche en mémoire tampon, veuillez en prendre avantage et recherchez de ce point plutôt que de rechercher le DOM au complet à nouveau. Par exemple si vous avez déjà la recherche pour la classe <code>.button</code> en mémoire tampon dans la variable $buttons, faites alors <code>$buttons.find( "a.mybutton" )</code> pour trouver les éléments a plutôt que <code>$( "a.mybutton" )</code>. Lorsque possible, utilisez du JavaScript natif pour rechercher tel que <code>getElementById</code> et <code>getElementsByTagName</code>.</li>
+<li><strong>Recherches DOM optimisées tout d'adord, filtrage ensuite:</strong> Les recherches DOM les plus rapides en JavaScript sont par id et nom de balise à cause des fonctions JavaScript natives <code>getElementById</code>
+et <code>getElementsByTagName</code>. Prenez avantage de cette performance en exécutant d'abord des recherches optimisées et filtrez ensuite. Par exemple, au lieu de <code>.find( "a[href=*'url_fragment']" )</code> effectuez <code>.find( "a" ).filter( "[href=*'url_fragment']" )</code>.</li>
 <li>
-<strong>Combiner de multiples événements à un élément :</strong> Lorsque vous combinez de multiples événements à un élément,
-il est plus rapide de combiner tous les événements a un seul gestionnaire d'événement.
-Vous pouvez utiliser la propriété type de l'événement pour déterminer quel événement a été activé
-(see the jsPerf <a rel="external" href="http://jsperf.com/combined-or-separate-event-handlers" lang="en">handling multiple events test case</a>).
+<strong>Combiner de multiples événements à un élément :</strong> Lorsque vous combinez de multiples événements à un élément, il est plus rapide de combiner tous les événements a un seul gestionnaire d'événement. Vous pouvez utiliser la propriété type de l'événement pour déterminer quel événement a été activé (see the jsPerf <a rel="external" href="http://jsperf.com/combined-or-separate-event-handlers" lang="en">handling multiple events test case</a>).
 <pre><code>// Plus rapide : un seul gestionnaire d'événement pour les deux événements
 $( "#elem" ).on( "mouseover mouseout", function( event ) {
 	if ( event.type === "mouseover" ) {
@@ -236,10 +202,7 @@ console.log( ( new Date() ).getTime() - test );</code></pre>
 <section>
 <h2>Optimisation de code CSS</h2>
 <ul>
-<li><strong>Minimiser les noms de classe CSS :</strong> les noms de classe CSS sont souvent réutilisées de
-multiple fois à l'intérieur des fichiers CSS et HTML pour pouvoir ajouter rapidement en vrac aux fichiers si ils sont longs are inutilement long.
-Gardez les noms de classe aussi courts que possible tout en s'assurant qu'ils restent unique.
-Un exercice de réduction des noms de classe d'un cadre de la BOEW récent a permis de réduire la taille de fichier de 10% à 30%.</li>
+<li><strong>Minimiser les noms de classe CSS :</strong> les noms de classe CSS sont souvent réutilisées de multiple fois à l'intérieur des fichiers CSS et HTML pour pouvoir ajouter rapidement en vrac aux fichiers si ils sont longs are inutilement long. Gardez les noms de classe aussi courts que possible tout en s'assurant qu'ils restent unique. Un exercice de réduction des noms de classe d'un cadre de la BOEW récent a permis de réduire la taille de fichier de 10% à 30%.</li>
 </ul>
 <section>
 <h3>Techniques aditionelles</h3>
@@ -264,8 +227,7 @@ Un exercice de réduction des noms de classe d'un cadre de la BOEW récent a per
 <section>
 <h2>Optimisation de serveur Web</h2>
 <ul>
-<li>Autoriser la compression Gzip sur votre serveur Web. La compression Gzip peut réduire la taille de transfert
-jusqu'à 70%. ''Note :''' La compression Gzip ne réduit pas l'impact sur la taille de la mémoire tampon de l'utilisateur final (mémoire tampon non-comprimée) alors la taille des fichiers devrait être réduite autant que possible avant la compression Gzip.</li>
+<li>Autoriser la compression Gzip sur votre serveur Web. La compression Gzip peut réduire la taille de transfert jusqu'à 70%. ''Note :''' La compression Gzip ne réduit pas l'impact sur la taille de la mémoire tampon de l'utilisateur final (mémoire tampon non-comprimée) alors la taille des fichiers devrait être réduite autant que possible avant la compression Gzip.</li>
 </ul>
 </section>
 <aside class="gc-nttvs">
@@ -274,21 +236,21 @@ jusqu'à 70%. ''Note :''' La compression Gzip ne réduit pas l'impact sur la tai
 <section class="col-lg-4 col-md-6">
 <a href="http://www.fin.gc.ca/news-nouvelles/nr-nc/2013/prebudget-prebudgetaire-fra.asp">
 <h3>Consultations prébudgétaires</h3>
-<img src="../img/features/pi-2013-11-07_budget-fr.jpg" alt="" class="img-responsive"/>
+<img src="../img/features/pi-2013-11-07_budget-fr.jpg" alt="" class="img-responsive">
 </a>
 <p>Brève description de l'initiative, la tâche ou des renseignements en promotion</p>
 </section>
 <section class="col-lg-4 col-md-6">
 <a href="http://www.canada150.gc.ca/fra/1344275798109/1344275838665">
 <h3><span class="wb-inv">Canada 150 </span>À vous la parole!</h3>
-<img src="../img/features/pi-2013-12-12_haveyoursay-fr.jpg" alt="" class="img-responsive"/>
+<img src="../img/features/pi-2013-12-12_haveyoursay-fr.jpg" alt="" class="img-responsive">
 </a>
 <p>Brève description de l'initiative, la tâche ou des renseignements en promotion</p>
 </section>
 <section class="col-lg-4 col-md-6">
 <a href="http://www.ic.gc.ca/eic/site/icgc.nsf/fra/07389.html?Open&amp;wtpromo=Plus_de_choix">
 <h3>Notre politique sur le sans-fil est claire.<span class="wb-inv"> Plus de choix. Des prix plus bas.</span></h3>
-<img src="../img/features/pi-2013-09-04_wl-fr.png" alt="" class="img-responsive"/>
+<img src="../img/features/pi-2013-09-04_wl-fr.png" alt="" class="img-responsive">
 </a>
 <p>Brève description de l'initiative, la tâche ou des renseignements en promotion</p>
 </section>
@@ -357,22 +319,22 @@ jusqu'à 70%. ''Note :''' La compression Gzip ne réduit pas l'impact sur la tai
 <div class="col-sm-3 col-lg-3 brdr-lft">
 <section>
 <h3>Rétroaction</h3>
-<p><a href="http://www.canada.ca/fr/contact/retroaction.html"><img src="../assets/feedback.png" class="img-responsive" alt="Rétroaction sur ce site Web"/></a></p>
+<p><a href="http://www.canada.ca/fr/contact/retroaction.html"><img src="../assets/feedback.png" class="img-responsive" alt="Rétroaction sur ce site Web"></a></p>
 </section>
 <section>
 <h3>Médias sociaux</h3>
-<p><a href="http://www.canada.ca/fr/sociaux/index.html"><img src="../assets/social.png" class="img-responsive" alt="Médias sociaux"/></a></p>
+<p><a href="http://www.canada.ca/fr/sociaux/index.html"><img src="../assets/social.png" class="img-responsive" alt="Médias sociaux"></a></p>
 </section>
 <section>
 <h3>Centre mobile</h3>
-<p><a href="http://www.canada.ca/fr/mobile/index.html"><img src="../assets/mobile.png" class="img-responsive" alt="Centre mobile"/></a></p>
+<p><a href="http://www.canada.ca/fr/mobile/index.html"><img src="../assets/mobile.png" class="img-responsive" alt="Centre mobile"></a></p>
 </section>
 </div>
 </div>
 </nav>
 <div class="brand">
 <div class="container">
-<div class="row ">
+<div class="row">
 <div class="col-xs-6 visible-sm visible-xs tofpg">
 <a href="#wb-cont">Haut de la page <span class="glyphicon glyphicon-chevron-up"></span></a>
 </div>
@@ -382,8 +344,10 @@ jusqu'à 70%. ''Note :''' La compression Gzip ne réduit pas l'impact sur la tai
 </div>
 </div>
 </div>
-</footer>
-<!--[if gte IE 9 | !IE ]><!--> <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> <script src="../js/wet-boew.min.js"></script> <!--<![endif]-->
-<!--[if lt IE 9]><script src="../js/ie8-wet-boew2.min.js"></script><![endif]-->
+</footer> <!--[if gte IE 9 | !IE ]><!-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="../js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="../js/ie8-wet-boew2.min.js"></script>
+<![endif]-->
 </body>
 </html>
