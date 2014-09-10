@@ -138,15 +138,13 @@ aside.features {
   font-size: 16px;
   margin-top: 15px; }
 
-.secondary .row h2 a, .secondary .row h3 a, .secondary .row h4 a, .home .row h2 a, .home .row h3 a, .home .row h4 a {
-  font-size: 16px; }
-
-/* Home page */
-.home h2.h1 h3, .home .departments h3 {
+.secondary .h1, .home .h1 {
   border-bottom: 1px solid #af3c43;
   font-size: 27px;
   margin-bottom: 0.2em;
   padding-bottom: 0.2em; }
+.secondary .row h2 a, .secondary .row h3 a, .secondary .row h4 a, .home .row h2 a, .home .row h3 a, .home .row h4 a {
+  font-size: 16px; }
 
 /* Thumbnail Treatments */
 .thumbnail {
