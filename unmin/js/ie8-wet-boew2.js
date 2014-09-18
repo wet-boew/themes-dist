@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-10
+ * v4.0.6-development - 2014-09-18
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -7035,14 +7035,12 @@ var componentName = "wb-mltmd",
 		case "setCaptionsVisible":
 			if ( args ) {
 				$( this).addClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", this.object.getOption( "captions", "tracklist" )[ 0 ] );
-				}
+				this.object.loadModule("cc");
+				this.object.loadModule("captions");
 			} else {
 				$( this ).removeClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", {} );
-				}
+				this.object.unloadModule("cc");
+				this.object.unloadModule("captions");
 			}
 			$player.trigger( "ccvischange" );
 		}
@@ -7054,36 +7052,36 @@ var componentName = "wb-mltmd",
 	 * @param {object} event The event object fior the triggered event
 	 */
 	youTubeEvents = function( event ) {
-		var target = event.target.a,
-			$target = $( event.target.a ),
+		var playerTarget = event.target.getIframe(),
+			$playerTarget = $( playerTarget ),
 			timeline = function() {
-				$target.trigger( "timeupdate" );
+				$playerTarget.trigger( "timeupdate" );
 			};
 
 		switch ( event.data ) {
 		case null:
-			$target.trigger( "canplay" );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case -1:
 			event.target.unMute();
-			$target.trigger( "durationchange" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case 0:
-			$target.trigger( "ended" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "ended" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 1:
-			$target.trigger( "canplay" );
-			$target.trigger( "durationchange" );
-			$target.trigger( "play" );
-			target.timeline = setInterval( timeline, 250 );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "play" );
+			playerTarget.timeline = setInterval( timeline, 250 );
 			break;
 		case 2:
-			$target.trigger( "pause" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "pause" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 3:
-			target.timeline = clearInterval( target.timeline );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		}
 	},
@@ -7361,9 +7359,9 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
 				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
 				data.title + "\", \"url\": \"" + data.shareUrl +
-				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
-			$media.parent().before( $share );
-			wb.add( $share );
+				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" )
+				.insertBefore( $media.parent() )
+				.trigger( "wb-init.wb-share" );
 		}
 
 		if ( data.captions === undef ) {
@@ -7628,7 +7626,7 @@ $document.on( resizeEvent, selector, function( event ) {
 			$player = $( player ),
 			ratio, newHeight;
 
-		if ( $player.hasClass( "video" ) ) {
+		if ( $( event.currentTarget ).hasClass( "video" ) ) {
 			if ( player.videoWidth === 0 || player.videoWidth === undef ) {
 				ratio = $player.attr( "height" ) / $player.attr( "width" );
 
@@ -9011,7 +9009,6 @@ var componentName = "wb-share",
 			$elm.append( $share );
 
 			$share
-				.trigger( initEvent )
 				.trigger( "wb-init.wb-lbx" );
 
 			// Identify that initialization has completed
@@ -9233,7 +9230,7 @@ var componentName = "wb-tabs",
 	shiftEvent = "wb-shift" + selector,
 	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
-	controls = selector + " [role=tablist] a",
+	controls = selector + " [role=tablist] a, " + selector + " [role=tablist] .tab-count",
 	uniqueCount = 0,
 	initialized = false,
 	equalHeightClass = "wb-eqht",
@@ -9684,7 +9681,7 @@ var componentName = "wb-tabs",
 			$panels = data.panels,
 			$controls = data.tablist,
 			len = $panels.length,
-			current = $elm.find( ".in" ).prevAll( "[role=tabpanel]" ).length,
+			current = $elm.find( "> .tabpanels > .in" ).prevAll( "[role=tabpanel]" ).length,
 			shiftto = event.shiftto ? event.shiftto : 1,
 			next = current > len ? 0 : current + shiftto,
 			$next = $panels.eq( ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next );
@@ -9813,37 +9810,32 @@ var componentName = "wb-tabs",
 		eventCurrentTarget = event.currentTarget,
 		$elm;
 
-		switch ( event.type ) {
-		case "timerpoke":
-			$elm = $( eventTarget );
-			if ( !$elm.hasClass( componentName + "-inited" ) ) {
-				init( event );
-			} else if ( $elm.hasClass( "playing" ) ) {
-
-				// Filter out any events triggered by descendants
-				if ( eventCurrentTarget === eventTarget ) {
+		// Filter out any events triggered by descendants
+		if ( eventCurrentTarget === eventTarget ) {
+			switch ( event.type ) {
+			case "timerpoke":
+				$elm = $( eventTarget );
+				if ( !$elm.hasClass( componentName + "-inited" ) ) {
+					init( event );
+				} else if ( $elm.hasClass( "playing" ) ) {
 					onTimerPoke( $elm );
 				}
-			}
-			break;
+				break;
 
-		/*
-		 * Init
-		 */
-		case "wb-init":
-			init( event );
-			break;
+			/*
+			 * Init
+			 */
+			case "wb-init":
+				init( event );
+				break;
 
-		/*
-		 * Change Slides
-		 */
-		case "wb-shift":
-
-			// Filter out any events triggered by descendants
-			if ( eventCurrentTarget === eventTarget ) {
+			/*
+			 * Change Slides
+			 */
+			case "wb-shift":
 				onShift( event, $( eventTarget ) );
+				break;
 			}
-			break;
 		}
 
 	/*
@@ -9869,7 +9861,14 @@ var componentName = "wb-tabs",
 			( !which || which === 1 || which === 13 || which === 32 ||
 			( which > 36 && which < 41 ) ) ) {
 
+		// Stop propagation of the activate event
 		event.preventDefault();
+		if ( event.stopPropagation ) {
+			event.stopImmediatePropagation();
+		} else {
+			event.cancelBubble = true;
+		}
+
 		$elm = $( elm );
 		$sldr = $elm.closest( selector );
 		sldrId = $sldr[ 0 ].id;
@@ -9911,7 +9910,7 @@ var componentName = "wb-tabs",
 
 		if ( which > 36 ) {
 			onCycle( $sldr, which < 39 ? -1 : 1 );
-			$sldr.find( ".active a" ).trigger( setFocusEvent );
+			$sldr.find( "> [role=tablist] .active a" ).trigger( setFocusEvent );
 		} else {
 			if ( elm.getAttribute( "role" ) === "tab" ) {
 				onPick( $sldr, $elm );
@@ -9932,8 +9931,8 @@ var componentName = "wb-tabs",
 	return true;
 });
 
-//Pause on escape
-$document.on( "keydown", selector, function( event ) {
+// Pause on escape
+$document.on( "keydown", selector + ", " + selector + " [role=tabpanel]", function( event ) {
 
 	// Escape key
 	if ( event.which === 27 ) {
@@ -9947,32 +9946,39 @@ $document.on( "keydown", selector, function( event ) {
 	}
 });
 
-$document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
-	var currentTarget = event.currentTarget;
-
-	// Ctrl + Up arrow
-	if ( event.ctrlKey && event.which === 38 ) {
-
-		// Move focus to the summary element
-		$( currentTarget )
-			.closest( selector )
-				.find( "[href$='#" + currentTarget.id + "']" )
-					.trigger( "setfocus.wb" );
-	}
-});
-
-// Stop the carousel if there is a click within the panel
-$document.on( "click", selector + " [role=tabpanel]", function( event ) {
-	var which = event.which,
+$document.on( "click keydown", selector + " [role=tabpanel]", function( event ) {
+	var currentTarget = event.currentTarget,
+		which = event.which,
 		$container;
 
-	// Ignore middle and right mouse buttons
-	if ( !which || which === 1 ) {
-		$container = $( event.currentTarget ).closest( selector );
+	// Stop propagation of the click/keydown event
+	if ( event.stopPropagation ) {
+		event.stopImmediatePropagation();
+	} else {
+		event.cancelBubble = true;
+	}
 
-		// Stop the carousel if there is a click within a panel
-		if ( $container.hasClass( "playing" ) ) {
-			$container.find( ".plypause" ).trigger( "click" );
+	if ( event.target === "click" ) {
+
+		// Ignore middle and right mouse buttons
+		if ( !which || which === 1 ) {
+			$container = $( event.currentTarget ).closest( selector );
+
+			// Stop the carousel if there is a click within a panel
+			if ( $container.hasClass( "playing" ) ) {
+				$container.find( ".plypause" ).trigger( "click" );
+			}
+		}
+	} else {
+
+		// Ctrl + Up arrow
+		if ( event.ctrlKey && event.which === 38 ) {
+
+			// Move focus to the summary element
+			$( currentTarget )
+				.closest( selector )
+					.find( "[href$='#" + currentTarget.id + "']" )
+						.trigger( "setfocus.wb" );
 		}
 	}
 });
@@ -10006,7 +10012,7 @@ $document.on( wb.resizeEvents, onResize );
 // This event only fires on the window
 $window.on( "hashchange", onHashChange );
 
-$document.on( activateEvent, selector + " .tabpanels > details > summary", function( event ) {
+$document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode,
 		$details;
@@ -10391,6 +10397,13 @@ var componentName = "wb-toggle",
 				isOn = data.isOn,
 				$elms = data.elms,
 				$detail = $( this );
+
+			// Stop propagation of the toggleDetails event
+			if ( event.stopPropagation ) {
+				event.stopImmediatePropagation();
+			} else {
+				event.cancelBubble = true;
+			}
 
 			// Native details support
 			$detail.prop( "open", isOn );
