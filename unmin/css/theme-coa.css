@@ -635,13 +635,17 @@
   /*
   @title: Print view
  */
-  #wb-srch, #wb-sec, #wb-info, #wb-sm {
+  #wb-srch, #wb-sec, #wb-info, #wb-sm, #wb-glb-mn, #gc-bar {
     display: none !important; }
+  #gcwu-sig {
+    height: 30px; }
   #wmms {
     height: 30px;
     position: absolute;
     right: 0;
-    top: 0; } }
+    top: 0; }
+  #wb-bc a[href]:after {
+    content: ""; } }
 
 /*
  Views

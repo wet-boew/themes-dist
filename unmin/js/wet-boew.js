@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-05
+ * v4.0.6-development - 2014-09-22
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -266,15 +266,30 @@ var getUrlParts = function( url ) {
 		timerpoke: function() {
 			var selectorsLocal = wb.selectors.slice( 0 ),
 				len = selectorsLocal.length,
-				selector, $elms, i;
+				selector, currentSelector, $elms, elmsLength, i;
 
 			for ( i = 0; i !== len; i += 1 ) {
 				selector = selectorsLocal[ i ];
+				currentSelector = selector;
 				$elms = $( selector );
 
 				// If the selector returns elements, trigger a timerpoke event
-				if ( $elms.length !== 0 ) {
-					$elms.trigger( "timerpoke.wb" );
+				elmsLength = $elms.length;
+				if ( elmsLength !== 0 ) {
+					while ( elmsLength !== 0 ) {
+
+						currentSelector += " " + selector;
+
+						// Filter out nested elements
+						$elms = $elms.filter( ":not(" + currentSelector + ")" );
+						$elms.trigger( "timerpoke.wb" );
+
+						// Handle nested elements
+						elmsLength -= $elms.length;
+						if ( elmsLength !== 0 ) {
+							$elms = $( currentSelector );
+						}
+					}
 
 				// If the selector returns no elements, remove the selector
 				} else {
@@ -1739,14 +1754,16 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	if ( event.currentTarget === event.target ) {
 		$.ajax( fetchOpts )
 			.done(function( response, status, xhr ) {
+				var responseType = typeof response;
+
 				fetchData = {
 					response: response,
 					status: status,
 					xhr: xhr
 				};
 
-				fetchData.pointer = $( "<div id='" + wb.guid() + "' />" )
-										.append( typeof response === "string" ? response : "" );
+				fetchData.pointer = $( "<div id='" + wb.guid() + "' data-type='" + responseType + "' />" )
+										.append( responseType === "string" ? response : "" );
 
 				$( caller ).trigger({
 					type: "ajax-fetched.wb",
@@ -5918,6 +5935,7 @@ var componentName = "wb-lbx",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	setFocusEvent = "setfocus.wb",
+	dependenciesLoadedEvent = "deps-loaded" + selector,
 	extendedGlobal = false,
 	$document = wb.doc,
 	idCount = 0,
@@ -5945,136 +5963,36 @@ var componentName = "wb-lbx",
 				elm.id = elmId;
 			}
 
-			// read the selector node for parameters
+			// Ensure the dependencies are loaded first
+			$document.one( dependenciesLoadedEvent, function() {
+				var elm = document.getElementById( elmId ),
+					$elm = $( elm ),
+					settings = {},
+					firstLink;
 
-			// Only initialize the i18nText and callbacks once
-			if ( !i18nText ) {
-				i18n = wb.i18n;
-				i18nText = {
-					tClose: i18n( "overlay-close" ) + i18n( "space" ) + i18n( "esc-key" ),
-					tLoading: i18n( "load" ),
-					gallery: {
-						tPrev: i18n( "prv-l" ),
-						tNext: i18n( "nxt-r" ),
-						tCounter: i18n( "lb-curr" )
-					},
-					image: {
-						tError: i18n( "lb-img-err" ) + " (<a href=\"url%\">)"
-					},
-					ajax: {
-						tError: i18n( "lb-xhr-err" ) + " (<a href=\"url%\">)"
+				if ( !elm ) {
+					return;
+				}
+
+				// TODO: Add swipe support
+
+				settings.callbacks = callbacks;
+
+				if ( elm.nodeName.toLowerCase() !== "a" ) {
+					settings.delegate = "a";
+					firstLink = elm.getElementsByTagName( "a" )[ 0 ];
+
+					// Is the element a gallery?
+					if ( elm.className.indexOf( "-gal" ) !== -1 ) {
+						settings.gallery = {
+							enabled: true
+						};
 					}
-				};
+				} else {
+					firstLink = elm;
+				}
 
-				callbacks = {
-					open: function() {
-
-						// TODO: Better if dealt with upstream by Magnific popup
-						var $item = this.currItem,
-							$content = this.contentContainer,
-							$wrap = this.wrap,
-							$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
-							len = $buttons.length,
-							i, button, $bottomBar;
-
-						for ( i = 0; i !== len; i += 1 ) {
-							button = $buttons[ i ];
-							button.innerHTML += "<span class='wb-inv'> " + button.title + "</span>";
-						}
-
-						if ( $item.type === "image" ) {
-							$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
-						} else {
-							$content.attr( "role", "document" );
-						}
-
-						$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
-					},
-					change: function() {
-						var $item = this.currItem,
-							$content = this.contentContainer,
-							$el, $bottomBar, $source, $target,
-							description, altTitleId, altTitle;
-
-						if ( $item.type === "image" ) {
-							$el = $item.el;
-							$target = $item.img;
-							$bottomBar = $content.find( ".mfp-bottom-bar" );
-
-							if ( $el ) {
-								$source = $el.find( "img" );
-								$target.attr( "alt", $source.attr( "alt" ) );
-
-								// Replicate aria-describedby if it exists
-								description = $source.attr( "aria-describedby" );
-								if ( description ) {
-									$target.attr( "aria-describedby", description );
-								}
-
-								// Replicate longdesc if it exists
-								description = $source.attr( "longdesc" );
-								if ( description ) {
-									$target.attr( "longdesc", description );
-								}
-
-								// Handle alternate titles
-								altTitleId = $el.attr( "data-title" );
-								if ( altTitleId ) {
-									altTitle = document.getElementById( altTitleId );
-									if ( altTitle !== null ) {
-										$bottomBar.find( ".mfp-title" ).html( altTitle.innerHTML );
-									}
-								}
-							} else {
-								$target.attr( "alt", $bottomBar.find( ".mfp-title" ).html() );
-							}
-						} else {
-							$content
-								.find( ".modal-title, h1" )
-								.first()
-								.attr( "id", "lbx-title" );
-						}
-					}
-				};
-			}
-
-			// Load Magnific Popup dependency and bind the init event handler
-			Modernizr.load({
-				load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
-				complete: function() {
-					var elm = document.getElementById( elmId ),
-						$elm = $( elm ),
-						settings = {},
-						firstLink;
-
-					if ( !elm ) {
-						return;
-					}
-
-					// Set the dependency i18nText only once
-					if ( !extendedGlobal ) {
-						$.extend( true, $.magnificPopup.defaults, i18nText );
-						extendedGlobal = true;
-					}
-
-					// TODO: Add swipe support
-
-					settings.callbacks = callbacks;
-
-					if ( elm.nodeName.toLowerCase() !== "a" ) {
-						settings.delegate = "a";
-						firstLink = elm.getElementsByTagName( "a" )[ 0 ];
-
-						// Is the element a gallery?
-						if ( elm.className.indexOf( "-gal" ) !== -1 ) {
-							settings.gallery = {
-								enabled: true
-							};
-						}
-					} else {
-						firstLink = elm;
-					}
-
+				if ( firstLink ) {
 					if ( firstLink.getAttribute( "href" ).charAt( 0 ) === "#" ) {
 						settings.type = "inline";
 					} else if ( firstLink.className.indexOf( "lbx-iframe" ) !== -1 ) {
@@ -6089,7 +6007,7 @@ var componentName = "wb-lbx",
 						settings.modal = true;
 					}
 
-					// Extend the settings with data-wb-lbx then
+					// Extend the settings with window[ "wb-lbx" ] then data-wb-lbx
 					$elm.magnificPopup(
 						$.extend(
 							true,
@@ -6098,12 +6016,125 @@ var componentName = "wb-lbx",
 							wb.getData( $elm, componentName )
 						)
 					);
-
-					// Identify that initialization has completed
-					wb.ready( $elm, componentName );
 				}
+
+				// Identify that initialization has completed
+				wb.ready( $elm, componentName );
 			});
+
+			// Load dependencies as needed
+			setup();
 		}
+	},
+
+	/**
+	 * @method setup
+	 */
+	setup = function() {
+
+		// Only initialize the i18nText and callbacks once
+		if ( !i18nText ) {
+			i18n = wb.i18n;
+			i18nText = {
+				tClose: i18n( "overlay-close" ) + i18n( "space" ) + i18n( "esc-key" ),
+				tLoading: i18n( "load" ),
+				gallery: {
+					tPrev: i18n( "prv-l" ),
+					tNext: i18n( "nxt-r" ),
+					tCounter: i18n( "lb-curr" )
+				},
+				image: {
+					tError: i18n( "lb-img-err" ) + " (<a href=\"url%\">)"
+				},
+				ajax: {
+					tError: i18n( "lb-xhr-err" ) + " (<a href=\"url%\">)"
+				}
+			};
+
+			callbacks = {
+				open: function() {
+
+					// TODO: Better if dealt with upstream by Magnific popup
+					var $item = this.currItem,
+						$content = this.contentContainer,
+						$wrap = this.wrap,
+						$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
+						len = $buttons.length,
+						i, button, $bottomBar;
+
+					for ( i = 0; i !== len; i += 1 ) {
+						button = $buttons[ i ];
+						button.innerHTML += "<span class='wb-inv'> " + button.title + "</span>";
+					}
+
+					if ( $item.type === "image" ) {
+						$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
+					} else {
+						$content.attr( "role", "document" );
+					}
+
+					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
+				},
+				change: function() {
+					var $item = this.currItem,
+						$content = this.contentContainer,
+						$el, $bottomBar, $source, $target,
+						description, altTitleId, altTitle;
+
+					if ( $item.type === "image" ) {
+						$el = $item.el;
+						$target = $item.img;
+						$bottomBar = $content.find( ".mfp-bottom-bar" );
+
+						if ( $el ) {
+							$source = $el.find( "img" );
+							$target.attr( "alt", $source.attr( "alt" ) );
+
+							// Replicate aria-describedby if it exists
+							description = $source.attr( "aria-describedby" );
+							if ( description ) {
+								$target.attr( "aria-describedby", description );
+							}
+
+							// Replicate longdesc if it exists
+							description = $source.attr( "longdesc" );
+							if ( description ) {
+								$target.attr( "longdesc", description );
+							}
+
+							// Handle alternate titles
+							altTitleId = $el.attr( "data-title" );
+							if ( altTitleId ) {
+								altTitle = document.getElementById( altTitleId );
+								if ( altTitle !== null ) {
+									$bottomBar.find( ".mfp-title" ).html( altTitle.innerHTML );
+								}
+							}
+						} else {
+							$target.attr( "alt", $bottomBar.find( ".mfp-title" ).html() );
+						}
+					} else {
+						$content
+							.find( ".modal-title, h1" )
+							.first()
+							.attr( "id", "lbx-title" );
+					}
+				}
+			};
+		}
+
+		// Load Magnific Popup dependency and bind the init event handler
+		Modernizr.load({
+			load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
+			complete: function() {
+
+				// Set the dependency i18nText only once
+				$.extend( true, $.magnificPopup.defaults, i18nText );
+				extendedGlobal = true;
+
+				$document.trigger( dependenciesLoadedEvent );
+			}
+		});
 	};
 
 // Bind the init event of the plugin
@@ -6214,17 +6245,24 @@ $( document ).on( "open" + selector, function( event, items, modal, title ) {
 				} : "title";
 
 		event.preventDefault();
-		$.magnificPopup.open({
-			items: items,
-			modal: isModal,
-			gallery: {
-				enabled: isGallery
-			},
-			image: {
-				titleSrc: titleSrc
-			},
-			callbacks: callbacks
+
+		// Ensure the dependencies are loaded first
+		$document.one( dependenciesLoadedEvent, function() {
+			$.magnificPopup.open({
+				items: items,
+				modal: isModal,
+				gallery: {
+					enabled: isGallery
+				},
+				image: {
+					titleSrc: titleSrc
+				},
+				callbacks: callbacks
+			});
 		});
+
+		// Load dependencies as needed
+		setup();
 	}
 });
 
@@ -6450,7 +6488,7 @@ var componentName = "wb-menu",
 	 * @param {jQuery DOM element} $ajaxResult The AJAXed in menu content to import
 	 */
 	onAjaxLoaded = function( $elm, $ajaxResult ) {
-		var $ajaxed = !$ajaxResult ? $elm : $ajaxResult,
+		var $ajaxed = $ajaxResult && $ajaxResult.attr( "data-type" ) === "string" ? $ajaxResult : $elm,
 			$menubar = $ajaxed.find( ".menu" ),
 			$menu = $menubar.find( "> li > a" ),
 			target = $elm.data( "trgt" ),
@@ -7061,6 +7099,7 @@ var componentName = "wb-mltmd",
 	youtubeEvent = "youtube" + selector,
 	resizeEvent = "resize" + selector,
 	templateLoadedEvent = "templateloaded" + selector,
+	cuepointEvent = "cuepoint" + selector,
 	captionClass = "cc_on",
 	$document = wb.doc,
 	$window = wb.win,
@@ -7491,14 +7530,12 @@ var componentName = "wb-mltmd",
 		case "setCaptionsVisible":
 			if ( args ) {
 				$( this).addClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", this.object.getOption( "captions", "tracklist" )[ 0 ] );
-				}
+				this.object.loadModule("cc");
+				this.object.loadModule("captions");
 			} else {
 				$( this ).removeClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", {} );
-				}
+				this.object.unloadModule("cc");
+				this.object.unloadModule("captions");
 			}
 			$player.trigger( "ccvischange" );
 		}
@@ -7510,36 +7547,36 @@ var componentName = "wb-mltmd",
 	 * @param {object} event The event object fior the triggered event
 	 */
 	youTubeEvents = function( event ) {
-		var target = event.target.a,
-			$target = $( event.target.a ),
+		var playerTarget = event.target.getIframe(),
+			$playerTarget = $( playerTarget ),
 			timeline = function() {
-				$target.trigger( "timeupdate" );
+				$playerTarget.trigger( "timeupdate" );
 			};
 
 		switch ( event.data ) {
 		case null:
-			$target.trigger( "canplay" );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case -1:
 			event.target.unMute();
-			$target.trigger( "durationchange" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case 0:
-			$target.trigger( "ended" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "ended" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 1:
-			$target.trigger( "canplay" );
-			$target.trigger( "durationchange" );
-			$target.trigger( "play" );
-			target.timeline = setInterval( timeline, 250 );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "play" );
+			playerTarget.timeline = setInterval( timeline, 250 );
 			break;
 		case 2:
-			$target.trigger( "pause" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "pause" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 3:
-			target.timeline = clearInterval( target.timeline );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		}
 	},
@@ -7701,7 +7738,7 @@ $document.on( youtubeEvent, selector, function( event ) {
 			videoId: $this.data( "youtube" ),
 			playerVars: {
 				autoplay: 0,
-				controls: 1,
+				controls: 0,
 				origin: wb.pageUrlParts.host,
 				modestbranding: 1,
 				rel: 0,
@@ -7817,9 +7854,9 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
 				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
 				data.title + "\", \"url\": \"" + data.shareUrl +
-				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
-			$media.parent().before( $share );
-			wb.add( $share );
+				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" )
+				.insertBefore( $media.parent() )
+				.trigger( "wb-init.wb-share" );
 		}
 
 		if ( data.captions === undef ) {
@@ -7863,6 +7900,8 @@ $document.on( "click", selector, function( event ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05);
 	} else if ( className.match( /\bfastforward\b|-forward/ ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05);
+	} else if ( className.match( /cuepoint/ ) ) {
+		$(this).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
 	}
 });
 
@@ -7925,7 +7964,7 @@ $document.on( "keyup", selector, function( event ) {
 
 $document.on( "durationchange play pause ended volumechange timeupdate " +
 	captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
-	captionsVisibleChangeEvent +
+	captionsVisibleChangeEvent + " " + cuepointEvent +
 	" waiting canplay", selector, function( event, simulated ) {
 
 	var eventTarget = event.currentTarget,
@@ -8050,6 +8089,9 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		this.loading = clearTimeout( this.loading );
 		$this.find( ".display" ).removeClass( "waiting" );
 		break;
+	case "cuepoint":
+		eventTarget.player( "setCurrentTime", parseTime( event.cuepoint ) );
+		break;
 	}
 });
 
@@ -8079,17 +8121,13 @@ $document.on( resizeEvent, selector, function( event ) {
 			$player = $( player ),
 			ratio, newHeight;
 
-		if ( $player.hasClass( "video" ) ) {
+		if ( $( event.currentTarget ).hasClass( "video" ) ) {
 			if ( player.videoWidth === 0 || player.videoWidth === undef ) {
 				ratio = $player.attr( "height" ) / $player.attr( "width" );
 
 				// Calculate the new height based on the specified ratio or assume a default 16:9 ratio
 				newHeight = Math.round( $player.width() * ( !isNaN( ratio ) ? ratio : 0.5625 ) );
 
-				//TODO: Remove this when captions works in chromeless api with controls
-				if ( $player.is( "iframe") ) {
-					newHeight += 30;
-				}
 				$player.css( "height", newHeight + "px" );
 			} else {
 				$player.css( "height", "" );
@@ -9462,7 +9500,6 @@ var componentName = "wb-share",
 			$elm.append( $share );
 
 			$share
-				.trigger( initEvent )
 				.trigger( "wb-init.wb-lbx" );
 
 			// Identify that initialization has completed
@@ -9684,7 +9721,7 @@ var componentName = "wb-tabs",
 	shiftEvent = "wb-shift" + selector,
 	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
-	controls = selector + " [role=tablist] a",
+	controls = selector + " [role=tablist] a, " + selector + " [role=tablist] .tab-count",
 	uniqueCount = 0,
 	initialized = false,
 	equalHeightClass = "wb-eqht",
@@ -10135,7 +10172,7 @@ var componentName = "wb-tabs",
 			$panels = data.panels,
 			$controls = data.tablist,
 			len = $panels.length,
-			current = $elm.find( ".in" ).prevAll( "[role=tabpanel]" ).length,
+			current = $elm.find( "> .tabpanels > .in" ).prevAll( "[role=tabpanel]" ).length,
 			shiftto = event.shiftto ? event.shiftto : 1,
 			next = current > len ? 0 : current + shiftto,
 			$next = $panels.eq( ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next );
@@ -10264,37 +10301,32 @@ var componentName = "wb-tabs",
 		eventCurrentTarget = event.currentTarget,
 		$elm;
 
-		switch ( event.type ) {
-		case "timerpoke":
-			$elm = $( eventTarget );
-			if ( !$elm.hasClass( componentName + "-inited" ) ) {
-				init( event );
-			} else if ( $elm.hasClass( "playing" ) ) {
-
-				// Filter out any events triggered by descendants
-				if ( eventCurrentTarget === eventTarget ) {
+		// Filter out any events triggered by descendants
+		if ( eventCurrentTarget === eventTarget ) {
+			switch ( event.type ) {
+			case "timerpoke":
+				$elm = $( eventTarget );
+				if ( !$elm.hasClass( componentName + "-inited" ) ) {
+					init( event );
+				} else if ( $elm.hasClass( "playing" ) ) {
 					onTimerPoke( $elm );
 				}
-			}
-			break;
+				break;
 
-		/*
-		 * Init
-		 */
-		case "wb-init":
-			init( event );
-			break;
+			/*
+			 * Init
+			 */
+			case "wb-init":
+				init( event );
+				break;
 
-		/*
-		 * Change Slides
-		 */
-		case "wb-shift":
-
-			// Filter out any events triggered by descendants
-			if ( eventCurrentTarget === eventTarget ) {
+			/*
+			 * Change Slides
+			 */
+			case "wb-shift":
 				onShift( event, $( eventTarget ) );
+				break;
 			}
-			break;
 		}
 
 	/*
@@ -10320,7 +10352,14 @@ var componentName = "wb-tabs",
 			( !which || which === 1 || which === 13 || which === 32 ||
 			( which > 36 && which < 41 ) ) ) {
 
+		// Stop propagation of the activate event
 		event.preventDefault();
+		if ( event.stopPropagation ) {
+			event.stopImmediatePropagation();
+		} else {
+			event.cancelBubble = true;
+		}
+
 		$elm = $( elm );
 		$sldr = $elm.closest( selector );
 		sldrId = $sldr[ 0 ].id;
@@ -10362,7 +10401,7 @@ var componentName = "wb-tabs",
 
 		if ( which > 36 ) {
 			onCycle( $sldr, which < 39 ? -1 : 1 );
-			$sldr.find( ".active a" ).trigger( setFocusEvent );
+			$sldr.find( "> [role=tablist] .active a" ).trigger( setFocusEvent );
 		} else {
 			if ( elm.getAttribute( "role" ) === "tab" ) {
 				onPick( $sldr, $elm );
@@ -10383,8 +10422,8 @@ var componentName = "wb-tabs",
 	return true;
 });
 
-//Pause on escape
-$document.on( "keydown", selector, function( event ) {
+// Pause on escape
+$document.on( "keydown", selector + ", " + selector + " [role=tabpanel]", function( event ) {
 
 	// Escape key
 	if ( event.which === 27 ) {
@@ -10398,32 +10437,39 @@ $document.on( "keydown", selector, function( event ) {
 	}
 });
 
-$document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
-	var currentTarget = event.currentTarget;
-
-	// Ctrl + Up arrow
-	if ( event.ctrlKey && event.which === 38 ) {
-
-		// Move focus to the summary element
-		$( currentTarget )
-			.closest( selector )
-				.find( "[href$='#" + currentTarget.id + "']" )
-					.trigger( "setfocus.wb" );
-	}
-});
-
-// Stop the carousel if there is a click within the panel
-$document.on( "click", selector + " [role=tabpanel]", function( event ) {
-	var which = event.which,
+$document.on( "click keydown", selector + " [role=tabpanel]", function( event ) {
+	var currentTarget = event.currentTarget,
+		which = event.which,
 		$container;
 
-	// Ignore middle and right mouse buttons
-	if ( !which || which === 1 ) {
-		$container = $( event.currentTarget ).closest( selector );
+	// Stop propagation of the click/keydown event
+	if ( event.stopPropagation ) {
+		event.stopImmediatePropagation();
+	} else {
+		event.cancelBubble = true;
+	}
 
-		// Stop the carousel if there is a click within a panel
-		if ( $container.hasClass( "playing" ) ) {
-			$container.find( ".plypause" ).trigger( "click" );
+	if ( event.target === "click" ) {
+
+		// Ignore middle and right mouse buttons
+		if ( !which || which === 1 ) {
+			$container = $( event.currentTarget ).closest( selector );
+
+			// Stop the carousel if there is a click within a panel
+			if ( $container.hasClass( "playing" ) ) {
+				$container.find( ".plypause" ).trigger( "click" );
+			}
+		}
+	} else {
+
+		// Ctrl + Up arrow
+		if ( event.ctrlKey && event.which === 38 ) {
+
+			// Move focus to the summary element
+			$( currentTarget )
+				.closest( selector )
+					.find( "[href$='#" + currentTarget.id + "']" )
+						.trigger( "setfocus.wb" );
 		}
 	}
 });
@@ -10457,7 +10503,7 @@ $document.on( wb.resizeEvents, onResize );
 // This event only fires on the window
 $window.on( "hashchange", onHashChange );
 
-$document.on( activateEvent, selector + " .tabpanels > details > summary", function( event ) {
+$document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode,
 		$details;
@@ -10842,6 +10888,13 @@ var componentName = "wb-toggle",
 				isOn = data.isOn,
 				$elms = data.elms,
 				$detail = $( this );
+
+			// Stop propagation of the toggleDetails event
+			if ( event.stopPropagation ) {
+				event.stopImmediatePropagation();
+			} else {
+				event.cancelBubble = true;
+			}
 
 			// Native details support
 			$detail.prop( "open", isOn );

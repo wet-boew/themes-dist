@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-05
+ * v4.0.6-development - 2014-09-22
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -3395,15 +3395,30 @@ var getUrlParts = function( url ) {
 		timerpoke: function() {
 			var selectorsLocal = wb.selectors.slice( 0 ),
 				len = selectorsLocal.length,
-				selector, $elms, i;
+				selector, currentSelector, $elms, elmsLength, i;
 
 			for ( i = 0; i !== len; i += 1 ) {
 				selector = selectorsLocal[ i ];
+				currentSelector = selector;
 				$elms = $( selector );
 
 				// If the selector returns elements, trigger a timerpoke event
-				if ( $elms.length !== 0 ) {
-					$elms.trigger( "timerpoke.wb" );
+				elmsLength = $elms.length;
+				if ( elmsLength !== 0 ) {
+					while ( elmsLength !== 0 ) {
+
+						currentSelector += " " + selector;
+
+						// Filter out nested elements
+						$elms = $elms.filter( ":not(" + currentSelector + ")" );
+						$elms.trigger( "timerpoke.wb" );
+
+						// Handle nested elements
+						elmsLength -= $elms.length;
+						if ( elmsLength !== 0 ) {
+							$elms = $( currentSelector );
+						}
+					}
 
 				// If the selector returns no elements, remove the selector
 				} else {
