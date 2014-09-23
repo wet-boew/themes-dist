@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-22
+ * v4.0.6-development - 2014-09-23
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3677,10 +3677,19 @@ wb.add( selector );
  * page.
  */
 var componentName = "wb-data-ajax",
-	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
-		"[data-ajax-prepend], [data-ajax-replace]",
+	selectors = [
+		"[data-ajax-after]",
+		"[data-ajax-append]",
+		"[data-ajax-before]",
+		"[data-ajax-prepend]",
+		"[data-ajax-replace]"
+	],
+	selectorsLength = selectors.length,
+	selector = selectors.join( "," ),
 	initEvent = "wb-init." + componentName,
+	updateEvent = "wb-update." + componentName,
 	$document = wb.doc,
+	s,
 
 	/**
 	 * @method init
@@ -3692,23 +3701,30 @@ var componentName = "wb-data-ajax",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName + "-" + ajaxType, selector ),
-			$elm;
+		var elm = wb.init( event, componentName + "-" + ajaxType, selector );
 
 		if ( elm ) {
+			ajax.apply( this, arguments );
+
+			// Identify that initialization has completed
+			wb.ready( $( elm ), componentName, [ ajaxType ] );
+		}
+	},
+
+	ajax = function( event, ajaxType ) {
+		var elm = event.target,
 			$elm = $( elm );
 
-			$document.trigger({
-				type: "ajax-fetch.wb",
-				element: $( elm ),
-				fetch: {
-					url: $elm.data( "ajax-" + ajaxType )
-				}
-			});
-		}
+		$document.trigger({
+			type: "ajax-fetch.wb",
+			element: $elm,
+			fetch: {
+				url: elm.getAttribute( "data-ajax-" + ajaxType )
+			}
+		});
 	};
 
-$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, function( event ) {
+$document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.wb", selector, function( event ) {
 	var eventTarget = event.target,
 		ajaxTypes = [
 			"before",
@@ -3733,7 +3749,9 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 	case "wb-init":
 		init( event, ajaxType );
 		break;
-
+	case "wb-update":
+		ajax( event, ajaxType );
+		break;
 	default:
 
 		// Filter out any events triggered by descendants
@@ -3752,9 +3770,6 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 					$elm[ ajaxType ]( content );
 				}
 			}
-
-			// Identify that initialization has completed
-			wb.ready( $elm, componentName, [ ajaxType ] );
 		}
 	}
 
@@ -3766,8 +3781,10 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 	return true;
 } );
 
-// Add the timer poke to initialize the plugin
-wb.add( selector );
+// Add the timerpoke to initialize the plugin
+for ( s = 0; s !== selectorsLength; s += 1 ) {
+	wb.add( selectors[ s ] );
+}
 
 })( jQuery, window, wb );
 
