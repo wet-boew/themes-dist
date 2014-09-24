@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-22
+ * v4.0.6 - 2014-09-24
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3559,6 +3559,122 @@ wb.add( selector );
 })( jQuery, window, document, wb );
 
 /**
+ * @title WET-BOEW Collapsible alerts plugin
+ * @overview Collapsible alerts (details/summary)
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author WET community
+ */
+(function( $, window, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the event - meaning that they will be initialized once per page,
+ * not once per instance of event on the page.
+ */
+var componentName = "wb-collapsible",
+	selector = "details.alert",
+	initEvent = "wb-init." + componentName,
+	$document = wb.doc,
+	details, key,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		details = wb.init( event, componentName, selector );
+
+		if ( details ) {
+
+			key = "alert-collapsible-state-" + details.getAttribute("id");
+
+			try {
+				if ( localStorage.getItem( key ) ) {
+
+					// Set open/closed state for existing localStorage keys
+					if ( localStorage.getItem( key ) === "open" ) {
+						details.setAttribute( "open", "open" );
+						details.className += " open";
+					} else if ( localStorage.getItem( key ) === "closed" ) {
+						details.removeAttribute( "open" );
+						details.className = details.className.replace( " open", "" );
+					}
+
+				} else {
+
+					// Set new localStorage values
+					if ( details.hasAttribute( "open" ) ) {
+						localStorage.setItem( key, "open" );
+					} else {
+						localStorage.setItem( key, "closed" );
+					}
+
+				}
+			} catch ( e ) {}
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
+		}
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+$document.on( "timerpoke.wb", function() {
+
+	// Do not bind events if details polyfill is active
+	if ( Modernizr.details ) {
+
+		// Bind the the event handlers of the plugin
+		$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
+			var which = event.which,
+				currentTarget = event.currentTarget,
+				isClosed;
+
+			// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
+			if ( ( !which || which === 1 ) &&
+				( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
+				( event.type === "toggle" && event.namespace === componentName ) ) ) {
+
+				details = currentTarget.parentNode;
+				isClosed = details.getAttribute( "open" ) === null ;
+				key = "alert-collapsible-state-" + details.getAttribute( "id" );
+
+				if ( isClosed ) {
+					try {
+						localStorage.setItem( key, "open" );
+					} catch ( e ) {}
+				} else {
+					try {
+						localStorage.setItem( key, "closed" );
+					} catch ( e ) {}
+				}
+			} else if ( which === 13 || which === 32 ) {
+				event.preventDefault();
+				$( currentTarget ).trigger( "click" );
+			}
+
+			/*
+			 * Since we are working with events we want to ensure that we are being passive about our control,
+			 * so returning true allows for events to always continue
+			 */
+			return true;
+		});
+	}
+
+});
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+})( jQuery, window, wb );
+
+/**
  * @title WET-BOEW Country Content
  * @overview A basic AjaxLoader wrapper that inserts AJAXed in content based on a visitors country as resolved by http://freegeoip.net
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -3677,10 +3793,19 @@ wb.add( selector );
  * page.
  */
 var componentName = "wb-data-ajax",
-	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
-		"[data-ajax-prepend], [data-ajax-replace]",
+	selectors = [
+		"[data-ajax-after]",
+		"[data-ajax-append]",
+		"[data-ajax-before]",
+		"[data-ajax-prepend]",
+		"[data-ajax-replace]"
+	],
+	selectorsLength = selectors.length,
+	selector = selectors.join( "," ),
 	initEvent = "wb-init." + componentName,
+	updateEvent = "wb-update." + componentName,
 	$document = wb.doc,
+	s,
 
 	/**
 	 * @method init
@@ -3692,23 +3817,30 @@ var componentName = "wb-data-ajax",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName + "-" + ajaxType, selector ),
-			$elm;
+		var elm = wb.init( event, componentName + "-" + ajaxType, selector );
 
 		if ( elm ) {
+			ajax.apply( this, arguments );
+
+			// Identify that initialization has completed
+			wb.ready( $( elm ), componentName, [ ajaxType ] );
+		}
+	},
+
+	ajax = function( event, ajaxType ) {
+		var elm = event.target,
 			$elm = $( elm );
 
-			$document.trigger({
-				type: "ajax-fetch.wb",
-				element: $( elm ),
-				fetch: {
-					url: $elm.data( "ajax-" + ajaxType )
-				}
-			});
-		}
+		$document.trigger({
+			type: "ajax-fetch.wb",
+			element: $elm,
+			fetch: {
+				url: elm.getAttribute( "data-ajax-" + ajaxType )
+			}
+		});
 	};
 
-$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, function( event ) {
+$document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.wb", selector, function( event ) {
 	var eventTarget = event.target,
 		ajaxTypes = [
 			"before",
@@ -3733,7 +3865,9 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 	case "wb-init":
 		init( event, ajaxType );
 		break;
-
+	case "wb-update":
+		ajax( event, ajaxType );
+		break;
 	default:
 
 		// Filter out any events triggered by descendants
@@ -3752,9 +3886,6 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 					$elm[ ajaxType ]( content );
 				}
 			}
-
-			// Identify that initialization has completed
-			wb.ready( $elm, componentName, [ ajaxType ] );
 		}
 	}
 
@@ -3766,8 +3897,10 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 	return true;
 } );
 
-// Add the timer poke to initialize the plugin
-wb.add( selector );
+// Add the timerpoke to initialize the plugin
+for ( s = 0; s !== selectorsLength; s += 1 ) {
+	wb.add( selectors[ s ] );
+}
 
 })( jQuery, window, wb );
 
@@ -4041,122 +4174,6 @@ $document.on( "timerpoke.wb " + initEvent + " " + picturefillEvent, selector, fu
 // Handles window resize so images can be updated as new media queries match
 $document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb", function() {
 	$( selector ).trigger( picturefillEvent );
-});
-
-// Add the timer poke to initialize the plugin
-wb.add( selector );
-
-})( jQuery, window, wb );
-
-/**
- * @title WET-BOEW Dismiss plugin
- * @overview Dismiss alerts (details/summary)
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author WET community
- */
-(function( $, window, wb ) {
-"use strict";
-
-/*
- * Variable and function definitions.
- * These are global to the event - meaning that they will be initialized once per page,
- * not once per instance of event on the page.
- */
-var componentName = "wb-dismiss",
-	selector = "details.alert",
-	initEvent = "wb-init." + componentName,
-	$document = wb.doc,
-	details, key,
-
-	/**
-	 * @method init
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	init = function( event ) {
-
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		details = wb.init( event, componentName, selector );
-
-		if ( details ) {
-
-			key = "alert-dismiss-state-" + details.getAttribute("id");
-
-			try {
-				if ( localStorage.getItem( key ) ) {
-
-					// Set open/closed state for existing localStorage keys
-					if ( localStorage.getItem( key ) === "open" ) {
-						details.setAttribute( "open", "open" );
-						details.className += " open";
-					} else if ( localStorage.getItem( key ) === "closed" ) {
-						details.removeAttribute( "open" );
-						details.className = details.className.replace( " open", "" );
-					}
-
-				} else {
-
-					// Set new localStorage values
-					if ( details.hasAttribute( "open" ) ) {
-						localStorage.setItem( key, "open" );
-					} else {
-						localStorage.setItem( key, "closed" );
-					}
-
-				}
-			} catch ( e ) {}
-
-			// Identify that initialization has completed
-			wb.ready( $document, componentName );
-		}
-	};
-
-// Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector, init );
-
-$document.on( "timerpoke.wb", function() {
-
-	// Do not bind events if details polyfill is active
-	if ( Modernizr.details ) {
-
-		// Bind the the event handlers of the plugin
-		$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
-			var which = event.which,
-				currentTarget = event.currentTarget,
-				isClosed;
-
-			// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
-			if ( ( !which || which === 1 ) &&
-				( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
-				( event.type === "toggle" && event.namespace === componentName ) ) ) {
-
-				details = currentTarget.parentNode;
-				isClosed = details.getAttribute( "open" ) === null ;
-				key = "alert-dismiss-state-" + details.getAttribute( "id" );
-
-				if ( isClosed ) {
-					try {
-						localStorage.setItem( key, "open" );
-					} catch ( e ) {}
-				} else {
-					try {
-						localStorage.setItem( key, "closed" );
-					} catch ( e ) {}
-				}
-			} else if ( which === 13 || which === 32 ) {
-				event.preventDefault();
-				$( currentTarget ).trigger( "click" );
-			}
-
-			/*
-			 * Since we are working with events we want to ensure that we are being passive about our control,
-			 * so returning true allows for events to always continue
-			 */
-			return true;
-		});
-	}
-
 });
 
 // Add the timer poke to initialize the plugin
