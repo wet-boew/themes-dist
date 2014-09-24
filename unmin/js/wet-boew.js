@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.6-development - 2014-09-05
+ * v4.0.6 - 2014-09-24
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1});
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -266,15 +266,30 @@ var getUrlParts = function( url ) {
 		timerpoke: function() {
 			var selectorsLocal = wb.selectors.slice( 0 ),
 				len = selectorsLocal.length,
-				selector, $elms, i;
+				selector, currentSelector, $elms, elmsLength, i;
 
 			for ( i = 0; i !== len; i += 1 ) {
 				selector = selectorsLocal[ i ];
+				currentSelector = selector;
 				$elms = $( selector );
 
 				// If the selector returns elements, trigger a timerpoke event
-				if ( $elms.length !== 0 ) {
-					$elms.trigger( "timerpoke.wb" );
+				elmsLength = $elms.length;
+				if ( elmsLength !== 0 ) {
+					while ( elmsLength !== 0 ) {
+
+						currentSelector += " " + selector;
+
+						// Filter out nested elements
+						$elms = $elms.filter( ":not(" + currentSelector + ")" );
+						$elms.trigger( "timerpoke.wb" );
+
+						// Handle nested elements
+						elmsLength -= $elms.length;
+						if ( elmsLength !== 0 ) {
+							$elms = $( currentSelector );
+						}
+					}
 
 				// If the selector returns no elements, remove the selector
 				} else {
@@ -355,21 +370,22 @@ yepnope.addPrefix( "site", function( resourceObj ) {
  * @prefix: plyfll! - builds the path for the polyfill resource
  */
 yepnope.addPrefix( "plyfll", function( resourceObj ) {
-	var path;
+	var path,
+		url = resourceObj.url;
 
-	if ( disabled ) {
+	if ( disabled && url.indexOf( "svg" ) === -1 ) {
 		resourceObj.bypass = true;
 	} else if ( !$mode ) {
-		resourceObj.url = resourceObj.url.replace( ".min", "" );
+		url = url.replace( ".min", "" );
 	}
 
-	if ( resourceObj.url.indexOf( ".css" ) !== -1 ) {
+	if ( url.indexOf( ".css" ) !== -1 ) {
 		resourceObj.forceCSS = true;
 		path = $homecss;
 	} else {
 		path = $homepath;
 	}
-	resourceObj.url = path + "/polyfills/" + resourceObj.url;
+	resourceObj.url = path + "/polyfills/" + url;
 
 	return resourceObj;
 });
@@ -1739,14 +1755,16 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	if ( event.currentTarget === event.target ) {
 		$.ajax( fetchOpts )
 			.done(function( response, status, xhr ) {
+				var responseType = typeof response;
+
 				fetchData = {
 					response: response,
 					status: status,
 					xhr: xhr
 				};
 
-				fetchData.pointer = $( "<div id='" + wb.guid() + "' />" )
-										.append( typeof response === "string" ? response : "" );
+				fetchData.pointer = $( "<div id='" + wb.guid() + "' data-type='" + responseType + "' />" )
+										.append( responseType === "string" ? response : "" );
 
 				$( caller ).trigger({
 					type: "ajax-fetched.wb",
@@ -4037,6 +4055,122 @@ wb.add( selector );
 })( jQuery, window, document, wb );
 
 /**
+ * @title WET-BOEW Collapsible alerts plugin
+ * @overview Collapsible alerts (details/summary)
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author WET community
+ */
+(function( $, window, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the event - meaning that they will be initialized once per page,
+ * not once per instance of event on the page.
+ */
+var componentName = "wb-collapsible",
+	selector = "details.alert",
+	initEvent = "wb-init." + componentName,
+	$document = wb.doc,
+	details, key,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		details = wb.init( event, componentName, selector );
+
+		if ( details ) {
+
+			key = "alert-collapsible-state-" + details.getAttribute("id");
+
+			try {
+				if ( localStorage.getItem( key ) ) {
+
+					// Set open/closed state for existing localStorage keys
+					if ( localStorage.getItem( key ) === "open" ) {
+						details.setAttribute( "open", "open" );
+						details.className += " open";
+					} else if ( localStorage.getItem( key ) === "closed" ) {
+						details.removeAttribute( "open" );
+						details.className = details.className.replace( " open", "" );
+					}
+
+				} else {
+
+					// Set new localStorage values
+					if ( details.hasAttribute( "open" ) ) {
+						localStorage.setItem( key, "open" );
+					} else {
+						localStorage.setItem( key, "closed" );
+					}
+
+				}
+			} catch ( e ) {}
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
+		}
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+$document.on( "timerpoke.wb", function() {
+
+	// Do not bind events if details polyfill is active
+	if ( Modernizr.details ) {
+
+		// Bind the the event handlers of the plugin
+		$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
+			var which = event.which,
+				currentTarget = event.currentTarget,
+				isClosed;
+
+			// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
+			if ( ( !which || which === 1 ) &&
+				( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
+				( event.type === "toggle" && event.namespace === componentName ) ) ) {
+
+				details = currentTarget.parentNode;
+				isClosed = details.getAttribute( "open" ) === null ;
+				key = "alert-collapsible-state-" + details.getAttribute( "id" );
+
+				if ( isClosed ) {
+					try {
+						localStorage.setItem( key, "open" );
+					} catch ( e ) {}
+				} else {
+					try {
+						localStorage.setItem( key, "closed" );
+					} catch ( e ) {}
+				}
+			} else if ( which === 13 || which === 32 ) {
+				event.preventDefault();
+				$( currentTarget ).trigger( "click" );
+			}
+
+			/*
+			 * Since we are working with events we want to ensure that we are being passive about our control,
+			 * so returning true allows for events to always continue
+			 */
+			return true;
+		});
+	}
+
+});
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+})( jQuery, window, wb );
+
+/**
  * @title WET-BOEW Country Content
  * @overview A basic AjaxLoader wrapper that inserts AJAXed in content based on a visitors country as resolved by http://freegeoip.net
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -4155,10 +4289,19 @@ wb.add( selector );
  * page.
  */
 var componentName = "wb-data-ajax",
-	selector = "[data-ajax-after], [data-ajax-append], [data-ajax-before], " +
-		"[data-ajax-prepend], [data-ajax-replace]",
+	selectors = [
+		"[data-ajax-after]",
+		"[data-ajax-append]",
+		"[data-ajax-before]",
+		"[data-ajax-prepend]",
+		"[data-ajax-replace]"
+	],
+	selectorsLength = selectors.length,
+	selector = selectors.join( "," ),
 	initEvent = "wb-init." + componentName,
+	updateEvent = "wb-update." + componentName,
 	$document = wb.doc,
+	s,
 
 	/**
 	 * @method init
@@ -4170,23 +4313,30 @@ var componentName = "wb-data-ajax",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName + "-" + ajaxType, selector ),
-			$elm;
+		var elm = wb.init( event, componentName + "-" + ajaxType, selector );
 
 		if ( elm ) {
+			ajax.apply( this, arguments );
+
+			// Identify that initialization has completed
+			wb.ready( $( elm ), componentName, [ ajaxType ] );
+		}
+	},
+
+	ajax = function( event, ajaxType ) {
+		var elm = event.target,
 			$elm = $( elm );
 
-			$document.trigger({
-				type: "ajax-fetch.wb",
-				element: $( elm ),
-				fetch: {
-					url: $elm.data( "ajax-" + ajaxType )
-				}
-			});
-		}
+		$document.trigger({
+			type: "ajax-fetch.wb",
+			element: $elm,
+			fetch: {
+				url: elm.getAttribute( "data-ajax-" + ajaxType )
+			}
+		});
 	};
 
-$document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, function( event ) {
+$document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.wb", selector, function( event ) {
 	var eventTarget = event.target,
 		ajaxTypes = [
 			"before",
@@ -4211,7 +4361,9 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 	case "wb-init":
 		init( event, ajaxType );
 		break;
-
+	case "wb-update":
+		ajax( event, ajaxType );
+		break;
 	default:
 
 		// Filter out any events triggered by descendants
@@ -4230,9 +4382,6 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 					$elm[ ajaxType ]( content );
 				}
 			}
-
-			// Identify that initialization has completed
-			wb.ready( $elm, componentName, [ ajaxType ] );
 		}
 	}
 
@@ -4244,8 +4393,10 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb", selector, functi
 	return true;
 } );
 
-// Add the timer poke to initialize the plugin
-wb.add( selector );
+// Add the timerpoke to initialize the plugin
+for ( s = 0; s !== selectorsLength; s += 1 ) {
+	wb.add( selectors[ s ] );
+}
 
 })( jQuery, window, wb );
 
@@ -4519,122 +4670,6 @@ $document.on( "timerpoke.wb " + initEvent + " " + picturefillEvent, selector, fu
 // Handles window resize so images can be updated as new media queries match
 $document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb", function() {
 	$( selector ).trigger( picturefillEvent );
-});
-
-// Add the timer poke to initialize the plugin
-wb.add( selector );
-
-})( jQuery, window, wb );
-
-/**
- * @title WET-BOEW Dismiss plugin
- * @overview Dismiss alerts (details/summary)
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author WET community
- */
-(function( $, window, wb ) {
-"use strict";
-
-/*
- * Variable and function definitions.
- * These are global to the event - meaning that they will be initialized once per page,
- * not once per instance of event on the page.
- */
-var componentName = "wb-dismiss",
-	selector = "details.alert",
-	initEvent = "wb-init." + componentName,
-	$document = wb.doc,
-	details, key,
-
-	/**
-	 * @method init
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	init = function( event ) {
-
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		details = wb.init( event, componentName, selector );
-
-		if ( details ) {
-
-			key = "alert-dismiss-state-" + details.getAttribute("id");
-
-			try {
-				if ( localStorage.getItem( key ) ) {
-
-					// Set open/closed state for existing localStorage keys
-					if ( localStorage.getItem( key ) === "open" ) {
-						details.setAttribute( "open", "open" );
-						details.className += " open";
-					} else if ( localStorage.getItem( key ) === "closed" ) {
-						details.removeAttribute( "open" );
-						details.className = details.className.replace( " open", "" );
-					}
-
-				} else {
-
-					// Set new localStorage values
-					if ( details.hasAttribute( "open" ) ) {
-						localStorage.setItem( key, "open" );
-					} else {
-						localStorage.setItem( key, "closed" );
-					}
-
-				}
-			} catch ( e ) {}
-
-			// Identify that initialization has completed
-			wb.ready( $document, componentName );
-		}
-	};
-
-// Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector, init );
-
-$document.on( "timerpoke.wb", function() {
-
-	// Do not bind events if details polyfill is active
-	if ( Modernizr.details ) {
-
-		// Bind the the event handlers of the plugin
-		$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
-			var which = event.which,
-				currentTarget = event.currentTarget,
-				isClosed;
-
-			// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
-			if ( ( !which || which === 1 ) &&
-				( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
-				( event.type === "toggle" && event.namespace === componentName ) ) ) {
-
-				details = currentTarget.parentNode;
-				isClosed = details.getAttribute( "open" ) === null ;
-				key = "alert-dismiss-state-" + details.getAttribute( "id" );
-
-				if ( isClosed ) {
-					try {
-						localStorage.setItem( key, "open" );
-					} catch ( e ) {}
-				} else {
-					try {
-						localStorage.setItem( key, "closed" );
-					} catch ( e ) {}
-				}
-			} else if ( which === 13 || which === 32 ) {
-				event.preventDefault();
-				$( currentTarget ).trigger( "click" );
-			}
-
-			/*
-			 * Since we are working with events we want to ensure that we are being passive about our control,
-			 * so returning true allows for events to always continue
-			 */
-			return true;
-		});
-	}
-
 });
 
 // Add the timer poke to initialize the plugin
@@ -5918,6 +5953,7 @@ var componentName = "wb-lbx",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	setFocusEvent = "setfocus.wb",
+	dependenciesLoadedEvent = "deps-loaded" + selector,
 	extendedGlobal = false,
 	$document = wb.doc,
 	idCount = 0,
@@ -5945,136 +5981,36 @@ var componentName = "wb-lbx",
 				elm.id = elmId;
 			}
 
-			// read the selector node for parameters
+			// Ensure the dependencies are loaded first
+			$document.one( dependenciesLoadedEvent, function() {
+				var elm = document.getElementById( elmId ),
+					$elm = $( elm ),
+					settings = {},
+					firstLink;
 
-			// Only initialize the i18nText and callbacks once
-			if ( !i18nText ) {
-				i18n = wb.i18n;
-				i18nText = {
-					tClose: i18n( "overlay-close" ) + i18n( "space" ) + i18n( "esc-key" ),
-					tLoading: i18n( "load" ),
-					gallery: {
-						tPrev: i18n( "prv-l" ),
-						tNext: i18n( "nxt-r" ),
-						tCounter: i18n( "lb-curr" )
-					},
-					image: {
-						tError: i18n( "lb-img-err" ) + " (<a href=\"url%\">)"
-					},
-					ajax: {
-						tError: i18n( "lb-xhr-err" ) + " (<a href=\"url%\">)"
+				if ( !elm ) {
+					return;
+				}
+
+				// TODO: Add swipe support
+
+				settings.callbacks = callbacks;
+
+				if ( elm.nodeName.toLowerCase() !== "a" ) {
+					settings.delegate = "a";
+					firstLink = elm.getElementsByTagName( "a" )[ 0 ];
+
+					// Is the element a gallery?
+					if ( elm.className.indexOf( "-gal" ) !== -1 ) {
+						settings.gallery = {
+							enabled: true
+						};
 					}
-				};
+				} else {
+					firstLink = elm;
+				}
 
-				callbacks = {
-					open: function() {
-
-						// TODO: Better if dealt with upstream by Magnific popup
-						var $item = this.currItem,
-							$content = this.contentContainer,
-							$wrap = this.wrap,
-							$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
-							len = $buttons.length,
-							i, button, $bottomBar;
-
-						for ( i = 0; i !== len; i += 1 ) {
-							button = $buttons[ i ];
-							button.innerHTML += "<span class='wb-inv'> " + button.title + "</span>";
-						}
-
-						if ( $item.type === "image" ) {
-							$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
-						} else {
-							$content.attr( "role", "document" );
-						}
-
-						$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
-					},
-					change: function() {
-						var $item = this.currItem,
-							$content = this.contentContainer,
-							$el, $bottomBar, $source, $target,
-							description, altTitleId, altTitle;
-
-						if ( $item.type === "image" ) {
-							$el = $item.el;
-							$target = $item.img;
-							$bottomBar = $content.find( ".mfp-bottom-bar" );
-
-							if ( $el ) {
-								$source = $el.find( "img" );
-								$target.attr( "alt", $source.attr( "alt" ) );
-
-								// Replicate aria-describedby if it exists
-								description = $source.attr( "aria-describedby" );
-								if ( description ) {
-									$target.attr( "aria-describedby", description );
-								}
-
-								// Replicate longdesc if it exists
-								description = $source.attr( "longdesc" );
-								if ( description ) {
-									$target.attr( "longdesc", description );
-								}
-
-								// Handle alternate titles
-								altTitleId = $el.attr( "data-title" );
-								if ( altTitleId ) {
-									altTitle = document.getElementById( altTitleId );
-									if ( altTitle !== null ) {
-										$bottomBar.find( ".mfp-title" ).html( altTitle.innerHTML );
-									}
-								}
-							} else {
-								$target.attr( "alt", $bottomBar.find( ".mfp-title" ).html() );
-							}
-						} else {
-							$content
-								.find( ".modal-title, h1" )
-								.first()
-								.attr( "id", "lbx-title" );
-						}
-					}
-				};
-			}
-
-			// Load Magnific Popup dependency and bind the init event handler
-			Modernizr.load({
-				load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
-				complete: function() {
-					var elm = document.getElementById( elmId ),
-						$elm = $( elm ),
-						settings = {},
-						firstLink;
-
-					if ( !elm ) {
-						return;
-					}
-
-					// Set the dependency i18nText only once
-					if ( !extendedGlobal ) {
-						$.extend( true, $.magnificPopup.defaults, i18nText );
-						extendedGlobal = true;
-					}
-
-					// TODO: Add swipe support
-
-					settings.callbacks = callbacks;
-
-					if ( elm.nodeName.toLowerCase() !== "a" ) {
-						settings.delegate = "a";
-						firstLink = elm.getElementsByTagName( "a" )[ 0 ];
-
-						// Is the element a gallery?
-						if ( elm.className.indexOf( "-gal" ) !== -1 ) {
-							settings.gallery = {
-								enabled: true
-							};
-						}
-					} else {
-						firstLink = elm;
-					}
-
+				if ( firstLink ) {
 					if ( firstLink.getAttribute( "href" ).charAt( 0 ) === "#" ) {
 						settings.type = "inline";
 					} else if ( firstLink.className.indexOf( "lbx-iframe" ) !== -1 ) {
@@ -6089,7 +6025,7 @@ var componentName = "wb-lbx",
 						settings.modal = true;
 					}
 
-					// Extend the settings with data-wb-lbx then
+					// Extend the settings with window[ "wb-lbx" ] then data-wb-lbx
 					$elm.magnificPopup(
 						$.extend(
 							true,
@@ -6098,12 +6034,125 @@ var componentName = "wb-lbx",
 							wb.getData( $elm, componentName )
 						)
 					);
-
-					// Identify that initialization has completed
-					wb.ready( $elm, componentName );
 				}
+
+				// Identify that initialization has completed
+				wb.ready( $elm, componentName );
 			});
+
+			// Load dependencies as needed
+			setup();
 		}
+	},
+
+	/**
+	 * @method setup
+	 */
+	setup = function() {
+
+		// Only initialize the i18nText and callbacks once
+		if ( !i18nText ) {
+			i18n = wb.i18n;
+			i18nText = {
+				tClose: i18n( "overlay-close" ) + i18n( "space" ) + i18n( "esc-key" ),
+				tLoading: i18n( "load" ),
+				gallery: {
+					tPrev: i18n( "prv-l" ),
+					tNext: i18n( "nxt-r" ),
+					tCounter: i18n( "lb-curr" )
+				},
+				image: {
+					tError: i18n( "lb-img-err" ) + " (<a href=\"url%\">)"
+				},
+				ajax: {
+					tError: i18n( "lb-xhr-err" ) + " (<a href=\"url%\">)"
+				}
+			};
+
+			callbacks = {
+				open: function() {
+
+					// TODO: Better if dealt with upstream by Magnific popup
+					var $item = this.currItem,
+						$content = this.contentContainer,
+						$wrap = this.wrap,
+						$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
+						len = $buttons.length,
+						i, button, $bottomBar;
+
+					for ( i = 0; i !== len; i += 1 ) {
+						button = $buttons[ i ];
+						button.innerHTML += "<span class='wb-inv'> " + button.title + "</span>";
+					}
+
+					if ( $item.type === "image" ) {
+						$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
+					} else {
+						$content.attr( "role", "document" );
+					}
+
+					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
+				},
+				change: function() {
+					var $item = this.currItem,
+						$content = this.contentContainer,
+						$el, $bottomBar, $source, $target,
+						description, altTitleId, altTitle;
+
+					if ( $item.type === "image" ) {
+						$el = $item.el;
+						$target = $item.img;
+						$bottomBar = $content.find( ".mfp-bottom-bar" );
+
+						if ( $el ) {
+							$source = $el.find( "img" );
+							$target.attr( "alt", $source.attr( "alt" ) );
+
+							// Replicate aria-describedby if it exists
+							description = $source.attr( "aria-describedby" );
+							if ( description ) {
+								$target.attr( "aria-describedby", description );
+							}
+
+							// Replicate longdesc if it exists
+							description = $source.attr( "longdesc" );
+							if ( description ) {
+								$target.attr( "longdesc", description );
+							}
+
+							// Handle alternate titles
+							altTitleId = $el.attr( "data-title" );
+							if ( altTitleId ) {
+								altTitle = document.getElementById( altTitleId );
+								if ( altTitle !== null ) {
+									$bottomBar.find( ".mfp-title" ).html( altTitle.innerHTML );
+								}
+							}
+						} else {
+							$target.attr( "alt", $bottomBar.find( ".mfp-title" ).html() );
+						}
+					} else {
+						$content
+							.find( ".modal-title, h1" )
+							.first()
+							.attr( "id", "lbx-title" );
+					}
+				}
+			};
+		}
+
+		// Load Magnific Popup dependency and bind the init event handler
+		Modernizr.load({
+			load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
+			complete: function() {
+
+				// Set the dependency i18nText only once
+				$.extend( true, $.magnificPopup.defaults, i18nText );
+				extendedGlobal = true;
+
+				$document.trigger( dependenciesLoadedEvent );
+			}
+		});
 	};
 
 // Bind the init event of the plugin
@@ -6214,17 +6263,24 @@ $( document ).on( "open" + selector, function( event, items, modal, title ) {
 				} : "title";
 
 		event.preventDefault();
-		$.magnificPopup.open({
-			items: items,
-			modal: isModal,
-			gallery: {
-				enabled: isGallery
-			},
-			image: {
-				titleSrc: titleSrc
-			},
-			callbacks: callbacks
+
+		// Ensure the dependencies are loaded first
+		$document.one( dependenciesLoadedEvent, function() {
+			$.magnificPopup.open({
+				items: items,
+				modal: isModal,
+				gallery: {
+					enabled: isGallery
+				},
+				image: {
+					titleSrc: titleSrc
+				},
+				callbacks: callbacks
+			});
 		});
+
+		// Load dependencies as needed
+		setup();
 	}
 });
 
@@ -6450,7 +6506,7 @@ var componentName = "wb-menu",
 	 * @param {jQuery DOM element} $ajaxResult The AJAXed in menu content to import
 	 */
 	onAjaxLoaded = function( $elm, $ajaxResult ) {
-		var $ajaxed = !$ajaxResult ? $elm : $ajaxResult,
+		var $ajaxed = $ajaxResult && $ajaxResult.attr( "data-type" ) === "string" ? $ajaxResult : $elm,
 			$menubar = $ajaxed.find( ".menu" ),
 			$menu = $menubar.find( "> li > a" ),
 			target = $elm.data( "trgt" ),
@@ -7061,6 +7117,7 @@ var componentName = "wb-mltmd",
 	youtubeEvent = "youtube" + selector,
 	resizeEvent = "resize" + selector,
 	templateLoadedEvent = "templateloaded" + selector,
+	cuepointEvent = "cuepoint" + selector,
 	captionClass = "cc_on",
 	$document = wb.doc,
 	$window = wb.win,
@@ -7491,14 +7548,12 @@ var componentName = "wb-mltmd",
 		case "setCaptionsVisible":
 			if ( args ) {
 				$( this).addClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", this.object.getOption( "captions", "tracklist" )[ 0 ] );
-				}
+				this.object.loadModule("cc");
+				this.object.loadModule("captions");
 			} else {
 				$( this ).removeClass( captionClass );
-				if ( this.object.getOptions().length > 0 ) {
-					this.object.setOption( "captions", "track", {} );
-				}
+				this.object.unloadModule("cc");
+				this.object.unloadModule("captions");
 			}
 			$player.trigger( "ccvischange" );
 		}
@@ -7510,36 +7565,36 @@ var componentName = "wb-mltmd",
 	 * @param {object} event The event object fior the triggered event
 	 */
 	youTubeEvents = function( event ) {
-		var target = event.target.a,
-			$target = $( event.target.a ),
+		var playerTarget = event.target.getIframe(),
+			$playerTarget = $( playerTarget ),
 			timeline = function() {
-				$target.trigger( "timeupdate" );
+				$playerTarget.trigger( "timeupdate" );
 			};
 
 		switch ( event.data ) {
 		case null:
-			$target.trigger( "canplay" );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case -1:
 			event.target.unMute();
-			$target.trigger( "durationchange" );
+			$playerTarget.trigger( "durationchange" );
 			break;
 		case 0:
-			$target.trigger( "ended" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "ended" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 1:
-			$target.trigger( "canplay" );
-			$target.trigger( "durationchange" );
-			$target.trigger( "play" );
-			target.timeline = setInterval( timeline, 250 );
+			$playerTarget.trigger( "canplay" );
+			$playerTarget.trigger( "play" );
+			playerTarget.timeline = setInterval( timeline, 250 );
 			break;
 		case 2:
-			$target.trigger( "pause" );
-			target.timeline = clearInterval( target.timeline );
+			$playerTarget.trigger( "pause" );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		case 3:
-			target.timeline = clearInterval( target.timeline );
+			playerTarget.timeline = clearInterval( playerTarget.timeline );
 			break;
 		}
 	},
@@ -7701,7 +7756,7 @@ $document.on( youtubeEvent, selector, function( event ) {
 			videoId: $this.data( "youtube" ),
 			playerVars: {
 				autoplay: 0,
-				controls: 1,
+				controls: 0,
 				origin: wb.pageUrlParts.host,
 				modestbranding: 1,
 				rel: 0,
@@ -7817,9 +7872,9 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
 				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
 				data.title + "\", \"url\": \"" + data.shareUrl +
-				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" );
-			$media.parent().before( $share );
-			wb.add( $share );
+				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" )
+				.insertBefore( $media.parent() )
+				.trigger( "wb-init.wb-share" );
 		}
 
 		if ( data.captions === undef ) {
@@ -7863,6 +7918,8 @@ $document.on( "click", selector, function( event ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) - this.player( "getDuration" ) * 0.05);
 	} else if ( className.match( /\bfastforward\b|-forward/ ) ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05);
+	} else if ( className.match( /cuepoint/ ) ) {
+		$(this).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
 	}
 });
 
@@ -7925,7 +7982,7 @@ $document.on( "keyup", selector, function( event ) {
 
 $document.on( "durationchange play pause ended volumechange timeupdate " +
 	captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
-	captionsVisibleChangeEvent +
+	captionsVisibleChangeEvent + " " + cuepointEvent +
 	" waiting canplay", selector, function( event, simulated ) {
 
 	var eventTarget = event.currentTarget,
@@ -8050,6 +8107,9 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		this.loading = clearTimeout( this.loading );
 		$this.find( ".display" ).removeClass( "waiting" );
 		break;
+	case "cuepoint":
+		eventTarget.player( "setCurrentTime", parseTime( event.cuepoint ) );
+		break;
 	}
 });
 
@@ -8079,17 +8139,13 @@ $document.on( resizeEvent, selector, function( event ) {
 			$player = $( player ),
 			ratio, newHeight;
 
-		if ( $player.hasClass( "video" ) ) {
+		if ( $( event.currentTarget ).hasClass( "video" ) ) {
 			if ( player.videoWidth === 0 || player.videoWidth === undef ) {
 				ratio = $player.attr( "height" ) / $player.attr( "width" );
 
 				// Calculate the new height based on the specified ratio or assume a default 16:9 ratio
 				newHeight = Math.round( $player.width() * ( !isNaN( ratio ) ? ratio : 0.5625 ) );
 
-				//TODO: Remove this when captions works in chromeless api with controls
-				if ( $player.is( "iframe") ) {
-					newHeight += 30;
-				}
 				$player.css( "height", newHeight + "px" );
 			} else {
 				$player.css( "height", "" );
@@ -9462,7 +9518,6 @@ var componentName = "wb-share",
 			$elm.append( $share );
 
 			$share
-				.trigger( initEvent )
 				.trigger( "wb-init.wb-lbx" );
 
 			// Identify that initialization has completed
@@ -9684,7 +9739,7 @@ var componentName = "wb-tabs",
 	shiftEvent = "wb-shift" + selector,
 	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
-	controls = selector + " [role=tablist] a",
+	controls = selector + " [role=tablist] a, " + selector + " [role=tablist] .tab-count",
 	uniqueCount = 0,
 	initialized = false,
 	equalHeightClass = "wb-eqht",
@@ -10135,7 +10190,7 @@ var componentName = "wb-tabs",
 			$panels = data.panels,
 			$controls = data.tablist,
 			len = $panels.length,
-			current = $elm.find( ".in" ).prevAll( "[role=tabpanel]" ).length,
+			current = $elm.find( "> .tabpanels > .in" ).prevAll( "[role=tabpanel]" ).length,
 			shiftto = event.shiftto ? event.shiftto : 1,
 			next = current > len ? 0 : current + shiftto,
 			$next = $panels.eq( ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next );
@@ -10264,37 +10319,32 @@ var componentName = "wb-tabs",
 		eventCurrentTarget = event.currentTarget,
 		$elm;
 
-		switch ( event.type ) {
-		case "timerpoke":
-			$elm = $( eventTarget );
-			if ( !$elm.hasClass( componentName + "-inited" ) ) {
-				init( event );
-			} else if ( $elm.hasClass( "playing" ) ) {
-
-				// Filter out any events triggered by descendants
-				if ( eventCurrentTarget === eventTarget ) {
+		// Filter out any events triggered by descendants
+		if ( eventCurrentTarget === eventTarget ) {
+			switch ( event.type ) {
+			case "timerpoke":
+				$elm = $( eventTarget );
+				if ( !$elm.hasClass( componentName + "-inited" ) ) {
+					init( event );
+				} else if ( $elm.hasClass( "playing" ) ) {
 					onTimerPoke( $elm );
 				}
-			}
-			break;
+				break;
 
-		/*
-		 * Init
-		 */
-		case "wb-init":
-			init( event );
-			break;
+			/*
+			 * Init
+			 */
+			case "wb-init":
+				init( event );
+				break;
 
-		/*
-		 * Change Slides
-		 */
-		case "wb-shift":
-
-			// Filter out any events triggered by descendants
-			if ( eventCurrentTarget === eventTarget ) {
+			/*
+			 * Change Slides
+			 */
+			case "wb-shift":
 				onShift( event, $( eventTarget ) );
+				break;
 			}
-			break;
 		}
 
 	/*
@@ -10320,7 +10370,14 @@ var componentName = "wb-tabs",
 			( !which || which === 1 || which === 13 || which === 32 ||
 			( which > 36 && which < 41 ) ) ) {
 
+		// Stop propagation of the activate event
 		event.preventDefault();
+		if ( event.stopPropagation ) {
+			event.stopImmediatePropagation();
+		} else {
+			event.cancelBubble = true;
+		}
+
 		$elm = $( elm );
 		$sldr = $elm.closest( selector );
 		sldrId = $sldr[ 0 ].id;
@@ -10362,7 +10419,7 @@ var componentName = "wb-tabs",
 
 		if ( which > 36 ) {
 			onCycle( $sldr, which < 39 ? -1 : 1 );
-			$sldr.find( ".active a" ).trigger( setFocusEvent );
+			$sldr.find( "> [role=tablist] .active a" ).trigger( setFocusEvent );
 		} else {
 			if ( elm.getAttribute( "role" ) === "tab" ) {
 				onPick( $sldr, $elm );
@@ -10383,8 +10440,8 @@ var componentName = "wb-tabs",
 	return true;
 });
 
-//Pause on escape
-$document.on( "keydown", selector, function( event ) {
+// Pause on escape
+$document.on( "keydown", selector + ", " + selector + " [role=tabpanel]", function( event ) {
 
 	// Escape key
 	if ( event.which === 27 ) {
@@ -10398,32 +10455,39 @@ $document.on( "keydown", selector, function( event ) {
 	}
 });
 
-$document.on( "keydown", selector + " [role=tabpanel]", function( event ) {
-	var currentTarget = event.currentTarget;
-
-	// Ctrl + Up arrow
-	if ( event.ctrlKey && event.which === 38 ) {
-
-		// Move focus to the summary element
-		$( currentTarget )
-			.closest( selector )
-				.find( "[href$='#" + currentTarget.id + "']" )
-					.trigger( "setfocus.wb" );
-	}
-});
-
-// Stop the carousel if there is a click within the panel
-$document.on( "click", selector + " [role=tabpanel]", function( event ) {
-	var which = event.which,
+$document.on( "click keydown", selector + " [role=tabpanel]", function( event ) {
+	var currentTarget = event.currentTarget,
+		which = event.which,
 		$container;
 
-	// Ignore middle and right mouse buttons
-	if ( !which || which === 1 ) {
-		$container = $( event.currentTarget ).closest( selector );
+	// Stop propagation of the click/keydown event
+	if ( event.stopPropagation ) {
+		event.stopImmediatePropagation();
+	} else {
+		event.cancelBubble = true;
+	}
 
-		// Stop the carousel if there is a click within a panel
-		if ( $container.hasClass( "playing" ) ) {
-			$container.find( ".plypause" ).trigger( "click" );
+	if ( event.target === "click" ) {
+
+		// Ignore middle and right mouse buttons
+		if ( !which || which === 1 ) {
+			$container = $( event.currentTarget ).closest( selector );
+
+			// Stop the carousel if there is a click within a panel
+			if ( $container.hasClass( "playing" ) ) {
+				$container.find( ".plypause" ).trigger( "click" );
+			}
+		}
+	} else {
+
+		// Ctrl + Up arrow
+		if ( event.ctrlKey && event.which === 38 ) {
+
+			// Move focus to the summary element
+			$( currentTarget )
+				.closest( selector )
+					.find( "[href$='#" + currentTarget.id + "']" )
+						.trigger( "setfocus.wb" );
 		}
 	}
 });
@@ -10457,7 +10521,7 @@ $document.on( wb.resizeEvents, onResize );
 // This event only fires on the window
 $window.on( "hashchange", onHashChange );
 
-$document.on( activateEvent, selector + " .tabpanels > details > summary", function( event ) {
+$document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode,
 		$details;
@@ -10842,6 +10906,13 @@ var componentName = "wb-toggle",
 				isOn = data.isOn,
 				$elms = data.elms,
 				$detail = $( this );
+
+			// Stop propagation of the toggleDetails event
+			if ( event.stopPropagation ) {
+				event.stopImmediatePropagation();
+			} else {
+				event.cancelBubble = true;
+			}
 
 			// Native details support
 			$detail.prop( "open", isOn );
