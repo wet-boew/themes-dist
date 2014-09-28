@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7-development - 2014-09-24
+ * v4.0.7-development - 2014-09-28
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4719,9 +4719,9 @@ var componentName = "wb-feeds",
 		 */
 		generic: function( data ) {
 
-			return "<li><a href='" + data.link + "'>" + data.title + "</a>" +
-				( data.publishedDate !== "" ? " <span class='feeds-date'>[" +
-				wb.date.toDateISO( data.publishedDate, true ) + "]</span>" : "" ) + "</li>";
+			return "<li><a href='" + data.link + "'>" + data.title + "</a><br />" +
+				( data.publishedDate !== "" ? " <small class='feeds-date'><time>" +
+				wb.date.toDateISO( data.publishedDate, true ) + "</time></small>" : "" ) + "</li>";
 		}
 	},
 
@@ -5815,7 +5815,6 @@ var componentName = "wb-menu",
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
 	menuItemSelector = "> a, > details > summary",
-	i18n, i18nText,
 	$document = wb.doc,
 
 	// Used for half second delay on showing/hiding menus because of mouse hover
@@ -5843,14 +5842,6 @@ var componentName = "wb-menu",
 				$elm.attr( "id", componentName + "-" + menuCount );
 			}
 			menuCount += 1;
-
-			// Only initialize the i18nText once
-			if ( !i18nText ) {
-				i18n = wb.i18n;
-				i18nText = {
-					searchMenus: i18n( "srch-menus" )
-				};
-			}
 
 			// Lets test to see if we have any menus to fetch
 			ajaxFetch = $elm.data( "ajax-fetch" );
@@ -6104,8 +6095,10 @@ var componentName = "wb-menu",
 
 		// Let's now populate the DOM since we have done all the work in a documentFragment
 		panelDOM.innerHTML = "<header class='modal-header'><div class='modal-title'>" +
-				i18nText.searchMenus + "</div></header><div class='modal-body'>" +
-				panel + "</div>";
+				document.getElementById( "wb-glb-mn" )
+					.getElementsByTagName( "h2" )[ 0 ]
+						.innerHTML +
+				"</div></header><div class='modal-body'>" + panel + "</div>";
 		panelDOM.className += " wb-overlay modal-content overlay-def wb-panel-r";
 		$panel
 			.trigger( "wb-init.wb-overlay" )
@@ -7918,10 +7911,10 @@ var componentName = "wb-overlay",
 
 			// Returns focus to the source link for the overlay
 			$( sourceLink ).trigger( setFocusEvent );
-
-			// Delete the source link reference
-			delete sourceLinks[ overlayId ];
 		}
+
+		// Delete the source link reference
+		delete sourceLinks[ overlayId ];
 	};
 
 $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
