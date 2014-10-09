@@ -1,8 +1,8 @@
-<!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
 <html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
 <head>
 <meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Creating a pull request - Documentation - Web Experience Toolkit
 </title>
 <meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
@@ -172,6 +172,16 @@ Test Web pages against the following browser test baseline:[{htmlmin-lb}]<ul>
 </li>
 <li>PR testing is done by <a rel="external" href="https://travis-ci.org/wet-boew/wet-boew">Travis-CI</a>, but the same set of tests can be run using <code>grunt dist</code> locally before you submit</li>
 </ul>
+</section>
+<section>
+<h2>Commit Messages</h2>
+<p>When committing changes for a pull request, your commit message should start off with the name of the affected plugin(s) or topic, followed by a colon and a short description of what's changed. A longer description can also optionally be included. If the commit resolves a pre-existing issue on GitHub, include "Fixes #issue-id." as a part of the long description.</p>
+<dl>
+<dt>Message example</dt>
+<dd><code>Plugin name/topic: Short description of the change. <br>(Optional) Long description of the change. Fixes #1715.</code></dd>
+<dt>Command line example</dt>
+<dd><code>git commit -m "Plugin name/topic: Short description of the change." -m "(Optional) Long description of the change. Fixes #1715."</code></dd>
+</dl>
 </section>
 <aside class="wb-fnote" role="note">
 <h2 id="fn">Footnotes</h2>
