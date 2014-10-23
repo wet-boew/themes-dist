@@ -145,6 +145,8 @@ aside.features {
   padding-bottom: 0.2em; }
 .secondary .row h2 a, .secondary .row h3 a, .secondary .row h4 a, .home .row h2 a, .home .row h3 a, .home .row h4 a {
   font-size: 16px; }
+.secondary .row a h2, .secondary .row a h3, .secondary .row a h4, .home .row a h2, .home .row a h3, .home .row a h4 {
+  font-size: 16px; }
 
 /* Thumbnail Treatments */
 .thumbnail {

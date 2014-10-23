@@ -1,30 +1,40 @@
 <!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" dir="ltr"> <!--<![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<!--<![endif]-->
 <head>
-<meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+<meta charset="utf-8">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Meter polyfill - Canada.ca</title>
-<meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
-<meta name="description" content="Emulates meter element support for browsers that do not have support. The meter element displays a scalar measurement in a known range."> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Meta data -->
+<meta name="description" content="Emulates meter element support for browsers that do not have support. The meter element displays a scalar measurement in a known range.">
+<!-- Meta data-->
+<!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="../../css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="../../css/wet-boew.min.css">
+<!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.min.css">
-<link rel="stylesheet" href="demo/meter.min.css"> <!--[if lt IE 9]>
+<link rel="stylesheet" href="demo/meter.min.css">
+<!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 
 <link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="../../js/ie8-wet-boew.min.js"></script>
-<![endif]--> <!--[if lte IE 9]>
+<![endif]-->
+<!--[if lte IE 9]>
 
 
 <![endif]-->
 <noscript><link rel="stylesheet" href="../../css/noscript.min.css" /></noscript>
 <script>dataLayer1 = [];</script>
 </head>
-<body vocab="http://schema.org/" typeof="WebPage"> <!-- Google Tag Manager -->
+<body vocab="http://schema.org/" typeof="WebPage">
+<!-- Google Tag Manager -->
 <noscript><iframe title="Google Tag Manager" src="//www.googletagmanager.com/ns.html?id=GTM-TLGQ9K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script> <!-- End Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer1'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer1','GTM-TLGQ9K');</script>
+<!-- End Google Tag Manager -->
 <ul id="wb-tphp">
 <li class="wb-slc">
 <a class="wb-sl" href="#wb-cont">Skip to main content</a>
@@ -62,7 +72,9 @@
 <div class="form-group">
 <label for="wb-srch-q" class="wb-inv">Search website</label>
 <input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="wb-srch-q" type="search" value="" size="27" maxlength="150" placeholder="Search Canada.ca">
-<datalist id="wb-srch-q-ac"> <!--[if lte IE 9]><select><![endif]--> <!--[if lte IE 9]></select><![endif]-->
+<datalist id="wb-srch-q-ac">
+<!--[if lte IE 9]><select><![endif]-->
+<!--[if lte IE 9]></select><![endif]-->
 </datalist>
 </div>
 <div class="form-group submit">
@@ -164,8 +176,8 @@
 <td><meter min="100" low="120" value="115" max="200" high="180">15% (too low)</meter></td>
 </tr>
 <tr>
-<td colspan="3"><button class="btn btn-default" id="decreaseMeter">Decrease</button></td>
-<td colspan="3"><button class="btn btn-default" id="increaseMeter">Increase</button></td>
+<td colspan="3"><button class="btn btn-default" id="decreaseMeter" type="button">Decrease</button></td>
+<td colspan="3"><button class="btn btn-default" id="increaseMeter" type="button">Increase</button></td>
 <td><meter id="updateTest" min="100" low="120" value="150" max="200" high="180"><span class="wb-inv">150</span></meter>
 </td></tr>
 </tbody>
@@ -215,8 +227,8 @@
 			&lt;td&gt;&lt;meter min=&quot;100&quot; low=&quot;120&quot; value=&quot;115&quot; max=&quot;200&quot; high=&quot;180&quot;&gt;15% (too low)&lt;/meter&gt;&lt;/td&gt;
 		&lt;/tr&gt;
 		&lt;tr&gt;
-			&lt;td colspan=&quot;3&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;decreaseMeter&quot;&gt;Decrease&lt;/button&gt;&lt;/td&gt;
-			&lt;td colspan=&quot;3&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;increaseMeter&quot;&gt;Increase&lt;/button&gt;&lt;/td&gt;
+			&lt;td colspan=&quot;3&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;decreaseMeter&quot; type=&quot;button&quot;&gt;Decrease&lt;/button&gt;&lt;/td&gt;
+			&lt;td colspan=&quot;3&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;increaseMeter&quot; type=&quot;button&quot;&gt;Increase&lt;/button&gt;&lt;/td&gt;
 			&lt;td&gt;&lt;meter id=&quot;updateTest&quot; min=&quot;100&quot; low=&quot;120&quot; value=&quot;150&quot; max=&quot;200&quot; high=&quot;180&quot;&gt;&lt;span class=&quot;wb-inv&quot;&gt;150&lt;/span&gt;&lt;/meter&gt;
 		&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -362,10 +374,13 @@ $( document ).on( &quot;click vclick&quot;, &quot;#increaseMeter, #decreaseMeter
 </div>
 </div>
 </div>
-</footer> <!--[if gte IE 9 | !IE ]><!-->
+</footer>
+<!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="../../js/wet-boew.min.js"></script>
-<script src="../../js/theme.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="../../js/theme.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 <script src="demo/meter.min.js"></script>
