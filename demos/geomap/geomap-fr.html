@@ -1,15 +1,22 @@
 <!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="fr" dir="ltr"> <!--<![endif]-->
+<html class="no-js" lang="fr" dir="ltr">
+<!--<![endif]-->
 <head>
-<meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+<meta charset="utf-8">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Géocarte - Exemples pratiques - Plate-forme de gouvernement ouvert (PGO)
 </title>
-<meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
-<meta name="description" content="Un thème qui met en place la mise en page et la mise en forme pour la Plate-forme de gouvernement ouvert (PGO)."> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Meta data -->
+<meta name="description" content="Un thème qui met en place la mise en page et la mise en forme pour la Plate-forme de gouvernement ouvert (PGO).">
+<!-- Meta data-->
+<!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="../../css/wet-boew.min.css"> <!--<![endif]-->
-<link rel="stylesheet" href="../../css/theme.min.css"> <!--[if lt IE 9]>
+<link rel="stylesheet" href="../../css/wet-boew.min.css">
+<!--<![endif]-->
+<link rel="stylesheet" href="../../css/theme.min.css">
+<!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -109,7 +116,8 @@
 <p>Affiche une carte dynamique sur laquelle des informations de sources supplémentaires peuvent être superposées.</p>
 </section>
 <section>
-<h2>Carte dynamique - Exemple</h2> <!-- GeomapStart -->
+<h2>Carte dynamique - Exemple</h2>
+<!-- GeomapStart -->
 <div id="sample_map" class="wb-geomap position scaleline tab geocoder aoi geolocation" data-wb-geomap="{
 			&quot;layersFile&quot;: &quot;demo/config-fr.min.js&quot;,
 			&quot;tables&quot;: [{
@@ -128,7 +136,7 @@
 					&quot;height&quot;: 200,
 					&quot;width&quot;: 300,
 					&quot;close&quot;: true,
-					&quot;content&quot;: &quot;<div style=\"white-space:nowrap;\"><p><strong>Subdivision de recensement: </strong>_Subdivision de recensement<div><a href=\"#\" class=\"button\" role=\"button\" title=\"Zoom à la ville\" aria-label=\"Zoom à la ville\" onclick=\"wb.doc.zoomFeature()\">Zoom à la ville</a></div></div>&quot;
+					&quot;content&quot;: &quot;<div style=\&quot;white-space:nowrap;\&quot;><p><strong>Subdivision de recensement: </strong>_Subdivision de recensement<div><a href=\&quot;#\&quot; class=\&quot;button\&quot; role=\&quot;button\&quot; title=\&quot;Zoom à la ville\&quot; aria-label=\&quot;Zoom à la ville\&quot; onclick=\&quot;wb.doc.zoomFeature()\&quot;>Zoom à la ville</a></div></div>&quot;
 				},
 				&quot;style&quot;: {
 					&quot;type&quot;: &quot;rule&quot;,
@@ -173,13 +181,18 @@
 			}]
 		}">
 <div class="row">
-<div class="col-md-9"> <!-- Insert Map Start (mandatory) -->
-<div class="wb-geomap-map"></div> <!-- Insert Map End -->
-</div> <!-- Insert Legend Start (optional) -->
+<div class="col-md-9">
+<!-- Insert Map Start (mandatory) -->
+<div class="wb-geomap-map"></div>
+<!-- Insert Map End -->
+</div>
+<!-- Insert Legend Start (optional) -->
 <section class="wb-geomap-legend col-md-3">
 <h3>Légende</h3>
-</section> <!-- Insert Legend End -->
-</div> <!-- Insert Layer Data Start (mandatory) -->
+</section>
+<!-- Insert Legend End -->
+</div>
+<!-- Insert Layer Data Start (mandatory) -->
 <div class="row">
 <section class="col-md-12">
 <h3>Exemple - Données extérieure &amp; provenant de fichiers</h3>
@@ -280,8 +293,10 @@
 </table>
 </section>
 </section>
-</div> <!-- Insert Layer Data End-->
-</div> <!-- GeomapEnd -->
+</div>
+<!-- Insert Layer Data End-->
+</div>
+<!-- GeomapEnd -->
 <section>
 <h3>Code</h3>
 <details class="mrgn-bttm-lg">
@@ -478,7 +493,8 @@
 </section>
 <section>
 <h2>Carte statique - Exemple</h2>
-<p>Geomap peux être configuré pour créer une carte statique afin de situer un endroit comme un bureau ou une étendue à l'aide d'une "bbox".</p> <!-- GeomapStart -->
+<p>Geomap peux être configuré pour créer une carte statique afin de situer un endroit comme un bureau ou une étendue à l'aide d'une "bbox".</p>
+<!-- GeomapStart -->
 <div id="location_map" class="wb-geomap static" data-wb-geomap="{
 			&quot;tables&quot;: [{
 				&quot;id&quot;: &quot;addNRCan&quot;,
@@ -495,8 +511,11 @@
 			}]
 		}">
 <div class="row">
-<div class="col-md-12"> <!-- Insert Map Start (mandatory) -->
-<div class="wb-geomap-map col-md-4"></div> <!-- Insert Map End --> <!-- Insert Layer Data Start (mandatory) -->
+<div class="col-md-12">
+<!-- Insert Map Start (mandatory) -->
+<div class="wb-geomap-map col-md-4"></div>
+<!-- Insert Map End -->
+<!-- Insert Layer Data Start (mandatory) -->
 <div class="wb-geomap-layers col-md-4">
 <table id="addNRCan" aria-label="Adresse des bureaux de RNCan Ottawa" class="table">
 <caption class="wb-inv">Adresse des bureaux de Ressources naturelles Canada Ottawa</caption>
@@ -511,10 +530,12 @@
 </tr>
 </tbody>
 </table>
-</div> <!-- Insert Layer Data End -->
+</div>
+<!-- Insert Layer Data End -->
 </div>
 </div>
-</div> <!-- GeomapEnd -->
+</div>
+<!-- GeomapEnd -->
 <section>
 <h3>Code</h3>
 <details>
@@ -569,18 +590,24 @@
 </section>
 <section>
 <h2>Carte WMS - Exemple WMS</h2>
-<p>Geomap peut être configuré pour utiliser une carte de base de type WMS. L'item basemap dans le fichier de configuration permet de définir le WMS à utiliser.</p> <!-- GeomapStart -->
+<p>Geomap peut être configuré pour utiliser une carte de base de type WMS. L'item basemap dans le fichier de configuration permet de définir le WMS à utiliser.</p>
+<!-- GeomapStart -->
 <div id="wms_map" class="wb-geomap" data-wb-geomap="{
 			&quot;layersFile&quot;: &quot;demo/configwms-en.min.js&quot;
 		}">
 <div class="row">
-<div class="col-md-12"> <!-- Insert Map Start (mandatory) -->
-<div class="wb-geomap-map col-md-4"></div> <!-- Insert Map End --> <!-- Insert Layer Data Start (mandatory) -->
+<div class="col-md-12">
+<!-- Insert Map Start (mandatory) -->
+<div class="wb-geomap-map col-md-4"></div>
+<!-- Insert Map End -->
+<!-- Insert Layer Data Start (mandatory) -->
 <div class="wb-geomap-layers col-md-4">
-</div> <!-- Insert Layer Data End -->
+</div>
+<!-- Insert Layer Data End -->
 </div>
 </div>
-</div> <!-- GeomapEnd -->
+</div>
+<!-- GeomapEnd -->
 <section>
 <h3>Code</h3>
 <details class="mrgn-tp-lg">
@@ -672,9 +699,12 @@
 </section>
 </nav>
 </div>
-</footer> <!--[if gte IE 9 | !IE ]><!-->
+</footer>
+<!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../../js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="../../js/wet-boew.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 <script src="demo/client_functions.min.js"></script>

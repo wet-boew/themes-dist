@@ -1,16 +1,23 @@
 <!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="fr" dir="ltr"> <!--<![endif]-->
+<html class="no-js" lang="fr" dir="ltr">
+<!--<![endif]-->
 <head>
-<meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+<meta charset="utf-8">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Contenu superposé - Exemples pratiques - Plate-forme de gouvernement ouvert (PGO)
 </title>
-<meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
-<meta name="description" content="Un thème qui met en place la mise en page et la mise en forme pour la Plate-forme de gouvernement ouvert (PGO)."> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Meta data -->
+<meta name="description" content="Un thème qui met en place la mise en page et la mise en forme pour la Plate-forme de gouvernement ouvert (PGO).">
+<!-- Meta data-->
+<!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="../../css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="../../css/wet-boew.min.css">
+<!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.min.css">
-<link rel="stylesheet" href="demo/overlay.min.css"> <!--[if lt IE 9]>
+<link rel="stylesheet" href="demo/overlay.min.css">
+<!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -252,7 +259,7 @@
 <option value="cs-plein-ecran">Contenu superposé plein écran</option>
 <option value="en-tete-cache">Contenu superposé plein écran - En-tête caché</option>
 </select>
-<button id="overlay-open-btn">Ouvrir le contenu superposé</button>
+<button id="overlay-open-btn" type="button">Ouvrir le contenu superposé</button>
 <section>
 <h4>Code</h4>
 <details>
@@ -268,7 +275,7 @@
 	&lt;option value="cs-plein-ecran"&gt;Contenu superposé plein écran&lt;/option&gt;
 	&lt;option value="en-tete-cache"&gt;Contenu superposé plein écran - En-tête caché&lt;/option&gt;
 &lt;/select&gt;
-&lt;button id="overlay-open-btn"&gt;Open overlay&lt;/button&gt;</code></pre>
+&lt;button id="overlay-open-btn" type="button"&gt;Ouvrir le contenu superposé&lt;/button&gt;</code></pre>
 </section>
 <section>
 <h5>JavaScript</h5>
@@ -351,13 +358,13 @@ wb.doc.on( "click vclick", "#overlay-open-btn", function( event ) {
 </header>
 <ul class="list-inline">
 <li>
-<button class="btn btn-default">Bouton 1</button>
+<button class="btn btn-default" type="button">Bouton 1</button>
 </li>
 <li>
-<button class="btn btn-default">Bouton 2</button>
+<button class="btn btn-default" type="button">Bouton 2</button>
 </li>
 <li>
-<button class="btn btn-default">Bouton 3</button>
+<button class="btn btn-default" type="button">Bouton 3</button>
 </li>
 </ul>
 </section>
@@ -367,13 +374,13 @@ wb.doc.on( "click vclick", "#overlay-open-btn", function( event ) {
 </header>
 <ul class="list-inline">
 <li>
-<button class="btn btn-default">Bouton 1</button>
+<button class="btn btn-default" type="button">Bouton 1</button>
 </li>
 <li>
-<button class="btn btn-default">Bouton 2</button>
+<button class="btn btn-default" type="button">Bouton 2</button>
 </li>
 <li>
-<button class="btn btn-default">Bouton 3</button>
+<button class="btn btn-default" type="button">Bouton 3</button>
 </li>
 </ul>
 </section>
@@ -419,7 +426,7 @@ wb.doc.on( "click vclick", "#overlay-open-btn", function( event ) {
 </li>
 </ol>
 <p><a href="#">Lien - apparence par défaut</a></p>
-<button class="btn btn-primary popup-modal-dismiss">Fermer le contenu superposé modal</button>
+<button class="btn btn-primary popup-modal-dismiss" type="button">Fermer le contenu superposé modal</button>
 </div>
 </section>
 <section id="cs-plein-ecran" class="wb-overlay modal-content overlay-def wb-popup-full">
@@ -505,9 +512,12 @@ wb.doc.on( "click vclick", "#overlay-open-btn", function( event ) {
 </section>
 </nav>
 </div>
-</footer> <!--[if gte IE 9 | !IE ]><!-->
+</footer>
+<!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../../js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="../../js/wet-boew.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 <script src="demo/overlay.min.js"></script>
