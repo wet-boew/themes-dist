@@ -1,22 +1,29 @@
 <!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 <head>
-<meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+<meta charset="utf-8">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Lightbox - Working examples - Web Experience Toolkit
 </title>
-<meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Meta data -->
 <meta name="description" content="Display images and other content in a dialog box, either individually or as part of a gallery.">
 <meta name="dcterms.title" content="Lightbox - Web Experience Toolkit">
 <meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu">
 <meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)">
 <meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)">
 <meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français">
-<meta name="dcterms.language" title="ISO639-2" content="eng"> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
+<meta name="dcterms.language" title="ISO639-2" content="eng">
+<!-- Meta data-->
+<!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="../../css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="../../css/wet-boew.min.css">
+<!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.min.css">
-<link rel="stylesheet" href="demo/lightbox.min.css"> <!--[if lt IE 9]>
+<link rel="stylesheet" href="demo/lightbox.min.css">
+<!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.min.css" />
@@ -198,7 +205,7 @@
 </ol>
 </li>
 </ol>
-<button class="btn btn-primary popup-modal-dismiss">Close modal popup</button>
+<button class="btn btn-primary popup-modal-dismiss" type="button">Close modal popup</button>
 </div>
 </section>
 </li>
@@ -235,7 +242,7 @@
 			&lt;/header&gt;
 			&lt;div class="modal-body"&gt;
 				...
-				&lt;button class="btn btn-primary popup-modal-dismiss"&gt;Close modal popup&lt;/button&gt;
+				&lt;button class="btn btn-primary popup-modal-dismiss" type="button"&gt;Close modal popup&lt;/button&gt;
 			&lt;/div&gt;
 		&lt;/section&gt;
 	&lt;/li&gt;
@@ -493,7 +500,7 @@
 <option value="4">Modal popup</option>
 <option value="5">Image gallery</option>
 </select>
-<button id="lbx-open-btn">Open lightbox</button>
+<button id="lbx-open-btn" type="button">Open lightbox</button>
 <section>
 <h4>Code</h4>
 <details>
@@ -508,7 +515,7 @@
 	&lt;option value=&quot;4&quot;&gt;Modal popup&lt;/option&gt;
 	&lt;option value=&quot;5&quot;&gt;Image gallery&lt;/option&gt;
 &lt;/select&gt;
-&lt;button id=&quot;lbx-open-btn&quot;&gt;Open lightbox&lt;/button&gt;</code></pre>
+&lt;button id=&quot;lbx-open-btn&quot; type=&quot;button&quot;&gt;Open lightbox&lt;/button&gt;</code></pre>
 </section>
 <section>
 <h5>JavaScript</h5>
@@ -650,9 +657,12 @@ $document.on( &quot;click vclick&quot;, &quot;#lbx-open-btn&quot;, function( eve
 </nav>
 </div>
 </div>
-</footer> <!--[if gte IE 9 | !IE ]><!-->
+</footer>
+<!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../../js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="../../js/wet-boew.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 <script src="demo/lightbox.min.js"></script>

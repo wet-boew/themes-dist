@@ -1,22 +1,29 @@
 <!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr"><![endif]--><!--[if gt IE 8]><!-->
-<html class="no-js" lang="fr"> <!--<![endif]-->
+<html class="no-js" lang="fr">
+<!--<![endif]-->
 <head>
-<meta charset="utf-8"> <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+<meta charset="utf-8">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Correctif « progress » (barre de progression) - Exemples pratiques - Boîte à outils de l'expérience Web
 </title>
-<meta content="width=device-width,initial-scale=1" name="viewport"> <!-- Meta data -->
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Meta data -->
 <meta name="description" content="Émule l’élément « progress » pour les navigateurs qui ne le supportent pas. L&#x27;élément « progress » de HTML5 affiche la progression d&#x27;une tâche.">
 <meta name="dcterms.title" content="Correctif « progress » (barre de progression) - Boîte à outils de l'expérience Web">
 <meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu">
 <meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)">
 <meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)">
 <meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français">
-<meta name="dcterms.language" title="ISO639-2" content="fra"> <!-- Meta data--> <!--[if gte IE 9 | !IE ]><!-->
+<meta name="dcterms.language" title="ISO639-2" content="fra">
+<!-- Meta data-->
+<!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="../../css/wet-boew.min.css"> <!--<![endif]-->
+<link rel="stylesheet" href="../../css/wet-boew.min.css">
+<!--<![endif]-->
 <link rel="stylesheet" href="../../css/theme.min.css">
-<link rel="stylesheet" href="demo/progress.min.css"> <!--[if lt IE 9]>
+<link rel="stylesheet" href="demo/progress.min.css">
+<!--[if lt IE 9]>
 <link href="../../assets/favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
 <link rel="stylesheet" href="../../css/ie8-theme.min.css" />
@@ -144,7 +151,7 @@
 <td><progress value="500" max="500"><span class="wb-inv">100 %</span></progress></td>
 </tr>
 <tr>
-<td colspan="2"><button class="btn btn-default" id="updateProgress">Réactualiser</button></td>
+<td colspan="2"><button class="btn btn-default" id="updateProgress" type="button">Réactualiser</button></td>
 <td><progress id="updateTest" value="82" max="100"><span class="wb-inv">82%</span></progress></td>
 </tr>
 </tbody>
@@ -178,7 +185,7 @@
 				&lt;td&gt;&lt;progress value=&quot;500&quot; max=&quot;500&quot;&gt;&lt;span class=&quot;wb-inv&quot;&gt;100 %&lt;/span&gt;&lt;/progress&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-				&lt;td colspan=&quot;2&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;updateProgress&quot;&gt;Réactualiser&lt;/button&gt;&lt;/td&gt;
+				&lt;td colspan=&quot;2&quot;&gt;&lt;button class=&quot;btn btn-default&quot; id=&quot;updateProgress&quot; type=&quot;button&quot;&gt;Réactualiser&lt;/button&gt;&lt;/td&gt;
 				&lt;td&gt;&lt;progress id=&quot;updateTest&quot; value=&quot;82&quot; max=&quot;100&quot;&gt;&lt;span class=&quot;wb-inv&quot;&gt;82%&lt;/span&gt;&lt;/progress&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 		&lt;/tbody&gt;
@@ -265,9 +272,12 @@ $( document ).on( &quot;click vclick&quot;, &quot;#updateProgress&quot;, functio
 </nav>
 </div>
 </div>
-</footer> <!--[if gte IE 9 | !IE ]><!-->
+</footer>
+<!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../../js/wet-boew.min.js"></script> <!--<![endif]--> <!--[if lt IE 9]>
+<script src="../../js/wet-boew.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
 <script src="../../js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 <script src="demo/progress.min.js"></script>
