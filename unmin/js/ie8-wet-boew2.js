@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7 - 2014-10-24
+ * v4.0.8-development - 2014-10-24
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1649,7 +1649,9 @@ $document.on( "displayed.wb-cal", selector + "-cal", function( event, year, mont
 		showOnlyEventsFor( year, month, containerId );
 		$target.find( ".cal-index-" + day + " .cal-evt" ).trigger( "setfocus.wb" );
 
-		$target.trigger( "wb-updated" + selector );
+		// Fire the wb-updated event on the wb-calevt element
+		$( selector ).filter( "[data-calevt-src='" + $target[ 0 ].id + "']" )
+				.trigger( "wb-updated" + selector );
 	}
 });
 
