@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.7 - 2014-10-24
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -5904,9 +5904,6 @@ figure .pieLabel {
   padding: 1px 10px 2px;
   white-space: nowrap; }
 
-.wb-fnote h2, .wb-fnote dd > ul:first-child, .wb-fnote dd > ol:first-child, .wb-fnote table:first-child {
-  margin-top: 0.375em; }
-
 .fn-lnk {
   margin-left: 5px; }
 
@@ -5917,7 +5914,8 @@ figure .pieLabel {
   margin: 2em 10px 0; }
   .wb-fnote h2 {
     margin-left: 0;
-    margin-right: 0; }
+    margin-right: 0;
+    margin-top: 0.375em; }
   .wb-fnote dl {
     margin: 0; }
   .wb-fnote dd {
@@ -5927,17 +5925,11 @@ figure .pieLabel {
     .wb-fnote dd:focus {
       background-color: #eee;
       border-color: #555; }
-    .wb-fnote dd > ul, .wb-fnote dd > ol {
-      margin: 0 0.375em 0.375em 4.125em; }
   .wb-fnote p {
     margin: 0 0 0 3.75em;
     padding: 0 0.375em 0.375em; }
     .wb-fnote p:first-child {
       padding-top: 0.375em; }
-  .wb-fnote ul, .wb-fnote ol {
-    margin-bottom: 0.375em; }
-  .wb-fnote table {
-    margin: 0 0.375em 0.375em 4.125em; }
   .wb-fnote .fn-rtn {
     margin: 0;
     overflow: hidden;
@@ -7821,18 +7813,13 @@ datalist {
   @title: Details/summary polyfill pre-Modernizr CSS
  */
 summary {
-  display: block !important;
-  visibility: visible !important; }
+  display: block !important; }
 
-details:not([open]) {
-  visibility: hidden; }
-  details:not([open]) > details, details:not([open]) > * {
-    display: none; }
+details:not([open]) > * {
+  display: none; }
 
-.wb-disable details {
-  visibility: visible !important; }
-  .wb-disable details > * {
-    display: block !important; }
+.wb-disable details > * {
+  display: block !important; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
