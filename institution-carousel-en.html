@@ -11,22 +11,22 @@
 <meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities">
 <!-- Meta data-->
 <!--[if gte IE 9 | !IE ]><!-->
-<link href="../assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="../css/wet-boew.min.css">
+<link href="./assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="./css/wet-boew.min.css">
 <!--<![endif]-->
-<link rel="stylesheet" href="../css/theme.min.css">
+<link rel="stylesheet" href="./css/theme.min.css">
 <!--[if lt IE 9]>
-<link href="../assets/favicon.ico" rel="shortcut icon" />
+<link href="./assets/favicon.ico" rel="shortcut icon" />
 
-<link rel="stylesheet" href="../css/ie8-wet-boew.min.css" />
+<link rel="stylesheet" href="./css/ie8-wet-boew.min.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="../js/ie8-wet-boew.min.js"></script>
+<script src="./js/ie8-wet-boew.min.js"></script>
 <![endif]-->
 <!--[if lte IE 9]>
 
 
 <![endif]-->
-<noscript><link rel="stylesheet" href="../css/noscript.min.css" /></noscript>
+<noscript><link rel="stylesheet" href="./css/noscript.min.css" /></noscript>
 <script>dataLayer1 = [];</script>
 </head>
 <body vocab="http://schema.org/" typeof="WebPage">
@@ -49,14 +49,14 @@
 <div class="row">
 <div class="col-md-12">
 <ul class="list-inline margin-bottom-none">
-<li><a lang="fr" href="institution-fr.html">Français</a></li>
+<li><a lang="fr" href="institution-carousel-fr.html">Français</a></li>
 </ul>
 </div>
 </div>
 </section>
 <div class="row">
-<div class="brand col-xs-6">
-<a href="http://www.canada.ca/en/index.html"><span class="cndwrdmrk"><span class="wb-inv"> Symbol of the Government of Canada</span></span></a>
+<div class="brand col-xs-8 col-sm-9 col-md-6">
+<a href="http://www.canada.ca/en/index.html"><object type="image/svg+xml" tabindex="-1" data="./assets/sig-blk-en.svg"></object><span class="wb-inv"> Government of Canada</span></a>
 </div>
 <section class="wb-mb-links col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
 <h2>Search and menus</h2>
@@ -83,7 +83,7 @@
 </section>
 </div>
 </div>
-<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-fetch="../ajax/sitemenu-en.html" typeof="SiteNavigationElement">
+<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-fetch="./ajax/sitemenu-en.html" typeof="SiteNavigationElement">
 <h2 class="wb-inv">Topics menu</h2>
 <div class="container nvbar">
 <div class="row">
@@ -112,11 +112,63 @@
 </div>
 </nav>
 </header>
+<aside class="prm-flpr">
+<div class="container">
+<div class="row">
+<h2 class="wb-inv">Promotions</h2>
+<div class="wb-tabs carousel-s2 playing slow">
+<ul role="tablist">
+<li class="active">
+<a href="#tab1" title="Tab 1: Banff National Park"><img src="./img/promos/one.jpg" alt=""></a>
+</li>
+<li>
+<a href="#tab2" title="Tab 2: Algonquin Provincial Park"><img src="./img/promos/two.jpg" alt=""></a>
+</li>
+<li>
+<a href="#tab3" title="Tab 3: Rideau Canal"><img src="./img/promos/three.jpg" alt=""></a>
+</li>
+</ul>
+<div class="tabpanels">
+<div role="tabpanel" id="tab1" class="in fade">
+<figure>
+<img src="./img/promos/one.jpg" alt="">
+<figcaption>
+<p>
+<a href="#" class="learnmore"> Banff National Park </a>
+</p>
+</figcaption>
+</figure>
+</div>
+<div role="tabpanel" id="tab2" class="out fade">
+<figure>
+<img src="./img/promos/two.jpg" alt="">
+<figcaption>
+<p>
+<a href="#" class="learnmore"> Algonquin Provincial Park </a>
+</p>
+</figcaption>
+</figure>
+</div>
+<div role="tabpanel" id="tab3" class="out fade">
+<figure>
+<img src="./img/promos/three.jpg" alt="">
+<figcaption>
+<p>
+<a href="#" class="learnmore"> Rideau Canal </a>
+</p>
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
 <main role="main" property="mainContentOfPage" class="container">
 <h1 property="name" id="wb-cont">[Institution Name]</h1>
 <div class="row">
 <div class="col-sm-4 col-xs-8 col-sm-push-8 mrgn-bttm-lg container-fluid">
-<object class="" data="../assets/sig-blk-en.svg" tabindex="-1" type="image/svg+xml"></object>
+<object class="" data="./assets/sig-blk-en.svg" tabindex="-1" type="image/svg+xml"></object>
 <span class="wb-inv">Government of Canada</span>
 </div>
 <div class="col-sm-8 col-xs-12 col-sm-pull-4">
@@ -139,7 +191,7 @@
 <h2 class="wb-inv">News</h2>
 <section class="col-lg-4 col-md-6">
 <a href="#">
-<img src="../img/cars.jpg" alt="" class="img-responsive thumbnail">
+<img src="./img/cars.jpg" alt="" class="img-responsive thumbnail">
 <h3>[News title]</h3>
 </a>
 <small>YYYY-MM-DD - Type of feature</small>
@@ -147,7 +199,7 @@
 </section>
 <section class="col-lg-4 col-md-6">
 <a href="#">
-<img src="../img/sports.jpg" alt="" class="img-responsive thumbnail">
+<img src="./img/sports.jpg" alt="" class="img-responsive thumbnail">
 <h3>[News title]</h3>
 </a>
 <small>YYYY-MM-DD - Type of feature</small>
@@ -268,21 +320,21 @@
 <section class="col-lg-4 col-md-6">
 <a href="#">
 <h3 class="h5">[Promotional hyperlink text]</h3>
-<img src="../img/cars.jpg" alt="" class="img-responsive thumbnail">
+<img src="./img/cars.jpg" alt="" class="img-responsive thumbnail">
 </a>
 <p>Brief description of the initiative, task or information being promoted.</p>
 </section>
 <section class="col-lg-4 col-md-6">
 <a href="#">
 <h3 class="h5">[Promotional hyperlink text]</h3>
-<img src="../img/sports.jpg" alt="" class="img-responsive thumbnail">
+<img src="./img/sports.jpg" alt="" class="img-responsive thumbnail">
 </a>
 <p>Brief description of the initiative, task or information being promoted.</p>
 </section>
 <section class="col-lg-4 col-md-6">
 <a href="#">
 <h3 class="h5">[Promotional hyperlink text]</h3>
-<img src="../img/cats.jpg" alt="" class="img-responsive thumbnail">
+<img src="./img/cats.jpg" alt="" class="img-responsive thumbnail">
 </a>
 <p>Brief description of the initiative, task or information being promoted.</p>
 </section>
@@ -307,7 +359,7 @@
 <div class="col-md-4">
 <a href="#">
 <figure>
-<img src="../img/silhouette.png" alt="" class="img-responsive thumbnail">
+<img src="./img/silhouette.png" alt="" class="img-responsive thumbnail">
 <figcaption>Horable XXXX YYYY</figcaption>
 </figure>
 </a>
@@ -316,7 +368,7 @@
 <div class="col-md-4">
 <a href="#">
 <figure>
-<img src="../img/silhouette.png" alt="" class="img-responsive thumbnail">
+<img src="./img/silhouette.png" alt="" class="img-responsive thumbnail">
 <figcaption>Horable XXXX YYYY 2</figcaption>
 </figure>
 </a>
@@ -325,7 +377,7 @@
 <div class="col-md-4">
 <a href="#">
 <figure>
-<img src="../img/silhouette.png" alt="" class="img-responsive thumbnail">
+<img src="./img/silhouette.png" alt="" class="img-responsive thumbnail">
 <figcaption>Horable XXXX YYYY 3</figcaption>
 </figure>
 </a>
@@ -358,21 +410,21 @@
 <section class="col-lg-4 col-md-6" style="vertical-align: top; min-height: 232px">
 <a href="http://www.swc-cfc.gc.ca/commemoration/whm-mhf/index-eng.html?utm_source=SEC-CFC&amp;utm_medium=features%20&amp;utm_campaign=WHM2014" class="gl-features">
 <h3 class="h5">Women’s History Month</h3>
-<img rel="external" class="img-responsive thumbnail" alt="" src="../img/features/pi-2014-10-01_whm.jpg">
+<img rel="external" class="img-responsive thumbnail" alt="" src="./img/features/pi-2014-10-01_whm.jpg">
 </a>
 <p>Business Women &ndash; A Growing Economic Force</p>
 </section>
 <section class="col-lg-4 col-md-6" style="vertical-align: top; min-height: 232px">
 <a href="http://www.veterans.gc.ca/eng/remembrance?utm_source=VAC&amp;utm_medium=feature&amp;utm_content=english&amp;utm_campaign=11_11_2014_remembrance_day" class="gl-features">
 <h3 class="h5">On November 11, remember them</h3>
-<img rel="external" class="img-responsive thumbnail" alt="" src="../img/features/pi-2014-10-17_remebrance.jpg">
+<img rel="external" class="img-responsive thumbnail" alt="" src="./img/features/pi-2014-10-17_remebrance.jpg">
 </a>
 <p>Canada's Veterans - Strong, Proud and Free</p>
 </section>
 <section class="col-lg-4 col-md-6" style="vertical-align: top; min-height: 232px">
 <a href="http://www.csb.gc.ca/payroll-savings-program/employees/index.php?Date=oct2014&amp;Campaign=eng-CSBPayrollSavingsProgram&amp;Img=guitar&amp;Media=FEATURES" class="gl-features">
 <h3 class="h5">Canada Savings Bonds</h3>
-<img rel="external" class="img-responsive thumbnail" alt="" src="../img/features/pi-2014-10-17_guitar-e.gif">
+<img rel="external" class="img-responsive thumbnail" alt="" src="./img/features/pi-2014-10-17_guitar-e.gif">
 </a>
 <p>Learn more about the CSB Payroll Savings Program</p>
 </section>
@@ -429,15 +481,15 @@
 <div class="col-sm-3 col-lg-3 brdr-lft">
 <section>
 <h3>Feedback</h3>
-<p><a href="http://www.canada.ca/en/contact/feedback.html"><img src="../assets/feedback.png" alt="Feedback about this Web site"></a></p>
+<p><a href="http://www.canada.ca/en/contact/feedback.html"><img src="./assets/feedback.png" alt="Feedback about this Web site"></a></p>
 </section>
 <section>
 <h3>Social media</h3>
-<p><a href="http://www.canada.ca/en/social/index.html"><img src="../assets/social.png" alt="Social media"></a></p>
+<p><a href="http://www.canada.ca/en/social/index.html"><img src="./assets/social.png" alt="Social media"></a></p>
 </section>
 <section>
 <h3>Mobile centre</h3>
-<p><a href="http://www.canada.ca/en/mobile/index.html"><img src="../assets/mobile.png" alt="Mobile centre"></a></p>
+<p><a href="http://www.canada.ca/en/mobile/index.html"><img src="./assets/mobile.png" alt="Mobile centre"></a></p>
 </section>
 </div>
 </div>
@@ -449,7 +501,7 @@
 <a href="#wb-cont">Top of Page <span class="glyphicon glyphicon-chevron-up"></span></a>
 </div>
 <div class="col-xs-6 col-md-12 text-right">
-<object type="image/svg+xml" tabindex="-1" role="img" data="../assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
+<object type="image/svg+xml" tabindex="-1" role="img" data="./assets/wmms-blk.svg" aria-label="Symbol of the Government of Canada"></object>
 </div>
 </div>
 </div>
@@ -457,11 +509,11 @@
 </footer>
 <!--[if gte IE 9 | !IE ]><!-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="../js/wet-boew.min.js"></script>
-<script src="../js/theme.min.js"></script>
+<script src="./js/wet-boew.min.js"></script>
+<script src="./js/theme.min.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>
-<script src="../js/ie8-wet-boew2.min.js"></script>
+<script src="./js/ie8-wet-boew2.min.js"></script>
 <![endif]-->
 </body>
 </html>
