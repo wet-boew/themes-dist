@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-27
+ * v4.0.8-development - 2014-10-29
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3824,6 +3824,7 @@ var componentName = "wb-data-ajax",
 		var elm = wb.init( event, componentName + "-" + ajaxType, selector );
 
 		if ( elm ) {
+
 			ajax.apply( this, arguments );
 
 			// Identify that initialization has completed
@@ -3833,13 +3834,29 @@ var componentName = "wb-data-ajax",
 
 	ajax = function( event, ajaxType ) {
 		var elm = event.target,
-			$elm = $( elm );
+			$elm = $( elm ),
+			settings = window[ componentName ],
+			url = elm.getAttribute( "data-ajax-" + ajaxType ),
+			fetchObj = {
+				url: url
+			},
+			urlParts;
+
+		// Detect CORS requests
+		if ( settings && url.substr( 0, 4 ) === "http" ) {
+			urlParts = wb.getUrlParts( url );
+			if ( ( wb.pageUrlParts.protocol !== urlParts.protocol || wb.pageUrlParts.host !== urlParts.host ) && ( !Modernizr.cors || settings.forceCorsFallback ) ) {
+				if ( typeof settings.corsFallback === "function" ) {
+					fetchObj.dataType = "jsonp";
+					fetchObj.jsonp = "callback";
+					fetchObj = settings.corsFallback(fetchObj);
+				}
+			}
+		}
 
 		$elm.trigger({
 			type: "ajax-fetch.wb",
-			fetch: {
-				url: elm.getAttribute( "data-ajax-" + ajaxType )
-			}
+			fetch: fetchObj
 		});
 	};
 
@@ -3853,7 +3870,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 			"prepend"
 		],
 		len = ajaxTypes.length,
-		$elm, ajaxType, i, content, pointer;
+		$elm, ajaxType, i, content;
 
 	for ( i = 0; i !== len; i += 1 ) {
 		ajaxType = ajaxTypes[ i ];
@@ -3878,9 +3895,8 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 			$elm = $( eventTarget );
 
 			// ajax-fetched event
-			pointer = event.fetch.pointer;
-			if ( pointer ) {
-				content = pointer.html();
+			content = event.fetch.response;
+			if ( content ) {
 
 				// "replace" is the only event that doesn't map to a jQuery function
 				if ( ajaxType === "replace") {
@@ -5529,6 +5545,15 @@ var componentName = "wb-lbx",
 
 					if ( elm.className.indexOf( "lbx-modal" ) !== -1 ) {
 						settings.modal = true;
+					}
+					if ( elm.className.indexOf( "lbx-ajax" ) !== -1 ) {
+						settings.type = "ajax";
+					}
+					if ( elm.className.indexOf( "lbx-image" ) !== -1 ) {
+						settings.type = "image";
+					}
+					if ( elm.className.indexOf( "lbx-inline" ) !== -1 ) {
+						settings.type = "inline";
 					}
 
 					// Extend the settings with window[ "wb-lbx" ] then data-wb-lbx
@@ -8418,7 +8443,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 
 			// Merge default settings with overrides from the plugin element
 			// and save back to the element for future reference
-			settings = $.extend( {}, defaults, $elm.data( "wet-boew" ) );
+			settings = $.extend( {}, defaults, window[ componentName ], $elm.data( "wet-boew" ) );
 			$elm.data( "wet-boew", settings );
 
 			// Only initialize the i18nText once
