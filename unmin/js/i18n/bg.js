@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "В края на този раздел панел.",
 	"tab-pnl-end2": "Назад към списъка раздела",
 	"tab-pnl-end3": "или да продължат да останалата част от страницата.",
+	"tab-play": "Играя",
 	/* Multimedia player */
-	play: "Играя",
+	"mmp-play": "Играя",
 	pause: "Пауза",
 	open: "Отворен",
 	close: "Близо",

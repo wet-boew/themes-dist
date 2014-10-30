@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Akhir panel tab ini.",
 	"tab-pnl-end2": "Kembali ke daftar tab",
 	"tab-pnl-end3": "atau melanjutkan ke seluruh halaman.",
+	"tab-play": "Main",
 	/* Multimedia player */
-	play: "Main",
+	"mmp-play": "Main",
 	pause: "Jeda",
 	open: "Buka",
 	close: "Tutup",

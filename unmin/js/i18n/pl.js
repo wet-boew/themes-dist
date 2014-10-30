@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Koniec tego panelu zakładek.",
 	"tab-pnl-end2": "Powrót do listy zakładek",
 	"tab-pnl-end3": "lub kontynuuj do końca strony.",
+	"tab-play": "Odtwarzanie",
 	/* Multimedia player */
-	play: "Odtwarzanie",
+	"mmp-play": "Odtwarzanie",
 	pause: "Pauza",
 	open: "Otwórz",
 	close: "Zamknij",

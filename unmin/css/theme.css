@@ -467,4 +467,12 @@
  */
   /*
   @title: Print view
- */ }
+ */
+  #wb-glb-mn {
+    display: none !important; }
+  #wb-bc .breadcrumb {
+    margin-bottom: 0; }
+  #wb-bc a[href]:after {
+    content: ""; }
+  h1 {
+    margin-top: 0; } }
