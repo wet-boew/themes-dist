@@ -527,10 +527,18 @@
   /*
   @title: Print view
  */
-  #wb-srch, #wb-sec, #wb-info, #wb-sm {
+  #wb-srch, #wb-sec, #wb-info, #wb-sm, #wb-lng, #wb-glb-mn {
     display: none !important; }
+  #gcwu-sig {
+    height: 30px; }
   #wmms {
     height: 30px;
     position: absolute;
     right: 0;
-    top: 0; } }
+    top: 0; }
+  #wb-bc .breadcrumb {
+    margin-bottom: 0; }
+  #wb-bc a[href]:after {
+    content: ""; }
+  h1 {
+    margin-top: 0; } }
