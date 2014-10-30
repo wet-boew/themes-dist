@@ -470,4 +470,14 @@
  */
   /*
   @title: Print view
- */ }
+ */
+  #wb-glb-mn {
+    display: none !important; }
+  #wb-sttl small {
+    display: block; }
+  #wb-bc .breadcrumb {
+    margin-bottom: 0; }
+  #wb-bc a[href]:after {
+    content: ""; }
+  h1 {
+    margin-top: 0; } }

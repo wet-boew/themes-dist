@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "이 탭 패널의 끝.",
 	"tab-pnl-end2": "탭 목록으로 돌아 가기",
 	"tab-pnl-end3": "또는 페이지의 나머지를 계속합니다.",
+	"tab-play": "놀이",
 	/* Multimedia player */
-	play: "놀이",
+	"mmp-play": "놀이",
 	pause: "중지",
 	open: "열기",
 	close: "가까운",

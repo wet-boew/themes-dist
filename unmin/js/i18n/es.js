@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Fin de este panel de pestaña.",
 	"tab-pnl-end2": "Volver a la lista de pestañas",
 	"tab-pnl-end3": "o continuar al resto de la página.",
+	"tab-play": "Reproducir",
 	/* Multimedia player */
-	play: "Reproducir",
+	"mmp-play": "Reproducir",
 	pause: "Pausa",
 	open: "Abrir",
 	close: "Cerrar",
