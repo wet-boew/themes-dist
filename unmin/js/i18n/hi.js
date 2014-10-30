@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "इस टैब पैनल के अंत.",
 	"tab-pnl-end2": "टैब सूची पर लौटें",
 	"tab-pnl-end3": "या पृष्ठ के आराम करने के लिए जारी है.",
+	"tab-play": "खेल",
 	/* Multimedia player */
-	play: "खेल",
+	"mmp-play": "खेल",
 	pause: "ठहराव",
 	open: "खुला",
 	close: "पास",

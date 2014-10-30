@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3824,6 +3824,7 @@ var componentName = "wb-data-ajax",
 		var elm = wb.init( event, componentName + "-" + ajaxType, selector );
 
 		if ( elm ) {
+
 			ajax.apply( this, arguments );
 
 			// Identify that initialization has completed
@@ -3833,13 +3834,29 @@ var componentName = "wb-data-ajax",
 
 	ajax = function( event, ajaxType ) {
 		var elm = event.target,
-			$elm = $( elm );
+			$elm = $( elm ),
+			settings = window[ componentName ],
+			url = elm.getAttribute( "data-ajax-" + ajaxType ),
+			fetchObj = {
+				url: url
+			},
+			urlParts;
+
+		// Detect CORS requests
+		if ( settings && url.substr( 0, 4 ) === "http" ) {
+			urlParts = wb.getUrlParts( url );
+			if ( ( wb.pageUrlParts.protocol !== urlParts.protocol || wb.pageUrlParts.host !== urlParts.host ) && ( !Modernizr.cors || settings.forceCorsFallback ) ) {
+				if ( typeof settings.corsFallback === "function" ) {
+					fetchObj.dataType = "jsonp";
+					fetchObj.jsonp = "callback";
+					fetchObj = settings.corsFallback(fetchObj);
+				}
+			}
+		}
 
 		$elm.trigger({
 			type: "ajax-fetch.wb",
-			fetch: {
-				url: elm.getAttribute( "data-ajax-" + ajaxType )
-			}
+			fetch: fetchObj
 		});
 	};
 
@@ -3853,7 +3870,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 			"prepend"
 		],
 		len = ajaxTypes.length,
-		$elm, ajaxType, i, content, pointer;
+		$elm, ajaxType, i, content;
 
 	for ( i = 0; i !== len; i += 1 ) {
 		ajaxType = ajaxTypes[ i ];
@@ -3878,9 +3895,8 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 			$elm = $( eventTarget );
 
 			// ajax-fetched event
-			pointer = event.fetch.pointer;
-			if ( pointer ) {
-				content = pointer.html();
+			content = event.fetch.response;
+			if ( content ) {
 
 				// "replace" is the only event that doesn't map to a jQuery function
 				if ( ajaxType === "replace") {
@@ -4572,68 +4588,6 @@ var componentName = "wb-feeds",
 	$document = wb.doc,
 	patt = /\\u([\d\w]{4})/g,
 
-    /**
-     * Helper function that returns the string representaion of a unicode character
-     * @method decode
-     * @param  {regex} match  unicode pattern
-     * @param  {string} code  string where unicode is needed to be converted
-     * @return {string}	unicode string character
-     */
-    decode = function( match, code ) {
-        return String.fromCharCode( parseInt( code, 16 ) );
-    },
-
-    /**
-     * Helper wrapper function that performs unicode decodes on a string
-     * @method fromCharCode
-     * @param  {string} s string to sanitize with escaped unicode characters
-     * @return {string}	sanitized string
-     */
-    fromCharCode = function(s) {
-        return s.replace( patt, decode );
-    },
-
-    /**
-     * Process Feed/JSON Entries
-     * @method processEntries
-     * @param  {data} JSON formatted data to process
-     * @return {string}	of HTML output
-     */
-     processEntries = function( data ) {
-		var items = data,
-			entries = [],
-			icon = this.fIcon,
-			$content = this._content,
-			toProcess = $content.data( "toProcess" ),
-			i, len;
-
-		len = items.length;
-		for ( i = 0; i !== len; i += 1 ) {
-			items[ i ].fIcon =  icon ;
-
-			if ( items[ i ].publishedDate === undef && items[ i ].published !== undef ) {
-				items[ i ].publishedDate = items[ i ].published;
-			}
-
-			entries.push( items[ i ] );
-		}
-		// lets merge with latest entries
-		entries = $.merge( entries, $content.data( "entries" ) );
-
-		if ( toProcess === 1 ) {
-			parseEntries( entries, $content.data( "feedLimit" ), $content, this.feedType );
-			return 0;
-		}
-
-		toProcess -= 1 ;
-		$content.data({
-			"toProcess": toProcess,
-			"entries": entries
-		});
-
-		return toProcess;
-	},
-
 	/**
 	 * @object Templates
 	 * @properties {function}
@@ -4728,6 +4682,60 @@ var componentName = "wb-feeds",
 		}
 	},
 
+    /**
+     * Helper function that returns the string representaion of a unicode character
+     * @method decode
+     * @param  {regex} match  unicode pattern
+     * @param  {string} code  string where unicode is needed to be converted
+     * @return {string}	unicode string character
+     */
+    decode = function( match, code ) {
+        return String.fromCharCode( parseInt( code, 16 ) );
+    },
+
+    /**
+     * Helper wrapper function that performs unicode decodes on a string
+     * @method fromCharCode
+     * @param  {string} s string to sanitize with escaped unicode characters
+     * @return {string}	sanitized string
+     */
+    fromCharCode = function(s) {
+        return s.replace( patt, decode );
+    },
+
+    /**
+	 * Helper function that returns a class-based set limit on plugin instances
+	 * @method getLimit
+	 * @param {DOM object} elm The element to search for a class of the form limit-5
+	 * @return {number} 0 if none found, which means the plugin default
+	 */
+	getLimit = function( elm ) {
+		var count = elm.className.match( /\blimit-\d+/ );
+		if ( !count ) {
+			return 0;
+		}
+		return Number( count[ 0 ].replace( /limit-/i, "" ) );
+	},
+
+	/**
+	 * Helper function that builds the URL for the JSON request
+	 * @method jsonRequest
+	 * http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fwww.facebook.com%2Ffeeds%2Fpage.php%3Fid%3D318424514044%26format%3Drss20&num=20
+	 * @param {url} url URL of the feed.
+	 * @param {integer} limit Limit on the number of results for the JSON request to return.
+	 * @return {url} The URL for the JSON request
+	 */
+	jsonRequest = function( url, limit ) {
+
+		var requestURL = wb.pageUrlParts.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent( decodeURIComponent( url ) );
+
+		// API returns a maximum of 4 entries by default so only override if more entries should be returned
+		if ( limit > 4 ) {
+			requestURL += "&num=" + limit;
+		}
+		return requestURL;
+	},
+
 	/**
 	 * @method init
 	 * @param {jQuery Event} event Event that triggered the function call
@@ -4805,63 +4813,44 @@ var componentName = "wb-feeds",
 	},
 
 	/**
-	 * Returns a class-based set limit on plugin instances
-	 * @method getLimit
-	 * @param {DOM object} elm The element to search for a class of the form limit-5
-	 * @return {number} 0 if none found, which means the plugin default
-	 */
-	getLimit = function( elm ) {
-		var count = elm.className.match( /\blimit-\d+/ );
-		if ( !count ) {
+     * Process Feed/JSON Entries
+     * @method processEntries
+     * @param  {data} JSON formatted data to process
+     * @return {string}	of HTML output
+     */
+     processEntries = function( data ) {
+		var items = data,
+			entries = [],
+			icon = this.fIcon,
+			$content = this._content,
+			toProcess = $content.data( "toProcess" ),
+			i, len;
+
+		len = items.length;
+		for ( i = 0; i !== len; i += 1 ) {
+			items[ i ].fIcon =  icon ;
+
+			if ( items[ i ].publishedDate === undef && items[ i ].published !== undef ) {
+				items[ i ].publishedDate = items[ i ].published;
+			}
+
+			entries.push( items[ i ] );
+		}
+		// lets merge with latest entries
+		entries = $.merge( entries, $content.data( "entries" ) );
+
+		if ( toProcess === 1 ) {
+			parseEntries( entries, $content.data( "feedLimit" ), $content, this.feedType );
 			return 0;
 		}
-		return Number( count[ 0 ].replace( /limit-/i, "" ) );
-	},
 
-	/**
-	 * Activates feed results view
-	 * @method activateFeed
-	 * @param = {jQuery object} $elm Feed container
-	 */
-	activateFeed = function( $elm ) {
-		var result = $elm.data( componentName + "-result" ),
-			postProcess = $elm.data( componentName + "-postProcess" ),
-			i, postProcessSelector;
+		toProcess -= 1 ;
+		$content.data({
+			"toProcess": toProcess,
+			"entries": entries
+		});
 
-		$elm.empty()
-			.removeClass( "waiting" )
-			.addClass( "feed-active" )
-			.append( result );
-
-		if ( postProcess ) {
-			for ( i = postProcess.length - 1; i !== -1; i -= 1 ) {
-				postProcessSelector = postProcess[ i ];
-				$elm.find( postProcessSelector )
-					.trigger( "wb-init" + postProcessSelector );
-			}
-		}
-
-		// Identify that the feed has now been displayed
-		$elm.trigger( "wb-feed-ready" + selector );
-	},
-
-	/**
-	 * Builds the URL for the JSON request
-	 * @method jsonRequest
-	 * http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=https%3A%2F%2Fwww.facebook.com%2Ffeeds%2Fpage.php%3Fid%3D318424514044%26format%3Drss20&num=20
-	 * @param {url} url URL of the feed.
-	 * @param {integer} limit Limit on the number of results for the JSON request to return.
-	 * @return {url} The URL for the JSON request
-	 */
-	jsonRequest = function( url, limit ) {
-
-		var requestURL = wb.pageUrlParts.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent( decodeURIComponent( url ) );
-
-		// API returns a maximum of 4 entries by default so only override if more entries should be returned
-		if ( limit > 4 ) {
-			requestURL += "&num=" + limit;
-		}
-		return requestURL;
+		return toProcess;
 	},
 
 	/**
@@ -4928,6 +4917,33 @@ var componentName = "wb-feeds",
 		}
 
 		return true;
+	},
+
+	/**
+	 * Activates feed results view
+	 * @method activateFeed
+	 * @param = {jQuery object} $elm Feed container
+	 */
+	activateFeed = function( $elm ) {
+		var result = $elm.data( componentName + "-result" ),
+			postProcess = $elm.data( componentName + "-postProcess" ),
+			i, postProcessSelector;
+
+		$elm.empty()
+			.removeClass( "waiting" )
+			.addClass( "feed-active" )
+			.append( result );
+
+		if ( postProcess ) {
+			for ( i = postProcess.length - 1; i !== -1; i -= 1 ) {
+				postProcessSelector = postProcess[ i ];
+				$elm.find( postProcessSelector )
+					.trigger( "wb-init" + postProcessSelector );
+			}
+		}
+
+		// Identify that the feed has now been displayed
+		$elm.trigger( "wb-feed-ready" + selector );
 	};
 
 $document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( event, context ) {
@@ -5529,6 +5545,15 @@ var componentName = "wb-lbx",
 
 					if ( elm.className.indexOf( "lbx-modal" ) !== -1 ) {
 						settings.modal = true;
+					}
+					if ( elm.className.indexOf( "lbx-ajax" ) !== -1 ) {
+						settings.type = "ajax";
+					}
+					if ( elm.className.indexOf( "lbx-image" ) !== -1 ) {
+						settings.type = "image";
+					}
+					if ( elm.className.indexOf( "lbx-inline" ) !== -1 ) {
+						settings.type = "inline";
 					}
 
 					// Extend the settings with window[ "wb-lbx" ] then data-wb-lbx
@@ -6639,7 +6664,7 @@ var componentName = "wb-mltmd",
 			if ( !i18nText ) {
 				i18n = wb.i18n;
 				i18nText = {
-					play: i18n( "play" ),
+					play: i18n( "mmp-play" ),
 					pause: i18n( "pause" ),
 					volume: i18n( "volume" ),
 					cc_on: i18n( "cc", "on" ),
@@ -8418,7 +8443,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 
 			// Merge default settings with overrides from the plugin element
 			// and save back to the element for future reference
-			settings = $.extend( {}, defaults, $elm.data( "wet-boew" ) );
+			settings = $.extend( {}, defaults, window[ componentName ], $elm.data( "wet-boew" ) );
 			$elm.data( "wet-boew", settings );
 
 			// Only initialize the i18nText once
@@ -9343,7 +9368,7 @@ var componentName = "wb-tabs",
 				i18nText = {
 					prev: i18n( "prv" ),
 					next: i18n( "nxt" ),
-					play: i18n( "play" ),
+					play: i18n( "tab-play" ),
 					rotStart: i18n( "tab-rot" ).on,
 					rotStop: i18n( "tab-rot" ).off,
 					space: i18n( "space" ),

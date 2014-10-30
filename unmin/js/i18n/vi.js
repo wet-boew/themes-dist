@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Kết thúc của bảng điều khiển tab.",
 	"tab-pnl-end2": "Quay trở lại danh sách tab",
 	"tab-pnl-end3": "hoặc tiếp tục với phần còn lại của trang.",
+	"tab-play": "Chơi",
 	/* Multimedia player */
-	play: "Chơi",
+	"mmp-play": "Chơi",
 	pause: "Tạm dừng",
 	open: "Mở",
 	close: "Đóng",
