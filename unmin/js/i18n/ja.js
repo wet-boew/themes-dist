@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7 - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "最後のタブパネル",
 	"tab-pnl-end2": "タブの一覧に戻る",
 	"tab-pnl-end3": "または、ページの残りの部分に進む。",
+	"tab-play": "再生",
 	/* Multimedia player */
-	play: "再生",
+	"mmp-play": "再生",
 	pause: "一時停止",
 	open: "開く",
 	close: "閉じる",

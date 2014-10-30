@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7 - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Final deste painel da guia.",
 	"tab-pnl-end2": "Voltar para a lista de guias",
 	"tab-pnl-end3": "ou continuar com o restante da página.",
+	"tab-play": "Executar",
 	/* Multimedia player */
-	play: "Executar",
+	"mmp-play": "Executar",
 	pause: "Pausar",
 	open: "Abrir",
 	close: "Fechar",

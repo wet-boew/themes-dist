@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7 - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Šio skirtuko skydelyje pabaiga.",
 	"tab-pnl-end2": "Grįžti į skirtukų sąrašą",
 	"tab-pnl-end3": "ar toliau likusia puslapio dalimi.",
+	"tab-play": "Žaisti",
 	/* Multimedia player */
-	play: "Žaisti",
+	"mmp-play": "Žaisti",
 	pause: "Pauzė",
 	open: "Atidaryti",
 	close: "Uždaryti",

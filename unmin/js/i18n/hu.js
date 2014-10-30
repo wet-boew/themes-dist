@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7 - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Vége a lap panel.",
 	"tab-pnl-end2": "Vissza a lap listája",
 	"tab-pnl-end3": "vagy továbbra is a többi oldalon.",
+	"tab-play": "Lejátszás",
 	/* Multimedia player */
-	play: "Lejátszás",
+	"mmp-play": "Lejátszás",
 	pause: "Pillanatmegállító",
 	open: "Nyitva",
 	close: "Bezárás",

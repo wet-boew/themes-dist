@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.7 - 2014-10-24
+ * v4.0.8-development - 2014-10-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Konec této kartě panelu.",
 	"tab-pnl-end2": "Návrat na kartu seznamu",
 	"tab-pnl-end3": "nebo pokračovat až do konce stránky.",
+	"tab-play": "Hrát",
 	/* Multimedia player */
-	play: "Hrát",
+	"mmp-play": "Hrát",
 	pause: "Pauza",
 	open: "Otevřít",
 	close: "Zavřít",
