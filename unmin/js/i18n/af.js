@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Einde van hierdie blad paneel.",
 	"tab-pnl-end2": "Keer terug na die blad lys",
 	"tab-pnl-end3": "of voortgaan om die res van die bladsy.",
+	"tab-play": "Speel",
 	/* Multimedia player */
-	play: "Speel",
+	"mmp-play": "Speel",
 	pause: "Pause",
 	open: "Oop",
 	close: "Close",

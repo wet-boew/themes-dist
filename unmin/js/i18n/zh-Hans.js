@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "此选项卡面板的结束。",
 	"tab-pnl-end2": "返回到标签列表",
 	"tab-pnl-end3": "或继续其余的页面。",
+	"tab-play": "播放",
 	/* Multimedia player */
-	play: "播放",
+	"mmp-play": "播放",
 	pause: "暂停",
 	open: "打开",
 	close: "关闭",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Конец этой вкладке панели.",
 	"tab-pnl-end2": "Вернитесь на вкладку список",
 	"tab-pnl-end3": "или продолжать остальной страницы.",
+	"tab-play": "Проиграть",
 	/* Multimedia player */
-	play: "Проиграть",
+	"mmp-play": "Проиграть",
 	pause: "Пауза",
 	open: "Oткрыть",
 	close: "Закрыть",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Ende dieser Registerkarte angezeigt.",
 	"tab-pnl-end2": "Zurück zur Liste der Registerkarte",
 	"tab-pnl-end3": "oder der Rest der Seite fortzusetzen.",
+	"tab-play": "Spielen",
 	/* Multimedia player */
-	play: "Spielen",
+	"mmp-play": "Spielen",
 	pause: "Pausieren",
 	open: "Öffnen",
 	close: "Schließen",

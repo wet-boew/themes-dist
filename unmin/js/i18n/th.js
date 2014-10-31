@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "ในตอนท้ายของแผงแท็บนี้",
 	"tab-pnl-end2": "กลับไปที่รายการแท็บ",
 	"tab-pnl-end3": "หรือดำเนินการต่อในส่วนที่เหลือของหน้า.",
+	"tab-play": "เล่น",
 	/* Multimedia player */
-	play: "เล่น",
+	"mmp-play": "เล่น",
 	pause: "หยุด",
 	open: "เปิด",
 	close: "ปิด",

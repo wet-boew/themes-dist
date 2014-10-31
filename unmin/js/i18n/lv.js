@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Beigas cilnes paneļa.",
 	"tab-pnl-end2": "Atgriezties uz sarakstu cilnēm",
 	"tab-pnl-end3": "vai turpināt uz pārējo lapu.",
+	"tab-play": "Spēlēt",
 	/* Multimedia player */
-	play: "Spēlēt",
+	"mmp-play": "Spēlēt",
 	pause: "Pauze",
 	open: "Atvērt",
 	close: "Aizvērt",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Ավարտվեց այս էջանշանը վահանակի վրա.",
 	"tab-pnl-end2": "Վերադառնալ ցուցակին էջանիշը",
 	"tab-pnl-end3": "կամ շարունակում է մնացած էջում.",
+	"tab-play": "Խաղալ",
 	/* Multimedia player */
-	play: "Խաղալ",
+	"mmp-play": "Խաղալ",
 	pause: "Դադար",
 	open: "Բաց է",
 	close: "Մոտիկ",

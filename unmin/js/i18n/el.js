@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "End του αυτής της πάνελ καρτέλα.",
 	"tab-pnl-end2": "Επιστροφή για να την λίστα καρτέλα",
 	"tab-pnl-end3": "ή να συνεχίσουν προς την υπόλοιπη της σελίδας.",
+	"tab-play": "Παιχνίδι",
 	/* Multimedia player */
-	play: "Παιχνίδι",
+	"mmp-play": "Παιχνίδι",
 	pause: "Παύση",
 	open: "Ανοιχτό",
 	close: "Κοντά",

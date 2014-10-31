@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-10-30
+ * v4.0.8-development - 2014-10-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -74,8 +74,9 @@ wb.i18nDict = {
 	"tab-pnl-end1": "Bu tab paneli sonu.",
 	"tab-pnl-end2": "Tab listesine dön",
 	"tab-pnl-end3": "ya da geri kalan sayfa devam etmektedir.",
+	"tab-play": "Oynat",
 	/* Multimedia player */
-	play: "Oynat",
+	"mmp-play": "Oynat",
 	pause: "Duraklat",
 	open: "Açık",
 	close: "Kapat",
