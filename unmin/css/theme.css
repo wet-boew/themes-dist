@@ -894,7 +894,7 @@ a.shr-opn, a.shr-opn:hover {
 .fd-wdgt .panel-heading {
   border-bottom: 1px solid #ddd; }
 .fd-wdgt .panel-body {
-  max-height: 34.8em;
+  max-height: 25em;
   overflow-y: scroll;
   padding: 0; }
 .fd-wdgt .media {
@@ -906,8 +906,12 @@ a.shr-opn, a.shr-opn:hover {
     border-top: 0; }
   .fd-wdgt .media p {
     font-size: 0.9em; }
-.fd-wdgt .panel-title .icon {
-  margin-top: -4px; }
+.fd-wdgt .panel-title {
+  padding-right: 30px; }
+  .fd-wdgt .panel-title .icon {
+    position: absolute;
+    right: 5px;
+    top: 5px; }
 .fd-wdgt .feeds-date {
   display: inline-block;
   float: none !important;
@@ -917,6 +921,12 @@ a.shr-opn, a.shr-opn:hover {
   margin-left: auto;
   margin-right: auto;
   padding: 15px 10px 5px; }
+
+/* IE Tweaks */
+.lt-ie9 .fd-wdgt .panel-title {
+  padding-right: 30px; }
+  .lt-ie9 .fd-wdgt .panel-title .icon {
+    padding-left: 0; }
 
 .blog article .col-md-3, .blog article .col-md-9 {
   display: inline-block;
