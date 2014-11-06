@@ -171,7 +171,10 @@ aside.features {
 .lt-ie9 {
   /*
 	 Normalizes IE8 behaviour with floated boxes and border-box model. IE without it reports back an incorrect Offset.
-	 */ }
+	 */
+  /*
+	* Fixes width of FIP PNG on Institutional pages
+	*/ }
   .lt-ie9 h1, .lt-ie9 .h1 {
     font-size: 27px !important; }
   .lt-ie9 h2, .lt-ie9 .h2 {
@@ -193,6 +196,8 @@ aside.features {
     background-color: #eaebed; }
   .lt-ie9 .sect-lnks {
     vertical-align: top !important; }
+  .lt-ie9 .inst-brand img {
+    width: 100%; }
 
 #archived-bnr {
   background-color: #fd0; }
