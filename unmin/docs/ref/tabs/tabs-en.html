@@ -363,6 +363,9 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 &lt;/ul&gt;</code></pre>
 			</li>
 			<li><strong>Optional:</strong> Override the default settings using the <a href="#config">configuration options</a>.</li>
+			<li><strong>Optional:</strong> Add an external link that affects which tab is visible. The href attribute includes the id of the panel to make visible. (v4.0.8+)
+				<pre><code>&lt;p&gt;&lt;a href="#panel3" class="wb-tabs-ext"&gt;Show the third panel&lt;/a&gt;&lt;/p&gt;</code></pre>
+			</li>
 		</ol>
 
 		<section>
@@ -576,12 +579,22 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 				</td>
 			</tr>
 			<tr>
-				<td><code>wb-shift.wb-tabs</code> (carousel only)</td>
+				<td><code>wb-shift.wb-tabs</code></td>
 				<td>Triggered manually or automatically to change which tab panel is visible.</td>
 				<td>Changes which tab panel is visible. The value of <code>shiftto</code> is the number of tab panels to move forwards (positive number) or backwards (negative number).
 					<pre><code>$elm.trigger({
     type: "wb-shift.wb-tabs",
     shiftto: 1
+});</code></pre>
+				</td>
+			</tr>
+			<tr>
+				<td><code>wb-select.wb-tabs</code> (v4.0.8+)</td>
+				<td>Triggered manually or automatically to change which tab panel is visible.</td>
+				<td>Changes which tab panel is visible. The value of <code>id</code> is the id attribute of the tab panel to make visible.
+					<pre><code>$elm.trigger({
+    type: "wb-shift.wb-tabs",
+    id: "panel3"
 });</code></pre>
 				</td>
 			</tr>
@@ -609,7 +622,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	<div class="col-xs-6 datemod">
 		<dl id="wb-dtmd">
 			<dt>Date modified:&#32;</dt>
-			<dd><time property="dateModified">2014-08-28</time></dd>
+			<dd><time property="dateModified">2014-11-14</time></dd>
 		</dl>
 	</div>
 	<div class="col-xs-6 text-right">
@@ -624,7 +637,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	<aside class="gc-nttvs container">
 	<h2>Government of Canada activities and initiatives</h2>
 
-	<div id="gcwb_prts" class="wb-eqht row" data-ajax-append="http://travel.gc.ca/gcweb-cdn/features/features-en.html"></div>
+	<div id="gcwb_prts" class="wb-eqht row" data-ajax-append="http://travel.gc.ca/gcweb-cdn-host/features/features-en.html"></div>
 </aside>
 
 

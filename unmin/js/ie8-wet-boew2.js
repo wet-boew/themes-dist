@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8-development - 2014-11-13
+ * v4.0.8-development - 2014-11-14
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -9263,6 +9263,7 @@ var componentName = "wb-tabs",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	shiftEvent = "wb-shift" + selector,
+	selectEvent = "wb-select" + selector,
 	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
 	controls = selector + " [role=tablist] a, " + selector + " [role=tablist] .tab-count",
@@ -9272,6 +9273,7 @@ var componentName = "wb-tabs",
 	equalHeightOffClass = equalHeightClass + "-off",
 	activePanel = "-activePanel",
 	activateEvent = "click keydown",
+	pagePath = wb.pageUrlParts.pathname + "#",
 	$document = wb.doc,
 	$window = wb.win,
 	i18n, i18nText,
@@ -9343,7 +9345,7 @@ var componentName = "wb-tabs",
 				// If the panel was not set by URL hash, then attempt to
 				// retrieve from sessionStorage
 				if ( !$openPanel || $openPanel.length === 0 ) {
-					activeId = sessionStorage.getItem( elmId + activePanel );
+					activeId = sessionStorage.getItem( pagePath + elmId + activePanel );
 					if ( activeId ) {
 						$openPanel = $panels.filter( "#" + activeId );
 					}
@@ -9352,7 +9354,7 @@ var componentName = "wb-tabs",
 				} else {
 					hashFocus = true;
 					try {
-						sessionStorage.setItem( elmId + activePanel, activeId );
+						sessionStorage.setItem( pagePath + elmId + activePanel, activeId );
 					} catch ( error ) {
 					}
 				}
@@ -9685,7 +9687,7 @@ var componentName = "wb-tabs",
 		// Update sessionStorage with the current active panel
 		try {
 			sessionStorage.setItem(
-				$container.attr( "id" ) + activePanel,
+				pagePath + $container.attr( "id" ) + activePanel,
 				$next.attr( "id" )
 			);
 		} catch ( error ) {
@@ -9717,17 +9719,28 @@ var componentName = "wb-tabs",
 	onShift = function( event, $elm ) {
 		var data = $elm.data( componentName ),
 			$panels = data.panels,
-			$controls = data.tablist,
 			len = $panels.length,
 			current = $elm.find( "> .tabpanels > .in" ).prevAll( "[role=tabpanel]" ).length,
-			shiftto = event.shiftto ? event.shiftto : 1,
-			next = current > len ? 0 : current + shiftto,
-			$next = $panels.eq( ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next );
+			next = current > len ? 0 : current + ( event.shiftto ? event.shiftto : 1 );
 
-		updateNodes(
-			$panels, $controls, $next,
-			$controls.find( "[href=#" + $next.attr( "id" ) + "]" )
-		);
+		onSelect( $panels.eq( ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next ) );
+	},
+
+	/**
+	 * @method onSelect
+	 * @param (string) id Id attribute of the panel
+	 */
+	onSelect = function( id ) {
+		var selector = "#" + id,
+			$panel = $( selector );
+
+		if ( isSmallView && $panel[ 0 ].nodeName.toLowerCase() === "details" ) {
+			if ( !$panel.attr( "open" ) ) {
+				$panel.children( "summary" ).trigger( "click" );
+			}
+		} else {
+			$( selector + "-lnk" ).trigger( "click" );
+		}
 	},
 
 	/**
@@ -9848,7 +9861,7 @@ var componentName = "wb-tabs",
 	};
 
  // Bind the init event of the plugin
- $document.on( "timerpoke.wb " + initEvent + " " + shiftEvent, selector, function( event ) {
+ $document.on( "timerpoke.wb " + initEvent + " " + shiftEvent + " " + selectEvent, selector, function( event ) {
 	var eventTarget = event.target,
 		eventCurrentTarget = event.currentTarget,
 		$elm;
@@ -9873,10 +9886,17 @@ var componentName = "wb-tabs",
 				break;
 
 			/*
-			 * Change Slides
+			 * Change tab panels by a delta
 			 */
 			case "wb-shift":
 				onShift( event, $( eventTarget ) );
+				break;
+
+			/*
+			 * Select a specific tab panel
+			 */
+			case "wb-select":
+				onSelect( event.id );
 				break;
 			}
 		}
@@ -10068,7 +10088,7 @@ $document.on( activateEvent, selector + " > .tabpanels > details > summary", fun
 		// Update sessionStorage with the current active panel
 		try {
 			sessionStorage.setItem(
-				$details.closest( selector ).attr( "id" ) + activePanel,
+				pagePath + $details.closest( selector ).attr( "id" ) + activePanel,
 				details.id
 			);
 		} catch ( error ) {
@@ -10076,6 +10096,17 @@ $document.on( activateEvent, selector + " > .tabpanels > details > summary", fun
 
 		// Identify that the tabbed interface was updated
 		$details.closest( selector ).trigger( updatedEvent, [ $details ] );
+	}
+});
+
+// Change the panel based upon an external link click
+$document.on( "click", ".wb-tabs-ext", function( event ) {
+	var which = event.which;
+
+	// Ignore middle and right mouse buttons
+	if ( !which || which === 1 ) {
+		event.preventDefault();
+		onSelect( event.currentTarget.getAttribute( "href" ).substring( 1 ) );
 	}
 });
 
