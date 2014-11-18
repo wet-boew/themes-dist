@@ -948,30 +948,36 @@ a.shr-opn, a.shr-opn:hover {
 /*
  * Pagination
  */
-.pagntn-prv-nxt {
-  margin-bottom: 15px; }
-  .pagntn-prv-nxt .glyphicon-chevron-left, .pagntn-prv-nxt .glyphicon-chevron-right {
-    font-size: 2em; }
-  .pagntn-prv-nxt .glyphicon-chevron-left {
+.pagntn-prv-nxt .glyphicon-chevron-left, .pagntn-prv-nxt .glyphicon-chevron-right {
+  font-size: 2em; }
+.pagntn-prv-nxt .glyphicon-chevron-left {
+  float: left;
+  margin: -4px 0 0 -32px; }
+.pagntn-prv-nxt .glyphicon-chevron-right {
+  float: right;
+  margin: -4px -32px 0 0; }
+.pagntn-prv-nxt li {
+  font-size: 16px;
+  font-weight: 300;
+  list-style: none outside none;
+  width: 49%; }
+  .pagntn-prv-nxt li.prv {
     float: left;
-    margin: -4px 0 0 -32px; }
-  .pagntn-prv-nxt .glyphicon-chevron-right {
+    margin-left: -3em;
+    text-align: left; }
+  .pagntn-prv-nxt li.nxt {
     float: right;
-    margin: -4px -32px 0 0; }
-  .pagntn-prv-nxt li {
-    font-size: 16px;
-    font-weight: 300;
-    list-style: none outside none; }
-    .pagntn-prv-nxt li a {
+    text-align: right; }
+  .pagntn-prv-nxt li a {
+    display: block;
+    padding: 15px 40px;
+    text-decoration: none; }
+    .pagntn-prv-nxt li a:hover {
+      background-color: #eaebed; }
+    .pagntn-prv-nxt li a .pgntn-lbl {
       display: block;
-      padding: 15px 40px;
-      text-decoration: none; }
-      .pagntn-prv-nxt li a:hover {
-        background-color: #eaebed; }
-      .pagntn-prv-nxt li a .pgntn-lbl {
-        display: block;
-        font-size: 27px;
-        font-weight: 400; }
+      font-size: 27px;
+      font-weight: 400; }
 
 /*
 	special badges
@@ -1062,6 +1068,9 @@ a.shr-opn, a.shr-opn:hover {
   WET-BOEW
   @title: Search Small view and under (screen only)
  */
+  /*
+ * Pagination (small view and under)
+ */
   header .brand a {
     margin-top: 10px; }
   .dshbrd details {
@@ -1083,7 +1092,9 @@ a.shr-opn, a.shr-opn:hover {
       #wb-srch .form-group.submit {
         float: right; }
   [dir=rtl] #wb-srch .form-group.submit {
-    float: left; } }
+    float: left; }
+  .pagntn-prv-nxt li {
+    width: 100%; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
