@@ -982,6 +982,21 @@ a.shr-opn, a.shr-opn:hover {
   font-size: 2em;
   margin: 20px 10px 0; }
 
+/* 
+* Table of Content styles for document navigation
+*/
+.toc li {
+  display: inline; }
+  .toc li .list-group-item:focus, .toc li .list-group-item:hover {
+    background-color: #f5f5f5;
+    text-decoration: none; }
+  .toc li .list-group-item.active, .toc li .list-group-item.active:focus, .toc li .list-group-item.active:hover {
+    background-color: #243850;
+    color: #fff;
+    cursor: auto;
+    text-decoration: none;
+    z-index: 2; }
+
 /*
  Views
  */
