@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.9-development - 2014-11-19
+ * v4.0.9-development - 2014-11-20
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5871,6 +5871,7 @@ var componentName = "wb-menu",
 			menuCount += 1;
 
 			// Lets test to see if we have any menus to fetch
+			// This is required for backwards compatibility. In previous versions, the menu was not integrated witht he data ajax plugin.
 			ajaxFetch = $elm.data( "ajax-fetch" );
 			if ( ajaxFetch ) {
 				$elm.trigger({
@@ -5880,7 +5881,12 @@ var componentName = "wb-menu",
 					}
 				});
 			} else {
-				onAjaxLoaded( $elm, $elm );
+
+				//Enhance menus that don't rely on the data-ajax plugin
+				ajaxFetch = $elm.data( "ajax-replace" ) || $elm.data( "ajax-append" ) || $elm.data( "ajax-prepend" );
+				if ( !ajaxFetch ) {
+					onAjaxLoaded( $elm, $elm );
+				}
 			}
 		}
 	},
@@ -9796,7 +9802,7 @@ var componentName = "wb-tabs",
 	 * @param {jQuery Object} $currentElm Element being initialized (only during initialization process).
 	 */
 	onResize = function( $currentElm ) {
-		var $elms, $elm, $tabPanels, $details, $tablist, $openDetails,
+		var $elms, $elm, $tabPanels, $details, $tablist, $openDetails, openDetailsId,
 			$nonOpenDetails, $active, $summary, i, len;
 
 		if ( initialized ) {
@@ -9834,6 +9840,8 @@ var componentName = "wb-tabs",
 
 							// Switch to large view
 							$openDetails = $details.filter( "[open]" );
+							openDetailsId = $openDetails.attr( "id" );
+
 							$openDetails = ( $openDetails.length === 0 ? $details : $openDetails ).eq( 0 );
 
 							$details
@@ -9853,10 +9861,7 @@ var componentName = "wb-tabs",
 								.attr({
 										"aria-hidden": "false",
 										"aria-expanded": "true"
-									})
-								.parent()
-									.find( "> ul [href$='" + $openDetails.attr( "id" ) + "']" )
-										.trigger( "click" );
+									});
 						}
 
 						// Enable equal heights for large view or disable for small view
@@ -9868,6 +9873,10 @@ var componentName = "wb-tabs",
 						$tablist.attr( "aria-hidden", isSmallView );
 
 						$elm.append( $tabPanels );
+
+						if ( oldIsSmallView ) {
+							$elm.find( "> ul [href$='" + openDetailsId + "']" ).trigger( "click" );
+						}
 					}
 				}
 
