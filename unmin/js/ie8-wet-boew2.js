@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8+1 - 2014-11-20
+ * v4.0.8+2-development - 2014-11-21
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1258,7 +1258,7 @@ $document.on( "ajax-fetch.wb", function( event ) {
 		fetchData;
 
 	// Filter out any events triggered by descendants
-	if ( caller = event.target || event.currentTarget === event.target ) {
+	if ( caller === event.target || event.currentTarget === event.target ) {
 		$.ajax( fetchOpts )
 			.done(function( response, status, xhr ) {
 				var responseType = typeof response;
@@ -4670,6 +4670,17 @@ var componentName = "wb-feeds",
 					"</li>";
 		},
 		/**
+		 * [pinterest template]
+		 * @param  {entry object}    data
+		 * @return {string}    HTML string of formatted using a simple list / anchor view
+		 */
+		pinterest: function( data ) {
+			var content = fromCharCode( data.content ).replace(/<a href="\/pin[^"]*"><img ([^>]*)><\/a>([^<]*)(<a .*)?/, "<a href='" + data.link + "'><img alt='' class='center-block' $1><br/>$2</a>$3");
+			return "<li class='media'>" + content +
+			( data.publishedDate !== "" ? " <small class='small'>[" +
+			wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) + "</li>";
+		},
+		/**
 		 * [generic template]
 		 * @param  {entry object}	data
 		 * @return {string}	HTML string of formatted using a simple list / anchor view
@@ -4791,6 +4802,8 @@ var componentName = "wb-feeds",
 					// Let's bind the template to the Entries
 					if ( url.indexOf( "facebook.com" ) !== -1 ) {
 						fType = "facebook";
+					} else if ( url.indexOf( "pinterest.com" ) > -1  ) {
+						fType = "pinterest";
 					} else {
 						fType = "generic";
 					}
@@ -5622,7 +5635,10 @@ var componentName = "wb-lbx",
 						$content.attr( "role", "document" );
 					}
 
-					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
+					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" )
+                        .find( ".activate-open" )
+                        .trigger( "wb-activate" );
+
 				},
 				change: function() {
 					var $item = this.currItem,
@@ -7510,6 +7526,15 @@ $document.on( "keyup", selector, function( event ) {
 		// Allows the spacebar to be used for play/pause without double triggering
 		return false;
 	}
+});
+
+// TODO: recode with a more efficient to use the API than DOM crawling
+$document.on( "wb-activate", selector, function( event ) {
+    var playerTarget = event.currentTarget,
+        ctrls = ".wb-mm-ctrls",
+        ref = expand( playerTarget ),
+        $this = ref[ 0 ];
+    $this.find( ctrls + " .playpause" ).trigger( "click" );
 });
 
 $document.on( "durationchange play pause ended volumechange timeupdate " +
