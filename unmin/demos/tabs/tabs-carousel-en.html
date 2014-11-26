@@ -119,8 +119,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 
 	<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="http://travel.gc.ca/gcweb-cdn-host/sitemenu/sitemenu-en.html" typeof="SiteNavigationElement">
 		<h2 class="wb-inv">Topics menu</h2>
-		
-<div class="container nvbar">
+		<div class="container nvbar">
     <div class="row">
         <ul class="list-inline menu">
             <li><a href="http://www.esdc.gc.ca/en/jobs/index.page">Jobs</a></li>
@@ -134,9 +133,6 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
         </ul>
     </div>
 </div>
-
- 
-
 	</nav>
 
 
@@ -341,6 +337,89 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 			&lt;/figure&gt;
 		&lt;/div&gt;
 		&lt;div role=&quot;tabpanel&quot; id=&quot;panel5&quot; class=&quot;out fade&quot;&gt;
+			&lt;figure&gt;
+				&lt;img src=&quot;img/banff.jpg&quot; alt=&quot;Panel 2&quot; /&gt;
+				&lt;figcaption&gt;
+					&lt;p&gt;
+						...
+					&lt;/p&gt;
+				&lt;/figcaption&gt;
+			&lt;/figure&gt;
+		&lt;/div&gt;
+		...
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+		</details>
+	</section>
+</section>
+
+<section>
+	<h2 id="carousel-s2-thmb">Carousel style 2 with thumbnails example (<code>carousel-s2 show-thumbs</code>)</h2>
+	<div class="wb-tabs carousel-s2 show-thumbs">
+		<ul role="tablist">
+			<li class="active"><a href="#panel30"><img src="img/protect-environment.jpg" alt="tab 1" /></a></li>
+			<li><a href="#panel31"><img src="img/banff.jpg" alt="tab 2" /></a></li>
+			<li><a href="#panel32"><img src="img/investinourfuture.jpg" alt="tab 3" /></a></li>
+		</ul>
+		<div class="tabpanels">
+			<div role="tabpanel" id="panel30" class="in fade">
+				<figure>
+					<img src="img/protect-environment.jpg" alt="Panel 1" />
+					<figcaption>
+						<p>
+							Take Note: <a href="http://www.tc.gc.ca/eng/civilaviation/opssvs/general-personnel-changes-1814.htm">Renewal of the Aviation Document Booklet</a>&#160;<br />
+							Learn more about&#160;<a href="http://www.tc.gc.ca/eng/air-menu.htm">air transportation</a> in Canada.
+						</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div role="tabpanel" id="panel31" class="out fade">
+				<figure>
+					<img src="img/banff.jpg" alt="Panel 2" />
+					<figcaption>
+						<p>
+							Take Note: <a href="http://www.tc.gc.ca/eng/railsafety/publications-46.htm">Grade Crossing Improvement Program (GCIP)</a><br />
+							Learn more about <a href="http://www.tc.gc.ca/eng/rail-menu.htm">rail transportation</a> in Canada.
+						</p>
+					</figcaption>
+				</figure>
+			</div>
+			<div role="tabpanel" id="panel32" class="out fade">
+				<figure>
+					<img src="img/investinourfuture.jpg" alt="Panel 3" />
+					<figcaption>
+						<p>
+							Take Note: <a href="http://www.tc.gc.ca/eng/tankersafetyexpertpanel/menu.htm">Tanker Safety Expert Panel</a><br />
+							Learn more about&#160;<a href="http://www.tc.gc.ca/eng/marine-menu.htm">marine transportation</a> in Canada.
+						</p>
+					</figcaption>
+				</figure>
+			</div>
+		</div>
+	</div>
+
+	<section>
+		<h3>Code</h3>
+		<details>
+			<summary>View code</summary>
+			<pre><code>&lt;div class=&quot;wb-tabs carousel-s2&quot;&gt;
+	&lt;ul role=&quot;tablist&quot;&gt;
+		&lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#panel30&quot;&gt;&lt;img src=&quot;img/protect-environment.jpg&quot; alt=&quot;tab 1&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		&lt;li&gt;&lt;a href=&quot;#panel31&quot;&gt;&lt;img src=&quot;img/banff.jpg&quot; alt=&quot;tab 2&quot; /&gt;&lt;/a&gt;&lt;/li&gt;
+		...
+	&lt;/ul&gt;
+	&lt;div class=&quot;tabpanels&quot;&gt;
+		&lt;div role=&quot;tabpanel&quot; id=&quot;panel30&quot; class=&quot;in fade&quot;&gt;
+			&lt;figure&gt;
+				&lt;img src=&quot;img/protect-environment.jpg&quot; alt=&quot;Panel 1&quot; /&gt;
+				&lt;figcaption&gt;
+					&lt;p&gt;
+						...
+					&lt;/p&gt;
+				&lt;/figcaption&gt;
+			&lt;/figure&gt;
+		&lt;/div&gt;
+		&lt;div role=&quot;tabpanel&quot; id=&quot;panel31&quot; class=&quot;out fade&quot;&gt;
 			&lt;figure&gt;
 				&lt;img src=&quot;img/banff.jpg&quot; alt=&quot;Panel 2&quot; /&gt;
 				&lt;figcaption&gt;
@@ -925,75 +1004,69 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	<div id="gcwb_prts" class="wb-eqht row" data-ajax-append="http://travel.gc.ca/gcweb-cdn-host/features/features-en.html"></div>
 </aside>
 
-
 <footer role="contentinfo" id="wb-info">
 	<nav role="navigation" class="container visible-sm visible-md visible-lg wb-navcurr">
 		<h2 class="wb-inv">About this site</h2>
 		<div class="row">
-	
 	<div class="col-sm-3 col-lg-3">
-	<section>
-		<h3>Contact information</h3>
+		<section>
+			<h3>Contact information</h3>
+			<ul class="list-unstyled">
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li><a href="#">Link 3</a></li>
+			</ul>
+		</section>
+		<section>
+			<h3>News</h3>
+			<ul class="list-unstyled">
+				<li><a href="http://news.gc.ca/web/index-en.do">Newsroom</a></li>
+				<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=1">News releases</a></li>
+				<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=3">Media advisories</a></li>
+				<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=970">Speeches</a></li>
+				<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=980">Statements</a></li>
+			</ul>
+		</section>
+	</div>
+	<section class="col-sm-3 col-lg-3">
+		<h3>Government</h3>
 		<ul class="list-unstyled">
-			<li><a href="#">Link 1</a></li>
-			<li><a href="#">Link 2</a></li>
-			<li><a href="#">Link 3</a></li>
+			<li><a href="http://www.canada.ca/en/gov/system/index.html">How government works</a></li>
+			<li><a href="http://www.canada.ca/en/gov/dept/index.html">Departments &amp; agencies</a></li>
+			<li><a href="http://pm.gc.ca/eng">Prime Minister</a></li>
+			<li><a href="http://www.canada.ca/en/gov/ministers/index.html">Ministers</a></li>
+			<li><a href="http://www.canada.ca/en/gov/policy/index.html">Policies, regulations &amp; laws</a></li>
+			<li><a href="http://www.canada.ca/en/gov/libraries/index.html">Libraries</a></li>
+			<li><a href="http://www.canada.ca/en/gov/publications/index.html">Publications</a></li>
+			<li><a href="http://www.canada.ca/en/gov/statistics/index.html">Statistics &amp; data</a></li>
+			<li><a href="http://www.canada.ca/en/newsite.html">About Canada.ca</a></li>
 		</ul>
 	</section>
-	<section>
-		<h3>News</h3>
+	<section class="col-sm-3 col-lg-3 brdr-lft">
+		<h3>Transparency</h3>
 		<ul class="list-unstyled">
-			<li><a href="http://news.gc.ca/web/index-en.do">Newsroom</a></li>
-			<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=1">News releases</a></li>
-			<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=3">Media advisories</a></li>
-			<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=970">Speeches</a></li>
-			<li><a href="http://news.gc.ca/web/nwsprdct-en.do?mthd=tp&amp;crtr.tp1D=980">Statements</a></li>
+			<li><a href="http://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
+			<li><a href="http://open.canada.ca/en/">Open government</a></li>
+			<li><a href="http://www.canada.ca/en/transparency/disclosure.html">Proactive disclosure</a></li>
+			<li><a href="http://www.canada.ca/en/transparency/terms.html">Terms &amp; conditions</a></li>
+			<li><a href="http://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
 		</ul>
 	</section>
+	<div class="col-sm-3 col-lg-3 brdr-lft">
+		<section>
+			<h3>Feedback</h3>
+			<p><a href="http://www.canada.ca/en/contact/feedback.html"><img src="../../assets/feedback.png" alt="Feedback about this Web site" /></a></p>
+		</section>
+		<section>
+			<h3>Social media</h3>
+			<p><a href="http://www.canada.ca/en/social/index.html"><img src="../../assets/social.png" alt="Social media" /></a></p>
+		</section>
+		<section>
+			<h3>Mobile centre</h3>
+			<p><a href="http://www.canada.ca/en/mobile/index.html"><img src="../../assets/mobile.png" alt="Mobile centre" /></a></p>
+		</section>
+	</div>
 </div>
-<section class="col-sm-3 col-lg-3">
-	<h3>Government</h3>
-	<ul class="list-unstyled">
-		<li><a href="http://www.canada.ca/en/gov/system/index.html">How government works</a></li>
-		<li><a href="http://www.canada.ca/en/gov/dept/index.html">Departments &amp; agencies</a></li>
-		<li><a href="http://pm.gc.ca/eng">Prime Minister</a></li>
-		<li><a href="http://www.canada.ca/en/gov/ministers/index.html">Ministers</a></li>
-		<li><a href="http://www.canada.ca/en/gov/policy/index.html">Policies, regulations &amp; laws</a></li>
-		<li><a href="http://www.canada.ca/en/gov/libraries/index.html">Libraries</a></li>
-		<li><a href="http://www.canada.ca/en/gov/publications/index.html">Publications</a></li>
-		<li><a href="http://www.canada.ca/en/gov/statistics/index.html">Statistics &amp; data</a></li>
-		<li><a href="http://www.canada.ca/en/newsite.html">About Canada.ca</a></li>
-	</ul>
-</section>
-<section class="col-sm-3 col-lg-3 brdr-lft">
-	<h3>Transparency</h3>
-	<ul class="list-unstyled">
-		<li><a href="http://www.canada.ca/en/transparency/reporting.html">Government-wide reporting</a></li>
-		<li><a href="http://open.canada.ca/en/">Open Government</a></li>
-		<li><a href="http://www.canada.ca/en/transparency/disclosure.html">Proactive disclosure</a></li>
-		<li><a href="http://www.canada.ca/en/transparency/terms.html">Terms &amp; conditions</a></li>
-		<li><a href="http://www.canada.ca/en/transparency/privacy.html">Privacy</a></li>
-	</ul>
-</section>
-<div class="col-sm-3 col-lg-3 brdr-lft">
-	<section>
-		<h3>Feedback</h3>
-		<p><a href="http://www.canada.ca/en/contact/feedback.html"><img src="../../assets/feedback.png" alt="Feedback about this Web site" /></a></p>
-	</section>
-	<section>
-		<h3>Social media</h3>
-		<p><a href="http://www.canada.ca/en/social/index.html"><img src="../../assets/social.png" alt="Social media" /></a></p>
-	</section>
-	<section>
-		<h3>Mobile centre</h3>
-		<p><a href="http://www.canada.ca/en/mobile/index.html"><img src="../../assets/mobile.png" alt="Mobile centre" /></a></p>
-	</section>
-</div>
-
-	 
-</div>
-
-
 	</nav>
 	
 <div class="brand">
