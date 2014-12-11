@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.8+1 - 2014-12-03
+ * v4.0.9 - 2014-12-11
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-cors-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("cors",!!(window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest)),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("cors",!!(window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest)),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -170,6 +170,11 @@ var getUrlParts = function( url ) {
 				this.remove( selector );
 				if ( !isDocumentNode ) {
 					node.className += " " + initedClass;
+
+					// TODO: Remove ID generation in individual plugins
+					if ( !node.id ) {
+						node.id = wb.guid();
+					}
 				}
 
 				return node;
@@ -1751,10 +1756,16 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	// TODO: Remove event.element in future versions
 	var caller = event.element || event.target,
 		fetchOpts = event.fetch,
-		fetchData;
+		fetchData, callerId;
 
 	// Filter out any events triggered by descendants
-	if ( caller = event.target || event.currentTarget === event.target ) {
+	if ( caller === event.target || event.currentTarget === event.target ) {
+
+		if ( !caller.id ) {
+			caller.id = wb.guid();
+		}
+		callerId = caller.id;
+
 		$.ajax( fetchOpts )
 			.done(function( response, status, xhr ) {
 				var responseType = typeof response;
@@ -1768,13 +1779,13 @@ $document.on( "ajax-fetch.wb", function( event ) {
 				fetchData.pointer = $( "<div id='" + wb.guid() + "' data-type='" + responseType + "' />" )
 										.append( responseType === "string" ? response : "" );
 
-				$( caller ).trigger({
+				$( "#" + callerId ).trigger({
 					type: "ajax-fetched.wb",
 					fetch: fetchData
 				}, this );
 			})
 			.fail(function( xhr, status, error ) {
-				$( caller ).trigger({
+				$( "#" + callerId ).trigger({
 					type: "ajax-failed.wb",
 					fetch: {
 						xhr: xhr,
@@ -4339,7 +4350,7 @@ var componentName = "wb-data-ajax",
 			urlParts;
 
 		// Detect CORS requests
-		if ( settings && url.substr( 0, 4 ) === "http" ) {
+		if ( settings && ( url.substr( 0, 4 ) === "http" || url.substr( 0, 2 ) === "//" ) ) {
 			urlParts = wb.getUrlParts( url );
 			if ( ( wb.pageUrlParts.protocol !== urlParts.protocol || wb.pageUrlParts.host !== urlParts.host ) && ( !Modernizr.cors || settings.forceCorsFallback ) ) {
 				if ( typeof settings.corsFallback === "function" ) {
@@ -4366,7 +4377,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 			"prepend"
 		],
 		len = ajaxTypes.length,
-		$elm, ajaxType, i, content;
+		$elm, ajaxType, i, content, jQueryCaching;
 
 	for ( i = 0; i !== len; i += 1 ) {
 		ajaxType = ajaxTypes[ i ];
@@ -4394,12 +4405,19 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 			content = event.fetch.response;
 			if ( content ) {
 
+				//Prevents the force caching of nested resources
+				jQueryCaching = jQuery.ajaxSettings.cache;
+				jQuery.ajaxSettings.cache = true;
+
 				// "replace" is the only event that doesn't map to a jQuery function
 				if ( ajaxType === "replace") {
 					$elm.html( content );
 				} else {
 					$elm[ ajaxType ]( content );
 				}
+
+				//Resets the initial jQuery caching setting
+				jQuery.ajaxSettings.cache = jQueryCaching;
 			}
 		}
 	}
@@ -5102,16 +5120,17 @@ var componentName = "wb-feeds",
 			// Facebook feeds does not really do titles in ATOM RSS. It simply truncates content at 150 characters. We are using a JS based sentence
 			// detection algorithm to better split content and titles
 			var content = fromCharCode( data.content ),
-				title = content.replace( /(<([^>]+)>)/ig, "" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g );
+				title = content.replace( /(<([^>]+)>)/ig, "" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g ),
+				author = data.author.replace( /&amp;/g, "&" );
 
 			// Sanitize the HTML from Facebook - extra 'br' tags
 			content = content.replace( /(<br>\n?)+/gi, "<br />" );
 
 			return "<li class='media'><a class='pull-left' href=''><img src='" +
-				data.fIcon + "' alt='" + data.author +
+				data.fIcon + "' alt='" + author +
 				"' height='64px' width='64px' class='media-object'/></a><div class='media-body'>" +
 				"<h4 class='media-heading'><a href='" + data.link + "'><span class='wb-inv'>" +
-				title[ 0 ] + " - </span>" + data.author + "</a>  " +
+				title[ 0 ] + " - </span>" + author + "</a>  " +
 				( data.publishedDate !== "" ? " <small class='feeds-date text-right'>[" +
 				wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) +
 				"</h4><p>" + content + "</p></div></li>";
@@ -5164,6 +5183,17 @@ var componentName = "wb-feeds",
 					"</figcaption></figure>" +
 					"</div></section>" +
 					"</li>";
+		},
+		/**
+		 * [pinterest template]
+		 * @param  {entry object}    data
+		 * @return {string}    HTML string of formatted using a simple list / anchor view
+		 */
+		pinterest: function( data ) {
+			var content = fromCharCode( data.content ).replace(/<a href="\/pin[^"]*"><img ([^>]*)><\/a>([^<]*)(<a .*)?/, "<a href='" + data.link + "'><img alt='' class='center-block' $1><br/>$2</a>$3");
+			return "<li class='media'>" + content +
+			( data.publishedDate !== "" ? " <small class='small'>[" +
+			wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) + "</li>";
 		},
 		/**
 		 * [generic template]
@@ -5287,6 +5317,8 @@ var componentName = "wb-feeds",
 					// Let's bind the template to the Entries
 					if ( url.indexOf( "facebook.com" ) !== -1 ) {
 						fType = "facebook";
+					} else if ( url.indexOf( "pinterest.com" ) > -1  ) {
+						fType = "pinterest";
 					} else {
 						fType = "generic";
 					}
@@ -5650,7 +5682,7 @@ var componentName = "wb-frmvld",
 						$inputs = $formElms.filter( "input" ),
 						$pattern = $inputs.filter( "[pattern]" ),
 						submitted = false,
-						$required = $form.find( "[required]" ).attr( "aria-required", "true" ),
+						$required = $formElms.filter( "[required], [data-rule-required], .required" ),
 						errorFormId = "errors-" + ( !formId ? "default" : formId ),
 						settings = $.extend(
 							true,
@@ -6118,7 +6150,10 @@ var componentName = "wb-lbx",
 						$content.attr( "role", "document" );
 					}
 
-					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" );
+					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" )
+                        .find( ".activate-open" )
+                        .trigger( "wb-activate" );
+
 				},
 				change: function() {
 					var $item = this.currItem,
@@ -6163,6 +6198,16 @@ var componentName = "wb-lbx",
 							.find( ".modal-title, h1" )
 							.first()
 							.attr( "id", "lbx-title" );
+					}
+				},
+				parseAjax: function( mfpResponse ) {
+					var urlHash = this.currItem.src.split( "#" )[ 1 ];
+
+					// Provide the ability to filter the AJAX response HTML
+					// by the URL hash
+					// TODO: Should be dealt with upstream by Magnific Popup
+					if ( urlHash ) {
+						mfpResponse.data = $( mfpResponse.data ).find( "#" + urlHash );
 					}
 				}
 			};
@@ -7130,7 +7175,6 @@ wb.add( selector );
 var componentName = "wb-mltmd",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	uniqueCount = 0,
 	template,
 	i18n, i18nText,
 	captionsLoadedEvent = "ccloaded" + selector,
@@ -7177,13 +7221,6 @@ var componentName = "wb-mltmd",
 					duration: i18n( "dur" ),
 					position: i18n( "pos" )
 				};
-			}
-
-			// Ensure there is an id on the element
-			if ( !elmId ) {
-				elmId = "wb-mm-" + uniqueCount;
-				eventTarget.id = elmId;
-				uniqueCount += 1;
 			}
 
 			if ( template === undef ) {
@@ -7910,7 +7947,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		}
 
 		// Load the captions
-		if ( currentUrl.absolute.replace( currentUrl.hash, "" ) !== captionsUrl.absolute.replace( captionsUrl.hash, "" ) ) {
+		if ( currentUrl.absolute.replace( currentUrl.hash || "#", "" ) !== captionsUrl.absolute.replace( captionsUrl.hash || "#", "" ) ) {
 			loadCaptionsExternal( $player, captionsUrl.absolute );
 		} else {
 			loadCaptionsInternal( $player, $( captionsUrl.hash ) );
@@ -8006,6 +8043,15 @@ $document.on( "keyup", selector, function( event ) {
 		// Allows the spacebar to be used for play/pause without double triggering
 		return false;
 	}
+});
+
+// TODO: recode with a more efficient to use the API than DOM crawling
+$document.on( "wb-activate", selector, function( event ) {
+    var playerTarget = event.currentTarget,
+        ctrls = ".wb-mm-ctrls",
+        ref = expand( playerTarget ),
+        $this = ref[ 0 ];
+    $this.find( ctrls + " .playpause" ).trigger( "click" );
 });
 
 $document.on( "durationchange play pause ended volumechange timeupdate " +
@@ -9781,6 +9827,7 @@ var componentName = "wb-tabs",
 	equalHeightOffClass = equalHeightClass + "-off",
 	activePanel = "-activePanel",
 	activateEvent = "click keydown",
+	ignoreHashChange = false,
 	pagePath = wb.pageUrlParts.pathname + "#",
 	$document = wb.doc,
 	$window = wb.win,
@@ -9792,7 +9839,8 @@ var componentName = "wb-tabs",
 
 	defaults = {
 		excludePlay: false,
-		interval: 6
+		interval: 6,
+		updateHash: false
 	},
 
 	/**
@@ -9835,6 +9883,7 @@ var componentName = "wb-tabs",
 								9 : $elm.hasClass( "fast" ) ?
 									3 : defaults.interval,
 					excludePlay: $elm.hasClass( "exclude-play" ),
+					updateHash: $elm.hasClass( "update-hash" ),
 					playing: $elm.hasClass( "playing" )
 				},
 				window[ componentName ],
@@ -10010,6 +10059,11 @@ var componentName = "wb-tabs",
 			initialized = true;
 			onResize( $elm );
 
+			// Update the URL hash if needed
+			if ( settings.updateHash ) {
+				updateHash( $openPanel[ 0 ] );
+			}
+
 			// Identify that initialization has completed
 			wb.ready( $elm, componentName );
 		}
@@ -10130,6 +10184,20 @@ var componentName = "wb-tabs",
 		$tabList.attr( "aria-live", "off" );
 	},
 
+	/**
+	 * @method updateHash
+	 * @param {DOM element} elm Tabpanel to be referenced in the URL hash
+	 */
+	updateHash = function( elm ) {
+		var elmId = elm.id;
+
+		ignoreHashChange = true;
+		elm.id += "-off";
+		window.location.hash = elmId;
+		elm.id = elmId;
+		ignoreHashChange = false;
+	},
+
 	updateNodes = function( $panels, $controls, $next, $control ) {
 		var $tabs = $controls.find( "[role=tab]" ),
 			newIndex = $tabs.index( $control ) + 1,
@@ -10206,6 +10274,11 @@ var componentName = "wb-tabs",
 		} catch ( error ) {
 		}
 
+		// Update the URL hash if needed
+		if ( $container.data( componentName ).settings.updateHash ) {
+			updateHash( $next[ 0 ] );
+		}
+
 		// Identify that the tabbed interface/carousel was updated
 		$container.trigger( updatedEvent, [ $next ] );
 	},
@@ -10234,16 +10307,18 @@ var componentName = "wb-tabs",
 			$panels = data.panels,
 			len = $panels.length,
 			current = $elm.find( "> .tabpanels > .in" ).prevAll( "[role=tabpanel]" ).length,
-			next = current > len ? 0 : current + ( event.shiftto ? event.shiftto : 1 );
+			autoCycle = !event.shiftto,
+			next = current > len ? 0 : current + ( autoCycle ? 1 : event.shiftto );
 
-		onSelect( $panels[( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next ].id );
+		onSelect( $panels[ ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next ].id, autoCycle );
 	},
 
 	/**
 	 * @method onSelect
 	 * @param (string) id Id attribute of the panel
+	 * @param (boolean) autoCycle Whether change is caused by an auto cycle
 	 */
-	onSelect = function( id ) {
+	onSelect = function( id, autoCycle ) {
 		var panelSelector = "#" + id,
 			$panel = $( panelSelector );
 
@@ -10251,7 +10326,10 @@ var componentName = "wb-tabs",
 			$panel.children( "summary" ).trigger( $panel.attr( "open" ) ? setFocusEvent : "click" );
 		} else {
 			$( panelSelector + "-lnk" )
-				.trigger( "click" )
+				.trigger({
+					type: "click",
+					which: autoCycle ? undefined : 1
+				})
 				.trigger( setFocusEvent );
 		}
 	},
@@ -10273,7 +10351,7 @@ var componentName = "wb-tabs",
 	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	onHashChange = function( event ) {
-		if ( initialized ) {
+		if ( initialized && !ignoreHashChange ) {
 			var hash = window.location.hash,
 				$hashTarget = $( hash );
 
@@ -10286,8 +10364,9 @@ var componentName = "wb-tabs",
 				} else {
 					$hashTarget
 						.parent()
-							.find( "> ul [href$='" + hash + "']" )
-								.trigger( "click" );
+							.parent()
+								.find( "> ul [href$='" + hash + "']" )
+									.trigger( "click" );
 				}
 			}
 		}
@@ -10470,7 +10549,7 @@ var componentName = "wb-tabs",
 
 		// Stop the slider from playing unless it is already stopped
 		// and the play button is activated
-		if ( isPlaying || ( which < 37 && isPlayPause ) ) {
+		if ( ( isPlaying && which ) || ( which < 37 && isPlayPause ) ) {
 			if ( isPlaying ) {
 				wb.remove( "#" + sldrId + selector );
 			} else {
@@ -10576,19 +10655,19 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	var currentTarget = event.currentTarget,
 		href = currentTarget.getAttribute( "href" ),
 		which = event.which,
-		$container, $panel, $summary;
+		$tabpanels, $panel, $summary;
 
 	// Ignore middle and right mouse buttons
 	if ( ( !which || which === 1 ) && href.charAt( 0 ) === "#" ) {
-		$container = $( currentTarget ).closest( selector );
-		$panel = $container.find( href + "[role=tabpanel]" );
+		$tabpanels = $( currentTarget ).closest( ".tabpanels" );
+		$panel = $tabpanels.children( href );
 		if ( $panel.length !== 0 ) {
 			event.preventDefault();
 			$summary = $panel.children( "summary" );
 			if ( $summary.length !== 0 && $summary.attr( "aria-hidden" ) !== "true" ) {
 				$summary.trigger( "click" );
 			} else {
-				$container.find( href + "-lnk" ).trigger( "click" );
+				$tabpanels.find( href + "-lnk" ).trigger( "click" );
 			}
 		}
 	}
@@ -10603,7 +10682,7 @@ $window.on( "hashchange", onHashChange );
 $document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode,
-		$details;
+		$details, $container;
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) &&
 		( !which || which === 1 || which === 13 || which === 32 ) ) {
@@ -10619,8 +10698,15 @@ $document.on( activateEvent, selector + " > .tabpanels > details > summary", fun
 		} catch ( error ) {
 		}
 
+		$container = $details.closest( selector );
+
+		// Update the URL hash if needed
+		if ( $container.data( componentName ).settings.updateHash ) {
+			updateHash( details );
+		}
+
 		// Identify that the tabbed interface was updated
-		$details.closest( selector ).trigger( updatedEvent, [ $details ] );
+		$container.trigger( updatedEvent, [ $details ] );
 	}
 });
 
