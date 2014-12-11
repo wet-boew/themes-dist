@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.9-development - 2014-12-03
+ * v4.0.9 - 2014-12-11
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1255,10 +1255,16 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	// TODO: Remove event.element in future versions
 	var caller = event.element || event.target,
 		fetchOpts = event.fetch,
-		fetchData;
+		fetchData, callerId;
 
 	// Filter out any events triggered by descendants
 	if ( caller === event.target || event.currentTarget === event.target ) {
+
+		if ( !caller.id ) {
+			caller.id = wb.guid();
+		}
+		callerId = caller.id;
+
 		$.ajax( fetchOpts )
 			.done(function( response, status, xhr ) {
 				var responseType = typeof response;
@@ -1272,13 +1278,13 @@ $document.on( "ajax-fetch.wb", function( event ) {
 				fetchData.pointer = $( "<div id='" + wb.guid() + "' data-type='" + responseType + "' />" )
 										.append( responseType === "string" ? response : "" );
 
-				$( caller ).trigger({
+				$( "#" + callerId ).trigger({
 					type: "ajax-fetched.wb",
 					fetch: fetchData
 				}, this );
 			})
 			.fail(function( xhr, status, error ) {
-				$( caller ).trigger({
+				$( "#" + callerId ).trigger({
 					type: "ajax-failed.wb",
 					fetch: {
 						xhr: xhr,
@@ -4613,16 +4619,17 @@ var componentName = "wb-feeds",
 			// Facebook feeds does not really do titles in ATOM RSS. It simply truncates content at 150 characters. We are using a JS based sentence
 			// detection algorithm to better split content and titles
 			var content = fromCharCode( data.content ),
-				title = content.replace( /(<([^>]+)>)/ig, "" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g );
+				title = content.replace( /(<([^>]+)>)/ig, "" ).match( /\(?[^\.\?\!]+[\.!\?]\)?/g ),
+				author = data.author.replace( /&amp;/g, "&" );
 
 			// Sanitize the HTML from Facebook - extra 'br' tags
 			content = content.replace( /(<br>\n?)+/gi, "<br />" );
 
 			return "<li class='media'><a class='pull-left' href=''><img src='" +
-				data.fIcon + "' alt='" + data.author +
+				data.fIcon + "' alt='" + author +
 				"' height='64px' width='64px' class='media-object'/></a><div class='media-body'>" +
 				"<h4 class='media-heading'><a href='" + data.link + "'><span class='wb-inv'>" +
-				title[ 0 ] + " - </span>" + data.author + "</a>  " +
+				title[ 0 ] + " - </span>" + author + "</a>  " +
 				( data.publishedDate !== "" ? " <small class='feeds-date text-right'>[" +
 				wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) +
 				"</h4><p>" + content + "</p></div></li>";
@@ -5691,6 +5698,16 @@ var componentName = "wb-lbx",
 							.first()
 							.attr( "id", "lbx-title" );
 					}
+				},
+				parseAjax: function( mfpResponse ) {
+					var urlHash = this.currItem.src.split( "#" )[ 1 ];
+
+					// Provide the ability to filter the AJAX response HTML
+					// by the URL hash
+					// TODO: Should be dealt with upstream by Magnific Popup
+					if ( urlHash ) {
+						mfpResponse.data = $( mfpResponse.data ).find( "#" + urlHash );
+					}
 				}
 			};
 		}
@@ -6657,7 +6674,6 @@ wb.add( selector );
 var componentName = "wb-mltmd",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
-	uniqueCount = 0,
 	template,
 	i18n, i18nText,
 	captionsLoadedEvent = "ccloaded" + selector,
@@ -6704,13 +6720,6 @@ var componentName = "wb-mltmd",
 					duration: i18n( "dur" ),
 					position: i18n( "pos" )
 				};
-			}
-
-			// Ensure there is an id on the element
-			if ( !elmId ) {
-				elmId = "wb-mm-" + uniqueCount;
-				eventTarget.id = elmId;
-				uniqueCount += 1;
 			}
 
 			if ( template === undef ) {
@@ -7437,7 +7446,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		}
 
 		// Load the captions
-		if ( currentUrl.absolute.replace( currentUrl.hash, "" ) !== captionsUrl.absolute.replace( captionsUrl.hash, "" ) ) {
+		if ( currentUrl.absolute.replace( currentUrl.hash || "#", "" ) !== captionsUrl.absolute.replace( captionsUrl.hash || "#", "" ) ) {
 			loadCaptionsExternal( $player, captionsUrl.absolute );
 		} else {
 			loadCaptionsInternal( $player, $( captionsUrl.hash ) );
@@ -9346,7 +9355,7 @@ var componentName = "wb-tabs",
 			hashFocus = false,
 			isCarousel = true,
 			open = "open",
-			$panels, $tablist, activeId, $openPanel, openPanel, $elm, elmId,
+			$panels, $tablist, activeId, $openPanel, $elm, elmId,
 			settings, $panel, i, len, tablist, isOpen,
 			newId, positionY, groupClass, $tabPanels;
 
@@ -9549,15 +9558,12 @@ var componentName = "wb-tabs",
 			initialized = true;
 			onResize( $elm );
 
-			// Identify that initialization has completed
+			// Update the URL hash if needed
 			if ( settings.updateHash ) {
-				ignoreHashChange = true;
-				openPanel = $openPanel[ 0 ];
-				openPanel.id += "-off";
-				window.location.hash = activeId;
-				openPanel.id = activeId;
-				ignoreHashChange = false;
+				updateHash( $openPanel[ 0 ] );
 			}
+
+			// Identify that initialization has completed
 			wb.ready( $elm, componentName );
 		}
 	},
@@ -9677,6 +9683,20 @@ var componentName = "wb-tabs",
 		$tabList.attr( "aria-live", "off" );
 	},
 
+	/**
+	 * @method updateHash
+	 * @param {DOM element} elm Tabpanel to be referenced in the URL hash
+	 */
+	updateHash = function( elm ) {
+		var elmId = elm.id;
+
+		ignoreHashChange = true;
+		elm.id += "-off";
+		window.location.hash = elmId;
+		elm.id = elmId;
+		ignoreHashChange = false;
+	},
+
 	updateNodes = function( $panels, $controls, $next, $control ) {
 		var $tabs = $controls.find( "[role=tab]" ),
 			newIndex = $tabs.index( $control ) + 1,
@@ -9684,8 +9704,6 @@ var componentName = "wb-tabs",
 			$container = $next.closest( selector ),
 			mPlayers = $currPanel.find( ".wb-mltmd-inited" ).get(),
 			mPlayersLen = mPlayers.length,
-			next = $next[ 0 ],
-			nextId = next.id,
 			mPlayer, i, j, last;
 
 		// Handle the direction of the slide transitions
@@ -9755,14 +9773,12 @@ var componentName = "wb-tabs",
 		} catch ( error ) {
 		}
 
-		// Identify that the tabbed interface/carousel was updated
+		// Update the URL hash if needed
 		if ( $container.data( componentName ).settings.updateHash ) {
-			ignoreHashChange = true;
-			next.id += "-off";
-			window.location.hash = nextId;
-			next.id = nextId;
-			ignoreHashChange = false;
+			updateHash( $next[ 0 ] );
 		}
+
+		// Identify that the tabbed interface/carousel was updated
 		$container.trigger( updatedEvent, [ $next ] );
 	},
 
@@ -9790,16 +9806,18 @@ var componentName = "wb-tabs",
 			$panels = data.panels,
 			len = $panels.length,
 			current = $elm.find( "> .tabpanels > .in" ).prevAll( "[role=tabpanel]" ).length,
-			next = current > len ? 0 : current + ( event.shiftto ? event.shiftto : 1 );
+			autoCycle = !event.shiftto,
+			next = current > len ? 0 : current + ( autoCycle ? 1 : event.shiftto );
 
-		onSelect( $panels[ ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next ].id );
+		onSelect( $panels[ ( next > len - 1 ) ? 0 : ( next < 0 ) ? len - 1 : next ].id, autoCycle );
 	},
 
 	/**
 	 * @method onSelect
 	 * @param (string) id Id attribute of the panel
+	 * @param (boolean) autoCycle Whether change is caused by an auto cycle
 	 */
-	onSelect = function( id ) {
+	onSelect = function( id, autoCycle ) {
 		var panelSelector = "#" + id,
 			$panel = $( panelSelector );
 
@@ -9807,7 +9825,10 @@ var componentName = "wb-tabs",
 			$panel.children( "summary" ).trigger( $panel.attr( "open" ) ? setFocusEvent : "click" );
 		} else {
 			$( panelSelector + "-lnk" )
-				.trigger( "click" )
+				.trigger({
+					type: "click",
+					which: autoCycle ? undefined : 1
+				})
 				.trigger( setFocusEvent );
 		}
 	},
@@ -10027,7 +10048,7 @@ var componentName = "wb-tabs",
 
 		// Stop the slider from playing unless it is already stopped
 		// and the play button is activated
-		if ( isPlaying || ( which < 37 && isPlayPause ) ) {
+		if ( ( isPlaying && which ) || ( which < 37 && isPlayPause ) ) {
 			if ( isPlaying ) {
 				wb.remove( "#" + sldrId + selector );
 			} else {
@@ -10160,32 +10181,30 @@ $window.on( "hashchange", onHashChange );
 $document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
 		details = event.currentTarget.parentNode,
-		$details, $container, id;
+		$details, $container;
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) &&
 		( !which || which === 1 || which === 13 || which === 32 ) ) {
 
-		id = details.id;
 		$details = $( details );
 
 		// Update sessionStorage with the current active panel
 		try {
 			sessionStorage.setItem(
 				pagePath + $details.closest( selector ).attr( "id" ) + activePanel,
-				id
+				details.id
 			);
 		} catch ( error ) {
 		}
 
-		// Identify that the tabbed interface was updated
 		$container = $details.closest( selector );
+
+		// Update the URL hash if needed
 		if ( $container.data( componentName ).settings.updateHash ) {
-			ignoreHashChange = true;
-			details.id += "-off";
-			window.location.hash = id;
-			details.id = id;
-			ignoreHashChange = false;
+			updateHash( details );
 		}
+
+		// Identify that the tabbed interface was updated
 		$container.trigger( updatedEvent, [ $details ] );
 	}
 });

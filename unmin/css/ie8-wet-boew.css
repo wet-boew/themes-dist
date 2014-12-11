@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.9-development - 2014-12-03
+ * v4.0.9 - 2014-12-11
  *
  *//*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -5678,11 +5678,11 @@ figure .pieLabel {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-.wb-frmvld label strong.error, .wb-frmvld legend .error {
+.wb-frmvld label strong.error, .wb-frm label strong.error, .wb-frmvld legend .error, .wb-frm legend .error {
   display: inline-block;
   width: 100%; }
 
-.wb-frmvld label strong.error .label, .wb-frmvld legend .error .label {
+.wb-frmvld label strong.error .label, .wb-frm label strong.error .label, .wb-frmvld legend .error .label, .wb-frm legend .error .label {
   font-size: 100%; }
 
 /*
@@ -7479,6 +7479,8 @@ details:not([open]) {
   visibility: hidden; }
   details:not([open]) > details, details:not([open]) > * {
     display: none; }
+details.alert:not([open]) {
+  visibility: visible; }
 
 .tabpanels > details:not([open]) {
   visibility: visible; }
@@ -8032,6 +8034,8 @@ details:not([open]) {
 */
 .lt-ie9 table.dataTable thead .sorting, .lt-ie9 table.dataTable thead .sorting_asc, .lt-ie9 table.dataTable thead .sorting_desc {
   cursor: hand; }
+.lt-ie9 table.dataTable thead .sorting-icons {
+  font-family: "Glyphicons Halflings"; }
 .lt-ie9 .dataTables_wrapper {
   zoom: 1; }
   .lt-ie9 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -8054,6 +8058,8 @@ details:not([open]) {
     visibility: visible; }
     .lt-ie9 details[open] > details, .lt-ie9 details[open] > * {
       display: block !important; }
+  .lt-ie9 details.alert {
+    visibility: visible; }
 
 /* Print view */
 @media print {
