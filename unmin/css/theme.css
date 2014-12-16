@@ -1009,9 +1009,6 @@ a.shr-opn, a.shr-opn:hover {
   /*
  * Carousel-specific overrides
  */
-  /*
-* IE
-*/
   body {
     background: #f9f9f9; }
   .overlay-def .modal-header {
@@ -1034,8 +1031,6 @@ a.shr-opn, a.shr-opn:hover {
         text-decoration: none; }
         .prm-flpr .carousel-s2 figure figcaption a:hover {
           text-decoration: underline; }
-  .lt-ie9 .prm-flpr .carousel-s2 figcaption {
-    background: url("../assets/backdrop.png"); }
   .wb-tabs.carousel-s2 [role="tablist"] li.tab-count .curr-count, .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
     font-size: 1.2em; }
   .wb-tabs.carousel-s2 [role="tablist"] li.nxt a .glyphicon, .wb-tabs.carousel-s2 [role="tablist"] li.prv a .glyphicon {
