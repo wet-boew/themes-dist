@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.10-development - 2014-12-29
+ * v4.0.10-development - 2014-12-31
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -35,7 +35,7 @@
 	// Escapes the characters in a string for use in a jQuery selector
 	// Based on http://totaldev.com/content/escaping-characters-get-valid-jquery-id
 	wb.jqEscape = function( selector ) {
-		return selector.replace( /([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, "\\$1" );
+		return selector.replace( /([;&,\.\+\*\~':"\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
 	};
 
 	// RegEx used by formattedNumCompare
@@ -1452,139 +1452,129 @@ var componentName = "wb-calevt",
 					}
 				]
 			},
-			objEventsList = null;
+			objEventsList = obj.find( "ol > li, ul > li" ),
+			iLen = objEventsList.length,
+			dateTimeRegExp = /datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/,
+			i, $event, event, $objTitle, title, link, href, target,
+			linkId, date, tCollection, tCollectionTemp,	strDate1,
+			strDate2, z, zLen, className, dateClass;
 
-		if ( obj.find( "ol" ).length > 0 ) {
-			objEventsList = obj.find( "ol" );
-		} else if ( obj.find( "ul" ).length > 0 ) {
-			objEventsList = obj.find( "ul" );
-		}
+		for ( i = 0; i !== iLen; i += 1 ) {
+			$event = objEventsList.eq( i );
+			event = $event[ 0 ];
+			$objTitle = $event.find( "*:header:first" ),
+			className = $objTitle.attr( "class" ),
+			title = $objTitle.text(),
+			link = $event.find( "a" )[ 0 ],
+			href = link.getAttribute( "href" );
+			target = link.getAttribute( "target" );
+			zLen = 1;
 
-		if ( objEventsList.length > 0 ) {
-			objEventsList.children( "li" ).each(function() {
-				var event = $( this ),
-					objTitle = event.find( "*:header:first" ),
-					title = objTitle.text(),
-					origLink = event.find( "a" ).first(),
-					link = origLink.attr( "href" ),
-					linkId, date, tCollection, $tCollection, tCollectionTemp,
-					strDate1, strDate2, strDate, z, zLen, className;
+			/*
+			 * Modification direct-linking or page-linking
+			 *	- added the ability  to have class set the behaviour of the links
+			 *	- default is to use the link of the item as the event link in the calendar
+			 *	- 'evt-anchor' class dynamically generates page anchors on the links it maps to the event
+			 */
+			if ( !directLinking ) {
+				linkId = event.id || wb.getId();
+				event.id = linkId;
 
 				/*
-				 * Modification direct-linking or page-linking
-				 *	- added the ability  to have class set the behaviour of the links
-				 *	- default is to use the link of the item as the event link in the calendar
-				 *	- 'evt-anchor' class dynamically generates page anchors on the links it maps to the event
+				 * Fixes IE tabbing error:
+				 * http://www.earthchronicle.com/ECv1point8/Accessibility01IEAnchoredKeyboardNavigation.aspx
 				 */
-				if ( !directLinking ) {
-					linkId = event.attr( "id" ) || wb.getId();
-					event.attr( "id", linkId );
-
-					/*
-					 * Fixes IE tabbing error:
-					 * http://www.earthchronicle.com/ECv1point8/Accessibility01IEAnchoredKeyboardNavigation.aspx
-					 */
-					if ( wb.ie ) {
-						event.attr( "tabindex", "-1" );
-					}
-					link = "#" + linkId;
+				// TODO: Which versions of IE should this fix be limited to?
+				if ( wb.ie ) {
+					event.tabIndex = "-1";
 				}
+				href = "#" + linkId;
+			}
 
-				date = new Date();
-				date.setHours( 0, 0, 0, 0 );
-				tCollection = event.find( "time" );
+			date = new Date();
+			date.setHours( 0, 0, 0, 0 );
+			tCollection = event.getElementsByTagName( "time" );
 
-				/*
-				 * Date spanning capability
-				 *   - since there maybe some dates that are capable of spanning over months we need to identify them
-				 *     the process is see how many time nodes are in the event. 2 nodes will trigger a span
-				 */
-				if ( tCollection.length > 1 ) {
+			/*
+			 * Date spanning capability
+			 *   - since there may be some dates that are capable of spanning over months we need to identify them
+			 *     the process is see how many time nodes are in the event. 2 nodes will trigger a span
+			 */
+			if ( tCollection.length !== 0 ) {
+				tCollectionTemp = tCollection[ 0 ];
+				strDate1 = tCollectionTemp.nodeName.toLowerCase() === "time" ?
+					tCollectionTemp.getAttribute( "datetime" ).substr( 0, 10 ).split( "-" ) :
+					tCollectionTemp.className.match( dateTimeRegExp )[ 1 ].substr( 0, 10 ).split( "-" );
+
+				// Convert to zero-based month
+				strDate1[ 1 ] = strDate1[ 1 ] - 1;
+
+				date.setFullYear( strDate1[ 0 ], strDate1[ 1 ], strDate1[ 2 ] );
+
+				if ( tCollection.length !== 1 ) {
 
 					// This is a spanning event
-					tCollectionTemp = tCollection[ 0 ];
-					strDate1 = tCollectionTemp.nodeName.toLowerCase() === "time" ?
-						$( tCollectionTemp ).attr( "datetime" ).substr( 0, 10 ).split( "-" ) :
-						$( tCollectionTemp ).attr( "class" ).match( /datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/ )[ 1 ].substr( 0, 10 ).split( "-" );
-
 					tCollectionTemp = tCollection[ 1 ];
 					strDate2 = tCollectionTemp.nodeName.toLowerCase() === "time" ?
-						$( tCollectionTemp ).attr( "datetime" ).substr( 0, 10 ).split( "-" ) :
-						$( tCollectionTemp ).attr( "class" ).match( /datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/ )[ 1 ].substr( 0, 10 ).split( "-" );
+						tCollectionTemp.getAttribute( "datetime" ).substr( 0, 10 ).split( "-" ) :
+						tCollectionTemp.className.match( dateTimeRegExp )[ 1 ].substr( 0, 10 ).split( "-" );
 
-					// Convert to zero-base month
-					strDate1[ 1 ] = strDate1[ 1 ] - 1;
+					// Convert to zero-based month
 					strDate2[ 1 ] = strDate2[ 1 ] - 1;
 
-					date.setFullYear( strDate1[ 0 ], strDate1[ 1 ], strDate1[ 2 ] );
+					zLen += daysBetween( strDate1, strDate2 );
+				}
 
-					// Now loop in events to load up all the days that it would be on tomorrow.setDate(tomorrow.getDate() + 1);
-					for ( z = 0, zLen = daysBetween( strDate1, strDate2 ); z <= zLen; z += 1 ) {
-						if ( events.minDate === null || date < events.minDate ) {
-							events.minDate = date;
-						}
-						if ( events.maxDate === null || date > events.maxDate ) {
-							events.maxDate = date;
-						}
-
-						events.list[ events.iCount ] = {
-							title: title,
-							date: new Date( date.getTime() ),
-							href: link
-						};
-
+				// Now loop in events to load up all the days that it would be on tomorrow.setDate(tomorrow.getDate() + 1);
+				for ( z = 0; z !== zLen; z += 1 ) {
+					if ( z !== 0 ) {
 						date = new Date( date.setDate( date.getDate() + 1 ) );
-
-						// Add a viewfilter
-						className = "filter-" + ( date.getFullYear() ) + "-" +
-							wb.string.pad( date.getMonth() + 1, 2 );
-						if ( !objTitle.hasClass( className ) ) {
-							objTitle.addClass( className );
-						}
-						events.iCount += 1;
 					}
-				} else if ( tCollection.length === 1 ) {
-					$tCollection = $( tCollection[ 0 ] );
-					strDate = ( $tCollection.get( 0 ).nodeName.toLowerCase() === "time" ) ?
-						$tCollection.attr( "datetime" ).substr( 0, 10 ).split( "-" ) :
-						$tCollection.attr( "class" ).match(/datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/)[ 1 ].substr( 0, 10 ).split( "-" );
-
-					date.setFullYear( strDate[ 0 ], strDate[ 1 ] - 1, strDate[ 2 ] );
 
 					if ( events.minDate === null || date < events.minDate ) {
 						events.minDate = date;
 					}
+
 					if ( events.maxDate === null || date > events.maxDate ) {
 						events.maxDate = date;
 					}
+
 					events.list[ events.iCount ] = {
 						title: title,
 						date: date,
-						href: link
+						href: href,
+						target: target
 					};
 
 					// Add a viewfilter
-					className = "filter-" + ( date.getFullYear() ) + "-" + wb.string.pad( date.getMonth() + 1, 2 );
-					if ( !objTitle.hasClass( className ) ) {
-						objTitle.addClass( className );
+					dateClass = "filter-" + ( date.getFullYear() ) + "-" +
+						wb.string.pad( date.getMonth() + 1, 2 );
+					if ( !className ) {
+						className = dateClass;
+					} else if ( className.indexOf( dateClass ) === -1 ) {
+						className += " " + dateClass;
 					}
 					events.iCount += 1;
 				}
+				$objTitle.attr( "class", className );
+			}
 
-			// End of loop through objects/events
-			});
+		// End of loop through objects/events
 		}
 
 		window.events = events;
 		return events;
 	},
 
-	addEvents = function( year, month, days, containerId, eventsList ) {
-		var i, eLen, date, day, dayEvents, content;
+	addEvents = function( year, month, $days, containerId, eventsList ) {
+		var i, eLen, date, $day, $dayEvents, content, event, eventLink;
 
 		// Fix required to make up with the IE z-index behaviour mismatch
-		for ( i = 0, eLen = days.length; i !== eLen; i += 1 ) {
-			days.eq( i ).css( "z-index", 31 - i );
+		// TODO: Which versions of IE should this fix be limited to?
+		if ( wb.ie ) {
+			for ( i = 0, eLen = $days.length; i !== eLen; i += 1 ) {
+				$days.eq( i ).css( "z-index", 31 - i );
+			}
 		}
 
 		/*
@@ -1595,22 +1585,26 @@ var componentName = "wb-calevt",
 		 * to a for loop to ensure that all the elements are accounted for.
 		 */
 		for ( i = 0, eLen = eventsList.length; i !== eLen; i += 1 ) {
-			date = new Date( eventsList[ i ].date );
+			event = eventsList[ i ];
+			eventLink = "<li><a tabindex='-1' class='cal-evt-lnk' href='" +
+				event.href + ( event.target ? "' target='" + event.target : "" ) +
+				"'>" + event.title + "</a></li>";
+			date = new Date( event.date );
 
 			if ( date.getMonth() === month && date.getFullYear() === year ) {
-				day = $( days[ date.getDate() - 1 ] );
+				$day = $( $days[ date.getDate() - 1 ] );
 
 				// Lets see if the cell is empty. If so lets create the cell
-				if ( day.children( "a" ).length === 0 ) {
-					dayEvents = $( "<ul class='wb-inv'></ul>" );
-					content = day.children( "div" ).html();
-					day
+				if ( $day.children( "a" ).length === 0 ) {
+					$dayEvents = $( "<ul class='wb-inv'>" + eventLink + "</ul>" );
+					content = $day.children( "div" ).html();
+					$day
 						.empty()
 						.append(
-							"<a href='#ev-" + day.attr( "id" ) +
+							"<a href='#ev-" + $day.attr( "id" ) +
 								"' class='cal-evt' tabindex='-1'>" +
 								content + "</a>",
-							dayEvents
+							$dayEvents
 						);
 				} else {
 
@@ -1619,16 +1613,15 @@ var componentName = "wb-calevt",
 					 * event collisions not being handled. So the pointer was
 					 * getting lost.
 					 */
-					dayEvents = day.find( "ul.wb-inv" );
+					$dayEvents = $day.find( "ul.wb-inv" );
+					$dayEvents.append( eventLink );
 				}
 
-				dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" +
-					eventsList[ i ].href + "'>" + eventsList[ i ].title + "</a></li>" );
-				day.data( "dayEvents", dayEvents );
+				$day.data( "dayEvents", $dayEvents );
 			}
 		}
 
-		days.find( ".cal-evt" ).first().attr( "tabindex", "0" );
+		$days.find( ".cal-evt" )[ 0 ].tabIndex = "0";
 	},
 
 	showOnlyEventsFor = function( year, month, calendarId ) {
@@ -5393,30 +5386,6 @@ var componentName = "wb-frmvld",
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-// Move the focus to the associated input when an error message link is clicked
-// and scroll to the top of the label or legend that contains the error
-$document.on( "click vclick", selector + " .errCnt a", function( event ) {
-	var which = event.which,
-		hash, $input, $label, $legend, errorTop;
-
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
-		hash = this.href.substring( this.href.indexOf( "#" ) );
-		$input = $( hash );
-		$label = $input.prev();
-		$legend = $label.length === 0 ? $input.closest( "fieldset" ).find( "legend" ) : [];
-		errorTop = $label.length !== 0 ? $label.offset().top : ( $legend.length !== 0 ? $legend.offset().top : -1 );
-
-		// Assign focus to $input
-		$input.trigger( setFocusEvent );
-
-		if ( errorTop !== -1 ) {
-			window.scroll( 0, errorTop );
-		}
-		return false;
-	}
-});
-
 // Add the timer poke to initialize the plugin
 wb.add( selector );
 
@@ -5690,7 +5659,7 @@ var componentName = "wb-lbx",
 					// by the URL hash
 					// TODO: Should be dealt with upstream by Magnific Popup
 					if ( urlHash ) {
-						mfpResponse.data = $( mfpResponse.data ).find( "#" + urlHash );
+						mfpResponse.data = $( mfpResponse.data ).find( "#" + wb.jqEscape( urlHash ) );
 					}
 				}
 			};
@@ -5773,16 +5742,15 @@ $document.on( "focusin", "body", function( event ) {
 $document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
 	var which = event.which,
 		eventTarget = event.target,
-		href, $lightbox, linkTarget;
+		$lightbox, linkTarget;
 
 	// Ignore middle/right mouse buttons
 	if ( !which || which === 1 ) {
 		$lightbox = $( eventTarget ).closest( ".mfp-wrap" );
-		href = eventTarget.getAttribute( "href" );
-		linkTarget = document.getElementById( href.substring( 1 ) );
+		linkTarget = document.getElementById( eventTarget.getAttribute( "href" ).substring( 1 ) );
 
 		// Ignore same page links to within the overlay and modal popups
-		if ( href.length > 1 && !$.contains( $lightbox[ 0 ], linkTarget ) ) {
+		if ( linkTarget && !$.contains( $lightbox[ 0 ], linkTarget ) ) {
 			if ( $lightbox.find( ".popup-modal-dismiss" ).length === 0 ) {
 
 				// Stop propagation of the click event
@@ -7433,7 +7401,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		if ( currentUrl.absolute.replace( currentUrl.hash || "#", "" ) !== captionsUrl.absolute.replace( captionsUrl.hash || "#", "" ) ) {
 			loadCaptionsExternal( $player, captionsUrl.absolute );
 		} else {
-			loadCaptionsInternal( $player, $( captionsUrl.hash ) );
+			loadCaptionsInternal( $player, $( "#" + wb.jqEscape( captionsUrl.hash.substring( 1 ) ) ) );
 		}
 	}
 });
@@ -7934,7 +7902,7 @@ var componentName = "wb-overlay",
 	},
 
 	openOverlay = function( overlayId, noFocus ) {
-		var $overlay = $( "#" + overlayId );
+		var $overlay = $( "#" + wb.jqEscape( overlayId ) );
 
 		$overlay
 			.addClass( "open" )
@@ -8114,7 +8082,7 @@ $document.on( "click vclick touchstart focusin", "body", function( event ) {
 		// Close any overlays with outside activity
 		for ( overlayId in sourceLinks ) {
 			overlay = document.getElementById( overlayId );
-			if ( overlay !== null && overlay.getAttribute( "aria-hidden" ) === "false" &&
+			if ( overlay && overlay.getAttribute( "aria-hidden" ) === "false" &&
 				eventTarget.id !== overlayId &&
 				overlay.className.indexOf( ignoreOutsideClass ) === -1 &&
 				!$.contains( overlay, eventTarget ) ) {
@@ -9309,10 +9277,8 @@ var componentName = "wb-tabs",
 	equalHeightOffClass = equalHeightClass + "-off",
 	activePanel = "-activePanel",
 	activateEvent = "click keydown",
-	ignoreHashChange = false,
 	pagePath = wb.pageUrlParts.pathname + "#",
 	$document = wb.doc,
-	$window = wb.win,
 	i18n, i18nText,
 
 	// Includes "smallview", "xsmallview" and "xxsmallview"
@@ -9353,7 +9319,7 @@ var componentName = "wb-tabs",
 			$panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" );
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
-			activeId = wb.pageUrlParts.hash.substring( 1 );
+			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
 			$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined;
 			elmId = elm.id;
 			settings = $.extend(
@@ -9665,11 +9631,11 @@ var componentName = "wb-tabs",
 	updateHash = function( elm ) {
 		var elmId = elm.id;
 
-		ignoreHashChange = true;
+		wb.ignoreHashChange = true;
 		elm.id += "-off";
 		window.location.hash = elmId;
 		elm.id = elmId;
-		ignoreHashChange = false;
+		wb.ignoreHashChange = false;
 	},
 
 	updateNodes = function( $panels, $controls, $next, $control ) {
@@ -9821,44 +9787,20 @@ var componentName = "wb-tabs",
 	},
 
 	/**
-	 * @method onHashChange
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	onHashChange = function( event ) {
-		if ( initialized && !ignoreHashChange ) {
-			var hash = window.location.hash,
-				$hashTarget = $( hash );
-
-			if ( $hashTarget.length !== 0 ) {
-				event.preventDefault();
-				if ( isSmallView && $hashTarget[ 0 ].nodeName.toLowerCase() === "details" ) {
-					$hashTarget
-						.children( "summary" )
-							.trigger( "click" );
-				} else {
-					$hashTarget
-						.parent()
-							.parent()
-								.find( "> ul [href$='" + hash + "']" )
-									.trigger( "click" );
-				}
-			}
-		}
-	},
-
-	/**
 	 * @method onResize
 	 * @param {jQuery Object} $currentElm Element being initialized (only during initialization process).
 	 */
 	onResize = function( $currentElm ) {
 		var $elms, $elm, $tabPanels, $details, $tablist, $openDetails, openDetailsId,
-			$nonOpenDetails, $active, $summary, i, len;
+			$nonOpenDetails, $active, $summary, i, len, viewChange, isInit;
 
 		if ( initialized ) {
 			isSmallView = document.documentElement.className.indexOf( smallViewPattern ) !== -1;
+			viewChange = isSmallView !== oldIsSmallView;
+			isInit = $currentElm.length ? true : false;
 
-			if ( isSmallView !== oldIsSmallView ) {
-				$elms = $currentElm.length ? $currentElm : $( selector );
+			if ( viewChange ) {
+				$elms = isInit ? $currentElm : $( selector );
 				len = $elms.length;
 
 				for ( i = 0; i !== len; i += 1 ) {
@@ -9928,13 +9870,17 @@ var componentName = "wb-tabs",
 						}
 					}
 				}
-
-				// Remove wb-inv from regular tabs that were used to prevent FOUC (after 300ms delay)
-				setTimeout(function() {
-					$( selector + " .tabpanels > details.wb-inv" ).removeClass( "wb-inv" );
-				}, 300 );
 			}
+
 			oldIsSmallView = isSmallView;
+		}
+
+		if ( viewChange || isInit ) {
+
+			// Remove wb-inv from regular tabs that were used to prevent FOUC (after 300ms delay)
+			setTimeout(function() {
+				$( selector + " .tabpanels > details.wb-inv" ).removeClass( "wb-inv" );
+			}, 300 );
 		}
 	};
 
@@ -10117,7 +10063,7 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	// Ignore middle and right mouse buttons
 	if ( ( !which || which === 1 ) && href.charAt( 0 ) === "#" ) {
 		$tabpanels = $( currentTarget ).closest( ".tabpanels" );
-		$panel = $tabpanels.children( href );
+		$panel = $tabpanels.children( "#" + wb.jqEscape( href.substring( 1 ) ) );
 		if ( $panel.length !== 0 ) {
 			event.preventDefault();
 			$summary = $panel.children( "summary" );
@@ -10132,9 +10078,6 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 
 // These events only fire at the document level
 $document.on( wb.resizeEvents, onResize );
-
-// This event only fires on the window
-$window.on( "hashchange", onHashChange );
 
 $document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
@@ -10900,11 +10843,22 @@ wb.add( selector );
 "use strict";
 
 var $document = wb.doc,
-	hash = wb.pageUrlParts.hash,
+	$window = wb.win,
 	clickEvents = "click vclick",
 	setFocusEvent = "setfocus.wb",
 	linkSelector = "a[href]",
-	$linkTarget;
+	$linkTarget,
+
+	/**
+	 * @method processHash
+	 */
+	processHash = function() {
+		var hash = wb.pageUrlParts.hash;
+
+		if ( hash && ( $linkTarget = $( "#" + wb.jqEscape( hash.substring( 1 ) ) ) ).length !== 0 ) {
+			$linkTarget.trigger( setFocusEvent );
+		}
+	};
 
 // Bind the setfocus event
 $document.on( setFocusEvent, function( event ) {
@@ -10952,9 +10906,13 @@ $document.on( setFocusEvent, function( event ) {
 
 // Set focus to the target of a deep link from a different page
 // (helps browsers that can't set the focus on their own)
-$document.on( "wb-ready.wb", function() {
-	if ( hash && ( $linkTarget = $( hash ) ).length !== 0 ) {
-		$linkTarget.trigger( setFocusEvent );
+$document.on( "wb-ready.wb", processHash );
+
+// Handle any changes to the URL hash after the page has loaded
+$window.on( "hashchange", function() {
+	wb.pageUrlParts.hash = window.location.hash;
+	if ( !wb.ignoreHashChange ) {
+		processHash();
 	}
 });
 
@@ -10964,7 +10922,7 @@ $document.on( clickEvents, linkSelector, function( event ) {
 
 	// Same page links only
 	if ( testHref.charAt( 0 ) === "#" && !event.isDefaultPrevented() &&
-		( $linkTarget = $( testHref ) ).length !== 0 ) {
+		( $linkTarget = $( "#" + wb.jqEscape( testHref.substring( 0 ) ) ) ).length !== 0 ) {
 
 		$linkTarget.trigger( setFocusEvent );
 	}
