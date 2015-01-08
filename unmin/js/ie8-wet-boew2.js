@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.10-development - 2015-01-02
+ * v4.0.10-development - 2015-01-08
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1969,7 +1969,7 @@ var namespace = "wb-cal",
 			eventData = event.data,
 			minDate = eventData.minDate,
 			maxDate = eventData.maxDate,
-			$monthField = eventData.$monthField,
+			$monthField = eventData.monthField,
 			value = $monthField.val(),
 			month = value ? value : eventData.month,
 			minMonth = 0,
@@ -1995,56 +1995,52 @@ var namespace = "wb-cal",
 	},
 
 	createGoToForm = function( calendarId, year, month, minDate, maxDate ) {
-		var $goToForm = $( "<div class='cal-goto'></div>" ),
-			$form = $( "<form id='cal-" + calendarId + "-goto' role='form' style='display:none;' action=''></form>" ),
-			$yearContainer, yearField, $yearField, y, ylen, $monthContainer, $monthField;
+		var formId = "cal-" + calendarId + "-goto",
+			monthFieldId = "cal-" + calendarId + "-goto-month",
+			yearFieldId = "cal-" + calendarId + "-goto-year",
+			form = "<div class='cal-goto'><div id='cal-" + calendarId + "-goto-lnk'>" +
+				"<a href='javascript:;' role='button' aria-controls='cal-" +
+				calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
+				i18nText.monthNames[ month ] + " " + year + "</a></div>" +
+				"<form id='" + formId + "' role='form' class='hide' action=''>",
+			yearField = "<select title='" + i18nText.goToYear + "' id='" + yearFieldId + "'>",
+			$form, y, ylen;
 
-		$form.on( "submit", function( event ) {
-			event.preventDefault();
-			onGoTo( calendarId, minDate, maxDate );
-			return false;
-		});
-
-		// Create the year field
-		$yearContainer = $( "<div class='cal-goto-yr'></div>" );
-		yearField = "<select title='" + i18nText.goToYear + "' id='cal-" + calendarId + "-goto-year'>";
+		// Create the year field entries
 		for ( y = minDate.getFullYear(), ylen = maxDate.getFullYear() + 1; y !== ylen; y += 1 ) {
 			yearField += "<option value='" + y + "'" + ( y === year ? " selected='selected'" : "" ) + ">" + y + "</option>";
 		}
-		$yearField = $( yearField + "</select>" );
 
-		// Create the month field
-		$monthContainer = $( "<div class='cal-goto-mnth'></div>" );
-		$monthField = $( "<select title='" + i18nText.goToMonth + "' id='cal-" + calendarId + "-goto-month'></select>" );
+		// Create the month and year fields and the buttons
+		form += "<div class='cal-goto-mnth'><select title='" + i18nText.goToMonth +
+				"' id='" + monthFieldId + "'></select></div>" +
+				"<div class='cal-goto-yr'>" + yearField + "</select></div>" +
+				"<div class='clearfix'></div>" + "<div class='cal-goto-btn'>" +
+				"<input type='submit' class='btn btn-primary' value='" +
+				i18nText.goToBtn + "' /></div>" + "<div class='cal-goto-btn'>" +
+				"<input type='button' class='btn btn-default cal-goto-cancel' value='" +
+				i18nText.cancelBtn + "' /></div>";
 
-		$monthContainer.append( $monthField );
-
-		// Create the year field
-		$yearContainer.append( $yearField );
-
-		// Update the list of available months when changing the year
-		$yearField.on( "change", { minDate: minDate, maxDate: maxDate, month: month, $monthField: $monthField }, yearChanged );
-
-		// Populate initial month list
-		$yearField.trigger( "change" );
-
+		$form = $( form + "</form></div>" );
 		$form
-			.append( $monthContainer )
-			.append( $yearContainer )
-			.append( "<div class='clearfix'></div>" +
-				"<div class='cal-goto-btn'><input type='submit' class='btn btn-primary' value='" +
-				i18nText.goToBtn + "' /></div>" +
-				"<div class='cal-goto-btn'><input type='button' class='btn btn-default cal-goto-cancel' value='" +
-				i18nText.cancelBtn + "' /></div>" );
+			.on( "submit", function( event ) {
+				event.preventDefault();
+				onGoTo( calendarId, minDate, maxDate );
+				return false;
+			})
 
-		$goToForm
-			.append( "<div id='cal-" +
-				calendarId + "-goto-lnk'><a href='javascript:;' role='button' aria-controls='cal-" +
-				calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
-				i18nText.monthNames[ month ] + " " + year + "</a></div>" )
-			.append( $form );
+			// Update the list of available months when changing the year
+			// and populate the initial month list.
+			.find( "#" + yearFieldId )
+				.on( "change", {
+						minDate: minDate,
+						maxDate: maxDate,
+						month: month,
+						monthField: $form.find( "#" + monthFieldId )
+					}, yearChanged )
+				.trigger( "change" );
 
-		return $goToForm;
+		return $form;
 	},
 
 	createWeekdays = function( calendarId ) {
@@ -2138,13 +2134,14 @@ var namespace = "wb-cal",
 			.find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" )
 				.addClass( "hide" )
 				.attr( "aria-hidden", "true" )
-				.filter( "a" )
-					.attr( "aria-expanded", "true" );
+				.filter( "div" )
+					.children()
+						.attr( "aria-expanded", "true" );
 
-		// TODO: Replace with CSS animation
-		$( gotoId ).stop().slideDown( 0 ).queue(function() {
-			$( this ).find( ":input:eq(0)" ).trigger( setFocusEvent );
-		});
+		$( gotoId )
+			.removeClass( "hide" )
+			.find( ":input:eq(0)" )
+				.trigger( setFocusEvent );
 	},
 
 	hideGoToFrm = function( event ) {
@@ -2156,11 +2153,11 @@ var namespace = "wb-cal",
 				.find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" )
 					.removeClass( "hide" )
 					.attr( "aria-hidden", "false" )
-					.filter( "a" )
-						.attr( "aria-expanded", "false" );
+					.filter( "div" )
+						.children()
+							.attr( "aria-expanded", "false" );
 
-			// TODO: Replace with CSS animation
-			$( gotoId ).stop().slideUp( 0 );
+			$( gotoId ).addClass( "hide" );
 		}
 	},
 
@@ -2430,12 +2427,14 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			captionHtml = $caption.html() || "",
 			captionText = $caption.text() || "",
 			valuePoint = 0,
+			floatRegExp = /[\+\-0-9]+[0-9,\. ]*/,
+			floatRegExp2 = /[^\+\-\.\, 0-9]+[^\-\+0-9]*/,
 			lowestFlotDelta, $imgContainer, $placeHolder,
 			$wetChartContainer, htmlPlaceHolder, figurehtml,
 			cellValue, datacolgroupfound, dataGroup, header,
 			i, iLength, j, jLength, parsedData, rIndex, currVectorOptions,
 			currentRowGroup, reverseTblParsing, dataGroupVector,
-			dataCell, previousDataCell, currDataVector,
+			currentDataGroupVector, dataCell, previousDataCell, currDataVector,
 			pieQuaterFlotSeries, optionFlot, optionsCharts, globalOptions,
 			defaultsOptions = {
 
@@ -2482,7 +2481,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 								if ( optionsCharts.nolegend ) {
 
 									// Add the series label
-									textlabel = label + "<br/>" + textlabel;
+									textlabel = label + "<br />" + textlabel;
 								}
 								return textlabel + "%";
 							}
@@ -2573,8 +2572,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 								var cellRawValue = $.trim( $( elem ).text() ).replace( /\s/g, "" );
 
 								return [
-									parseFloat( cellRawValue.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
-									cellRawValue.match (/[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+									parseFloat( cellRawValue.match( floatRegExp ) ),
+									cellRawValue.match ( floatRegExp2 )
 								];
 							}
 						}
@@ -2588,8 +2587,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 							"/getcellvalue": function( elem ) {
 								var raw = $.trim( $( elem ).text() ).replace( /,/g, "" );
 								return [
-									parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
-									raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+									parseFloat( raw.match( floatRegExp ) ),
+									raw.match( floatRegExp2 )
 								];
 							}
 						}
@@ -2599,8 +2598,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 							"/getcellvalue": function( elem ) {
 								var raw = $.trim( $( elem ).text() ).replace( /\./g, "" );
 								return [
-									parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
-									raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+									parseFloat( raw.match( floatRegExp ) ),
+									raw.match( floatRegExp2 )
 								];
 							}
 						}
@@ -2805,6 +2804,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				headerCell = $( rowRefValueCells[ i ] ).data().tblparser;
 
 				if ( headerCell.colgroup && headerCell.colgroup.type === 3 ) {
+
 					// We only process the first column data group
 					break;
 				}
@@ -2812,7 +2812,6 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				if ( headerCell.colpos >= dataColgroupStart && ( headerCell.type === 1 || headerCell.type === 7 ) ) {
 					if ( headerCell.child.length !== 0 ) {
 						calcStep = calcStep * headerCell.child.length * groupHeaderCalculateStepsRecursive( headerCell, 1 );
-
 					}
 				}
 			}
@@ -2951,17 +2950,19 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			var i, k, m, kLen, mLen,
 				cumulativeValue,
 				currentCell,
-				currentCellChild;
+				currentCellChild,
+				currentVectorHead;
 
 			// Calculate upper-step for cells that are
 			// less precise than the reference value vector
 			for ( i = referenceValue - 1; i !== -1; i -= 1 ) {
+				currentVectorHead = vectorHead[ i ];
 
-				for ( k = 0, kLen = vectorHead[ i ].cell.length; k !== kLen; k += 1 ) {
-					currentCell = vectorHead[ i ].cell[ k ];
+				for ( k = 0, kLen = currentVectorHead.cell.length; k !== kLen; k += 1 ) {
+					currentCell = currentVectorHead.cell[ k ];
 
 					if ( currentCell.flotDelta || k > 0 &&
-						currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ) {
+						currentCell.uid === currentVectorHead.cell[ k - 1 ].uid ) {
 
 						continue;
 					}
@@ -3016,7 +3017,9 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		 * @param {object[]} arrVectorHeaders - Collection of vector headers
 		 */
 		function getlabelsVectorPosition( arrVectorHeaders ) {
-			return ( !optionsCharts.labelposition || ( optionsCharts.labelposition && optionsCharts.labelposition > arrVectorHeaders.length ) ? parsedData.theadRowStack.length : optionsCharts.labelposition ) - 1;
+			var labelPosition = optionsCharts.labelposition;
+			return ( !labelPosition || ( labelPosition && labelPosition > arrVectorHeaders.length ) ?
+				parsedData.theadRowStack.length : labelPosition ) - 1;
 		}
 
 		/**
@@ -3069,10 +3072,11 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			// Find the range of the first data colgroup
 			var dataColgroupStart = -1,
 				headerlevel = 0,
+				theadRowStack = parsedData.theadRowStack,
 				i, iLength, labelsVectorPosition,
 				stepsValue, rowReferenceValue;
 
-			if ( !parsedData.theadRowStack ) {
+			if ( !theadRowStack ) {
 				return;
 			}
 
@@ -3084,31 +3088,31 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			}
 
 			if ( ( !reverseTblParsing && optionsCharts.referencevalue === false ) || reverseTblParsing ) {
-				rowReferenceValue = parsedData.theadRowStack.length;
+				rowReferenceValue = theadRowStack.length;
 			} else {
 				rowReferenceValue = optionsCharts.referencevalue;
 			}
 
 			rowReferenceValue = rowReferenceValue - 1;
 
-			stepsValue = getRowGroupHeaderCalculateSteps( parsedData.theadRowStack, rowReferenceValue, dataColgroupStart );
+			stepsValue = getRowGroupHeaderCalculateSteps( theadRowStack, rowReferenceValue, dataColgroupStart );
 
 			if ( !reverseTblParsing ) {
-				labelsVectorPosition = getlabelsVectorPosition( parsedData.theadRowStack );
+				labelsVectorPosition = getlabelsVectorPosition( theadRowStack );
 			} else {
-				labelsVectorPosition = parsedData.theadRowStack.length - 1;
+				labelsVectorPosition = theadRowStack.length - 1;
 			}
 
 			headerlevel = rowReferenceValue;
 
 			// Calculate inner-step for cells that are more precise than the reference value vector
-			setInnerStepValues( parsedData.theadRowStack[ rowReferenceValue ], headerlevel, stepsValue, rowReferenceValue, dataColgroupStart );
+			setInnerStepValues( theadRowStack[ rowReferenceValue ], headerlevel, stepsValue, rowReferenceValue, dataColgroupStart );
 
 			// Calculate upper-step for cells that are less precise than the reference value vector
-			setUpperStepValues( parsedData.theadRowStack, rowReferenceValue );
+			setUpperStepValues( theadRowStack, rowReferenceValue );
 
 			// Get the labelling
-			return getLabels( parsedData.theadRowStack[ labelsVectorPosition ], dataColgroupStart );
+			return getLabels( theadRowStack[ labelsVectorPosition ], dataColgroupStart );
 
 		}
 
@@ -3118,40 +3122,32 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		 * @method wrapTableIntoDetails
 		 */
 		function wrapTableIntoDetails() {
-			var $details;
-
 			if ( !captionHtml.length ) {
 				return;
 			}
 
-			$details = $( "<details><summary>" +
-				captionHtml + i18nText.tableMention +
-				"</summary></details>" );
-
-			$elm.after( $details );
-			$details.append( $elm );
+			$elm
+				.wrap( "<details/>" )
+				.before( "<summary>" + captionHtml + i18nText.tableMention + "</summary>" );
 		}
 
-		function createContainer(withDimension) {
+		function createContainer( withDimension ) {
+			$elm
+				.wrap( "<figure class='" + optionsCharts.graphclass + "'/>" )
+				.before(
 
-			var $container = $( "<figure class='" + optionsCharts.graphclass + "'>" +
+					// Copy to the inner table caption
+					( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>" : "" ) +
 
-				// Copy to the inner table caption
-				( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>" : "" ) +
+					// Image Container
+					"<div role='img' aria-label='" + captionText + i18nText.tableFollowing + "'" +
 
-				// Image Container
-				"<div role='img' aria-label='" +
-				captionText + i18nText.tableFollowing + "'" +
+					// Add Dimension
+					( withDimension ? "style='height:" + optionsCharts.height +
+					"px; width:" + optionsCharts.width + "px'" : "" ) + "></div>"
+				);
 
-				// Add Dimension
-				( withDimension ? "style='height:" + optionsCharts.height +
-				"px; width:" + optionsCharts.width + "px'" : "" ) +
-
-				"></div></figure>");
-
-			$container.insertBefore( $elm ).append( $elm );
-
-			return $( "div:eq(0)", $container );
+			return $( "div:eq(0)", $elm.parent() );
 		}
 
 		// Retrieve the parsed data
@@ -3197,11 +3193,12 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				for ( i = 0, iLength = dataGroupVector.length; i !== iLength; i += 1 ) {
 					dataSeries = [];
 					valuePoint = 0;
+					currentDataGroupVector = dataGroupVector[ i ];
 
 					// For each cells
-					for ( j = 0, jLength = dataGroupVector[ i ].cell.length; j !== jLength; j += 1 ) {
+					for ( j = 0, jLength = currentDataGroupVector.cell.length; j !== jLength; j += 1 ) {
 
-						dataCell = dataGroupVector[ i ].cell[ j ];
+						dataCell = currentDataGroupVector.cell[ j ];
 
 						// Skip the column if
 						if ( reverseTblParsing && dataCell.col.type === 1 ) {
@@ -3210,7 +3207,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 
 						previousDataCell = undefined;
 						if ( j !== 0 ) {
-							previousDataCell = dataGroupVector[ i ].cell[ j - 1 ];
+							previousDataCell = currentDataGroupVector.cell[ j - 1 ];
 						}
 
 						// Verify if the selected cell still in the scope of a data group in his another axes (eg. row/col)
@@ -3227,8 +3224,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 						header = !reverseTblParsing ? dataCell.row.header : dataCell.col.header;
 
 						cellValue = optionsCharts.getcellvalue( !reverseTblParsing ?
-							dataGroupVector[ i ].cell[ rIndex ].elem :
-							dataGroupVector[ i ].datacell[ rIndex ].elem );
+							currentDataGroupVector.cell[ rIndex ].elem :
+							currentDataGroupVector.datacell[ rIndex ].elem );
 
 						dataSeries.push(
 							[
@@ -3236,7 +3233,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 								typeof cellValue === "object" ?
 									cellValue[ 0 ] :
 									cellValue
-							]);
+							]
+						);
 
 						valuePoint += header[ header.length - 1 ].flotDelta;
 
@@ -3246,9 +3244,9 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 					pieQuaterFlotSeries = { };
 
 					// Get the setting from the associative cell header
-					dataCell =  !reverseTblParsing ?
-						dataGroupVector[ i ].cell[ rIndex ] :
-						dataGroupVector[ i ].datacell[ rIndex ];
+					dataCell = !reverseTblParsing ?
+						currentDataGroupVector.cell[ rIndex ] :
+						currentDataGroupVector.datacell[ rIndex ];
 					header = !reverseTblParsing ?
 						dataCell.col.header :
 						dataCell.row.header;
@@ -3260,8 +3258,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 					// Set the data issue from the table
 					pieQuaterFlotSeries.data = dataSeries;
 					pieQuaterFlotSeries.label = ( !reverseTblParsing ?
-						$( dataGroupVector[ i ].dataheader[ dataGroupVector[ i ].dataheader.length - 1 ].elem ).text() :
-						$( dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ].elem ).text() );
+						$( currentDataGroupVector.dataheader[ currentDataGroupVector.dataheader.length - 1 ].elem ).text() :
+						$( currentDataGroupVector.header[ currentDataGroupVector.header.length - 1 ].elem ).text() );
 
 					// Add the series
 					allSeries.push(pieQuaterFlotSeries);
@@ -3349,10 +3347,11 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 
 		// Count the number of bar charts,
 		for ( i = 0, iLength = dataGroupVector.length; i !== iLength; i += 1 ) {
-			currDataVector = dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ];
+			currentDataGroupVector = dataGroupVector[ i ];
+			currDataVector = currentDataGroupVector.header[ currentDataGroupVector.header.length - 1 ];
 
 			// Apply any preset
-			currVectorOptions = applyPreset( defaultsOptions.series, $(currDataVector.elem), "flot" );
+			currVectorOptions = applyPreset( defaultsOptions.series, $( currDataVector.elem ), "flot" );
 
 			if ( currVectorOptions.bars || ( optionFlot.bars && !currVectorOptions.lines ) ) {
 
@@ -5659,7 +5658,7 @@ var componentName = "wb-lbx",
 					// by the URL hash
 					// TODO: Should be dealt with upstream by Magnific Popup
 					if ( urlHash ) {
-						mfpResponse.data = $( mfpResponse.data ).find( "#" + wb.jqEscape( urlHash ) );
+						mfpResponse.data = $( "<div>" + mfpResponse.data + "</div>" ).find( "#" + wb.jqEscape( urlHash ) );
 					}
 				}
 			};
@@ -9275,6 +9274,8 @@ var componentName = "wb-tabs",
 	initialized = false,
 	equalHeightClass = "wb-eqht",
 	equalHeightOffClass = equalHeightClass + "-off",
+	tabsAccordionClass = "tabs-acc",
+	nestedTglPanelSelector = "> .tabpanels > details > .tgl-panel",
 	activePanel = "-activePanel",
 	activateEvent = "click keydown",
 	pagePath = wb.pageUrlParts.pathname + "#",
@@ -9380,7 +9381,7 @@ var componentName = "wb-tabs",
 
 			// Build the tablist and enhance the panels as needed for details/summary
 			if ( !isCarousel ) {
-				$elm.addClass( "tabs-acc" );
+				$elm.addClass( tabsAccordionClass );
 				groupClass = elmId + "-grp";
 				$tabPanels = $elm.children( ".tabpanels" );
 				$panels = $tabPanels.children( "details" );
@@ -9819,7 +9820,9 @@ var componentName = "wb-tabs",
 							$active = $tablist.find( ".active a" );
 							$details
 								.removeAttr( "role aria-expanded aria-hidden" )
-								.removeClass( "fade out in" );
+								.removeClass( "fade out in" )
+								.children( ".tgl-panel" )
+									.attr( "role", "tabpanel" );
 							$openDetails = $details
 												.filter( "#" + $active.attr( "href" ).substring( 1 ) )
 													.attr( "open", "open" )
@@ -9847,6 +9850,8 @@ var componentName = "wb-tabs",
 										"aria-expanded": "false"
 									});
 
+							$details.children( ".tgl-panel" ).removeAttr( "role" );
+
 							$openDetails
 								.addClass( "fade in" )
 								.attr({
@@ -9865,11 +9870,27 @@ var componentName = "wb-tabs",
 
 						$elm.append( $tabPanels );
 
-						if ( oldIsSmallView ) {
+						// Update the tablist role
+						if ( isSmallView ) {
+							$elm.attr( "role", "tablist" );
+						} else if ( oldIsSmallView ) {
+							$elm
+								.removeAttr( "role" )
+								.find( nestedTglPanelSelector ).removeAttr( "role" );
+
 							$elm.find( "> ul [href$='" + openDetailsId + "']" ).trigger( "click" );
 						}
 					}
 				}
+			}
+
+			// Need timeout to account for Toggle changes
+			if ( isInit && !isSmallView && $elms.hasClass( tabsAccordionClass ) ) {
+				setTimeout(function() {
+					$elms
+						.removeAttr( "role" )
+						.find( nestedTglPanelSelector ).removeAttr( "role" );
+				}, 1 );
 			}
 
 			oldIsSmallView = isSmallView;
@@ -10036,11 +10057,15 @@ $document.on( activateEvent, selector + " [role=tabpanel]", function( event ) {
 	// Ctrl + Up arrow
 	if ( event.ctrlKey && event.which === 38 ) {
 
-		// Move focus to the summary element
-		$( currentTarget )
-			.closest( selector )
-				.find( "[href$='#" + currentTarget.id + "']" )
-					.trigger( setFocusEvent );
+		// Move focus to the tab or summary element
+		if ( isSmallView ) {
+			$( currentTarget ).prev().trigger( setFocusEvent );
+		} else {
+			$( currentTarget )
+				.closest( selector )
+					.find( "[href$='#" + currentTarget.id + "']" )
+						.trigger( setFocusEvent );
+		}
 
 	// Left mouse button click or escape key
 	} else if ( !which || which === 1 || which === 27 ) {
