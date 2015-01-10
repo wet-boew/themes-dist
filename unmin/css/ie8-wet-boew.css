@@ -2,18 +2,18 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.9 - 2015-01-02
+ * v4.0.10-development - 2015-01-10
  *
- *//*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 /*
- * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
  */
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -4523,75 +4523,6 @@ button.close {
     display: none !important; } }
 
 /*
- Global placeholders
- */
-.wb-invisible, .wb-inv, .wb-show-onfocus, .wb-sl, #wb-lng h2, #wb-glb-mn h2, #wb-srch h2, #wb-srch label, #wb-sm h2, #wb-bc h2, #wb-sec h2, #wb-info h2, #mb-pnl h3, #wb-lng h2, .cal-days td ul, .wb-fnote dt, #mb-pnl .srch-pnl label {
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: 0;
-  overflow: hidden;
-  position: absolute;
-  width: 1px; }
-
-.wb-show-onfocus:focus, .wb-sl:focus, .wb-disable .wb-slc .wb-sl {
-  clip: rect(auto, auto, auto, auto);
-  height: inherit;
-  margin: inherit;
-  overflow: inherit;
-  position: static;
-  width: inherit; }
-
-.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #mb-pnl .modal-body h2, table.dataTable thead .sorting_disabled .sorting-cnt, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .wb-tabs.carousel-s1 [role="tablist"] li, .wb-tabs.carousel-s2 [role="tablist"] li {
-  display: none; }
-
-.wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
-  display: block; }
-
-.wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
-  display: block !important; }
-
-.wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
-  text-decoration: none; }
-
-/*! WET-BOEW Core and Plugins */
-/*
-  WET-BOEW
-  @title: Accessibility Additions to WET-BOEW
- */
-#wb-tphp {
-  list-style-type: none;
-  margin-bottom: 0; }
-
-.wb-slc {
-  left: 0;
-  position: absolute;
-  text-align: center;
-  top: 10px;
-  width: 100%;
-  z-index: 3; }
-
-.wb-sl {
-  padding: 5px;
-  z-index: 501; }
-
-.wb-disable #wb-tphp {
-  background: #fff; }
-.wb-disable .wb-slc {
-  position: static; }
-  .wb-disable .wb-slc .wb-sl {
-    background: none;
-    color: #295376;
-    display: block !important;
-    font-weight: 400; }
-    .wb-disable .wb-slc .wb-sl:hover, .wb-disable .wb-slc .wb-sl:focus {
-      color: #0535d2; }
-.wb-disable #wb-dtmd {
-  float: none !important; }
-
-q:before, q:after {
-  content: ""; }
-
-/*
   WET-BOEW
   @title: Bootstrap overrides for WET-BOEW
  */
@@ -4828,6 +4759,17 @@ blockquote {
   width: auto; }
 
 /*
+ *	Fieldset legend border position
+ *
+ *	Bootstrap puts the border below the legend which creates a visual
+ *	separation between the legend and the fields to which it relates. Putting
+ *	the border above eliminates that visual separation.
+ */
+legend {
+  border-bottom: 0;
+  border-top: 1px solid #e5e5e5; }
+
+/*
  *	Pagination
  *	  * Add left/right arrows to previous/next buttons
  *	  * Increase size of the pagination buttons
@@ -4915,6 +4857,129 @@ blockquote {
     border-top-left-radius: 0;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px; }
+
+/*
+  WET-BOEW
+  @title: Bootstrap IE8-specific overrides for WET-BOEW
+ */
+.lt-ie9 .pagination > li:first-child [rel="prev"]:before, .lt-ie9 .pager > li:first-child [rel="prev"]:before {
+  content: none;
+  margin-right: -1px; }
+.lt-ie9 .dl-horizontal dt {
+  white-space: normal; }
+
+@media print {
+  .lt-ie9 abbr[title]:after {
+    content: ""; }
+  .lt-ie9 .pagination, .lt-ie9 .pager {
+    width: 100%; }
+    .lt-ie9 .pagination > li > a, .lt-ie9 .pagination > li > span, .lt-ie9 .pager > li > a, .lt-ie9 .pager > li > span {
+      cursor: hand; }
+    .lt-ie9 .pagination > li.active > a, .lt-ie9 .pagination > li.active > span, .lt-ie9 .pager > li.active > a, .lt-ie9 .pager > li.active > span {
+      cursor: default; } }
+
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+/*
+ * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
+ */
+/*
+ Global placeholders
+ */
+.wb-invisible, .wb-inv, .wb-show-onfocus, .wb-sl, #wb-lng h2, #wb-glb-mn h2, #wb-srch h2, #wb-srch label, #wb-sm h2, #wb-bc h2, #wb-sec h2, #wb-info h2, #mb-pnl h3, #wb-lng h2, .cal-days td ul, .wb-fnote dt, #mb-pnl .srch-pnl label {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px; }
+
+.wb-show-onfocus:focus, .wb-sl:focus, .wb-disable .wb-slc .wb-sl {
+  clip: rect(auto, auto, auto, auto);
+  height: inherit;
+  margin: inherit;
+  overflow: inherit;
+  position: static;
+  width: inherit; }
+
+.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #mb-pnl .modal-body h2, table.dataTable thead .sorting_disabled .sorting-cnt, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .wb-tabs.carousel-s1 [role="tablist"] li, .wb-tabs.carousel-s2 [role="tablist"] li {
+  display: none; }
+
+.wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
+  display: block; }
+
+.wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+  display: block !important; }
+
+.wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
+  text-decoration: none; }
+
+.wb-mltmd .display.waiting:after, .wb-enable .wb-twitter .twitter-timeline:after, .wb-mltmd .display.waiting:before, .wb-enable .wb-twitter .twitter-timeline:before {
+  bottom: 0;
+  content: " ";
+  height: 100px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100px; }
+
+.wb-mltmd .display.waiting:after, .wb-enable .wb-twitter .twitter-timeline:after {
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-name: spin;
+  animation-timing-function: linear;
+  background: url("../assets/loading.png") center center no-repeat;
+  z-index: 2; }
+.wb-mltmd .display.waiting:before, .wb-enable .wb-twitter .twitter-timeline:before {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  z-index: 1; }
+
+/*! WET-BOEW Core and Plugins */
+/*
+  WET-BOEW
+  @title: Accessibility Additions to WET-BOEW
+ */
+#wb-tphp {
+  list-style-type: none;
+  margin-bottom: 0; }
+
+.wb-slc {
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  width: 100%;
+  z-index: 3; }
+
+.wb-sl {
+  padding: 5px;
+  z-index: 501; }
+
+.wb-disable #wb-tphp {
+  background: #fff; }
+.wb-disable .wb-slc {
+  position: static; }
+  .wb-disable .wb-slc .wb-sl {
+    background: none;
+    color: #295376;
+    display: block !important;
+    font-weight: 400; }
+    .wb-disable .wb-slc .wb-sl:hover, .wb-disable .wb-slc .wb-sl:focus {
+      color: #0535d2; }
+.wb-disable #wb-dtmd {
+  float: none !important; }
+
+q:before, q:after {
+  content: ""; }
 
 /*
   WET-BOEW
@@ -5815,13 +5880,15 @@ button::-moz-focus-inner {
   text-decoration: none;
   text-align: center;
   opacity: 0.65;
+  filter: alpha(opacity=65);
   padding: 0 0 18px 10px;
   color: #FFF;
   font-style: normal;
   font-size: 28px;
   font-family: Arial, Baskerville, monospace; }
   .mfp-close:hover, .mfp-close:focus {
-    opacity: 1; }
+    opacity: 1;
+    filter: alpha(opacity=100); }
   .mfp-close:active {
     top: 1px; }
 
@@ -5841,11 +5908,13 @@ button::-moz-focus-inner {
   right: 0;
   color: #CCC;
   font-size: 12px;
-  line-height: 18px; }
+  line-height: 18px;
+  white-space: nowrap; }
 
 .mfp-arrow {
   position: absolute;
   opacity: 0.65;
+  filter: alpha(opacity=65);
   margin: 0;
   top: 50%;
   margin-top: -55px;
@@ -5856,7 +5925,8 @@ button::-moz-focus-inner {
   .mfp-arrow:active {
     margin-top: -54px; }
   .mfp-arrow:hover, .mfp-arrow:focus {
-    opacity: 1; }
+    opacity: 1;
+    filter: alpha(opacity=100); }
   .mfp-arrow:before, .mfp-arrow:after, .mfp-arrow .mfp-b, .mfp-arrow .mfp-a {
     content: '';
     display: block;
@@ -5874,7 +5944,8 @@ button::-moz-focus-inner {
     top: 8px; }
   .mfp-arrow:before, .mfp-arrow .mfp-b {
     border-top-width: 21px;
-    border-bottom-width: 21px; }
+    border-bottom-width: 21px;
+    opacity: 0.7; }
 
 .mfp-arrow-left {
   left: 0; }
@@ -5883,7 +5954,7 @@ button::-moz-focus-inner {
     margin-left: 31px; }
   .mfp-arrow-left:before, .mfp-arrow-left .mfp-b {
     margin-left: 25px;
-    border-right: 27px solid #3f3f3f; }
+    border-right: 27px solid #3F3F3F; }
 
 .mfp-arrow-right {
   right: 0; }
@@ -5891,7 +5962,7 @@ button::-moz-focus-inner {
     border-left: 17px solid #FFF;
     margin-left: 39px; }
   .mfp-arrow-right:before, .mfp-arrow-right .mfp-b {
-    border-left: 27px solid #3f3f3f; }
+    border-left: 27px solid #3F3F3F; }
 
 .mfp-iframe-holder {
   padding-top: 40px;
@@ -5950,6 +6021,8 @@ img.mfp-img {
     display: block;
     font-size: 12px;
     line-height: 14px; }
+  .mfp-figure figure {
+    margin: 0; }
 
 .mfp-bottom-bar {
   margin-top: -36px;
@@ -5981,14 +6054,12 @@ img.mfp-img {
     padding-right: 0; }
   .mfp-img-mobile img.mfp-img {
     padding: 0; }
-  .mfp-img-mobile .mfp-figure {
-    /* The shadow behind the image */ }
-    .mfp-img-mobile .mfp-figure:after {
-      top: 0;
-      bottom: 0; }
-    .mfp-img-mobile .mfp-figure small {
-      display: inline;
-      margin-left: 5px; }
+  .mfp-img-mobile .mfp-figure:after {
+    top: 0;
+    bottom: 0; }
+  .mfp-img-mobile .mfp-figure small {
+    display: inline;
+    margin-left: 5px; }
   .mfp-img-mobile .mfp-bottom-bar {
     background: rgba(0, 0, 0, 0.6);
     bottom: 0;
@@ -6229,17 +6300,6 @@ img.mfp-img {
   to {
     transform: rotate(360deg); } }
 
-.wb-mltmd .display.waiting:after, .wb-mltmd .display.waiting:before {
-  bottom: 0;
-  content: " ";
-  height: 100px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100px; }
-
 .wb-mm-cc {
   max-height: 0;
   padding: 0; }
@@ -6277,17 +6337,6 @@ img.mfp-img {
     .wb-mltmd .display video, .wb-mltmd .display object, .wb-mltmd .display iframe {
       margin-bottom: -7px;
       width: 100%; }
-    .wb-mltmd .display.waiting:after {
-      animation-duration: 1000ms;
-      animation-iteration-count: infinite;
-      animation-name: spin;
-      animation-timing-function: linear;
-      background: url("../assets/loading.png") center center no-repeat;
-      z-index: 2; }
-    .wb-mltmd .display.waiting:before {
-      background: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      z-index: 1; }
   .wb-mltmd .wb-mm-ovrly {
     background: transparent;
     border: 0;
@@ -7150,39 +7199,19 @@ table.dataTable {
 .wb-disable .wb-twitter .twitter-timeline {
   text-indent: 0 !important; }
 
-.wb-twitter .twitter-timeline a:link, .wb-twitter .twitter-timeline a:visited {
-  color: #707070; }
-.wb-twitter .twitter-timeline .stats span {
-  color: #707070; }
-.wb-twitter .twitter-timeline .byline {
-  color: #707070; }
-.wb-twitter .twitter-timeline .retweet-credit {
-  color: #707070; }
-.wb-twitter .twitter-timeline .no-more-pane {
-  color: #707070; }
-.wb-twitter .twitter-timeline .no-tweets-pane p {
-  color: #707070; }
-.wb-twitter .twitter-timeline .p-geo {
-  color: #707070; }
-.wb-twitter .twitter-timeline .cards-base .byline-user {
-  color: #707070; }
-.wb-twitter .twitter-timeline .tweet-box-button {
-  color: #707070; }
-.wb-twitter a.twitter-timeline {
-  background: #fff;
-  border: 1px solid #ccc;
-  direction: ltr;
+.wb-twitter .twitter-timeline {
   display: block;
-  font-size: 90%;
-  margin: 0 !important;
-  min-height: 50px;
-  overflow: auto;
-  padding: 5px !important;
   text-indent: -9999px; }
+.wb-twitter iframe[style] {
+  width: 100% !important; }
+
+.wb-enable .wb-twitter .twitter-timeline {
+  min-height: 100px;
+  min-width: 100px;
+  position: relative; }
 
 /* Right to left (RTL) CSS */
 [dir="rtl"] .wb-twitter .twitter-timeline {
-  direction: rtl;
   text-indent: 9999px; }
 
 /*
@@ -7474,6 +7503,9 @@ datalist {
 summary {
   display: block !important;
   visibility: visible !important; }
+
+details:not([open]) details summary, details .out details summary {
+  display: none !important; }
 
 details:not([open]) {
   visibility: hidden; }
@@ -7912,6 +7944,8 @@ details.alert:not([open]) {
   /**
  * Print styles
  */
+  .pg-brk-aft {
+    page-break-after: always; }
   .fn-lnk, .wb-fnote .fn-rtn a {
     background-color: transparent;
     border: 0;
@@ -7962,26 +7996,6 @@ details.alert:not([open]) {
       position: static; }
     .wb-tabs [role="tabpanel"] summary {
       display: block !important; } }
-
-/*
-  WET-BOEW
-  @title: Bootstrap IE8-specific overrides for WET-BOEW
- */
-.lt-ie9 .pagination > li:first-child [rel="prev"]:before, .lt-ie9 .pager > li:first-child [rel="prev"]:before {
-  content: none;
-  margin-right: -1px; }
-.lt-ie9 .dl-horizontal dt {
-  white-space: normal; }
-
-@media print {
-  .lt-ie9 abbr[title]:after {
-    content: ""; }
-  .lt-ie9 .pagination, .lt-ie9 .pager {
-    width: 100%; }
-    .lt-ie9 .pagination > li > a, .lt-ie9 .pagination > li > span, .lt-ie9 .pager > li > a, .lt-ie9 .pager > li > span {
-      cursor: hand; }
-    .lt-ie9 .pagination > li.active > a, .lt-ie9 .pagination > li.active > span, .lt-ie9 .pager > li.active > a, .lt-ie9 .pager > li.active > span {
-      cursor: default; } }
 
 /*
  Plugins

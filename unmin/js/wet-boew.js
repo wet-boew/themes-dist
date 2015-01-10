@@ -1,13 +1,13 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.9 - 2015-01-02
+ * v4.0.10-development - 2015-01-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
  * Build: http://modernizr.com/download/#-elem_details-elem_progress_meter-mathml-cors-load-mq-css3-input-inputtypes-svg-cssclasses-csstransitions-fontface-backgroundsize-borderimage-teststyles-testprops-testallprops-hasevents-prefixes-domprefixes
  */
-;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined}),Modernizr.addTest("cors",!!(window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest));
+;window.Modernizr=function(e,t,n){function L(e){f.cssText=e}function A(e,t){return L(p.join(e+";")+(t||""))}function O(e,t){return typeof e===t}function M(e,t){return!!~(""+e).indexOf(t)}function _(e,t){for(var r in e){var i=e[r];if(!M(i,"-")&&f[i]!==n)return t=="pfx"?i:!0}return!1}function D(e,t,r){for(var i in e){var s=t[e[i]];if(s!==n)return r===!1?e[i]:O(s,"function")?s.bind(r||t):s}return!1}function P(e,t,n){var r=e.charAt(0).toUpperCase()+e.slice(1),i=(e+" "+v.join(r+" ")+r).split(" ");return O(t,"string")||O(t,"undefined")?_(i,t):(i=(e+" "+m.join(r+" ")+r).split(" "),D(i,t,n))}function H(){i.input=function(n){for(var r=0,i=n.length;r<i;r++)w[n[r]]=n[r]in l;return w.list&&(w.list=!!t.createElement("datalist")&&!!e.HTMLDataListElement),w}("autocomplete autofocus list placeholder max min multiple pattern required step".split(" ")),i.inputtypes=function(e){for(var r=0,i,s,u,a=e.length;r<a;r++)l.setAttribute("type",s=e[r]),i=l.type!=="text",i&&(l.value=c,l.style.cssText="position:absolute;visibility:hidden;",/^range$/.test(s)&&l.style.WebkitAppearance!==n?(o.appendChild(l),u=t.defaultView,i=u.getComputedStyle&&u.getComputedStyle(l,null).WebkitAppearance!=="textfield"&&l.offsetHeight!==0,o.removeChild(l)):/^(search|tel)$/.test(s)||(/^(url|email)$/.test(s)?i=l.checkValidity&&l.checkValidity()===!1:i=l.value!=c)),b[e[r]]=!!i;return b}("search tel url email datetime date month week time datetime-local number range color".split(" "))}var r="2.8.3",i={},s=!0,o=t.documentElement,u="modernizr",a=t.createElement(u),f=a.style,l=t.createElement("input"),c=":)",h={}.toString,p=" -webkit- -moz- -o- -ms- ".split(" "),d="Webkit Moz O ms",v=d.split(" "),m=d.toLowerCase().split(" "),g={svg:"http://www.w3.org/2000/svg"},y={},b={},w={},E=[],S=E.slice,x,T=function(e,n,r,i){var s,a,f,l,c=t.createElement("div"),h=t.body,p=h||t.createElement("body");if(parseInt(r,10))while(r--)f=t.createElement("div"),f.id=i?i[r]:u+(r+1),c.appendChild(f);return s=["&#173;",'<style id="s',u,'">',e,"</style>"].join(""),c.id=u,(h?c:p).innerHTML+=s,p.appendChild(c),h||(p.style.background="",p.style.overflow="hidden",l=o.style.overflow,o.style.overflow="hidden",o.appendChild(p)),a=n(c,e),h?c.parentNode.removeChild(c):(p.parentNode.removeChild(p),o.style.overflow=l),!!a},N=function(t){var n=e.matchMedia||e.msMatchMedia;if(n)return n(t)&&n(t).matches||!1;var r;return T("@media "+t+" { #"+u+" { position: absolute; } }",function(t){r=(e.getComputedStyle?getComputedStyle(t,null):t.currentStyle)["position"]=="absolute"}),r},C={}.hasOwnProperty,k;!O(C,"undefined")&&!O(C.call,"undefined")?k=function(e,t){return C.call(e,t)}:k=function(e,t){return t in e&&O(e.constructor.prototype[t],"undefined")},Function.prototype.bind||(Function.prototype.bind=function(t){var n=this;if(typeof n!="function")throw new TypeError;var r=S.call(arguments,1),i=function(){if(this instanceof i){var e=function(){};e.prototype=n.prototype;var s=new e,o=n.apply(s,r.concat(S.call(arguments)));return Object(o)===o?o:s}return n.apply(t,r.concat(S.call(arguments)))};return i}),y.backgroundsize=function(){return P("backgroundSize")},y.borderimage=function(){return P("borderImage")},y.csstransitions=function(){return P("transition")},y.fontface=function(){var e;return T('@font-face {font-family:"font";src:url("https://")}',function(n,r){var i=t.getElementById("smodernizr"),s=i.sheet||i.styleSheet,o=s?s.cssRules&&s.cssRules[0]?s.cssRules[0].cssText:s.cssText||"":"";e=/src/i.test(o)&&o.indexOf(r.split(" ")[0])===0}),e},y.svg=function(){return!!t.createElementNS&&!!t.createElementNS(g.svg,"svg").createSVGRect};for(var B in y)k(y,B)&&(x=B.toLowerCase(),i[x]=y[B](),E.push((i[x]?"":"no-")+x));return i.input||H(),i.addTest=function(e,t){if(typeof e=="object")for(var r in e)k(e,r)&&i.addTest(r,e[r]);else{e=e.toLowerCase();if(i[e]!==n)return i;t=typeof t=="function"?t():t,typeof s!="undefined"&&s&&(o.className+=" "+(t?"":"no-")+e),i[e]=t}return i},L(""),a=l=null,i._version=r,i._prefixes=p,i._domPrefixes=m,i._cssomPrefixes=v,i.mq=N,i.testProp=function(e){return _([e])},i.testAllProps=P,i.testStyles=T,o.className=o.className.replace(/(^|\s)no-js(\s|$)/,"$1$2")+(s?" js "+E.join(" "):""),i}(this,this.document),function(e,t,n){function r(e){return"[object Function]"==d.call(e)}function i(e){return"string"==typeof e}function s(){}function o(e){return!e||"loaded"==e||"complete"==e||"uninitialized"==e}function u(){var e=v.shift();m=1,e?e.t?h(function(){("c"==e.t?k.injectCss:k.injectJs)(e.s,0,e.a,e.x,e.e,1)},0):(e(),u()):m=0}function a(e,n,r,i,s,a,f){function l(t){if(!d&&o(c.readyState)&&(w.r=d=1,!m&&u(),c.onload=c.onreadystatechange=null,t)){"img"!=e&&h(function(){b.removeChild(c)},50);for(var r in T[n])T[n].hasOwnProperty(r)&&T[n][r].onload()}}var f=f||k.errorTimeout,c=t.createElement(e),d=0,g=0,w={t:r,s:n,e:s,a:a,x:f};1===T[n]&&(g=1,T[n]=[]),"object"==e?c.data=n:(c.src=n,c.type=e),c.width=c.height="0",c.onerror=c.onload=c.onreadystatechange=function(){l.call(this,g)},v.splice(i,0,w),"img"!=e&&(g||2===T[n]?(b.insertBefore(c,y?null:p),h(l,f)):T[n].push(c))}function f(e,t,n,r,s){return m=0,t=t||"j",i(e)?a("c"==t?E:w,e,t,this.i++,n,r,s):(v.splice(this.i++,0,e),1==v.length&&u()),this}function l(){var e=k;return e.loader={load:f,i:0},e}var c=t.documentElement,h=e.setTimeout,p=t.getElementsByTagName("script")[0],d={}.toString,v=[],m=0,g="MozAppearance"in c.style,y=g&&!!t.createRange().compareNode,b=y?c:p.parentNode,c=e.opera&&"[object Opera]"==d.call(e.opera),c=!!t.attachEvent&&!c,w=g?"object":c?"script":"img",E=c?"script":w,S=Array.isArray||function(e){return"[object Array]"==d.call(e)},x=[],T={},N={timeout:function(e,t){return t.length&&(e.timeout=t[0]),e}},C,k;k=function(e){function t(e){var e=e.split("!"),t=x.length,n=e.pop(),r=e.length,n={url:n,origUrl:n,prefixes:e},i,s,o;for(s=0;s<r;s++)o=e[s].split("="),(i=N[o.shift()])&&(n=i(n,o));for(s=0;s<t;s++)n=x[s](n);return n}function o(e,i,s,o,u){var a=t(e),f=a.autoCallback;a.url.split(".").pop().split("?").shift(),a.bypass||(i&&(i=r(i)?i:i[e]||i[o]||i[e.split("/").pop().split("?")[0]]),a.instead?a.instead(e,i,s,o,u):(T[a.url]?a.noexec=!0:T[a.url]=1,s.load(a.url,a.forceCSS||!a.forceJS&&"css"==a.url.split(".").pop().split("?").shift()?"c":n,a.noexec,a.attrs,a.timeout),(r(i)||r(f))&&s.load(function(){l(),i&&i(a.origUrl,u,o),f&&f(a.origUrl,u,o),T[a.url]=2})))}function u(e,t){function n(e,n){if(e){if(i(e))n||(f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}),o(e,f,t,0,u);else if(Object(e)===e)for(p in h=function(){var t=0,n;for(n in e)e.hasOwnProperty(n)&&t++;return t}(),e)e.hasOwnProperty(p)&&(!n&&!--h&&(r(f)?f=function(){var e=[].slice.call(arguments);l.apply(this,e),c()}:f[p]=function(e){return function(){var t=[].slice.call(arguments);e&&e.apply(this,t),c()}}(l[p])),o(e[p],f,t,p,u))}else!n&&c()}var u=!!e.test,a=e.load||e.both,f=e.callback||s,l=f,c=e.complete||s,h,p;n(u?e.yep:e.nope,!!a),a&&n(a)}var a,f,c=this.yepnope.loader;if(i(e))o(e,0,c,0);else if(S(e))for(a=0;a<e.length;a++)f=e[a],i(f)?o(f,0,c,0):S(f)?k(f):Object(f)===f&&u(f,c);else Object(e)===e&&u(e,c)},k.addPrefix=function(e,t){N[e]=t},k.addFilter=function(e){x.push(e)},k.errorTimeout=1e4,null==t.readyState&&t.addEventListener&&(t.readyState="loading",t.addEventListener("DOMContentLoaded",C=function(){t.removeEventListener("DOMContentLoaded",C,0),t.readyState="complete"},0)),e.yepnope=l(),e.yepnope.executeStack=u,e.yepnope.injectJs=function(e,n,r,i,a,f){var l=t.createElement("script"),c,d,i=i||k.errorTimeout;l.src=e;for(d in r)l.setAttribute(d,r[d]);n=f?u:n||s,l.onreadystatechange=l.onload=function(){!c&&o(l.readyState)&&(c=1,n(),l.onload=l.onreadystatechange=null)},h(function(){c||(c=1,n(1))},i),a?l.onload():p.parentNode.insertBefore(l,p)},e.yepnope.injectCss=function(e,n,r,i,o,a){var i=t.createElement("link"),f,n=a?u:n||s;i.href=e,i.rel="stylesheet",i.type="text/css";for(f in r)i.setAttribute(f,r[f]);o||(p.parentNode.insertBefore(i,p),h(n,0))}}(this,document),Modernizr.load=function(){yepnope.apply(window,[].slice.call(arguments,0))},Modernizr.addTest("cors",!!(window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest)),Modernizr.addTest("details",function(){var e=document,t=e.createElement("details"),n,r,i;return"open"in t?(r=e.body||function(){var t=e.documentElement;return n=!0,t.insertBefore(e.createElement("body"),t.firstElementChild||t.firstChild)}(),t.innerHTML="<summary>a</summary>b",t.style.display="block",r.appendChild(t),i=t.offsetHeight,t.open=!0,i=i!=t.offsetHeight,r.removeChild(t),n&&r.parentNode.removeChild(r),i):!1}),Modernizr.addTest("mathml",function(){var e=!1;if(document.createElementNS){var t="http://www.w3.org/1998/Math/MathML",n=document.createElement("div");n.style.position="absolute";var r=n.appendChild(document.createElementNS(t,"math")).appendChild(document.createElementNS(t,"mfrac"));r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("xx")),r.appendChild(document.createElementNS(t,"mi")).appendChild(document.createTextNode("yy")),document.body.appendChild(n),e=n.offsetHeight>n.offsetWidth}return e}),Modernizr.addTest("progressbar",function(){return document.createElement("progress").max!==undefined}),Modernizr.addTest("meter",function(){return document.createElement("meter").max!==undefined});
 /**
  * @title WET-BOEW Vapour loader
  * @overview Helper methods for WET
@@ -56,6 +56,12 @@ var getUrlParts = function( url ) {
 			}())
 		};
 	},
+
+	/**
+	 * @variable seed
+	 * @return a unique number for auto-generating ids
+	 */
+	seed = 0,
 
 	/**
 	 * @variable $src
@@ -144,6 +150,7 @@ var getUrlParts = function( url ) {
 		isDisabled: disabled,
 		isStarted: false,
 		isReady: false,
+		ignoreHashChange: false,
 		initQueue: 0,
 
 		getPath: function( property ) {
@@ -154,7 +161,11 @@ var getUrlParts = function( url ) {
 			return this.mode;
 		},
 
-		init: function( event, componentName, selector ) {
+		getId: function() {
+			return "wb-auto-" + ( seed += 1 );
+		},
+
+		init: function( event, componentName, selector, autoId ) {
 			var	eventTarget = event.target,
 				isEvent = !!eventTarget,
 				node = isEvent ? eventTarget : event,
@@ -171,9 +182,8 @@ var getUrlParts = function( url ) {
 				if ( !isDocumentNode ) {
 					node.className += " " + initedClass;
 
-					// TODO: Remove ID generation in individual plugins
-					if ( !node.id ) {
-						node.id = wb.guid();
+					if ( autoId && !node.id ) {
+						node.id = wb.getId();
 					}
 				}
 
@@ -536,7 +546,7 @@ Modernizr.load([
 	// Escapes the characters in a string for use in a jQuery selector
 	// Based on http://totaldev.com/content/escaping-characters-get-valid-jquery-id
 	wb.jqEscape = function( selector ) {
-		return selector.replace( /([;&,\.\+\*\~':"\!\^#$%@\[\]\(\)=>\|])/g, "\\$1" );
+		return selector.replace( /([;&,\.\+\*\~':"\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
 	};
 
 	// RegEx used by formattedNumCompare
@@ -1762,7 +1772,7 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	if ( caller === event.target || event.currentTarget === event.target ) {
 
 		if ( !caller.id ) {
-			caller.id = wb.guid();
+			caller.id = wb.getId();
 		}
 		callerId = caller.id;
 
@@ -1776,7 +1786,7 @@ $document.on( "ajax-fetch.wb", function( event ) {
 					xhr: xhr
 				};
 
-				fetchData.pointer = $( "<div id='" + wb.guid() + "' data-type='" + responseType + "' />" )
+				fetchData.pointer = $( "<div id='" + wb.getId() + "' data-type='" + responseType + "' />" )
 										.append( responseType === "string" ? response : "" );
 
 				$( "#" + callerId ).trigger({
@@ -1953,139 +1963,129 @@ var componentName = "wb-calevt",
 					}
 				]
 			},
-			objEventsList = null;
+			objEventsList = obj.find( "ol > li, ul > li" ),
+			iLen = objEventsList.length,
+			dateTimeRegExp = /datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/,
+			i, $event, event, $objTitle, title, link, href, target,
+			linkId, date, tCollection, tCollectionTemp,	strDate1,
+			strDate2, z, zLen, className, dateClass;
 
-		if ( obj.find( "ol" ).length > 0 ) {
-			objEventsList = obj.find( "ol" );
-		} else if ( obj.find( "ul" ).length > 0 ) {
-			objEventsList = obj.find( "ul" );
-		}
+		for ( i = 0; i !== iLen; i += 1 ) {
+			$event = objEventsList.eq( i );
+			event = $event[ 0 ];
+			$objTitle = $event.find( "*:header:first" ),
+			className = $objTitle.attr( "class" ),
+			title = $objTitle.text(),
+			link = $event.find( "a" )[ 0 ],
+			href = link.getAttribute( "href" );
+			target = link.getAttribute( "target" );
+			zLen = 1;
 
-		if ( objEventsList.length > 0 ) {
-			objEventsList.children( "li" ).each(function() {
-				var event = $( this ),
-					objTitle = event.find( "*:header:first" ),
-					title = objTitle.text(),
-					origLink = event.find( "a" ).first(),
-					link = origLink.attr( "href" ),
-					linkId, date, tCollection, $tCollection, tCollectionTemp,
-					strDate1, strDate2, strDate, z, zLen, className;
+			/*
+			 * Modification direct-linking or page-linking
+			 *	- added the ability  to have class set the behaviour of the links
+			 *	- default is to use the link of the item as the event link in the calendar
+			 *	- 'evt-anchor' class dynamically generates page anchors on the links it maps to the event
+			 */
+			if ( !directLinking ) {
+				linkId = event.id || wb.getId();
+				event.id = linkId;
 
 				/*
-				 * Modification direct-linking or page-linking
-				 *	- added the ability  to have class set the behaviour of the links
-				 *	- default is to use the link of the item as the event link in the calendar
-				 *	- 'evt-anchor' class dynamically generates page anchors on the links it maps to the event
+				 * Fixes IE tabbing error:
+				 * http://www.earthchronicle.com/ECv1point8/Accessibility01IEAnchoredKeyboardNavigation.aspx
 				 */
-				if ( !directLinking ) {
-					linkId = event.attr( "id" ) || wb.guid();
-					event.attr( "id", linkId );
-
-					/*
-					 * Fixes IE tabbing error:
-					 * http://www.earthchronicle.com/ECv1point8/Accessibility01IEAnchoredKeyboardNavigation.aspx
-					 */
-					if ( wb.ie ) {
-						event.attr( "tabindex", "-1" );
-					}
-					link = "#" + linkId;
+				// TODO: Which versions of IE should this fix be limited to?
+				if ( wb.ie ) {
+					event.tabIndex = "-1";
 				}
+				href = "#" + linkId;
+			}
 
-				date = new Date();
-				date.setHours( 0, 0, 0, 0 );
-				tCollection = event.find( "time" );
+			date = new Date();
+			date.setHours( 0, 0, 0, 0 );
+			tCollection = event.getElementsByTagName( "time" );
 
-				/*
-				 * Date spanning capability
-				 *   - since there maybe some dates that are capable of spanning over months we need to identify them
-				 *     the process is see how many time nodes are in the event. 2 nodes will trigger a span
-				 */
-				if ( tCollection.length > 1 ) {
+			/*
+			 * Date spanning capability
+			 *   - since there may be some dates that are capable of spanning over months we need to identify them
+			 *     the process is see how many time nodes are in the event. 2 nodes will trigger a span
+			 */
+			if ( tCollection.length !== 0 ) {
+				tCollectionTemp = tCollection[ 0 ];
+				strDate1 = tCollectionTemp.nodeName.toLowerCase() === "time" ?
+					tCollectionTemp.getAttribute( "datetime" ).substr( 0, 10 ).split( "-" ) :
+					tCollectionTemp.className.match( dateTimeRegExp )[ 1 ].substr( 0, 10 ).split( "-" );
+
+				// Convert to zero-based month
+				strDate1[ 1 ] = strDate1[ 1 ] - 1;
+
+				date.setFullYear( strDate1[ 0 ], strDate1[ 1 ], strDate1[ 2 ] );
+
+				if ( tCollection.length !== 1 ) {
 
 					// This is a spanning event
-					tCollectionTemp = tCollection[ 0 ];
-					strDate1 = tCollectionTemp.nodeName.toLowerCase() === "time" ?
-						$( tCollectionTemp ).attr( "datetime" ).substr( 0, 10 ).split( "-" ) :
-						$( tCollectionTemp ).attr( "class" ).match( /datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/ )[ 1 ].substr( 0, 10 ).split( "-" );
-
 					tCollectionTemp = tCollection[ 1 ];
 					strDate2 = tCollectionTemp.nodeName.toLowerCase() === "time" ?
-						$( tCollectionTemp ).attr( "datetime" ).substr( 0, 10 ).split( "-" ) :
-						$( tCollectionTemp ).attr( "class" ).match( /datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/ )[ 1 ].substr( 0, 10 ).split( "-" );
+						tCollectionTemp.getAttribute( "datetime" ).substr( 0, 10 ).split( "-" ) :
+						tCollectionTemp.className.match( dateTimeRegExp )[ 1 ].substr( 0, 10 ).split( "-" );
 
-					// Convert to zero-base month
-					strDate1[ 1 ] = strDate1[ 1 ] - 1;
+					// Convert to zero-based month
 					strDate2[ 1 ] = strDate2[ 1 ] - 1;
 
-					date.setFullYear( strDate1[ 0 ], strDate1[ 1 ], strDate1[ 2 ] );
+					zLen += daysBetween( strDate1, strDate2 );
+				}
 
-					// Now loop in events to load up all the days that it would be on tomorrow.setDate(tomorrow.getDate() + 1);
-					for ( z = 0, zLen = daysBetween( strDate1, strDate2 ); z <= zLen; z += 1 ) {
-						if ( events.minDate === null || date < events.minDate ) {
-							events.minDate = date;
-						}
-						if ( events.maxDate === null || date > events.maxDate ) {
-							events.maxDate = date;
-						}
-
-						events.list[ events.iCount ] = {
-							title: title,
-							date: new Date( date.getTime() ),
-							href: link
-						};
-
+				// Now loop in events to load up all the days that it would be on tomorrow.setDate(tomorrow.getDate() + 1);
+				for ( z = 0; z !== zLen; z += 1 ) {
+					if ( z !== 0 ) {
 						date = new Date( date.setDate( date.getDate() + 1 ) );
-
-						// Add a viewfilter
-						className = "filter-" + ( date.getFullYear() ) + "-" +
-							wb.string.pad( date.getMonth() + 1, 2 );
-						if ( !objTitle.hasClass( className ) ) {
-							objTitle.addClass( className );
-						}
-						events.iCount += 1;
 					}
-				} else if ( tCollection.length === 1 ) {
-					$tCollection = $( tCollection[ 0 ] );
-					strDate = ( $tCollection.get( 0 ).nodeName.toLowerCase() === "time" ) ?
-						$tCollection.attr( "datetime" ).substr( 0, 10 ).split( "-" ) :
-						$tCollection.attr( "class" ).match(/datetime\s+\{date\:\s*(\d+-\d+-\d+)\}/)[ 1 ].substr( 0, 10 ).split( "-" );
-
-					date.setFullYear( strDate[ 0 ], strDate[ 1 ] - 1, strDate[ 2 ] );
 
 					if ( events.minDate === null || date < events.minDate ) {
 						events.minDate = date;
 					}
+
 					if ( events.maxDate === null || date > events.maxDate ) {
 						events.maxDate = date;
 					}
+
 					events.list[ events.iCount ] = {
 						title: title,
 						date: date,
-						href: link
+						href: href,
+						target: target
 					};
 
 					// Add a viewfilter
-					className = "filter-" + ( date.getFullYear() ) + "-" + wb.string.pad( date.getMonth() + 1, 2 );
-					if ( !objTitle.hasClass( className ) ) {
-						objTitle.addClass( className );
+					dateClass = "filter-" + ( date.getFullYear() ) + "-" +
+						wb.string.pad( date.getMonth() + 1, 2 );
+					if ( !className ) {
+						className = dateClass;
+					} else if ( className.indexOf( dateClass ) === -1 ) {
+						className += " " + dateClass;
 					}
 					events.iCount += 1;
 				}
+				$objTitle.attr( "class", className );
+			}
 
-			// End of loop through objects/events
-			});
+		// End of loop through objects/events
 		}
 
 		window.events = events;
 		return events;
 	},
 
-	addEvents = function( year, month, days, containerId, eventsList ) {
-		var i, eLen, date, day, dayEvents, content;
+	addEvents = function( year, month, $days, containerId, eventsList ) {
+		var i, eLen, date, $day, $dayEvents, content, event, eventLink;
 
 		// Fix required to make up with the IE z-index behaviour mismatch
-		for ( i = 0, eLen = days.length; i !== eLen; i += 1 ) {
-			days.eq( i ).css( "z-index", 31 - i );
+		// TODO: Which versions of IE should this fix be limited to?
+		if ( wb.ie ) {
+			for ( i = 0, eLen = $days.length; i !== eLen; i += 1 ) {
+				$days.eq( i ).css( "z-index", 31 - i );
+			}
 		}
 
 		/*
@@ -2096,22 +2096,26 @@ var componentName = "wb-calevt",
 		 * to a for loop to ensure that all the elements are accounted for.
 		 */
 		for ( i = 0, eLen = eventsList.length; i !== eLen; i += 1 ) {
-			date = new Date( eventsList[ i ].date );
+			event = eventsList[ i ];
+			eventLink = "<li><a tabindex='-1' class='cal-evt-lnk' href='" +
+				event.href + ( event.target ? "' target='" + event.target : "" ) +
+				"'>" + event.title + "</a></li>";
+			date = new Date( event.date );
 
 			if ( date.getMonth() === month && date.getFullYear() === year ) {
-				day = $( days[ date.getDate() - 1 ] );
+				$day = $( $days[ date.getDate() - 1 ] );
 
 				// Lets see if the cell is empty. If so lets create the cell
-				if ( day.children( "a" ).length === 0 ) {
-					dayEvents = $( "<ul class='wb-inv'></ul>" );
-					content = day.children( "div" ).html();
-					day
+				if ( $day.children( "a" ).length === 0 ) {
+					$dayEvents = $( "<ul class='wb-inv'>" + eventLink + "</ul>" );
+					content = $day.children( "div" ).html();
+					$day
 						.empty()
 						.append(
-							"<a href='#ev-" + day.attr( "id" ) +
+							"<a href='#ev-" + $day.attr( "id" ) +
 								"' class='cal-evt' tabindex='-1'>" +
 								content + "</a>",
-							dayEvents
+							$dayEvents
 						);
 				} else {
 
@@ -2120,16 +2124,15 @@ var componentName = "wb-calevt",
 					 * event collisions not being handled. So the pointer was
 					 * getting lost.
 					 */
-					dayEvents = day.find( "ul.wb-inv" );
+					$dayEvents = $day.find( "ul.wb-inv" );
+					$dayEvents.append( eventLink );
 				}
 
-				dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" +
-					eventsList[ i ].href + "'>" + eventsList[ i ].title + "</a></li>" );
-				day.data( "dayEvents", dayEvents );
+				$day.data( "dayEvents", $dayEvents );
 			}
 		}
 
-		days.find( ".cal-evt" ).first().attr( "tabindex", "0" );
+		$days.find( ".cal-evt" )[ 0 ].tabIndex = "0";
 	},
 
 	showOnlyEventsFor = function( year, month, calendarId ) {
@@ -2477,7 +2480,7 @@ var namespace = "wb-cal",
 			eventData = event.data,
 			minDate = eventData.minDate,
 			maxDate = eventData.maxDate,
-			$monthField = eventData.$monthField,
+			$monthField = eventData.monthField,
 			value = $monthField.val(),
 			month = value ? value : eventData.month,
 			minMonth = 0,
@@ -2503,56 +2506,52 @@ var namespace = "wb-cal",
 	},
 
 	createGoToForm = function( calendarId, year, month, minDate, maxDate ) {
-		var $goToForm = $( "<div class='cal-goto'></div>" ),
-			$form = $( "<form id='cal-" + calendarId + "-goto' role='form' style='display:none;' action=''></form>" ),
-			$yearContainer, yearField, $yearField, y, ylen, $monthContainer, $monthField;
+		var formId = "cal-" + calendarId + "-goto",
+			monthFieldId = "cal-" + calendarId + "-goto-month",
+			yearFieldId = "cal-" + calendarId + "-goto-year",
+			form = "<div class='cal-goto'><div id='cal-" + calendarId + "-goto-lnk'>" +
+				"<a href='javascript:;' role='button' aria-controls='cal-" +
+				calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
+				i18nText.monthNames[ month ] + " " + year + "</a></div>" +
+				"<form id='" + formId + "' role='form' class='hide' action=''>",
+			yearField = "<select title='" + i18nText.goToYear + "' id='" + yearFieldId + "'>",
+			$form, y, ylen;
 
-		$form.on( "submit", function( event ) {
-			event.preventDefault();
-			onGoTo( calendarId, minDate, maxDate );
-			return false;
-		});
-
-		// Create the year field
-		$yearContainer = $( "<div class='cal-goto-yr'></div>" );
-		yearField = "<select title='" + i18nText.goToYear + "' id='cal-" + calendarId + "-goto-year'>";
+		// Create the year field entries
 		for ( y = minDate.getFullYear(), ylen = maxDate.getFullYear() + 1; y !== ylen; y += 1 ) {
 			yearField += "<option value='" + y + "'" + ( y === year ? " selected='selected'" : "" ) + ">" + y + "</option>";
 		}
-		$yearField = $( yearField + "</select>" );
 
-		// Create the month field
-		$monthContainer = $( "<div class='cal-goto-mnth'></div>" );
-		$monthField = $( "<select title='" + i18nText.goToMonth + "' id='cal-" + calendarId + "-goto-month'></select>" );
+		// Create the month and year fields and the buttons
+		form += "<div class='cal-goto-mnth'><select title='" + i18nText.goToMonth +
+				"' id='" + monthFieldId + "'></select></div>" +
+				"<div class='cal-goto-yr'>" + yearField + "</select></div>" +
+				"<div class='clearfix'></div>" + "<div class='cal-goto-btn'>" +
+				"<input type='submit' class='btn btn-primary' value='" +
+				i18nText.goToBtn + "' /></div>" + "<div class='cal-goto-btn'>" +
+				"<input type='button' class='btn btn-default cal-goto-cancel' value='" +
+				i18nText.cancelBtn + "' /></div>";
 
-		$monthContainer.append( $monthField );
-
-		// Create the year field
-		$yearContainer.append( $yearField );
-
-		// Update the list of available months when changing the year
-		$yearField.on( "change", { minDate: minDate, maxDate: maxDate, month: month, $monthField: $monthField }, yearChanged );
-
-		// Populate initial month list
-		$yearField.trigger( "change" );
-
+		$form = $( form + "</form></div>" );
 		$form
-			.append( $monthContainer )
-			.append( $yearContainer )
-			.append( "<div class='clearfix'></div>" +
-				"<div class='cal-goto-btn'><input type='submit' class='btn btn-primary' value='" +
-				i18nText.goToBtn + "' /></div>" +
-				"<div class='cal-goto-btn'><input type='button' class='btn btn-default cal-goto-cancel' value='" +
-				i18nText.cancelBtn + "' /></div>" );
+			.on( "submit", function( event ) {
+				event.preventDefault();
+				onGoTo( calendarId, minDate, maxDate );
+				return false;
+			})
 
-		$goToForm
-			.append( "<div id='cal-" +
-				calendarId + "-goto-lnk'><a href='javascript:;' role='button' aria-controls='cal-" +
-				calendarId + "-goto' class='cal-goto-lnk' aria-expanded='false'>" +
-				i18nText.monthNames[ month ] + " " + year + "</a></div>" )
-			.append( $form );
+			// Update the list of available months when changing the year
+			// and populate the initial month list.
+			.find( "#" + yearFieldId )
+				.on( "change", {
+						minDate: minDate,
+						maxDate: maxDate,
+						month: month,
+						monthField: $form.find( "#" + monthFieldId )
+					}, yearChanged )
+				.trigger( "change" );
 
-		return $goToForm;
+		return $form;
 	},
 
 	createWeekdays = function( calendarId ) {
@@ -2646,13 +2645,14 @@ var namespace = "wb-cal",
 			.find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" )
 				.addClass( "hide" )
 				.attr( "aria-hidden", "true" )
-				.filter( "a" )
-					.attr( "aria-expanded", "true" );
+				.filter( "div" )
+					.children()
+						.attr( "aria-expanded", "true" );
 
-		// TODO: Replace with CSS animation
-		$( gotoId ).stop().slideDown( 0 ).queue(function() {
-			$( this ).find( ":input:eq(0)" ).trigger( setFocusEvent );
-		});
+		$( gotoId )
+			.removeClass( "hide" )
+			.find( ":input:eq(0)" )
+				.trigger( setFocusEvent );
 	},
 
 	hideGoToFrm = function( event ) {
@@ -2664,11 +2664,11 @@ var namespace = "wb-cal",
 				.find( gotoId + "-lnk, .cal-prvmnth, .cal-nxtmnth" )
 					.removeClass( "hide" )
 					.attr( "aria-hidden", "false" )
-					.filter( "a" )
-						.attr( "aria-expanded", "false" );
+					.filter( "div" )
+						.children()
+							.attr( "aria-expanded", "false" );
 
-			// TODO: Replace with CSS animation
-			$( gotoId ).stop().slideUp( 0 );
+			$( gotoId ).addClass( "hide" );
 		}
 	},
 
@@ -2922,7 +2922,6 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 	tableParsingEvent = "passiveparse.wb-tableparser",
 	tableParsingCompleteEvent = "parsecomplete.wb-tableparser",
 	$document = wb.doc,
-	idCount = 0,
 	i18n, i18nText,
 
 	/**
@@ -2939,12 +2938,14 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			captionHtml = $caption.html() || "",
 			captionText = $caption.text() || "",
 			valuePoint = 0,
+			floatRegExp = /[\+\-0-9]+[0-9,\. ]*/,
+			floatRegExp2 = /[^\+\-\.\, 0-9]+[^\-\+0-9]*/,
 			lowestFlotDelta, $imgContainer, $placeHolder,
 			$wetChartContainer, htmlPlaceHolder, figurehtml,
 			cellValue, datacolgroupfound, dataGroup, header,
 			i, iLength, j, jLength, parsedData, rIndex, currVectorOptions,
 			currentRowGroup, reverseTblParsing, dataGroupVector,
-			dataCell, previousDataCell, currDataVector,
+			currentDataGroupVector, dataCell, previousDataCell, currDataVector,
 			pieQuaterFlotSeries, optionFlot, optionsCharts, globalOptions,
 			defaultsOptions = {
 
@@ -2991,7 +2992,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 								if ( optionsCharts.nolegend ) {
 
 									// Add the series label
-									textlabel = label + "<br/>" + textlabel;
+									textlabel = label + "<br />" + textlabel;
 								}
 								return textlabel + "%";
 							}
@@ -3082,8 +3083,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 								var cellRawValue = $.trim( $( elem ).text() ).replace( /\s/g, "" );
 
 								return [
-									parseFloat( cellRawValue.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
-									cellRawValue.match (/[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+									parseFloat( cellRawValue.match( floatRegExp ) ),
+									cellRawValue.match ( floatRegExp2 )
 								];
 							}
 						}
@@ -3097,8 +3098,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 							"/getcellvalue": function( elem ) {
 								var raw = $.trim( $( elem ).text() ).replace( /,/g, "" );
 								return [
-									parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
-									raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+									parseFloat( raw.match( floatRegExp ) ),
+									raw.match( floatRegExp2 )
 								];
 							}
 						}
@@ -3108,8 +3109,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 							"/getcellvalue": function( elem ) {
 								var raw = $.trim( $( elem ).text() ).replace( /\./g, "" );
 								return [
-									parseFloat( raw.match( /[\+\-0-9]+[0-9,\. ]*/ ) ),
-									raw.match( /[^\+\-\.\, 0-9]+[^\-\+0-9]*/ )
+									parseFloat( raw.match( floatRegExp ) ),
+									raw.match( floatRegExp2 )
 								];
 							}
 						}
@@ -3314,6 +3315,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				headerCell = $( rowRefValueCells[ i ] ).data().tblparser;
 
 				if ( headerCell.colgroup && headerCell.colgroup.type === 3 ) {
+
 					// We only process the first column data group
 					break;
 				}
@@ -3321,7 +3323,6 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				if ( headerCell.colpos >= dataColgroupStart && ( headerCell.type === 1 || headerCell.type === 7 ) ) {
 					if ( headerCell.child.length !== 0 ) {
 						calcStep = calcStep * headerCell.child.length * groupHeaderCalculateStepsRecursive( headerCell, 1 );
-
 					}
 				}
 			}
@@ -3460,17 +3461,19 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			var i, k, m, kLen, mLen,
 				cumulativeValue,
 				currentCell,
-				currentCellChild;
+				currentCellChild,
+				currentVectorHead;
 
 			// Calculate upper-step for cells that are
 			// less precise than the reference value vector
 			for ( i = referenceValue - 1; i !== -1; i -= 1 ) {
+				currentVectorHead = vectorHead[ i ];
 
-				for ( k = 0, kLen = vectorHead[ i ].cell.length; k !== kLen; k += 1 ) {
-					currentCell = vectorHead[ i ].cell[ k ];
+				for ( k = 0, kLen = currentVectorHead.cell.length; k !== kLen; k += 1 ) {
+					currentCell = currentVectorHead.cell[ k ];
 
 					if ( currentCell.flotDelta || k > 0 &&
-						currentCell.uid === vectorHead[ i ].cell[ k - 1 ].uid ) {
+						currentCell.uid === currentVectorHead.cell[ k - 1 ].uid ) {
 
 						continue;
 					}
@@ -3525,7 +3528,9 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		 * @param {object[]} arrVectorHeaders - Collection of vector headers
 		 */
 		function getlabelsVectorPosition( arrVectorHeaders ) {
-			return ( !optionsCharts.labelposition || ( optionsCharts.labelposition && optionsCharts.labelposition > arrVectorHeaders.length ) ? parsedData.theadRowStack.length : optionsCharts.labelposition ) - 1;
+			var labelPosition = optionsCharts.labelposition;
+			return ( !labelPosition || ( labelPosition && labelPosition > arrVectorHeaders.length ) ?
+				parsedData.theadRowStack.length : labelPosition ) - 1;
 		}
 
 		/**
@@ -3578,10 +3583,11 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			// Find the range of the first data colgroup
 			var dataColgroupStart = -1,
 				headerlevel = 0,
+				theadRowStack = parsedData.theadRowStack,
 				i, iLength, labelsVectorPosition,
 				stepsValue, rowReferenceValue;
 
-			if ( !parsedData.theadRowStack ) {
+			if ( !theadRowStack ) {
 				return;
 			}
 
@@ -3593,31 +3599,31 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			}
 
 			if ( ( !reverseTblParsing && optionsCharts.referencevalue === false ) || reverseTblParsing ) {
-				rowReferenceValue = parsedData.theadRowStack.length;
+				rowReferenceValue = theadRowStack.length;
 			} else {
 				rowReferenceValue = optionsCharts.referencevalue;
 			}
 
 			rowReferenceValue = rowReferenceValue - 1;
 
-			stepsValue = getRowGroupHeaderCalculateSteps( parsedData.theadRowStack, rowReferenceValue, dataColgroupStart );
+			stepsValue = getRowGroupHeaderCalculateSteps( theadRowStack, rowReferenceValue, dataColgroupStart );
 
 			if ( !reverseTblParsing ) {
-				labelsVectorPosition = getlabelsVectorPosition( parsedData.theadRowStack );
+				labelsVectorPosition = getlabelsVectorPosition( theadRowStack );
 			} else {
-				labelsVectorPosition = parsedData.theadRowStack.length - 1;
+				labelsVectorPosition = theadRowStack.length - 1;
 			}
 
 			headerlevel = rowReferenceValue;
 
 			// Calculate inner-step for cells that are more precise than the reference value vector
-			setInnerStepValues( parsedData.theadRowStack[ rowReferenceValue ], headerlevel, stepsValue, rowReferenceValue, dataColgroupStart );
+			setInnerStepValues( theadRowStack[ rowReferenceValue ], headerlevel, stepsValue, rowReferenceValue, dataColgroupStart );
 
 			// Calculate upper-step for cells that are less precise than the reference value vector
-			setUpperStepValues( parsedData.theadRowStack, rowReferenceValue );
+			setUpperStepValues( theadRowStack, rowReferenceValue );
 
 			// Get the labelling
-			return getLabels( parsedData.theadRowStack[ labelsVectorPosition ], dataColgroupStart );
+			return getLabels( theadRowStack[ labelsVectorPosition ], dataColgroupStart );
 
 		}
 
@@ -3627,40 +3633,32 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		 * @method wrapTableIntoDetails
 		 */
 		function wrapTableIntoDetails() {
-			var $details;
-
 			if ( !captionHtml.length ) {
 				return;
 			}
 
-			$details = $( "<details><summary>" +
-				captionHtml + i18nText.tableMention +
-				"</summary></details>" );
-
-			$elm.after( $details );
-			$details.append( $elm );
+			$elm
+				.wrap( "<details/>" )
+				.before( "<summary>" + captionHtml + i18nText.tableMention + "</summary>" );
 		}
 
-		function createContainer(withDimension) {
+		function createContainer( withDimension ) {
+			$elm
+				.wrap( "<figure class='" + optionsCharts.graphclass + "'/>" )
+				.before(
 
-			var $container = $( "<figure class='" + optionsCharts.graphclass + "'>" +
+					// Copy to the inner table caption
+					( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>" : "" ) +
 
-				// Copy to the inner table caption
-				( captionHtml.length ? "<figcaption>" + captionHtml + "</figcaption>" : "" ) +
+					// Image Container
+					"<div role='img' aria-label='" + captionText + i18nText.tableFollowing + "'" +
 
-				// Image Container
-				"<div role='img' aria-label='" +
-				captionText + i18nText.tableFollowing + "'" +
+					// Add Dimension
+					( withDimension ? "style='height:" + optionsCharts.height +
+					"px; width:" + optionsCharts.width + "px'" : "" ) + "></div>"
+				);
 
-				// Add Dimension
-				( withDimension ? "style='height:" + optionsCharts.height +
-				"px; width:" + optionsCharts.width + "px'" : "" ) +
-
-				"></div></figure>");
-
-			$container.insertBefore( $elm ).append( $elm );
-
-			return $( "div:eq(0)", $container );
+			return $( "div:eq(0)", $elm.parent() );
 		}
 
 		// Retrieve the parsed data
@@ -3706,11 +3704,12 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				for ( i = 0, iLength = dataGroupVector.length; i !== iLength; i += 1 ) {
 					dataSeries = [];
 					valuePoint = 0;
+					currentDataGroupVector = dataGroupVector[ i ];
 
 					// For each cells
-					for ( j = 0, jLength = dataGroupVector[ i ].cell.length; j !== jLength; j += 1 ) {
+					for ( j = 0, jLength = currentDataGroupVector.cell.length; j !== jLength; j += 1 ) {
 
-						dataCell = dataGroupVector[ i ].cell[ j ];
+						dataCell = currentDataGroupVector.cell[ j ];
 
 						// Skip the column if
 						if ( reverseTblParsing && dataCell.col.type === 1 ) {
@@ -3719,7 +3718,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 
 						previousDataCell = undefined;
 						if ( j !== 0 ) {
-							previousDataCell = dataGroupVector[ i ].cell[ j - 1 ];
+							previousDataCell = currentDataGroupVector.cell[ j - 1 ];
 						}
 
 						// Verify if the selected cell still in the scope of a data group in his another axes (eg. row/col)
@@ -3736,8 +3735,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 						header = !reverseTblParsing ? dataCell.row.header : dataCell.col.header;
 
 						cellValue = optionsCharts.getcellvalue( !reverseTblParsing ?
-							dataGroupVector[ i ].cell[ rIndex ].elem :
-							dataGroupVector[ i ].datacell[ rIndex ].elem );
+							currentDataGroupVector.cell[ rIndex ].elem :
+							currentDataGroupVector.datacell[ rIndex ].elem );
 
 						dataSeries.push(
 							[
@@ -3745,7 +3744,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 								typeof cellValue === "object" ?
 									cellValue[ 0 ] :
 									cellValue
-							]);
+							]
+						);
 
 						valuePoint += header[ header.length - 1 ].flotDelta;
 
@@ -3755,9 +3755,9 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 					pieQuaterFlotSeries = { };
 
 					// Get the setting from the associative cell header
-					dataCell =  !reverseTblParsing ?
-						dataGroupVector[ i ].cell[ rIndex ] :
-						dataGroupVector[ i ].datacell[ rIndex ];
+					dataCell = !reverseTblParsing ?
+						currentDataGroupVector.cell[ rIndex ] :
+						currentDataGroupVector.datacell[ rIndex ];
 					header = !reverseTblParsing ?
 						dataCell.col.header :
 						dataCell.row.header;
@@ -3769,8 +3769,8 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 					// Set the data issue from the table
 					pieQuaterFlotSeries.data = dataSeries;
 					pieQuaterFlotSeries.label = ( !reverseTblParsing ?
-						$( dataGroupVector[ i ].dataheader[ dataGroupVector[ i ].dataheader.length - 1 ].elem ).text() :
-						$( dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ].elem ).text() );
+						$( currentDataGroupVector.dataheader[ currentDataGroupVector.dataheader.length - 1 ].elem ).text() :
+						$( currentDataGroupVector.header[ currentDataGroupVector.header.length - 1 ].elem ).text() );
 
 					// Add the series
 					allSeries.push(pieQuaterFlotSeries);
@@ -3858,10 +3858,11 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 
 		// Count the number of bar charts,
 		for ( i = 0, iLength = dataGroupVector.length; i !== iLength; i += 1 ) {
-			currDataVector = dataGroupVector[ i ].header[ dataGroupVector[ i ].header.length - 1 ];
+			currentDataGroupVector = dataGroupVector[ i ];
+			currDataVector = currentDataGroupVector.header[ currentDataGroupVector.header.length - 1 ];
 
 			// Apply any preset
-			currVectorOptions = applyPreset( defaultsOptions.series, $(currDataVector.elem), "flot" );
+			currVectorOptions = applyPreset( defaultsOptions.series, $( currDataVector.elem ), "flot" );
 
 			if ( currVectorOptions.bars || ( optionFlot.bars && !currVectorOptions.lines ) ) {
 
@@ -3984,7 +3985,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
+		var elm = wb.init( event, componentName, selector, true ),
 			elmId, modeJS, deps;
 
 		if ( elm ) {
@@ -3997,13 +3998,6 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 				"site!deps/jquery.flot.orderBars" + modeJS,
 				"site!deps/tableparser" + modeJS
 			];
-
-			// Ensure there is a unique id on the element
-			if ( !elmId ) {
-				elmId = componentName + "-id-" + idCount;
-				idCount += 1;
-				elm.id = elmId;
-			}
 
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
@@ -4328,7 +4322,7 @@ var componentName = "wb-data-ajax",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName + "-" + ajaxType, selector );
+		var elm = wb.init( event, componentName + "-" + ajaxType, selector, true );
 
 		if ( elm ) {
 
@@ -5143,7 +5137,7 @@ var componentName = "wb-feeds",
 		 */
 		flickr: function( data ) {
 
-			var seed = "id" + wb.guid(),
+			var seed = wb.getId(),
 				title = data.title,
 				media = data.media.m,
 				thumbnail = media.replace( "_m.", "_s." ),
@@ -5165,7 +5159,7 @@ var componentName = "wb-feeds",
 		 * @return {string}	HTML string for creating a photowall effect
 		 */
 		youtube: function( data ) {
-			var seed = "id" + wb.guid(),
+			var seed = wb.getId(),
 				mediaGroup = data.media$group,
 				title = mediaGroup.media$title.$t,
 				thumbnail = mediaGroup.media$thumbnail[ 1 ].url,
@@ -5902,30 +5896,6 @@ var componentName = "wb-frmvld",
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-// Move the focus to the associated input when an error message link is clicked
-// and scroll to the top of the label or legend that contains the error
-$document.on( "click vclick", selector + " .errCnt a", function( event ) {
-	var which = event.which,
-		hash, $input, $label, $legend, errorTop;
-
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
-		hash = this.href.substring( this.href.indexOf( "#" ) );
-		$input = $( hash );
-		$label = $input.prev();
-		$legend = $label.length === 0 ? $input.closest( "fieldset" ).find( "legend" ) : [];
-		errorTop = $label.length !== 0 ? $label.offset().top : ( $legend.length !== 0 ? $legend.offset().top : -1 );
-
-		// Assign focus to $input
-		$input.trigger( setFocusEvent );
-
-		if ( errorTop !== -1 ) {
-			window.scroll( 0, errorTop );
-		}
-		return false;
-	}
-});
-
 // Add the timer poke to initialize the plugin
 wb.add( selector );
 
@@ -5954,7 +5924,7 @@ var componentName = "wb-geomap",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
+		var elm = wb.init( event, componentName, selector, true ),
 			$elm, modeJS;
 
 		if ( elm ) {
@@ -6006,7 +5976,6 @@ var componentName = "wb-lbx",
 	dependenciesLoadedEvent = "deps-loaded" + selector,
 	extendedGlobal = false,
 	$document = wb.doc,
-	idCount = 0,
 	callbacks, i18n, i18nText,
 
 	/**
@@ -6018,18 +5987,11 @@ var componentName = "wb-lbx",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
+		var elm = wb.init( event, componentName, selector, true ),
 			elmId;
 
 		if ( elm ) {
 			elmId = elm.id;
-
-			// Ensure there is a unique id on the element
-			if ( !elmId ) {
-				elmId = componentName + "-id-" + idCount;
-				idCount += 1;
-				elm.id = elmId;
-			}
 
 			// Ensure the dependencies are loaded first
 			$document.one( dependenciesLoadedEvent, function() {
@@ -6199,16 +6161,26 @@ var componentName = "wb-lbx",
 							.first()
 							.attr( "id", "lbx-title" );
 					}
+
+					$content.attr( "aria-labelledby", "lbx-title" );
 				},
 				parseAjax: function( mfpResponse ) {
-					var urlHash = this.currItem.src.split( "#" )[ 1 ];
+					var urlHash = this.currItem.src.split( "#" )[ 1 ],
+						$response = $( "<div>" + mfpResponse.data + "</div>" );
 
 					// Provide the ability to filter the AJAX response HTML
 					// by the URL hash
 					// TODO: Should be dealt with upstream by Magnific Popup
 					if ( urlHash ) {
-						mfpResponse.data = $( mfpResponse.data ).find( "#" + urlHash );
+						$response = $response.find( "#" + wb.jqEscape( urlHash ) );
 					}
+
+					$response
+						.find( ".modal-title, h1" )
+						.first()
+						.attr( "id", "lbx-title" );
+
+					mfpResponse.data = $response;
 				}
 			};
 		}
@@ -6290,16 +6262,15 @@ $document.on( "focusin", "body", function( event ) {
 $document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
 	var which = event.which,
 		eventTarget = event.target,
-		href, $lightbox, linkTarget;
+		$lightbox, linkTarget;
 
 	// Ignore middle/right mouse buttons
 	if ( !which || which === 1 ) {
 		$lightbox = $( eventTarget ).closest( ".mfp-wrap" );
-		href = eventTarget.getAttribute( "href" );
-		linkTarget = document.getElementById( href.substring( 1 ) );
+		linkTarget = document.getElementById( eventTarget.getAttribute( "href" ).substring( 1 ) );
 
 		// Ignore same page links to within the overlay and modal popups
-		if ( href.length > 1 && !$.contains( $lightbox[ 0 ], linkTarget ) ) {
+		if ( linkTarget && !$.contains( $lightbox[ 0 ], linkTarget ) ) {
 			if ( $lightbox.find( ".popup-modal-dismiss" ).length === 0 ) {
 
 				// Stop propagation of the click event
@@ -7200,7 +7171,7 @@ var componentName = "wb-mltmd",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var eventTarget = wb.init( event, componentName, selector ),
+		var eventTarget = wb.init( event, componentName, selector, true ),
 			elmId;
 
 		if ( eventTarget ) {
@@ -7950,7 +7921,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		if ( currentUrl.absolute.replace( currentUrl.hash || "#", "" ) !== captionsUrl.absolute.replace( captionsUrl.hash || "#", "" ) ) {
 			loadCaptionsExternal( $player, captionsUrl.absolute );
 		} else {
-			loadCaptionsInternal( $player, $( captionsUrl.hash ) );
+			loadCaptionsInternal( $player, $( "#" + wb.jqEscape( captionsUrl.hash.substring( 1 ) ) ) );
 		}
 	}
 });
@@ -8451,7 +8422,7 @@ var componentName = "wb-overlay",
 	},
 
 	openOverlay = function( overlayId, noFocus ) {
-		var $overlay = $( "#" + overlayId );
+		var $overlay = $( "#" + wb.jqEscape( overlayId ) );
 
 		$overlay
 			.addClass( "open" )
@@ -8631,7 +8602,7 @@ $document.on( "click vclick touchstart focusin", "body", function( event ) {
 		// Close any overlays with outside activity
 		for ( overlayId in sourceLinks ) {
 			overlay = document.getElementById( overlayId );
-			if ( overlay !== null && overlay.getAttribute( "aria-hidden" ) === "false" &&
+			if ( overlay && overlay.getAttribute( "aria-hidden" ) === "false" &&
 				eventTarget.id !== overlayId &&
 				overlay.className.indexOf( ignoreOutsideClass ) === -1 &&
 				!$.contains( overlay, eventTarget ) ) {
@@ -9821,16 +9792,15 @@ var componentName = "wb-tabs",
 	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
 	controls = selector + " [role=tablist] a, " + selector + " [role=tablist] .tab-count",
-	uniqueCount = 0,
 	initialized = false,
 	equalHeightClass = "wb-eqht",
 	equalHeightOffClass = equalHeightClass + "-off",
+	tabsAccordionClass = "tabs-acc",
+	nestedTglPanelSelector = "> .tabpanels > details > .tgl-panel",
 	activePanel = "-activePanel",
 	activateEvent = "click keydown",
-	ignoreHashChange = false,
 	pagePath = wb.pageUrlParts.pathname + "#",
 	$document = wb.doc,
-	$window = wb.win,
 	i18n, i18nText,
 
 	// Includes "smallview", "xsmallview" and "xxsmallview"
@@ -9852,7 +9822,7 @@ var componentName = "wb-tabs",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
+		var elm = wb.init( event, componentName, selector, true ),
 			hashFocus = false,
 			isCarousel = true,
 			open = "open",
@@ -9871,7 +9841,7 @@ var componentName = "wb-tabs",
 			$panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" );
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
-			activeId = wb.pageUrlParts.hash.substring( 1 );
+			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
 			$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined;
 			elmId = elm.id;
 			settings = $.extend(
@@ -9889,13 +9859,6 @@ var componentName = "wb-tabs",
 				window[ componentName ],
 				wb.getData( $elm, componentName )
 			);
-
-			// Ensure there is an id on the element
-			if ( !elmId ) {
-				elmId = "tabs-cnt-" + uniqueCount;
-				$elm.attr( "id", elmId );
-				uniqueCount += 1;
-			}
 
 			try {
 
@@ -9939,7 +9902,7 @@ var componentName = "wb-tabs",
 
 			// Build the tablist and enhance the panels as needed for details/summary
 			if ( !isCarousel ) {
-				$elm.addClass( "tabs-acc" );
+				$elm.addClass( tabsAccordionClass );
 				groupClass = elmId + "-grp";
 				$tabPanels = $elm.children( ".tabpanels" );
 				$panels = $tabPanels.children( "details" );
@@ -9973,8 +9936,7 @@ var componentName = "wb-tabs",
 
 					newId = $panel.attr( "id" );
 					if ( !newId ) {
-						newId = "tabpanel" + uniqueCount;
-						uniqueCount += 1;
+						newId = wb.getId();
 						$panel.attr( "id", newId );
 					}
 					isOpen = !!$panel.attr( open );
@@ -10158,7 +10120,7 @@ var componentName = "wb-tabs",
 
 		for ( ; tabCounter !== -1; tabCounter -= 1 ) {
 			item = panels[ tabCounter ];
-			isActive = item.className.indexOf( "in" ) !== -1;
+			isActive = item.className.indexOf( "out" ) === -1;
 
 			if ( !isDetails || !isSmallView ) {
 				item.setAttribute( "aria-hidden", isActive ? "false" : "true" );
@@ -10191,11 +10153,11 @@ var componentName = "wb-tabs",
 	updateHash = function( elm ) {
 		var elmId = elm.id;
 
-		ignoreHashChange = true;
+		wb.ignoreHashChange = true;
 		elm.id += "-off";
 		window.location.hash = elmId;
 		elm.id = elmId;
-		ignoreHashChange = false;
+		wb.ignoreHashChange = false;
 	},
 
 	updateNodes = function( $panels, $controls, $next, $control ) {
@@ -10347,44 +10309,20 @@ var componentName = "wb-tabs",
 	},
 
 	/**
-	 * @method onHashChange
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	onHashChange = function( event ) {
-		if ( initialized && !ignoreHashChange ) {
-			var hash = window.location.hash,
-				$hashTarget = $( hash );
-
-			if ( $hashTarget.length !== 0 ) {
-				event.preventDefault();
-				if ( isSmallView && $hashTarget[ 0 ].nodeName.toLowerCase() === "details" ) {
-					$hashTarget
-						.children( "summary" )
-							.trigger( "click" );
-				} else {
-					$hashTarget
-						.parent()
-							.parent()
-								.find( "> ul [href$='" + hash + "']" )
-									.trigger( "click" );
-				}
-			}
-		}
-	},
-
-	/**
 	 * @method onResize
 	 * @param {jQuery Object} $currentElm Element being initialized (only during initialization process).
 	 */
 	onResize = function( $currentElm ) {
 		var $elms, $elm, $tabPanels, $details, $tablist, $openDetails, openDetailsId,
-			$nonOpenDetails, $active, $summary, i, len;
+			$nonOpenDetails, $active, $summary, i, len, viewChange, isInit;
 
 		if ( initialized ) {
 			isSmallView = document.documentElement.className.indexOf( smallViewPattern ) !== -1;
+			viewChange = isSmallView !== oldIsSmallView;
+			isInit = $currentElm.length ? true : false;
 
-			if ( isSmallView !== oldIsSmallView ) {
-				$elms = $currentElm.length ? $currentElm : $( selector );
+			if ( viewChange ) {
+				$elms = isInit ? $currentElm : $( selector );
 				len = $elms.length;
 
 				for ( i = 0; i !== len; i += 1 ) {
@@ -10403,7 +10341,9 @@ var componentName = "wb-tabs",
 							$active = $tablist.find( ".active a" );
 							$details
 								.removeAttr( "role aria-expanded aria-hidden" )
-								.removeClass( "fade out in" );
+								.removeClass( "fade out in" )
+								.children( ".tgl-panel" )
+									.attr( "role", "tabpanel" );
 							$openDetails = $details
 												.filter( "#" + $active.attr( "href" ).substring( 1 ) )
 													.attr( "open", "open" )
@@ -10431,6 +10371,8 @@ var componentName = "wb-tabs",
 										"aria-expanded": "false"
 									});
 
+							$details.children( ".tgl-panel" ).removeAttr( "role" );
+
 							$openDetails
 								.addClass( "fade in" )
 								.attr({
@@ -10449,18 +10391,38 @@ var componentName = "wb-tabs",
 
 						$elm.append( $tabPanels );
 
-						if ( oldIsSmallView ) {
+						// Update the tablist role
+						if ( isSmallView ) {
+							$elm.attr( "role", "tablist" );
+						} else if ( oldIsSmallView ) {
+							$elm
+								.removeAttr( "role" )
+								.find( nestedTglPanelSelector ).removeAttr( "role" );
+
 							$elm.find( "> ul [href$='" + openDetailsId + "']" ).trigger( "click" );
 						}
 					}
 				}
 
-				// Remove wb-inv from regular tabs that were used to prevent FOUC (after 300ms delay)
-				setTimeout(function() {
-					$( selector + " .tabpanels > details.wb-inv" ).removeClass( "wb-inv" );
-				}, 300 );
+				// Need timeout to account for Toggle changes
+				if ( isInit && !isSmallView && $elms.hasClass( tabsAccordionClass ) ) {
+					setTimeout(function() {
+						$elms
+							.removeAttr( "role" )
+							.find( nestedTglPanelSelector ).removeAttr( "role" );
+					}, 1 );
+				}
 			}
+
 			oldIsSmallView = isSmallView;
+		}
+
+		if ( viewChange || isInit ) {
+
+			// Remove wb-inv from regular tabs that were used to prevent FOUC (after 300ms delay)
+			setTimeout(function() {
+				$( selector + " .tabpanels > details.wb-inv" ).removeClass( "wb-inv" );
+			}, 300 );
 		}
 	};
 
@@ -10519,14 +10481,14 @@ var componentName = "wb-tabs",
 	var which = event.which,
 		elm = event.currentTarget,
 		className = elm.className,
-		rotStopText = i18nText.rotStop,
-		playText = i18nText.play,
-		$elm, text, inv, $sldr, sldrId, $plypause, data, isPlaying, isPlayPause;
+		spaceText = i18nText.space,
+		$elm, $sldr, sldrId, plypause, buttonText, data, isPlaying, isPlayPause;
 
-	// Ignore middle and right mouse buttons and modified keys
+	// No control, alt or meta keys and only left mouse button, enter key,
+	// space bar, escape key and arrow keys
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) &&
-			( !which || which === 1 || which === 13 || which === 32 ||
-			( which > 36 && which < 41 ) ) ) {
+			( !which || which === 1 || which === 13 || which === 27 ||
+			which === 32 || ( which > 36 && which < 41 ) ) ) {
 
 		// Stop propagation of the activate event
 		event.preventDefault();
@@ -10549,43 +10511,46 @@ var componentName = "wb-tabs",
 
 		// Stop the slider from playing unless it is already stopped
 		// and the play button is activated
-		if ( ( isPlaying && which ) || ( which < 37 && isPlayPause ) ) {
+		if ( ( isPlaying && which ) || ( isPlayPause && !( which > 36 && which < 41 ) ) ) {
 			if ( isPlaying ) {
 				wb.remove( "#" + sldrId + selector );
 			} else {
 				wb.add( "#" + sldrId + selector );
 			}
 
-			$plypause = $sldr.find( "a.plypause" );
-			$plypause
-				.find( ".glyphicon" )
-					.toggleClass( "glyphicon-play glyphicon-pause" );
-
 			$sldr.toggleClass( "playing" );
 			isPlaying = !isPlaying;
+			buttonText = isPlaying ? i18nText.pause : i18nText.play;
 
-			text = $plypause[ 0 ].getElementsByTagName( "span" )[ 1 ];
-			text.innerHTML = text.innerHTML === playText ?
-				i18nText.pause :
-				playText;
-
-			inv = $plypause.find( ".wb-inv" )[ 0 ];
-			inv.innerHTML = inv.innerHTML === rotStopText ?
-				i18nText.rotStart :
-				rotStopText;
+			plypause = $sldr.find( "a.plypause" )[ 0 ];
+			plypause.setAttribute( "title", buttonText );
+			plypause.innerHTML = "<span class='glyphicon glyphicon-" +
+				( isPlaying ? "pause" : "play" ) + "'></span> " +
+				"<span>" + buttonText + "</span><span class='wb-inv'>" +
+				spaceText + i18nText.hyphen + spaceText +
+				( isPlaying ? i18nText.rotStop : i18nText.rotStart ) + "</span>";
 		}
 
+		// Arrow keys
 		if ( which > 36 ) {
 			onCycle( $sldr, which < 39 ? -1 : 1 );
 			$sldr.find( "> [role=tablist] .active a" ).trigger( setFocusEvent );
-		} else {
+
+		// Not the escape key
+		} else if ( which !== 27 ) {
+
+			// If the target is a tab
 			if ( elm.getAttribute( "role" ) === "tab" ) {
 				onPick( $sldr, $elm );
-				if ( which > 1 ) {
+
+				// Put focus on the tab panel if the enter key or space bar are used
+				if ( which === 13 || which === 32 ) {
 					$sldr.find( elm.getAttribute( "href" ) )
 						.trigger( setFocusEvent );
 				}
-			} else if ( !isPlaying && !isPlayPause ) {
+
+			// If the target is next, previous or tab count
+			} else if ( !isPlayPause ) {
 				onCycle( $sldr, className.indexOf( "prv" ) !== -1 ? -1 : 1 );
 			}
 		}
@@ -10598,22 +10563,7 @@ var componentName = "wb-tabs",
 	return true;
 });
 
-// Pause on escape
-$document.on( "keydown", selector + ", " + selector + " [role=tabpanel]", function( event ) {
-
-	// Escape key
-	if ( event.which === 27 ) {
-		var $sldr = $( event.target ).closest( selector );
-
-		event.preventDefault();
-
-		if ( $sldr.hasClass( "playing" ) ) {
-			$sldr.find( ".plypause" ).trigger( "click" );
-		}
-	}
-});
-
-$document.on( "click keydown", selector + " [role=tabpanel]", function( event ) {
+$document.on( activateEvent, selector + " [role=tabpanel]", function( event ) {
 	var currentTarget = event.currentTarget,
 		which = event.which,
 		$container;
@@ -10625,27 +10575,26 @@ $document.on( "click keydown", selector + " [role=tabpanel]", function( event ) 
 		event.cancelBubble = true;
 	}
 
-	if ( event.target === "click" ) {
+	// Ctrl + Up arrow
+	if ( event.ctrlKey && event.which === 38 ) {
 
-		// Ignore middle and right mouse buttons
-		if ( !which || which === 1 ) {
-			$container = $( event.currentTarget ).closest( selector );
-
-			// Stop the carousel if there is a click within a panel
-			if ( $container.hasClass( "playing" ) ) {
-				$container.find( ".plypause" ).trigger( "click" );
-			}
-		}
-	} else {
-
-		// Ctrl + Up arrow
-		if ( event.ctrlKey && event.which === 38 ) {
-
-			// Move focus to the summary element
+		// Move focus to the tab or summary element
+		if ( isSmallView ) {
+			$( currentTarget ).prev().trigger( setFocusEvent );
+		} else {
 			$( currentTarget )
 				.closest( selector )
 					.find( "[href$='#" + currentTarget.id + "']" )
 						.trigger( setFocusEvent );
+		}
+
+	// Left mouse button click or escape key
+	} else if ( !which || which === 1 || which === 27 ) {
+		$container = $( event.currentTarget ).closest( selector );
+
+		// Stop the carousel
+		if ( $container.hasClass( "playing" ) ) {
+			$container.find( ".plypause" ).trigger( "click" );
 		}
 	}
 });
@@ -10660,14 +10609,14 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 	// Ignore middle and right mouse buttons
 	if ( ( !which || which === 1 ) && href.charAt( 0 ) === "#" ) {
 		$tabpanels = $( currentTarget ).closest( ".tabpanels" );
-		$panel = $tabpanels.children( href );
+		$panel = $tabpanels.children( "#" + wb.jqEscape( href.substring( 1 ) ) );
 		if ( $panel.length !== 0 ) {
 			event.preventDefault();
 			$summary = $panel.children( "summary" );
 			if ( $summary.length !== 0 && $summary.attr( "aria-hidden" ) !== "true" ) {
 				$summary.trigger( "click" );
 			} else {
-				$tabpanels.find( href + "-lnk" ).trigger( "click" );
+				$tabpanels.parent().find( href + "-lnk" ).trigger( "click" );
 			}
 		}
 	}
@@ -10675,9 +10624,6 @@ $document.on( "click", selector + " [role=tabpanel] a", function( event ) {
 
 // These events only fire at the document level
 $document.on( wb.resizeEvents, onResize );
-
-// This event only fires on the window
-$window.on( "hashchange", onHashChange );
 
 $document.on( activateEvent, selector + " > .tabpanels > details > summary", function( event ) {
 	var which = event.which,
@@ -10816,7 +10762,6 @@ var componentName = "wb-toggle",
 	toggleEvent = "toggle" + selector,
 	toggledEvent = "toggled" + selector,
 	setFocusEvent = "setfocus.wb",
-	elmIdx = 0,
 	states = {},
 	$document = wb.doc,
 	$window = wb.win,
@@ -10835,12 +10780,10 @@ var componentName = "wb-toggle",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var link = wb.init( event, componentName, selector ),
+		var link = wb.init( event, componentName, selector, true ),
 			$link, data;
 
 		if ( link ) {
-			elmIdx += 1;
-
 			// Merge the elements settings with the defaults
 			$link = $( link );
 			data = $.extend( {}, defaults, $link.data( "toggle" ) );
@@ -10872,8 +10815,7 @@ var componentName = "wb-toggle",
 	initAria = function( link, data ) {
 		var i, len, elm, elms, parent, tabs, tab, panel, isOpen,
 			ariaControls = "",
-			hasOpen = false,
-			prefix = "wb-" + elmIdx;
+			hasOpen = false;
 
 		// Group toggle elements with a parent are assumed to be a tablist
 		if ( data.group != null && data.parent != null ) {
@@ -10904,7 +10846,7 @@ var componentName = "wb-toggle",
 					}
 
 					if ( !tab.getAttribute( "id" ) ) {
-						tab.setAttribute( "id", prefix + i );
+						tab.setAttribute( "id", wb.getId() );
 					}
 					tab.setAttribute( "role", "tab" );
 					tab.setAttribute( "aria-selected", isOpen );
@@ -10930,7 +10872,7 @@ var componentName = "wb-toggle",
 			for ( i = 0, len = elms.length; i !== len; i += 1 ) {
 				elm = elms[ i ];
 				if ( !elm.id ) {
-					elm.id = prefix + i;
+					elm.id = wb.getId();
 				}
 				ariaControls += elm.id + " ";
 			}
@@ -10946,12 +10888,6 @@ var componentName = "wb-toggle",
 	initPersist = function( $link, data ) {
 		var state,
 			link = $link[ 0 ];
-
-		// Make sure the toggle link has an ID.
-		// This will be used as part of the unique storage key.
-		if ( !link.id ) {
-			link.id = "wb-" + elmIdx;
-		}
 
 		// Store the persistence type and key for later use
 		data.persist = data.persist === "session" ? sessionStorage : localStorage;
@@ -11403,7 +11339,7 @@ var componentName = "wb-disable",
 
 			try {
 				if ( wb.isDisabled || ( wb.ie && wb.ielt7 ) ) {
-					$html.addClass( "no-js wb-disable" );
+					$html.addClass( "wb-disable" );
 					if ( localStorage ) {
 
 						// Store preference for WET plugins and polyfills to be disabled in localStorage
@@ -11416,10 +11352,14 @@ var componentName = "wb-disable",
 					// Add link to re-enable WET plugins and polyfills
 					elm.appendChild( li );
 					return true;
-				} else if ( localStorage ) {
+				} else {
+					$html.addClass( "wb-enable" );
 
-					// Store preference for WET plugins and polyfills to be enabled in localStorage
-					localStorage.setItem( "wbdisable", "false" );
+					if ( localStorage ) {
+
+						// Store preference for WET plugins and polyfills to be enabled in localStorage
+						localStorage.setItem( "wbdisable", "false" );
+					}
 				}
 			} catch ( error ) {
 			}
@@ -11453,16 +11393,45 @@ wb.add( selector );
 "use strict";
 
 var $document = wb.doc,
-	hash = wb.pageUrlParts.hash,
+	$window = wb.win,
 	clickEvents = "click vclick",
 	setFocusEvent = "setfocus.wb",
 	linkSelector = "a[href]",
-	$linkTarget;
+	$linkTarget,
+
+	/**
+	 * @method processHash
+	 */
+	processHash = function() {
+		var hash = wb.pageUrlParts.hash;
+
+		if ( hash && ( $linkTarget = $( "#" + wb.jqEscape( hash.substring( 1 ) ) ) ).length !== 0 ) {
+			$linkTarget.trigger( setFocusEvent );
+		}
+	};
 
 // Bind the setfocus event
 $document.on( setFocusEvent, function( event ) {
 	if ( event.namespace === "wb" ) {
-		var $elm = $( event.target );
+		var $elm = $( event.target ),
+			$closedParents = $elm.not( "summary" ).parents( "details, [role='tabpanel']" ),
+			$closedPanels, $closedPanel, len, i;
+
+		if ( $closedParents.length !== 0 ) {
+
+			// Open any closed ancestor details elements
+			$closedParents.not( "[open]" ).children( "summary" ).trigger( "click" );
+
+			// Open any closed tabpanels
+			$closedPanels = $closedParents.filter( "[aria-hidden='true']" );
+			len = $closedPanels.length;
+			for ( i = 0; i !== len; i += 1 ) {
+				$closedPanel = $closedPanels.eq( i );
+				$closedPanel.closest( ".wb-tabs" )
+					.find( "#" + $closedPanel.attr( "aria-labelledby" ) )
+						.trigger( "click" );
+			}
+		}
 
 		// Set the tabindex to -1 (as needed) to ensure the element is focusable
 		$elm
@@ -11487,9 +11456,15 @@ $document.on( setFocusEvent, function( event ) {
 
 // Set focus to the target of a deep link from a different page
 // (helps browsers that can't set the focus on their own)
-if ( hash && ( $linkTarget = $( hash ) ).length !== 0 ) {
-	$linkTarget.trigger( setFocusEvent );
-}
+$document.on( "wb-ready.wb", processHash );
+
+// Handle any changes to the URL hash after the page has loaded
+$window.on( "hashchange", function() {
+	wb.pageUrlParts.hash = window.location.hash;
+	if ( !wb.ignoreHashChange ) {
+		processHash();
+	}
+});
 
 // Helper for browsers that can't change keyboard and/or event focus on a same page link click
 $document.on( clickEvents, linkSelector, function( event ) {
@@ -11497,7 +11472,7 @@ $document.on( clickEvents, linkSelector, function( event ) {
 
 	// Same page links only
 	if ( testHref.charAt( 0 ) === "#" && !event.isDefaultPrevented() &&
-		( $linkTarget = $( testHref ) ).length !== 0 ) {
+		( $linkTarget = $( "#" + wb.jqEscape( testHref.substring( 0 ) ) ) ).length !== 0 ) {
 
 		$linkTarget.trigger( setFocusEvent );
 	}
