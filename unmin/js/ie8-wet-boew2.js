@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.10-development - 2015-01-08
+ * v4.0.10-development - 2015-01-10
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5650,16 +5650,26 @@ var componentName = "wb-lbx",
 							.first()
 							.attr( "id", "lbx-title" );
 					}
+
+					$content.attr( "aria-labelledby", "lbx-title" );
 				},
 				parseAjax: function( mfpResponse ) {
-					var urlHash = this.currItem.src.split( "#" )[ 1 ];
+					var urlHash = this.currItem.src.split( "#" )[ 1 ],
+						$response = $( "<div>" + mfpResponse.data + "</div>" );
 
 					// Provide the ability to filter the AJAX response HTML
 					// by the URL hash
 					// TODO: Should be dealt with upstream by Magnific Popup
 					if ( urlHash ) {
-						mfpResponse.data = $( "<div>" + mfpResponse.data + "</div>" ).find( "#" + wb.jqEscape( urlHash ) );
+						$response = $response.find( "#" + wb.jqEscape( urlHash ) );
 					}
+
+					$response
+						.find( ".modal-title, h1" )
+						.first()
+						.attr( "id", "lbx-title" );
+
+					mfpResponse.data = $response;
 				}
 			};
 		}
@@ -9882,15 +9892,15 @@ var componentName = "wb-tabs",
 						}
 					}
 				}
-			}
 
-			// Need timeout to account for Toggle changes
-			if ( isInit && !isSmallView && $elms.hasClass( tabsAccordionClass ) ) {
-				setTimeout(function() {
-					$elms
-						.removeAttr( "role" )
-						.find( nestedTglPanelSelector ).removeAttr( "role" );
-				}, 1 );
+				// Need timeout to account for Toggle changes
+				if ( isInit && !isSmallView && $elms.hasClass( tabsAccordionClass ) ) {
+					setTimeout(function() {
+						$elms
+							.removeAttr( "role" )
+							.find( nestedTglPanelSelector ).removeAttr( "role" );
+					}, 1 );
+				}
 			}
 
 			oldIsSmallView = isSmallView;

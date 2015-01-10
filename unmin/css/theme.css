@@ -11,12 +11,12 @@
  Global variables for GCWeb
  */
 /*
+Left menu variables
+*/
+/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-/*
-Left menu variables
-*/
 /*
 	Global Default Body styling
 */
@@ -631,9 +631,6 @@ html[lang='fr'].mediumview .fdbckpromo .accnt-prmry {
       background-color: #e6e6e6;
       color: black;
       padding-left: 1.8em; }
-  @media screen and (max-width: 991px) {
-    #wb-sec {
-      display: none; } }
 
 /*
  * Share/feedback-specific overrides
@@ -1063,6 +1060,9 @@ a.shr-opn, a.shr-opn:hover {
   @title: Small view and under (screen only)
  */
   /*
+ Secondary menu (Small view and under (screen only))
+ */
+  /*
  Banner (small view and under)
  */
   /*
@@ -1072,6 +1072,8 @@ a.shr-opn, a.shr-opn:hover {
   WET-BOEW
   @title: Search Small view and under (screen only)
  */
+  #wb-sec {
+    display: none; }
   header .brand a {
     margin-top: 10px; }
   .dshbrd details {
