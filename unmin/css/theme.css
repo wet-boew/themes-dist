@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * 4.0.10-development - 2015-01-10
+ * 4.0.10-development - 2015-01-13
  *
  */
 /*
@@ -1200,6 +1200,7 @@ a.shr-opn, a.shr-opn:hover {
   footer .brand object, footer .brand img {
     height: 25px;
     margin-top: 15px;
+    max-width: 100%;
     padding-right: 10px; }
   footer .tofpg {
     line-height: 60px; }
