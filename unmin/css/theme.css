@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * 4.0.10-development - 2015-01-13
+ * 4.0.10-development - 2015-01-20
  *
  */
 /*
@@ -82,30 +82,6 @@ h6, .h6 {
 
 .h3, .h4, .h5, .h6 {
   border: 0; }
-
-table {
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  width: 100%; }
-
-th {
-  background-color: #ccc;
-  border: 1px solid #ddd;
-  color: #000;
-  font-weight: normal;
-  padding: 8px; }
-  th a {
-    color: #000; }
-    th a:hover, th a:focus {
-      color: #000;
-      text-decoration: none; }
-
-td {
-  border: 1px solid #ddd;
-  padding: 8px; }
-
-caption {
-  font-weight: bold; }
 
 aside.site-related h2 {
   font-size: 28px;
