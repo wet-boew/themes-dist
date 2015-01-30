@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.10 - 2015-01-20
+ * v4.0.11-development - 2015-01-30
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4613,9 +4613,9 @@ var componentName = "wb-feeds",
 				data.fIcon + "' alt='" + author +
 				"' height='64px' width='64px' class='media-object'/></a><div class='media-body'>" +
 				"<h4 class='media-heading'><a href='" + data.link + "'><span class='wb-inv'>" +
-				title[ 0 ] + " - </span>" + author + "</a>  " +
-				( data.publishedDate !== "" ? " <small class='feeds-date text-right'>[" +
-				wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) +
+				title[ 0 ] + " - </span>" + author + "</a><br />" +
+				( data.publishedDate !== "" ? " <small class='feeds-date text-right'><time>" +
+				wb.date.toDateISO( data.publishedDate, true ) + "</time></small>" : "" ) +
 				"</h4><p>" + content + "</p></div></li>";
 		},
 
@@ -4675,8 +4675,8 @@ var componentName = "wb-feeds",
 		pinterest: function( data ) {
 			var content = fromCharCode( data.content ).replace(/<a href="\/pin[^"]*"><img ([^>]*)><\/a>([^<]*)(<a .*)?/, "<a href='" + data.link + "'><img alt='' class='center-block' $1><br/>$2</a>$3");
 			return "<li class='media'>" + content +
-			( data.publishedDate !== "" ? " <small class='small'>[" +
-			wb.date.toDateISO( data.publishedDate, true ) + "]</small>" : "" ) + "</li>";
+			( data.publishedDate !== "" ? " <small class='small feeds-date'><time>" +
+			wb.date.toDateISO( data.publishedDate, true ) + "</time></small>" : "" ) + "</li>";
 		},
 		/**
 		 * [generic template]
@@ -5935,7 +5935,7 @@ var componentName = "wb-menu",
 	createCollapsibleSection = function( section, sectionIndex, sectionsLength, $items, itemsLength ) {
 
 		// Use details/summary for the collapsible mechanism
-		var k, $elm, elm, $item, $subItems,
+		var k, $elm, elm, $item, $subItems, subItemsLength,
 			$section = $( section ),
 			posinset = "' aria-posinset='",
 			menuitem = "role='menuitem' aria-setsize='",
@@ -5950,7 +5950,10 @@ var componentName = "wb-menu",
 			$item = $items.eq( k );
 			$elm = $item.find( menuItemSelector );
 			elm = $elm[ 0 ];
-			if ( elm.nodeName.toLowerCase() === "a" ) {
+			$subItems = $elm.parent().find( "> ul > li" );
+			subItemsLength = $subItems.length;
+
+			if ( subItemsLength === 0 && elm.nodeName.toLowerCase() === "a" ) {
 				sectionHtml += "<li>" + $item[ 0 ].innerHTML.replace(
 						/(<a\s)/,
 						"$1 " + menuitem + itemsLength +
@@ -5958,7 +5961,6 @@ var componentName = "wb-menu",
 							"' tabindex='-1' "
 					) + "</li>";
 			} else {
-				$subItems = $elm.parent().find( "> ul > li" );
 				sectionHtml += createCollapsibleSection( elm, k, itemsLength, $subItems, $subItems.length );
 			}
 		}
@@ -10961,8 +10963,8 @@ $document.on( clickEvents, linkSelector, function( event ) {
 
 	// Same page links only
 	if ( testHref.charAt( 0 ) === "#" && !event.isDefaultPrevented() &&
-		( $linkTarget = $( "#" + wb.jqEscape( testHref.substring( 0 ) ) ) ).length !== 0 ) {
-
+		( $linkTarget = $( "#" + wb.jqEscape( testHref.substring( 1 ) ) ) ).length !== 0 ) {
+		wb.ignoreHashChange = true;
 		$linkTarget.trigger( setFocusEvent );
 	}
 });
