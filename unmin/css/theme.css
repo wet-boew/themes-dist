@@ -35,6 +35,34 @@
 /*
  Views
  */
+/* All views */
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+/*
+  @title: All views
+ */
+#wb-bc li:first-child:before, [dir=rtl] #wb-bc li:before, [dir=rtl] #wb-bc li:first-child:after {
+  content: none;
+  padding: 0; }
+
+#wb-bc .breadcrumb {
+  background: transparent;
+  margin-bottom: 0; }
+#wb-bc li:before, #wb-bc li:after {
+  color: #333;
+  font-family: "Glyphicons Halflings";
+  font-size: 0.7em; }
+#wb-bc li:before {
+  content: "\e092"; }
+
+[dir=rtl] #wb-bc li:after {
+  content: "\e091";
+  padding: 0 5px; }
+
 /* All screen views */
 @media screen {
   /*
@@ -50,9 +78,6 @@
     text-decoration: none; }
   #wb-sttl a a:hover, #wb-sttl a a:focus {
     text-decoration: underline; }
-  #wb-bc li:first-child:before, [dir=rtl] #wb-bc li:before, [dir=rtl] #wb-bc li:first-child:after {
-    content: none;
-    padding: 0; }
   body > header {
     background: #ccc; }
   .wb-sl {
@@ -103,22 +128,10 @@
       font-weight: 400; }
     #wb-sm .sm .slflnk a {
       background: #bbb; }
-  #wb-bc .breadcrumb {
-    background: transparent;
-    margin-bottom: 0; }
-  #wb-bc li:before, #wb-bc li:after {
-    color: #333;
-    font-family: "Glyphicons Halflings";
-    font-size: 0.7em; }
-  #wb-bc li:before {
-    content: "\e092"; }
   #wb-dtmd {
     float: right; }
   #wb-info li {
     margin-bottom: 0.75em; }
-  [dir=rtl] #wb-bc li:after {
-    content: "\e091";
-    padding: 0 5px; }
   [dir=rtl] #wb-dtmd {
     float: left; }
   [dir=rtl] #wb-sec .list-group .list-group .list-group-item {
