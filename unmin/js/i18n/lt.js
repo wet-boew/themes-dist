@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Padidinti dabartinę vietą",
 	"geo-geoloc-fail": "Vieta nepavyko. Prašome užtikrinti, kad vietos nustatymo paslaugos yra įjungtas.",
 	"geo-geoloc-uncapable": "Lokalizacijos nepalaikomas jūsų naršyklėje.",
+	"geo-lgnd-grphc": "Legenda grafinis už žemėlapio sluoksnį.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Pagrindinė HTML versija",
 	"wb-enable": "Standartinė versija",

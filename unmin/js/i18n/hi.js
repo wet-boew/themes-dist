@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "वर्तमान स्थान पर ज़ूम",
 	"geo-geoloc-fail": "स्थान में विफल रहा है. स्थान सेवाएं सक्षम रहे हैं कि कृपया सुनिश्चित करें.",
 	"geo-geoloc-uncapable": "स्थानीयकरण आपके ब्राउज़र द्वारा समर्थित नहीं है.",
+	"geo-lgnd-grphc": "नक्शा परत के लिए लीजेंड ग्राफिक।",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "मूल HTML संस्करण",
 	"wb-enable": "मानक संस्करण",
