@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Zoom auf die aktuelle Lage",
 	"geo-geoloc-fail": "Lage fehlgeschlagen. Bitte stellen Sie sicher, dass die Ortungsdienste aktiviert sind.",
 	"geo-geoloc-uncapable": "Der Ort ist nicht von Ihrem Browser unterstützt.",
+	"geo-lgnd-grphc": "Legende Grafik für Karten-Layer.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Grundlegende HTML-Version",
 	"wb-enable": "Standardausführung",

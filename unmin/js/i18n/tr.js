@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Geçerli konuma yakınlaştırma",
 	"geo-geoloc-fail": "Yer başarısız oldu. Yer hizmetleri etkin olduğundan emin olun.",
 	"geo-geoloc-uncapable": "Yerelleştirme tarayıcınız tarafından desteklenmiyor.",
+	"geo-lgnd-grphc": "Harita katmanı için efsane grafik.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Basit HTML sürümü",
 	"wb-enable": "Standart sürüm",

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Մեծացնել ձեր զբաղեցրած պաշտոնը",
 	"geo-geoloc-fail": "Որտեղից ձախողվեց. Խնդրում ենք համոզվել, որ այդ վայրում ծառայություններ հնարավորություն.",
 	"geo-geoloc-uncapable": "Տեղայնացման չի ապահովվում է ձեր բրոուզերում.",
+	"geo-lgnd-grphc": "Լեգենդ արվեստ քարտեզ շերտ.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "հիմնական HTML տարբերակ",
 	"wb-enable": "Դնել",

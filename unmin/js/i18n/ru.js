@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Увеличить к текущему местоположению",
 	"geo-geoloc-fail": "Расположение не удалось. Пожалуйста, убедитесь, что услуги определения местоположения включены.",
 	"geo-geoloc-uncapable": "Локализация не поддерживается браузером.",
+	"geo-lgnd-grphc": "Легенда графика для слоя карты.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Базовая версия HTML",
 	"wb-enable": "Стандартная версия",

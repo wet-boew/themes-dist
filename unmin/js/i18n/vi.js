@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Phóng to đến vị trí hiện tại",
 	"geo-geoloc-fail": "Vị trí thất bại. Hãy đảm bảo rằng dịch vụ định vị được kích hoạt.",
 	"geo-geoloc-uncapable": "Nội địa hóa không được hỗ trợ bởi trình duyệt của bạn.",
+	"geo-lgnd-grphc": "Truyền thuyết đồ họa cho các lớp bản đồ.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Phiên bản HTML cơ bản",
 	"wb-enable": "Phiên bản tiêu chuẩn",

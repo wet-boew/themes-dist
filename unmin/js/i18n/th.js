@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "ขยายไปยังสถานที่ปัจจุบัน",
 	"geo-geoloc-fail": "ที่ล้มเหลว โปรดตรวจสอบว่าบริการสถานที่มีการใช้งาน",
 	"geo-geoloc-uncapable": "ท้องถิ่นไม่ได้รับการสนับสนุนโดยเบราว์เซอร์ของคุณ",
+	"geo-lgnd-grphc": "กราฟิกตำนานสำหรับชั้นแผนที่",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "เวอร์ชันพื้นฐานของ HTM​​L",
 	"wb-enable": "รุ่นมาตรฐาน",

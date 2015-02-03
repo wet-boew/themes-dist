@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Zoom ke lokasi saat ini",
 	"geo-geoloc-fail": "Lokalisasi gagal. Pastikan bahwa layanan lokasi diaktifkan.",
 	"geo-geoloc-uncapable": "Lokalisasi tidak didukung oleh browser Anda.",
+	"geo-lgnd-grphc": "Legenda grafis untuk layer peta.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Versi HTML dasar",
 	"wb-enable": "Versi standar",

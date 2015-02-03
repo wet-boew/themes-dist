@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-01-30
+ * v4.0.11-development - 2015-02-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -206,6 +206,7 @@ wb.i18nDict = {
 	"geo-geoloc-btn": "Priblížiť sa k aktuálnej polohe",
 	"geo-geoloc-fail": "Lokalita zlyhalo. Uistite sa, že umiestnenie služby sú povolené.",
 	"geo-geoloc-uncapable": "Lokalizácia nie je podporovaná vo vašom prehliadači.",
+	"geo-lgnd-grphc": "Legenda grafický pre mapovú vrstvu.",
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Základné HTML verzia",
 	"wb-enable": "Štandardná verzia",
