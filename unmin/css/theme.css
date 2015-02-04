@@ -1271,7 +1271,7 @@ a.shr-opn, a.shr-opn:hover {
   /*
  Social Media Icons Print view
 */
-  .features, .glyphicon, #wb-lng, #wb-glb-mn, #wb-srch, #wb-sm, #wb-info, .tofpg, #wb-sm, #wb-srch, #wb-sec, .pagedetails .btn, .followus {
+  .features, #wb-lng, #wb-glb-mn, #wb-srch, #wb-sm, #wb-info, .tofpg, #wb-sm, #wb-srch, #wb-sec, .pagedetails .btn, .followus {
     display: none !important; }
   header .brand {
     margin-bottom: 0; }
