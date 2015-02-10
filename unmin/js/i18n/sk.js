@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-04
+ * v4.0.11-development - 2015-02-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "sk",
 	"lang-native": "Slovenčina",
+	add: "Pridať",
 	all: "Všetko",
 	tphp: "Na začiatok stránky",
 	load: "nakladanie ...",
@@ -200,7 +201,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Východ",
 	"geo-aoi-south": "Na juh",
 	"geo-aoi-west": "Západ",
-	"geo-aoi-instructions": "Vymedziť oblasť na mape alebo zadajte údaje nižšie a potom kliknite na tlačidlo \"Kresliť\".",
+	"geo-aoi-instructions": "Nakreslite rámček na mape alebo zadajte súradnice nižšie a kliknite na tlačidlo \"Pridať\".",
 	"geo-aoi-btndraw": "Kresliť",
 	"geo-aoi-btnclear": "Odstrániť",
 	"geo-geoloc-btn": "Priblížiť sa k aktuálnej polohe",

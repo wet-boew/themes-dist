@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-04
+ * v4.0.11-development - 2015-02-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "nl",
 	"lang-native": "Nederlands",
+	add: "Toevoegen",
 	all: "Allen",
 	tphp: "Bovenkant pagina",
 	load: "het laden van ...",
@@ -200,7 +201,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Oosten",
 	"geo-aoi-south": "Zuiden",
 	"geo-aoi-west": "Westen",
-	"geo-aoi-instructions": "Bakenen een gebied op de kaart of voer de onderstaande informatie in en klik op de \"Trekken\" button.",
+	"geo-aoi-instructions": "Bakenen een gebied op de kaart of voer de onderstaande informatie in en klik op de \"Toevoegen\" button.",
 	"geo-aoi-btndraw": "Trekken",
 	"geo-aoi-btnclear": "Verwijderen",
 	"geo-geoloc-btn": "Zoomen naar onderdeel",

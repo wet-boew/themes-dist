@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-04
+ * v4.0.11-development - 2015-02-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "th",
 	"lang-native": "ภาษาไทย",
+	add: "เพิ่ม",
 	all: "ทั้งหมด",
 	tphp: "ด้านบนของหน้า",
 	load: "โหลด ...",
@@ -200,7 +201,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "ทางทิศตะวันออก",
 	"geo-aoi-south": "ใต้",
 	"geo-aoi-west": "ทิศตะวันตก",
-	"geo-aoi-instructions": "กำหนดพื้นที่บนแผนที่หรือกรอกรายละเอียดด้านล่างนี้แล้วคลิกที่ \"วาด\" ปุ่ม",
+	"geo-aoi-instructions": "วาดกล่องบนแผนที่หรือป้อนพิกัดด้านล่างและคลิกที่ปุ่ม \"เพิ่ม\"",
 	"geo-aoi-btndraw": "วาด",
 	"geo-aoi-btnclear": "เอาออก",
 	"geo-geoloc-btn": "ขยายไปยังสถานที่ปัจจุบัน",
