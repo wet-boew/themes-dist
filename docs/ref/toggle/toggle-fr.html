@@ -219,21 +219,21 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <p>If details elements are used for the accordion sections, the HTML should look like the following once finished:</p>
 <pre class="linenums"><code>&lt;div class="accordion"&gt;
 	
-	   &lt;!-- Accordion section 1 --&gt;
-	   &lt;details class="acc-group"&gt;
-	      &lt;summary class="wb-toggle tgl-tab" data-toggle='{"parent": ".accordion", "group": ".acc-group"}'&gt;Section 1's heading&lt;/summary&gt;
-	      &lt;div class="tgl-panel"&gt;
-	         &lt;!-- Section 1's content --&gt;
-	      &lt;/div&gt;
-	   &lt;/details&gt;
+		&lt;!-- Accordion section 1 --&gt;
+		&lt;details class="acc-group"&gt;
+			&lt;summary class="wb-toggle tgl-tab" data-toggle='{"parent": ".accordion", "group": ".acc-group"}'&gt;Section 1's heading&lt;/summary&gt;
+			&lt;div class="tgl-panel"&gt;
+				&lt;!-- Section 1's content --&gt;
+			&lt;/div&gt;
+		&lt;/details&gt;
 	
-	   &lt;!-- Accordion section 2 --&gt;
-	   &lt;details class="acc-group"&gt;
-	      &lt;summary class="wb-toggle tgl-tab" data-toggle='{"parent": ".accordion", "group": ".acc-group"}'&gt;Section 2's heading&lt;/summary&gt;
-	      &lt;div class="tgl-panel"&gt;
-	         &lt;!-- Section 2's content --&gt;
-	      &lt;/div&gt;
-	   &lt;/details&gt;
+		&lt;!-- Accordion section 2 --&gt;
+		&lt;details class="acc-group"&gt;
+			&lt;summary class="wb-toggle tgl-tab" data-toggle='{"parent": ".accordion", "group": ".acc-group"}'&gt;Section 2's heading&lt;/summary&gt;
+			&lt;div class="tgl-panel"&gt;
+				&lt;!-- Section 2's content --&gt;
+			&lt;/div&gt;
+		&lt;/details&gt;
 	
 	&lt;/div&gt;</code></pre>
 </section>
@@ -348,6 +348,21 @@ Specify the type. Only "on" or "off" are supported:[{htmlmin-lb}]<pre><code>&lt;
 </td>
 </tr>
 <tr>
+<td><code>state</code> (v4.0.11+)</td>
+<td>Sets the initial state of a toggle element</td>
+<td>
+Specify the initial state. Only "on" or "off" are supported:[{htmlmin-lb}]<pre><code>&lt;span class="wb-toggle" data-toggle="{'state': 'on'}"&gt;</code></pre>
+</td>
+<td>
+<dl>
+<dt>"off" (default):</dt>
+<dd>Toggle element initial state is "off"</dd>
+<dt>"on":</dt>
+<dd>Toggle element initial state is "on"</dd>
+</dl>
+</td>
+</tr>
+<tr>
 <td><code>stateOn</code></td>
 <td>CSS class that's added to elements when they are toggled on.</td>
 <td>
@@ -413,7 +428,7 @@ Specify a CSS class name without the leading "."[{htmlmin-lb}]<pre><code>&lt;spa
 <td>
 Causes a toggle element to change the toggle state of the elements it controls. Normally triggered by clicking on the toggle element. When triggering this event manually, the data-toggle attribute must be passed as the second argument:[{htmlmin-lb}]<pre><code>// Get a reference to the toggle element and its settings
 	var $toggler = $( ".wb-toggle" );
-	    settings = $toggler.data( "toggle" );
+		 settings = $toggler.data( "toggle" );
 	
 	// Trigger the toggle event
 	$toggler.trigger( "toggle.wb-toggle", settings );</code></pre>
@@ -437,7 +452,7 @@ Causes a toggle element to change the toggle state of the elements it controls. 
 </div>
 <dl id="wb-dtmd">
 <dt>Date de modification&#160;:&#32;</dt>
-<dd><time property="dateModified">2014-08-06</time></dd>
+<dd><time property="dateModified">2015-02-03</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
@@ -454,7 +469,7 @@ Causes a toggle element to change the toggle state of the elements it controls. 
 <h3>À propos</h3>
 <ul class="list-unstyled">
 <li><a href="../../../index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
-<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
+<li><a rel="external" href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
 </ul>
 </section>
 <section class="col-sm-3">
@@ -467,7 +482,7 @@ Causes a toggle element to change the toggle state of the elements it controls. 
 <section class="col-sm-3">
 <h3>Restez branchés</h3>
 <ul class="list-unstyled">
-<li><a href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
+<li><a rel="external" href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
 </ul>
 </section>
 </nav>

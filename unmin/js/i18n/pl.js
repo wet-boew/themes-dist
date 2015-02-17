@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "pl",
 	"lang-native": "Język polski",
+	add: "Ddać",
 	all: "Wszystko",
 	tphp: "Góra strony",
 	load: "ładowanie ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Poprzedni (klawisz strzałka w lewo)",
 	first: "Pierwszy",
 	last: "Ostatni",
+	page: "Page",
 	"srch-menus": "Wyszukaj i menu",
 	email: "Email",
 	"menu-close": "Zamknij menu",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Wschód",
 	"geo-aoi-south": "Południe",
 	"geo-aoi-west": "Zachód",
-	"geo-aoi-instructions": "Wyznaczać obszar na mapie lub wprowadzić dane poniżej&#44; a następnie kliknij na przycisk \"Rysować\".",
+	"geo-aoi-instructions": "Narysuj pole na mapie lub wprowadź współrzędne poniżej i kliknij na przycisk \"Dodaj\".",
 	"geo-aoi-btndraw": "Rysować",
 	"geo-aoi-btnclear": "Usunąć",
 	"geo-geoloc-btn": "Powiększyć się do bieżącej lokalizacji",

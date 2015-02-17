@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "el",
 	"lang-native": "Ελληνικά",
+	add: "Προσθήκη",
 	all: "Όλα",
 	tphp: "Επιστροφή στην αρχή της σελίδα",
 	load: "φόρτωση ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Προηγούμενος (αριστερό πλήκτρο βέλους)",
 	first: "Πρώτα",
 	last: "Τελευταίος",
+	page: "Page",
 	"srch-menus": "Αναζήτηση και μενού",
 	email: "E-mail",
 	"menu-close": "Κλείστε το μενού",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Ανατολή",
 	"geo-aoi-south": "Νότια",
 	"geo-aoi-west": "Δύση",
-	"geo-aoi-instructions": "Σκιαγραφούν μια περιοχή στο χάρτη ή πληκτρολογήστε τις λεπτομέρειες παρακάτω&#44; στη συνέχεια&#44; κάντε κλικ στο κουμπί \"Κλήρωση\".",
+	"geo-aoi-instructions": "Σχεδιάστε το πλαίσιο στο χάρτη ή πληκτρολογήστε τις συντεταγμένες παρακάτω και κάντε κλικ στο κουμπί \"Προσθήκη\".",
 	"geo-aoi-btndraw": "Κλήρωση",
 	"geo-aoi-btnclear": "Κατάργηση",
 	"geo-geoloc-btn": "Ζουμ στην τρέχουσα θέση",

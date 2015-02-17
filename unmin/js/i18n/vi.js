@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "vi",
 	"lang-native": "Tiếng Việt",
+	add: "thêm vào",
 	all: "Tất cả",
 	tphp: "Trở về đầu trang",
 	load: "tải ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Trang trước (phím mũi tên trái)",
 	first: "Đầu tiên",
 	last: "Cuối cùng",
+	page: "Page",
 	"srch-menus": "Tìm kiếm và thực đơn",
 	email: "Email",
 	"menu-close": "Đóng menu",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Đông",
 	"geo-aoi-south": "Nam",
 	"geo-aoi-west": "Tây",
-	"geo-aoi-instructions": "Phân định một khu vực trên bản đồ hoặc nhập các chi tiết bên dưới sau đó nhấn vào \"Vẽ\" nút.",
+	"geo-aoi-instructions": "Vẽ hộp trên bản đồ hoặc nhập tọa độ bên dưới và nhấp vào nút \"Add\".",
 	"geo-aoi-btndraw": "Vẽ",
 	"geo-aoi-btnclear": "Hủy bỏ",
 	"geo-geoloc-btn": "Phóng to đến vị trí hiện tại",

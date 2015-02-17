@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "ar",
 	"lang-native": "العربية",
+	add: "إضافة",
 	all: "جميع",
 	tphp: "أعلى الصفحة",
 	load: "   تحميل ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "مفتاح السهم الأيسر - سابق",
 	first: "الأول",
 	last: "آخر",
+	page: "Page",
 	"srch-menus": "البحث والقوائم",
 	email: "البريد الإلكتروني",
 	"menu-close": "إغلاق القائمة",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "شرق",
 	"geo-aoi-south": "جنوب",
 	"geo-aoi-west": "غرب",
-	"geo-aoi-instructions": "تحدد مساحة على الخريطة أو أدخل التفاصيل أدناه ثم انقر على زر \"رسم\".",
+	"geo-aoi-instructions": "مربع رسم على الخريطة أو أدخل إحداثيات أدناه وانقر على زر \"إضافة\".",
 	"geo-aoi-btndraw": "رسم",
 	"geo-aoi-btnclear": "نزع",
 	"geo-geoloc-btn": "التكبير لموقعك الحالي",
