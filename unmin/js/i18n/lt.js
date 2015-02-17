@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "lt",
 	"lang-native": "Lietuvių kalba",
+	add: "papildyti",
 	all: "Visi",
 	tphp: "Puslapio viršus",
 	load: "pakrovimo ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Ankstenis (rodyklės dešinėn klavišu)",
 	first: "Pirmasis",
 	last: "Paskutinis",
+	page: "Page",
 	"srch-menus": "Ieškoti ir meniu",
 	email: "El. paštas",
 	"menu-close": "Uždaryti meniu",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Rytų",
 	"geo-aoi-south": "Į pietus",
 	"geo-aoi-west": "Vakarai",
-	"geo-aoi-instructions": "Apibrėžti sritį žemėlapyje arba įveskite žemiau pateiktus duomenis&#44; tada spustelėkite \"Atkreipti\" mygtuką.",
+	"geo-aoi-instructions": "Lygiosios langelį žemėlapyje arba įveskite koordinates žemiau ir spustelėkite mygtuką \"Pridėti\".",
 	"geo-aoi-btndraw": "Atkreipti",
 	"geo-aoi-btnclear": "Pašalinti",
 	"geo-geoloc-btn": "Padidinti dabartinę vietą",

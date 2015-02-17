@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "hi",
 	"lang-native": "मानक हिन्दी",
+	add: "जोड़ना",
 	all: "सब",
 	tphp: "पृष्ठ का शीर्ष",
 	load: "लोड हो रहा है ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "पिछला (बाएँ तीर कुंजी)",
 	first: "पहले",
 	last: "अंतिम",
+	page: "Page",
 	"srch-menus": "खोज और मेनू",
 	email: "ईमेल",
 	"menu-close": "मेनू बंद",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "पूर्व",
 	"geo-aoi-south": "दक्षिण",
 	"geo-aoi-west": "पश्चिम",
-	"geo-aoi-instructions": "मानचित्र पर एक क्षेत्र चित्रित करना या नीचे विवरण दर्ज तो \"खींचना\" बटन पर क्लिक करें.",
+	"geo-aoi-instructions": "मानचित्र पर बॉक्स आकर्षित या नीचे निर्देशांक दर्ज करें और \"जोड़ें\" बटन पर क्लिक करें।",
 	"geo-aoi-btndraw": "खींचना",
 	"geo-aoi-btnclear": "हटाना",
 	"geo-geoloc-btn": "वर्तमान स्थान पर ज़ूम",

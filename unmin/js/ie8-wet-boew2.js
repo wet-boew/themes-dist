@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5953,7 +5953,7 @@ var componentName = "wb-menu",
 			$subItems = $elm.parent().find( "> ul > li" );
 			subItemsLength = $subItems.length;
 
-			if ( subItemsLength === 0 && elm.nodeName.toLowerCase() === "a" ) {
+			if ( elm && subItemsLength === 0 && elm.nodeName.toLowerCase() === "a" ) {
 				sectionHtml += "<li>" + $item[ 0 ].innerHTML.replace(
 						/(<a\s)/,
 						"$1 " + menuitem + itemsLength +
@@ -6650,6 +6650,8 @@ var componentName = "wb-mltmd",
 	templateLoadedEvent = "templateloaded" + selector,
 	cuepointEvent = "cuepoint" + selector,
 	captionClass = "cc_on",
+	multimediaEvents = "durationchange playing pause ended volumechange timeupdate waiting canplay progress" +
+			captionsLoadedEvent + " " + captionsLoadFailedEvent + " " + captionsVisibleChangeEvent + " " + cuepointEvent,
 	$document = wb.doc,
 	$window = wb.win,
 
@@ -7372,9 +7374,7 @@ $document.on( renderUIEvent, selector, function( event, type ) {
 		data.player = $player.is( "object" ) ? $player.children( ":first-child" ) : $player;
 
 		// Create an adapter for the event management
-		data.player.on( "durationchange play pause ended volumechange timeupdate " +
-			captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
-			captionsVisibleChangeEvent + " waiting canplay progress", function( event ) {
+		data.player.on( multimediaEvents, function( event ) {
 			$this.trigger( event );
 		});
 
@@ -7434,7 +7434,7 @@ $document.on( "click", selector, function( event ) {
 	// from the child span not the parent button, forcing us to have to check for both elements
 	// JSPerf for multiple class matching http://jsperf.com/hasclass-vs-is-stackoverflow/7
 	if ( className.match( /playpause|-play|-pause|wb-mm-ovrly/ ) || $target.is( "object" ) ) {
-		this.player( "getPaused" ) ? this.player( "play" ) : this.player( "pause" );
+		this.player( "getPaused" ) || this.player( "getEnded" ) ? this.player( "play" ) : this.player( "pause" );
 	} else if ( className.match( /\bcc\b|-subtitles/ )  ) {
 		this.player( "setCaptionsVisible", !this.player( "getCaptionsVisible" ) );
 	} else if ( className.match( /\bmute\b|-volume-(up|off)/ ) ) {
@@ -7516,11 +7516,7 @@ $document.on( "wb-activate", selector, function( event ) {
     $this.find( ctrls + " .playpause" ).trigger( "click" );
 });
 
-$document.on( "durationchange play pause ended volumechange timeupdate " +
-	captionsLoadedEvent + " " + captionsLoadFailedEvent + " " +
-	captionsVisibleChangeEvent + " " + cuepointEvent +
-	" waiting canplay", selector, function( event, simulated ) {
-
+$document.on( multimediaEvents, selector, function( event, simulated ) {
 	var eventTarget = event.currentTarget,
 		eventType = event.type,
 		eventNamespace = event.namespace,
@@ -7529,10 +7525,10 @@ $document.on( "durationchange play pause ended volumechange timeupdate " +
 		invEnd = "</span>",
 		currentTime, $button, $slider, buttonData, isPlay, isMuted, isCCVisible, ref, skipTo, volume;
 	switch ( eventType ) {
-	case "play":
+	case "playing":
 	case "pause":
 	case "ended":
-		isPlay = eventType === "play";
+		isPlay = eventType === "playing";
 		$button = $this.find( ".playpause" );
 		buttonData = $button.data( "state-" + ( isPlay ? "off" : "on" ) );
 		if ( isPlay ) {
@@ -9092,6 +9088,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @jeresiv
  */
+ /*jshint scripturl:true*/
 (function( $, window, wb ) {
 "use strict";
 
@@ -9148,7 +9145,8 @@ var componentName = "wb-tables",
 						first: i18n( "first" ),
 						last: i18n( "last" ),
 						next: i18n( "nxt" ),
-						previous: i18n( "prv" )
+						previous: i18n( "prv" ),
+						page: i18n( "page" )
 					},
 					processing: i18n( "process" ),
 					search: i18n( "filter" ),
@@ -9238,10 +9236,16 @@ $document.on( "init.dt draw.dt", selector, function( event, settings ) {
 
 	// Update the aria-pressed properties on the pagination buttons
 	// Should be pushed upstream to DataTables
-	$( ".dataTables_paginate a" )
-		.attr( "role", "button" )
+	$elm.next( ".bottom" ).find( ".paginate_button" )
+		.attr({
+			"role": "button",
+			"href": "javascript:;"
+		})
 		.not( ".previous, .next" )
 			.attr( "aria-pressed", "false" )
+			.html( function(index) {
+				return "<span class='wb-inv'>" + i18nText.paginate.page + " </span>" + ( index + 1 ) ;
+			})
 			.filter( ".current" )
 				.attr( "aria-pressed", "true" );
 
@@ -10032,7 +10036,11 @@ var componentName = "wb-tabs",
 
 			// If the target is a tab
 			if ( elm.getAttribute( "role" ) === "tab" ) {
-				onPick( $sldr, $elm );
+
+				// Only change the tabpanel if the tab is not currently selected
+				if ( elm.getAttribute( "aria-selected" ) !== "true" ) {
+					onPick( $sldr, $elm );
+				}
 
 				// Put focus on the tab panel if the enter key or space bar are used
 				if ( which === 13 || which === 32 ) {
@@ -10142,8 +10150,11 @@ $document.on( activateEvent, selector + " > .tabpanels > details > summary", fun
 			updateHash( details );
 		}
 
-		// Identify that the tabbed interface was updated
-		$container.trigger( updatedEvent, [ $details ] );
+		// Identify that the tabbed interface accordion was updated
+		// if the panel was not already open
+		if ( !$details.attr( "open" ) ) {
+			$container.trigger( updatedEvent, [ $details ] );
+		}
 	}
 });
 
@@ -10293,6 +10304,10 @@ var componentName = "wb-toggle",
 				initPrint( $link, data );
 			}
 
+			if ( data.state ) {
+				setState( $link, data, data.state );
+			}
+
 			// Identify that initialization has completed
 			wb.ready( $link, componentName );
 		}
@@ -10422,7 +10437,7 @@ var componentName = "wb-toggle",
 	 * @param {jQuery Event} event The event that triggered this invocation
 	 */
 	click = function( event ) {
-		var $link = $( event.target );
+		var $link = $( event.currentTarget );
 
 		$link.trigger( toggleEvent, $link.data( "toggle" ) );
 		event.preventDefault();

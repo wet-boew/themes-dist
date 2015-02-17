@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-02
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "id",
 	"lang-native": "Bahasa Indonesia",
+	add: "Menambahkan",
 	all: "Semua",
 	tphp: "Halaman Atas",
 	load: "memuat ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Sebelumnya (tombol panah kiri)",
 	first: "Pertama",
 	last: "Terakhir",
+	page: "Page",
 	"srch-menus": "Cari dari menu",
 	email: "Email",
 	"menu-close": "Tutup menu",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Timur",
 	"geo-aoi-south": "Selatan",
 	"geo-aoi-west": "Barat",
-	"geo-aoi-instructions": "Menggambarkan sebuah area pada peta atau masukkan rincian di bawah ini kemudian klik pada \"Menarik\" tombol.",
+	"geo-aoi-instructions": "Menggambar kotak pada peta atau masukkan koordinat di bawah ini dan klik tombol \"Add\".",
 	"geo-aoi-btndraw": "Menarik",
 	"geo-aoi-btnclear": "Menghapus",
 	"geo-geoloc-btn": "Zoom ke lokasi saat ini",
