@@ -124,15 +124,15 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	<nav role="navigation" id="wb-sm" data-ajax-fetch="../../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 		<div class="container nvbar">
 	<h2>Menu des sujets</h2>
-    <div class="row">
-        <ul class="list-inline menu">
+	<div class="row">
+		<ul class="list-inline menu">
 
 			<li><a href="../../../index-fr.html">Projet de la BOEW</a></li>
 			<li><a href="../../../docs/start-fr.html#implement">Mise en œuvre de la BOEW</a></li>
 			<li><a href="../../../docs/start-fr.html">Contribuer à la BOEW</a></li>
 
-        </ul>
-    </div>
+		</ul>
+	</div>
 </div>
 
 	</nav>
@@ -194,7 +194,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	
 
 
-			
+		
 <span class="wb-prettify all-pre hide"></span>
 
 <div lang="en">
@@ -241,20 +241,20 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	<h3>Example implementation markup</h3>
 	<pre><code>&lt;-- Add plugin with optional position widget --&gt;
 &lt;div id="mygeomap" class="wb-geomap position"&gt;
-    &lt;div class="row"&gt;
-        &lt;div class="col-md-9"&gt;
-            &lt;div class="wb-geomap-map"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;-- Add optional map legend --&gt;
-        &lt;div class="wb-geomap-legend col-md-3"&gt;
-            &lt;h2&gt;Legend&lt;/h2&gt;
-            &lt;-- Geomap will insert legend here --&gt;
-        &lt;/div&gt;
-        &lt;div class="row"&gt;
-            &lt;-- Add placeholder for overlays --&gt;
-            &lt;div class="wb-geomap-layers col-md-12"&gt;&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+	&lt;div class="row"&gt;
+		&lt;div class="col-md-9"&gt;
+			&lt;div class="wb-geomap-map"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;-- Add optional map legend --&gt;
+		&lt;div class="wb-geomap-legend col-md-3"&gt;
+			&lt;h2&gt;Legend&lt;/h2&gt;
+			&lt;-- Geomap will insert legend here --&gt;
+		&lt;/div&gt;
+		&lt;div class="row"&gt;
+			&lt;-- Add placeholder for overlays --&gt;
+			&lt;div class="wb-geomap-layers col-md-12"&gt;&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
 &lt;/div&gt;</code></pre>
 <!--
 	<section>
@@ -272,9 +272,9 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
         {
             title: 'KML Demo EN',
             caption: 'This is a sample KML file loaded locally by Geomap.',
-	    type: 'kml',
-	    url: 'data/sample.kml',
-	    visible: true
+        type: 'kml',
+        url: 'data/sample.kml',
+        visible: true
         },
         {
             ...
@@ -385,7 +385,10 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
   } );
 
 });
-							</code></pre></td>
+							</code></pre><p>Le widget "zone d'intérêt" peut être configuré de sorte qu'il est activé par défaut en définissant, dans le module d'extension, la propriété <code>data-wb-geomap</code> à "false"</p>
+							<pre><code>&lt;div id="mygeomap" class="wb-geomap" data-wb-geomap='{ ... "aoi": { "toggle": false } ... }'&gt; ... &lt;/div&gt;</code></pre>
+							<p>Le widget "zone d'intérêt" peut être configuré avec une étendue initiale en définissant, dans le module d'extension, la propriété <code>extent</code> de l'attribut <code>data-wb-geomap</code>.</p>
+							<pre><code>&lt;div id="mygeomap" class="wb-geomap" data-wb-geomap='{ ... "aoi": { "toggle": false, , "extent": "-57, 46, -51, 50" } ... }'&gt; ... &lt;/div&gt;</code></pre></td>
 					</tr>
 					<tr>
 						<td><code>geocoder</code></td>
@@ -533,7 +536,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 			</ol>
 
 			<h5>Inline HTML table configuration</h5>
-			<p>Geomap requires a <code>data-geometry</code> attribute with feature geometry encoded in <strong>Well Known Text (WKT)</strong> or as a bounding box extent with lower left  and upper right coordinate pairs, and a <code>data-type</code> attribute that specifies the encoding as either <code>wkt</code> or <code>bbox</code>.</p>
+			<p>Geomap requires a <code>data-geometry</code> attribute with feature geometry encoded in <strong>Well Known Text (WKT)</strong> or as a bounding box extent with lower left and upper right coordinate pairs, and a <code>data-type</code> attribute that specifies the encoding as either <code>wkt</code> or <code>bbox</code>.</p>
 			<section>
 				<h5>WKT examples</h5>
 				<pre><code>&lt;tr data-geometry="POINT (-114.05879, 51.04668)" data-type="wkt"&gt; ... &lt;/tr&gt;</code></pre>
@@ -550,34 +553,34 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 			<section>
 				<h5>Inline HTML table configuration example</h5>
 				<pre><code>&lt;table id="cities" aria-label="Cities"&gt;
-    &lt;caption&gt;Major cities in Canada.&lt;/caption&gt;
-    &lt;thead&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Rank&lt;/th&gt;
-            &lt;th&gt;Census subdivision&lt;/th&gt;
-            &lt;th&gt;Population 2011&lt;/th&gt;
-        &lt;/tr&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-        &lt;tr data-geometry="POINT (-79.3847, 43.6476)" data-type="wkt"&gt;
-            &lt;td&gt;1&lt;/td&gt;
-            &lt;td class="select"&gt;
-                &lt;a href="../Toronto" title="Toronto"&gt;Toronto&lt;/a&gt;
-            &lt;/td&gt;
-            &lt;td&gt;2615060&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr data-geometry="POINT (-73.56123, 45.52927)" data-type="wkt"&gt;
-            &lt;td&gt;2&lt;/td&gt;
-            &lt;td class="select"&gt;
-                &lt;a href="../Montreal" title="Montreal"&gt;Montreal&lt;/a&gt;
-            &lt;/td&gt;
-            &lt;td&gt;1649519&lt;/td&gt;
-        &lt;/tr&gt;
-        ...
-    &lt;/tbody&gt;
-    &lt;tfoot&gt;
-        ...
-    &lt;/tfoot&gt;
+	&lt;caption&gt;Major cities in Canada.&lt;/caption&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Rank&lt;/th&gt;
+			&lt;th&gt;Census subdivision&lt;/th&gt;
+			&lt;th&gt;Population 2011&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr data-geometry="POINT (-79.3847, 43.6476)" data-type="wkt"&gt;
+			&lt;td&gt;1&lt;/td&gt;
+			&lt;td class="select"&gt;
+				&lt;a href="../Toronto" title="Toronto"&gt;Toronto&lt;/a&gt;
+			&lt;/td&gt;
+			&lt;td&gt;2615060&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr data-geometry="POINT (-73.56123, 45.52927)" data-type="wkt"&gt;
+			&lt;td&gt;2&lt;/td&gt;
+			&lt;td class="select"&gt;
+				&lt;a href="../Montreal" title="Montreal"&gt;Montreal&lt;/a&gt;
+			&lt;/td&gt;
+			&lt;td&gt;1649519&lt;/td&gt;
+		&lt;/tr&gt;
+		...
+	&lt;/tbody&gt;
+	&lt;tfoot&gt;
+		...
+	&lt;/tfoot&gt;
 &lt;/table&gt;</code></pre>
 			</section>
 			<p>Note that attribute names for features rendered from an inline HTML table are taken from the table header. In the preceding example the table header would result in attributes named "Rank", "Census subdivision", and "Population 2011".</p>
@@ -596,9 +599,9 @@ var wet_boew_geomap = {
         {
             title: 'KML Demo EN',
             caption: 'This is a sample KML file loaded locally by Geomap.',
-	    type: 'kml',
-	    url: 'data/sample.kml',
-	    visible: true
+        type: 'kml',
+        url: 'data/sample.kml',
+        visible: true
         },
         { ... }
     ]
@@ -747,8 +750,6 @@ var wet_boew_geomap = {
 }</code></pre>
 			</section>
 
-
-
 		<section>
 			<h4>Style configuration options</h4>
 			<section>
@@ -833,21 +834,41 @@ var wet_boew_geomap = {
 	</section>
 	<section>
 		<h3>Advanced Configuration</h3>
-		<p>Geomap provides developers with a hook to access the OpenLayers Map object. This can be useful if you have specific functionality that Geomap does not support out of the box. Geomap fires an event when it has loaded called <code>geomap-ready</code> that you can attach a listener to and get an array of OpenLayers maps that exist in your page.</p>
+		<p>Geomap provides developers with a hook to access the OpenLayers Map object. This can be useful if you have specific functionality that Geomap does not support out of the box. Geomap fires an event when it has loaded that you can attach a listener to.</p>
 		<p>Once Geomap has loaded, the OpenLayers Map object can be accessed as follows:</p>
-		<pre><code>// return an array of OpenLayers maps in the page
+		<section>
+			<h4>Pre v4.0.5</h4>
+			<pre><code>// return an array of OpenLayers maps in the page
 wb.doc.on( "geomap.ready", function( event, maps ) {
   var myMap = maps.mygeomap; // return map with specfic id
   // do something
 });</code></pre>
-		<p>Note that the <code>id</code> (e.g. "mygeomap") of the <code>div</code> that contains the instance of Geomap you are accessing is used as the key in the maps array.</p>
-		<p>For example if you want Geomap to zoom the map (e.g. "mygeomap") to the extent of a specified layer (e.g. "#bbox") once the document is loaded simply add the following to your markup:</p>
-		<pre><code>&lt;script&gt;
+			<p>Note that the <code>id</code> (e.g. "mygeomap") of the <code>div</code> that contains the instance of Geomap you are accessing is used as the key in the maps array.</p>
+			<p>For example if you want Geomap to zoom the map (e.g. "mygeomap") to the extent of a specified layer (e.g. "#bbox") once the document is loaded simply add the following to your markup:</p>
+			<pre><code>&lt;script&gt;
   wb.doc.on( "geomap.ready", function( event, maps ) {
     var myMap = maps.mygeomap;
     myMap.zoomToExtent( myMap.getLayer( "#bbox" ).getDataExtent(), true );
   });
 &lt;/script&gt;</code></pre>
+		</section>
+		<section>
+			<h4>v4.0.5+</h4>
+			<pre><code>// get the map object with id "mygeomap"
+$document.on( "wb-ready.wb-geomap", "#mygeomap", function( event, map ) {
+  var myMap = map; // return OpenLayers map object
+  // do something
+});</code></pre>
+			<p>Note the <code>id</code> (e.g. "mygeomap") of the <code>div</code> that contains the instance of Geomap you are accessing.</p>
+			<p>For example if you want Geomap to zoom the map (e.g. "mygeomap") to the extent of a specified layer (e.g. "#bbox") once the document is loaded simply add the following to your markup:</p>
+			<pre><code>&lt;script&gt;
+  $document.on( "wb-ready.wb-geomap", "#mygeomap", function( event, map ) {
+    // Get the map to use in zoomFeature function
+    var myMap = map;
+    myMap.zoomToExtent( myMap.getLayer( "#bbox" ).getDataExtent(), true );
+  });
+&lt;/script&gt;</code></pre>
+		</section>
 	</section>
 </section>
 
@@ -870,7 +891,7 @@ wb.doc.on( "geomap.ready", function( event, maps ) {
 			<tr>
 				<td><code>wb-ready.wb-geomap</code> (v4.0.5+)</td>
 				<td>Triggered automatically after Geomap initializes.</td>
-				<td>Used to identify the element where Geomap has initialized (target of the event) and to pass along the map object. 
+				<td>Used to identify the element where Geomap has initialized (target of the event) and to pass along the map object.
 					<pre><code>$( document ).on( "wb-ready.wb-geomap", ".wb-geomap", function( event, map ) {
 });</code></pre>
 					<pre><code>$( ".wb-geomap" ).on( "wb-ready.wb-geomap", function( event, map ) {
@@ -880,7 +901,7 @@ wb.doc.on( "geomap.ready", function( event, maps ) {
 			<tr>
 				<td><code>wb-updated.wb-geomap</code> (v4.0.5+)</td>
 				<td>Triggered automatically after Geomap updates (e.g., change in zoom).</td>
-				<td>Used to identify the element where Geomap has been updated (target of the event) and to pass along the map object. 
+				<td>Used to identify the element where Geomap has been updated (target of the event) and to pass along the map object.
 					<pre><code>$( document ).on( "wb-updated.wb-geomap", ".wb-geomap", function( event, map ) {
 });</code></pre>
 					<pre><code>$( ".wb-geomap" ).on( "wb-updated.wb-geomap", function( event, map ) {
@@ -890,7 +911,7 @@ wb.doc.on( "geomap.ready", function( event, maps ) {
 			<tr>
 				<td><code>wb-ready.wb</code> (v4.0.5+)</td>
 				<td>Triggered automatically when WET has finished loading and executing.</td>
-				<td>Used to identify when all WET plugins and polyfills have finished loading and executing. 
+				<td>Used to identify when all WET plugins and polyfills have finished loading and executing.
 					<pre><code>$( document ).on( "wb-ready.wb", function( event ) {
 });</code></pre>
 				</td>
@@ -930,7 +951,7 @@ wb.doc.on( "geomap.ready", function( event, maps ) {
 	<h3>À propos</h3>
 	<ul class="list-unstyled">
 		<li><a href="../../../index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
-		<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
+		<li><a rel="external" href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
 	</ul>
 </section>
 <section class="col-sm-3">
@@ -943,7 +964,7 @@ wb.doc.on( "geomap.ready", function( event, maps ) {
 <section class="col-sm-3">
 	<h3>Restez branchés</h3>
 	<ul class="list-unstyled">
-		<li><a href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
+		<li><a rel="external" href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
 	</ul>
 </section>
 

@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-03
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "ru",
 	"lang-native": "Русский язык",
+	add: "добавлять",
 	all: "Все",
 	tphp: "Наверх",
 	load: "Загрузка ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Предыдущий (клавишей стрелка влево)",
 	first: "Первое",
 	last: "Последнее",
+	page: "Page",
 	"srch-menus": "Поиск и меню",
 	email: "E-mail",
 	"menu-close": "Закройте меню",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Восток",
 	"geo-aoi-south": "Юг",
 	"geo-aoi-west": "Запад",
-	"geo-aoi-instructions": "Очертить площадь на карте или заполните форму и нажмите на кнопку \"Рисовать\".",
+	"geo-aoi-instructions": "Нарисуйте окно на карте или введите координаты ниже и нажмите кнопку \"Добавить\".",
 	"geo-aoi-btndraw": "Рисовать",
 	"geo-aoi-btnclear": "Удалять",
 	"geo-geoloc-btn": "Увеличить к текущему местоположению",

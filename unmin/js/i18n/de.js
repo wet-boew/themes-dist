@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-03
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "de",
 	"lang-native": "Deutsch",
+	add: "Hinzufügen",
 	all: "Alle",
 	tphp: "Zum Seitenanfang",
 	load: "Be ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Früher (linke Pfeiltaste)",
 	first: "Erste",
 	last: "Letzte",
+	page: "Page",
 	"srch-menus": "Suche und Menüs",
 	email: "E-Mail",
 	"menu-close": "Schließen Sie das Menü",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Osten",
 	"geo-aoi-south": "Süden",
 	"geo-aoi-west": "Westen",
-	"geo-aoi-instructions": "Beschreiben eine Fläche auf der Karte oder geben Sie die Details klicken dann auf die Schaltfläche \"Ziehen\".",
+	"geo-aoi-instructions": "Zeichnen Feld auf der Karte oder geben Sie die Koordinaten ein und klicken Sie auf \"Hinzufügen\".",
 	"geo-aoi-btndraw": "Ziehen",
 	"geo-aoi-btnclear": "Entfernen",
 	"geo-geoloc-btn": "Zoom auf die aktuelle Lage",

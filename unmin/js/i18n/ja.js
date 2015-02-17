@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-03
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "ja",
 	"lang-native": "日本語",
+	add: "加える",
 	all: "すべて",
 	tphp: "ページの先頭",
 	load: "ロード中･･･",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "前へ（左矢印キー）",
 	first: "最初",
 	last: "最後",
+	page: "Page",
 	"srch-menus": "検索とメニュー",
 	email: "メール",
 	"menu-close": "メニューを閉じる",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "東",
 	"geo-aoi-south": "南",
 	"geo-aoi-west": "西",
-	"geo-aoi-instructions": "地図上の領域の輪郭を描くか、詳細を下記に入力し、「描く」ボタンをクリックしてください。",
+	"geo-aoi-instructions": "Disegnare scatola sulla mappa o inserire le coordinate di sotto e fare clic sul pulsante \"Aggiungi\".",
 	"geo-aoi-btndraw": "描く",
 	"geo-aoi-btnclear": "削除する",
 	"geo-geoloc-btn": "現在の場所にズーム",
