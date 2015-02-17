@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-03
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "fr",
 	"lang-native": "Français",
+	add: "Ajouter",
 	all: "Tous",
 	tphp: "Haut de la page",
 	load: "chargement...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Précédent (touche gauche)",
 	first: "Premier",
 	last: "Dernier",
+	page: "Page",
 	"srch-menus": "Recherche et menus",
 	email: "Courriel",
 	"menu-close": "Fermer le menu",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Est",
 	"geo-aoi-south": "Sud",
 	"geo-aoi-west": "Ouest",
-	"geo-aoi-instructions": "Délimiter un territoire sur la carte ou entrer les coordonnées ci-dessous, puis cliquer sur le bouton &#171;&#160;Tracer&#160;&#187;.",
+	"geo-aoi-instructions": "Délimiter un territoire sur la carte ou entrer les coordonnées ci-dessous, puis cliquer sur le bouton &#171;&#160;Ajouter&#160;&#187;.",
 	"geo-aoi-btndraw": "Tracer",
 	"geo-aoi-btnclear": "Enlever",
 	"geo-geoloc-btn": "Zoom sur votre position actuelle",

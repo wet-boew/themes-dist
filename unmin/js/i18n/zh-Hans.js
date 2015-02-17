@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-03
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "zh-Hans",
 	"lang-native": "繁体字",
+	add: "添加",
 	all: "全部",
 	tphp: "页首",
 	load: "装载...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "上一个（左箭头键）",
 	first: "开始",
 	last: "末",
+	page: "Page",
 	"srch-menus": "搜索和菜单",
 	email: "电釉",
 	"menu-close": "关闭菜单",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "东方",
 	"geo-aoi-south": "南",
 	"geo-aoi-west": "西方",
-	"geo-aoi-instructions": "在地图上划定一个区域或输入下面的详细信息，然后点击“画”按钮。",
+	"geo-aoi-instructions": "抽奖箱在地图上或在下方输入坐标，然后点击“添加”按钮。",
 	"geo-aoi-btndraw": "画",
 	"geo-aoi-btnclear": "清除",
 	"geo-geoloc-btn": "放大到当前位置",

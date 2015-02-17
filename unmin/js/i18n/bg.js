@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.11-development - 2015-02-03
+ * v4.0.11 - 2015-02-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -17,6 +17,7 @@
 wb.i18nDict = {
 	"lang-code": "bg",
 	"lang-native": "Български език",
+	add: "Добави",
 	all: "Всички",
 	tphp: "Начало на страницата",
 	load: "зарежда се ...",
@@ -58,6 +59,7 @@ wb.i18nDict = {
 	"prv-l": "Предишен (лява стрелка ключ)",
 	first: "Първи",
 	last: "Последно",
+	page: "Page",
 	"srch-menus": "Търсене и менюта",
 	email: "Мейл",
 	"menu-close": "Затворете менюто",
@@ -200,7 +202,7 @@ wb.i18nDict = {
 	"geo-aoi-east": "Изток",
 	"geo-aoi-south": "Юг",
 	"geo-aoi-west": "Запад",
-	"geo-aoi-instructions": "Xəritədə sahəsi tasvir və ya aşağıda detalları daxil sonra \"Равенство\" düyməsinə basın.",
+	"geo-aoi-instructions": "Равен кутия на картата или въведете координатите по-долу и кликнете върху бутона \"Добави\".",
 	"geo-aoi-btndraw": "Равенство",
 	"geo-aoi-btnclear": "Премахнете",
 	"geo-geoloc-btn": "Увеличите към текущото местоположение",
