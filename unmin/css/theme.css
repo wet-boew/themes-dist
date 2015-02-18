@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * 4.0.11 - 2015-02-18
+ * 4.0.12-development - 2015-02-18
  *
  */
 /*
@@ -998,6 +998,9 @@ a.shr-opn, a.shr-opn:hover {
   /*
  * Carousel-specific overrides
  */
+  /*
+ * Priorities (Government of Canada activities and initiatives) (all screen views)
+ */
   body {
     background: #f9f9f9; }
   .overlay-def .modal-header {
@@ -1023,7 +1026,23 @@ a.shr-opn, a.shr-opn:hover {
   .wb-tabs.carousel-s2 [role="tablist"] li.tab-count .curr-count, .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
     font-size: 1.2em; }
   .wb-tabs.carousel-s2 [role="tablist"] li.nxt a .glyphicon, .wb-tabs.carousel-s2 [role="tablist"] li.prv a .glyphicon {
-    font-size: 1.65em; } }
+    font-size: 1.65em; }
+  .gc-nttvs a:active h3, .gc-nttvs a:active img, .gc-nttvs a:focus h3, .gc-nttvs a:focus img {
+    outline: thin dotted; }
+  .gc-nttvs h3 {
+    float: left;
+    text-decoration: underline; }
+  .gc-nttvs img {
+    float: left;
+    margin-right: 100%; }
+  .gc-nttvs p {
+    clear: both; }
+  [dir=rtl] .gc-nttvs h3 {
+    float: right; }
+  [dir=rtl] .gc-nttvs img {
+    float: right;
+    margin-left: 100%;
+    margin-right: 0; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
