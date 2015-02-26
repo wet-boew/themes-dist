@@ -19,11 +19,11 @@
     padding-top: 2em; }
     .backgroundsize.csstransitions #social-media-centre tbody tr {
       -webkit-background-clip: content-box;
-      background-clip: content-box;
+              background-clip: content-box;
       background-color: #eee;
       background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==");
       -webkit-background-origin: content-box;
-      background-origin: content-box;
+              background-origin: content-box;
       background-position: top left, top left, bottom left, top right;
       background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
       border: 0;

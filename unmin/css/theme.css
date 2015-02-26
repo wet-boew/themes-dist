@@ -42,7 +42,7 @@ a {
   color: #284162; }
   a img.thumbnail:hover {
     -webkit-box-shadow: 1px 1px 5px #999;
-    box-shadow: 1px 1px 5px #999; }
+            box-shadow: 1px 1px 5px #999; }
   a.no-undrln {
     text-decoration: none; }
 
@@ -144,7 +144,7 @@ aside.features {
   padding: 5px; }
   .thumbnail:hover img {
     -webkit-box-shadow: 1px 1px 5px #999;
-    box-shadow: 1px 1px 5px #999; }
+            box-shadow: 1px 1px 5px #999; }
 
 .pagedetails {
   padding-bottom: 2em;
@@ -364,8 +364,8 @@ main .btn-primary {
   -webkit-text-stroke: 1px transparent;
   text-transform: none;
   -webkit-transform: rotate(0);
-  -ms-transform: rotate(0);
-  transform: rotate(0); }
+      -ms-transform: rotate(0);
+          transform: rotate(0); }
 
 header .brand {
   padding-bottom: 0; }
@@ -576,7 +576,7 @@ html[lang='fr'].mediumview .fdbckpromo .accnt-prmry {
     border-right: 0;
     border-style: solid;
     -webkit-box-shadow: none;
-    box-shadow: none;
+            box-shadow: none;
     color: #555;
     margin-right: -4px;
     min-width: 246px;
@@ -685,7 +685,7 @@ a.shr-opn, a.shr-opn:hover {
   background-position: 15px 0;
   background-repeat: repeat-y;
   -webkit-box-shadow: none;
-  box-shadow: none;
+          box-shadow: none;
   padding-left: 15px; }
   #mb-pnl a[href$="#wb-cont"] {
     display: none !important; }
@@ -693,7 +693,7 @@ a.shr-opn, a.shr-opn:hover {
     background: #2e5274;
     border-bottom: 1px solid #2e5274;
     -webkit-box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.3), 3px 3px 3px -2px rgba(0, 0, 0, 0.3), -3px 3px 3px -2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.3), 3px 3px 3px -2px rgba(0, 0, 0, 0.3), -3px 3px 3px -2px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.3), 3px 3px 3px -2px rgba(0, 0, 0, 0.3), -3px 3px 3px -2px rgba(0, 0, 0, 0.3);
     color: #fff;
     margin-left: 0;
     position: relative;
@@ -753,7 +753,7 @@ a.shr-opn, a.shr-opn:hover {
     border-right: 0;
     border-style: solid;
     -webkit-box-shadow: none;
-    box-shadow: none;
+            box-shadow: none;
     color: #555;
     margin-right: -4px;
     position: relative; }

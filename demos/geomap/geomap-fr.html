@@ -129,68 +129,68 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <section>
 <h2>Carte dynamique - Exemple</h2>
 <!-- GeomapStart -->
-<div id="sample_map" class="wb-geomap position scaleline tab geocoder aoi geolocation" data-wb-geomap="{
-			&quot;layersFile&quot;: &quot;demo/config-fr.min.js&quot;,
-			&quot;tables&quot;: [{
-				&quot;id&quot;: &quot;bbox&quot;,
-				&quot;tab&quot;: false,
-				&quot;zoom&quot;: true,
-				&quot;popups&quot;: true,
-				&quot;visible&quot;: false
+<div id="sample_map" class="wb-geomap position scaleline tab geocoder aoi geolocation" data-wb-geomap='{
+			"layersFile": "demo/config-fr.min.js",
+			"tables": [{
+				"id": "bbox",
+				"tab": false,
+				"zoom": true,
+				"popups": true,
+				"visible": false
 			},{
-				&quot;id&quot;: &quot;cities&quot;,
-				&quot;zoom&quot;: true,
-				&quot;tab&quot;: false,
-				&quot;popups&quot;: true,
-				&quot;popupsInfo&quot;: {
-					&quot;id&quot;: &quot;citiesPopup&quot;,
-					&quot;height&quot;: 200,
-					&quot;width&quot;: 300,
-					&quot;close&quot;: true,
-					&quot;content&quot;: &quot;<div style=\&quot;white-space:nowrap;\&quot;><p><strong>Subdivision de recensement: </strong>_Subdivision de recensement<div><a href=\&quot;#\&quot; class=\&quot;button\&quot; role=\&quot;button\&quot; title=\&quot;Zoom à la ville\&quot; aria-label=\&quot;Zoom à la ville\&quot; onclick=\&quot;wb.doc.zoomFeature()\&quot;>Zoom à la ville</a></div></div>&quot;
+				"id": "cities",
+				"zoom": true,
+				"tab": false,
+				"popups": true,
+				"popupsInfo": {
+					"id": "citiesPopup",
+					"height": 200,
+					"width": 300,
+					"close": true,
+					"content": "<div style=\"white-space:nowrap;\"><p><strong>Subdivision de recensement: </strong>_Subdivision de recensement<div><a href=\"#\" class=\"button\" role=\"button\" title=\"Zoom à la ville\" aria-label=\"Zoom à la ville\" onclick=\"wb.doc.zoomFeature()\">Zoom à la ville</a></div></div>"
 				},
-				&quot;style&quot;: {
-					&quot;type&quot;: &quot;rule&quot;,
-					&quot;rule&quot;: [
+				"style": {
+					"type": "rule",
+					"rule": [
 					{
-						&quot;field&quot;: &quot;Rang&quot;,
-						&quot;value&quot;: [3],
-						&quot;filter&quot;: &quot;GREATER_THAN&quot;,
-						&quot;init&quot;: {
-							&quot;strokeColor&quot;: &quot;#0083f5&quot;,
-							&quot;fillColor&quot;: &quot;#57a8f0&quot;,
-							&quot;pointRadius&quot;: &quot;6&quot;,
-							&quot;fillOpacity&quot;: 0.80,
-							&quot;strokeWidth&quot;: 1.0
+						"field": "Rang",
+						"value": [3],
+						"filter": "GREATER_THAN",
+						"init": {
+							"strokeColor": "#0083f5",
+							"fillColor": "#57a8f0",
+							"pointRadius": "6",
+							"fillOpacity": 0.80,
+							"strokeWidth": 1.0
 						}
 					},
 					{
-						&quot;field&quot;: &quot;Rang&quot;,
-						&quot;value&quot;: [2, 3],
-						&quot;filter&quot;: &quot;BETWEEN&quot;,
-						&quot;init&quot;: {
-							&quot;strokeColor&quot;: &quot;#F90&quot;,
-							&quot;fillColor&quot;: &quot;#F90&quot;,
-							&quot;pointRadius&quot;: &quot;8&quot;,
-							&quot;fillOpacity&quot;: 0.80,
-							&quot;strokeWidth&quot;: 1.0
+						"field": "Rang",
+						"value": [2, 3],
+						"filter": "BETWEEN",
+						"init": {
+							"strokeColor": "#F90",
+							"fillColor": "#F90",
+							"pointRadius": "8",
+							"fillOpacity": 0.80,
+							"strokeWidth": 1.0
 						}
 					},
 					{
-						&quot;field&quot;: &quot;Rang&quot;,
-						&quot;value&quot;: [1],
-						&quot;filter&quot;: &quot;EQUAL_TO&quot;,
-						&quot;init&quot;: {
-							&quot;strokeColor&quot;: &quot;#F00&quot;,
-							&quot;fillColor&quot;: &quot;#F00&quot;,
-							&quot;pointRadius&quot;: &quot;10&quot;,
-							&quot;fillOpacity&quot;: 0.80,
-							&quot;strokeWidth&quot;: 1.0
+						"field": "Rang",
+						"value": [1],
+						"filter": "EQUAL_TO",
+						"init": {
+							"strokeColor": "#F00",
+							"fillColor": "#F00",
+							"pointRadius": "10",
+							"fillOpacity": 0.80,
+							"strokeWidth": 1.0
 						}
 					}
 				]}
 			}]
-		}">
+		}'>
 <div class="row">
 <div class="col-md-9">
 <!-- Insert Map Start (mandatory) -->
@@ -506,21 +506,21 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <h2>Carte statique - Exemple</h2>
 <p>Geomap peux être configuré pour créer une carte statique afin de situer un endroit comme un bureau ou une étendue à l'aide d'une "bbox".</p>
 <!-- GeomapStart -->
-<div id="location_map" class="wb-geomap static" data-wb-geomap="{
-			&quot;tables&quot;: [{
-				&quot;id&quot;: &quot;addNRCan&quot;,
-				&quot;style&quot;: {
-					&quot;type&quot;: &quot;symbol&quot;,
-					&quot;init&quot;: {
-						&quot;pointRadius&quot;: 12,
-						&quot;graphicName&quot;: &quot;star&quot;,
-						&quot;strokeColor&quot;: &quot;#FF0000&quot;,
-						&quot;fillColor&quot;: &quot;#FF0000&quot;,
-						&quot;fillOpacity&quot;: 0.7
+<div id="location_map" class="wb-geomap static" data-wb-geomap='{
+			"tables": [{
+				"id": "addNRCan",
+				"style": {
+					"type": "symbol",
+					"init": {
+						"pointRadius": 12,
+						"graphicName": "star",
+						"strokeColor": "#FF0000",
+						"fillColor": "#FF0000",
+						"fillOpacity": 0.7
 					}
 				}
 			}]
-		}">
+		}'>
 <div class="row">
 <div class="col-md-4">
 <!-- Insert Map Start (mandatory) -->
@@ -602,9 +602,9 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <h2>Carte WMS - Exemple WMS</h2>
 <p>Geomap peut être configuré pour utiliser une carte de base de type WMS. L'item basemap dans le fichier de configuration permet de définir le WMS à utiliser.</p>
 <!-- GeomapStart -->
-<div id="wms_map" class="wb-geomap" data-wb-geomap="{
-			&quot;layersFile&quot;: &quot;demo/configwms-en.min.js&quot;
-		}">
+<div id="wms_map" class="wb-geomap" data-wb-geomap='{
+			"layersFile": "demo/configwms-en.min.js"
+		}'>
 <div class="row">
 <div class="col-md-4">
 <!-- Insert Map Start (mandatory) -->
@@ -672,9 +672,9 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <h2>Exemple de carte ESRI REST</h2>
 <p>Geomap peut être configuré pour utiliser une carte de base de type ESRI REST. L'item basemap dans le fichier de configuration permet de définir le service à utiliser.</p>
 <!-- GeomapStart -->
-<div id="esri_map" class="wb-geomap" data-wb-geomap="{
-			&quot;layersFile&quot;: &quot;demo/config-esri-fr.min.js&quot;
-		}">
+<div id="esri_map" class="wb-geomap" data-wb-geomap='{
+			"layersFile": "demo/config-esri-fr.min.js"
+		}'>
 <div class="row">
 <div class="col-md-4">
 <!-- Insert Map Start (mandatory) -->
