@@ -121,69 +121,69 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <section>
 <h2>Dynamic map example</h2>
 <!-- GeomapStart -->
-<div id="sample_map" class="wb-geomap position scaleline tab geocoder geolocation aoi" data-wb-geomap="{
-			&quot;layersFile&quot;: &quot;demo/config-en.js&quot;,
-			&quot;tables&quot;: [{
-				&quot;id&quot;: &quot;bbox&quot;,
-				&quot;tab&quot;: false,
-				&quot;zoom&quot;: true,
-				&quot;visible&quot;: false,
-				&quot;popups&quot;: true
+<div id="sample_map" class="wb-geomap position scaleline tab geocoder geolocation aoi" data-wb-geomap='{
+			"layersFile": "demo/config-en.min.js",
+			"tables": [{
+				"id": "bbox",
+				"tab": false,
+				"zoom": true,
+				"visible": false,
+				"popups": true
 			},{
-				&quot;id&quot;: &quot;cities&quot;,
-				&quot;zoom&quot;: true,
-				&quot;tab&quot;: false,
-				&quot;popups&quot;: true,
-				&quot;visible&quot;: true,
-				&quot;popupsInfo&quot;: {
-					&quot;id&quot;: &quot;citiesPopup&quot;,
-					&quot;height&quot;: 200,
-					&quot;width&quot;: 300,
-					&quot;close&quot;: true,
-					&quot;content&quot;: &quot;<div style=\&quot;white-space:nowrap;\&quot;><p><strong>Census subdivision: </strong>_Census subdivision<div><a href=\&quot;#\&quot; class=\&quot;button\&quot; role=\&quot;button\&quot; title=\&quot;Zoom to city\&quot; aria-label=\&quot;Zoom to city\&quot; onclick=\&quot;wb.doc.zoomFeature()\&quot;>Zoom to city</a></div></div>&quot;
+				"id": "cities",
+				"zoom": true,
+				"tab": false,
+				"popups": true,
+				"visible": true,
+				"popupsInfo": {
+					"id": "citiesPopup",
+					"height": 200,
+					"width": 300,
+					"close": true,
+					"content": "<div style=\"white-space:nowrap;\"><p><strong>Census subdivision: </strong>_Census subdivision<div><a href=\"#\" class=\"button\" role=\"button\" title=\"Zoom to city\" aria-label=\"Zoom to city\" onclick=\"wb.doc.zoomFeature()\">Zoom to city</a></div></div>"
 				},
-				&quot;style&quot;: {
-					&quot;type&quot;: &quot;rule&quot;,
-					&quot;rule&quot;: [
+				"style": {
+					"type": "rule",
+					"rule": [
 					{
-						&quot;field&quot;: &quot;Rank&quot;,
-						&quot;value&quot;: [3],
-						&quot;filter&quot;: &quot;GREATER_THAN&quot;,
-						&quot;init&quot;: {
-							&quot;strokeColor&quot;: &quot;#0083f5&quot;,
-							&quot;fillColor&quot;: &quot;#57a8f0&quot;,
-							&quot;pointRadius&quot;: 6,
-							&quot;fillOpacity&quot;: 0.80,
-							&quot;strokeWidth&quot;: 1.0
+						"field": "Rank",
+						"value": [3],
+						"filter": "GREATER_THAN",
+						"init": {
+							"strokeColor": "#0083f5",
+							"fillColor": "#57a8f0",
+							"pointRadius": 6,
+							"fillOpacity": 0.80,
+							"strokeWidth": 1.0
 						}
 					},
 					{
-						&quot;field&quot;: &quot;Rank&quot;,
-						&quot;value&quot;: [2, 3],
-						&quot;filter&quot;: &quot;BETWEEN&quot;,
-						&quot;init&quot;: {
-							&quot;strokeColor&quot;: &quot;#F90&quot;,
-							&quot;fillColor&quot;: &quot;#F90&quot;,
-							&quot;pointRadius&quot;: 8,
-							&quot;fillOpacity&quot;: 0.80,
-							&quot;strokeWidth&quot;: 1.0
+						"field": "Rank",
+						"value": [2, 3],
+						"filter": "BETWEEN",
+						"init": {
+							"strokeColor": "#F90",
+							"fillColor": "#F90",
+							"pointRadius": 8,
+							"fillOpacity": 0.80,
+							"strokeWidth": 1.0
 						}
 					},
 					{
-						&quot;field&quot;: &quot;Rank&quot;,
-						&quot;value&quot;: [1],
-						&quot;filter&quot;: &quot;EQUAL_TO&quot;,
-						&quot;init&quot;: {
-							&quot;strokeColor&quot;: &quot;#F00&quot;,
-							&quot;fillColor&quot;: &quot;#F00&quot;,
-							&quot;pointRadius&quot;: 10,
-							&quot;fillOpacity&quot;: 0.80,
-							&quot;strokeWidth&quot;: 1.0
+						"field": "Rank",
+						"value": [1],
+						"filter": "EQUAL_TO",
+						"init": {
+							"strokeColor": "#F00",
+							"fillColor": "#F00",
+							"pointRadius": 10,
+							"fillOpacity": 0.80,
+							"strokeWidth": 1.0
 						}
 					}
 				]}
 			}]
-		}">
+		}'>
 <div class="row">
 <div class="col-md-9">
 <!-- Insert Map Start (mandatory) -->
@@ -504,21 +504,21 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <h2>Static Map example</h2>
 <p>Geomap can be configured to provide a static map ideally suited to display a location or bounding box extent.</p>
 <!-- GeomapStart -->
-<div id="location_map" class="wb-geomap static" data-wb-geomap="{
-			&quot;tables&quot;: [{
-				&quot;id&quot;: &quot;addNRCan&quot;,
-				&quot;style&quot;: {
-					&quot;type&quot;: &quot;symbol&quot;,
-					&quot;init&quot;: {
-						&quot;pointRadius&quot;: 12,
-						&quot;graphicName&quot;: &quot;star&quot;,
-						&quot;strokeColor&quot;: &quot;#FF0000&quot;,
-						&quot;fillColor&quot;: &quot;#FF0000&quot;,
-						&quot;fillOpacity&quot;: 0.7
+<div id="location_map" class="wb-geomap static" data-wb-geomap='{
+			"tables": [{
+				"id": "addNRCan",
+				"style": {
+					"type": "symbol",
+					"init": {
+						"pointRadius": 12,
+						"graphicName": "star",
+						"strokeColor": "#FF0000",
+						"fillColor": "#FF0000",
+						"fillOpacity": 0.7
 					}
 				}
 			}]
-		}">
+		}'>
 <div class="row">
 <div class="col-md-4">
 <!-- Insert Map Start (mandatory) -->
@@ -600,9 +600,9 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <h2>WMS Map example</h2>
 <p>Geomap can be configured to use a WMS map as basemap. Configuration can be made in the config file in basemap property.</p>
 <!-- GeomapStart -->
-<div id="wms_map" class="wb-geomap" data-wb-geomap="{
-			&quot;layersFile&quot;: &quot;demo/configwms-en.js&quot;
-		}">
+<div id="wms_map" class="wb-geomap" data-wb-geomap='{
+			"layersFile": "demo/configwms-en.min.js"
+		}'>
 <div class="row">
 <div class="col-md-4">
 <!-- Insert Map Start (mandatory) -->
@@ -671,9 +671,9 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <h2>ESRI REST basemap example</h2>
 <p>Geomap can be configured to use an ESRI REST service as basemap. Configuration can be made in the config file in basemap property.</p>
 <!-- GeomapStart -->
-<div id="esri_map" class="wb-geomap" data-wb-geomap="{
-			&quot;layersFile&quot;: &quot;demo/config-esri-en.js&quot;
-		}">
+<div id="esri_map" class="wb-geomap" data-wb-geomap='{
+			"layersFile": "demo/config-esri-en.min.js"
+		}'>
 <div class="row">
 <div class="col-md-4">
 <!-- Insert Map Start (mandatory) -->
