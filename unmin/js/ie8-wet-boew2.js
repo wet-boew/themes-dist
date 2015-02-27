@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.12-development - 2015-02-26
+ * v4.0.12-development - 2015-02-27
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -9731,17 +9731,22 @@ var componentName = "wb-tabs",
 	 */
 	onSelect = function( id, autoCycle ) {
 		var panelSelector = "#" + id,
-			$panel = $( panelSelector );
+			$panel = $( panelSelector ),
+			$panelSelectorLink;
 
 		if ( isSmallView && $panel[ 0 ].nodeName.toLowerCase() === "details" ) {
 			$panel.children( "summary" ).trigger( $panel.attr( "open" ) ? setFocusEvent : "click" );
 		} else {
-			$( panelSelector + "-lnk" )
-				.trigger({
-					type: "click",
-					which: autoCycle ? undefined : 1
-				})
-				.trigger( setFocusEvent );
+			$panelSelectorLink = $( panelSelector + "-lnk" );
+			$panelSelectorLink.trigger({
+				type: "click",
+				which: autoCycle ? undefined : 1
+			});
+
+			// Don't change the focus if change is cause by an auto cycle
+			if ( !autoCycle ) {
+				$panelSelectorLink.trigger( setFocusEvent );
+			}
 		}
 	},
 
