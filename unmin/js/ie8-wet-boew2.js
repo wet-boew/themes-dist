@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.12-development - 2015-03-17
+ * v4.0.12-development - 2015-03-20
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1255,7 +1255,16 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	// TODO: Remove event.element in future versions
 	var caller = event.element || event.target,
 		fetchOpts = event.fetch,
+		urlParts = fetchOpts.url.split( " " ),
+		url = urlParts[ 0 ],
+		urlHash = url.split( "#" )[ 1 ],
+		selector = urlParts[ 1 ] || ( urlHash ? "#" + urlHash : false ),
 		fetchData, callerId;
+
+	// Separate the URL from the filtering criteria
+	if ( selector ) {
+		fetchOpts.url = urlParts[ 0 ];
+	}
 
 	// Filter out any events triggered by descendants
 	if ( caller === event.target || event.currentTarget === event.target ) {
@@ -1268,6 +1277,10 @@ $document.on( "ajax-fetch.wb", function( event ) {
 		$.ajax( fetchOpts )
 			.done( function( response, status, xhr ) {
 				var responseType = typeof response;
+
+				if ( selector ) {
+					response = $( "<div>" + response + "</div>" ).find( selector );
+				}
 
 				fetchData = {
 					response: response,
@@ -3892,7 +3905,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 
 			// ajax-fetched event
 			content = event.fetch.response;
-			if ( content ) {
+			if ( content &&  content.length > 0 ) {
 
 				//Prevents the force caching of nested resources
 				jQueryCaching = jQuery.ajaxSettings.cache;
