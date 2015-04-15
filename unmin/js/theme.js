@@ -11,7 +11,7 @@
  * not once per instance of plugin on the page. So, this is a good place to define
  * variables that are common to all instances of the plugin on a page.
  */
-var $document = wb.doc,
+/*var $document = wb.doc,
 
 	onXXSmallView = function() {
 		return;
@@ -66,6 +66,13 @@ $document.on( "xxsmallview.wb xsmallview.wb smallview.wb mediumview.wb largeview
 		onXLargeView();
 		break;
 	}
-});
+});*/
+
+window["wb-data-ajax"] = {
+	corsFallback: function( fetchObj ) {
+		fetchObj.url = fetchObj.url.replace(".html", ".htmlp");
+		return fetchObj;
+	}
+};
 
 })( jQuery, wb );
