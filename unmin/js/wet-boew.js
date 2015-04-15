@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.13-development - 2015-04-07
+ * v4.0.13-development - 2015-04-15
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -306,7 +306,7 @@ var getUrlParts = function( url ) {
 					selector = selectorsLocal[ i ];
 					$elms = $( selector );
 					if ( $elms.length !== 0 ) {
-						$foundElms.add( $elms );
+						$foundElms = $foundElms.add( $elms );
 
 					// If the selector returns no elements, remove the selector
 					} else {
@@ -9448,7 +9448,7 @@ var componentName = "wb-share",
 			},
 			pinterest: {
 				name: "Pinterest",
-				url: "http://www.pinterest.com/pin/create/link/?url={u}&amp;media={i}&amp;description={t}"
+				url: "http://www.pinterest.com/pin/create/button/?url={u}&amp;media={i}&amp;description={t}"
 			},
 			reddit: {
 				name: "reddit",
