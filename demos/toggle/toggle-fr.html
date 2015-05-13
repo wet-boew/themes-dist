@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
-		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
 <title>Basculer - Exemples pratiques - Boîte à outils de l'expérience Web
 </title>
 <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -15,7 +15,8 @@
 <meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)">
 <meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)">
 <meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français">
-<meta name="dcterms.language" title="ISO639-2" content="fra"> <!-- Meta data-->
+<meta name="dcterms.language" title="ISO639-2" content="fra">
+<!-- Meta data-->
 <!--[if gte IE 9 | !IE ]><!-->
 <link href="../../assets/favicon.ico" rel="icon" type="image/x-icon">
 <link rel="stylesheet" href="../../css/wet-boew.min.css">
@@ -23,13 +24,14 @@
 <link rel="stylesheet" href="../../css/theme.min.css">
 <link rel="stylesheet" href="demo/toggle.min.css">
 <!--[if lt IE 9]>
-		<link href="../../assets/favicon.ico" rel="shortcut icon" />
-		<link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
-		<link rel="stylesheet" href="../../css/ie8-theme.min.css" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="../../js/ie8-wet-boew.min.js"></script>
-		<![endif]-->
-<noscript><link rel="stylesheet" href="../../css/noscript.min.css" /></noscript> </head>
+<link href="../../assets/favicon.ico" rel="shortcut icon" />
+<link rel="stylesheet" href="../../css/ie8-wet-boew.min.css" />
+<link rel="stylesheet" href="../../css/ie8-theme.min.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../../js/ie8-wet-boew.min.js"></script>
+<![endif]-->
+<noscript><link rel="stylesheet" href="../../css/noscript.min.css" /></noscript>
+</head>
 <body vocab="http://schema.org/" typeof="WebPage">
 <ul id="wb-tphp">
 <li class="wb-slc">
@@ -53,7 +55,9 @@
 <ul class="list-inline">
 <li><a lang="en" href="toggle-en.html">English</a></li>
 </ul>
-</li></ul> <section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+</li>
+</ul>
+<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
 <h2>Recherche et menus</h2>
 <ul class="pnl-btn list-inline text-right">
 <li><a href="#mb-pnl" title="Recherche et menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Recherche et menus</span></span></span></a></li>
@@ -85,7 +89,7 @@
 </div>
 </div>
 </div>
-<nav role="navigation" id="wb-sm" data-ajax-fetch="../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+<nav role="navigation" id="wb-sm" data-ajax-replace="../../ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
 <div class="container nvbar">
 <h2>Menu des sujets</h2>
 <div class="row">
@@ -123,6 +127,7 @@
 <div class="row">
 <div class="col-md-3">
 <div class="list-group">
+<a href="#setup" class="list-group-item" lang="en">Plugin Setup</a>
 <a href="#simple" class="list-group-item">Exemple simple</a>
 <a href="#details" class="list-group-item">Details</a>
 <a href="#grouped" class="list-group-item">Basculer groupe</a>
@@ -131,6 +136,83 @@
 </div>
 </div>
 <div class="col-md-9">
+<section lang="en">
+<p><strong>Needs translation</strong></p>
+<h2 id="setup" class="mrgn-tp-0">Plugin Setup</h2>
+<p>Adding the <code>.wb-toggle</code> CSS class to any element will turn it into a toggle element. The behaviour of this toggle element is then controlled by the <code>data-toggle</code> attribute which takes a JavaScript object of properties:</p>
+<table class="table">
+<thead>
+<tr>
+<th>Property</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>selector</code></td>
+<td>CSS selector that specifies the elements the toggle element controls. If no CSS selector is supplied, the toggle element controls itself.</td>
+</tr>
+<tr>
+<td><code>parent</code></td>
+<td>CSS selector that causes the toggle element to only control elements within a given parent element.</td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td>CSS selector that groups multiple toggle elements together and only allows one of the elements to be open at a time.</td>
+</tr>
+<tr>
+<td><code>persist</code></td>
+<td>
+Causes a toggle element to remember its current state and re-apply it when the page reloads. Supports the following values:
+<ul>
+<li><strong>session:</strong> toggle state will persist until the user closes their browser window or tab.</li>
+<li><strong>local:</strong> toggle state will persist even after the browser window or tab is closed.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code>print</code></td>
+<td>
+Causes a toggle element to turn the elements it controls on or off when the page is printed. Supports the following values:
+<ul>
+<li><strong>on:</strong> elements will be set to "on" toggle state for printing.</li>
+<li><strong>off:</strong> elements will be set to "off" toggle state for printing.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>
+Causes a toggle element to only turn the elements it controls on or off. Supports the following values:
+<ul>
+<li><strong>on:</strong> toggle element will only turn elements to the "on" toggle state.</li>
+<li><strong>off:</strong> toggle element will only turn elements to the "off" toggle state.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code>state</code> (v4.0.11+)</td>
+<td>
+Sets the initial state of a toggle element. Supports the following values:
+<ul>
+<li><strong>off (default):</strong> Toggle element initial state is "off"</li>
+<li><strong>on:</strong> Toggle element initial state is "on"</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code>stateOn</code></td>
+<td>CSS class that's added to elements when they are toggled on. Defaults to "on".</td>
+</tr>
+<tr>
+<td><code>stateOff</code></td>
+<td>CSS class that's added to elements when they are toggled off. Defaults to "off".</td>
+</tr>
+</tbody>
+</table>
+<p>For example, the following element will always toggle on elements with the <code>.foo</code> CSS class that are contained in a parent with the <code>.bar</code> CSS class. In addition, the elements it controls will be toggled on when the page is printed.</p>
+<pre class="lang-css"><code>&lt;button type="button" class="wb-toggle" data-toggle='{"type": "on", "selector": ".foo", "parent": ".bar", "print": "on"}'&gt;Turn on&lt;/button&gt;</code></pre>
+</section>
 <section>
 <h2 id="simple" class="mrgn-tp-0">Exemple simple</h2>
 <div class="btn-group">
@@ -480,7 +562,7 @@ Cette paramètre <code> group </code> restreint bascule groupées d'avoir un seu
 </div>
 <dl id="wb-dtmd">
 <dt>Date de modification&#160;:&#32;</dt>
-<dd><time property="dateModified">2014-02-19</time></dd>
+<dd><time property="dateModified">2015-04-22</time></dd>
 </dl>
 </main>
 <footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
@@ -532,7 +614,8 @@ Cette paramètre <code> group </code> restreint bascule groupées d'avoir un seu
 <li><a href="http://www.guichetemplois.gc.ca"><span>Emplois</span></a></li>
 <li><a href="http://plandaction.gc.ca/fr"><span>Économie</span></a></li>
 <li id="canada-ca"><a href="http://www.canada.ca/fr/index.html">Canada.ca</a></li>
-</ul> </nav>
+</ul>
+</nav>
 </div>
 </div>
 </footer>
@@ -541,9 +624,9 @@ Cette paramètre <code> group </code> restreint bascule groupées d'avoir un seu
 <script src="../../js/wet-boew.min.js"></script>
 <!--<![endif]-->
 <!--[if lt IE 9]>
-		<script src="../../js/ie8-wet-boew2.min.js"></script>
-		
-		<![endif]-->
+<script src="../../js/ie8-wet-boew2.min.js"></script>
+
+<![endif]-->
 <script src="../../js/theme.min.js"></script>
 </body>
 </html>
