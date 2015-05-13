@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.13 - 2015-04-20
+ * v4.0.14-development - 2015-05-13
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -2441,8 +2441,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 			captionHtml = $caption.html() || "",
 			captionText = $caption.text() || "",
 			valuePoint = 0,
-			floatRegExp = /[\+\-0-9]+[0-9,\. ]*/,
-			floatRegExp2 = /[^\+\-\.\, 0-9]+[^\-\+0-9]*/,
+			dataCellUnitRegExp = /[^\+\-\.\, 0-9]+[^\-\+0-9]*/,
 			lowestFlotDelta, $imgContainer, $placeHolder,
 			$wetChartContainer, htmlPlaceHolder, figurehtml,
 			cellValue, datacolgroupfound, dataGroup, header,
@@ -2582,41 +2581,19 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 						fn: {
 							"/getcellvalue": function( elem ) {
 
-								// Default Cell value extraction
-								var cellRawValue = $.trim( $( elem ).text() ).replace( /\s/g, "" );
-
+								// Get the number from the data cell, #3267
+								var cellValue = $.trim( $( elem ).text() );
 								return [
-									parseFloat( cellRawValue.match( floatRegExp ) ),
-									cellRawValue.match ( floatRegExp2 )
+									parseFloat( cellValue.replace( /(\d{1,3}(?:(?: |,)\d{3})*)(?:(?:.|,)(\d{1,2}))?$/, function( a, b, c ) {
+										return b.replace( / |,/g, "" ) + "." + c || "0";
+									} ), 10 ),
+									cellValue.match ( dataCellUnitRegExp )
 								];
 							}
 						}
-
 					},
 					donut: {
 						decimal: 1
-					},
-					thousandcomma: {
-						fn: {
-							"/getcellvalue": function( elem ) {
-								var raw = $.trim( $( elem ).text() ).replace( /,/g, "" );
-								return [
-									parseFloat( raw.match( floatRegExp ) ),
-									raw.match( floatRegExp2 )
-								];
-							}
-						}
-					},
-					thousanddot: {
-						fn: {
-							"/getcellvalue": function( elem ) {
-								var raw = $.trim( $( elem ).text() ).replace( /\./g, "" );
-								return [
-									parseFloat( raw.match( floatRegExp ) ),
-									raw.match( floatRegExp2 )
-								];
-							}
-						}
 					}
 				}
 			};
@@ -4221,6 +4198,117 @@ wb.add( selector );
 } )( jQuery, window, wb );
 
 /**
+ * @title WET-BOEW Dismissable content plugin
+ * @overview Enables content to be dismissed
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @thomasgohard
+ */
+( function( $, window, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the event - meaning that they will be initialized once per page,
+ * not once per instance of event on the page.
+ */
+var componentName = "wb-dismissable",
+	selector = "." + componentName,
+	initEvent = "wb-init." + componentName,
+	containerClass = "wb-dismissable-container",
+	wrapperClass = "wb-dismissable-wrapper",
+	dismissClass = "content-dismiss",
+	idKey = "dismissable-item-id",
+	$document = wb.doc,
+	i18n, i18nText,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			itemId, dismissedState, contentContainer, contentWrapper, dismissButton;
+
+		if ( elm ) {
+
+			// Only initialize the i18nText once
+			if ( !i18nText ) {
+				i18n = wb.i18n;
+				i18nText = {
+					dismiss: i18n( "dismiss" )
+				};
+			}
+
+			// Give the dismissable element a unique ID
+			itemId = wb.hashString( elm.innerHTML );
+
+			dismissedState = getDismissedState( itemId );
+
+			if ( dismissedState === "true" ) {
+
+				// Remove the element if it has been dismissed
+				if ( elm.parentNode ) {
+					elm.parentNode.removeChild( elm );
+				}
+			} else {
+				$( elm ).wrap( "<div class='" + wrapperClass + "'>" );
+				contentWrapper = elm.parentNode;
+
+				$( contentWrapper ).wrap( "<div class='" + containerClass + "'>" );
+				contentContainer = contentWrapper.parentNode;
+
+				dismissButton = "<button class='mfp-close " + dismissClass +
+					"' title='" + i18nText.dismiss + "'>&#xd7;<span class='wb-inv'> " +
+					i18nText.dismiss + "</span></button>";
+				$( contentContainer ).append( dismissButton );
+
+				contentContainer.setAttribute( "data-" + idKey, itemId );
+			}
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
+		}
+	},
+
+	getDismissedState = function( id ) {
+		var dismissState = localStorage.getItem( id );
+
+		if ( dismissState === null ) {
+			return false;
+		}
+
+		return dismissState;
+	},
+
+	dismissContent = function( elm ) {
+		localStorage.setItem( elm.getAttribute( "data-" + idKey ), true );
+		elm.parentNode.removeChild( elm );
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Handler for clicking on the dismiss button
+$document.on( "click vclick", "." + dismissClass, function( event ) {
+	var elm = event.currentTarget,
+		which = event.which;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		dismissContent( elm.parentNode );
+	}
+} );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+/**
  * @title WET-BOEW Responsive equal height
  * @overview Sets the same height for all elements in a container that are rendered on the same baseline (row). Adapted from http://codepen.io/micahgodbolt/pen/FgqLc.
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -5478,7 +5566,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @pjackson28
  */
-( function( $, window, document, wb ) {
+( function( $, window, document, wb, undef ) {
 "use strict";
 
 /*
@@ -5685,8 +5773,9 @@ var componentName = "wb-lbx",
 				},
 				parseAjax: function( mfpResponse ) {
 					var currItem = this.currItem,
+						currEl = currItem.el,
 						urlHash = currItem.src.split( "#" )[ 1 ],
-						filter = currItem.el.data( "wbLbxFilter" ),
+						filter = currEl ? currEl.data( "wbLbxFilter" ) : undef,
 						selector = filter || ( urlHash ? "#" + urlHash : false ),
 						$response;
 
@@ -6589,7 +6678,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 						// Close the menu but keep the referring link active
 						setTimeout( function() {
 							menuClose( $menuLink.parent(), false );
-						}, 1 );
+						}, 100 );
 
 					// Left / right key = Next / previous menu bar item
 					} else if ( $parentMenu.attr( "role" ) === "menubar" ) {
@@ -7120,8 +7209,13 @@ var componentName = "wb-mltmd",
 		case "setCaptionsVisible":
 			if ( args ) {
 				$( this ).addClass( captionClass );
-				this.object.loadModule( "cc" );
-				this.object.loadModule( "captions" );
+				try {
+					this.object.loadModule( "cc" );
+					this.object.setOption( "cc", "track", { languageCode: this.object.getOption( "cc", "tracklist" )[ 0 ].languageCode } );
+				} catch ( e ) {
+					this.object.loadModule( "captions" );
+					this.object.setOption( "captions", "track", { languageCode: this.object.getOption( "captions", "tracklist" )[ 0 ].languageCode } );
+				}
 			} else {
 				$( this ).removeClass( captionClass );
 				this.object.unloadModule( "cc" );
@@ -7850,6 +7944,7 @@ var componentName = "wb-overlay",
 	closeClass = "overlay-close",
 	linkClass = "overlay-lnk",
 	ignoreOutsideClass = "outside-off",
+	initialized = false,
 	sourceLinks = {},
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
@@ -7899,6 +7994,7 @@ var componentName = "wb-overlay",
 			elm.setAttribute( "aria-hidden", "true" );
 
 			// Identify that initialization has completed
+			initialized = true;
 			wb.ready( $elm, componentName );
 		}
 	},
@@ -8011,8 +8107,8 @@ $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
 $document.on( "click vclick", "." + closeClass, function( event ) {
 	var which = event.which;
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 		closeOverlay(
 			$( event.currentTarget ).closest( selector ).attr( "id" ),
 			false,
@@ -8027,8 +8123,8 @@ $document.on( "click vclick", "." + linkClass, function( event ) {
 		sourceLink = event.currentTarget,
 		overlayId = sourceLink.hash.substring( 1 );
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 		event.preventDefault();
 
 		// Introduce a delay to prevent outside activity detection
@@ -8049,8 +8145,8 @@ $document.on( "click vclick", selector + " a[href^='#']", function( event ) {
 		eventTarget = event.target,
 		href, overlay, linkTarget;
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 		overlay = $( eventTarget ).closest( selector )[ 0 ];
 		href = eventTarget.getAttribute( "href" );
 		linkTarget = document.getElementById( href.substring( 1 ) );
@@ -8078,8 +8174,8 @@ $document.on( "click vclick touchstart focusin", "body", function( event ) {
 		which = event.which,
 		overlayId, overlay;
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 
 		// Close any overlays with outside activity
 		for ( overlayId in sourceLinks ) {
@@ -8092,6 +8188,52 @@ $document.on( "click vclick touchstart focusin", "body", function( event ) {
 				// Close the overlay
 				closeOverlay( overlayId );
 			}
+		}
+	}
+} );
+
+// Ensure any element in focus outside an overlay is visible
+$document.on( "keyup", function( ) {
+	var elmInFocus, elmInFocusRect, focusAreaBelow, focusAreaAbove,
+		overlayId, overlay, overlayRect;
+
+	// Ignore if not initialized
+	if ( initialized ) {
+		elmInFocus = document.activeElement;
+		elmInFocusRect = elmInFocus.getBoundingClientRect();
+		focusAreaBelow = 0;
+		focusAreaAbove = window.innerHeight;
+
+		// Ensure that at least one overlay is visible, and that the element in focus is not an overlay,
+		// a child of an overlay, or the body element
+		if ( $.isEmptyObject( sourceLinks ) || elmInFocus.className.indexOf( componentName ) !== -1 ||
+			$( elmInFocus ).parents( selector ).length !== 0 || elmInFocus === document.body ) {
+			return;
+		}
+
+		// Determine the vertical portion of the viewport that is not obscured by an overlay
+		for ( overlayId in sourceLinks ) {
+			overlay = document.getElementById( overlayId );
+			if ( overlay && overlay.getAttribute( "aria-hidden" ) === "false" ) {
+				overlayRect = overlay.getBoundingClientRect();
+				if ( overlay.className.indexOf( "wb-bar-t" ) !== -1 ) {
+					focusAreaBelow = Math.max( overlayRect.bottom, focusAreaBelow );
+				} else if ( overlay.className.indexOf( "wb-bar-b" ) !== -1 ) {
+					focusAreaAbove = Math.min( overlayRect.top, focusAreaAbove );
+				}
+			}
+		}
+
+		// Ensure the element in focus is visible
+		// TODO: Find a solution for when there isn't enough page to scoll up or down
+		if ( elmInFocusRect.top < focusAreaBelow ) {
+
+			// Scroll down till the top of the element is visible
+			window.scrollBy( 0, focusAreaBelow - elmInFocusRect.top );
+		} else if ( elmInFocusRect.bottom > focusAreaAbove ) {
+
+			// Scroll up till the bottom of the element is visible
+			window.scrollBy( 0, elmInFocusRect.bottom - focusAreaAbove );
 		}
 	}
 } );
@@ -10299,7 +10441,7 @@ var componentName = "wb-toggle",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var link = wb.init( event, componentName, selector, true ),
-			$link, data;
+			$link, data, persistState;
 
 		if ( link ) {
 
@@ -10313,7 +10455,7 @@ var componentName = "wb-toggle",
 
 			// Persist toggle state across page loads
 			if ( data.persist ) {
-				initPersist( $link, data );
+				persistState = initPersist( $link, data );
 			}
 
 			// Toggle behaviour when the page is printed
@@ -10321,7 +10463,9 @@ var componentName = "wb-toggle",
 				initPrint( $link, data );
 			}
 
-			if ( data.state ) {
+			// Set the initial state if the state has been specified and
+			// the persistent state has not been set
+			if ( !persistState && data.state ) {
 				setState( $link, data, data.state );
 			}
 
@@ -10408,9 +10552,10 @@ var componentName = "wb-toggle",
 	},
 
 	/**
-	 * Initialize open on print behaviour of the toggle element
+	 * Initializes persistent behaviour of the toggle element
 	 * @param {jQuery Object} $link The toggle element to initialize
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
+	 * @returns {string} Persistent state
 	 */
 	initPersist = function( $link, data ) {
 		var state,
@@ -10425,6 +10570,8 @@ var componentName = "wb-toggle",
 		if ( state ) {
 			$link.trigger( toggleEvent, $.extend( {}, data, { type: state } ) );
 		}
+
+		return state;
 	},
 
 	/**
