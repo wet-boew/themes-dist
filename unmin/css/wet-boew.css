@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * 4.0.14-development - 2015-05-05
+ * 4.0.14-development - 2015-05-13
  *
  */
 /*
@@ -5025,7 +5025,7 @@ caption {
 .wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
   display: block; }
 
-.wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+.wb-disable .mfp-hide, .wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info, .wb-disable .wb-overlay, .wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
   display: block !important; }
 
 .wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
@@ -6044,6 +6044,31 @@ details.alert-danger:before {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
+/*
+ *	Dismissable content container
+ */
+.wb-dismissable-container {
+  background-color: #eee;
+  display: table;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%; }
+  .wb-dismissable-container .mfp-close {
+    color: #555;
+    display: table-cell;
+    position: static; }
+
+/*
+ *	Dismissable content wrapper
+ */
+.wb-dismissable-wrapper {
+  display: table-cell;
+  width: 100%; }
+
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
 .hght-inhrt {
   min-height: inherit; }
 
@@ -6656,9 +6681,6 @@ img.mfp-img {
   padding-left: 1.2em; }
 #mb-pnl details details {
   margin: 6px 0 6px -1.28em; }
-
-.wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info {
-  display: block !important; }
 
 .wb-disable #wb-glb-mn {
   display: none !important; }
@@ -7510,6 +7532,8 @@ table.dataTable {
     overflow: hidden;
     position: relative; }
   .wb-tabs [role="tablist"] {
+    border-spacing: 10px 0;
+    display: table;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -7521,6 +7545,8 @@ table.dataTable {
       border-width: 1px;
       color: #000;
       cursor: pointer;
+      display: table-cell;
+      left: -10px;
       margin: 0 10px 0 0;
       position: relative;
       text-align: center; }

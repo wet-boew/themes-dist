@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.14-development - 2015-05-05
+ * v4.0.14-development - 2015-05-13
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -191,7 +191,7 @@ wb.i18nDict = {
 	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps",
 	"geo-attrttl": "GeoGratis - Kanada bazė žemėlapis (anglų arba prancūzų kalba)",
 	"geo-sel": "Pasirinkti",
 	"geo-lblsel": "Patikrinkite, pasirinkite elementą žemėlapyje",
@@ -212,6 +212,8 @@ wb.i18nDict = {
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "Pagrindinė HTML versija",
 	"wb-enable": "Standartinė versija",
+	/* Dismissable content */
+	"dismiss": "Dismiss",
 	/* Template */
 	"tmpl-signin": "Prisijungti"
 };

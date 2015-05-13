@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.14-development - 2015-05-05
+ * v4.0.14-development - 2015-05-13
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -367,6 +367,29 @@ var getUrlParts = function( url ) {
 				default:
 					return "";
 			}
+		},
+
+		hashString: function( str ) {
+
+			// Sources:
+			//	http://werxltd.com/wp/2010/05/13/javascript-implementation-of-javas-string-hashcode-method/
+			//	http://jsperf.com/hashing-strings
+			var hash = 0,
+				chr, i;
+
+			if ( str.length === 0 ) {
+				return hash;
+			}
+
+			for ( i = 0; i < str.length; i++ ) {
+				chr = str.charCodeAt( i );
+				hash = ( ( hash << 5 ) - hash ) + chr;
+
+				// Convert to 32bit integer
+				hash = hash & hash;
+			}
+
+			return hash;
 		}
 	};
 
@@ -4721,6 +4744,117 @@ wb.add( selector );
 } )( jQuery, window, wb );
 
 /**
+ * @title WET-BOEW Dismissable content plugin
+ * @overview Enables content to be dismissed
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @thomasgohard
+ */
+( function( $, window, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the event - meaning that they will be initialized once per page,
+ * not once per instance of event on the page.
+ */
+var componentName = "wb-dismissable",
+	selector = "." + componentName,
+	initEvent = "wb-init." + componentName,
+	containerClass = "wb-dismissable-container",
+	wrapperClass = "wb-dismissable-wrapper",
+	dismissClass = "content-dismiss",
+	idKey = "dismissable-item-id",
+	$document = wb.doc,
+	i18n, i18nText,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			itemId, dismissedState, contentContainer, contentWrapper, dismissButton;
+
+		if ( elm ) {
+
+			// Only initialize the i18nText once
+			if ( !i18nText ) {
+				i18n = wb.i18n;
+				i18nText = {
+					dismiss: i18n( "dismiss" )
+				};
+			}
+
+			// Give the dismissable element a unique ID
+			itemId = wb.hashString( elm.innerHTML );
+
+			dismissedState = getDismissedState( itemId );
+
+			if ( dismissedState === "true" ) {
+
+				// Remove the element if it has been dismissed
+				if ( elm.parentNode ) {
+					elm.parentNode.removeChild( elm );
+				}
+			} else {
+				$( elm ).wrap( "<div class='" + wrapperClass + "'>" );
+				contentWrapper = elm.parentNode;
+
+				$( contentWrapper ).wrap( "<div class='" + containerClass + "'>" );
+				contentContainer = contentWrapper.parentNode;
+
+				dismissButton = "<button class='mfp-close " + dismissClass +
+					"' title='" + i18nText.dismiss + "'>&#xd7;<span class='wb-inv'> " +
+					i18nText.dismiss + "</span></button>";
+				$( contentContainer ).append( dismissButton );
+
+				contentContainer.setAttribute( "data-" + idKey, itemId );
+			}
+
+			// Identify that initialization has completed
+			wb.ready( $document, componentName );
+		}
+	},
+
+	getDismissedState = function( id ) {
+		var dismissState = localStorage.getItem( id );
+
+		if ( dismissState === null ) {
+			return false;
+		}
+
+		return dismissState;
+	},
+
+	dismissContent = function( elm ) {
+		localStorage.setItem( elm.getAttribute( "data-" + idKey ), true );
+		elm.parentNode.removeChild( elm );
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Handler for clicking on the dismiss button
+$document.on( "click vclick", "." + dismissClass, function( event ) {
+	var elm = event.currentTarget,
+		which = event.which;
+
+	// Ignore middle/right mouse buttons
+	if ( !which || which === 1 ) {
+		dismissContent( elm.parentNode );
+	}
+} );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+/**
  * @title WET-BOEW Responsive equal height
  * @overview Sets the same height for all elements in a container that are rendered on the same baseline (row). Adapted from http://codepen.io/micahgodbolt/pen/FgqLc.
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -8356,6 +8490,7 @@ var componentName = "wb-overlay",
 	closeClass = "overlay-close",
 	linkClass = "overlay-lnk",
 	ignoreOutsideClass = "outside-off",
+	initialized = false,
 	sourceLinks = {},
 	setFocusEvent = "setfocus.wb",
 	$document = wb.doc,
@@ -8405,6 +8540,7 @@ var componentName = "wb-overlay",
 			elm.setAttribute( "aria-hidden", "true" );
 
 			// Identify that initialization has completed
+			initialized = true;
 			wb.ready( $elm, componentName );
 		}
 	},
@@ -8517,8 +8653,8 @@ $document.on( "timerpoke.wb " + initEvent + " keydown open" + selector +
 $document.on( "click vclick", "." + closeClass, function( event ) {
 	var which = event.which;
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 		closeOverlay(
 			$( event.currentTarget ).closest( selector ).attr( "id" ),
 			false,
@@ -8533,8 +8669,8 @@ $document.on( "click vclick", "." + linkClass, function( event ) {
 		sourceLink = event.currentTarget,
 		overlayId = sourceLink.hash.substring( 1 );
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 		event.preventDefault();
 
 		// Introduce a delay to prevent outside activity detection
@@ -8555,8 +8691,8 @@ $document.on( "click vclick", selector + " a[href^='#']", function( event ) {
 		eventTarget = event.target,
 		href, overlay, linkTarget;
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 		overlay = $( eventTarget ).closest( selector )[ 0 ];
 		href = eventTarget.getAttribute( "href" );
 		linkTarget = document.getElementById( href.substring( 1 ) );
@@ -8584,8 +8720,8 @@ $document.on( "click vclick touchstart focusin", "body", function( event ) {
 		which = event.which,
 		overlayId, overlay;
 
-	// Ignore middle/right mouse buttons
-	if ( !which || which === 1 ) {
+	// Ignore if not initialized and middle/right mouse buttons
+	if ( initialized && ( !which || which === 1 ) ) {
 
 		// Close any overlays with outside activity
 		for ( overlayId in sourceLinks ) {
@@ -8604,42 +8740,47 @@ $document.on( "click vclick touchstart focusin", "body", function( event ) {
 
 // Ensure any element in focus outside an overlay is visible
 $document.on( "keyup", function( ) {
-	var elmInFocus = document.activeElement,
-		elmInFocusRect = elmInFocus.getBoundingClientRect(),
-		focusAreaBelow = 0,
-		focusAreaAbove = window.innerHeight,
+	var elmInFocus, elmInFocusRect, focusAreaBelow, focusAreaAbove,
 		overlayId, overlay, overlayRect;
 
-	// Ensure that at least one overlay is visible, and that the element in focus is not an overlay,
-	// a child of an overlay, or the body element
-	if ( $.isEmptyObject( sourceLinks ) || elmInFocus.className.indexOf( componentName ) !== -1 ||
-		$( elmInFocus ).parents( selector ).length !== 0 || elmInFocus === document.body ) {
-		return;
-	}
+	// Ignore if not initialized
+	if ( initialized ) {
+		elmInFocus = document.activeElement;
+		elmInFocusRect = elmInFocus.getBoundingClientRect();
+		focusAreaBelow = 0;
+		focusAreaAbove = window.innerHeight;
 
-	// Determine the vertical portion of the viewport that is not obscured by an overlay
-	for ( overlayId in sourceLinks ) {
-		overlay = document.getElementById( overlayId );
-		if ( overlay && overlay.getAttribute( "aria-hidden" ) === "false" ) {
-			overlayRect = overlay.getBoundingClientRect();
-			if ( overlay.className.indexOf( "wb-bar-t" ) !== -1 ) {
-				focusAreaBelow = Math.max( overlayRect.bottom, focusAreaBelow );
-			} else if ( overlay.className.indexOf( "wb-bar-b" ) !== -1 ) {
-				focusAreaAbove = Math.min( overlayRect.top, focusAreaAbove );
+		// Ensure that at least one overlay is visible, and that the element in focus is not an overlay,
+		// a child of an overlay, or the body element
+		if ( $.isEmptyObject( sourceLinks ) || elmInFocus.className.indexOf( componentName ) !== -1 ||
+			$( elmInFocus ).parents( selector ).length !== 0 || elmInFocus === document.body ) {
+			return;
+		}
+
+		// Determine the vertical portion of the viewport that is not obscured by an overlay
+		for ( overlayId in sourceLinks ) {
+			overlay = document.getElementById( overlayId );
+			if ( overlay && overlay.getAttribute( "aria-hidden" ) === "false" ) {
+				overlayRect = overlay.getBoundingClientRect();
+				if ( overlay.className.indexOf( "wb-bar-t" ) !== -1 ) {
+					focusAreaBelow = Math.max( overlayRect.bottom, focusAreaBelow );
+				} else if ( overlay.className.indexOf( "wb-bar-b" ) !== -1 ) {
+					focusAreaAbove = Math.min( overlayRect.top, focusAreaAbove );
+				}
 			}
 		}
-	}
 
-	// Ensure the element in focus is visible
-	// TODO: Find a solution for when there isn't enough page to scoll up or down
-	if ( elmInFocusRect.top < focusAreaBelow ) {
+		// Ensure the element in focus is visible
+		// TODO: Find a solution for when there isn't enough page to scoll up or down
+		if ( elmInFocusRect.top < focusAreaBelow ) {
 
-		// Scroll down till the top of the element is visible
-		window.scrollBy( 0, focusAreaBelow - elmInFocusRect.top );
-	} else if ( elmInFocusRect.bottom > focusAreaAbove ) {
+			// Scroll down till the top of the element is visible
+			window.scrollBy( 0, focusAreaBelow - elmInFocusRect.top );
+		} else if ( elmInFocusRect.bottom > focusAreaAbove ) {
 
-		// Scroll up till the bottom of the element is visible
-		window.scrollBy( 0, elmInFocusRect.bottom - focusAreaAbove );
+			// Scroll up till the bottom of the element is visible
+			window.scrollBy( 0, elmInFocusRect.bottom - focusAreaAbove );
+		}
 	}
 } );
 

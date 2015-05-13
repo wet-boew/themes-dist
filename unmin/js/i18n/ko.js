@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.14-development - 2015-05-05
+ * v4.0.14-development - 2015-05-13
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*
@@ -191,7 +191,7 @@ wb.i18nDict = {
 	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps",
 	"geo-attrttl": "GeoGratis - 캐나다 기본지도 (영어 나 불어 만)",
 	"geo-sel": "선택",
 	"geo-lblsel": "지도에서 요소를 선택하려면 선택",
@@ -212,6 +212,8 @@ wb.i18nDict = {
 	/* Disable/enable WET plugins and polyfills */
 	"wb-disable": "기본 HTML 버전",
 	"wb-enable": "표준 버전",
+	/* Dismissable content */
+	"dismiss": "Dismiss",
 	/* Template */
 	"tmpl-signin": "로그인"
 };
