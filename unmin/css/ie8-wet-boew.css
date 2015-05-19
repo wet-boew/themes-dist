@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.13 - 2015-04-21
+ * v4.0.14 - 2015-05-19
  *
  */
 /*
@@ -4717,36 +4717,6 @@ a {
   color: #d3080c;
   content: "\e101"; }
 
-details.alert {
-  padding-left: 45px; }
-  details.alert:before {
-    display: inline-block;
-    font-family: "Glyphicons Halflings";
-    font-size: 24px;
-    margin-left: -1.3em;
-    margin-top: -3px;
-    position: absolute; }
-  details.alert > * {
-    margin-left: 0.7em; }
-  details.alert > :first-child {
-    margin-left: 0.4em; }
-    details.alert > :first-child:before {
-      color: #000;
-      content: "";
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-details.alert-success:before {
-  color: #278400;
-  content: "\e084"; }
-details.alert-info:before {
-  color: #269abc;
-  content: "\e086"; }
-details.alert-warning:before {
-  color: #f90;
-  content: "\e107"; }
-details.alert-danger:before {
-  color: #d3080c;
-  content: "\e101"; }
-
 /*
  *	Heading top margins
  */
@@ -4829,15 +4799,23 @@ blockquote {
   width: auto; }
 
 /*
- *	Fieldset legend border position
+ *	Fieldset/legend border position
  *
  *	Bootstrap puts the border below the legend which creates a visual
  *	separation between the legend and the fields to which it relates. Putting
- *	the border above eliminates that visual separation.
+ *	the border above eliminates that visual separation. Putting it on the
+ *	fieldset element instead ensures that all fieldsets will have a separation
+ *	even when no legend is used.
  */
 legend {
   border-bottom: 0;
-  border-top: 1px solid #e5e5e5; }
+  float: left; }
+
+fieldset {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px; }
+  fieldset:first-child {
+    border-top: 0; }
 
 /*
  *	Pagination
@@ -4995,7 +4973,7 @@ caption {
 .wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
   display: block; }
 
-.wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+.wb-disable .mfp-hide, .wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info, .wb-disable .wb-overlay, .wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
   display: block !important; }
 
 .wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
@@ -5012,10 +4990,11 @@ caption {
   top: 0;
   width: 100px; }
 
+.wb-mltmd.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after, .wb-mltmd .display:after {
+  z-index: 1; }
 .wb-mltmd.waiting .display:before, .wb-enable .wb-twitter .twitter-timeline:before, .wb-mltmd .display:before {
   background: rgba(0, 0, 0, 0.7);
-  border-radius: 10px;
-  z-index: 1; }
+  border-radius: 10px; }
 
 @keyframes spin {
   from {
@@ -5024,12 +5003,19 @@ caption {
   to {
     transform: rotate(360deg); } }
 
+/* TODO: Use bootstratp placeholder when nested extends are supproted */
 .wb-mltmd.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after {
-  animation-duration: 1000ms;
+  animation-duration: 500ms;
   animation-iteration-count: infinite;
   animation-name: spin;
   animation-timing-function: linear;
-  background: url("../assets/loading.png") center center no-repeat;
+  color: #fff;
+  content: "\e031";
+  font-family: "Glyphicons Halflings";
+  font-size: 3.5em;
+  height: 1em;
+  line-height: 1.03;
+  width: 1em;
   z-index: 2; }
 
 /*! WET-BOEW Core and Plugins */
@@ -5747,6 +5733,67 @@ figure .pieLabel {
   color: #000;
   padding: 1px; }
 
+details.alert {
+  padding-left: 45px; }
+  details.alert:before {
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    font-size: 24px;
+    margin-left: -1.3em;
+    margin-top: -3px;
+    position: absolute; }
+  details.alert > * {
+    margin-left: 0.7em; }
+  details.alert > :first-child {
+    margin-left: 0.4em; }
+    details.alert > :first-child:before {
+      color: #000;
+      content: ""; }
+details.alert-success:before {
+  color: #278400;
+  content: "\e084"; }
+details.alert-info:before {
+  color: #269abc;
+  content: "\e086"; }
+details.alert-warning:before {
+  color: #f90;
+  content: "\e107"; }
+details.alert-danger:before {
+  color: #d3080c;
+  content: "\e101"; }
+
+.no-details details.alert > summary {
+  margin-left: 1.4em; }
+  .no-details details.alert > summary:before {
+    content: "\25BA\a0"; }
+.no-details[dir="rtl"] details.alert > summary {
+  margin-right: 1.4em; }
+
+/*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+/*
+ *	Dismissable content container
+ */
+.wb-dismissable-container {
+  background-color: #eee;
+  display: table;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%; }
+  .wb-dismissable-container .mfp-close {
+    color: #555;
+    display: table-cell;
+    position: static; }
+
+/*
+ *	Dismissable content wrapper
+ */
+.wb-dismissable-wrapper {
+  display: table-cell;
+  width: 100%; }
+
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -6342,9 +6389,6 @@ img.mfp-img {
 #mb-pnl details details {
   margin: 6px 0 6px -1.28em; }
 
-.wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info {
-  display: block !important; }
-
 .wb-disable #wb-glb-mn {
   display: none !important; }
 
@@ -6415,6 +6459,8 @@ img.mfp-img {
     cursor: pointer;
     position: relative; }
   .wb-mltmd .display:before {
+    text-align: center; }
+  .wb-mltmd .display:after {
     color: #fff;
     content: "";
     font-family: "Glyphicons Halflings";
@@ -6430,7 +6476,6 @@ img.mfp-img {
   .wb-mltmd.playing .errmsg {
     display: none; }
   .wb-mltmd.waiting .display:before, .wb-mltmd.waiting .display:after {
-    content: " ";
     display: block; }
   .wb-mltmd.cc_on .wb-mm-cc {
     display: table;
@@ -7185,6 +7230,8 @@ table.dataTable {
     overflow: hidden;
     position: relative; }
   .wb-tabs [role="tablist"] {
+    border-spacing: 10px 0;
+    display: table;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -7196,6 +7243,8 @@ table.dataTable {
       border-width: 1px;
       color: #000;
       cursor: pointer;
+      display: table-cell;
+      left: -10px;
       margin: 0 10px 0 0;
       position: relative;
       text-align: center; }
