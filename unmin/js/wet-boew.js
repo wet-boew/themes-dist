@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.14 - 2015-05-19
+ * v4.0.15-development - 2015-06-02
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -390,6 +390,10 @@ var getUrlParts = function( url ) {
 			}
 
 			return hash;
+		},
+
+		stripWhitespace: function( str ) {
+			return str.replace( /\s+/g, "" );
 		}
 	};
 
@@ -4790,7 +4794,17 @@ var componentName = "wb-dismissable",
 			}
 
 			// Give the dismissable element a unique ID
-			itemId = wb.hashString( elm.innerHTML );
+			if ( elm.hasAttribute( "id" ) ) {
+				itemId = elm.getAttribute( "id" );
+
+				// Ignore an ID assigned by wb
+				if ( itemId.indexOf( "wb-auto-" ) === 0 ) {
+					itemId = undefined;
+				}
+			}
+			if ( itemId === undefined ) {
+				itemId = wb.hashString( wb.stripWhitespace( elm.innerHTML ) );
+			}
 
 			dismissedState = getDismissedState( itemId );
 
@@ -4807,7 +4821,7 @@ var componentName = "wb-dismissable",
 				$( contentWrapper ).wrap( "<div class='" + containerClass + "'>" );
 				contentContainer = contentWrapper.parentNode;
 
-				dismissButton = "<button class='mfp-close " + dismissClass +
+				dismissButton = "<button type='button' class='mfp-close " + dismissClass +
 					"' title='" + i18nText.dismiss + "'>&#xd7;<span class='wb-inv'> " +
 					i18nText.dismiss + "</span></button>";
 				$( contentContainer ).append( dismissButton );
@@ -5282,21 +5296,16 @@ var componentName = "wb-feeds",
 		 * @return {string}	HTML string for creating a photowall effect
 		 */
 		flickr: function( data ) {
-
-			var seed = wb.getId(),
-				title = data.title,
-				media = data.media.m,
-				thumbnail = media.replace( "_m.", "_s." ),
-				image = media.replace( "_m", "" ),
-				description = data.description.replace( /^\s*<p>(.*?)<\/p>\s*<p>(.*?)<\/p>/i, "" );
+			var media = data.media.m,
+				flickrData = {
+					title: data.title,
+					thumbnail: media.replace( "_m.", "_s." ),
+					image: media.replace( "_m", "" ),
+					description: data.description.replace( /^\s*<p>(.*?)<\/p>\s*<p>(.*?)<\/p>/i, "" )
+				};
 
 			// due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
-			return "<li><a class='wb-lbx' href='#" + seed + "'><img src='" + thumbnail + "' alt='" + title + "' title='" + title + "' class='img-responsive'/></a>" +
-					"<section id='" + seed + "' class='mfp-hide modal-dialog modal-content overlay-def'>" +
-					"<header class='modal-header'><h2 class='modal-title'>" + title + "</h2></header>" +
-					"<div class='modal-body'><img src='" + image + "' class='thumbnail center-block' alt='" + title + "' />" +
-					description + "</div></section>" +
-					"</li>";
+			return "<li><a class='feed-flickr' href='javascript:;' data-flickr='" + JSON.stringify( flickrData ) + "'><img src='" + flickrData.thumbnail + "' alt='" + flickrData.title + "' title='" + flickrData.title + "' class='img-responsive'/></a></li>";
 		},
 
 		/**
@@ -5305,24 +5314,13 @@ var componentName = "wb-feeds",
 		 * @return {string}	HTML string for creating a photowall effect
 		 */
 		youtube: function( data ) {
-			var seed = wb.getId(),
-				mediaGroup = data.media$group,
-				title = mediaGroup.media$title.$t,
-				thumbnail = mediaGroup.media$thumbnail[ 1 ].url,
-				description = mediaGroup.media$description.$t,
-				videoid = mediaGroup.yt$videoid.$t;
+			var youtubeDate = {
+				title: data.title,
+				videoId: data.id
+			};
 
 			// Due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
-			return "<li class='col-md-4 col-sm-6' ><a class='wb-lbx' href='#" + seed + "'><img src='" + thumbnail + "' alt='" + title + "' title='" + title + "' class='img-responsive' /></a>" +
-					"<section id='" + seed + "' class='mfp-hide modal-dialog modal-content overlay-def'>" +
-					"<header class='modal-header'><h2 class='modal-title'>" + title + "</h2></header>" +
-					"<div class='modal-body'>" +
-					"<figure class='wb-mltmd'><video title='" + title + "'>" +
-					"<source type='video/youtube' src='http://www.youtube.com/watch?v=" + videoid + "' />" +
-					"</video><figcaption><p>" +  description + "</p>" +
-					"</figcaption></figure>" +
-					"</div></section>" +
-					"</li>";
+			return "<li class='col-md-4 col-sm-6 feed-youtube' data-youtube='" + JSON.stringify( youtubeDate ) + "'><a href='javascript:;'><img src='http://img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" + youtubeDate.title + "' title='" + youtubeDate.title + "' class='img-responsive' /></a></li>";
 		},
 		/**
 		 * [pinterest template]
@@ -5412,7 +5410,7 @@ var componentName = "wb-feeds",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			fetch, url, $content, limit, feeds, fType, last, i, callback, fElem, fIcon;
+			fetch, url, $content, limit, feeds, fType, last, i, callback, fElem, fIcon, youtubeData;
 
 		if ( elm ) {
 			$content = $( elm ).find( ".feeds-cont" );
@@ -5441,15 +5439,27 @@ var componentName = "wb-feeds",
 						fType =  "flickr";
 						callback = "jsoncallback";
 						$content.data( componentName + "-postProcess", [ ".wb-lbx" ] );
-					} else {
-						fType = "youtube";
-						$content.data( componentName + "-postProcess", [ ".wb-lbx", ".wb-mltmd" ] );
 					}
 
 					// We need a Gallery so lets add another plugin
 					// #TODO: Lightbox review for more abstraction we should not have to add a wb.add() for overlaying
 					fetch.url = fElem.attr( "data-ajax" );
 					fetch.jsonp = callback;
+				} else if ( fElem.attr( "data-youtube" ) ) {
+					youtubeData = wb.getData( fElem, "youtube" );
+
+					$content.data( componentName + "-postProcess", [ ".wb-lbx", ".wb-mltmd" ] );
+
+					if ( youtubeData.playlist ) {
+						fElem.trigger( {
+							type: "data-ready.wb-feeds",
+							feedsData: youtubeData.playlist
+						}, {
+							feedType: "youtube",
+							_content: $content
+						} );
+					}
+
 				} else {
 					url = jsonRequest( fElem.attr( "href" ), limit );
 					fetch.url = url;
@@ -5540,9 +5550,13 @@ var componentName = "wb-feeds",
 			hasVisibilityHandler = "vis-handler",
 			i, sorted, sortedEntry, $tabs;
 
-		sorted = entries.sort( function( a, b ) {
-			return compare( b.publishedDate, a.publishedDate );
-		} );
+		if ( feedtype !== "youtube" ) {
+			sorted = entries.sort( function( a, b ) {
+				return compare( b.publishedDate, a.publishedDate );
+			} );
+		} else {
+			sorted = entries;
+		}
 
 		for ( i = 0; i !== cap; i += 1 ) {
 			sortedEntry = sorted[ i ];
@@ -5615,14 +5629,20 @@ var componentName = "wb-feeds",
 		$elm.trigger( "wb-feed-ready" + selector );
 	};
 
-$document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( event, context ) {
-	var response = event.fetch.response,
-		eventTarget = event.target,
-		data;
+$document.on( "ajax-fetched.wb data-ready.wb-feeds", selector + " " + feedLinkSelector, function( event, context ) {
+	var eventTarget = event.target,
+		data, response;
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === eventTarget ) {
-		data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry;
+		switch ( event.type ) {
+			case "ajax-fetched":
+				response = event.fetch.response;
+				data = ( response.responseData ) ? response.responseData.feed.entries : response.items || response.feed.entry;
+				break;
+			default:
+				data = event.feedsData;
+		}
 
 		// Identify that initialization has completed
 		// if there are no entries left to process
@@ -5630,6 +5650,62 @@ $document.on( "ajax-fetched.wb", selector + " " + feedLinkSelector, function( ev
 			wb.ready( $( eventTarget ).closest( selector ), componentName );
 		}
 	}
+} );
+
+$document.on( "click", selector + " .feed-youtube", function( event ) {
+	var youTubeOverlaySelector  = "#wb-feeds-youtube-lbx",
+		$youTubeOverlay = $( youTubeOverlaySelector ),
+		youtubeData = wb.getData( event.currentTarget, "youtube" ),
+		videoUrl = "http://www.youtube.com/watch?v=" + youtubeData.videoId,
+		videoSource = "<figure class='wb-mltmd'><video title='" + youtubeData.title + "'>" +
+			"<source type='video/youtube' src='" + videoUrl + "' />" +
+			"</video><figcaption><p>" +  youtubeData.title + "</p>" +
+			"</figcaption></figure>";
+
+	if ( $youTubeOverlay.length === 0 ) {
+		$youTubeOverlay = $( "<section id='wb-feeds-youtube-lbx' class='mfp-hide modal-dialog modal-content overlay-def'>" +
+			"<header class='modal-header'><h2 class='modal-title'>" + youtubeData.title + "</h2></header>" +
+			"<div class='modal-body'>" +
+			videoSource +
+			"</div></section>" ).insertAfter( "main" );
+	} else {
+
+		//Modify lightbox
+		$youTubeOverlay.find( ".modal-title" ).text( youtubeData.title );
+		$youTubeOverlay.find( ".modal-body" ).empty().append( videoSource );
+	}
+
+	//Temporary fix until lightbox auto initialize the multimedia player
+	$youTubeOverlay.find( ".wb-mltmd" ).trigger( "wb-init.wb-mltmd" );
+
+	$( document ).trigger( "open.wb-lbx", [ {
+		src: youTubeOverlaySelector,
+		type: "inline"
+	} ] );
+} );
+
+$document.on( "click", selector + " .feed-flickr", function( event ) {
+	var flickrOverlaySelector  = "#wb-feeds-flick-lbx",
+		$flickrOverlay = $( flickrOverlaySelector ),
+		flickrData = wb.getData( event.currentTarget, "flickr" ),
+		body = "<img src='" + flickrData.image + "' class='thumbnail center-block' alt='" + flickrData.title + "' /><span>" +
+			flickrData.description + "</span>";
+
+	if ( $flickrOverlay.length === 0 ) {
+		$flickrOverlay = $( "<section id='wb-feeds-flick-lbx' class='mfp-hide modal-dialog modal-content overlay-def'>" +
+			"<header class='modal-header'><h2 class='modal-title'>" + flickrData.title + "</h2></header>" +
+			"<div class='modal-body'>" + body + "</div></section>" ).insertAfter( "main" );
+	} else {
+
+		//Modify lightbox
+		$flickrOverlay.find( ".modal-title" ).text( flickrData.title );
+		$flickrOverlay.find( ".modal-body" ).empty().append( body );
+	}
+
+	$( document ).trigger( "open.wb-lbx", [ {
+		src: flickrOverlaySelector,
+		type: "inline"
+	} ] );
 } );
 
 // Bind the init event to the plugin
@@ -8532,7 +8608,7 @@ var componentName = "wb-overlay",
 				closeText = i18nText.closeOverlay;
 			}
 			closeText = closeText.replace( "'", "&#39;" );
-			overlayClose = "<button class='mfp-close " + closeClass +
+			overlayClose = "<button type='button' class='mfp-close " + closeClass +
 				"' title='" + closeText + "'>&#xd7;<span class='wb-inv'> " +
 				closeText + "</span></button>";
 
@@ -9668,7 +9744,7 @@ var componentName = "wb-share",
 				};
 
 				// Add an email mailto option
-				defaults.sites[ i18nText.email ] = {
+				defaults.sites.email = {
 					name: i18nText.email,
 					url: "mailto:?to=&subject={t}&body={u}%0A{d}",
 					isMailto: true
@@ -9692,7 +9768,7 @@ var componentName = "wb-share",
 			id = "shr-pg" + ( pnlId.length !== 0 ? "-" + pnlId : panelCount );
 			pageHref = encodeURIComponent( settings.url );
 
-			regex = /\'|&#39;|&apos;/;
+			regex = /\'|&#39;|&apos;/g;
 			pageTitle = encodeURIComponent( settings.title )
 							.replace( regex, "%27" );
 			pageImage = encodeURIComponent( settings.img );
