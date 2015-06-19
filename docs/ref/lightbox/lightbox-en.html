@@ -288,7 +288,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <ul>
 <li><strong>Opened with <code>.wb-lbx</code></strong>:
 <pre><code>$( ".wb-lbx" ).on( "mfpClose", function( event ) {
-	$.magnificPopup.instance.items[ 0 ].data.src;
+	var src = $.magnificPopup.instance.items[ 0 ].src;
 	
 	if ( src === "#inline_content" ) {
 	} else if ( src === "demo/1_b.jpg" ) {
@@ -297,7 +297,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 </li>
 <li><strong>Opened with JavaScript</strong>:
 <pre><code>$( document ).on( "mfpClose", function( event ) {
-	$.magnificPopup.instance.items[ 0 ].data.src;
+	var src = $.magnificPopup.instance.items[ 0 ].src;
 	
 	if ( src === "#inline_content" ) {
 	} else if ( src === "demo/1_b.jpg" ) {
@@ -318,7 +318,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <div class="col-xs-6 datemod">
 <dl id="wb-dtmd">
 <dt>Date modified:&#32;</dt>
-<dd><time property="dateModified">2015-03-09</time></dd>
+<dd><time property="dateModified">2015-05-28</time></dd>
 </dl>
 </div>
 <div class="col-xs-6 text-right">
