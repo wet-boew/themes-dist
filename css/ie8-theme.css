@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.15 - 2015-06-24
+ * v4.0.16-development - 2015-06-26
  *
  */
 /*
@@ -4976,7 +4976,7 @@ caption {
   position: static;
   width: inherit; }
 
-.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #mb-pnl .modal-body h2, table.dataTable thead .sorting_disabled .sorting-cnt, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .wb-tabs.carousel-s1 [role="tablist"] > li, .wb-tabs.carousel-s2 [role="tablist"] > li {
+.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #mb-pnl .modal-body h2, table.dataTable thead .sorting-icons, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .wb-tabs.carousel-s1 [role="tablist"] > li, .wb-tabs.carousel-s2 [role="tablist"] > li {
   display: none; }
 
 .wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
@@ -5844,7 +5844,7 @@ details.alert-danger:before {
   border-color: #ccc;
   border-style: solid;
   border-width: 1px 0;
-  margin: 2em 10px 0; }
+  margin: 2em 0 0; }
   .wb-fnote h2 {
     margin-left: 0;
     margin-right: 0; }
@@ -5858,16 +5858,17 @@ details.alert-danger:before {
       background-color: #eee;
       border-color: #555; }
     .wb-fnote dd > ul, .wb-fnote dd > ol {
-      margin: 0 0.375em 0.375em 4.125em; }
+      margin: 0 0.375em 0.375em 4.25em; }
   .wb-fnote p {
-    margin: 0 0 0 3.75em;
+    margin: 0 0 0 3.875em;
     padding: 0 0.375em 0.375em; }
     .wb-fnote p:first-child {
+      margin-top: 0.11em;
       padding-top: 0.375em; }
   .wb-fnote ul, .wb-fnote ol {
     margin-bottom: 0.375em; }
   .wb-fnote table {
-    margin: 0 0.375em 0.375em 4.125em; }
+    margin: 0 0.375em 0.375em 4.25em; }
   .wb-fnote .fn-rtn {
     margin: 0;
     overflow: hidden;
@@ -5875,9 +5876,10 @@ details.alert-danger:before {
     padding-top: 0.375em;
     position: absolute;
     top: 0;
-    width: 3.375em; }
+    width: 3.5em; }
     .wb-fnote .fn-rtn a {
       display: inline-block;
+      margin-top: 0;
       padding-bottom: 0; }
 
 /* Right to left (RTL) SCSS */
@@ -5885,7 +5887,7 @@ details.alert-danger:before {
   margin-left: 0;
   margin-right: 5px; }
 [dir="rtl"] .wb-fnote p {
-  margin: 0 3.75em 0 0; }
+  margin: 0 3.875em 0 0; }
 [dir="rtl"] .wb-fnote .fn-rtn {
   margin-right: 0;
   padding-right: 0; }
@@ -7006,6 +7008,9 @@ table.dataTable thead .sorting .sorting-icons:before, table.dataTable thead .sor
 table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc {
   cursor: pointer; }
 
+table.dataTable thead .sorting .sorting-icons, table.dataTable thead .sorting_asc .sorting-icons, table.dataTable thead .sorting_desc .sorting-icons, table.dataTable thead .sorting_asc_disabled .sorting-icons, table.dataTable thead .sorting_desc_disabled .sorting-icons {
+  display: inline-block; }
+
 /*
  * Table styles
  */
@@ -7019,7 +7024,6 @@ table.dataTable {
     table.dataTable thead .sorting-cnt:before {
       content: " "; }
   table.dataTable thead .sorting-icons {
-    display: inline-block;
     margin-top: 2px; }
     table.dataTable thead .sorting-icons:before {
       content: "\e093";
