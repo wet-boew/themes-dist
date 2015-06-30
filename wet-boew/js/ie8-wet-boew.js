@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.16-development - 2015-06-26
+ * v4.0.16-development - 2015-06-30
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -3683,7 +3683,7 @@ var getUrlParts = function( url ) {
 			// A collection of the parameters of the query string part of the URL.
 			params: ( function() {
 				var results = {},
-					queryString = a.search.replace( /^\?/, "" ).split( "&" ),
+					queryString = encodeURI( decodeURI( a.search.replace( /^\?/, "" ) ) ).replace( /'/g, "%27" ).split( "&" ),
 					len = queryString.length,
 					key, strings, i;
 
