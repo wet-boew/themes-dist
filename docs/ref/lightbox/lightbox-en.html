@@ -258,6 +258,8 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <tr>
 <td><code>wb-open.wb-lbx</code> (v4.0.4+)</td>
 <td>Triggered manually:
+<pre><code>$( document ).trigger( "open.wb-lbx", items, modal, image, ajax (v4.0.16+) );</code></pre>
+<p>The <code>items</code> parameter is required while the <code>modal</code>, <code>image</code> and <code>ajax</code> parameters are optional. Note that the <code>ajax</code> parameter was added in v4.0.16. The following is an example usage:
 <pre><code>$( document ).trigger( "open.wb-lbx", [
 	[
 		{
@@ -268,9 +270,17 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	false,
 	[
 		"Image 1"
-	]
+	],
+	{
+		settings: {
+			type: 'POST',
+			data: { 
+				foo: 'bar'
+			}
+		}
+    }
 ]);</code></pre>
-</td>
+</p></td>
 <td>Used to manually open a Lightbox popup. Can be used to load single popups, galleries and modal popups. See <a href="../../../demos/lightbox/lightbox-en.html#examples5">Opening popups through JavaScript</a> for working examples.</td>
 </tr>
 <tr>
@@ -318,7 +328,7 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 <div class="col-xs-6 datemod">
 <dl id="wb-dtmd">
 <dt>Date modified:&#32;</dt>
-<dd><time property="dateModified">2015-05-28</time></dd>
+<dd><time property="dateModified">2015-07-09</time></dd>
 </dl>
 </div>
 <div class="col-xs-6 text-right">
