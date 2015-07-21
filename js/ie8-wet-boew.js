@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.16-development - 2015-06-30
+ * v4.0.16 - 2015-07-21
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -3854,6 +3854,8 @@ var getUrlParts = function( url ) {
 				// Identify that the component is ready
 				$elm.trigger( "wb-ready." + componentName, context );
 				this.initQueue -= 1;
+			} else {
+				this.doc.trigger( "wb-ready." + componentName, context );
 			}
 
 			// Identify that global initialization is complete
