@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.16-development - 2015-06-30
+ * v4.0.17-development - 2015-07-21
  *
  */
 /*
@@ -4986,7 +4986,7 @@ caption {
 .wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
   text-decoration: none; }
 
-.wb-mltmd.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after, .wb-mltmd .display:after, .wb-mltmd.waiting .display:before, .wb-enable .wb-twitter .twitter-timeline:before, .wb-mltmd .display:before {
+.wb-mltmd.video.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after, .wb-mltmd.video .display:after, .wb-mltmd.video.waiting .display:before, .wb-enable .wb-twitter .twitter-timeline:before, .wb-mltmd.video .display:before {
   bottom: 0;
   content: " ";
   height: 100px;
@@ -4997,9 +4997,9 @@ caption {
   top: 0;
   width: 100px; }
 
-.wb-mltmd.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after, .wb-mltmd .display:after {
+.wb-mltmd.video.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after, .wb-mltmd.video .display:after {
   z-index: 1; }
-.wb-mltmd.waiting .display:before, .wb-enable .wb-twitter .twitter-timeline:before, .wb-mltmd .display:before {
+.wb-mltmd.video.waiting .display:before, .wb-enable .wb-twitter .twitter-timeline:before, .wb-mltmd.video .display:before {
   background: rgba(0, 0, 0, 0.7);
   border-radius: 10px; }
 
@@ -5011,7 +5011,7 @@ caption {
     transform: rotate(360deg); } }
 
 /* TODO: Use bootstratp placeholder when nested extends are supproted */
-.wb-mltmd.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after {
+.wb-mltmd.video.waiting .display:after, .wb-enable .wb-twitter .twitter-timeline:after {
   animation-duration: 500ms;
   animation-iteration-count: infinite;
   animation-name: spin;
@@ -5531,19 +5531,14 @@ summary {
   summary > :first-child {
     display: inline; }
 
-details {
-  padding-left: 1.1em; }
-  details[open] {
-    padding-bottom: 1em; }
-  details > summary {
-    margin-left: -1.1em; }
+details > :not(summary) {
+  margin-left: 1.1em; }
+details[open] {
+  padding-bottom: 1em; }
 
-[dir=rtl] details {
-  padding-left: 0;
-  padding-right: 1.1em; }
-  [dir=rtl] details > summary {
-    margin-left: 0;
-    margin-right: -1.1em; }
+[dir=rtl] details > :not(summary) {
+  margin-left: 0;
+  margin-right: 1.1em; }
 
 /*
  Plugins
@@ -6464,28 +6459,26 @@ img.mfp-img {
   /*
 	  Light Skinning of mediacontrols
 	 */ }
-  .wb-mltmd .display {
+  .wb-mltmd.video .display {
     cursor: pointer;
     position: relative; }
-  .wb-mltmd .display:before {
+  .wb-mltmd.video .display:before {
     text-align: center; }
-  .wb-mltmd .display:after {
+  .wb-mltmd.video .display:after {
     color: #fff;
     content: "";
     font-family: "Glyphicons Halflings";
     font-size: 65px;
     text-align: center; }
+  .wb-mltmd.video.playing .errmsg {
+    display: none; }
+  .wb-mltmd.video.waiting .display:before, .wb-mltmd.video.waiting .display:after {
+    display: block; }
+  .wb-mltmd.audio object {
+    position: absolute; }
   .wb-mltmd video {
     height: auto;
     width: 100%; }
-  .wb-mltmd.audio object {
-    position: absolute; }
-  .wb-mltmd.playing .display:before, .wb-mltmd.playing .display:after {
-    display: none; }
-  .wb-mltmd.playing .errmsg {
-    display: none; }
-  .wb-mltmd.waiting .display:before, .wb-mltmd.waiting .display:after {
-    display: block; }
   .wb-mltmd.cc_on .wb-mm-cc {
     display: table;
     height: 4em;
@@ -6496,8 +6489,6 @@ img.mfp-img {
     display: block;
     margin-left: -2px;
     width: 1.2em; }
-  .wb-mltmd.youtube .display:before, .wb-mltmd.youtube .display:after {
-    display: none; }
   .wb-mltmd.skn-lt {
     border-bottom: 1px solid #ddd;
     color: #000; }
@@ -7147,6 +7138,9 @@ table.dataTable {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
+.wb-tabs [role="tablist"].allow-wrap li, .wb-tabs.carousel-s1 [role="tablist"] > li, .wb-tabs.carousel-s2 [role="tablist"] > li {
+  margin: 0 10px 0 0; }
+
 .wb-tabs, .wb-tabs.carousel-s1 figure, .wb-tabs.carousel-s2 figure {
   position: relative; }
 
@@ -7256,7 +7250,6 @@ table.dataTable {
       cursor: pointer;
       display: table-cell;
       left: -10px;
-      margin: 0 10px 0 0;
       position: relative;
       text-align: center; }
       .wb-tabs [role="tablist"] > li a {
@@ -7678,12 +7671,29 @@ summary {
 details:not([open]) details summary, details .out details summary {
   display: none !important; }
 
-details:not([open]) {
-  visibility: hidden; }
-  details:not([open]) > details, details:not([open]) > * {
-    display: none; }
-details.alert:not([open]) {
-  visibility: visible; }
+details {
+  border: 1px solid #ddd;
+  border-radius: 4px; }
+  details summary {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #295376;
+    padding: 5px 15px; }
+    details summary:focus, details summary:hover {
+      background-color: transparent;
+      color: #0535d2;
+      text-decoration: underline; }
+  details[open] summary {
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0; }
+  details:not([open]) {
+    visibility: hidden; }
+    details:not([open]) > details, details:not([open]) > * {
+      display: none; }
+  details.alert:not([open]) {
+    visibility: visible; }
 
 .tabpanels > details:not([open]) {
   visibility: visible; }
@@ -8167,6 +8177,22 @@ details.alert:not([open]) {
       position: static; }
     .wb-tabs [role="tabpanel"] summary {
       display: block !important; } }
+
+/*! WET-BOEW Core and Plugins */
+/*
+  WET-BOEW
+  @title: IE8-specific details/summary CSS
+ */
+.lt-ie9 details {
+  padding-left: 1.1em; }
+  .lt-ie9 details > summary {
+    margin-left: -1.1em; }
+.lt-ie9 [dir=rtl] details {
+  padding-left: 0;
+  padding-right: 1.1em; }
+  .lt-ie9 [dir=rtl] details > summary {
+    margin-left: 0 !important;
+    margin-right: -1.1em; }
 
 /*
  Plugins
