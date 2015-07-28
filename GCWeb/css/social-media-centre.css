@@ -2,14 +2,16 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * 4.0.17-development - 2015-07-27
+ * 4.0.17-development - 2015-07-28
  *
  */
 /*
  * Social media centre
  */
 /* Re-usable rules */
-.backgroundsize.csstransitions .product-name, .backgroundsize.csstransitions .product-platforms, .backgroundsize.csstransitions .product-department, .backgroundsize.csstransitions .product-language, .backgroundsize.csstransitions .product-link-container {
+.backgroundsize.csstransitions .product-name, .backgroundsize.csstransitions .product-platforms, .backgroundsize.csstransitions .product-department,
+.backgroundsize.csstransitions .product-language,
+.backgroundsize.csstransitions .product-link-container {
   border: 0;
   display: block; }
 
@@ -53,9 +55,12 @@
       height: auto !important; }
   .backgroundsize.csstransitions .product-name {
     min-height: 4em; }
-  .backgroundsize.csstransitions .product-department, .backgroundsize.csstransitions .product-language, .backgroundsize.csstransitions .product-link-container {
+  .backgroundsize.csstransitions .product-department,
+  .backgroundsize.csstransitions .product-language,
+  .backgroundsize.csstransitions .product-link-container {
     margin-top: 1em; }
-  .backgroundsize.csstransitions .product-department, .backgroundsize.csstransitions .product-language {
+  .backgroundsize.csstransitions .product-department,
+  .backgroundsize.csstransitions .product-language {
     font-weight: bold;
     margin-top: 1em; }
   .backgroundsize.csstransitions .product-link {
@@ -64,7 +69,8 @@
     text-decoration: none;
     text-transform: none !important;
     white-space: normal; }
-    .backgroundsize.csstransitions .product-link:hover, .backgroundsize.csstransitions .product-link:focus {
+    .backgroundsize.csstransitions .product-link:hover,
+    .backgroundsize.csstransitions .product-link:focus {
       text-decoration: none; }
 
 .dataTables_wrapper {
