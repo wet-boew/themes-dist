@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.17-development - 2015-07-28
+ * v4.0.18-development - 2015-08-21
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -1656,6 +1656,10 @@ Modernizr.load( [
 				newChar = replacementChar === "x" ? rand : ( rand & 0x3 | 0x8 );
 			return newChar.toString( 16 );
 		} );
+	};
+
+	wb.escapeAttribute = function( str ) {
+		return str.replace( /'/g, "&#39;" ).replace( /"/g, "&#34;" );
 	};
 
 } )( wb );
@@ -5346,7 +5350,7 @@ var componentName = "wb-feeds",
 				};
 
 			// due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
-			return "<li><a class='feed-flickr' href='javascript:;' data-flickr='" + JSON.stringify( flickrData ) + "'><img src='" + flickrData.thumbnail + "' alt='" + flickrData.title + "' title='" + flickrData.title + "' class='img-responsive'/></a></li>";
+			return "<li><a class='feed-flickr' href='javascript:;' data-flickr='" + wb.escapeAttribute( JSON.stringify( flickrData ) ) + "'><img src='" + flickrData.thumbnail + "' alt='" + wb.escapeAttribute( flickrData.title ) + "' title='" + wb.escapeAttribute( flickrData.title ) + "' class='img-responsive'/></a></li>";
 		},
 
 		/**
@@ -5361,7 +5365,7 @@ var componentName = "wb-feeds",
 			};
 
 			// Due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
-			return "<li class='col-md-4 col-sm-6 feed-youtube' data-youtube='" + JSON.stringify( youtubeDate ) + "'><a href='javascript:;'><img src='http://img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" + youtubeDate.title + "' title='" + youtubeDate.title + "' class='img-responsive' /></a></li>";
+			return "<li class='col-md-4 col-sm-6 feed-youtube' data-youtube='" + wb.escapeAttribute( JSON.stringify( youtubeDate ) ) + "'><a href='javascript:;'><img src='http://img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" + wb.escapeAttribute( youtubeDate.title ) + "' title='" + wb.escapeAttribute( youtubeDate.title ) + "' class='img-responsive' /></a></li>";
 		},
 		/**
 		 * [pinterest template]
@@ -8317,7 +8321,7 @@ $document.on( multimediaEvents, selector, function( event, simulated ) {
 				.toggleClass( "glyphicon-volume-off", isMuted )
 				.html( invStart + buttonData + invEnd );
 		$slider = $this.find( "input[type='range']" );
-		$slider[0].value = isMuted ? 0 : volume;
+		$slider[ 0 ].value = isMuted ? 0 : volume;
 		$slider.trigger( "wb-update.wb-slider" );
 		break;
 
