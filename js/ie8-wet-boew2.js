@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.16 - 2015-07-21
+ * v4.0.18-development - 2015-08-24
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1104,6 +1104,10 @@
 				newChar = replacementChar === "x" ? rand : ( rand & 0x3 | 0x8 );
 			return newChar.toString( 16 );
 		} );
+	};
+
+	wb.escapeAttribute = function( str ) {
+		return str.replace( /'/g, "&#39;" ).replace( /"/g, "&#34;" );
 	};
 
 } )( wb );
@@ -4794,7 +4798,7 @@ var componentName = "wb-feeds",
 				};
 
 			// due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
-			return "<li><a class='feed-flickr' href='javascript:;' data-flickr='" + JSON.stringify( flickrData ) + "'><img src='" + flickrData.thumbnail + "' alt='" + flickrData.title + "' title='" + flickrData.title + "' class='img-responsive'/></a></li>";
+			return "<li><a class='feed-flickr' href='javascript:;' data-flickr='" + wb.escapeAttribute( JSON.stringify( flickrData ) ) + "'><img src='" + flickrData.thumbnail + "' alt='" + wb.escapeAttribute( flickrData.title ) + "' title='" + wb.escapeAttribute( flickrData.title ) + "' class='img-responsive'/></a></li>";
 		},
 
 		/**
@@ -4809,7 +4813,7 @@ var componentName = "wb-feeds",
 			};
 
 			// Due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
-			return "<li class='col-md-4 col-sm-6 feed-youtube' data-youtube='" + JSON.stringify( youtubeDate ) + "'><a href='javascript:;'><img src='http://img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" + youtubeDate.title + "' title='" + youtubeDate.title + "' class='img-responsive' /></a></li>";
+			return "<li class='col-md-4 col-sm-6 feed-youtube' data-youtube='" + wb.escapeAttribute( JSON.stringify( youtubeDate ) ) + "'><a href='javascript:;'><img src='http://img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" + wb.escapeAttribute( youtubeDate.title ) + "' title='" + wb.escapeAttribute( youtubeDate.title ) + "' class='img-responsive' /></a></li>";
 		},
 		/**
 		 * [pinterest template]
@@ -7765,7 +7769,7 @@ $document.on( multimediaEvents, selector, function( event, simulated ) {
 				.toggleClass( "glyphicon-volume-off", isMuted )
 				.html( invStart + buttonData + invEnd );
 		$slider = $this.find( "input[type='range']" );
-		$slider[0].value = isMuted ? 0 : volume;
+		$slider[ 0 ].value = isMuted ? 0 : volume;
 		$slider.trigger( "wb-update.wb-slider" );
 		break;
 
@@ -8681,7 +8685,12 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 		refreshCallbackUrl: null,	/* refresh callback if using AJAX keepalive (no default) */
 		logouturl: "./",			/* logout URL once the session has expired */
 		refreshOnClick: true,		/* refresh session if user clicks on the page */
-		refreshLimit: 200000		/* default period of 2 minutes (ajax calls happen only once during this period) */
+		refreshLimit: 200000,		/* default period of 2 minutes (ajax calls happen only once during this period) */
+		method: "POST",				/* the request method to use */
+		additionalData: null,		/* additional data to send with the request */
+		refreshCallback: function( response ) {	/* callback function used to check the server response */
+				return response.replace( /\s/g, "" ) === "true";
+			}
 	},
 
 	/**
@@ -8836,25 +8845,31 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	keepalive = function( event, settings ) {
 		var $elm = $( event.target );
 		if ( settings.refreshCallbackUrl !== null ) {
-			$.post( settings.refreshCallbackUrl, function( response ) {
+			$.ajax( {
+				url: settings.refreshCallbackUrl,
+				data: settings.additionalData,
+				dataType: "text",
+				method: settings.method,
+				success: function( response ) {
 
-				// Session is valid
-				if ( response && response.replace( /\s/g, "" ) === "true" ) {
-					$elm.trigger( resetEvent, settings );
+					// Session is valid
+					if ( response && settings.refreshCallback( response ) ) {
+						$elm.trigger( resetEvent, settings );
 
-				// Session has timed out - let the user know they need to sign in again
-				} else {
+					// Session has timed out - let the user know they need to sign in again
+					} else {
 
-					// End the inactivity timeouts since the session is already kaput
-					clearTimeout( $elm.data( inactivityEvent ) );
-					clearTimeout( $elm.data( keepaliveEvent ) );
+						// End the inactivity timeouts since the session is already kaput
+						clearTimeout( $elm.data( inactivityEvent ) );
+						clearTimeout( $elm.data( keepaliveEvent ) );
 
-					openModal( {
-						body: "<p>" + i18nText.timeoutAlready + "</p>",
-						buttons: $( "<button type='button' class='" + confirmClass +
-							" btn btn-primary'>" + i18nText.buttonSignin + "</button>" )
-								.data( "logouturl", settings.logouturl )
-					} );
+						openModal( {
+							body: "<p>" + i18nText.timeoutAlready + "</p>",
+							buttons: $( "<button type='button' class='" + confirmClass +
+								" btn btn-primary'>" + i18nText.buttonSignin + "</button>" )
+									.data( "logouturl", settings.logouturl )
+						} );
+					}
 				}
 			} );
 		}

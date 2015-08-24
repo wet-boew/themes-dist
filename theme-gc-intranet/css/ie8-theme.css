@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.16 - 2015-07-21
+ * v4.0.17+1-development - 2015-08-24
  *
  */
 /*
@@ -26,6 +26,15 @@
  */
 /* Bootstrap
  *
+ * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
+ */
+/* TODO: Remove this block when including bootstrap 3.3.5 */
+/*!
+ * Bootstrap v3.3.1 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*!
  * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
  */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
@@ -4815,6 +4824,9 @@ legend {
   border-bottom: 0;
   float: left; }
 
+fieldset[disabled] .btn, .btn.disabled, .btn[disabled] {
+  border-style: solid; }
+
 fieldset {
   border-top: 1px solid #e5e5e5;
   padding-top: 10px; }
@@ -4872,8 +4884,6 @@ fieldset {
   min-height: 36px;
   min-width: 36px;
   white-space: normal; }
-  .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
-    border-style: solid; }
 
 /*
  *  Right-to-left support
@@ -4951,9 +4961,6 @@ caption {
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-/*
- * GLYPHICONS Halflings for Twitter Bootstrap by GLYPHICONS.com | Licensed under http://www.apache.org/licenses/LICENSE-2.0
  */
 /*
  Global placeholders
@@ -6683,6 +6690,9 @@ img.mfp-img {
   top: 0;
   width: 100%; }
 
+.mfp-bg {
+  opacity: 0.97; }
+
 /*
  *	Overlay parts
  */
@@ -7266,11 +7276,11 @@ table.dataTable {
         padding-bottom: 1px;
         z-index: 2; }
         .wb-tabs [role="tablist"] > li.active a {
-          cursor: default;
-          padding-top: 6px;
           border-color: #666;
           border-style: solid;
-          border-width: 4px 0 0 0; }
+          border-width: 4px 0 0 0;
+          cursor: default;
+          padding-top: 6px; }
       .wb-tabs [role="tablist"] > li.tab-count {
         line-height: normal; }
         .wb-tabs [role="tablist"] > li.tab-count > div {
@@ -7333,8 +7343,8 @@ table.dataTable {
           padding: 2px 0; }
           .wb-tabs.carousel-s2 [role="tablist"] > li.plypause a {
             font-size: 1.5em;
-            margin-top: 0.4em;
             margin-right: 0.65em;
+            margin-top: 0.4em;
             padding: 8px 10px 4px; }
 
 .wb-disable .csstransitions .wb-tabs [role="tabpanel"].out {
@@ -7354,8 +7364,7 @@ table.dataTable {
   text-indent: 0 !important; }
 
 .wb-twitter .twitter-timeline {
-  display: block;
-  text-indent: -9999px; }
+  display: block; }
 .wb-twitter iframe[style] {
   width: 100% !important; }
 
@@ -7363,10 +7372,6 @@ table.dataTable {
   min-height: 100px;
   min-width: 100px;
   position: relative; }
-
-/* Right to left (RTL) CSS */
-[dir="rtl"] .wb-twitter .twitter-timeline {
-  text-indent: 9999px; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -7810,9 +7815,9 @@ details {
   .wb-tabs {
     /* Only for backwards compatibility. Should be removed in v4.1. */
     border-color: #ccc;
+    border-radius: 4px;
     border-style: solid;
     border-width: 1px;
-    border-radius: 4px;
     margin-bottom: 15px;
     padding-left: 0;
     padding-right: 0; }
@@ -8811,7 +8816,7 @@ details {
     top: 0; }
   #wb-bc .breadcrumb {
     margin-bottom: 0; }
-  #wb-bc a[href]:after {
+  #wb-bc [href]:after {
     content: ""; }
   h1 {
     margin-top: 0; } }
