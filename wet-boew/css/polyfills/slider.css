@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -100,7 +101,7 @@
 .fd-slider-range {
   background-image: -webkit-gradient(linear, left top, right top, from(#89a5bd), to(#165c91));
   background-image: -webkit-linear-gradient(left, #89a5bd, #165c91);
-  background-image: linear-gradient(left, #89a5bd, #165c91);
+  background-image: linear-gradient(to right, #89a5bd, #165c91);
   left: 11px;
   line-height: 2px;
   top: 9px; }
@@ -132,13 +133,16 @@
 	}
 }
 */
-.fd-slider-focused .fd-slider-handle, .fd-slider-hover .fd-slider-handle, .fd-slider-active .fd-slider-handle {
+.fd-slider-focused .fd-slider-handle,
+.fd-slider-hover .fd-slider-handle,
+.fd-slider-active .fd-slider-handle {
   background-position: 0 -20px; }
 
 .fd-slider-no-value .fd-slider-handle {
   background-position: 0 -59px; }
 
-body.fd-slider-drag-horizontal, body.fd-slider-drag-horizontal * {
+body.fd-slider-drag-horizontal,
+body.fd-slider-drag-horizontal * {
   cursor: N-resize !important;
   cursor: W-resize !important;
   -webkit-user-select: none;
@@ -157,7 +161,7 @@ body.fd-slider-drag-horizontal, body.fd-slider-drag-horizontal * {
     background-color: #555;
     background-image: -webkit-gradient(linear, left top, right top, from(#666), to(#333));
     background-image: -webkit-linear-gradient(left, #666, #333);
-    background-image: linear-gradient(left, #666, #333);
+    background-image: linear-gradient(to right, #666, #333);
     border: 1px solid #888;
     border: 1px solid rgba(136, 136, 136, 0.8);
     border-bottom: 1px solid #999;
@@ -169,30 +173,25 @@ body.fd-slider-drag-horizontal, body.fd-slider-drag-horizontal * {
     background-color: #222;
     background-image: -webkit-gradient(linear, left top, right top, from(#222), to(#000));
     background-image: -webkit-linear-gradient(left, #222, #000);
-    background-image: linear-gradient(left, #222, #000);
+    background-image: linear-gradient(to right, #222, #000);
     cursor: auto !important; }
 
 @-webkit-keyframes fd-pulse {
   0% {
     -webkit-box-shadow: 0 0 3px rgba(100, 130, 170, 0.55);
             box-shadow: 0 0 3px rgba(100, 130, 170, 0.55); }
-
   20% {
     -webkit-box-shadow: 0 0 4px rgba(70, 130, 170, 0.6);
             box-shadow: 0 0 4px rgba(70, 130, 170, 0.6); }
-
   40% {
     -webkit-box-shadow: 0 0 5px rgba(40, 130, 170, 0.65);
             box-shadow: 0 0 5px rgba(40, 130, 170, 0.65); }
-
   60% {
     -webkit-box-shadow: 0 0 6px rgba(10, 130, 170, 0.7);
             box-shadow: 0 0 6px rgba(10, 130, 170, 0.7); }
-
   80% {
     -webkit-box-shadow: 0 0 5px rgba(40, 130, 170, 0.65);
             box-shadow: 0 0 5px rgba(40, 130, 170, 0.65); }
-
   100% {
     -webkit-box-shadow: 0 0 4px rgba(70, 130, 170, 0.6);
             box-shadow: 0 0 4px rgba(70, 130, 170, 0.6); } }
@@ -201,23 +200,18 @@ body.fd-slider-drag-horizontal, body.fd-slider-drag-horizontal * {
   0% {
     -webkit-box-shadow: 0 0 3px rgba(100, 130, 170, 0.55);
             box-shadow: 0 0 3px rgba(100, 130, 170, 0.55); }
-
   20% {
     -webkit-box-shadow: 0 0 4px rgba(70, 130, 170, 0.6);
             box-shadow: 0 0 4px rgba(70, 130, 170, 0.6); }
-
   40% {
     -webkit-box-shadow: 0 0 5px rgba(40, 130, 170, 0.65);
             box-shadow: 0 0 5px rgba(40, 130, 170, 0.65); }
-
   60% {
     -webkit-box-shadow: 0 0 6px rgba(10, 130, 170, 0.7);
             box-shadow: 0 0 6px rgba(10, 130, 170, 0.7); }
-
   80% {
     -webkit-box-shadow: 0 0 5px rgba(40, 130, 170, 0.65);
             box-shadow: 0 0 5px rgba(40, 130, 170, 0.65); }
-
   100% {
     -webkit-box-shadow: 0 0 4px rgba(70, 130, 170, 0.6);
             box-shadow: 0 0 4px rgba(70, 130, 170, 0.6); } }
