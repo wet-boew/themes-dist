@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.17 - 2015-08-24
+ * v4.0.18-development - 2015-09-02
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4932,6 +4932,9 @@ var componentName = "wb-feeds",
 						fType =  "flickr";
 						callback = "jsoncallback";
 						$content.data( componentName + "-postProcess", [ ".wb-lbx" ] );
+					} else {
+						fType = "generic";
+						callback = "callback";
 					}
 
 					// We need a Gallery so lets add another plugin
@@ -8685,7 +8688,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 		refreshCallbackUrl: null,	/* refresh callback if using AJAX keepalive (no default) */
 		logouturl: "./",			/* logout URL once the session has expired */
 		refreshOnClick: true,		/* refresh session if user clicks on the page */
-		refreshLimit: 200000,		/* default period of 2 minutes (ajax calls happen only once during this period) */
+		refreshLimit: 120000,		/* default period of 2 minutes (ajax calls happen only once during this period) */
 		method: "POST",				/* the request method to use */
 		additionalData: null,		/* additional data to send with the request */
 		refreshCallback: function( response ) {	/* callback function used to check the server response */
@@ -8829,8 +8832,8 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 						$elm
 							.trigger( resetEvent, settings )
 							.trigger( keepaliveEvent, settings );
+						$elm.data( "lastActivity", currentTime );
 					}
-					$elm.data( "lastActivity", currentTime );
 				}
 			} );
 		}
