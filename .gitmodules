@@ -1,20 +1,20 @@
 [submodule "theme-gcwu-fegc"]
 	path = theme-gcwu-fegc
-	url = ./
+	url = https://github.com/wet-boew/themes-dist
 	branch = theme-gcwu-fegc
 [submodule "theme-gc-intranet"]
 	path = theme-gc-intranet
-	url = ./
+	url = https://github.com/wet-boew/themes-dist
 	branch = theme-gc-intranet
 [submodule "GCWeb"]
 	path = GCWeb
-	url = ./
+	url = https://github.com/wet-boew/themes-dist
 	branch = GCWeb
 [submodule "theme-ogpl"]
 	path = theme-ogpl
-	url = ./
+	url = https://github.com/wet-boew/themes-dist
 	branch = theme-ogpl
 [submodule "theme-base"]
 	path = theme-base
-	url = ./
+	url = https://github.com/wet-boew/themes-dist
 	branch = theme-base
