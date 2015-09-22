@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.18-development - 2015-09-02
+ * v4.0.18-development - 2015-09-22
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -11423,7 +11423,7 @@ var componentName = "wb-toggle",
 			if ( !Modernizr.details ) {
 				$detail
 					.attr( "open", isOn ? null : "open" )
-					.find( "summary" ).trigger( "toggle.wb-details" );
+					.children( "summary" ).trigger( "toggle.wb-details" );
 			}
 
 			if ( data.isTablist ) {
