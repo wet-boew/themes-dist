@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.18-development - 2015-09-22
+ * v4.0.18-development - 2015-09-23
  *
  */
 @charset "UTF-8";
@@ -9761,7 +9761,7 @@ h1 {
   border-bottom: 1px solid #af3c43;
   font-size: 34px;
   margin-bottom: 0.2em;
-  margin-top: 1.25;
+  margin-top: 1.25em;
   padding-bottom: 0.2em; }
 
 h2,
@@ -10833,13 +10833,15 @@ Carousel
   .prm-flpr {
     background-color: #eee;
     margin-top: 1px; }
-    .prm-flpr .carousel-s2 .plypause {
+    .prm-flpr .wb-tabs.carousel-s2 [role="tablist"] li.plypause {
       font-size: 1.3em; }
-    .prm-flpr .carousel-s2 figure figcaption {
+      .prm-flpr .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
+        margin-top: .15em; }
+    .prm-flpr .wb-tabs.carousel-s2 figure figcaption {
       font-size: 1.3em; }
-      .prm-flpr .carousel-s2 figure figcaption a {
+      .prm-flpr .wb-tabs.carousel-s2 figure figcaption a {
         text-decoration: none; }
-        .prm-flpr .carousel-s2 figure figcaption a:hover {
+        .prm-flpr .wb-tabs.carousel-s2 figure figcaption a:hover {
           text-decoration: underline; }
   .wb-tabs.carousel-s2 [role="tablist"] li.tab-count .curr-count, .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
     font-size: 1.2em; }
