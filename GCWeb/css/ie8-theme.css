@@ -10614,15 +10614,13 @@ Carousel
   .prm-flpr {
     background-color: #eee;
     margin-top: 1px; }
-    .prm-flpr .wb-tabs.carousel-s2 [role="tablist"] li.plypause {
+    .prm-flpr .carousel-s2 .plypause {
       font-size: 1.3em; }
-      .prm-flpr .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
-        margin-top: .15em; }
-    .prm-flpr .wb-tabs.carousel-s2 figure figcaption {
+    .prm-flpr .carousel-s2 figure figcaption {
       font-size: 1.3em; }
-      .prm-flpr .wb-tabs.carousel-s2 figure figcaption a {
+      .prm-flpr .carousel-s2 figure figcaption a {
         text-decoration: none; }
-        .prm-flpr .wb-tabs.carousel-s2 figure figcaption a:hover {
+        .prm-flpr .carousel-s2 figure figcaption a:hover {
           text-decoration: underline; }
   .wb-tabs.carousel-s2 [role="tablist"] li.tab-count .curr-count, .wb-tabs.carousel-s2 [role="tablist"] li.plypause a {
     font-size: 1.2em; }
