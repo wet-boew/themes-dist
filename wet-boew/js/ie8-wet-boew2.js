@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19-development - 2015-09-28
+ * v4.0.19-development - 2015-10-21
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5732,7 +5732,7 @@ var componentName = "wb-lbx",
 				settings.callbacks = callbacks;
 
 				if ( elm.nodeName.toLowerCase() !== "a" ) {
-					settings.delegate = "a";
+					settings.delegate = "a:not(" + selector + "-skip)";
 					firstLink = elm.getElementsByTagName( "a" )[ 0 ];
 
 					// Is the element a gallery?
@@ -9592,12 +9592,12 @@ var componentName = "wb-tabs",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			hashFocus = false,
 			isCarousel = true,
 			open = "open",
-			$panels, $tablist, activeId, $openPanel, $elm, elmId,
-			settings, $panel, i, len, tablist, isOpen,
-			newId, positionY, groupClass, $tabPanels;
+			hashTargetLen = 0,
+			$panels, $tablist, activeId, $openPanel, $elm, elmId, $hashTarget,
+			settings, $panel, i, len, tablist, isOpen, hashFocus,
+			newId, positionY, groupClass, $tabPanels, openByHash;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -9611,7 +9611,9 @@ var componentName = "wb-tabs",
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
 			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
-			$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined;
+			hashFocus = activeId.length !== 0;
+			$openPanel = hashFocus ? $panels.filter( "#" + activeId ) : undefined;
+			openByHash = $openPanel && $openPanel.length !== 0;
 			elmId = elm.id;
 
 			settings = $.extend(
@@ -9633,19 +9635,30 @@ var componentName = "wb-tabs",
 
 			try {
 
-				// If the panel was not set by URL hash, then attempt to
-				// retrieve from sessionStorage
-				if ( !$openPanel || $openPanel.length === 0 ) {
-					if ( !settings.ignoreSession ) {
-						activeId = sessionStorage.getItem( pagePath + elmId + activePanel );
+				// If the panel was not set by URL hash
+				if ( !openByHash ) {
+					if ( hashFocus ) {
+						$hashTarget = $panels.find( "#" + activeId );
+						hashTargetLen = $hashTarget.length;
 					}
+
+					// If the anchor target is within a panel, then open that panel
+					if ( hashTargetLen !== 0 ) {
+						activeId = $hashTarget.closest( "[role=tabpanel]" ).attr( "id" );
+
+					// Attempt to retrieve active panel from sessionStorage
+					} else {
+						if ( !settings.ignoreSession ) {
+							activeId = sessionStorage.getItem( pagePath + elmId + activePanel );
+						}
+					}
+
 					if ( activeId ) {
 						$openPanel = $panels.filter( "#" + activeId );
 					}
 
 				// If the panel was set by URL hash, then store in sessionStorage
 				} else {
-					hashFocus = true;
 					if ( !settings.ignoreSession ) {
 						try {
 							sessionStorage.setItem( pagePath + elmId + activePanel, activeId );
@@ -9726,7 +9739,7 @@ var componentName = "wb-tabs",
 							open: open
 						} );
 						$panel.addClass( ( Modernizr.details ? "" :  open + " " ) +
-							"fade " + ( isOpen ? "in" : "out wb-inv" ) );
+							"fade " + ( isOpen ? "in" : "noheight out wb-inv" ) );
 					}
 
 					tablist += "<li" + ( isOpen ? " class='active'" : "" ) +
@@ -9746,11 +9759,11 @@ var componentName = "wb-tabs",
 					.trigger( "wb-init.wb-toggle" );
 			} else if ( $openPanel && $openPanel.length !== 0 ) {
 				$panels.filter( ".in" )
-					.addClass( "out" )
+					.addClass( "out noheight" )
 					.removeClass( "in" );
 				$openPanel
 					.addClass( "in" )
-					.removeClass( "out" );
+					.removeClass( "out noheight" );
 				$tablist.find( ".active" )
 					.removeClass( "active" );
 				$tablist.find( "a" )
@@ -9772,13 +9785,22 @@ var componentName = "wb-tabs",
 			}
 
 			// If focus is being set by the URL hash, then ensure the tabs are
-			// not above the top of the viewport
+			// not above the top of the viewport (if the panel was the target),
+			// or the anchor is not above the top of viewport (if the anchor was
+			// the target)
 			if ( hashFocus ) {
 
 				// Need a slight delay to allow for the reflow
 				setTimeout( function() {
-					positionY = $tablist.offset().top;
-					if ( positionY < document.body.scrollTop ) {
+					if ( openByHash ) {
+						positionY = $tablist.offset().top;
+					} else if ( hashTargetLen !== 0 ) {
+						positionY = $hashTarget.offset().top;
+					} else {
+						positionY = -1;
+					}
+
+					if ( positionY !== -1 && positionY < document.body.scrollTop ) {
 						document.body.scrollTop = positionY;
 					}
 				}, 1 );
@@ -9967,7 +9989,7 @@ var componentName = "wb-tabs",
 
 		$currPanel
 			.removeClass( "in" )
-			.addClass( "out" )
+			.addClass( "out noheight" )
 			.attr( {
 				"aria-hidden": "true",
 				"aria-expanded": "false"
@@ -9982,7 +10004,7 @@ var componentName = "wb-tabs",
 		}
 
 		$next
-			.removeClass( "out" )
+			.removeClass( "out noheight" )
 			.addClass( "in" )
 			.attr( {
 				"aria-hidden": "false",
@@ -10139,7 +10161,7 @@ var componentName = "wb-tabs",
 
 								$detailsElm
 									.removeAttr( "role aria-expanded aria-hidden" )
-									.removeClass( "fade out in" )
+									.removeClass( "fade out noheight in" )
 									.toggleClass( "open", isActive );
 
 								$panelElm
@@ -10176,7 +10198,7 @@ var componentName = "wb-tabs",
 									open: "open"
 								} )
 								.not( $openDetails )
-									.addClass( "fade out wb-inv" )
+									.addClass( "fade out noheight wb-inv" )
 									.attr( {
 										"aria-hidden": "true",
 										"aria-expanded": "false"

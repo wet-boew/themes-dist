@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19-development - 2015-09-28
+ * v4.0.19-development - 2015-10-21
  *
  */
 @charset "UTF-8";
@@ -5652,8 +5652,19 @@ a {
 .btn-danger:visited {
   color: #fff; }
 
-.dl-horizontal dt {
-  white-space: normal; }
+@media (min-width: 768px) {
+  .dl-horizontal dt {
+    border-top: 1px solid #ccc;
+    padding: 10px 10px 10px 0;
+    text-align: left;
+    white-space: normal; }
+  .dl-horizontal dd {
+    border-top: 1px solid #ccc;
+    margin-bottom: 3px;
+    margin-left: 160px;
+    padding: 10px 10px 10px 0; }
+  .dl-horizontal dt + dd {
+    padding-bottom: 0; } }
 
 .dropdown-menu > li > a:visited {
   color: #333333; }
@@ -5947,9 +5958,20 @@ fieldset[disabled] .btn, .btn.disabled,
 
 fieldset {
   border-top: 1px solid #e5e5e5;
-  padding-top: 10px; }
+  padding-top: 10px;
+  /*
+	 *	Fieldset/legend as a label for a group of checkboxes or radio buttons
+	 *	https://github.com/wet-boew/wet-boew/issues/5797
+	 */ }
   fieldset:first-child {
     border-top: 0; }
+  fieldset.chkbxrdio-grp {
+    border-top: 0;
+    padding-top: 0; }
+    fieldset.chkbxrdio-grp legend {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px; }
 
 /*
  *	Pagination
@@ -6339,6 +6361,10 @@ q:after {
     -webkit-animation-name: fadeout;
             animation-name: fadeout;
     z-index: -1; }
+    .fade.out.noheight {
+      -webkit-animation-name: fadeoutnoheight;
+              animation-name: fadeoutnoheight;
+      max-height: 0; }
 
 @-webkit-keyframes fadein {
   0% {
@@ -6371,6 +6397,30 @@ q:after {
   100% {
     opacity: 0;
     visibility: hidden; } }
+
+@-webkit-keyframes fadeoutnoheight {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    max-height: 100%; }
+  99.9999% {
+    max-height: 100%; }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0; } }
+
+@keyframes fadeoutnoheight {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    max-height: 100%; }
+  99.9999% {
+    max-height: 100%; }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0; } }
 
 .slide.out,
 .slide.in {
@@ -7803,6 +7853,15 @@ img.mfp-img {
 .wb-menu .sm-open .expicon {
   z-index: -1; }
 
+.wb-menu details {
+  border: 0; }
+  .wb-menu details summary {
+    border: 0;
+    color: #fff; }
+    .wb-menu details summary:focus,
+    .wb-menu details summary:hover {
+      text-decoration: none; }
+
 #mb-pnl nav a.wb-navcurr, #mb-pnl nav summary.wb-navcurr {
   outline: 1px solid; }
 
@@ -9219,31 +9278,34 @@ summary {
 details:not([open]) details summary, details .out details summary {
   display: none !important; }
 
-details {
+details summary {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  color: #295376;
+  padding: 5px 15px; }
+  details summary:focus,
+  details summary:hover {
+    background-color: transparent;
+    color: #0535d2;
+    text-decoration: underline; }
+
+details[open] {
   border: 1px solid #ddd;
   border-radius: 4px; }
-  details summary {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    color: #295376;
-    padding: 5px 15px; }
-    details summary:focus,
-    details summary:hover {
-      background-color: transparent;
-      color: #0535d2;
-      text-decoration: underline; }
   details[open] summary {
     border: 0;
     border-bottom: 1px solid #ddd;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0; }
-  details:not([open]) {
-    visibility: hidden; }
-    details:not([open]) > details,
-    details:not([open]) > * {
-      display: none; }
-  details.alert:not([open]) {
-    visibility: visible; }
+
+details:not([open]) {
+  visibility: hidden; }
+  details:not([open]) > details,
+  details:not([open]) > * {
+    display: none; }
+
+details.alert:not([open]) {
+  visibility: visible; }
 
 .tabpanels > details:not([open]) {
   visibility: visible; }
