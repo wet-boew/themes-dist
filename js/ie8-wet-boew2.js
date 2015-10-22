@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19-development - 2015-10-21
+ * v4.0.19-development - 2015-10-22
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -6327,7 +6327,7 @@ var componentName = "wb-menu",
 			// Add the secondary menu
 			if ( $secnav.length !== 0 ) {
 				allProperties.push( [
-					$secnav.find( "> ul > li > *:first-child" ).get(),
+					$secnav.find( "ul" ).filter( ":not(li > ul)" ).find( " > li > *:first-child" ).get(),
 					"sec-pnl",
 					$secnav.find( "h2" ).html()
 				] );

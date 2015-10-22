@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19-development - 2015-10-21
+ * v4.0.19-development - 2015-10-22
  *
  */
 @charset "UTF-8";
@@ -7082,7 +7082,8 @@ details.alert-danger:before {
 .wb-frmvld label strong.error .label,
 .wb-frm label strong.error .label, .wb-frmvld legend .error .label,
 .wb-frm legend .error .label {
-  font-size: 100%; }
+  font-size: 100%;
+  white-space: normal; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
