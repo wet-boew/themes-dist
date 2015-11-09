@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19-development - 2015-10-22
+ * v4.0.19-development - 2015-11-09
  *
  */
 @charset "UTF-8";
@@ -61,27 +61,25 @@ Left menu variables
                 box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 138px;
-        padding: 0.5em 1.5em; } }
+        padding: .5em 1.5em; } }
     @media (min-width: 1200px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
                 box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 138px;
-        padding: 0.5em 1.5em; } }
+        padding: .5em 1.5em; } }
 
 .splash .glyphicon {
   color: #9e9e9e;
   font-size: 5px;
   top: -3px; }
 
-.splash .sp-lk:link,
-.splash .sp-lk:visited {
+.splash .sp-lk:link, .splash .sp-lk:visited {
   color: #335075;
   text-decoration: none; }
 
-.splash .sp-lk:hover,
-.splash .sp-lk:active {
+.splash .sp-lk:hover, .splash .sp-lk:active {
   color: #335075;
   text-decoration: underline; }
 
