@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19-development - 2015-09-24
+ * v4.0.20-development - 2015-12-01
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1559,7 +1559,7 @@ var componentName = "wb-calevt",
 
 					events.list[ events.iCount ] = {
 						title: title,
-						date: date,
+						date: new Date( date.getTime() ),
 						href: href,
 						target: target
 					};
@@ -2591,7 +2591,7 @@ $document.on( "click", ".cal-goto-cancel", function( event ) {
 									parseFloat( cellValue.replace( /(\d{1,3}(?:(?: |,)\d{3})*)(?:(?:.|,)(\d{1,2}))?$/, function( a, b, c ) {
 										return b.replace( / |,/g, "" ) + "." + c || "0";
 									} ), 10 ),
-									cellValue.match ( dataCellUnitRegExp )
+									cellValue.match( dataCellUnitRegExp )
 								];
 							}
 						}
@@ -4419,7 +4419,7 @@ var componentName = "wb-eqht",
 	 * @method onResize
 	 */
 	onResize = function() {
-		var $elm, $children, $anchor, currentChild, childCSS, minHeight, i, j,
+		var $elm, $children, $anchor, currentChild, childCSS, i, j,
 			$elms = $( selector ),
 			row = [],
 			rowTop = -1,
@@ -4430,6 +4430,9 @@ var componentName = "wb-eqht",
 		for ( i = $elms.length - 1; i !== -1; i -= 1 ) {
 			$elm = $elms.eq( i );
 			$children = $elm.children();
+
+			// Reinitialize the row at the beginning of each section of equal height
+			row = [];
 
 			$anchor = detachElement( $elm );
 			for ( j = $children.length - 1; j !== -1; j -= 1 ) {
@@ -4460,37 +4463,57 @@ var componentName = "wb-eqht",
 			}
 			$elm = reattachElement( $anchor );
 
-			for ( j = $children.length - 1; j !== -1; j -= 1 ) {
+			// set the top and tallest to the first element
+			rowTop = $children[ 0 ].offsetTop;
+			tallestHeight = $children[ 0 ].offsetHeight;
+
+			// first, the loop MUST be from start to end to work.
+			for ( j = 0; j < $children.length; j++ ) {
 				currentChild = $children[ j ];
 
 				currentChildTop = currentChild.offsetTop;
 				currentChildHeight = currentChild.offsetHeight;
 
 				if ( currentChildTop !== rowTop ) {
-					recordRowHeight( row, tallestHeight );
 
+					// as soon as we find an element not on this row (not the same offsetTop)
+					// we need to equalize each items in that row to align the next row.
+					equalize( row, tallestHeight );
+
+					// since the elements of the previous row was equalized
+					// we need to get the new offsetTop of the current element
+					currentChildTop = currentChild.offsetTop;
+
+					// reset the row, rowTop and tallestHeight
+					row.length = 0;
 					rowTop = currentChildTop;
 					tallestHeight = currentChildHeight;
-				} else {
-					tallestHeight = ( currentChildHeight > tallestHeight ) ? currentChildHeight : tallestHeight;
 				}
 
+				tallestHeight = Math.max( currentChildHeight, tallestHeight );
 				row.push( $children.eq( j ) );
 			}
-			recordRowHeight( row, tallestHeight );
 
-			$anchor = detachElement( $elm );
-			for ( j = $children.length - 1; j !== -1; j -= 1 ) {
-				minHeight = $children.eq( j ).data( minHeightCSS );
-
-				if ( minHeight ) {
-					$children[ j ].style.minHeight = minHeight + "px";
-				}
-			}
-			$elm = reattachElement( $anchor );
+			// equalize the last row
+			equalize( row, tallestHeight );
 
 			// Identify that the height equalization was updated
 			$document.trigger( "wb-updated" + selector );
+		}
+	},
+
+	/**
+	* @method equalize
+	* @param {array} row the array of items to be equalized
+	* @param {int} tallestHeight the talest height to use to equalize
+	*/
+	equalize = function( row, tallestHeight ) {
+		for ( var i = 0; i < row.length; i++ ) {
+
+			// added a +1 because some floated element got stuck if the
+			// shortest element was the last element in the row
+			var minHeight = tallestHeight + 1;
+			row[ i ][ 0 ].style.minHeight = minHeight + "px";
 		}
 	},
 
@@ -4537,23 +4560,6 @@ var componentName = "wb-eqht",
 		}
 
 		return $elm;
-	},
-
-	/**
-	 * @method recordRowHeight
-	 * @param {array} row The elements for which to record the height
-	 * @param {integer} height The height to record
-	 */
-	recordRowHeight = function( row, height ) {
-		var i = row.length - 1;
-
-		// only set a height if more than one element exists in the row
-		if ( i ) {
-			for ( ; i !== -1; i -= 1 ) {
-				row[ i ].data( minHeightCSS, height );
-			}
-		}
-		row.length = 0;
 	};
 
 // Bind the init event of the plugin
@@ -5477,12 +5483,11 @@ var componentName = "wb-frmvld",
 							this.defaultShowErrors();
 							var $errors = $form.find( "strong.error" ).filter( ":not(:hidden)" ),
 								$errorfields = $form.find( "input.error, select.error, textarea.error" ),
-								$summaryContainer = $form.find( "#" + errorFormId ),
 								prefixStart = "<span class='prefix'>" + i18nText.error + "&#160;",
 								prefixEnd = i18nText.colon + " </span>",
 								separator = i18nText.hyphen,
 								ariaLive = $form.parent().find( ".arialive" )[ 0 ],
-								summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
+								$summaryContainer, summary, key, i, len, $error, prefix, $fieldName, $fieldset, label, labelString;
 
 							// Correct the colouring of fields that are no longer invalid
 							$form
@@ -5554,6 +5559,7 @@ var componentName = "wb-frmvld",
 
 								// Delay updating the summary container in case a summary link was clicked
 								setTimeout( function() {
+									$summaryContainer = $form.find( "#" + errorFormId );
 
 									// Output our error summary and place it in the error container
 									// Create our container if one doesn't already exist
@@ -5732,7 +5738,7 @@ var componentName = "wb-lbx",
 				settings.callbacks = callbacks;
 
 				if ( elm.nodeName.toLowerCase() !== "a" ) {
-					settings.delegate = "a";
+					settings.delegate = "a:not(" + selector + "-skip)";
 					firstLink = elm.getElementsByTagName( "a" )[ 0 ];
 
 					// Is the element a gallery?
@@ -6327,7 +6333,7 @@ var componentName = "wb-menu",
 			// Add the secondary menu
 			if ( $secnav.length !== 0 ) {
 				allProperties.push( [
-					$secnav.find( "> ul > li > *:first-child" ).get(),
+					$secnav.find( "ul" ).filter( ":not(li > ul)" ).find( " > li > *:first-child" ).get(),
 					"sec-pnl",
 					$secnav.find( "h2" ).html()
 				] );
@@ -6938,7 +6944,7 @@ var componentName = "wb-mltmd",
 					volume: i18n( "volume" ),
 					cc_on: i18n( "cc", "on" ),
 					cc_off: i18n( "cc", "off" ),
-					cc_error: i18n ( "cc-err" ),
+					cc_error: i18n( "cc-err" ),
 					mute_on: i18n( "mute", "on" ),
 					mute_off: i18n( "mute", "off" ),
 					duration: i18n( "dur" ),
@@ -7064,7 +7070,7 @@ var componentName = "wb-mltmd",
 				}
 			} );
 		};
-	} () ),
+	}() ),
 
 	/**
 	 * @method parseHtml
@@ -9592,12 +9598,12 @@ var componentName = "wb-tabs",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			hashFocus = false,
 			isCarousel = true,
 			open = "open",
-			$panels, $tablist, activeId, $openPanel, $elm, elmId,
-			settings, $panel, i, len, tablist, isOpen,
-			newId, positionY, groupClass, $tabPanels;
+			hashTargetLen = 0,
+			$panels, $tablist, activeId, $openPanel, $elm, elmId, $hashTarget,
+			settings, $panel, i, len, tablist, isOpen, hashFocus,
+			newId, positionY, groupClass, $tabPanels, openByHash;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -9611,7 +9617,9 @@ var componentName = "wb-tabs",
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
 			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
-			$openPanel = activeId.length !== 0 ? $panels.filter( "#" + activeId ) : undefined;
+			hashFocus = activeId.length !== 0;
+			$openPanel = hashFocus ? $panels.filter( "#" + activeId ) : undefined;
+			openByHash = $openPanel && $openPanel.length !== 0;
 			elmId = elm.id;
 
 			settings = $.extend(
@@ -9633,19 +9641,30 @@ var componentName = "wb-tabs",
 
 			try {
 
-				// If the panel was not set by URL hash, then attempt to
-				// retrieve from sessionStorage
-				if ( !$openPanel || $openPanel.length === 0 ) {
-					if ( !settings.ignoreSession ) {
-						activeId = sessionStorage.getItem( pagePath + elmId + activePanel );
+				// If the panel was not set by URL hash
+				if ( !openByHash ) {
+					if ( hashFocus ) {
+						$hashTarget = $panels.find( "#" + activeId );
+						hashTargetLen = $hashTarget.length;
 					}
+
+					// If the anchor target is within a panel, then open that panel
+					if ( hashTargetLen !== 0 ) {
+						activeId = $hashTarget.closest( "[role=tabpanel]" ).attr( "id" );
+
+					// Attempt to retrieve active panel from sessionStorage
+					} else {
+						if ( !settings.ignoreSession ) {
+							activeId = sessionStorage.getItem( pagePath + elmId + activePanel );
+						}
+					}
+
 					if ( activeId ) {
 						$openPanel = $panels.filter( "#" + activeId );
 					}
 
 				// If the panel was set by URL hash, then store in sessionStorage
 				} else {
-					hashFocus = true;
 					if ( !settings.ignoreSession ) {
 						try {
 							sessionStorage.setItem( pagePath + elmId + activePanel, activeId );
@@ -9726,7 +9745,7 @@ var componentName = "wb-tabs",
 							open: open
 						} );
 						$panel.addClass( ( Modernizr.details ? "" :  open + " " ) +
-							"fade " + ( isOpen ? "in" : "out wb-inv" ) );
+							"fade " + ( isOpen ? "in" : "noheight out wb-inv" ) );
 					}
 
 					tablist += "<li" + ( isOpen ? " class='active'" : "" ) +
@@ -9746,11 +9765,11 @@ var componentName = "wb-tabs",
 					.trigger( "wb-init.wb-toggle" );
 			} else if ( $openPanel && $openPanel.length !== 0 ) {
 				$panels.filter( ".in" )
-					.addClass( "out" )
+					.addClass( "out noheight" )
 					.removeClass( "in" );
 				$openPanel
 					.addClass( "in" )
-					.removeClass( "out" );
+					.removeClass( "out noheight" );
 				$tablist.find( ".active" )
 					.removeClass( "active" );
 				$tablist.find( "a" )
@@ -9772,13 +9791,22 @@ var componentName = "wb-tabs",
 			}
 
 			// If focus is being set by the URL hash, then ensure the tabs are
-			// not above the top of the viewport
+			// not above the top of the viewport (if the panel was the target),
+			// or the anchor is not above the top of viewport (if the anchor was
+			// the target)
 			if ( hashFocus ) {
 
 				// Need a slight delay to allow for the reflow
 				setTimeout( function() {
-					positionY = $tablist.offset().top;
-					if ( positionY < document.body.scrollTop ) {
+					if ( openByHash ) {
+						positionY = $tablist.offset().top;
+					} else if ( hashTargetLen !== 0 ) {
+						positionY = $hashTarget.offset().top;
+					} else {
+						positionY = -1;
+					}
+
+					if ( positionY !== -1 && positionY < document.body.scrollTop ) {
 						document.body.scrollTop = positionY;
 					}
 				}, 1 );
@@ -9967,7 +9995,7 @@ var componentName = "wb-tabs",
 
 		$currPanel
 			.removeClass( "in" )
-			.addClass( "out" )
+			.addClass( "out noheight" )
 			.attr( {
 				"aria-hidden": "true",
 				"aria-expanded": "false"
@@ -9982,7 +10010,7 @@ var componentName = "wb-tabs",
 		}
 
 		$next
-			.removeClass( "out" )
+			.removeClass( "out noheight" )
 			.addClass( "in" )
 			.attr( {
 				"aria-hidden": "false",
@@ -10139,7 +10167,7 @@ var componentName = "wb-tabs",
 
 								$detailsElm
 									.removeAttr( "role aria-expanded aria-hidden" )
-									.removeClass( "fade out in" )
+									.removeClass( "fade out noheight in" )
 									.toggleClass( "open", isActive );
 
 								$panelElm
@@ -10176,7 +10204,7 @@ var componentName = "wb-tabs",
 									open: "open"
 								} )
 								.not( $openDetails )
-									.addClass( "fade out wb-inv" )
+									.addClass( "fade out noheight wb-inv" )
 									.attr( {
 										"aria-hidden": "true",
 										"aria-expanded": "false"
@@ -10193,9 +10221,8 @@ var componentName = "wb-tabs",
 						}
 
 						// Enable equal heights for large view or disable for small view
-						if ( isSmallView !== $elm.hasClass( equalHeightOffClass ) ) {
-							$elm.toggleClass( equalHeightClass + " " + equalHeightOffClass );
-						}
+						$elm.toggleClass( equalHeightClass, !isSmallView );
+						$elm.toggleClass( equalHeightOffClass, isSmallView );
 
 						$summary.attr( "aria-hidden", !isSmallView );
 						$tablist.attr( "aria-hidden", isSmallView );
@@ -10851,7 +10878,7 @@ var componentName = "wb-toggle",
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
 	 */
 	toggleDetails = function( event, data ) {
-		if ( event.namespace === componentName ) {
+		if ( event.namespace === componentName && event.target === event.currentTarget ) {
 			var top,
 				isOn = data.isOn,
 				$elms = data.elms,
