@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.20-development - 2015-12-07
+ * v4.0.20-development - 2015-12-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -587,7 +587,7 @@ Modernizr.load( [
 	// Escapes the characters in a string for use in a jQuery selector
 	// Based on http://totaldev.com/content/escaping-characters-get-valid-jquery-id
 	wb.jqEscape = function( selector ) {
-		return selector.replace( /([;&,\.\+\*\~':"\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
+		return selector.replace( /([;&,\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
 	};
 
 	// RegEx used by formattedNumCompare
@@ -5559,7 +5559,7 @@ var componentName = "wb-feeds",
 			items[ i ].fIcon =  icon ;
 
 			if ( items[ i ].publishedDate === undef ) {
-				items[ i ].publishedDate = ( items[ i ].published || items[ i ].pubDate || "" );
+				items[ i ].publishedDate = ( items[ i ].published || items[ i ].pubDate || items[ i ].updated || "" );
 			}
 
 			var link = items[ i ].link;
