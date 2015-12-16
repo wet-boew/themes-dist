@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.19+2 - 2015-12-03
+ * v4.0.20 - 2015-12-16
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -587,7 +587,7 @@ Modernizr.load( [
 	// Escapes the characters in a string for use in a jQuery selector
 	// Based on http://totaldev.com/content/escaping-characters-get-valid-jquery-id
 	wb.jqEscape = function( selector ) {
-		return selector.replace( /([;&,\.\+\*\~':"\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
+		return selector.replace( /([;&,\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
 	};
 
 	// RegEx used by formattedNumCompare
@@ -5559,7 +5559,7 @@ var componentName = "wb-feeds",
 			items[ i ].fIcon =  icon ;
 
 			if ( items[ i ].publishedDate === undef ) {
-				items[ i ].publishedDate = ( items[ i ].published || items[ i ].pubDate || "" );
+				items[ i ].publishedDate = ( items[ i ].published || items[ i ].pubDate || items[ i ].updated || "" );
 			}
 
 			var link = items[ i ].link;
@@ -11452,7 +11452,8 @@ var componentName = "wb-toggle",
 			var top,
 				isOn = data.isOn,
 				$elms = data.elms,
-				$detail = $( this );
+				$this = $( this ),
+				$detail = $this.is( "summary" ) ? $this.parent() : $this;
 
 			// Stop propagation of the toggleDetails event
 			if ( event.stopPropagation ) {
@@ -11601,7 +11602,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + toggleEvent +
 	}
 } );
 
-$document.on( toggledEvent, "details", toggleDetails );
+$document.on( toggledEvent, "summary, details", toggleDetails );
 
 // Keyboard handling for the accordion
 $document.on( "keydown", selectorTab, function( event ) {
