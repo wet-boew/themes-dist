@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2015-12-18
+ * v4.0.21-development - 2015-12-22
  *
  */
 @charset "UTF-8";
@@ -10307,6 +10307,360 @@ Carousel
   .carousel-s1 a:hover,
   .carousel-s2 a:hover {
     text-decoration: underline; }
+
+/*
+Carousel
+*/
+.carousel-s1 a,
+.carousel-s2 a {
+  text-decoration: none; }
+  .carousel-s1 a:hover,
+  .carousel-s2 a:hover {
+    text-decoration: underline; }
+
+/*
+ * Social media centre
+ */
+/* Re-usable rules */
+.backgroundsize.csstransitions .product-name, .backgroundsize.csstransitions .product-platforms, .backgroundsize.csstransitions .product-department,
+.backgroundsize.csstransitions .product-language,
+.backgroundsize.csstransitions .product-link-container, .product-name, .product-platforms, .product-links, .product-shortdescription,
+.product-longdescription, .product-department {
+  border: 0;
+  display: block; }
+
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription,
+.backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container,
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
+  display: none;
+  visibility: hidden; }
+
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription,
+.backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container,
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper :target .record-close, #mobile-centre_wrapper :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
+  display: block;
+  visibility: visible; }
+
+.backgroundsize.csstransitions {
+  /* Layout of fields */ }
+  .backgroundsize.csstransitions #social-media-centre tbody {
+    padding-top: 2em; }
+    .backgroundsize.csstransitions #social-media-centre tbody tr {
+      background-clip: content-box;
+      background-color: #eee;
+      background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==");
+      background-origin: content-box;
+      background-position: top left, top left, bottom left, top right;
+      background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+      border: 0;
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 5px;
+      text-align: center;
+      vertical-align: middle;
+      width: 100%; }
+      @media (min-width: 768px) {
+        .backgroundsize.csstransitions #social-media-centre tbody tr {
+          width: 50%; } }
+      @media (min-width: 1200px) {
+        .backgroundsize.csstransitions #social-media-centre tbody tr {
+          width: 33.333%; } }
+      .backgroundsize.csstransitions #social-media-centre tbody tr .product-department {
+        height: 3em;
+        white-space: normal; }
+  .backgroundsize.csstransitions .product-listing {
+    border: 0;
+    width: 100%; }
+  .backgroundsize.csstransitions .product-record {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 100%; }
+    .backgroundsize.csstransitions .product-record:target {
+      height: auto !important; }
+  .backgroundsize.csstransitions .product-name {
+    min-height: 4em; }
+  .backgroundsize.csstransitions .product-department,
+  .backgroundsize.csstransitions .product-language,
+  .backgroundsize.csstransitions .product-link-container {
+    margin-top: 1em; }
+  .backgroundsize.csstransitions .product-department,
+  .backgroundsize.csstransitions .product-language {
+    font-weight: bold;
+    margin-top: 1em; }
+  .backgroundsize.csstransitions .product-link {
+    display: block;
+    padding: 6px 12px !important;
+    text-decoration: none;
+    text-transform: none !important;
+    white-space: normal; }
+    .backgroundsize.csstransitions .product-link:hover, .backgroundsize.csstransitions .product-link:focus {
+      text-decoration: none; }
+
+#social-media-centre_wrapper .datatables_wrapper {
+  margin-bottom: 3em; }
+
+#social-media-centre_wrapper .product-listing {
+  border: 1px solid #ddd; }
+  #social-media-centre_wrapper .product-listing td {
+    padding: 8px; }
+
+/*
+ * Mobile centre
+ */
+/* Re-usable rules */
+.backgroundsize.csstransitions .product-name, .backgroundsize.csstransitions .product-platforms, .backgroundsize.csstransitions .product-department,
+.backgroundsize.csstransitions .product-language,
+.backgroundsize.csstransitions .product-link-container, .product-name, .product-platforms, .product-links, .product-shortdescription,
+.product-longdescription, .product-department {
+  border: 0;
+  display: block; }
+
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription,
+.backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container,
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
+  display: none;
+  visibility: hidden; }
+
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription,
+.backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container,
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper :target .record-close, #mobile-centre_wrapper :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
+  display: block;
+  visibility: visible; }
+
+.backgroundsize.csstransitions #mobile-centre tbody {
+  padding-top: 2em; }
+  .backgroundsize.csstransitions #mobile-centre tbody tr {
+    background-clip: content-box;
+    background-color: #eee;
+    background-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="), url("data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==");
+    background-origin: content-box;
+    background-position: top left, top left, bottom left, top right;
+    background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+    border: 0;
+    display: inline-block;
+    margin-bottom: 20px;
+    min-height: 20em;
+    padding: 5px;
+    vertical-align: middle;
+    width: 100%; }
+    @media (min-width: 768px) {
+      .backgroundsize.csstransitions #mobile-centre tbody tr {
+        width: 50%; } }
+    @media (min-width: 1200px) {
+      .backgroundsize.csstransitions #mobile-centre tbody tr {
+        width: 33.333%; } }
+    .backgroundsize.csstransitions #mobile-centre tbody tr .product-platforms span {
+      margin-right: 5px; }
+    .backgroundsize.csstransitions #mobile-centre tbody tr:target {
+      height: auto !important;
+      width: 100%; }
+      .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription {
+        float: none; }
+      .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-link-container {
+        border: 0;
+        float: none; }
+    .backgroundsize.csstransitions #mobile-centre tbody tr:hover {
+      background-color: #e8e8e8;
+      border-color: #d6d6d6;
+      cursor: pointer; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre tr,
+.backgroundsize.no-csstransitions #mobile-centre tr {
+  border-bottom: 1px solid #999 !important;
+  border-top: 1px solid #999 !important; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-name,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-longdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-department,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-links,
+.backgroundsize.no-csstransitions #mobile-centre .product-name,
+.backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.backgroundsize.no-csstransitions #mobile-centre .product-longdescription,
+.backgroundsize.no-csstransitions #mobile-centre .product-department,
+.backgroundsize.no-csstransitions #mobile-centre .product-links {
+  float: left !important;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-name,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-longdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-department,
+.backgroundsize.no-csstransitions #mobile-centre .product-name,
+.backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.backgroundsize.no-csstransitions #mobile-centre .product-longdescription,
+.backgroundsize.no-csstransitions #mobile-centre .product-department {
+  width: 96% !important; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-name,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.backgroundsize.no-csstransitions #mobile-centre .product-name,
+.backgroundsize.no-csstransitions #mobile-centre .product-platforms {
+  margin-top: 10px; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-name,
+.backgroundsize.no-csstransitions #mobile-centre .product-name {
+  padding-bottom: 0; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.backgroundsize.no-csstransitions #mobile-centre .product-platforms {
+  padding-top: 0; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-longdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-department,
+.no-backgroundsize.no-csstransitions #mobile-centre .product-links,
+.backgroundsize.no-csstransitions #mobile-centre .product-platforms,
+.backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.backgroundsize.no-csstransitions #mobile-centre .product-longdescription,
+.backgroundsize.no-csstransitions #mobile-centre .product-department,
+.backgroundsize.no-csstransitions #mobile-centre .product-links {
+  clear: left;
+  margin-top: 0; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.no-backgroundsize.no-csstransitions #mobile-centre .record-close,
+.backgroundsize.no-csstransitions #mobile-centre .product-shortdescription,
+.backgroundsize.no-csstransitions #mobile-centre .record-close {
+  display: none !important; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-link-container,
+.backgroundsize.no-csstransitions #mobile-centre .product-link-container {
+  border: none !important; }
+
+.no-backgroundsize.no-csstransitions #mobile-centre .product-link-list li,
+.backgroundsize.no-csstransitions #mobile-centre .product-link-list li {
+  display: inline;
+  float: left; }
+
+/* Layout of fields */
+.product-record {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100%; }
+  .product-record:target {
+    height: auto !important; }
+  .product-record:hover {
+    background-color: #e8e8e8;
+    border-color: #d6d6d6;
+    cursor: pointer; }
+
+.product-icon {
+  border: 0;
+  float: left;
+  height: 48px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding-bottom: 3px;
+  padding-right: 3px;
+  width: 48px; }
+
+.product-shortdescription,
+.product-longdescription {
+  margin-top: 1em; }
+
+.product-department {
+  font-weight: bold;
+  margin-top: 1em; }
+
+.product-link-list {
+  list-style-type: none;
+  margin-top: 1em;
+  padding-left: 0; }
+
+.product-link-container {
+  margin-bottom: 1em; }
+
+.product-link {
+  display: block;
+  padding: 6px 12px !important;
+  text-align: left;
+  text-decoration: none;
+  text-transform: none !important;
+  white-space: normal; }
+  .product-link:hover, .product-link:focus {
+    text-decoration: none; }
+
+@media (min-width: 768px) {
+  #mobile-centre_wrapper .product-record {
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 47%; }
+    #mobile-centre_wrapper .product-record:target {
+      max-width: 100%; }
+  #mobile-centre_wrapper .product-department,
+  #mobile-centre_wrapper .product-links {
+    margin-right: 10px;
+    width: 30%; }
+  #mobile-centre_wrapper .product-longdescription {
+    float: right;
+    margin-left: 10px;
+    width: 67%; } }
+
+@media (min-width: 1200px) {
+  #mobile-centre_wrapper .product-record {
+    max-width: 31.5%; } }
+
+/* Expand/collapse record functionality */
+#mobile-centre_wrapper {
+  /* Data visibility */ }
+  #mobile-centre_wrapper .record-expand {
+    color: inherit;
+    text-decoration: none; }
+    #mobile-centre_wrapper .record-expand:hover, #mobile-centre_wrapper .record-expand:focus {
+      color: inherit;
+      text-decoration: underline; }
+  #mobile-centre_wrapper .record-close {
+    float: right; }
+  #mobile-centre_wrapper .product-listing {
+    border: 1px solid #ddd; }
+    #mobile-centre_wrapper .product-listing td {
+      padding: 8px; }
+
+/*
+ * Error page
+ */
+.glyphicon-error {
+  color: #96323a;
+  font-size: 400%; }
+
+/*
+ * Campaign
+ */
+.infostripe .btn-cnt {
+  bottom: 5px;
+  padding-right: 30px;
+  position: absolute;
+  text-align: center;
+  width: 100%; }
+
+.infostripe .col-md-6 {
+  min-height: 830px !important;
+  vertical-align: top; }
+
+#anti_infographic_4.modal-dialog {
+  width: 50%; }
+
+.secondary .infostripe .h1 {
+  font-size: 1.5em; }
+
+.secondary .infostripe.dbl .h1 {
+  min-height: 3.1em; }
+
+.secondary .infostripe.trpl .h1 {
+  min-height: 4em; }
+
+[lang=fr] .infostripe .col-md-6 {
+  min-height: 870px !important; }
+
+.gc-prtts.dbl .h5 {
+  min-height: 2.2em; }
 
 /*
  Views
