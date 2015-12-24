@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2015-12-22
+ * v4.0.21-development - 2015-12-24
  *
  */
 @charset "UTF-8";
@@ -9803,38 +9803,6 @@ main {
 /* Profile on secondary pages */
 .secondary .profile .thumbnail {
   margin-top: 1.25em; }
-
-.fdbckpromo {
-  background: url("../assets/tuwyt.jpg") #fff 68% 100% no-repeat; }
-  .fdbckpromo .accnt-prmry {
-    color: #b70002;
-    font-family: 'Times New Roman',Georgia,Serif;
-    margin-top: 36px; }
-  .fdbckpromo .accnt-scndry {
-    color: #4669c7;
-    margin-top: 26px; }
-    .fdbckpromo .accnt-scndry a {
-      color: #4669c7 !important; }
-  .fdbckpromo .splnt {
-    min-height: 100px; }
-
-.mediumview .fdbckpromo .accnt-prmry {
-  margin-top: 26px !important; }
-
-html[lang='fr'] .fdbckpromo .accnt-prmry {
-  margin-top: 34px !important; }
-
-html[lang='fr'] .fdbckpromo .accnt-scndry {
-  margin-top: 24px; }
-
-html[lang='fr'].mediumview .fdbckpromo .accnt-prmry {
-  margin-top: 65px !important; }
-
-@media screen and (max-width: 991px) {
-  .fdbckpromo {
-    background-position: 50% 100%; }
-    .fdbckpromo .splnt {
-      min-height: 135px; } }
 
 /*
  * Search
