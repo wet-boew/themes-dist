@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-01-13
+ * v4.0.21-development - 2016-01-21
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5910,6 +5910,7 @@ var componentName = "wb-menu",
 	breadcrumb = document.getElementById( "wb-bc" ),
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
+	detailsInitEvent = "wb-init.wb-details",
 	menuItemSelector = "> a, > details > summary",
 	$document = wb.doc,
 
@@ -6206,7 +6207,8 @@ var componentName = "wb-menu",
 		$panel
 			.trigger( "wb-init.wb-overlay" )
 			.find( "summary" )
-				.attr( "tabindex", "-1" );
+				.attr( "tabindex", "-1" )
+				.trigger( detailsInitEvent );
 		$panel
 			.find( ".mb-menu > li:first-child" )
 				.find( ".mb-item" )

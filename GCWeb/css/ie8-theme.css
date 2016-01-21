@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-01-13
+ * v4.0.21-development - 2016-01-21
  *
  */
 @charset "UTF-8";
@@ -9750,34 +9750,46 @@ main {
 /*
  Secondary Navigation
 */
-#wb-sec .list-group a.list-group-item.wb-navcurr, #wb-sec .list-group a.list-group-item[href]:hover, #wb-sec .list-group a.list-group-item[href]:focus {
-  background-color: #666666;
-  color: white; }
-
 #wb-sec {
   margin-top: 20px;
   padding-bottom: 2em; }
   #wb-sec h3 {
     border: 1px solid #ddd;
-    border-bottom: 3px solid #666;
-    font-size: 1em;
-    margin: 0;
-    padding: 15px; }
+    border-bottom: 5px solid #335075;
+    margin: 0 0 1px; }
     #wb-sec h3 a {
       color: #333;
+      display: block;
+      font-size: .8em;
+      padding: 15px;
       text-decoration: none; }
+      #wb-sec h3 a:hover {
+        background-color: #243850;
+        color: #fff; }
   #wb-sec .list-group {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    margin-left: 10px; }
     #wb-sec .list-group a.list-group-item {
       background-color: #fff;
       border-radius: 0;
       color: #555;
       margin-top: -1px;
       text-decoration: none; }
+      #wb-sec .list-group a.list-group-item.wb-navcurr {
+        background-color: #335075;
+        color: #fff;
+        cursor: text; }
+        #wb-sec .list-group a.list-group-item.wb-navcurr[href]:hover {
+          background-color: #335075; }
+      #wb-sec .list-group a.list-group-item[href]:hover, #wb-sec .list-group a.list-group-item[href]:focus {
+        background-color: #243850;
+        color: #fff; }
     #wb-sec .list-group .list-group .list-group-item {
       background-color: #e6e6e6;
       color: black;
       padding-left: 1.8em; }
+    #wb-sec .list-group .list-group .list-group .list-group-item {
+      background-color: #fff; }
 
 [dir=rtl] #wb-sec .list-group .list-group .list-group-item {
   padding-left: 15px;
@@ -10605,11 +10617,6 @@ Carousel
   @title: Small view and under (screen only)
  */
   /*
- Secondary menu (Small view and under (screen only))
- */
-  #wb-sec {
-    display: none; }
-  /*
  Banner (small view and under)
  */
   header .brand a {
@@ -10771,7 +10778,7 @@ Carousel
   .features, #wb-lng,
   #wb-glb-mn,
   #wb-srch,
-  #wb-sm, #wb-info, .tofpg, #wb-sec, .pagedetails .btn, .followus {
+  #wb-sm, #wb-info, .tofpg, #gc-sec, .pagedetails .btn, .followus {
     display: none !important; }
   header .brand {
     margin-bottom: 0; }
