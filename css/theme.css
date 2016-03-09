@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-01-13
+ * v4.0.21-development - 2016-03-09
  *
  */
 /*
@@ -5080,7 +5080,7 @@ caption {
   position: static;
   width: inherit; }
 
-.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #mb-pnl .modal-body h2, table.dataTable thead .sorting-icons, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .wb-tabs.carousel-s1 [role="tablist"] > li, .wb-tabs.carousel-s2 [role="tablist"] > li {
+.pagination.disabled, .pager.disabled, .pagination > li.disabled, .pager > li.disabled, [dir=rtl] .pagination [rel="prev"]:before, [dir=rtl] .pager [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:after, [dir=rtl] .pager [rel="next"]:after, #wb-bc li:first-child:before, [dir=rtl] #wb-bc li:first-child:before, #mb-pnl .modal-body h2, table.dataTable thead .sorting-icons, table.dataTable thead .sorting_asc_disabled .sorting-icons:before, table.dataTable thead .sorting_desc_disabled .sorting-icons:after, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .wb-tabs.carousel-s1 [role="tablist"] > li, .wb-tabs.carousel-s2 [role="tablist"] > li {
   display: none; }
 
 .wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
@@ -5183,6 +5183,30 @@ caption {
 
 q:before, q:after {
   content: ""; }
+
+/*
+  WET-BOEW
+  @title: Breadcrumb CSS
+ */
+#wb-bc {
+  background-color: null; }
+  #wb-bc ol {
+    border-radius: 0;
+    margin-bottom: 0; }
+  #wb-bc li {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    #wb-bc li:before {
+      color: #333;
+      content: "\e092";
+      font-family: "Glyphicons Halflings";
+      font-size: 0.7em; }
+
+[dir=rtl] #wb-bc li:before {
+  content: "\e091";
+  display: inline-block; }
 
 /*
   WET-BOEW
@@ -7209,7 +7233,7 @@ table.dataTable, .dataTables_wrapper .dataTables_scroll {
 table.dataTable thead th:active, table.dataTable thead td:active {
   outline: none; }
 
-.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter {
+.dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_length {
   font-weight: 400; }
 
 table.dataTable thead th, table.dataTable tfoot th {
@@ -7237,7 +7261,7 @@ table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
 table.dataTable.cell-border tbody tr th:first-child, table.dataTable.cell-border tbody tr td:first-child {
   border-left: 1px solid #ddd; }
 
-.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing {
+.dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing {
   color: #333; }
 
 table.dataTable.display tbody tr:hover.selected > .sorting_1, table.dataTable.display tbody tr.odd:hover.selected > .sorting_1, table.dataTable.display tbody tr.even:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr.odd:hover.selected > .sorting_1, table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_1 {
@@ -7370,16 +7394,16 @@ table.dataTable {
   clear: both;
   position: relative;
   zoom: 1; }
-  .dataTables_wrapper .dataTables_length {
-    float: left; }
   .dataTables_wrapper .dataTables_filter {
-    float: right;
-    text-align: right; }
+    float: left;
+    margin-right: 15px; }
     .dataTables_wrapper .dataTables_filter input {
       margin-left: 0.5em; }
+  .dataTables_wrapper .dataTables_length {
+    display: inline-block;
+    margin-top: 5px; }
   .dataTables_wrapper .dataTables_info {
-    clear: both;
-    float: left; }
+    display: inline-block; }
   .dataTables_wrapper .dataTables_paginate {
     padding-top: 1.25em;
     text-align: center; }
@@ -8476,6 +8500,10 @@ details {
   @title: Print view
  */
   /*
+  WET-BOEW
+  @title: Breadcrumb print CSS overrides
+ */
+  /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
@@ -8504,6 +8532,10 @@ details {
  */
   .pg-brk-aft {
     page-break-after: always; }
+  #wb-bc .breadcrumb {
+    margin-bottom: 0; }
+  #wb-bc a[href]:after {
+    content: ""; }
   .fn-lnk, .wb-fnote .fn-rtn a {
     background-color: transparent;
     border: 0;
@@ -8570,23 +8602,6 @@ details {
 /*
   @title: All views
  */
-#wb-bc li:first-child:before, [dir=rtl] #wb-bc li:before, [dir=rtl] #wb-bc li:first-child:after {
-  content: none;
-  padding: 0; }
-
-#wb-bc ol {
-  margin-bottom: 0; }
-#wb-bc li:before, #wb-bc li:after {
-  color: #333;
-  font-family: "Glyphicons Halflings";
-  font-size: 0.7em; }
-#wb-bc li:before {
-  content: "\e092"; }
-
-[dir=rtl] #wb-bc li:after {
-  content: "\e091";
-  padding: 0 5px; }
-
 /* All screen views */
 @media screen {
   /*
@@ -9017,9 +9032,5 @@ details {
  */
   #wb-glb-mn {
     display: none !important; }
-  #wb-bc .breadcrumb {
-    margin-bottom: 0; }
-  #wb-bc [href]:after {
-    content: ""; }
   h1 {
     margin-top: 0; } }
