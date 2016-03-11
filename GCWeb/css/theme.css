@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-03-09
+ * v4.0.21-development - 2016-03-11
  *
  */
 @charset "UTF-8";
@@ -9416,8 +9416,7 @@ details {
 body {
   background: #f8f8f8;
   font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 300; }
+  font-size: 16px; }
 
 a {
   color: #284162; }
