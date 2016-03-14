@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-03-09
+ * v4.0.21-development - 2016-03-14
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -2345,7 +2345,7 @@ var i18nText,
 		textWeekDayNames = i18nText.dayNames;
 		textMonthNames = i18nText.monthNames;
 
-		$calBase = $( "<div class='wb-clndr'>" +
+		$calBase = $( "<div class='wb-clndr' role='application'>" +
 			"<div class='cal-nav'>" +
 				"<button type='button' class='btn pull-left cal-month-prev'>" +
 					"<span class='glyphicon glyphicon-arrow-left'></span>" +
