@@ -9719,6 +9719,10 @@ main {
     padding: 18px; }
   main .gc-rms-lngth .pagetage {
     font-weight: 700; }
+  main .whtwedo p {
+    float: right;
+    font-weight: bold;
+    margin-bottom: 30px; }
 
 /*
  * Multimedia player overrides
