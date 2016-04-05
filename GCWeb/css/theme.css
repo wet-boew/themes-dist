@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-03-24
+ * v4.0.21-development - 2016-04-05
  *
  */
 @charset "UTF-8";
@@ -5993,6 +5993,15 @@ q:before, q:after {
     padding: 1em 0 0; }
 
 /*
+  WET-BOEW
+  @title: Ellipsis
+ */
+.gc-elps {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+/*
 * Based upon jQuery Mobile Transitions (http://jquerymobile.com)
 *
 * Copyright 2010, 2013 jQuery Foundation, Inc. and other contributors
@@ -9948,10 +9957,6 @@ main {
     padding: 18px; }
   main .gc-rms-lngth .pagetage {
     font-weight: 700; }
-  main .whtwedo p {
-    float: right;
-    font-weight: bold;
-    margin-bottom: 30px; }
 
 /*
  * Multimedia player overrides
@@ -10811,6 +10816,24 @@ Carousel
     text-decoration: none; }
   .gc-dwnld .gc-dwnld-txt span {
     display: block; }
+
+/*
+* Template pages styles
+*/
+.whtwedo p {
+  float: right;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 15px; }
+
+.whtwedo ul > li {
+  margin-bottom: 10px; }
+
+.lnkbx h2:nth-child(1) {
+  margin-top: 0; }
+
+.lnkbx > ul > li {
+  margin-bottom: 10px; }
 
 /*
  Views

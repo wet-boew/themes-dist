@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-03-24
+ * v4.0.21-development - 2016-04-05
  *
  */
 @charset "UTF-8";
@@ -5930,6 +5930,15 @@ q:before, q:after {
   text-align: right; }
   #wb-so .row {
     padding: 1em 0 0; }
+
+/*
+  WET-BOEW
+  @title: Ellipsis
+ */
+.gc-elps {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 /*
 * Based upon jQuery Mobile Transitions (http://jquerymobile.com)
