@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-03-15
+ * v4.0.21-development - 2016-04-05
  *
  */
 /*
@@ -5222,6 +5222,15 @@ q:before, q:after {
     padding: 1em 0 0; }
 
 /*
+  WET-BOEW
+  @title: Ellipsis
+ */
+.gc-elps {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+/*
 * Based upon jQuery Mobile Transitions (http://jquerymobile.com)
 *
 * Copyright 2010, 2013 jQuery Foundation, Inc. and other contributors
@@ -8368,6 +8377,10 @@ details {
   WET-BOEW
   @title: Proximity CSS - Medium view and over
  */
+  .clr-lft-lg {
+    clear: left; }
+  .clr-rght-lg {
+    clear: right; }
   .colcount-lg-2 {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -8449,14 +8462,22 @@ details {
   /*
   WET-BOEW
   @title: Small view (screen only)
- */ }
+ */
+  .clr-lft-sm {
+    clear: left; }
+  .clr-rght-sm {
+    clear: right; } }
 
 /* Medium view */
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   /*
   WET-BOEW
   @title: Medium view (screen only)
- */ }
+ */
+  .clr-lft-md {
+    clear: left; }
+  .clr-rght-md {
+    clear: right; } }
 
 /* Large view */
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
@@ -8883,7 +8904,7 @@ details {
   /*
   @title: Medium view and over (screen only)
  */
-  #wb-bc .container, body main.container, body > header + .container {
+  #wb-bc .container, #wb-so .container, body main.container, body > header + .container {
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; }
   #wb-srch input, #wb-srch .btn {
