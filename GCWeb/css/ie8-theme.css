@@ -6405,7 +6405,7 @@ legend.required strong.required,
 .checkbox.required strong.required,
 input[type="checkbox"].required strong.required {
   color: #d3080c;
-  font-style: italic; }
+  font-weight: 700; }
 
 label.required:before,
 legend.required:before,

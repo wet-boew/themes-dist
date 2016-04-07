@@ -6677,7 +6677,7 @@ legend.required strong.required,
 .checkbox.required strong.required,
 input[type="checkbox"].required strong.required {
   color: #d3080c;
-  font-style: italic; }
+  font-weight: 700; }
 
 label.required:before,
 legend.required:before,
@@ -10840,6 +10840,10 @@ Carousel
 
 .lnkbx > ul > li {
   margin-bottom: 10px; }
+
+.gc-byline {
+  font-weight: 700;
+  margin-bottom: 30px; }
 
 /*
  Views
