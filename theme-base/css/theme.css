@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21-development - 2016-03-14
+ * v4.0.22-development - 2016-04-12
  *
  */
 @charset "UTF-8";
@@ -6007,6 +6007,15 @@ q:before, q:after {
     padding: 1em 0 0; }
 
 /*
+  WET-BOEW
+  @title: Ellipsis
+ */
+.gc-elps {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+/*
 * Based upon jQuery Mobile Transitions (http://jquerymobile.com)
 *
 * Copyright 2010, 2013 jQuery Foundation, Inc. and other contributors
@@ -6682,7 +6691,7 @@ legend.required strong.required,
 .checkbox.required strong.required,
 input[type="checkbox"].required strong.required {
   color: #d3080c;
-  font-style: italic; }
+  font-weight: 700; }
 
 label.required:before,
 legend.required:before,
@@ -9227,6 +9236,10 @@ details {
   WET-BOEW
   @title: Large view and over (screen only)
  */
+  .clr-lft-lg {
+    clear: left; }
+  .clr-rght-lg {
+    clear: right; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -9302,7 +9315,27 @@ details {
 
 /* Extra-small view */
 /* Small view */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /*
+  WET-BOEW
+  @title: Small view (screen only)
+ */
+  .clr-lft-sm {
+    clear: left; }
+  .clr-rght-sm {
+    clear: right; } }
+
 /* Medium view */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  /*
+  WET-BOEW
+  @title: Medium view (screen only)
+ */
+  .clr-lft-md {
+    clear: left; }
+  .clr-rght-md {
+    clear: right; } }
+
 /* Large view */
 /* Extra-large view */
 @media screen and (min-width: 1600px) {
