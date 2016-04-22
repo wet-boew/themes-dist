@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.22-development - 2016-04-12
+ * v4.0.22-development - 2016-04-22
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -7290,7 +7290,6 @@ var componentName = "wb-mltmd",
 	captionsVisibleChangeEvent = "ccvischange" + selector,
 	renderUIEvent = "renderui" + selector,
 	initializedEvent = "inited" + selector,
-	fallbackEvent = "fallback" + selector,
 	youtubeEvent = "youtube" + selector,
 	resizeEvent = "resize" + selector,
 	templateLoadedEvent = "templateloaded" + selector,
@@ -7880,52 +7879,13 @@ $document.on( initializedEvent, selector, function( event ) {
 		} else if ( media.error === null && media.currentSrc !== "" && media.currentSrc !== undef ) {
 			$this.trigger( renderUIEvent, [ type, data ] );
 		} else {
-			$this.trigger( fallbackEvent, data );
+
+			// Do nothing since IE8 support is no longer required
+            return;
 		}
 
 		// Identify that initialization has completed
 		wb.ready( $this, componentName );
-	}
-} );
-
-$document.on( fallbackEvent, selector, function( event, data ) {
-	if ( event.namespace === componentName ) {
-		var $this = $( event.currentTarget ),
-			$media = data.media,
-			type = data.type,
-			source = $media.find( ( type === "video" ? "[type='video/mp4']" : "[type='audio/mp3']" ) ).attr( "src" ),
-			posterUrl = $media.attr( "poster" ),
-			flashvars = "id=" + data.mId,
-			width = data.width,
-			height = data.height > 0 ? data.height : Math.round( data.width / 1.777 ),
-			playerresource = wb.getPath( "/assets" ) + "/multimedia.swf?" + new Date().getTime(),
-			poster, $newMedia;
-
-		flashvars += "&amp;media=" + encodeURI( wb.getUrlParts( source ).absolute );
-		if ( type === "video" ) {
-			poster = "<img src='" + posterUrl + "' class='img-responsive' height='" +
-				height + "' width='" + width + "' alt='" + $media.attr( "title" ) + "'/>";
-
-			flashvars += "&amp;height=" + height + "&amp;width=" +
-				width + "&amp;posterimg=" + encodeURI( wb.getUrlParts( posterUrl ).absolute );
-		}
-
-		$newMedia = $( "<object id='" + data.mId + "' width='" + width +
-			"' height='" + height + "' class='" + type +
-			"' type='application/x-shockwave-flash' data='" +
-			playerresource + "' tabindex='-1' play='' pause=''>" +
-			"<param name='movie' value='" + playerresource + "'/>" +
-			"<param name='flashvars' value='" + flashvars + "'/>" +
-			"<param name='allowScriptAccess' value='always'/>" +
-			"<param name='bgcolor' value='#000000'/>" +
-			"<param name='wmode' value='opaque'/>" +
-			poster + "</object>" );
-
-		$media.replaceWith( $newMedia );
-
-		data.media = $newMedia;
-
-		$this.trigger( renderUIEvent, [ type, data ] );
 	}
 } );
 
@@ -9953,7 +9913,7 @@ wb.add( selector );
  * variables that are common to all instances of the plugin on a page.
  */
 var componentName = "wb-tabs",
-	selector = "." + componentName,
+	selector = "." + componentName + ":has( > .tabpanels > [role='tabpanel']:nth-of-type(2), > .tabpanels > details:nth-of-type(2), > [role='tabpanel']:nth-of-type(2), > details:nth-of-type(2))",
 	initEvent = "wb-init" + selector,
 	shiftEvent = "wb-shift" + selector,
 	selectEvent = "wb-select" + selector,
@@ -10010,6 +9970,7 @@ var componentName = "wb-tabs",
 			$panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" );
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
+
 			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
 			hashFocus = activeId.length !== 0;
 			$openPanel = hashFocus ? $panels.filter( "#" + activeId ) : undefined;
