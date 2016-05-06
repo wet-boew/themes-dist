@@ -10858,8 +10858,7 @@ Carousel
 * Template pages styles
 */
 .whtwedo p {
-  float: right;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 30px;
   margin-top: 15px; }
 
@@ -10868,6 +10867,9 @@ Carousel
 
 .lnkbx h2:nth-child(1) {
   margin-top: 0; }
+
+.lnkbx p {
+  font-weight: 700; }
 
 .lnkbx > ul > li {
   margin-bottom: 10px; }
