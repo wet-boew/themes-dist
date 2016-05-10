@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.22-development - 2016-05-06
+ * v4.0.22-development - 2016-05-10
  *
  */
 @charset "UTF-8";
@@ -10893,6 +10893,18 @@ Carousel
 
 .gc-crprt .col-md-8 .col-md-4 {
   margin-bottom: 15px; }
+
+/*
+ * Institution pages
+ */
+.gc-instttn p:nth-child(1) {
+  font-weight: 700; }
+
+.gc-instttn p.pagetag {
+  font-weight: 300; }
+
+.gc-instttn .gc-rms-lngth img {
+  margin-bottom: 30px; }
 
 /*
  Views
