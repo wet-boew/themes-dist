@@ -10897,13 +10897,16 @@ Carousel
 /*
  * Institution pages
  */
-.gc-instttn p:nth-child(1) {
+.gc-instttn p:nth-child(1),
+.gc-orgnztn p:nth-child(1) {
   font-weight: 700; }
 
-.gc-instttn p.pagetag {
+.gc-instttn p.pagetag,
+.gc-orgnztn p.pagetag {
   font-weight: 300; }
 
-.gc-instttn .gc-rms-lngth img {
+.gc-instttn .gc-rms-lngth img,
+.gc-orgnztn .gc-rms-lngth img {
   margin-bottom: 30px; }
 
 /*
