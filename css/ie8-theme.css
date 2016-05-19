@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.22-development - 2016-05-12
+ * v4.0.22-development - 2016-05-19
  *
  */
 @charset "UTF-8";
@@ -9675,24 +9675,32 @@ header .brand {
       margin-bottom: 10px;
       margin-top: 20px;
       width: auto; }
-    #wb-info .brand a {
-      color: #000; }
-      #wb-info .brand a span {
-        margin-left: 10px; }
-      #wb-info .brand a:hover {
-        text-decoration: none; }
+  #wb-info .ftr-urlt-lnk ul {
+    margin: 0;
+    padding: 0; }
+    #wb-info .ftr-urlt-lnk ul li {
+      display: inline-block;
+      margin-right: 0.5em;
+      padding: 0; }
+      #wb-info .ftr-urlt-lnk ul li:before {
+        content: "\2022";
+        margin-right: 0.7em; }
+      #wb-info .ftr-urlt-lnk ul li:first-child:before {
+        content: none; }
   #wb-info .tofpg {
     line-height: 90px; }
+    #wb-info .tofpg a {
+      color: #000; }
+      #wb-info .tofpg a span {
+        margin-left: 25px; }
+      #wb-info .tofpg a:hover {
+        text-decoration: none; }
   #wb-info nav {
-    padding-bottom: 1em;
-    padding-top: 0.75em;
+    padding-bottom: 2em;
+    padding-top: 2em;
     position: relative; }
     #wb-info nav li {
       margin-bottom: 0.75em; }
-    #wb-info nav [class*="col-"] h3 {
-      font-size: 1.10em;
-      font-weight: 700;
-      margin-top: 20px; }
 
 [dir=rtl] footer .brand .text-right {
   text-align: left; }
@@ -10828,13 +10836,17 @@ Carousel
   /*
  * Site information (extra-extra-small view)
  */
-  footer .brand object,
-  footer .brand img {
+  #wb-info .ftr-urlt-lnk ul {
+    column-count: 1; }
+    #wb-info .ftr-urlt-lnk ul li {
+      margin-bottom: 0.2em; }
+  #wb-info .brand object,
+  #wb-info .brand img {
     height: 25px;
     margin-top: 15px;
     max-width: 100%;
     padding-right: 10px; }
-  footer .tofpg {
+  #wb-info .tofpg {
     line-height: 60px; }
   /*
  Carousel (extra-extra-small view)
