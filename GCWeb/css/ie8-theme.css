@@ -9407,6 +9407,11 @@ aside.features {
 .pagedetails {
   padding-bottom: 2em;
   padding-top: 2em; }
+  .pagedetails details {
+    margin-left: 1.1em;
+    margin-right: 1.1em; }
+  .pagedetails .gc-rprt-prblm-frm.gc-rprt-prblm-tggl.show {
+    display: none !important; }
   .pagedetails .datemod {
     padding-bottom: 7px;
     padding-top: 7px; }
