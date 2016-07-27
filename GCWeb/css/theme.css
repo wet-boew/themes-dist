@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.22-development - 2016-07-12
+ * v4.0.22-development - 2016-07-27
  *
  */
 @charset "UTF-8";
@@ -10031,7 +10031,6 @@ header .brand {
  */
 main {
   position: relative; }
-  main .pagetag,
   main .subtitle {
     color: #555;
     font-size: 1em;
@@ -10048,8 +10047,6 @@ main {
     background-color: #fff;
     border: solid 1px #e1e4e7;
     padding: 18px; }
-  main .gc-rms-lngth .pagetage {
-    font-weight: 700; }
 
 /*
  * Multimedia player overrides
@@ -10968,10 +10965,6 @@ Carousel
 .gc-instttn p:nth-child(1),
 .gc-orgnztn p:nth-child(1) {
   font-weight: 700; }
-
-.gc-instttn p.pagetag,
-.gc-orgnztn p.pagetag {
-  font-weight: 300; }
 
 .gc-instttn .gc-rms-lngth img,
 .gc-orgnztn .gc-rms-lngth img {
