@@ -10977,6 +10977,13 @@ Carousel
   margin-bottom: 25px; }
 
 /*
+ * Service template
+ */
+.gc-cntct-lst dt,
+.gc-cntct-lst dd {
+  border: 0; }
+
+/*
  Views
  */
 /* All screen views */
