@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.22-development - 2016-06-16
+ * v4.0.22 - 2016-08-11
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1581,11 +1581,9 @@ var componentName = "wb-calevt",
 		return events;
 	},
 
-	addEvents = function( year, month, $days, range ) {
-		var $inRange = $days,
-			today = new Date(),
-			eventsList = this.events,
-			i, eLen, date, $day, $dayLink, $dayEvents, event, eventMonth, linkFocus;
+	addEvents = function( year, month, $days ) {
+		var eventsList = this.events,
+			i, eLen, date, dayIndex, $day, $dayEvents, event, eventMonth;
 
 		// Fix required to make up with the IE z-index behaviour mismatch
 		// TODO: Move ot IE CSS? Which versions of IE should this fix be limited to?
@@ -1594,18 +1592,6 @@ var componentName = "wb-calevt",
 				$days.eq( i ).css( "z-index", 31 - i );
 			}
 		}
-
-		if ( range ) {
-			if ( range.max ) {
-				$inRange = $inRange.filter( ":lt(" + ( range.max + 1 ) + ")" );
-			}
-
-			if ( range.min ) {
-				$inRange = $inRange.filter( ":gt(" + ( range.min - 1 ) + ")" );
-			}
-		}
-
-		$inRange.wrap( "<a href='javascript:;' tabindex='-1'></a>" );
 
 		/*
 		 * Determines for each event, if it occurs in the display month
@@ -1621,32 +1607,33 @@ var componentName = "wb-calevt",
 					//End the loop if the next event is in a future month because events are sorted chronologically
 					break;
 				} else if ( date.getMonth() === month ) {
-					$day = $( $days[ date.getDate() - 1 ] );
-					$dayLink = $day.parent();
+					dayIndex = date.getDate() - 1;
+					$day = $( $days[ dayIndex ] );
 
-					//Create the link for the events if it doesn't exist
-					$dayLink.addClass( "cal-evt" );
-
-					//Create the event list container if it doesn't exist
-					$dayEvents = $dayLink.next();
-					if ( $dayEvents.length !== 1 ) {
-						$dayEvents = $( "<ul></ul>" ).insertAfter( $dayLink );
+					//Get the appropriate day events if a day link exists
+					if ( $day.parent().get( 0 ).nodeName !== "A" ) {
+						$dayEvents = $day.next();
+					}else{
+						$dayEvents = $day.parent().next();
 					}
 
-					///Add the event to the list
-					$dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='javascript:;''>" + event.title + "</a></li>" );
+					//Create the event list container if it doesn't exist
+					if ( $dayEvents.length !== 1) {
+						$dayEvents = $( "<ul></ul>" ).insertAfter( $day );
+
+						//Determine the focus based on the day before
+						if ( dayIndex && $days[ dayIndex - 1 ].parentNode.nodeName === "A" ) {
+							$day.wrap( "<a href='javascript:;' class='cal-evt' tabindex='-1'></a>" );
+						} else {
+							$day.wrap( "<a href='javascript:;' class='cal-evt'></a>" );
+						}
+					}
+
+					//Add the event to the list
+					$dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" + event.href + "'>" + event.title + "</a></li>" );
 				}
 			}
 		}
-
-		//Determines the focus
-		if ( year === today.getFullYear() && month === today.getMonth() ) {
-			linkFocus = $days.eq( today.getDate() - 1 );
-		} else {
-			linkFocus = $inRange.eq( 0 );
-		}
-
-		linkFocus.parent().removeAttr( "tabindex" );
 	},
 
 	filterEvents = function( year, month ) {
@@ -9351,12 +9338,11 @@ wb.add( selector );
  * variables that are common to all instances of the plugin on a page.
  */
 var componentName = "wb-tabs",
-	namespace = "." + componentName,
-	selector = namespace + ":has( > .tabpanels > [role='tabpanel']:nth-of-type(2), > .tabpanels > details:nth-of-type(2), > [role='tabpanel']:nth-of-type(2), > details:nth-of-type(2))",
-	initEvent = "wb-init" + namespace,
-	shiftEvent = "wb-shift" + namespace,
-	selectEvent = "wb-select" + namespace,
-	updatedEvent = "wb-updated" + namespace,
+	selector = "." + componentName,
+	initEvent = "wb-init" + selector,
+	shiftEvent = "wb-shift" + selector,
+	selectEvent = "wb-select" + selector,
+	updatedEvent = "wb-updated" + selector,
 	setFocusEvent = "setfocus.wb",
 	controls = selector + " ul[role=tablist] a, " + selector + " ul[role=tablist] .tab-count",
 	initialized = false,
@@ -9410,6 +9396,13 @@ var componentName = "wb-tabs",
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
 
+			// If a carousel contains only 1 panel, remove its controls, visually-hide its thumbnails and prevent it from attempting to play
+			if ( isCarousel && $panels.length === 1 ) {
+
+				$elm.removeClass( "show-thumbs playing" );
+				$elm.addClass( "exclude-controls" );
+			}
+
 			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
 			hashFocus = activeId.length !== 0;
 			$openPanel = hashFocus ? $panels.filter( "#" + activeId ) : undefined;
@@ -9424,6 +9417,7 @@ var componentName = "wb-tabs",
 					interval: $elm.hasClass( "slow" ) ?
 								9 : $elm.hasClass( "fast" ) ?
 									3 : defaults.interval,
+					excludeControls: $elm.hasClass( "exclude-controls" ),
 					excludePlay: $elm.hasClass( "exclude-play" ),
 					updateHash: $elm.hasClass( "update-hash" ),
 					playing: $elm.hasClass( "playing" ),
@@ -9656,8 +9650,9 @@ var componentName = "wb-tabs",
 		var prevText = i18nText.prev,
 			nextText = i18nText.next,
 			spaceText = i18nText.space,
+			excludeControls = settings.excludeControls,
 			excludePlay = settings.excludePlay,
-			isPlaying = !excludePlay && settings.playing,
+			isPlaying = !excludeControls && !excludePlay && settings.playing,
 			state = isPlaying ? i18nText.pause : i18nText.play,
 			hidden = isPlaying ? i18nText.rotStop : i18nText.rotStart,
 			glyphiconStart = "<span class='glyphicon glyphicon-",
@@ -9690,8 +9685,11 @@ var componentName = "wb-tabs",
 				"</span>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
 				hidden + btnEnd;
 
-		$tablist.prepend( prevControl + tabCount + nextControl );
-		if ( !excludePlay ) {
+		if ( !excludeControls ) {
+			$tablist.prepend( prevControl + tabCount + nextControl );
+		}
+
+		if ( !excludeControls && !excludePlay ) {
 			$tablist.append( playControl );
 		}
 
