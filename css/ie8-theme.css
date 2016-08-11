@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21 - 2016-04-12
+ * v4.0.22-development - 2016-08-11
  *
  */
 @charset "UTF-8";
@@ -5627,25 +5627,25 @@ fieldset {
   font-weight: 400;
   line-height: 1em;
   position: relative;
-  top: 0.1em; }
+  top: .1em; }
 
 .pagination > li:first-child [rel="prev"]:before,
 .pager > li:first-child [rel="prev"]:before, [dir=rtl] .pagination [rel="next"]:before,
 [dir=rtl] .pager [rel="next"]:before, .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.next:before {
   content: "\e091";
-  margin-right: 0.5em; }
+  margin-right: .5em; }
 
 .pagination > li:last-child [rel="next"]:after,
 .pager > li:last-child [rel="next"]:after, [dir=rtl] .pagination [rel="prev"]:after,
 [dir=rtl] .pager [rel="prev"]:after, .dataTables_wrapper .dataTables_paginate .paginate_button.next:after, [dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:after {
   content: "\e092";
-  margin-left: 0.5em; }
+  margin-left: .5em; }
 
 .pagination > li > a,
 .pager > li > a {
   cursor: pointer;
   display: inline-block;
-  margin-bottom: 0.5em;
+  margin-bottom: .5em;
   padding: 10px 16px; }
 
 .pagination > li.active > a,
@@ -5703,9 +5703,9 @@ fieldset {
   [dir=rtl] details.alert:before {
     margin-right: -1.3em; }
   [dir=rtl] details.alert > * {
-    margin-right: 0.7em; }
+    margin-right: .7em; }
   [dir=rtl] details.alert > :first-child {
-    margin-right: 0.4em; }
+    margin-right: .4em; }
 
 [dir=rtl] .list-unstyled {
   padding-right: 0; }
@@ -6469,7 +6469,7 @@ details {
   height: inherit;
   list-style-type: none;
   margin: 0;
-  margin-top: -0.5em;
+  margin-top: -.5em;
   overflow: inherit;
   padding: 0;
   position: absolute;
@@ -6485,7 +6485,7 @@ details {
     color: #fff; }
   .wb-calevt-cal .cal-evt-lnk {
     display: block;
-    padding: 0.5em; }
+    padding: .5em; }
   .wb-calevt-cal.cal-cnt-fluid {
     width: 100%; }
 
@@ -6513,7 +6513,7 @@ details {
   width: 100%; }
   .wb-clndr .cal-nav {
     background: #333;
-    padding: 0.5em;
+    padding: .5em;
     text-align: center; }
   .wb-clndr .form-group {
     margin: 0;
@@ -6560,20 +6560,45 @@ figure .pieLabel {
 details.alert, details.alert[open] {
   border-radius: 0;
   border-width: 0 0 0 4px;
-  padding-left: 45px; }
+  padding-left: 45px;
+  padding-right: 0;
+  position: relative; }
   details.alert:before, details.alert[open]:before {
     display: inline-block;
     font-family: "Glyphicons Halflings";
     font-size: 24px;
     margin-left: -1.3em;
     margin-top: -3px;
-    position: absolute; }
+    position: absolute;
+    top: 15px; }
   details.alert summary, details.alert[open] summary {
-    border-width: 0; }
+    border-width: 0;
+    margin-right: 15px;
+    padding-left: 5px; }
+    details.alert summary:focus, details.alert summary:hover, details.alert[open] summary:focus, details.alert[open] summary:hover {
+      text-decoration: none; }
+      details.alert summary:focus h2,
+      details.alert summary:focus h3,
+      details.alert summary:focus h4,
+      details.alert summary:focus h5,
+      details.alert summary:focus h6, details.alert summary:hover h2,
+      details.alert summary:hover h3,
+      details.alert summary:hover h4,
+      details.alert summary:hover h5,
+      details.alert summary:hover h6, details.alert[open] summary:focus h2,
+      details.alert[open] summary:focus h3,
+      details.alert[open] summary:focus h4,
+      details.alert[open] summary:focus h5,
+      details.alert[open] summary:focus h6, details.alert[open] summary:hover h2,
+      details.alert[open] summary:hover h3,
+      details.alert[open] summary:hover h4,
+      details.alert[open] summary:hover h5,
+      details.alert[open] summary:hover h6 {
+        text-decoration: underline; }
   details.alert > *, details.alert[open] > * {
-    margin-left: 0.7em; }
+    margin-left: .7em; }
   details.alert > :first-child, details.alert[open] > :first-child {
-    margin-left: 0.4em; }
+    margin-left: .4em; }
     details.alert > :first-child:before, details.alert[open] > :first-child:before {
       color: #000;
       content: ""; }
@@ -7171,8 +7196,8 @@ img.mfp-img {
  * Menu Sass
  */
 .expicon {
-  font-size: 0.7em;
-  margin: 0 -0.35em 0 0.7em; }
+  font-size: .7em;
+  margin: 0 -.35em 0 .7em; }
 
 .wb-menu .sm {
   display: none;
@@ -7285,7 +7310,7 @@ img.mfp-img {
   text-align: right; }
 
 [dir=rtl] .expicon {
-  margin: 0 0.7em 0 -0.35em; }
+  margin: 0 .7em 0 -.35em; }
 
 [dir=rtl] #mb-pnl .lng-ofr {
   text-align: left; }
@@ -7309,7 +7334,7 @@ img.mfp-img {
 
 [dir=rtl] #mb-pnl details ul {
   padding-left: 0;
-  padding-right: 0.7em; }
+  padding-right: .7em; }
 
 /*
   Multimedia Player Code
@@ -7370,7 +7395,7 @@ img.mfp-img {
   .wb-mltmd.cc_on .wb-mm-cc {
     display: table;
     height: 4em;
-    padding: 0.5em; }
+    padding: .5em; }
   .wb-mltmd.cc_on .cc:after {
     border-bottom: 3px solid #4aafff;
     content: " ";
@@ -7394,7 +7419,7 @@ img.mfp-img {
   background-color: #000;
   color: #fff;
   text-align: center;
-  transition: all 0.26s ease;
+  transition: all .26s ease;
   width: 100%; }
   .wb-mm-cc:before {
     content: " "; }
@@ -7427,7 +7452,7 @@ img.mfp-img {
     width: 3em; }
   .wb-mm-ctrls .tline .wb-mm-tmln-crrnt:after {
     content: " / ";
-    padding: 0 0.5em; }
+    padding: 0 .5em; }
   .wb-mm-ctrls .wb-mm-txtonly {
     padding: 0 1em; }
     .wb-mm-ctrls .wb-mm-txtonly p {
@@ -7573,7 +7598,7 @@ img.mfp-img {
   width: 100%; }
 
 .mfp-bg {
-  opacity: 0.97; }
+  opacity: .97; }
 
 /*
  *	Overlay parts
@@ -7728,7 +7753,7 @@ ol.linenums {
   background-position: 0 -512px; }
 
 .shr-opn span {
-  padding-right: 0.2em; }
+  padding-right: .2em; }
 
 .shr-pg .shr-lnk {
   font-size: 115%;
@@ -7742,7 +7767,7 @@ ol.linenums {
     content: " ";
     display: inline-block;
     height: 32px;
-    margin-right: 0.6em;
+    margin-right: .6em;
     vertical-align: middle;
     width: 32px; }
 
@@ -7754,7 +7779,7 @@ ol.linenums {
   display: inline-block;
   font-family: "Glyphicons Halflings";
   font-size: 32px;
-  margin-right: 0.3em; }
+  margin-right: .3em; }
 
 .shr-pg .shr-pg {
   text-align: left; }
@@ -7765,7 +7790,7 @@ ol.linenums {
   padding: 0; }
 
 [dir=rtl] .shr-opn span {
-  padding-left: 0.2em;
+  padding-left: .2em;
   padding-right: 0; }
 
 [dir=rtl] .shr-pg {
@@ -7773,11 +7798,11 @@ ol.linenums {
   [dir=rtl] .shr-pg .shr-lnk {
     text-align: right; }
     [dir=rtl] .shr-pg .shr-lnk:before {
-      margin-left: 0.4em;
+      margin-left: .4em;
       margin-right: auto; }
 
 [dir=rtl] .email:before {
-  margin-left: 0.6em;
+  margin-left: .6em;
   margin-right: auto; }
 
 /*
@@ -7925,10 +7950,10 @@ table.dataTable {
     margin-top: 2px; }
     table.dataTable thead .sorting-icons:before {
       content: "\e093";
-      padding: 0 0.1em 0 0; }
+      padding: 0 .1em 0 0; }
     table.dataTable thead .sorting-icons:after {
       content: "\e094";
-      padding: 0 0.04em 0 0.06em; }
+      padding: 0 .04em 0 .06em; }
   table.dataTable tbody tr {
     background-color: #fff; }
     table.dataTable tbody tr.selected {
@@ -7961,7 +7986,7 @@ table.dataTable {
     float: left;
     margin-right: 15px; }
     .dataTables_wrapper .dataTables_filter input {
-      margin-left: 0.5em; }
+      margin-left: .5em; }
   .dataTables_wrapper .dataTables_length {
     display: inline-block;
     margin-top: 5px; }
@@ -7977,7 +8002,7 @@ table.dataTable {
       cursor: pointer;
       display: inline-block;
       line-height: 1.4375;
-      margin-bottom: 0.5em;
+      margin-bottom: .5em;
       margin-left: -1px;
       padding: 10px 16px;
       position: relative;
@@ -8052,7 +8077,7 @@ table.dataTable {
   text-align: left; }
   [dir=rtl] .dataTables_wrapper .dataTables_filter input {
     margin-left: auto;
-    margin-right: 0.5em; }
+    margin-right: .5em; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -8078,7 +8103,7 @@ table.dataTable {
   bottom: 0;
   color: #fff;
   left: 0;
-  padding: 0.5em 1em;
+  padding: .5em 1em;
   position: relative;
   right: 0;
   z-index: 101; }
@@ -8197,7 +8222,7 @@ table.dataTable {
         line-height: normal; }
         .wb-tabs [role="tablist"] > li.tab-count > div {
           position: relative;
-          top: 0.4em; }
+          top: .4em; }
         .wb-tabs [role="tablist"] > li.tab-count .curr-count {
           font-size: 1.5em; }
         .wb-tabs [role="tablist"] > li.tab-count:focus, .wb-tabs [role="tablist"] > li.tab-count:hover {
@@ -8227,17 +8252,20 @@ table.dataTable {
       .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count {
         background: none;
         border: 0;
-        font-size: 0.9em; }
+        font-size: .9em; }
         .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count > div {
-          top: 0.7em; }
+          top: .7em; }
         .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count.active, .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count:focus, .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count:hover {
           cursor: default;
           top: 0; }
       .wb-tabs.carousel-s1 [role="tablist"] > li.active, .wb-tabs.carousel-s1 [role="tablist"] > li:focus, .wb-tabs.carousel-s1 [role="tablist"] > li:hover {
         top: 1px; }
   .wb-tabs.carousel-s2 {
-    background: #eee;
-    padding-bottom: 4.375em; }
+    background: #eee; }
+    .wb-tabs.carousel-s2.wb-init {
+      padding-bottom: 4.375em; }
+    .wb-tabs.carousel-s2.exclude-controls {
+      padding-bottom: 0; }
     .wb-tabs.carousel-s2 [role="tablist"] {
       bottom: 0;
       position: absolute;
@@ -8255,8 +8283,8 @@ table.dataTable {
           padding: 2px 0; }
           .wb-tabs.carousel-s2 [role="tablist"] > li.plypause a {
             font-size: 1.5em;
-            margin-right: 0.65em;
-            margin-top: 0.4em;
+            margin-right: .65em;
+            margin-top: .4em;
             padding: 8px 10px 4px; }
 
 .wb-disable .csstransitions .wb-tabs [role="tabpanel"].out {
@@ -8312,8 +8340,8 @@ table.dataTable {
 
 .olHandlerBoxZoomBox, .olHandlerBoxSelectFeature {
   background-color: #fff;
-  font-size: 0.01em;
-  opacity: 0.5;
+  font-size: .01em;
+  opacity: .5;
   position: absolute; }
 
 .olButtonGeolocateItemActive, .olButtonGeolocateItemInactive {
@@ -8362,7 +8390,7 @@ table.dataTable {
  * with some headers (closes #3154)
  */
 .olControlPanZoomBar div {
-  font-size: 0.01em; }
+  font-size: .01em; }
 
 .olMap {
   cursor: default;
@@ -8380,21 +8408,21 @@ table.dataTable {
   bottom: 5px;
   display: block;
   font-family: Arial;
-  font-size: 0.75em;
+  font-size: .75em;
   left: 100px;
   position: absolute; }
 
 .olControlScale {
   bottom: 3em;
   display: block;
-  font-size: 0.75em;
+  font-size: .75em;
   position: absolute;
   right: 3px; }
 
 .olControlScaleLine {
   bottom: 15px;
   display: block;
-  font-size: 0.65em;
+  font-size: .65em;
   left: 10px;
   position: absolute; }
 
@@ -8411,7 +8439,7 @@ table.dataTable {
 
 .olControlAttribution {
   bottom: 5px;
-  font-size: 0.75em;
+  font-size: .75em;
   right: 5px; }
   .olControlAttribution p {
     margin: 0; }
@@ -8454,7 +8482,7 @@ table.dataTable {
  * Animations
  */
 .olLayerGrid .olTileImage {
-  transition: opacity 0.2s linear; }
+  transition: opacity .2s linear; }
 
 /**
  * GeoMap
@@ -8589,7 +8617,7 @@ datalist {
   @title: Details/summary polyfill pre-Modernizr CSS
  */
 summary {
-  display: block !important;
+  display: list-item !important;
   visibility: visible !important; }
 
 details:not([open]) details summary, details .out details summary {
@@ -8700,6 +8728,12 @@ details {
     color: #f00; } }
 
 /* Extra-small view and under */
+@media screen and (max-width: 767px) {
+  /*
+  WET-BOEW
+  @title: Extra-small view and under (screen only)
+ */ }
+
 /* Small view and under */
 @media screen and (max-width: 991px) {
   /*
@@ -8753,7 +8787,19 @@ details {
       display: none; } }
 
 /* Medium view and under */
+@media screen and (max-width: 1199px) {
+  /*
+  WET-BOEW
+  @title: Medium view and under (screen only)
+ */ }
+
 /* Large view and under */
+@media screen and (max-width: 1599px) {
+  /*
+  WET-BOEW
+  @title: Large view and under (screen only)
+ */ }
+
 /* Extra-small view and over */
 @media screen and (min-width: 480px) {
   /*
@@ -8784,7 +8830,7 @@ details {
     content: "|";
     font-size: 1.2em;
     line-height: 1em;
-    padding: 0 0.25em; } }
+    padding: 0 .25em; } }
 
 /* Small view and over */
 @media screen and (min-width: 768px) {
@@ -8959,11 +9005,11 @@ details {
   .wb-tabs.carousel-s2 [role="tablist"] li.prv {
     margin-left: 0; }
     .wb-tabs.carousel-s2 [role="tablist"] li.prv a {
-      padding: 10px 0 10px 0.4em; }
+      padding: 10px 0 10px .4em; }
   .wb-tabs.carousel-s2 [role="tablist"] li.nxt a {
     padding: 10px 0; }
   .wb-tabs.carousel-s2 [role="tablist"] li.tab-count {
-    font-size: 0.9em;
+    font-size: .9em;
     margin-right: 5px; }
   .wb-tabs.carousel-s2 [role="tablist"] li.plypause {
     margin-right: 2%; }
@@ -8973,6 +9019,12 @@ details {
       padding: 12px 10px 7px; } }
 
 /* Extra-small view */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  /*
+  WET-BOEW
+  @title: Extra-small view (screen only)
+ */ }
+
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
   /*
@@ -8996,6 +9048,12 @@ details {
     clear: right; } }
 
 /* Large view */
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  /*
+  WET-BOEW
+  @title: Large view (screen only)
+ */ }
+
 /* Extra-large view */
 @media screen and (min-width: 1600px) {
   /*
@@ -9021,6 +9079,8 @@ details {
  */
   .pg-brk-aft {
     page-break-after: always; }
+  a[href]:after {
+    content: none; }
   /*
   WET-BOEW
   @title: Breadcrumb print CSS overrides
@@ -9049,8 +9109,6 @@ details {
       width: 100%; }
     .wb-fnote .fn-rtn {
       overflow: visible; }
-      .wb-fnote .fn-rtn a:after {
-        content: none; }
   /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
@@ -9195,7 +9253,7 @@ details {
     cursor: hand; }
     .lt-ie9 .dataTables_wrapper .dataTables_paginate .paginate_button.next:after {
       content: "\e092";
-      margin-left: 0.5em; }
+      margin-left: .5em; }
   .lt-ie9 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
     margin-top: -1px; }
 
@@ -9203,7 +9261,7 @@ details {
   cursor: hand; }
   .lt-ie9[dir=rtl] .dataTables_wrapper .dataTables_paginate .paginate_button.previous:after {
     content: "\e092";
-    margin-left: 0.5em; }
+    margin-left: .5em; }
 
 /*
  Polyfills
@@ -9260,9 +9318,13 @@ details {
   /*
   @title: All screen views
  */
-  #wb-sttl a a:link, #wb-sttl a a:visited {
+  #wb-sttl a a:link, #wb-sm .sm a a:link,
+  #wb-sm .sm summary a:link, #wb-sttl a a:visited, #wb-sm .sm a a:visited,
+  #wb-sm .sm summary a:visited {
     text-decoration: none; }
-  #wb-sttl a a:hover, #wb-sttl a a:focus {
+  #wb-sttl a a:hover, #wb-sm .sm a a:hover,
+  #wb-sm .sm summary a:hover, #wb-sttl a a:focus, #wb-sm .sm a a:focus,
+  #wb-sm .sm summary a:focus {
     text-decoration: underline; }
   body > header {
     background: #ccc; }
@@ -9330,6 +9392,17 @@ details {
     padding-right: 1.8em; } }
 
 /* Extra-small view and under */
+@media screen and (max-width: 767px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Extra-small view and under (screen only)
+ */ }
+
 /* Small view and under */
 @media screen and (max-width: 991px) {
   /*
@@ -9360,7 +9433,7 @@ details {
       top: 0; }
   #mb-pnl .srch-pnl, #mb-pnl .lng-ofr, #mb-pnl .sec-pnl {
     background: #efefef; }
-  #mb-pnl #wb-srch-sub-imprt, #mb-pnl #wb-srch-sub-imprt:hover, #mb-pnl #wb-srch-sub-imprt:focus, #mb-pnl #wb-srch-sub-imprt:active, #mb-pnl .sm-pnl a, #mb-pnl .sm-pnl summary, #mb-pnl .sm-pnl summary:hover, #mb-pnl .sm-pnl summary:focus {
+  #mb-pnl #wb-srch-sub-imprt, #mb-pnl #wb-srch-sub-imprt:hover, #mb-pnl #wb-srch-sub-imprt:focus, #mb-pnl #wb-srch-sub-imprt:active, #mb-pnl .sec-pnl, #mb-pnl .sm-pnl a, #mb-pnl .sm-pnl summary, #mb-pnl .sm-pnl summary:hover, #mb-pnl .sm-pnl summary:focus {
     color: #fff; }
   #mb-pnl {
     background: #ccc; }
@@ -9431,8 +9504,41 @@ details {
       padding-right: 10px; } }
 
 /* Medium view and under */
+@media screen and (max-width: 1199px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Medium view and under (screen only)
+ */ }
+
 /* Large view and under */
+@media screen and (max-width: 1599px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Large view and under (screen only)
+ */ }
+
 /* Extra-small view and over */
+@media screen and (min-width: 480px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Extra-small view and over (screen only)
+ */ }
+
 /* Small view and over */
 @media screen and (min-width: 768px) {
   /*
@@ -9465,14 +9571,6 @@ details {
   /*
   @title: Medium view and over (screen only)
  */
-  #wb-sm .sm a a:link,
-  #wb-sm .sm summary a:link, #wb-sm .sm a a:visited,
-  #wb-sm .sm summary a:visited {
-    text-decoration: none; }
-  #wb-sm .sm a a:hover,
-  #wb-sm .sm summary a:hover, #wb-sm .sm a a:focus,
-  #wb-sm .sm summary a:focus {
-    text-decoration: underline; }
   #wb-bar {
     min-height: 2.25em; }
     #wb-bar a {
@@ -9546,8 +9644,41 @@ details {
     float: right; } }
 
 /* Large view and over */
+@media screen and (min-width: 1200px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Large view and over (screen only)
+ */ }
+
 /* Extra-extra-small view */
+@media screen and (max-width: 479px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Extra-extra-small view (screen only)
+ */ }
+
 /* Extra-small view */
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Extra-small view (screen only)
+ */ }
+
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
   /*
@@ -9565,8 +9696,41 @@ details {
     white-space: nowrap; } }
 
 /* Medium view */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Medium view (screen only)
+ */ }
+
 /* Large view */
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Large view (screen only)
+ */ }
+
 /* Extra-large view */
+@media screen and (min-width: 1600px) {
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+  /*
+  @title: Extra-large view (screen only)
+ */ }
+
 /* Print view */
 @media print {
   /*
