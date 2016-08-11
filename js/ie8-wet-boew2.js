@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.21 - 2016-04-12
+ * v4.0.22 - 2016-08-11
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1398,7 +1398,7 @@ var componentName = "wb-calevt",
 
 	processEvents = function( $elm ) {
 		var settings = $.extend( {}, window[ componentName ], $elm.data( dataAttr ) ),
-			year, month, events, minDate, containerId, $container, $calendar;
+			year, month, events, minDate, containerId, $container;
 
 		events = getEvents( $elm );
 		containerId = $elm.data( "calevtSrc" );
@@ -1408,7 +1408,7 @@ var componentName = "wb-calevt",
 		year = settings.year || minDate.getFullYear();
 		month = settings.month || minDate.getMonth();
 
-		$calendar = wb.calendar.create( $container, {
+		wb.calendar.create( $container, {
 			year: year,
 			month: month,
 			minDate: minDate,
@@ -1472,10 +1472,10 @@ var componentName = "wb-calevt",
 		for ( i = 0; i !== iLen; i += 1 ) {
 			$event = objEventsList.eq( i );
 			event = $event[ 0 ];
-			$objTitle = $event.find( "*:header:first" ),
-			className = $objTitle.attr( "class" ),
-			title = $objTitle.text(),
-			link = $event.find( "a" )[ 0 ],
+			$objTitle = $event.find( "*:header:first" );
+			className = $objTitle.attr( "class" );
+			title = $objTitle.text();
+			link = $event.find( "a" )[ 0 ];
 			href = link.getAttribute( "href" );
 			target = link.getAttribute( "target" );
 			zLen = 1;
@@ -1581,12 +1581,9 @@ var componentName = "wb-calevt",
 		return events;
 	},
 
-	addEvents = function( year, month, $days, range ) {
-		var $inRange = $days,
-			today = new Date(),
-			eventsList = this.events,
-			firstDay = true,
-			i, eLen, date, $day, $dayLink, $dayEvents, event, eventMonth, linkFocus;
+	addEvents = function( year, month, $days ) {
+		var eventsList = this.events,
+			i, eLen, date, dayIndex, $day, $dayEvents, event, eventMonth;
 
 		// Fix required to make up with the IE z-index behaviour mismatch
 		// TODO: Move ot IE CSS? Which versions of IE should this fix be limited to?
@@ -1595,18 +1592,6 @@ var componentName = "wb-calevt",
 				$days.eq( i ).css( "z-index", 31 - i );
 			}
 		}
-
-		if ( range ) {
-			if ( range.max ) {
-				$inRange = $inRange.filter( ":lt(" + ( range.max + 1 ) + ")" );
-			}
-
-			if ( range.min ) {
-				$inRange = $inRange.filter( ":gt(" + ( range.min - 1 ) + ")" );
-			}
-		}
-
-		$inRange.wrap( "<a href='javascript:;' tabindex='-1'></a>" );
 
 		/*
 		 * Determines for each event, if it occurs in the display month
@@ -1622,34 +1607,33 @@ var componentName = "wb-calevt",
 					//End the loop if the next event is in a future month because events are sorted chronologically
 					break;
 				} else if ( date.getMonth() === month ) {
-					$day = $( $days[ date.getDate() - 1 ] );
-					$dayLink = $day.parent();
+					dayIndex = date.getDate() - 1;
+					$day = $( $days[ dayIndex ] );
 
-					//Create the link for the events if it doesn't exist
-					$dayLink.addClass( "cal-evt" );
-
-					//Create the event list container if it doesn't exist
-					$dayEvents = $dayLink.next();
-					if ( $dayEvents.length !== 1 ) {
-						$dayEvents = $( "<ul></ul>" ).insertAfter( $dayLink );
+					//Get the appropriate day events if a day link exists
+					if ( $day.parent().get( 0 ).nodeName !== "A" ) {
+						$dayEvents = $day.next();
+					}else{
+						$dayEvents = $day.parent().next();
 					}
 
-					///Add the event to the list
-					$dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" + event.href + "'>" + event.title + "</a></li>" );
+					//Create the event list container if it doesn't exist
+					if ( $dayEvents.length !== 1) {
+						$dayEvents = $( "<ul></ul>" ).insertAfter( $day );
 
-					firstDay = false;
+						//Determine the focus based on the day before
+						if ( dayIndex && $days[ dayIndex - 1 ].parentNode.nodeName === "A" ) {
+							$day.wrap( "<a href='javascript:;' class='cal-evt' tabindex='-1'></a>" );
+						} else {
+							$day.wrap( "<a href='javascript:;' class='cal-evt'></a>" );
+						}
+					}
+
+					//Add the event to the list
+					$dayEvents.append( "<li><a tabindex='-1' class='cal-evt-lnk' href='" + event.href + "'>" + event.title + "</a></li>" );
 				}
 			}
 		}
-
-		//Determines the focus
-		if ( year === today.getFullYear() && month === today.getMonth() ) {
-			linkFocus = $days.eq( today.getDate() - 1 );
-		} else {
-			linkFocus = $inRange.eq( 0 );
-		}
-
-		linkFocus.parent().removeAttr( "tabindex" );
 	},
 
 	filterEvents = function( year, month ) {
@@ -1781,7 +1765,7 @@ var i18nText,
 			dayNames: i18n( "days" ),
 			currDay: i18n( "currDay" ),
 			format: i18n( "cal-format" )
-		},
+		};
 
 		textWeekDayNames = i18nText.dayNames;
 		textMonthNames = i18nText.monthNames;
@@ -5082,7 +5066,7 @@ var componentName = "wb-fnote",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			$elm, footnoteDd, footnoteDt, i, len, dd, dt, dtId, $returnLinks;
+			$elm, footnoteDd, footnoteDt, i, len, dd, dt, dtId;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -5101,7 +5085,7 @@ var componentName = "wb-fnote",
 			}
 
 			// Remove "first/premier/etc"-style text from certain footnote return links (via the child spans that hold those bits of text)
-			$returnLinks = $elm.find( "dd p.fn-rtn a span span" ).remove();
+			$elm.find( "dd p.fn-rtn a span span" ).remove();
 
 			// Identify that initialization has completed
 			wb.ready( $elm, componentName );
@@ -5134,15 +5118,21 @@ $document.on( "click vclick", "main :not(" + selector + ") sup a.fn-lnk", functi
 // Listen for footnote return links that get clicked
 $document.on( "click vclick", selector + " dd p.fn-rtn a", function( event ) {
 	var which = event.which,
+		ref,
 		refId;
 
 	// Ignore middle/right mouse button
 	if ( !which || which === 1 ) {
-		refId = "#" + wb.jqEscape( event.target.getAttribute( "href" ).substring( 1 ) );
+		ref = event.target.getAttribute( "href" );
 
-		// Assign focus to the link
-		$document.find( refId + " a" ).trigger( setFocusEvent );
-		return false;
+		// Focus on associated referrer link (if the return link points to an ID)
+		if ( ref.charAt( 0 ) === "#" ) {
+			refId = "#" + wb.jqEscape( ref.substring( 1 ) );
+
+			// Assign focus to the link
+			$document.find( refId + " a" ).trigger( setFocusEvent );
+			return false;
+		}
 	}
 } );
 
@@ -5662,7 +5652,7 @@ var componentName = "wb-lbx",
 						$wrap = this.wrap,
 						$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
 						len = $buttons.length,
-						i, button, $bottomBar;
+						i, button;
 
 					for ( i = 0; i !== len; i += 1 ) {
 						button = $buttons[ i ];
@@ -5670,7 +5660,7 @@ var componentName = "wb-lbx",
 					}
 
 					if ( $item.type === "image" ) {
-						$bottomBar = $content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
+						$content.find( ".mfp-bottom-bar" ).attr( "id", "lbx-title" );
 					} else {
 						$content.attr( "role", "document" );
 					}
@@ -6060,7 +6050,7 @@ var componentName = "wb-menu",
 	createMobilePanelMenu = function( allProperties ) {
 		var panel = "",
 			sectionHtml, properties, sections, section, parent, $items,
-			href, linkHtml, i, j, len, sectionsLength, itemsLength;
+			linkHtml, i, j, len, sectionsLength, itemsLength;
 
 		// Process the secondary and site menus
 		len = allProperties.length;
@@ -6071,7 +6061,6 @@ var componentName = "wb-menu",
 			sectionsLength = sections.length;
 			for ( j = 0; j !== sectionsLength; j += 1 ) {
 				section = sections[ j ];
-				href = section.getAttribute( "href" );
 				$items = $( section.parentNode ).find( "> ul > li" );
 				itemsLength = $items.length;
 
@@ -6731,7 +6720,6 @@ var componentName = "wb-mltmd",
 	captionsVisibleChangeEvent = "ccvischange" + selector,
 	renderUIEvent = "renderui" + selector,
 	initializedEvent = "inited" + selector,
-	fallbackEvent = "fallback" + selector,
 	youtubeEvent = "youtube" + selector,
 	resizeEvent = "resize" + selector,
 	templateLoadedEvent = "templateloaded" + selector,
@@ -6764,11 +6752,9 @@ var componentName = "wb-mltmd",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var eventTarget = wb.init( event, componentName, selector ),
-			elmId;
+		var eventTarget = wb.init( event, componentName, selector );
 
 		if ( eventTarget ) {
-			elmId = eventTarget.id;
 
 			// Only initialize the i18nText once
 			if ( !i18nText ) {
@@ -7321,52 +7307,13 @@ $document.on( initializedEvent, selector, function( event ) {
 		} else if ( media.error === null && media.currentSrc !== "" && media.currentSrc !== undef ) {
 			$this.trigger( renderUIEvent, [ type, data ] );
 		} else {
-			$this.trigger( fallbackEvent, data );
+
+			// Do nothing since IE8 support is no longer required
+            return;
 		}
 
 		// Identify that initialization has completed
 		wb.ready( $this, componentName );
-	}
-} );
-
-$document.on( fallbackEvent, selector, function( event, data ) {
-	if ( event.namespace === componentName ) {
-		var $this = $( event.currentTarget ),
-			$media = data.media,
-			type = data.type,
-			source = $media.find( ( type === "video" ? "[type='video/mp4']" : "[type='audio/mp3']" ) ).attr( "src" ),
-			posterUrl = $media.attr( "poster" ),
-			flashvars = "id=" + data.mId,
-			width = data.width,
-			height = data.height > 0 ? data.height : Math.round( data.width / 1.777 ),
-			playerresource = wb.getPath( "/assets" ) + "/multimedia.swf?" + new Date().getTime(),
-			poster, $newMedia;
-
-		flashvars += "&amp;media=" + encodeURI( wb.getUrlParts( source ).absolute );
-		if ( type === "video" ) {
-			poster = "<img src='" + posterUrl + "' class='img-responsive' height='" +
-				height + "' width='" + width + "' alt='" + $media.attr( "title" ) + "'/>";
-
-			flashvars += "&amp;height=" + height + "&amp;width=" +
-				width + "&amp;posterimg=" + encodeURI( wb.getUrlParts( posterUrl ).absolute );
-		}
-
-		$newMedia = $( "<object id='" + data.mId + "' width='" + width +
-			"' height='" + height + "' class='" + type +
-			"' type='application/x-shockwave-flash' data='" +
-			playerresource + "' tabindex='-1' play='' pause=''>" +
-			"<param name='movie' value='" + playerresource + "'/>" +
-			"<param name='flashvars' value='" + flashvars + "'/>" +
-			"<param name='allowScriptAccess' value='always'/>" +
-			"<param name='bgcolor' value='#000000'/>" +
-			"<param name='wmode' value='opaque'/>" +
-			poster + "</object>" );
-
-		$media.replaceWith( $newMedia );
-
-		data.media = $newMedia;
-
-		$this.trigger( renderUIEvent, [ type, data ] );
 	}
 } );
 
@@ -7423,7 +7370,7 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 			captionsUrl = wb.getUrlParts( data.captions ),
 			currentUrl = wb.getUrlParts( window.location.href ),
 			$media = data.media,
-			$eventReceiver, $share;
+			$eventReceiver;
 
 		$media
 			.after( tmpl( template, data ) )
@@ -7452,7 +7399,7 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 
 		// Create the share widgets if needed
 		if ( data.shareUrl !== undef ) {
-			$share = $( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
+			$( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
 				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
 				data.title.replace( "'", "&apos;" ) + "\", \"url\": \"" + data.shareUrl +
 				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" )
@@ -8377,7 +8324,7 @@ var componentName = "wb-rsz",
 		largeview: 1200,
 		xlargeview: 1600
 	},
-	eventsAll, resizeTest, currentView,
+	resizeTest, currentView,
 
 	/**
 	 * @method init
@@ -8406,9 +8353,6 @@ var componentName = "wb-rsz",
 				window.innerWidth || $document.width(),
 				window.innerHeight || $document.height()
 			];
-
-			// Create a string containing all the events
-			eventsAll = events.join( " " );
 
 			// Determine the current view
 			viewChange( sizes[ 1 ] );
@@ -8622,8 +8566,8 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 			child, modal, temp;
 
 		if ( $document.find( modalID ).length === 0 ) {
-				modal = document.createDocumentFragment(),
-				temp = document.createElement( "div" );
+			modal = document.createDocumentFragment();
+			temp = document.createElement( "div" );
 
 			// Create the modal dialog.  A temp <div> element is used so that its innerHTML can be set as a string.
 			temp.innerHTML = "<a class='wb-lbx lbx-modal mfp-hide' href='#" + componentName + "-modal'></a>" +
@@ -8634,7 +8578,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 				"</section>";
 
 			// Get the temporary <div>'s top level children and append to the fragment
-			while ( child = temp.firstChild ) {
+			while ( ( child = temp.firstChild ) !== null ) {
 				modal.appendChild( child );
 			}
 			document.body.appendChild( modal );
@@ -8855,7 +8799,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 				ks: 1000000
 			};
 
-		if ( value == null ) {
+		if ( value == null ) { //eslint-disable-line no-eq-null
 			return null;
 		}
 
@@ -8877,7 +8821,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 	getTime = function( milliseconds ) {
 		var time = { minutes: "", seconds: "" };
 
-		if ( milliseconds != null ) {
+		if ( milliseconds != null ) { //eslint-disable-line no-eq-null
 			time.minutes = parseInt( ( milliseconds / ( 1000 * 60 ) ) % 60, 10 );
 			time.seconds = parseInt( ( milliseconds / 1000 ) % 60, 10 );
 		}
@@ -9451,6 +9395,14 @@ var componentName = "wb-tabs",
 			$panels = $elm.find( "> .tabpanels > [role=tabpanel], > .tabpanels > details" );
 			$tablist = $elm.children( "[role=tablist]" );
 			isCarousel = $tablist.length !== 0;
+
+			// If a carousel contains only 1 panel, remove its controls, visually-hide its thumbnails and prevent it from attempting to play
+			if ( isCarousel && $panels.length === 1 ) {
+
+				$elm.removeClass( "show-thumbs playing" );
+				$elm.addClass( "exclude-controls" );
+			}
+
 			activeId = wb.jqEscape( wb.pageUrlParts.hash.substring( 1 ) );
 			hashFocus = activeId.length !== 0;
 			$openPanel = hashFocus ? $panels.filter( "#" + activeId ) : undefined;
@@ -9465,6 +9417,7 @@ var componentName = "wb-tabs",
 					interval: $elm.hasClass( "slow" ) ?
 								9 : $elm.hasClass( "fast" ) ?
 									3 : defaults.interval,
+					excludeControls: $elm.hasClass( "exclude-controls" ),
 					excludePlay: $elm.hasClass( "exclude-play" ),
 					updateHash: $elm.hasClass( "update-hash" ),
 					playing: $elm.hasClass( "playing" ),
@@ -9697,8 +9650,9 @@ var componentName = "wb-tabs",
 		var prevText = i18nText.prev,
 			nextText = i18nText.next,
 			spaceText = i18nText.space,
+			excludeControls = settings.excludeControls,
 			excludePlay = settings.excludePlay,
-			isPlaying = !excludePlay && settings.playing,
+			isPlaying = !excludeControls && !excludePlay && settings.playing,
 			state = isPlaying ? i18nText.pause : i18nText.play,
 			hidden = isPlaying ? i18nText.rotStop : i18nText.rotStart,
 			glyphiconStart = "<span class='glyphicon glyphicon-",
@@ -9731,8 +9685,11 @@ var componentName = "wb-tabs",
 				"</span>" + wbInvStart + spaceText + i18nText.hyphen + spaceText +
 				hidden + btnEnd;
 
-		$tablist.prepend( prevControl + tabCount + nextControl );
-		if ( !excludePlay ) {
+		if ( !excludeControls ) {
+			$tablist.prepend( prevControl + tabCount + nextControl );
+		}
+
+		if ( !excludeControls && !excludePlay ) {
 			$tablist.append( playControl );
 		}
 
@@ -10174,7 +10131,7 @@ var componentName = "wb-tabs",
 		$elm = $( elm );
 		$sldr = $elm.closest( selector );
 		sldrId = $sldr[ 0 ].id;
-		isPlaying = $sldr.hasClass( "playing" ),
+		isPlaying = $sldr.hasClass( "playing" );
 		isPlayPause = className.indexOf( "plypause" ) !== -1;
 
 		// Reset ctime to 0
@@ -10507,7 +10464,7 @@ var componentName = "wb-toggle",
 			hasOpen = false;
 
 		// Group toggle elements with a parent are assumed to be a tablist
-		if ( data.group != null && data.parent != null ) {
+		if ( data.group != null && data.parent != null ) { //eslint-disable-line no-eq-null
 			parent = document.querySelector( data.parent );
 
 			// Check that the tablist widget hasn't already been initialized
