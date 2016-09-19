@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.23-development - 2016-09-11
+ * v4.0.23-development - 2016-09-19
  *
  */
 @charset "UTF-8";
@@ -10938,14 +10938,22 @@ Carousel
 .whtwedo ul > li {
   margin-bottom: 10px; }
 
-.lnkbx h2:nth-child(1) {
+.well h2:nth-child(1) {
   margin-top: 0; }
-
-.lnkbx p {
-  font-weight: 700; }
 
 .lnkbx > ul > li {
   margin-bottom: 10px; }
+
+.lnkbx dl a {
+  overflow-wrap: break-word;
+  word-break: break-all;
+  word-wrap: break-word; }
+
+.lnkbx dl dt {
+  margin-top: 10px; }
+
+.lnkbx dl dd {
+  margin-bottom: 0; }
 
 .gc-byline {
   font-weight: 700;
@@ -10988,7 +10996,9 @@ Carousel
  * Service template
  */
 .gc-cntct-lst dl dt,
-.gc-cntct-lst dl dd {
+.gc-cntct-lst dl dd,
+.lnkbx dl dt,
+.lnkbx dl dd {
   border: 0; }
 
 /*
