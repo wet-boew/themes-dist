@@ -10924,6 +10924,11 @@ Carousel
   .gc-dwnld .gc-dwnld-txt span {
     display: block; }
 
+.gc-stp-stp {
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 30px;
+  margin-top: 15px; }
+
 /*
 * Template pages styles
 */
@@ -10935,22 +10940,20 @@ Carousel
 .whtwedo ul > li {
   margin-bottom: 10px; }
 
-.well h2:nth-child(1) {
-  margin-top: 0; }
-
-.lnkbx > ul > li {
-  margin-bottom: 10px; }
-
-.lnkbx dl a {
-  overflow-wrap: break-word;
-  word-break: break-all;
-  word-wrap: break-word; }
-
-.lnkbx dl dt {
-  margin-top: 10px; }
-
-.lnkbx dl dd {
-  margin-bottom: 0; }
+.lnkbx {
+  margin-bottom: 30px; }
+  .lnkbx h2:nth-child(1) {
+    margin-top: 0; }
+  .lnkbx > ul > li {
+    margin-bottom: 10px; }
+  .lnkbx dl a {
+    overflow-wrap: break-word;
+    word-break: break-all;
+    word-wrap: break-word; }
+  .lnkbx dl dt {
+    margin-top: 10px; }
+  .lnkbx dl dd {
+    margin-bottom: 0; }
 
 .gc-byline {
   font-weight: 700;
@@ -10997,6 +11000,12 @@ Carousel
 .lnkbx dl dt,
 .lnkbx dl dd {
   border: 0; }
+
+/*
+ * Advance Service template
+ */
+.gc-advnc-srvc .col-md-8 h2:first-child {
+  margin-top: 0; }
 
 /*
 * News styles
