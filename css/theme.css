@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.23-development - 2016-08-11
+ * v4.0.23-development - 2016-09-27
  *
  */
 @charset "UTF-8";
@@ -6474,6 +6474,12 @@ q:before, q:after {
   opacity: .1; }
 
 /*
+ *	Removes bold from elements
+ */
+.fnt-nrml {
+  font-weight: normal; }
+
+/*
  *	Fix for missing bullets in Chrome and Safari
  */
 [class*=clmn-] {
@@ -7826,7 +7832,6 @@ img.mfp-img {
 .wb-overlay {
   -webkit-background-clip: border-box;
   background-clip: border-box;
-  background-color: #fff;
   border: 0;
   border-radius: 0;
   display: none;
@@ -7892,15 +7897,11 @@ img.mfp-img {
 .overlay-def {
   overflow-y: auto; }
   .overlay-def header {
-    background-color: #000;
-    color: #fff;
     display: block;
     padding: 0 44px 0 1em; }
   .overlay-def .modal-title {
     font-size: 1.15em;
     padding: 10px 0; }
-  .overlay-def.wb-bar-t, .overlay-def.wb-bar-b {
-    background-color: #000; }
   .overlay-def .mfp-close {
     color: #fff; }
 
