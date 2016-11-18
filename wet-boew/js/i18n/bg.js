@@ -7,6 +7,7 @@
  */
 ( function( wb ) {
 "use strict";
+
 /* main index */
 wb.i18nDict = {
 	"lang-code": "bg",
@@ -71,6 +72,7 @@ wb.i18nDict = {
 	"tab-pnl-end2": "Назад към списъка раздела",
 	"tab-pnl-end3": "или да продължат да останалата част от страницата.",
 	"tab-play": "Играя",
+
 	/* Multimedia player */
 	"mmp-play": "Играя",
 	pause: "Пауза",
@@ -92,6 +94,7 @@ wb.i18nDict = {
 	},
 	pos: "Позиция:",
 	dur: "Общо време:",
+
 	/* Share widget */
 	"shr-txt": "Споделете",
 	"shr-pg": " тази страница",
@@ -99,14 +102,17 @@ wb.i18nDict = {
 	"shr-aud": " този аудио файл",
 	"shr-hnt": " с {s} ",
 	"shr-disc": "Липса на одобрение на продукти или услуги, изрични или подразбиращи се",
+
 	/* Form validation */
 	"frm-nosubmit": "Форма не могат да се подават, тъй като ",
 	"errs-fnd": " бяха открити грешки.",
 	"err-fnd": " грешка е намерен.",
+
 	/* Date picker */
 	"date-hide": "Скриване на календара",
 	"date-show": "Изберете дата от календара за областта:",
 	"date-sel": "Подбран",
+
 	/* Calendar */
 	days: [
 		"Неделя",
@@ -141,13 +147,16 @@ wb.i18nDict = {
 	"cal-goToBtn": "Отивам",
 	prvMnth: "Предходния месец: ",
 	nxtMnth: "Следващия месец: ",
+
 	/* Lightbox */
 	"lb-curr": "Член %curr% от %total%",
 	"lb-xhr-err": "Това съдържание не успя да се зареди.",
 	"lb-img-err": "Това изображение не успя да се зареди.",
+
 	/* Charts widget */
 	"tbl-txt": "Маса",
 	"tbl-dtls": "Графика. Подробности в таблицата по-долу.",
+
 	/* Session timeout */
 	"st-to-msg-bgn": "Вашата сесия ще изтече автоматично в #min# мин. #sec# сек.",
 	"st-to-msg-end": "Изберете \"Продължи сесия\" да се разшири вашата сесия.",
@@ -155,12 +164,14 @@ wb.i18nDict = {
 	"st-alrdy-to-msg": "За съжаление вашата сесия вече е изтекъл. Моля, влезте отново.",
 	"st-btn-cont": "Продължи сесия",
 	"st-btn-end": "Край на сесията сега",
+
 	/* Toggle details */
 	"td-toggle": "Превключване всички",
 	"td-open": "Разгъване на всички",
 	"td-close": "Свиване на всички",
 	"td-ttl-open": "Разгъване на всички раздели на съдържание",
 	"td-ttl-close": "Сгъване на всички раздели на съдържание",
+
 	/* Table enhancement */
 	sortAsc: "активира за възходящ вид",
 	sortDesc: "активирате за низходяща вид",
@@ -171,6 +182,7 @@ wb.i18nDict = {
 	info1000: ",",
 	lenMenu: "Покажи _MENU_ вписвания",
 	filter: "Филтриране на елементи",
+
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
 	"geo-zmin": "Увеличаване на мащаба",
@@ -184,14 +196,14 @@ wb.i18nDict = {
 	"geo-allyttl": "Инструкции: навигационна карта",
 	"geo-tgllyr": "Превключване на дисплея на слоя",
 	"geo-hdnlyr": "Този слой в момента е скрит.",
-	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
+	"geo-bmapurl": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "//geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
 	"geo-attrttl": "GeoGratis - Канада основната карта (на английски или френски език)",
 	"geo-sel": "Изберете",
 	"geo-lblsel": "Проверете, за да изберете елемента на картата",
-	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-locurl-geogratis": "//geogratis.gc.ca/services/geolocation/en/locate",
 	"geo-loc-placeholder": "Посочете името на мястото&#44; пощенски код&#44; адрес (пощенски)&#44; броят на НТС ...",
 	"geo-loc-label": "Място",
 	"geo-aoi-north": "На север",
@@ -205,11 +217,14 @@ wb.i18nDict = {
 	"geo-geoloc-fail": "Местоположение провали. Моля, уверете се, че местоположението услуги са разрешени.",
 	"geo-geoloc-uncapable": "Локализация не се поддържа от вашия браузър.",
 	"geo-lgnd-grphc": "Legend графичен за карта слой.",
+
 	/* Disable/enable WET plugins and polyfills */
-	"wb-disable": "Базов HTML версия",
-	"wb-enable": "Стандартната версия",
+	"wb-disable": "Switch to basic HTML version",
+	"wb-enable": "Switch to standard version",
+
 	/* Dismissable content */
 	"dismiss": "Dismiss",
+
 	/* Template */
 	"tmpl-signin": "Вход"
 };

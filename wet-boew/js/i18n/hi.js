@@ -7,6 +7,7 @@
  */
 ( function( wb ) {
 "use strict";
+
 /* main index */
 wb.i18nDict = {
 	"lang-code": "hi",
@@ -71,6 +72,7 @@ wb.i18nDict = {
 	"tab-pnl-end2": "टैब सूची पर लौटें",
 	"tab-pnl-end3": "या पृष्ठ के आराम करने के लिए जारी है.",
 	"tab-play": "खेल",
+
 	/* Multimedia player */
 	"mmp-play": "खेल",
 	pause: "ठहराव",
@@ -92,6 +94,7 @@ wb.i18nDict = {
 	},
 	pos: "वर्तमान स्थिति:",
 	dur: "कुल समय:",
+
 	/* Share widget */
 	"shr-txt": "शेयर",
 	"shr-pg": " इस पन्ने",
@@ -99,14 +102,17 @@ wb.i18nDict = {
 	"shr-aud": " इस ऑडियो फाइल",
 	"shr-hnt": "{s} के साथ",
 	"shr-disc": "किसी भी उत्पाद या सेवाओं की कोई समर्थन व्यक्त या निहित",
+
 	/* Form validation */
 	"frm-nosubmit": "फार्म प्रस्तुत नहीं किया जा सका क्योंकि ",
 	"errs-fnd": " त्रुटियों पाया गया.",
 	"err-fnd": " त्रुटि पाया गया था.",
+
 	/* Date picker */
 	"date-hide": "कैलेंडर छिपाएँ",
 	"date-show": "कैलेंडर से क्षेत्र के लिए एक तारीख उठाओ",
 	"date-sel": "चयनित",
+
 	/* Calendar */
 	days: [
 		"रविवार",
@@ -141,13 +147,16 @@ wb.i18nDict = {
 	"cal-goToBtn": "जाना",
 	prvMnth: "पिछले माह: ",
 	nxtMnth: "अगला महीना: ",
+
 	/* Lightbox */
 	"lb-curr": "%total% में से %curr% आइटम",
 	"lb-xhr-err": "इस सामग्री को लोड करने में विफल.",
 	"lb-img-err": "इस छवि को लोड करने में विफल रहा.",
+
 	/* Charts widget */
 	"tbl-txt": "तालिका",
 	"tbl-dtls": "चार्ट. निम्न तालिका में विवरण.",
+
 	/* Session timeout */
 	"st-to-msg-bgn": "आपका सत्र #min# मिनट #sec# सेकंड में स्वत: ही समाप्त हो जाएगी.",
 	"st-to-msg-end": "अपने सत्र का विस्तार करने के लिए \"सत्र जारी\" का चयन करें.",
@@ -155,12 +164,14 @@ wb.i18nDict = {
 	"st-alrdy-to-msg": "खेद अपने सत्र पहले ही समाप्त हो गया है. कृपया फिर से प्रवेश करें.",
 	"st-btn-cont": "सत्र जारी",
 	"st-btn-end": "अब सत्र समाप्त",
+
 	/* Toggle details */
 	"td-toggle": "सभी टॉगल करें",
 	"td-open": "सभी का विस्तार",
 	"td-close": "सभी को संक्षिप्त करें",
 	"td-ttl-open": "सामग्री के सभी वर्गों का विस्तार",
 	"td-ttl-close": "सामग्री के सभी वर्गों को संक्षिप्त करें",
+
 	/* Table enhancement */
 	sortAsc: ": तरह आरोही के लिए सक्रिय",
 	sortDesc: ": तरह उतरते के लिए सक्रिय",
@@ -171,6 +182,7 @@ wb.i18nDict = {
 	info1000: ",",
 	lenMenu: "_MENU_ प्रविष्टियों दिखाएं",
 	filter: "फ़िल्टर आइटम",
+
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
 	"geo-zmin": "ज़ूम इन करें",
@@ -184,14 +196,14 @@ wb.i18nDict = {
 	"geo-allyttl": "निर्देश: मानचित्र नेविगेशन",
 	"geo-tgllyr": "परत के प्रदर्शन टॉगल करें",
 	"geo-hdnlyr": "इस परत वर्तमान में छिपा हुआ है.",
-	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
+	"geo-bmapurl": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "//geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
 	"geo-attrttl": "GeoGratis - कनाडा आधार नक्शा (अंग्रेजी या फ्रेंच केवल)",
 	"geo-sel": "चयन",
 	"geo-lblsel": "नक्शे पर तत्व का चयन करने के लिए जाँच करें",
-	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-locurl-geogratis": "//geogratis.gc.ca/services/geolocation/en/locate",
 	"geo-loc-placeholder": "स्थान&#44; ज़िप कोड&#44; पता (डाक)&#44; एनटीएस की संख्या के नाम का संकेत ...",
 	"geo-loc-label": "स्थान",
 	"geo-aoi-north": "उत्तर",
@@ -205,11 +217,14 @@ wb.i18nDict = {
 	"geo-geoloc-fail": "स्थान में विफल रहा है. स्थान सेवाएं सक्षम रहे हैं कि कृपया सुनिश्चित करें.",
 	"geo-geoloc-uncapable": "स्थानीयकरण आपके ब्राउज़र द्वारा समर्थित नहीं है.",
 	"geo-lgnd-grphc": "नक्शा परत के लिए लीजेंड ग्राफिक।",
+
 	/* Disable/enable WET plugins and polyfills */
-	"wb-disable": "मूल HTML संस्करण",
-	"wb-enable": "मानक संस्करण",
+	"wb-disable": "Switch to basic HTML version",
+	"wb-enable": "Switch to standard version",
+
 	/* Dismissable content */
 	"dismiss": "Dismiss",
+
 	/* Template */
 	"tmpl-signin": "साइन इन करें"
 };
