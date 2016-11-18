@@ -7,6 +7,7 @@
  */
 ( function( wb ) {
 "use strict";
+
 /* main index */
 wb.i18nDict = {
 	"lang-code": "de",
@@ -71,6 +72,7 @@ wb.i18nDict = {
 	"tab-pnl-end2": "Zurück zur Liste der Registerkarte",
 	"tab-pnl-end3": "oder der Rest der Seite fortzusetzen.",
 	"tab-play": "Spielen",
+
 	/* Multimedia player */
 	"mmp-play": "Spielen",
 	pause: "Pausieren",
@@ -92,6 +94,7 @@ wb.i18nDict = {
 	},
 	pos: "Aktuelle Position:",
 	dur: "Insgesamt benötigte Zeit",
+
 	/* Share widget */
 	"shr-txt": "Teilen",
 	"shr-pg": " Sie diese Seite",
@@ -99,14 +102,17 @@ wb.i18nDict = {
 	"shr-aud": " diese Audiodatei",
 	"shr-hnt": " mit {s} ",
 	"shr-disc": "Keine Unterstützung von Produkten oder Dienstleistungen ausdrücklich oder stillschweigend.",
+
 	/* Form validation */
 	"frm-nosubmit": "Das Formular konnte nicht vorgelegt werden, da ",
 	"errs-fnd": " Fehler gefunden wurden.",
 	"err-fnd": " Fehler festgestellt wurde.",
+
 	/* Date picker */
 	"date-hide": "Ausblenden Kalender",
 	"date-show": "Wählen Sie ein Datum aus einem Kalender für das Feld:",
 	"date-sel": "Ausgewählt",
+
 	/* Calendar */
 	days: [
 		"Sonntag",
@@ -141,13 +147,16 @@ wb.i18nDict = {
 	"cal-goToBtn": "Gehen",
 	prvMnth: "Vorheriger Monat: ",
 	nxtMnth: "Nächster Monat: ",
+
 	/* Lightbox */
 	"lb-curr": "Artikel %curr% von %total%",
 	"lb-xhr-err": "Dieser Inhalt wurde nicht geladen.",
 	"lb-img-err": "Dieses Bild konnte nicht geladen werden.",
+
 	/* Charts widget */
 	"tbl-txt": "Tabelle",
 	"tbl-dtls": "Grafik. Angaben in der folgenden Tabelle.",
+
 	/* Session timeout */
 	"st-to-msg-bgn": "Ihre Sitzung endet automatisch in #min# min #sec# sec.",
 	"st-to-msg-end": "Wählen Sie \"Weiter Sitzung\", um die Sitzung zu verlängern.",
@@ -155,12 +164,14 @@ wb.i18nDict = {
 	"st-alrdy-to-msg": "Leider Ihre Sitzung ist bereits abgelaufen. Bitte loggen Sie sich erneut.",
 	"st-btn-cont": "Weiter Sitzung",
 	"st-btn-end": "Sitzung beenden jetzt",
+
 	/* Toggle details */
 	"td-toggle": "Wechseln alle",
 	"td-open": "Erweitern",
 	"td-close": "Alle ausblenden",
 	"td-ttl-open": "Erweitern Sie alle Teile der Inhalte",
 	"td-ttl-close": "Alles Teile der Inhalte",
+
 	/* Table enhancement */
 	sortAsc: ": Aktivieren für aufsteigend sortieren",
 	sortDesc: ": Aktivieren für absteigend sortieren",
@@ -171,6 +182,7 @@ wb.i18nDict = {
 	info1000: "&#160;",
 	lenMenu: "Zeige _MENU_ Einträge",
 	filter: "Filter Artikel",
+
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
 	"geo-zmin": "Vergrößern",
@@ -184,14 +196,14 @@ wb.i18nDict = {
 	"geo-allyttl": "Anleitung: Kartennavigation",
 	"geo-tgllyr": "Umschalten der Anzeige der Schicht",
 	"geo-hdnlyr": "Diese Schicht ist im Moment versteckt.",
-	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
+	"geo-bmapurl": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "//geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
 	"geo-attrttl": "GeoGratis - Kanada Basiskarte (Englisch oder Französisch)",
 	"geo-sel": "Wählen",
 	"geo-lblsel": "Überprüfen Sie das Element auf der Karte auswählen",
-	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-locurl-geogratis": "//geogratis.gc.ca/services/geolocation/en/locate",
 	"geo-loc-placeholder": "Geben Sie den Namen des Ortes&#44; Postleitzahl&#44; Adresse (Post)&#44; die Anzahl der NTS ...",
 	"geo-loc-label": "Position",
 	"geo-aoi-north": "Norden",
@@ -205,11 +217,14 @@ wb.i18nDict = {
 	"geo-geoloc-fail": "Lage fehlgeschlagen. Bitte stellen Sie sicher, dass die Ortungsdienste aktiviert sind.",
 	"geo-geoloc-uncapable": "Der Ort ist nicht von Ihrem Browser unterstützt.",
 	"geo-lgnd-grphc": "Legende Grafik für Karten-Layer.",
+
 	/* Disable/enable WET plugins and polyfills */
-	"wb-disable": "Grundlegende HTML-Version",
-	"wb-enable": "Standardausführung",
+	"wb-disable": "Switch to basic HTML version",
+	"wb-enable": "Switch to standard version",
+
 	/* Dismissable content */
 	"dismiss": "Dismiss",
+
 	/* Template */
 	"tmpl-signin": "Login"
 };
