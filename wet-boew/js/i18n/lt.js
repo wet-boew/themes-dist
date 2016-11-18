@@ -7,6 +7,7 @@
  */
 ( function( wb ) {
 "use strict";
+
 /* main index */
 wb.i18nDict = {
 	"lang-code": "lt",
@@ -71,6 +72,7 @@ wb.i18nDict = {
 	"tab-pnl-end2": "Grįžti į skirtukų sąrašą",
 	"tab-pnl-end3": "ar toliau likusia puslapio dalimi.",
 	"tab-play": "Žaisti",
+
 	/* Multimedia player */
 	"mmp-play": "Žaisti",
 	pause: "Pauzė",
@@ -92,6 +94,7 @@ wb.i18nDict = {
 	},
 	pos: "Esama pozicija:",
 	dur: "Visas laikas:",
+
 	/* Share widget */
 	"shr-txt": "Dalytis ",
 	"shr-pg": " šiuo puslapiu",
@@ -99,14 +102,17 @@ wb.i18nDict = {
 	"shr-aud": " tai garso failas",
 	"shr-hnt": " su {s} ",
 	"shr-disc": "Išreikštų ar numanomų ne bet kokius produktus ar paslaugas įrašas.",
+
 	/* Form validation */
 	"frm-nosubmit": "Formos pateikti negalima, nes ",
 	"errs-fnd": " rastos klaidos.",
 	"err-fnd": " rasta klaida.",
+
 	/* Date picker */
 	"date-hide": "Slėpti kalendorių",
 	"date-show": "Pasirinkti datą iš kalendoriaus:",
 	"date-sel": "Atrinkta",
+
 	/* Calendar */
 	days: [
 		"Sekmadienis",
@@ -141,13 +147,16 @@ wb.i18nDict = {
 	"cal-goToBtn": "Eiti",
 	prvMnth: "Ankstesnis mėnuo: ",
 	nxtMnth: "Sekantis mėnuo: ",
+
 	/* Lightbox */
 	"lb-curr": "Punktas %curr% iš %total%",
 	"lb-xhr-err": "Turinio nepavyko užkrauti.",
 	"lb-img-err": "Nuotraukos nepavyko užkrauti.",
+
 	/* Charts widget */
 	"tbl-txt": "Lentelė",
 	"tbl-dtls": "Grafika. Daugiau detalių sekančioje lentelėje.",
+
 	/* Session timeout */
 	"st-to-msg-bgn": "Jūsų sesija pasibaigs automatiškai #min# min #sec# sek.",
 	"st-to-msg-end": "Pasirinkite \"Tęsti sesiją\" pratęsti savo sesiją.",
@@ -155,12 +164,14 @@ wb.i18nDict = {
 	"st-alrdy-to-msg": "Deja, Jūsų sesija jau baigėsi. Prašome prisijungti vėl.",
 	"st-btn-cont": "Tęsti sesiją",
 	"st-btn-end": "Sesijos pabaigos dabar",
+
 	/* Toggle details */
 	"td-toggle": "Perjungti visi",
 	"td-open": "Išskleisti viską",
 	"td-close": "Sutraukti viską",
 	"td-ttl-open": "Išskleisti visus turinio skyrius",
 	"td-ttl-close": "Sutraukti visus turinio skyrius",
+
 	/* Table enhancement */
 	sortAsc: ": suaktyvinkite didėjimo tvarka rūšiuoti",
 	sortDesc: ": suaktyvinkite rikiuojama",
@@ -171,6 +182,7 @@ wb.i18nDict = {
 	info1000: ",",
 	lenMenu: "Rodyti _MENU_ įrašai",
 	filter: "Filtruoti",
+
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
 	"geo-zmin": "Artinti",
@@ -184,14 +196,14 @@ wb.i18nDict = {
 	"geo-allyttl": "Instrukcijos: Žemėlapis navigacijos",
 	"geo-tgllyr": "Perjungti sluoksnio rodymą",
 	"geo-hdnlyr": "Šis sluoksnis yra paslėptas.",
-	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
+	"geo-bmapurl": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "//geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
 	"geo-attrttl": "GeoGratis - Kanada bazė žemėlapis (anglų arba prancūzų kalba)",
 	"geo-sel": "Pasirinkti",
 	"geo-lblsel": "Patikrinkite, pasirinkite elementą žemėlapyje",
-	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-locurl-geogratis": "//geogratis.gc.ca/services/geolocation/en/locate",
 	"geo-loc-placeholder": "Nurodykite vietą&#44; pašto kodą&#44; adresą (pašto)&#44; į NBA numeris Pavadinimas ...",
 	"geo-loc-label": "Vieta",
 	"geo-aoi-north": "Į šiaurę",
@@ -205,11 +217,14 @@ wb.i18nDict = {
 	"geo-geoloc-fail": "Vieta nepavyko. Prašome užtikrinti, kad vietos nustatymo paslaugos yra įjungtas.",
 	"geo-geoloc-uncapable": "Lokalizacijos nepalaikomas jūsų naršyklėje.",
 	"geo-lgnd-grphc": "Legenda grafinis už žemėlapio sluoksnį.",
+
 	/* Disable/enable WET plugins and polyfills */
-	"wb-disable": "Pagrindinė HTML versija",
-	"wb-enable": "Standartinė versija",
+	"wb-disable": "Switch to basic HTML version",
+	"wb-enable": "Switch to standard version",
+
 	/* Dismissable content */
 	"dismiss": "Dismiss",
+
 	/* Template */
 	"tmpl-signin": "Prisijungti"
 };

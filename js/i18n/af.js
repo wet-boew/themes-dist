@@ -7,6 +7,7 @@
  */
 ( function( wb ) {
 "use strict";
+
 /* main index */
 wb.i18nDict = {
 	"lang-code": "af",
@@ -71,6 +72,7 @@ wb.i18nDict = {
 	"tab-pnl-end2": "Keer terug na die blad lys",
 	"tab-pnl-end3": "of voortgaan om die res van die bladsy.",
 	"tab-play": "Speel",
+
 	/* Multimedia player */
 	"mmp-play": "Speel",
 	pause: "Pause",
@@ -92,6 +94,7 @@ wb.i18nDict = {
 	},
 	pos: "Huidige posisie:",
 	dur: "Totale tyd:",
+
 	/* Share widget */
 	"shr-txt": "Deel",
 	"shr-pg": " hierdie bladsy",
@@ -99,14 +102,17 @@ wb.i18nDict = {
 	"shr-aud": " hierdie klank",
 	"shr-hnt": " met {s} ",
 	"shr-disc": "Geen endossement van enige produkte of dienste is uitgedruk of geரliseer",
+
 	/* Form validation */
 	"frm-nosubmit": "Die vorm kon nie voorgel꡷ord nie, want ",
 	"errs-fnd": " foute is gevind nie.",
 	"err-fnd": " fout gevind word.",
+
 	/* Date picker */
 	"date-hide": "Steek kalender",
 	"date-show": "Kies 'n datum van \\'n kalender vir die veld:",
 	"date-sel": "Gekies",
+
 	/* Calendar */
 	days: [
 		"Sondag",
@@ -141,13 +147,16 @@ wb.i18nDict = {
 	"cal-goToBtn": "Gaan",
 	prvMnth: "Vorige Maand: ",
 	nxtMnth: "Volgende Maand: ",
+
 	/* Lightbox */
 	"lb-curr": "Item %curr% van %total%",
 	"lb-xhr-err": "Hierdie inhoud het misluk om te laai.",
 	"lb-img-err": "Hierdie beeld het misluk om te laai.",
+
 	/* Charts widget */
 	"tbl-txt": "Tabel",
 	"tbl-dtls": "Chart. Besonderhede in die volgende tabel.",
+
 	/* Session timeout */
 	"st-to-msg-bgn": "Jou sessie sal outomaties verval in #min# min #sec# sek aan.",
 	"st-to-msg-end": "Kies \"Gaan voort sessie\" om jou sessie te brei.",
@@ -155,12 +164,14 @@ wb.i18nDict = {
 	"st-alrdy-to-msg": "Jammer jou sessie reeds verstryk het. Log weer in.",
 	"st-btn-cont": "Gaan voort sessie",
 	"st-btn-end": "Eindig sessie nou",
+
 	/* Toggle details */
 	"td-toggle": "Toggle alle",
 	"td-open": "Brei om alle",
 	"td-close": "Vou almal",
 	"td-ttl-open": "Brei om alle afdelings van die inhoud",
 	"td-ttl-close": "Vou alle afdelings van die inhoud",
+
 	/* Table enhancement */
 	sortAsc: ": aktiveer vir die stygende soort",
 	sortDesc: ": aktiveer vir die dalende soort",
@@ -171,6 +182,7 @@ wb.i18nDict = {
 	info1000: ",",
 	lenMenu: "Wys _MENU_ inskrywings",
 	filter: "Filter artikels",
+
 	/* Geomap */
 	"geo-mapctrl": "@geo-mapctrl@",
 	"geo-zmin": "Zoom in",
@@ -184,14 +196,14 @@ wb.i18nDict = {
 	"geo-allyttl": "Instruksies: Kaart navigasie",
 	"geo-tgllyr": "Skakel die vertoning van die laag",
 	"geo-hdnlyr": "Hierdie laag is tans weggesteek.",
-	"geo-bmapurl": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
+	"geo-bmapurl": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "http://geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
-	"geo-attrlnk": "http://geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
+	"geo-attrlnk": "//geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
 	"geo-attrttl": "GeoGratis - Kanada basis kaart (Engels of Frans)",
 	"geo-sel": "Kies",
 	"geo-lblsel": "Gaan die element te kies op die kaart",
-	"geo-locurl-geogratis": "http://geogratis.gc.ca/services/geolocation/en/locate",
+	"geo-locurl-geogratis": "//geogratis.gc.ca/services/geolocation/en/locate",
 	"geo-loc-placeholder": "Dui die naam van die plek&#44; poskode&#44; adres (pos)&#44; die aantal NTS ...",
 	"geo-loc-label": "Ligging",
 	"geo-aoi-north": "Noord",
@@ -205,11 +217,14 @@ wb.i18nDict = {
 	"geo-geoloc-fail": "Plek gefaal het. Maak asseblief seker dat plek dienste word aangeskakel.",
 	"geo-geoloc-uncapable": "Lokalisering word nie ondersteun deur die leser.",
 	"geo-lgnd-grphc": "Legende grafiese vir kaart laag.",
+
 	/* Disable/enable WET plugins and polyfills */
-	"wb-disable": "Basiese HTML-weergawe",
-	"wb-enable": "Standaard weergawe",
+	"wb-disable": "Switch to basic HTML version",
+	"wb-enable": "Switch to standard version",
+
 	/* Dismissable content */
 	"dismiss": "Dismiss",
+
 	/* Template */
 	"tmpl-signin": "Teken In"
 };
