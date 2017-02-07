@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.24-development - 2017-01-24
+ * v4.0.24-development - 2017-02-07
  *
  */
 @charset "UTF-8";
@@ -7367,7 +7367,7 @@ img.mfp-img {
 
 .wb-mltmd video, .wb-mltmd object,
 .wb-mltmd iframe {
-  margin-bottom: -7px;
+  display: block;
   width: 100%; }
 
 .wb-mm-cc {
