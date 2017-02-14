@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.24-development - 2016-11-23
+ * v4.0.24-development - 2017-02-14
  *
  */
 @charset "UTF-8";
@@ -5595,11 +5595,21 @@ fieldset {
   border-top: 1px solid #e5e5e5;
   padding-top: 10px;
   /*
+	 *  Allows fieldSet/legend to have a bottom border under legend title
+	 *	https://github.com/wet-boew/wet-boew/issues/7766
+	 */
+  /*
 	 *	Fieldset/legend as a label for a group of checkboxes or radio buttons
 	 *	https://github.com/wet-boew/wet-boew/issues/5797
 	 */ }
   fieldset:first-child {
     border-top: 0; }
+  fieldset.legend-brdr-bttm {
+    border-top: 0; }
+    fieldset.legend-brdr-bttm legend {
+      border-bottom: 1px solid #e5e5e5;
+      float: none;
+      margin-bottom: 10px; }
   fieldset.chkbxrdio-grp {
     border-top: 0;
     padding-top: 0; }
@@ -5812,7 +5822,7 @@ caption {
 .wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
   display: block; }
 
-.wb-disable .mfp-hide, .wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info, .wb-disable .wb-overlay, .wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+.wb-disable .mfp-hide, .wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info, .wb-disable .wb-overlay {
   display: block !important; }
 
 .wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
@@ -7158,11 +7168,20 @@ img.mfp-img {
   outline: 1px dotted #fff;
   outline-offset: -2px; }
 
+body.wb-modal > #wb-tphp,
+body.wb-modal > header,
+body.wb-modal > main,
+body.wb-modal > footer, body.wb-modal summary {
+  visibility: hidden !important; }
+
 .lbx-hide-gal li {
   display: none;
   list-style-type: none; }
   .lbx-hide-gal li:first-child {
     display: block; }
+
+body.wb-modal .modal-dialog summary {
+  visibility: visible !important; }
 
 .modal-dialog {
   left: auto;
@@ -7360,7 +7379,7 @@ img.mfp-img {
 
 .wb-mltmd video, .wb-mltmd object,
 .wb-mltmd iframe {
-  margin-bottom: -7px;
+  display: block;
   width: 100%; }
 
 .wb-mm-cc {
@@ -7391,8 +7410,10 @@ img.mfp-img {
     text-align: center; }
   .wb-mltmd.video.playing .errmsg {
     display: none; }
-  .wb-mltmd.video.waiting .display:before, .wb-mltmd.video.waiting .display:after {
-    display: block; }
+  .wb-mltmd.video.waiting .display {
+    position: relative; }
+    .wb-mltmd.video.waiting .display:before, .wb-mltmd.video.waiting .display:after {
+      display: block; }
   .wb-mltmd.audio object {
     position: absolute; }
   .wb-mltmd video {
@@ -8117,8 +8138,35 @@ table.dataTable {
   right: 0;
   z-index: 101; }
 
-.wb-tabs.carousel-s1 [role="tabpanel"] a, .wb-tabs.carousel-s1 figcaption a, .wb-tabs.carousel-s2 [role="tabpanel"] a, .wb-tabs.carousel-s2 figcaption a {
+.wb-tabs.carousel-s1 [role="tabpanel"] a figure::before, .wb-tabs.carousel-s2 [role="tabpanel"] a figure::before, .wb-tabs.carousel-s1 [role="tabpanel"] a figure::after, .wb-tabs.carousel-s2 [role="tabpanel"] a figure::after {
+  content: "";
+  outline: inherit;
+  position: absolute; }
+
+.wb-tabs.carousel-s1 [role="tabpanel"] a, .wb-tabs.carousel-s2 [role="tabpanel"] a {
+  color: #000;
+  outline-offset: 0; }
+  .wb-tabs.carousel-s1 [role="tabpanel"] a figure, .wb-tabs.carousel-s2 [role="tabpanel"] a figure {
+    outline: inherit; }
+    .wb-tabs.carousel-s1 [role="tabpanel"] a figure::before, .wb-tabs.carousel-s2 [role="tabpanel"] a figure::before {
+      height: calc(100% - 4px);
+      margin: 2px;
+      outline-color: #FFF;
+      width: calc(100% - 4px); }
+    .wb-tabs.carousel-s1 [role="tabpanel"] a figure::after, .wb-tabs.carousel-s2 [role="tabpanel"] a figure::after {
+      height: calc(100% - 2px);
+      margin: 1px;
+      top: 0;
+      width: calc(100% - 2px); }
+  .wb-tabs.carousel-s1 [role="tabpanel"] a figcaption, .wb-tabs.carousel-s2 [role="tabpanel"] a figcaption {
+    color: #fff;
+    text-decoration: underline; }
+
+.wb-tabs.carousel-s1 [role="tabpanel"] figure a, .wb-tabs.carousel-s2 [role="tabpanel"] figure a {
   color: #fff; }
+
+.wb-tabs.carousel-s1 video:focus, .wb-tabs.carousel-s2 video:focus {
+  outline-offset: -1px; }
 
 .wb-tabs.carousel-s2 [role="tablist"] > li.prv, .wb-tabs.carousel-s2 [role="tablist"] > li.nxt {
   background: none;
@@ -8231,7 +8279,7 @@ table.dataTable {
         line-height: normal; }
         .wb-tabs [role="tablist"] > li.tab-count > div {
           position: relative;
-          top: .4em; }
+          top: 0; }
         .wb-tabs [role="tablist"] > li.tab-count .curr-count {
           font-size: 1.5em; }
         .wb-tabs [role="tablist"] > li.tab-count:focus, .wb-tabs [role="tablist"] > li.tab-count:hover {
@@ -8261,14 +8309,11 @@ table.dataTable {
       .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count {
         background: none;
         border: 0;
-        font-size: .9em; }
-        .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count > div {
-          top: .7em; }
+        font-size: .9em;
+        padding: 0 .1em;
+        top: .55em; }
         .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count.active, .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count:focus, .wb-tabs.carousel-s1 [role="tablist"] > li.tab-count:hover {
-          cursor: default;
-          top: 0; }
-      .wb-tabs.carousel-s1 [role="tablist"] > li.active, .wb-tabs.carousel-s1 [role="tablist"] > li:focus, .wb-tabs.carousel-s1 [role="tablist"] > li:hover {
-        top: 1px; }
+          cursor: default; }
   .wb-tabs.carousel-s2 {
     background: #eee; }
     .wb-tabs.carousel-s2.wb-init {
@@ -8295,10 +8340,18 @@ table.dataTable {
             margin-right: .65em;
             margin-top: .4em;
             padding: 8px 10px 4px; }
+      .wb-tabs.carousel-s2 [role="tablist"] a:focus {
+        outline-offset: 0; }
 
 .wb-disable .csstransitions .wb-tabs [role="tabpanel"].out {
   position: static;
   width: auto; }
+
+.wb-disable .wb-tabs > details[open] > summary {
+  display: list-item !important; }
+
+.wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+  display: list-item !important; }
 
 .wb-disable .wb-tabs [role="tablist"] {
   display: none; }
@@ -8627,6 +8680,8 @@ datalist {
  */
 summary {
   display: list-item !important;
+  list-style-type: none;
+  list-style-type: disclosure-closed;
   visibility: visible !important; }
 
 details:not([open]) details summary, details .out details summary {
@@ -8651,6 +8706,7 @@ details {
       border-bottom: 1px solid #ddd;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      list-style-type: disclosure-open;
       margin-bottom: .25em; }
   details:not([open]) {
     visibility: hidden; }
@@ -8665,7 +8721,7 @@ details {
 
 .wb-disable details {
   visibility: visible !important; }
-  .wb-disable details > * {
+  .wb-disable details > *:not(summary) {
     display: block !important; }
 
 /*
@@ -8942,6 +8998,16 @@ details {
       border-width: 10px;
       margin-bottom: 1px;
       padding: 0; }
+      .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.active a:focus::before {
+        content: "";
+        height: calc(100% - 6px);
+        left: 0;
+        margin: 2px;
+        outline: inherit;
+          outline-color: #FFF;
+        position: absolute;
+        top: 0;
+        width: calc(100% - 4px); }
     .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li[role="presentation"] {
       display: inline-block; }
       .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li[role="presentation"] img {
@@ -9092,6 +9158,8 @@ details {
     page-break-after: always; }
   a[href]:after {
     content: none; }
+  #wb-tphp {
+    display: none; }
   /*
   WET-BOEW
   @title: Breadcrumb print CSS overrides
@@ -9179,7 +9247,7 @@ details {
     .wb-tabs [role="tabpanel"] figcaption {
       position: static; }
     .wb-tabs [role="tabpanel"] summary {
-      display: block !important; } }
+      display: list-item !important; } }
 
 /*! WET-BOEW Core and Plugins */
 /*
@@ -9625,7 +9693,7 @@ details {
   #wb-bnr {
     background: #29527d; }
   #wb-bar {
-    background: #fff;
+    background-color: #fff;
     border-bottom: 2px solid #ccc;
     border-top: 5px #494949 solid;
     box-shadow: 0 2px 5px;
