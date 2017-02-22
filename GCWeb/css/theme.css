@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.24-development - 2017-02-07
+ * v4.0.24-development - 2017-02-22
  *
  */
 @charset "UTF-8";
@@ -5867,7 +5867,7 @@ caption {
 .wb-menu .sm.open li, .wb-disable .wb-tabs > details, .wb-disable .wb-tabs > .tabpanels > details {
   display: block; }
 
-.wb-disable .mfp-hide, .wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info, .wb-disable .wb-overlay, .wb-disable .wb-tabs > details[open] > summary, .wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+.wb-disable .mfp-hide, .wb-disable #wb-srch, .wb-disable #wb-sm, .wb-disable #wb-sec, .wb-disable #wb-info, .wb-disable .wb-overlay {
   display: block !important; }
 
 .wb-menu .menu > li a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .active > a {
@@ -7459,11 +7459,20 @@ img.mfp-img {
   outline: 1px dotted #fff;
   outline-offset: -2px; }
 
+body.wb-modal > #wb-tphp,
+body.wb-modal > header,
+body.wb-modal > main,
+body.wb-modal > footer, body.wb-modal summary {
+  visibility: hidden !important; }
+
 .lbx-hide-gal li {
   display: none;
   list-style-type: none; }
   .lbx-hide-gal li:first-child {
     display: block; }
+
+body.wb-modal .modal-dialog summary {
+  visibility: visible !important; }
 
 .modal-dialog {
   left: auto;
@@ -7692,8 +7701,10 @@ img.mfp-img {
     text-align: center; }
   .wb-mltmd.video.playing .errmsg {
     display: none; }
-  .wb-mltmd.video.waiting .display:before, .wb-mltmd.video.waiting .display:after {
-    display: block; }
+  .wb-mltmd.video.waiting .display {
+    position: relative; }
+    .wb-mltmd.video.waiting .display:before, .wb-mltmd.video.waiting .display:after {
+      display: block; }
   .wb-mltmd.audio object {
     position: absolute; }
   .wb-mltmd video {
@@ -8554,7 +8565,7 @@ table.dataTable {
         background: #ccc;
         background: rgba(204, 204, 204, 0.9); }
       .wb-tabs [role="tablist"] > li.active {
-        background: #fff;
+        background: #f9f9f9;
         border-bottom: 0;
         cursor: default;
         padding-bottom: 1px;
@@ -8636,6 +8647,12 @@ table.dataTable {
 .wb-disable .csstransitions .wb-tabs [role="tabpanel"].out {
   position: static;
   width: auto; }
+
+.wb-disable .wb-tabs > details[open] > summary {
+  display: list-item !important; }
+
+.wb-disable .wb-tabs > .tabpanels > details[open] > summary {
+  display: list-item !important; }
 
 .wb-disable .wb-tabs [role="tablist"] {
   display: none; }
@@ -8977,6 +8994,8 @@ datalist {
  */
 summary {
   display: list-item !important;
+  list-style-type: none;
+  list-style-type: disclosure-closed;
   visibility: visible !important; }
 
 details:not([open]) details summary, details .out details summary {
@@ -9001,6 +9020,7 @@ details {
       border-bottom: 1px solid #ddd;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+      list-style-type: disclosure-open;
       margin-bottom: .25em; }
   details:not([open]) {
     visibility: hidden; }
@@ -9015,7 +9035,7 @@ details {
 
 .wb-disable details {
   visibility: visible !important; }
-  .wb-disable details > * {
+  .wb-disable details > *:not(summary) {
     display: block !important; }
 
 /*
@@ -9482,6 +9502,8 @@ details {
     page-break-after: always; }
   a[href]:after {
     content: none; }
+  #wb-tphp {
+    display: none; }
   /*
   WET-BOEW
   @title: Breadcrumb print CSS overrides
@@ -9569,7 +9591,7 @@ details {
     .wb-tabs [role="tabpanel"] figcaption {
       position: static; }
     .wb-tabs [role="tabpanel"] summary {
-      display: block !important; } }
+      display: list-item !important; } }
 
 /*
  * GCWeb Theme
