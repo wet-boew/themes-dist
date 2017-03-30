@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-03-15
+ * v4.0.25-development - 2017-03-30
  *
  */
 @charset "UTF-8";
@@ -6030,11 +6030,11 @@ q:before, q:after {
 * http://jquery.org/license
 *
 */
-.pop.in, .fade.in {
+.pop.in, .fade.in, .fade.reverse.out {
   opacity: 1;
   visibility: visible; }
 
-.pop.out, .fade.out {
+.pop.out, .fade.out, .fade.reverse.in {
   opacity: 0;
   visibility: hidden; }
 
@@ -6139,6 +6139,12 @@ q:before, q:after {
       -webkit-animation-name: fadeoutnoheight;
               animation-name: fadeoutnoheight;
       max-height: 0; }
+  .fade.reverse.in {
+    -webkit-animation-name: fadeout;
+            animation-name: fadeout; }
+  .fade.reverse.out {
+    -webkit-animation-name: fadein;
+            animation-name: fadein; }
 
 @-webkit-keyframes fadein {
   0% {
@@ -6883,7 +6889,7 @@ details.alert, details.alert[open] {
   details.alert > *, details.alert[open] > * {
     margin-left: .7em; }
   details.alert > :first-child, details.alert[open] > :first-child {
-    margin-left: .4em; }
+    margin-left: .2em; }
     details.alert > :first-child:before, details.alert[open] > :first-child:before {
       color: #000;
       content: ""; }
@@ -6900,16 +6906,16 @@ details.alert, details.alert[open] {
     color: #d3080c;
     content: "\e101"; }
 
-.no-details details.alert > summary, .no-details details.alert[open] > summary {
-  margin-left: 1.4em; }
-  .no-details details.alert > summary:before, .no-details details.alert[open] > summary:before {
+.wb-enable.no-details details.alert > summary {
+  margin-left: 1.2em; }
+  .wb-enable.no-details details.alert > summary:before {
     content: "\25BA\a0"; }
 
-.no-details details.alert[open] > summary:before, .no-details details.alert[open][open] > summary:before {
+.wb-enable.no-details details.alert[open] > summary:before {
   content: "\25BC\a0"; }
 
-.no-details[dir="rtl"] details.alert > summary {
-  margin-right: 1.4em; }
+.wb-enable.no-details[dir="rtl"] details.alert > summary {
+  margin-right: 1.2em; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -9304,7 +9310,6 @@ details {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-  #details-facebook,
   #details-flickr,
   #details-youtube {
     padding-left: 0;
