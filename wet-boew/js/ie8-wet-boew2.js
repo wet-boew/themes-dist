@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-03-30
+ * v4.0.25-development - 2017-03-31
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -10657,6 +10657,12 @@ var componentName = "wb-txthl",
 			}
 
 			if ( searchCriteria ) {
+
+				// Strip html
+				var map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#039;" };
+				searchCriteria = searchCriteria.replace( /[&<>"']/g, function( m ) {
+					return map[ m ];
+				} );
 
 				// Make sure that we're not checking for text within a tag; only the text outside of tags.
 				searchCriteria = "(?=([^>]*<))([\\s'])?(" + searchCriteria + ")(?!>)";
