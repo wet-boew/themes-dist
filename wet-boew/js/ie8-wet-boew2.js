@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-03-30
+ * v4.0.25-development - 2017-04-06
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -8134,7 +8134,7 @@ var componentName = "wb-overlay",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			$elm, $header, closeText, overlayClose;
+			$elm, footer, closeTextFtr, overlayCloseFtr, $header, closeText, overlayClose;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -8151,6 +8151,43 @@ var componentName = "wb-overlay",
 				};
 			}
 
+			// One left and right panels add close button
+			var isPanel = ( $elm.attr( "class" ).indexOf( "wb-panel" ) > -1 ) ? true : false,
+				isPopup = ( $elm.attr( "class" ).indexOf( "wb-popup" ) > -1 ) ? true : false;
+			if ( isPanel || isPopup ) {
+				var hasFooter, closeClassFtr, spanTextFtr, buttonStyle = "";
+
+				footer = $elm.find( ".modal-footer" )[ 0 ];
+				hasFooter = ( footer && footer.length !== 0 ) ? true : false;
+				closeClassFtr = ( $elm.hasClass( "wb-panel-l" ) ? "pull-right " : "pull-left " )  + closeClass;
+
+				if ( hasFooter ) {
+					spanTextFtr = footer.innerHTML + i18nText.space + i18nText.esc;
+				} else {
+					footer = document.createElement( "div" );
+					footer.setAttribute( "class", "modal-footer" );
+					spanTextFtr = i18nText.esc;
+				}
+
+				closeTextFtr = i18nText.close;
+				spanTextFtr = spanTextFtr.replace( "'", "&#39;" );
+
+				if ( isPopup ) {
+					footer.style.border = "0";
+				}
+
+				overlayCloseFtr = "<button type='button' id='ftrClose' class='btn btn-sm btn-default " + closeClassFtr +
+					"' style='" + buttonStyle +
+					"' title='" + closeTextFtr + " " + spanTextFtr + "'>" +
+					closeTextFtr +
+					"<span class='wb-inv'>" + spanTextFtr + "</span></button>";
+
+				$( footer ).append( overlayCloseFtr );
+				if ( !hasFooter ) {
+					$elm.append( footer );
+				}
+			}
+
 			// Add close button
 			$header = $elm.find( ".modal-title" );
 			if ( $header.length !== 0 ) {
@@ -8160,7 +8197,7 @@ var componentName = "wb-overlay",
 				closeText = i18nText.closeOverlay;
 			}
 			closeText = closeText.replace( "'", "&#39;" );
-			overlayClose = "<button type='button' class='mfp-close " + closeClass +
+			overlayClose = "<button type='button' id='hdrClose' class='mfp-close " + closeClass +
 				"' title='" + closeText + "'>&#xd7;<span class='wb-inv'> " +
 				closeText + "</span></button>";
 
@@ -9516,29 +9553,6 @@ var componentName = "wb-tables",
 							return wb.formattedNumCompare( b, a );
 						}
 					} );
-
-					/*
-					 * Extend type detection
-					 */
-
-					// Formatted numbers detection
-					// Based on: http://datatables.net/plug-ins/type-detection#formatted_numbers
-					dataTableExt.aTypes.unshift(
-						function( sData ) {
-
-							// Strip off HTML tags and all non-alpha-numeric characters (except minus sign)
-							var deformatted = sData.replace( /<[^>]*>/g, "" ).replace( /[^\d\-\/a-zA-Z]/g, "" );
-							if ( $.isNumeric( deformatted ) || deformatted === "-" ) {
-								return "formatted-num";
-							}
-							return null;
-						}
-					);
-
-					// Remove HTML tags before doing any filtering for formatted numbers
-					dataTableExt.type.search[ "formatted-num" ] = function( data ) {
-						return data.replace( /<[^>]*>/g, "" );
-					};
 
 					// Add the container or the sorting icons
 					$elm.find( "th" ).append( "<span class='sorting-cnt'><span class='sorting-icons'></span></span>" );
