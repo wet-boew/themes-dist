@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-03-30
+ * v4.0.25-development - 2017-04-06
  *
  */
 @charset "UTF-8";
@@ -7666,7 +7666,7 @@ body.wb-modal .modal-dialog summary {
 .hidden-hd .modal-body {
   padding-top: 50px; }
 
-.hidden-hd .overlay-close {
+.hidden-hd .overlay-close:not(.btn) {
   background-color: #000;
   border-radius: 999px;
   height: 1em;
@@ -8766,7 +8766,7 @@ details {
   .mathml body > div > math,
   .no-mathml body > div > math, .nojs-show, .wb-disable .nojs-hide {
     display: none !important; }
-  main {
+  body > header + div.container, main {
     background-color: #fff; }
   /* Hide MathML check */
   #wb-dtmd {
@@ -9684,8 +9684,6 @@ details {
  */
   #wb-bar, #wb-bnr {
     border-bottom: 1px solid #fff; }
-  body > header + .container {
-    background-color: #fff; }
   #ogpl-logo {
     padding: 10px 0; }
   #wb-bar {
