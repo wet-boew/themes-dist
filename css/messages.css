@@ -46,26 +46,26 @@ Left menu variables
   padding: 30px 30px 19px; }
   .splash .sp-bx .btn {
     -webkit-box-shadow: 0 4px #ddd;
-            box-shadow: 0 4px #ddd;
+    box-shadow: 0 4px #ddd;
     margin: 35px 0 14px;
     min-width: 110px; }
     @media (min-width: 768px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
-                box-shadow: 0 4px #ddd;
+        box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 110px; } }
     @media (min-width: 992px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
-                box-shadow: 0 4px #ddd;
+        box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 138px;
         padding: .5em 1.5em; } }
     @media (min-width: 1200px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
-                box-shadow: 0 4px #ddd;
+        box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 138px;
         padding: .5em 1.5em; } }
@@ -144,8 +144,8 @@ Left menu variables
   background-color: fff;
   border-color: #fff currentColor #fff #fff;
   -webkit-border-image: none;
-       -o-border-image: none;
-          border-image: none;
+  -o-border-image: none;
+  border-image: none;
   border-style: solid none solid solid;
   border-width: 1px 0 1px 1px;
   color: #333;
