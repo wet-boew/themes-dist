@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-04-18
+ * v4.0.25-development - 2017-04-26
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -5431,6 +5431,7 @@ var componentName = "wb-frmvld",
 						// In this case we will place them in the associated label element
 						errorPlacement: function( $error, $element ) {
 							var type = $element.attr( "type" ),
+								group = $element.attr( "data-rule-require_from_group" ),
 								$fieldset, $legend;
 
 							$error.data( "element-id", $element.attr( "id" ) );
@@ -5447,6 +5448,35 @@ var componentName = "wb-frmvld",
 									}
 								}
 							}
+
+							if ( group ) {
+								$fieldset = $element.closest( "fieldset" );
+								if ( $fieldset.length !== 0 ) {
+									$legend = $fieldset.find( "legend" ).first();
+									if ( $legend.length !== 0 && $fieldset.find( "input[name='" + $element.attr( "name" ) + "']" ) !== 1 ) {
+										var $strong = $legend.find( "strong.error" ),
+											id = $legend.attr( "id" );
+
+										if ( $strong.length > 0 ) {
+											$strong.remove();
+										}
+
+										if ( !id ) {
+											id = "required-group-" + idCount;
+											idCount += 1;
+
+											$legend.attr( "id", id );
+										}
+
+										$error.data( "element-id", id );
+										$error.attr( "id", id );
+										$error.appendTo( $legend );
+
+										return;
+									}
+								}
+							}
+
 							$error.appendTo( $form.find( "label[for='" + $element.attr( "id" ) + "']" ) );
 							return;
 						},
@@ -5560,10 +5590,22 @@ var componentName = "wb-frmvld",
 							}
 
 						}, /* End of showErrors() */
+
 						invalidHandler: function() {
 							submitted = true;
+						},
+
+						/* adds on tab validation */
+						onfocusout: function( element ) {
+							this.element( element );
 						}
+
 					} ); /* end of validate() */
+
+					/* fixes validation issue (see PR #7913) */
+					$form.on( "change", "input[type=date], input[type=file], select", function() {
+						$form.validate().element( this );
+					} );
 
 					// Clear the form and remove error messages on reset
 					$document.on( "click vclick touchstart", selector + " input[type=reset]", function( event ) {
@@ -9569,7 +9611,22 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Handle the draw.dt event
 $document.on( "init.dt draw.dt", selector, function( event, settings ) {
-	var $elm = $( event.target );
+	var $elm = $( event.target ),
+		pagination = $elm.next( ".bottom" ).find( "div:first-child" ),
+		paginate_buttons = $elm.next( ".bottom" ).find( ".paginate_button" ),
+		ol = document.createElement( "OL" ),
+		li = document.createElement( "LI" );
+
+	// Update Pagination List
+	for ( var i = 0; i < paginate_buttons.length; i++ ) {
+		var item = li.cloneNode( true );
+		item.appendChild( paginate_buttons[ i ] );
+		ol.appendChild( item );
+	}
+
+	ol.className = "pagination mrgn-tp-0 mrgn-bttm-0";
+	pagination.empty();
+	pagination.append( ol );
 
 	// Update the aria-pressed properties on the pagination buttons
 	// Should be pushed upstream to DataTables
