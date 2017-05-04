@@ -1006,7 +1006,7 @@ var componentName = "wb-fieldflow",
 				$labelExplicit, $firstChild,
 				labelSelector = data.lblselector || "." + labelClass,
 				labelTxt,
-				$items = getItemsData( $source.find( "ul:first() > li" ) ),
+				itmSelector = data.itmselector || "ul:first() > li", $items,
 				actions,
 				renderas;
 
@@ -1038,7 +1038,10 @@ var componentName = "wb-fieldflow",
 				labelSelector = null; // unset the label selector because it not needed for the control creation
 			} else {
 				labelTxt = $firstChild.html();
+				itmSelector = "." + headerClass + " + " + itmSelector;
 			}
+
+			$items = getItemsData( $source.find( itmSelector ) );
 
 			if ( !data.outputctnrid ) {
 				data.outputctnrid = data.provEvt.parentElement.id;
@@ -1053,6 +1056,7 @@ var componentName = "wb-fieldflow",
 				lblselector: labelSelector,
 				defaultselectedlabel: data.defaultselectedlabel,
 				required: !!!data.isoptional,
+				noreqlabel: data.noreqlabel,
 				items: $items,
 				inline: data.inline
 			} );
@@ -1064,6 +1068,7 @@ var componentName = "wb-fieldflow",
 			actions = data.actions,
 			lblselector = data.lblselector,
 			isReq = !!data.required,
+			useReqLabel = !!!data.noreqlabel,
 			items = data.items,
 			elm = event.target,
 			$elm = $( elm ),
@@ -1079,7 +1084,7 @@ var componentName = "wb-fieldflow",
 			i, i_len, j, j_len, cur_itm;
 
 		// Create the label
-		if ( isReq ) {
+		if ( isReq && useReqLabel ) {
 			labelPrefix += " class='required'";
 			labelSuffix += " <strong class='required'>(" + i18n.required + ")</strong>";
 		}
@@ -1141,6 +1146,7 @@ var componentName = "wb-fieldflow",
 			actions = data.actions,
 			lblselector = data.lblselector,
 			isReq = !!data.required,
+			useReqLabel = !!!data.noreqlabel,
 			items = data.items,
 			elm = event.target,
 			$elm = $( elm ),
@@ -1169,7 +1175,7 @@ var componentName = "wb-fieldflow",
 		$out = $( fieldsetHTML + "></fieldset>" );
 
 		// Create the legend
-		if ( isReq ) {
+		if ( isReq && useReqLabel ) {
 			fieldsetPrefix += " required";
 			fieldsetSuffix += " <strong class='required'>(" + i18n.required + ")</strong>";
 		}
