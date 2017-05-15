@@ -164,7 +164,7 @@
 <pre><code>&lt;div data-wb-jsonmanager='{
 		&quot;url&quot;: &quot;demo/data-en.json&quot;,
 		&quot;name&quot;: &quot;example1&quot;,
-		&quot;patches&quot;: [ 
+		&quot;patches&quot;: [
 			{ &quot;op&quot;: &quot;wb-count&quot;, &quot;path&quot;: &quot;/products&quot;, &quot;set&quot;: &quot;/nbproduct&quot; },
 			{ &quot;op&quot;: &quot;copy&quot;, &quot;from&quot;: &quot;/products/0&quot;, &quot;path&quot;: &quot;/product&quot;}
 		]
@@ -260,6 +260,22 @@
 <td>Last item</td>
 <td><code>{ "op": "wb-last", "path": &lt;path&gt;, "set": &lt;path&gt; }</code></td>
 <td>Copy the last item from an array at a specified location.</td>
+</tr>
+<tr>
+<td>Formatting a number</td>
+<td><code>{ "op": "wb-nbtolocal", "path": &lt;path&gt; }</code></td>
+<td>
+<p>Replace the number at the &lt;path&gt; location that represents the number value formatted according to the conventions of the host environment's current locale.</p>
+<p>Additional setting:</p>
+<dl>
+<dt><code>locale</code></dt>
+<dd>Default is the current page language. You can set any valid locale, except IE only support "en" and "fr" locale. <code>{ "op": "wb-nbtolocal", "path": &lt;path&gt; "locale": "fr-CA" }</code></dd>
+<dt><code>prefix</code></dt>
+<dd>Default: empty string. This prepend a string before the formatted number. <code>{ "op": "wb-nbtolocal", "path": &lt;path&gt; "suffix": "$CAN " }</code></dd>
+<dt><code>suffix</code></dt>
+<dd>Default: empty string. This append a string after the formatted number. <code>{ "op": "wb-nbtolocal", "path": &lt;path&gt; "suffix": "$ CAN" }</code></dd>
+</dl>
+</td>
 </tr>
 <tr>
 <td>Formating a date to ISO (YYYY-MM-DD)</td>
