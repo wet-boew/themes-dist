@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-05-15
+ * v4.0.25 - 2017-05-17
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -1994,21 +1994,44 @@ var componentName = "wb-calevt",
 
 	processEvents = function( $elm ) {
 		var settings = $.extend( {}, window[ componentName ], $elm.data( dataAttr ) ),
-			year, month, events, minDate, containerId, $container;
+			year, month, events, containerId, $container,
+			minDate, maxDate, minDateTime, maxDateTime,
+			currDate = new Date(),
+			currDateTime = currDate.getTime();
 
 		events = getEvents( $elm );
 		containerId = $elm.data( "calevtSrc" );
 		$container = $( "#" + containerId ).addClass( componentName + "-cal" );
 
+		year = settings.year;
+		month = settings.month;
+
 		minDate = events.minDate;
-		year = settings.year || minDate.getFullYear();
-		month = settings.month || minDate.getMonth();
+		maxDate = events.maxDate;
+		minDateTime = minDate.getTime();
+		maxDateTime = maxDate.getTime();
+
+		if ( !year && minDateTime < currDateTime && currDateTime < maxDateTime ) {
+			year = currDate.getFullYear();
+		} else if ( !year && currDateTime < minDateTime ) {
+			year = minDate.getFullYear();
+		} else if ( !year && maxDateTime < currDateTime ) {
+			year = maxDate.getFullYear();
+		}
+
+		if ( !month && minDateTime < currDateTime && currDate.getTime() < maxDateTime ) {
+			month = currDate.getMonth();
+		} else if ( !month && currDateTime < minDateTime ) {
+			month = minDate.getMonth();
+		} else if ( !month && maxDateTime < currDateTime ) {
+			month = maxDate.getMonth();
+		}
 
 		wb.calendar.create( $container, {
 			year: year,
 			month: month,
 			minDate: minDate,
-			maxDate: events.maxDate,
+			maxDate: maxDate,
 			daysCallback: addEvents,
 			events: events.list,
 			$events: $elm
@@ -6434,6 +6457,7 @@ var componentName = "wb-lbx",
                         .find( ".activate-open" )
                         .trigger( "wb-activate" );
 
+					this.contentContainer.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
 				},
 				close: function() {
 					$document.find( "body" ).removeClass( "wb-modal" );
@@ -8598,6 +8622,7 @@ var componentName = "wb-overlay",
 	closeClass = "overlay-close",
 	linkClass = "overlay-lnk",
 	ignoreOutsideClass = "outside-off",
+	OverlayOpenFlag = "wb-overlay-dlg",
 	initialized = false,
 	sourceLinks = {},
 	setFocusEvent = "setfocus.wb",
@@ -8697,6 +8722,11 @@ var componentName = "wb-overlay",
 			.addClass( "open" )
 			.attr( "aria-hidden", "false" );
 
+		if ( $overlay.hasClass( "wb-popup-full" ) || $overlay.hasClass( "wb-popup-mid" ) ) {
+			$overlay.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
+			$document.find( "body" ).addClass( OverlayOpenFlag );
+		}
+
 		if ( !noFocus ) {
 			$overlay
 				.scrollTop( 0 )
@@ -8719,6 +8749,10 @@ var componentName = "wb-overlay",
 		$overlay
 			.removeClass( "open" )
 			.attr( "aria-hidden", "true" );
+
+		if ( $overlay.hasClass( "wb-popup-full" ) || $overlay.hasClass( "wb-popup-mid" ) ) {
+			$document.find( "body" ).removeClass( OverlayOpenFlag );
+		}
 
 		if ( userClosed ) {
 			$overlay.addClass( "user-closed" );
