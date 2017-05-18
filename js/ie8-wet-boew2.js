@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.25-development - 2017-05-04
+ * v4.0.25 - 2017-05-18
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1425,21 +1425,44 @@ var componentName = "wb-calevt",
 
 	processEvents = function( $elm ) {
 		var settings = $.extend( {}, window[ componentName ], $elm.data( dataAttr ) ),
-			year, month, events, minDate, containerId, $container;
+			year, month, events, containerId, $container,
+			minDate, maxDate, minDateTime, maxDateTime,
+			currDate = new Date(),
+			currDateTime = currDate.getTime();
 
 		events = getEvents( $elm );
 		containerId = $elm.data( "calevtSrc" );
 		$container = $( "#" + containerId ).addClass( componentName + "-cal" );
 
+		year = settings.year;
+		month = settings.month;
+
 		minDate = events.minDate;
-		year = settings.year || minDate.getFullYear();
-		month = settings.month || minDate.getMonth();
+		maxDate = events.maxDate;
+		minDateTime = minDate.getTime();
+		maxDateTime = maxDate.getTime();
+
+		if ( !year && minDateTime < currDateTime && currDateTime < maxDateTime ) {
+			year = currDate.getFullYear();
+		} else if ( !year && currDateTime < minDateTime ) {
+			year = minDate.getFullYear();
+		} else if ( !year && maxDateTime < currDateTime ) {
+			year = maxDate.getFullYear();
+		}
+
+		if ( !month && minDateTime < currDateTime && currDate.getTime() < maxDateTime ) {
+			month = currDate.getMonth();
+		} else if ( !month && currDateTime < minDateTime ) {
+			month = minDate.getMonth();
+		} else if ( !month && maxDateTime < currDateTime ) {
+			month = maxDate.getMonth();
+		}
 
 		wb.calendar.create( $container, {
 			year: year,
 			month: month,
 			minDate: minDate,
-			maxDate: events.maxDate,
+			maxDate: maxDate,
 			daysCallback: addEvents,
 			events: events.list,
 			$events: $elm
@@ -4479,6 +4502,66 @@ wb.add( selector );
 } )( jQuery, window, wb );
 
 /**
+* @title WET-BOEW Facebook embedded page
+* @overview Helps with implementing Facebook embedded pages.
+* @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+* @author @pjackson28
+*/
+( function( $, window, wb ) {
+"use strict";
+
+	/*
+	* Variable and function definitions.
+	* These are global to the plugin - meaning that they will be initialized once per page,
+	* not once per instance of plugin on the page. So, this is a good place to define
+	* variables that are common to all instances of the plugin on a page.
+	*/
+var componentName = "wb-facebook",
+	selector = "." + componentName,
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+	fbinited = false,
+
+	/**
+	* @method init
+	* @param {jQuery Event} event Event that triggered the function call
+	*/
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var ele = wb.init( event, componentName, selector ),
+			protocol = wb.pageUrlParts.protocol;
+
+		if ( ele ) {
+			Modernizr.load(
+				{
+					load: [ ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//connect.facebook.net/" + wb.lang + "_US/sdk.js" ],
+					complete: function() {
+						if ( !fbinited ) {
+							window.FB.init( {
+								version: "v2.4"
+							} );
+							fbinited = true;
+						}
+
+						window.FB.XFBML.parse( ele[ 0 ] );
+						wb.ready( $( ele ), componentName );
+					}
+				}
+			);
+		}
+	};
+
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+/**
  * @title WET-BOEW Favicon Plugin
  * @overview Provides the ability to add and update a page's favicons
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -5179,6 +5262,47 @@ var componentName = "wb-fnote",
 			// Remove "first/premier/etc"-style text from certain footnote return links (via the child spans that hold those bits of text)
 			$elm.find( "dd p.fn-rtn a span span" ).remove();
 
+			// Listen for footnote reference links that get clicked
+			$document.on( "click vclick", "main :not(" + selector + ") sup a.fn-lnk", function( event ) {
+				var eventTarget = event.target,
+					which = event.which,
+					refId, $refLinkDest;
+
+				// Ignore middle/right mouse button
+				if ( !which || which === 1 ) {
+					refId = "#" + wb.jqEscape( eventTarget.getAttribute( "href" ).substring( 1 ) );
+					$refLinkDest = $document.find( refId );
+
+					$refLinkDest.find( "p.fn-rtn a" )
+								.attr( "href", "#" + eventTarget.parentNode.id );
+
+					// Assign focus to $refLinkDest
+					$refLinkDest.trigger( setFocusEvent );
+					return false;
+				}
+			} );
+
+			// Listen for footnote return links that get clicked
+			$document.on( "click vclick", selector + " dd p.fn-rtn a", function( event ) {
+				var which = event.which,
+					ref,
+					refId;
+
+				// Ignore middle/right mouse button
+				if ( !which || which === 1 ) {
+					ref = event.target.getAttribute( "href" );
+
+					// Focus on associated referrer link (if the return link points to an ID)
+					if ( ref.charAt( 0 ) === "#" ) {
+						refId = "#" + wb.jqEscape( ref.substring( 1 ) );
+
+						// Assign focus to the link
+						$document.find( refId + " a" ).trigger( setFocusEvent );
+						return false;
+					}
+				}
+			} );
+
 			// Identify that initialization has completed
 			wb.ready( $elm, componentName );
 		}
@@ -5186,47 +5310,6 @@ var componentName = "wb-fnote",
 
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
-
-// Listen for footnote reference links that get clicked
-$document.on( "click vclick", "main :not(" + selector + ") sup a.fn-lnk", function( event ) {
-	var eventTarget = event.target,
-		which = event.which,
-		refId, $refLinkDest;
-
-	// Ignore middle/right mouse button
-	if ( !which || which === 1 ) {
-		refId = "#" + wb.jqEscape( eventTarget.getAttribute( "href" ).substring( 1 ) );
-		$refLinkDest = $document.find( refId );
-
-		$refLinkDest.find( "p.fn-rtn a" )
-					.attr( "href", "#" + eventTarget.parentNode.id );
-
-		// Assign focus to $refLinkDest
-		$refLinkDest.trigger( setFocusEvent );
-		return false;
-	}
-} );
-
-// Listen for footnote return links that get clicked
-$document.on( "click vclick", selector + " dd p.fn-rtn a", function( event ) {
-	var which = event.which,
-		ref,
-		refId;
-
-	// Ignore middle/right mouse button
-	if ( !which || which === 1 ) {
-		ref = event.target.getAttribute( "href" );
-
-		// Focus on associated referrer link (if the return link points to an ID)
-		if ( ref.charAt( 0 ) === "#" ) {
-			refId = "#" + wb.jqEscape( ref.substring( 1 ) );
-
-			// Assign focus to the link
-			$document.find( refId + " a" ).trigger( setFocusEvent );
-			return false;
-		}
-	}
-} );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -5805,6 +5888,7 @@ var componentName = "wb-lbx",
                         .find( ".activate-open" )
                         .trigger( "wb-activate" );
 
+					this.contentContainer.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
 				},
 				close: function() {
 					$document.find( "body" ).removeClass( "wb-modal" );
@@ -7969,6 +8053,7 @@ var componentName = "wb-overlay",
 	closeClass = "overlay-close",
 	linkClass = "overlay-lnk",
 	ignoreOutsideClass = "outside-off",
+	OverlayOpenFlag = "wb-overlay-dlg",
 	initialized = false,
 	sourceLinks = {},
 	setFocusEvent = "setfocus.wb",
@@ -8068,6 +8153,11 @@ var componentName = "wb-overlay",
 			.addClass( "open" )
 			.attr( "aria-hidden", "false" );
 
+		if ( $overlay.hasClass( "wb-popup-full" ) || $overlay.hasClass( "wb-popup-mid" ) ) {
+			$overlay.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
+			$document.find( "body" ).addClass( OverlayOpenFlag );
+		}
+
 		if ( !noFocus ) {
 			$overlay
 				.scrollTop( 0 )
@@ -8090,6 +8180,10 @@ var componentName = "wb-overlay",
 		$overlay
 			.removeClass( "open" )
 			.attr( "aria-hidden", "true" );
+
+		if ( $overlay.hasClass( "wb-popup-full" ) || $overlay.hasClass( "wb-popup-mid" ) ) {
+			$document.find( "body" ).removeClass( OverlayOpenFlag );
+		}
 
 		if ( userClosed ) {
 			$overlay.addClass( "user-closed" );
