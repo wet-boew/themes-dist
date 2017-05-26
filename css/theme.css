@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-24
+ * v4.0.26-development - 2017-05-26
  *
  */
 @charset "UTF-8";
@@ -9713,7 +9713,7 @@ details {
     text-decoration: none; }
   #wb-sttl small {
     display: block;
-    font-size: 0.4em;
+    font-size: .4em;
     margin-bottom: 4px; }
   #wb-sm ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr,
   #wb-sm .sm summary.wb-navcurr, #wb-sm .sm .slflnk a.wb-navcurr {
@@ -9738,7 +9738,7 @@ details {
     color: #fff;
     display: block;
     font-weight: 700;
-    padding: 0.48em 0.79em;
+    padding: .48em .79em;
     text-decoration: none; }
   #wb-sm .sm {
     border-bottom: 4px solid #0f315b;
@@ -9751,7 +9751,7 @@ details {
   #wb-dtmd {
     float: right; }
   #wb-info li {
-    margin-bottom: 0.75em; }
+    margin-bottom: .75em; }
   [dir=rtl] #wb-dtmd {
     float: left; }
   [dir=rtl] #wb-sec .list-group .list-group .list-group-item {
@@ -9964,7 +9964,7 @@ details {
       line-height: normal;
       vertical-align: middle; }
   #wb-srch {
-    margin: 0.5em 0;
+    margin: .5em 0;
     padding-right: 10px;
     text-align: right; }
     #wb-srch .form-group {
