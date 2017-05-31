@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-24
+ * v4.0.26-development - 2017-05-31
  *
  */
 @charset "UTF-8";
@@ -8802,7 +8802,18 @@ details {
   /* a variable name */
   /* a function name */
   .fun {
-    color: #f00; } }
+    color: #f00; }
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+  /**
+ * Screen-only styles
+ */
+  .wb-tabs.carousel-s2.wb-init {
+    padding-bottom: 4.375em; }
+  .wb-tabs.carousel-s2.exclude-controls {
+    padding-bottom: 0; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -9003,10 +9014,6 @@ details {
         display: none !important; }
   .wb-tabs {
     /* Only for backwards compatibility. Should be removed in v4.1. */ }
-    .wb-tabs.carousel-s2.wb-init {
-      padding-bottom: 4.375em; }
-    .wb-tabs.carousel-s2.exclude-controls {
-      padding-bottom: 0; }
     .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.active a {
       border-color: #666;
       border-style: solid;
@@ -9453,9 +9460,9 @@ h1, .h1, h2,
 h1 {
   border-bottom: 1px solid #af3c43;
   font-size: 34px;
-  margin-bottom: 0.2em;
+  margin-bottom: .2em;
   margin-top: 1.25em;
-  padding-bottom: 0.2em; }
+  padding-bottom: .2em; }
 
 h2,
 .h2 {
@@ -9541,8 +9548,8 @@ aside.features {
 .home .h1 {
   border-bottom: 1px solid #af3c43;
   font-size: 27px;
-  margin-bottom: 0.2em;
-  padding-bottom: 0.2em; }
+  margin-bottom: .2em;
+  padding-bottom: .2em; }
 
 .secondary .row h2 a,
 .secondary .row h3 a,
@@ -9633,9 +9640,9 @@ aside.features {
 
 /* Embedding a Fluid Survey */
 .gc-fld-srvy-container {
+  -webkit-overflow-scrolling: touch;
   height: 0;
   overflow: hidden;
-  -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   padding-bottom: 70%;
   position: relative; }
@@ -9658,7 +9665,7 @@ aside.features {
     color: #000;
     display: block;
     font-weight: 700;
-    padding: 0.75em 44px;
+    padding: .75em 44px;
     text-decoration: none; }
     #archived-bnr a:hover, #archived-bnr a:focus {
       text-decoration: underline; }
@@ -9717,7 +9724,7 @@ header {
         top: 0; }
       #wb-glb-mn ul.chvrn:before {
         border-bottom: 1.375em solid transparent;
-        border-left: 0.6875em solid #f8f8f8;
+        border-left: .6875em solid #f8f8f8;
         border-top: 1.375em solid transparent;
         content: " ";
         display: block;
@@ -9785,23 +9792,22 @@ main .btn-primary {
 
 @font-face {
   font-family: "gcweb";
-  src: url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.eot");
-  src: url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.eot?#iefix") format("embedded-opentype"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.woff") format("woff"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.ttf") format("truetype"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.svg#gcweb") format("svg");
+  font-style: normal;
   font-weight: normal;
-  font-style: normal; }
+  src: url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.eot"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.eot?#iefix") format("embedded-opentype"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.woff") format("woff"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.ttf") format("truetype"), url("../fonts/gcweb_0c4a4eb7974d0a7287c93c02965f9b3f.svg#gcweb") format("svg"); }
 
 .icn-sig-en:before,
 .icn-sig-fr:before, .cndwrdmrk:before, .cndwrdmrk:after {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke: 1px transparent;
   display: block;
   font-family: "gcweb";
-  -webkit-font-smoothing: antialiased;
   font-style: normal;
   font-variant: normal;
   font-weight: normal;
   line-height: 1;
   text-decoration: none;
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-  -webkit-text-stroke: 1px transparent;
   text-transform: none;
   transform: rotate(0); }
 
@@ -9816,7 +9822,7 @@ header .brand {
   color: #fff;
   display: inline-block;
   font-size: 1.5em;
-  padding: 0.7em 0 0.5em; }
+  padding: .7em 0 .5em; }
   .icn-sig-en:before,
   .icn-sig-fr:before {
     position: relative; }
@@ -9855,7 +9861,7 @@ header .brand {
   position: relative;
   z-index: 5; }
   #wb-info a {
-    font-size: 0.875em;
+    font-size: .875em;
     text-decoration: none; }
     #wb-info a.wb-navcurr {
       font-weight: 800; }
@@ -9874,11 +9880,11 @@ header .brand {
     padding: 0; }
     #wb-info .ftr-urlt-lnk ul li {
       display: inline-block;
-      margin-right: 0.5em;
+      margin-right: .5em;
       padding: 0; }
       #wb-info .ftr-urlt-lnk ul li:before {
         content: "\2022";
-        margin-right: 0.7em; }
+        margin-right: .7em; }
       #wb-info .ftr-urlt-lnk ul li:first-child:before {
         content: none; }
   #wb-info .tofpg {
@@ -9894,7 +9900,7 @@ header .brand {
     padding-top: 2em;
     position: relative; }
     #wb-info nav li {
-      margin-bottom: 0.75em; }
+      margin-bottom: .75em; }
 
 [dir=rtl] footer .brand .text-right {
   text-align: left; }
@@ -9912,13 +9918,13 @@ header .brand {
   margin-bottom: 0 !important; }
 
 .margin-bottom-small {
-  margin-bottom: 0.25em !important; }
+  margin-bottom: .25em !important; }
 
 .margin-top-large {
   margin-top: 1.5em !important; }
 
 .margin-top-medium {
-  margin-top: 0.75em !important; }
+  margin-top: .75em !important; }
 
 #triangle-up {
   border-bottom: 10px solid #fff;
@@ -10189,7 +10195,7 @@ a.shr-opn, a.shr-opn:hover {
       line-height: 2;
       list-style-type: none; }
   #mb-pnl .mfp-close {
-    top: 0.55em; }
+    top: .55em; }
   #mb-pnl .srch-pnl form button {
     background-color: #335075;
     border: 0;
@@ -10373,7 +10379,7 @@ a.shr-opn, a.shr-opn:hover {
   .fd-wdgt .media:first-child {
     border-top: 0; }
   .fd-wdgt .media p {
-    font-size: 0.9em; }
+    font-size: .9em; }
 
 .fd-wdgt .panel-title {
   padding-right: 30px; }
@@ -11037,7 +11043,7 @@ Carousel
   #wb-info .ftr-urlt-lnk ul {
     column-count: 1; }
     #wb-info .ftr-urlt-lnk ul li {
-      margin-bottom: 0.2em; }
+      margin-bottom: .2em; }
   #wb-info .brand object,
   #wb-info .brand img {
     height: 25px;
