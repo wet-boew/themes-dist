@@ -2,7 +2,7 @@
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-(function( $, wb ) {
+( function( $, wb ) {
 "use strict";
 
 /*
@@ -14,11 +14,11 @@
 var $document = wb.doc,
 	$fipImg,
 
-onSmallView = function () {
+onSmallView = function() {
 	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra", "wmms" ) );
 },
 
-onMediumLargeView = function () {
+onMediumLargeView = function() {
 	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
 };
 
@@ -38,8 +38,8 @@ $document.one( "timerpoke.wb", function() {
 					onMediumLargeView();
 				}
 			}
-		});
+		} );
 	}
-});
+} );
 
-})( jQuery, wb );
+} )( jQuery, wb );

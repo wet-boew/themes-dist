@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-24
+ * v4.0.26-development - 2017-05-31
  *
  */
 @charset "UTF-8";
@@ -9123,7 +9123,18 @@ details {
   /* a variable name */
   /* a function name */
   .fun {
-    color: #f00; } }
+    color: #f00; }
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+  /**
+ * Screen-only styles
+ */
+  .wb-tabs.carousel-s2.wb-init {
+    padding-bottom: 4.375em; }
+  .wb-tabs.carousel-s2.exclude-controls {
+    padding-bottom: 0; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -9342,10 +9353,6 @@ details {
         display: none !important; }
   .wb-tabs {
     /* Only for backwards compatibility. Should be removed in v4.1. */ }
-    .wb-tabs.carousel-s2.wb-init {
-      padding-bottom: 4.375em; }
-    .wb-tabs.carousel-s2.exclude-controls {
-      padding-bottom: 0; }
     .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.active a {
       border-color: #666;
       border-style: solid;
@@ -9692,7 +9699,7 @@ details {
   #wb-bnr-ss {
     background: #618000; }
   #wb-ss {
-    padding: 0.2em 0; }
+    padding: .2em 0; }
     #wb-ss a {
       font-size: 120%; }
   #wb-sm .nvbar ul.menu > li > a:hover, #wb-sm .active a,
@@ -9731,7 +9738,7 @@ details {
       color: #fff;
       display: block;
       font-weight: 700;
-      padding: 0.48em 0.79em;
+      padding: .48em .79em;
       text-decoration: none; }
     #wb-sm .sm {
       border-bottom: 4px solid #0f315b;
@@ -9744,7 +9751,7 @@ details {
   #wb-dtmd {
     float: right; }
   #wb-info li {
-    margin-bottom: 0.75em; }
+    margin-bottom: .75em; }
   [dir=rtl] #wb-dtmd {
     float: left; }
   [dir=rtl] #wb-sec .list-group .list-group .list-group-item {
@@ -10006,7 +10013,7 @@ details {
     #wb-lng a {
       color: #fff; }
   #wb-srch {
-    margin-top: 0.5em;
+    margin-top: .5em;
     position: absolute;
     right: 15px;
     top: 0; }
