@@ -2,7 +2,7 @@
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-(function( $, wb ) {
+( function( /*$, wb*/ ) {
 "use strict";
 
 /*
@@ -68,11 +68,11 @@ $document.on( "xxsmallview.wb xsmallview.wb smallview.wb mediumview.wb largeview
 	}
 });*/
 
-window["wb-data-ajax"] = {
+window[ "wb-data-ajax" ] = {
 	corsFallback: function( fetchObj ) {
-		fetchObj.url = fetchObj.url.replace(".html", ".htmlp");
+		fetchObj.url = fetchObj.url.replace( ".html", ".htmlp" );
 		return fetchObj;
 	}
 };
 
-})( jQuery, wb );
+} )( jQuery, wb );
