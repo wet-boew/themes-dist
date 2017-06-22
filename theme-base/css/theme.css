@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-26
+ * v4.0.26-development - 2017-06-22
  *
  */
 @charset "UTF-8";
@@ -9136,7 +9136,18 @@ details {
   /* a variable name */
   /* a function name */
   .fun {
-    color: #f00; } }
+    color: #f00; }
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ */
+  /**
+ * Screen-only styles
+ */
+  .wb-tabs.carousel-s2.wb-init {
+    padding-bottom: 4.375em; }
+  .wb-tabs.carousel-s2.exclude-controls {
+    padding-bottom: 0; } }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -9219,6 +9230,12 @@ details {
   WET-BOEW
   @title: Extra-small view and over (screen only)
  */
+  .col-xs-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Extra-small view and over
@@ -9257,6 +9274,12 @@ details {
   WET-BOEW
   @title: Small view and over (screen only)
  */
+  .col-sm-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Small view and over
@@ -9300,6 +9323,12 @@ details {
     left: auto; }
   [dir=rtl] #wb-sec.col-md-pull-9 {
     right: auto; }
+  .col-md-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -9355,10 +9384,6 @@ details {
         display: none !important; }
   .wb-tabs {
     /* Only for backwards compatibility. Should be removed in v4.1. */ }
-    .wb-tabs.carousel-s2.wb-init {
-      padding-bottom: 4.375em; }
-    .wb-tabs.carousel-s2.exclude-controls {
-      padding-bottom: 0; }
     .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.active a {
       border-color: #666;
       border-style: solid;
@@ -9395,6 +9420,12 @@ details {
     clear: left; }
   .clr-rght-lg {
     clear: right; }
+  .col-lg-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -9715,6 +9746,9 @@ details {
     display: block;
     font-size: .4em;
     margin-bottom: 4px; }
+  #wb-srch-sub {
+    float: right;
+    margin-left: 5px; }
   #wb-sm ul.menu > li > a.wb-navcurr, #wb-sm .sm a.wb-navcurr,
   #wb-sm .sm summary.wb-navcurr, #wb-sm .sm .slflnk a.wb-navcurr {
     background: #333;
@@ -9752,6 +9786,10 @@ details {
     float: right; }
   #wb-info li {
     margin-bottom: .75em; }
+  [dir=rtl] #wb-srch-sub {
+    float: left;
+    margin-left: 0;
+    margin-right: 5px; }
   [dir=rtl] #wb-dtmd {
     float: left; }
   [dir=rtl] #wb-sec .list-group .list-group .list-group-item {
@@ -9847,16 +9885,9 @@ details {
     text-align: right; }
     #wb-srch .form-group {
       display: inline-block; }
-  #wb-srch-sub {
-    float: right;
-    margin-left: 5px; }
   [dir=rtl] #wb-srch {
     margin-left: 15px;
     text-align: left; }
-  [dir=rtl] #wb-srch-sub {
-    float: right;
-    margin-left: 5px;
-    margin-right: 0; }
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
     float: right;
     margin-left: 5px;
