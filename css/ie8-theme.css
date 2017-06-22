@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-31
+ * v4.0.26-development - 2017-06-22
  *
  */
 @charset "UTF-8";
@@ -8895,6 +8895,12 @@ details {
   WET-BOEW
   @title: Extra-small view and over (screen only)
  */
+  .col-xs-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Extra-small view and over
@@ -8927,6 +8933,12 @@ details {
   WET-BOEW
   @title: Small view and over (screen only)
  */
+  .col-sm-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Small view and over
@@ -8964,6 +8976,12 @@ details {
     left: auto; }
   [dir=rtl] #wb-sec.col-md-pull-9 {
     right: auto; }
+  .col-md-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -9049,6 +9067,12 @@ details {
     clear: left; }
   .clr-rght-lg {
     clear: right; }
+  .col-lg-auto {
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -9466,6 +9490,9 @@ details {
       text-decoration: none; }
   #gcwu-sig {
     margin: 10px 0; }
+  #wb-srch-sub {
+    float: right;
+    margin-left: 5px; }
   #wb-bnr-ss {
     background: #618000; }
   #wb-ss {
@@ -9520,6 +9547,10 @@ details {
     float: right; }
   #wb-info li {
     margin-bottom: .75em; }
+  [dir=rtl] #wb-srch-sub {
+    float: left;
+    margin-left: 0;
+    margin-right: 5px; }
   [dir=rtl] #wb-dtmd {
     float: left; }
   [dir=rtl] #wb-sec .list-group .list-group .list-group-item {
@@ -9619,18 +9650,11 @@ details {
     text-align: right; }
     #wb-srch .form-group {
       display: inline-block; }
-  #wb-srch-sub {
-    float: right;
-    margin-left: 5px; }
   #wb-bc {
     background: linear-gradient(#f0efef, #dfdfdd) repeat scroll 0 0/100% auto #dfdfdd; }
   [dir=rtl] #wb-srch {
     margin-left: 15px;
     text-align: left; }
-  [dir=rtl] #wb-srch-sub {
-    float: right;
-    margin-left: 5px;
-    margin-right: 0; }
   [dir=rtl] #mb-pnl .srch-pnl .form-group {
     float: right;
     margin-left: 5px;
