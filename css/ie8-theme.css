@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-31
+ * v4.0.26-development - 2017-06-22
  *
  */
 @charset "UTF-8";
@@ -9902,15 +9902,9 @@ header .brand {
   #wb-info .ftr-urlt-lnk ul {
     margin: 0;
     padding: 0; }
-    #wb-info .ftr-urlt-lnk ul li {
-      display: inline-block;
-      margin-right: .5em;
-      padding: 0; }
-      #wb-info .ftr-urlt-lnk ul li:before {
-        content: "\2022";
-        margin-right: .7em; }
-      #wb-info .ftr-urlt-lnk ul li:first-child:before {
-        content: none; }
+  #wb-info .ftr-urlt-lnk li:before {
+    content: "\2022";
+    margin-right: .7em; }
   #wb-info .tofpg {
     line-height: 90px; }
     #wb-info .tofpg a {
@@ -10858,6 +10852,20 @@ Carousel
 @media screen {
   /*
   WET-BOEW
+  @title: Search all screen views
+ */
+  #wb-srch .submit {
+    float: right; }
+  #wb-srch-sub {
+    height: 37px;
+    margin-left: 5px; }
+  [dir=rtl] #wb-srch.submit {
+    float: left; }
+  [dir=rtl] #wb-srch-sub {
+    margin-left: 0;
+    margin-right: 5px; }
+  /*
+  WET-BOEW
   @title: All screen views
  */
   .overlay-def .modal-header {
@@ -10959,16 +10967,12 @@ Carousel
       padding: 15px; }
   /*
   WET-BOEW
-  @title: Search Small view and under (screen only)
+  @title: Search small view and under (screen only)
  */
   #wb-srch {
     width: 100%; }
     #wb-srch .form-group {
-      display: inline-block; }
-      #wb-srch .form-group.submit {
-        float: right; }
-  [dir=rtl] #wb-srch .form-group.submit {
-    float: left; } }
+      display: inline-block; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -11016,7 +11020,16 @@ Carousel
  */
   /*
  Social Media Icons Medium View and over
-*/ }
+*/
+  /*
+  WET-BOEW
+  @title: Medium view and over (screen only)
+ */
+  #wb-info .ftr-urlt-lnk li {
+    display: inline-block;
+    margin-right: .5em; }
+    #wb-info .ftr-urlt-lnk li:first-child:before {
+      content: none; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
@@ -11066,8 +11079,6 @@ Carousel
  */
   #wb-info .ftr-urlt-lnk ul {
     column-count: 1; }
-    #wb-info .ftr-urlt-lnk ul li {
-      margin-bottom: .2em; }
   #wb-info .brand object,
   #wb-info .brand img {
     height: 25px;

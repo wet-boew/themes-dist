@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-05-31
+ * v4.0.26-development - 2017-06-22
  *
  */
 @charset "UTF-8";
@@ -10138,15 +10138,9 @@ header .brand {
   #wb-info .ftr-urlt-lnk ul {
     margin: 0;
     padding: 0; }
-    #wb-info .ftr-urlt-lnk ul li {
-      display: inline-block;
-      margin-right: .5em;
-      padding: 0; }
-      #wb-info .ftr-urlt-lnk ul li:before {
-        content: "\2022";
-        margin-right: .7em; }
-      #wb-info .ftr-urlt-lnk ul li:first-child:before {
-        content: none; }
+  #wb-info .ftr-urlt-lnk li:before {
+    content: "\2022";
+    margin-right: .7em; }
   #wb-info .tofpg {
     line-height: 90px; }
     #wb-info .tofpg a {
@@ -11229,6 +11223,20 @@ table.nws-tbl > thead > tr > th {
 @media screen {
   /*
   WET-BOEW
+  @title: Search all screen views
+ */
+  #wb-srch .submit {
+    float: right; }
+  #wb-srch-sub {
+    height: 37px;
+    margin-left: 5px; }
+  [dir=rtl] #wb-srch.submit {
+    float: left; }
+  [dir=rtl] #wb-srch-sub {
+    margin-left: 0;
+    margin-right: 5px; }
+  /*
+  WET-BOEW
   @title: All screen views
  */
   .overlay-def .modal-header {
@@ -11349,16 +11357,12 @@ table.nws-tbl > thead > tr > th {
       padding: 15px; }
   /*
   WET-BOEW
-  @title: Search Small view and under (screen only)
+  @title: Search small view and under (screen only)
  */
   #wb-srch {
     width: 100%; }
     #wb-srch .form-group {
       display: inline-block; }
-      #wb-srch .form-group.submit {
-        float: right; }
-  [dir=rtl] #wb-srch .form-group.submit {
-    float: left; }
   /*
   WET-BOEW
   @title: Small view and under (screen only)
@@ -11367,12 +11371,9 @@ table.nws-tbl > thead > tr > th {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2; }
-    #wb-info .ftr-urlt-lnk ul li {
-      display: block;
-      margin-bottom: .2em; }
-      #wb-info .ftr-urlt-lnk ul li:first-child:before {
-        content: "\2022";
-        margin-right: .7em; } }
+  #wb-info .ftr-urlt-lnk li {
+    display: block;
+    margin-bottom: .2em; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -11433,7 +11434,16 @@ table.nws-tbl > thead > tr > th {
  */
   /*
  Social Media Icons Medium View and over
-*/ }
+*/
+  /*
+  WET-BOEW
+  @title: Medium view and over (screen only)
+ */
+  #wb-info .ftr-urlt-lnk li {
+    display: inline-block;
+    margin-right: .5em; }
+    #wb-info .ftr-urlt-lnk li:first-child:before {
+      content: none; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
@@ -11485,8 +11495,6 @@ table.nws-tbl > thead > tr > th {
     -webkit-column-count: 1;
     -moz-column-count: 1;
     column-count: 1; }
-    #wb-info .ftr-urlt-lnk ul li {
-      margin-bottom: .2em; }
   #wb-info .brand object,
   #wb-info .brand img {
     height: 25px;
