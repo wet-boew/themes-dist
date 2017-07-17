@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-07-06
+ * v4.0.26-development - 2017-07-17
  *
  */
 @charset "UTF-8";
@@ -9847,32 +9847,6 @@ aside.features {
   .lt-ie9 .inst-brand img {
     width: 100%; }
 
-/* Report a problem Thank you message*/
-.gc-rprt-prblm-thnk {
-  padding-bottom: 25px; }
-
-/* Report a problem temporary fix for toggle */
-.gc-rprt-prblm-frm.gc-rprt-prblm-tggl.show {
-  display: none !important; }
-
-/* Embedding a Fluid Survey */
-.gc-fld-srvy-container {
-  -webkit-overflow-scrolling: touch;
-  height: 0;
-  overflow: hidden;
-  overflow-y: scroll;
-  padding-bottom: 70%;
-  position: relative; }
-
-.gc-fld-srvy-mbd {
-  border: 0;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  zoom: 1; }
-
 #archived-bnr {
   background-color: #fd0; }
   #archived-bnr p {
@@ -11142,6 +11116,39 @@ Carousel
     margin-top: 0; }
   .gc-archv .mfp-close.overlay-close {
     color: #000; }
+
+/* Report a problem Thank you message*/
+.gc-rprt-prblm-thnk {
+  padding-bottom: 25px; }
+
+/* Report a problem temporary fix for toggle */
+.gc-rprt-prblm-frm.gc-rprt-prblm-tggl.show {
+  display: none !important; }
+
+/* Embedding a Fluid Survey */
+.gc-fld-srvy-container {
+  -webkit-overflow-scrolling: touch;
+  height: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 70%;
+  position: relative; }
+
+.gc-fld-srvy-mbd {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  zoom: 1; }
+
+/* Hide RAP textarea and Other */
+.gc-rprt-prblm-frm .form-group {
+  display: none !important; }
+
+.gc-rprt-prblm-frm label[for=problem6] {
+  display: none !important; }
 
 /*
 * News styles
