@@ -7179,6 +7179,10 @@ body.wb-modal .modal-dialog summary {
 .modal-body {
   background: #fff; }
 
+.modal-footer {
+  background: #fff;
+  margin-top: 0; }
+
 .mfp-gallery .modal-body {
   padding: 20px 30px; }
 
@@ -7700,14 +7704,6 @@ ol.linenums {
   overflow: hidden;
   position: absolute;
   top: -1000px; }
-
-/*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-#wb-sessto-modal .modal-footer {
-  background: #fff;
-  margin-top: 0; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
