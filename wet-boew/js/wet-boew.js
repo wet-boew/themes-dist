@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-06-22
+ * v4.0.26-development - 2017-08-10
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -413,6 +413,18 @@ var getUrlParts = function( url ) {
 
 		stripWhitespace: function( str ) {
 			return str.replace( /\s+/g, "" );
+		},
+
+		// Core function to deal with the dependency racing issue
+		whenLibReady: function( testCallback, readyCallback ) {
+			if ( testCallback() ) {
+				readyCallback();
+			} else {
+				setTimeout( function() {
+					wb.whenLibReady( testCallback, readyCallback );
+				}, 50 );
+			}
+
 		}
 	};
 
@@ -470,6 +482,28 @@ yepnope.addPrefix( "i18n", function( resourceObj ) {
 	resourceObj.url = paths.js + "/" + resourceObj.url + lang + paths.mode + ".js";
 	return resourceObj;
 } );
+
+/*-----------------------------
+ * Deps loading, call "complete" callback when the deps is ready if a testReady is defined
+ *-----------------------------*/
+wb.modernizrLoad = Modernizr.load;
+Modernizr.load = function( options ) {
+	var i, i_len, i_cache,
+		testReady, complete;
+	if ( !$.isArray( options ) ) {
+		options = [ options ];
+	}
+	i_len = options.length;
+	for ( i = 0; i !== i_len; i += 1 ) {
+		i_cache = options[ i ];
+		testReady = i_cache.testReady;
+		complete = i_cache.complete;
+		if ( testReady && complete ) {
+			i_cache.complete = wb.whenLibReady( testReady, complete );
+		}
+	}
+	wb.modernizrLoad( options );
+};
 
 /*-----------------------------
  * Modernizr Polyfill Loading
@@ -539,6 +573,9 @@ Modernizr.load( [
 					// when !Modernizr.mathml, we can skip the test here.
 					Modernizr.load( {
 						load: "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=Accessible",
+						testReady: function() {
+							return ( window.MathJax && window.MathJax.isReady );
+						},
 						complete: function() {
 
 							// Identify that initialization has completed
@@ -564,6 +601,9 @@ Modernizr.load( [
 		nope: "plyfll!svg.min.js"
 	}, {
 		load: "i18n!i18n/",
+		testReady: function() {
+			return wb.i18nDict.tphp;
+		},
 		complete: function() {
 			wb.start();
 		}
@@ -4931,7 +4971,10 @@ var componentName = "wb-eqht",
 
 		for ( i = $elms.length - 1; i !== -1; i -= 1 ) {
 			$elm = $elms.eq( i );
-			$children = $elm.children();
+			$children = $elm.find( ".eqht-trgt" );
+			if ( !$children.length ) {
+				$children = $elm.children();
+			}
 
 			// Reinitialize the row at the beginning of each section of equal height
 			row = [];
@@ -5784,6 +5827,171 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
+( function( $, window, wb ) {
+"use strict";
+
+var componentName = "wb-filter",
+	selector = "." + componentName,
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+	filterClass = "wb-fltr-out",
+	notFilterClassSel = ":not(." + filterClass + ")",
+	inputClass = "wb-fltr-inpt",
+	dtNameFltrArea = "wbfltrid",
+	visibleSelector = ":visible",
+	selectorInput = "." + inputClass,
+	defaults = {
+		std: {
+			selector: "li"
+		},
+		grp: {
+			selector: "li",
+			section: ">section"
+		},
+		tbl: {
+			selector: "tr",
+			section: ">tbody"
+		},
+		tblgrp: {
+			selector: "th:not([scope])",
+			hdnparentuntil: "tbody",
+			section: ">tbody"
+		}
+	},
+	i18n, i18nText,
+	infoText,
+	wait,
+
+	init = function( event ) {
+		var elm = wb.init( event, componentName, selector ),
+			$elm, elmTagName, filterUI, prependUI,
+			settings, setDefault,
+			inptId, totalEntries;
+		if ( elm ) {
+			$elm = $( elm );
+
+			elmTagName = elm.nodeName;
+			if ( [ "DIV", "SECTION", "ARTICLE" ].indexOf( elm.nodeName ) >= 0 ) {
+				setDefault = defaults.grp;
+				prependUI = true;
+			} else if ( elmTagName === "TABLE" ) {
+				if ( $elm.find( "tbody" ).length > 1 ) {
+					setDefault = defaults.tblgrp;
+				} else {
+					setDefault = defaults.tbl;
+				}
+			} else {
+				setDefault = defaults.std;
+			}
+
+			settings = $.extend( true, {}, setDefault, window[ componentName ], wb.getData( $elm, componentName ) );
+			$elm.data( settings );
+
+			if ( !i18nText ) {
+				i18n = wb.i18n;
+				i18nText = {
+					filter_label: i18n( "fltr-lbl" ),
+					fltr_info: i18n( "fltr-info" )
+				};
+
+				infoText = i18nText.fltr_info;
+			}
+
+			Modernizr.addTest( "stringnormalize", "normalize" in String );
+			Modernizr.load( {
+				test: Modernizr.stringnormalize,
+				nope: [
+					"site!deps/unorm" + wb.getMode() + ".js"
+				]
+			} );
+
+			if ( !elm.id ) {
+				elm.id = wb.getId();
+			}
+			inptId = elm.id + "-inpt";
+
+			totalEntries = $elm.find( ( settings.section || "" ) + " " + settings.selector ).length;
+
+			filterUI = "<div class=\"input-group\"><label for=\"" + inptId + "\" class=\"input-group-addon\"><span class=\"glyphicon glyphicon-filter\" aria-hidden=\"true\"></span> " + i18nText.filter_label + "</label><input id=\"" + inptId + "\" class=\"form-control " + inputClass + "\" data-" + dtNameFltrArea + "=\"" + elm.id + "\" type=\"search\"></div>" + "<p aria-live=\"polite\" id=\"" + elm.id + "-info\">" + infoFormater( totalEntries, totalEntries ) + "</p>";
+
+			if ( prependUI ) {
+				$elm.prepend( filterUI );
+			} else {
+				$elm.before( filterUI );
+			}
+
+			wb.ready( $elm, componentName );
+		}
+	},
+	infoFormater = function( nbItem, total ) {
+		return infoText.
+			replace( /_NBITEM_/g, nbItem ).
+			replace( /_TOTAL_/g, total );
+	},
+	filter = function( $field, $elm, settings ) {
+		var unAccent = function( str ) {
+				return str.normalize( "NFD" ).replace( /[\u0300-\u036f]/g, "" );
+			},
+			filter = unAccent( $field.val() ),
+			fCallBack = settings.filterCallback,
+			secSelector = ( settings.section || "" )  + " ",
+			hndParentSelector = settings.hdnparentuntil,
+			$items = $elm.find( secSelector + settings.selector ),
+			itemsLength = $items.length,
+			i, $item, text;
+
+		$elm.find( "." + filterClass ).removeClass( filterClass );
+
+		for ( i = 0; i < itemsLength; i += 1 ) {
+			$item = $items.eq( i );
+			text = unAccent( $item.text() );
+
+			if ( !text.match( new RegExp( filter, "i" ) ) ) {
+				if ( hndParentSelector ) {
+					$item = $item.parentsUntil( hndParentSelector );
+				}
+				$item.addClass( filterClass );
+			}
+		}
+
+		if ( !fCallBack || typeof fCallBack !== "function"  ) {
+			fCallBack = filterCallback;
+		}
+		fCallBack.apply( this, arguments );
+
+		$( "#" + $elm.get( 0 ).id + "-info" ).html( infoFormater( $elm.find( secSelector + notFilterClassSel + settings.selector + visibleSelector ).length, itemsLength ) );
+	},
+	filterCallback = function( $field, $elm, settings ) {
+		var $sections =	$elm.find( settings.section + visibleSelector ),
+			sectionsLength = $sections.length,
+			fndSelector = notFilterClassSel + settings.selector + visibleSelector,
+			s, $section;
+
+		for ( s = 0; s < sectionsLength; s += 1 ) {
+			$section = $sections.eq( s );
+			if ( $section.find( fndSelector ).length === 0 ) {
+				$section.addClass( filterClass );
+			}
+		}
+	};
+
+$document.on( "keyup", selectorInput, function( event ) {
+	var target = event.target,
+		$input = $( target ),
+		$elm = $( "#" + $input.data( dtNameFltrArea ) );
+
+	if ( wait ) {
+		clearTimeout( wait );
+	}
+	wait = setTimeout( filter.bind( this, $input, $elm, $elm.data() ), 250 );
+
+} );
+
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+wb.add( selector );
+} )( jQuery, window, wb );
+
 /**
  * @title WET-BOEW Footnotes
  * @overview Provides a consistent, accessible way of handling footnotes across websites.
@@ -6574,7 +6782,6 @@ var componentName = "wb-lbx",
 				} else {
 					footer = document.createElement( "div" );
 					footer.setAttribute( "class", "modal-footer" );
-					footer.style.background = "#fff";
 					spanTextFtr = i18nText.tClose;
 				}
 				spanTextFtr = spanTextFtr.replace( "'", "&#39;" );
@@ -6790,7 +6997,7 @@ var componentName = "wb-menu",
 			menuitem = " role='menuitem'",
 			sectionHtml = "<li><details>" + "<summary class='mb-item" +
 				( $section.hasClass( "wb-navcurr" ) || $section.children( ".wb-navcurr" ).length !== 0 ? " wb-navcurr'" : "'" ) +
-				" aria-haspopup='true'> <span" + menuitem + ">" +
+				" aria-haspopup='true'><span" + menuitem + ">" +
 				$section.text() + "</span></summary>" +
 				"<ul class='list-unstyled mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
 
@@ -9512,7 +9719,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 						openModal( {
 							body: "<p>" + i18nText.timeoutAlready + "</p>",
 							buttons: $( "<button type='button' class='" + confirmClass +
-								" btn btn-primary'>" + i18nText.buttonSignin + "</button>" )
+								" btn btn-primary popup-modal-dismiss'>" + i18nText.buttonSignin + "</button>" )
 									.data( "logouturl", settings.logouturl )
 						} );
 					}
@@ -9540,7 +9747,7 @@ var $modal, $modalLink, countdownInterval, i18n, i18nText,
 		clearTimeout( $( event.target ).data( keepaliveEvent ) );
 
 		$buttonContinue = $( buttonStart + confirmClass +
-			" btn btn-primary'>" + i18nText.buttonContinue + buttonEnd )
+			" btn btn-primary popup-modal-dismiss'>" + i18nText.buttonContinue + buttonEnd )
 				.data( settings )
 				.data( "start", getCurrentTime() );
 		$buttonEnd = $( buttonStart + confirmClass + " btn btn-default'>" +
@@ -10078,6 +10285,9 @@ var componentName = "wb-tables",
 
 			Modernizr.load( {
 				load: [ "site!deps/jquery.dataTables" + wb.getMode() + ".js" ],
+				testReady: function() {
+					return ( $.fn.dataTable && $.fn.dataTable.version );
+				},
 				complete: function() {
 					var $elm = $( "#" + elmId ),
 						dataTableExt = $.fn.dataTableExt;
