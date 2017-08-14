@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26-development - 2017-08-10
+ * v4.0.26-development - 2017-08-14
  *
  */
 @charset "UTF-8";
@@ -9928,9 +9928,6 @@ main {
 .overlay-def header {
   background: #335075; }
 
-.overlay-def .overlay-close {
-  background: transparent; }
-
 /* Profile on secondary pages */
 .secondary .profile .thumbnail {
   margin-top: 1.25em; }
@@ -10144,6 +10141,8 @@ a.shr-opn, a.shr-opn:hover {
     #mb-pnl .modal-body li {
       line-height: 2;
       list-style-type: none; }
+  #mb-pnl .modal-footer {
+    background: #0e4164; }
   #mb-pnl .mfp-close {
     top: .55em; }
   #mb-pnl .srch-pnl form button {
