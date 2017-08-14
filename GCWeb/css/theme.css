@@ -11276,6 +11276,11 @@ table.nws-tbl > thead > tr > th {
   .pager {
     margin-bottom: 50px; }
   /*
+ * Share/feedback-specific overrides (extra-small view and under)
+ */
+  .pagedetails .pull-right {
+    float: none !important; }
+  /*
   TOC
   @title: Extra-small view and under (screen only)
  */
