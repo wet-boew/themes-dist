@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26 - 2017-08-15
+ * v4.0.27-development - 2017-08-18
  *
  */
 @charset "UTF-8";
@@ -11011,6 +11011,14 @@ Carousel
 .gc-prtts.dbl .h5 {
   min-height: 2.2em; }
 
+.cmpgn-sctns a {
+  text-decoration: none; }
+  .cmpgn-sctns a:hover strong, .cmpgn-sctns a:focus strong, .cmpgn-sctns a:active strong {
+    text-decoration: underline; }
+
+.cmpgn-sctns strong {
+  display: block; }
+
 /*
  * Components styles
  */
@@ -11292,7 +11300,20 @@ table.nws-tbl > thead > tr > th {
       border-radius: 0;
       padding: 4px 10px; }
     .toc li:last-child .list-group-item {
-      border-bottom: 1px solid #ddd; } }
+      border-bottom: 1px solid #ddd; }
+  /*
+  Campaign
+  @title: Extra-small view and under (screen only)
+ */
+  .cmpgn-sctns {
+    margin-top: 0; }
+    .cmpgn-sctns li {
+      margin-top: 20px; }
+    .cmpgn-sctns .h4 {
+      margin-top: 0;
+      padding-top: 15px; }
+    .cmpgn-sctns .sctn-desc {
+      margin-bottom: 10px; } }
 
 /* Small view and under */
 @media screen and (max-width: 991px) {
@@ -11393,7 +11414,17 @@ table.nws-tbl > thead > tr > th {
     border-left: solid 1px #666; }
   table.nws-tbl .nws-tbl-ttl,
   table.nws-tbl .nws-tbl-desc {
-    display: block; } }
+    display: block; }
+  /*
+  Campaign
+  @title: Small view and over (screen only)
+ */
+  .cmpgn-img {
+    min-height: 117px; }
+  .cmpgn-sctns {
+    margin-top: -10%; }
+    .cmpgn-sctns img {
+      width: 40%; } }
 
 /* Medium view and over */
 @media screen and (min-width: 992px) {
@@ -11506,7 +11537,13 @@ table.nws-tbl > thead > tr > th {
   @title: Search Small view and under (screen only)
  */
   #wb-srch {
-    margin-bottom: 15px; } }
+    margin-bottom: 15px; }
+  /*
+  Campaign
+  @title: Small view (screen only)
+ */
+  .cmpgn-sctns {
+    word-wrap: break-word; } }
 
 /* Medium view */
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -11580,4 +11617,10 @@ table.nws-tbl > thead > tr > th {
  */
   /*
  Social Media Icons Print view
-*/ }
+*/
+  /*
+  Campaign
+  @title: Print view
+ */
+  .cmpgn-sctns {
+    margin-top: 20px; } }

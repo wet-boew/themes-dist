@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26 - 2017-08-15
+ * v4.0.27-development - 2017-08-18
  *
  */
 @charset "UTF-8";
@@ -10775,6 +10775,14 @@ Carousel
 
 .gc-prtts.dbl .h5 {
   min-height: 2.2em; }
+
+.cmpgn-sctns a {
+  text-decoration: none; }
+  .cmpgn-sctns a:hover strong, .cmpgn-sctns a:focus strong, .cmpgn-sctns a:active strong {
+    text-decoration: underline; }
+
+.cmpgn-sctns strong {
+  display: block; }
 
 /*
  Views
