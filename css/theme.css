@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.27-development - 2017-09-18
+ * v4.0.27-development - 2017-10-04
  *
  */
 @charset "UTF-8";
@@ -10582,6 +10582,10 @@ a.shr-opn, a.shr-opn:hover {
   display: inline-block;
   float: none !important;
   padding-top: 10px; }
+  .fd-wdgt .feeds-date:before {
+    content: ""; }
+  .fd-wdgt .feeds-date:after {
+    content: ""; }
 
 .fd-wdgt .media-body img {
   display: block;
@@ -11029,6 +11033,12 @@ Carousel
   .gc-dwnld .gc-dwnld-txt span {
     display: block; }
 
+.gc-dwnld .gc-dwnld-img {
+  margin-bottom: 0; }
+
+.gc-dwnld p {
+  margin-bottom: 0; }
+
 .gc-stp-stp {
   border-bottom: solid 1px #ccc;
   margin-bottom: 30px;
@@ -11047,8 +11057,6 @@ Carousel
 
 .lnkbx {
   margin-bottom: 30px; }
-  .lnkbx h2:nth-child(1) {
-    margin-top: 0; }
   .lnkbx > ul > li {
     margin-bottom: 10px; }
   .lnkbx dl a {
@@ -11083,10 +11091,6 @@ Carousel
 /*
  * Institution pages
  */
-.gc-instttn p:nth-child(1),
-.gc-orgnztn p:nth-child(1) {
-  font-weight: 700; }
-
 .gc-instttn .gc-rms-lngth img,
 .gc-orgnztn .gc-rms-lngth img {
   margin-bottom: 30px; }
@@ -11155,6 +11159,32 @@ Carousel
 
 .gc-rprt-prblm-frm label[for=problem6] {
   display: none !important; }
+
+/* temporarily adding deleted WET styles back to help with right colum issues in GCWEB */
+/**
+  *	Disable pull-right/left on grid columns that do not match the current
+  *	breakpoint
+  */
+@media (max-width: 767px) {
+  .pull-left[class*=col-sm], .pull-left[class*=col-md], .pull-left[class*=col-lg], .pull-left[class*=followus],
+  .pull-right[class*=col-sm],
+  .pull-right[class*=col-md],
+  .pull-right[class*=col-lg],
+  .pull-right[class*=followus] {
+    float: none !important; } }
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .pull-left[class*=col-md], .pull-left[class*=col-lg], .pull-left[class*=followus],
+  .pull-right[class*=col-md],
+  .pull-right[class*=col-lg],
+  .pull-right[class*=followus] {
+    float: none !important; } }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .pull-left[class*=col-lg], .pull-left[class*=followus],
+  .pull-right[class*=col-lg],
+  .pull-right[class*=followus] {
+    float: none !important; } }
 
 /*
 * News styles
