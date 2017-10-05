@@ -9803,6 +9803,9 @@ aside.features {
     padding-top: 7px; }
     .pagedetails .datemod #wb-dtmd {
       margin-top: 0; }
+  .pagedetails .well {
+    margin-left: -1.1em;
+    margin-right: -1.1em; }
 
 /* IE */
 .lt-ie9 {
