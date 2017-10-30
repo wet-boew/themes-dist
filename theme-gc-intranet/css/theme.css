@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.26 - 2017-08-15
+ * v4.0.27-development - 2017-10-30
  *
  */
 @charset "UTF-8";
@@ -7780,6 +7780,8 @@ body.wb-modal .modal-dialog summary {
     /* Important Thing */
     -webkit-appearance: none;
     background: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
     border: 7px solid #3e3e3e;
     border-radius: 14px;
     color: #176ca7;
@@ -7823,6 +7825,8 @@ body.wb-modal .modal-dialog summary {
       height: 1.3em;
       width: 10px; }
     .wb-mm-ctrls input[type=range]::-ms-track {
+      border: 0;
+      color: transparent;
       height: 4px; }
     .wb-mm-ctrls input[type=range]::-ms-fill-upper {
       background: #aaa; }
@@ -8438,7 +8442,7 @@ table.dataTable {
     .wb-tabs.carousel-s1 [role="tabpanel"] a figure::before, .wb-tabs.carousel-s2 [role="tabpanel"] a figure::before {
       height: calc(100% - 4px);
       margin: 2px;
-      outline-color: #FFF;
+      outline-color: #fff;
       width: calc(100% - 4px); }
     .wb-tabs.carousel-s1 [role="tabpanel"] a figure::after, .wb-tabs.carousel-s2 [role="tabpanel"] a figure::after {
       height: calc(100% - 2px);
@@ -8451,6 +8455,10 @@ table.dataTable {
 
 .wb-tabs.carousel-s1 [role="tabpanel"] figure a, .wb-tabs.carousel-s2 [role="tabpanel"] figure a {
   color: #fff; }
+
+.wb-tabs.carousel-s1 .display:focus-within, .wb-tabs.carousel-s2 .display:focus-within {
+  outline: 1px dotted #fff;
+  outline-offset: -2px; }
 
 .wb-tabs.carousel-s1 video:focus, .wb-tabs.carousel-s2 video:focus {
   outline-offset: -1px; }
