@@ -66,7 +66,7 @@ $document.on( "xxsmallview.wb xsmallview.wb smallview.wb mediumview.wb largeview
 		onXLargeView();
 		break;
 	}
-});*/
+} );*/
 
 window[ "wb-data-ajax" ] = {
 	corsFallback: function( fetchObj ) {
