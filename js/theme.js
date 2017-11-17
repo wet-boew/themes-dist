@@ -14,13 +14,13 @@
 var $document = wb.doc,
 	$fipImg,
 
-onSmallView = function() {
-	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra", "wmms" ) );
-},
+	onSmallView = function() {
+		$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra", "wmms" ) );
+	},
 
-onMediumLargeView = function() {
-	$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
-};
+	onMediumLargeView = function() {
+		$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
+	};
 
 $document.one( "timerpoke.wb", function() {
 	$fipImg = $( "img#wmms" );
