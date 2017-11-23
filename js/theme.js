@@ -523,7 +523,7 @@ var componentName = "wb-data-json",
 	applyTemplate = function( elm, settings, content ) {
 
 		var mapping = settings.mapping || [ {} ],
-			mapping_len = mapping.length,
+			mapping_len,
 			filterTrueness = settings.filter || [],
 			filterFaslseness = settings.filternot || [],
 			queryAll = settings.queryall,
@@ -541,9 +541,30 @@ var componentName = "wb-data-json",
 			template = settings.source ? document.querySelector( settings.source ) : elm.querySelector( "template" );
 
 		if ( !$.isArray( content ) ) {
-			content = [ content ];
+			if ( typeof content !== "object" ) {
+				content = [ content ];
+			} else {
+				content = $.map( content, function( val, index ) {
+					if ( typeof val === "object" && !$.isArray( val ) ) {
+						if ( !val[ "@id" ] ) {
+							val[ "@id" ] = index;
+						}
+					} else {
+						val = {
+							"@id": index,
+							"@value": val
+						};
+					}
+					return [ val ];
+				} );
+			}
 		}
 		i_len = content.length;
+
+		if ( !$.isArray( mapping ) ) {
+			mapping = [ mapping ];
+		}
+		mapping_len = mapping.length;
 
 		// Special support for adding row to a wb-table
 		// Condition must be meet:
@@ -569,6 +590,11 @@ var componentName = "wb-data-json",
 
 		if ( !template ) {
 			return;
+		}
+
+		// Needed when executing sub-template that wasn't polyfill, like in IE11
+		if ( !template.content ) {
+			wb.tmplPolyfill( template );
 		}
 
 		if ( settings.appendto ) {
@@ -810,11 +836,36 @@ for ( s = 0; s !== selectorsLength; s += 1 ) {
 /*
  * Variable and function definitions.
  * These are global to the polyfill - meaning that they will be initialized once per page.
+ * This polyfill is mostly used to support <template> element in IE11
  */
 var componentName = "wb-template",
 	selector = "template",
 	initEvent = "wb-init." + componentName,
 	$document = wb.doc,
+
+	/**
+	 * @method polyfill
+	 * @param {DOM element} element that we need to apply the polyfill
+	 */
+	polyfill = function( elm ) {
+
+		if ( elm.content ) {
+			return;
+		}
+		var elPlate = elm,
+			qContent,
+			docContent;
+
+		qContent = elPlate.childNodes;
+		docContent = document.createDocumentFragment();
+
+		while ( qContent[ 0 ] ) {
+			docContent.appendChild( qContent[ 0 ] );
+		}
+
+		elPlate.content = docContent;
+
+	},
 
 	/**
 	 * @method init
@@ -829,26 +880,15 @@ var componentName = "wb-template",
 
 		if ( elm ) {
 
-			if ( !elm.content ) {
-
-				var elPlate = elm,
-					qContent,
-					docContent;
-
-				qContent = elPlate.childNodes;
-				docContent = document.createDocumentFragment();
-
-				while ( qContent[ 0 ] ) {
-					docContent.appendChild( qContent[ 0 ] );
-				}
-
-				elPlate.content = docContent;
-			}
+			polyfill( elm );
 
 			// Identify that initialization has completed
 			wb.ready( $( elm ), componentName );
 		}
 	};
+
+// Make it available of when template element is needed on the fly, like subtemplate support in IE11
+wb.tmplPolyfill = polyfill;
 
 // Bind the events of the polyfill
 $document.on( "timerpoke.wb " + initEvent, selector, init );
