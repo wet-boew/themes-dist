@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.27-development - 2017-11-22
+ * v4.0.27-development - 2017-11-23
  *
  */
 @charset "UTF-8";
@@ -996,7 +996,7 @@ h1, h2, h3, h4, h5, h6,
   .h6 .small {
     font-weight: normal;
     line-height: 1;
-    color: #767676; }
+    color: #6f6f6f; }
 
 h1, .h1,
 h2, .h2,
@@ -1094,7 +1094,7 @@ mark,
   text-transform: capitalize; }
 
 .text-muted {
-  color: #767676; }
+  color: #6f6f6f; }
 
 .text-primary {
   color: #2572b4; }
@@ -1223,7 +1223,7 @@ dd {
 abbr[title],
 abbr[data-original-title] {
   cursor: help;
-  border-bottom: 1px dotted #767676; }
+  border-bottom: 1px dotted #6f6f6f; }
 
 .initialism {
   font-size: 90%;
@@ -1244,7 +1244,7 @@ blockquote {
     display: block;
     font-size: 80%;
     line-height: 1.4375;
-    color: #767676; }
+    color: #6f6f6f; }
     blockquote footer:before,
     blockquote small:before,
     blockquote .small:before {
@@ -1853,7 +1853,7 @@ table {
 caption {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: #767676;
+  color: #6f6f6f;
   text-align: left; }
 
 th {
@@ -2733,7 +2733,7 @@ select[multiple].input-lg,
   .btn-link[disabled]:hover, .btn-link[disabled]:focus,
   fieldset[disabled] .btn-link:hover,
   fieldset[disabled] .btn-link:focus {
-    color: #767676;
+    color: #6f6f6f;
     text-decoration: none; }
 
 .btn-lg, .btn-group-lg > .btn {
@@ -2857,7 +2857,7 @@ tbody.collapse.in {
   background-color: #2572b4; }
 
 .dropdown-menu > .disabled > a, .dropdown-menu > .disabled > a:hover, .dropdown-menu > .disabled > a:focus {
-  color: #767676; }
+  color: #6f6f6f; }
 
 .dropdown-menu > .disabled > a:hover, .dropdown-menu > .disabled > a:focus {
   text-decoration: none;
@@ -2885,7 +2885,7 @@ tbody.collapse.in {
   padding: 3px 20px;
   font-size: 14px;
   line-height: 1.4375;
-  color: #767676;
+  color: #6f6f6f;
   white-space: nowrap; }
 
 .dropdown-backdrop {
@@ -3205,9 +3205,9 @@ tbody.collapse.in {
         text-decoration: none;
         background-color: #eeeeee; }
     .nav > li.disabled > a {
-      color: #767676; }
+      color: #6f6f6f; }
       .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
-        color: #767676;
+        color: #6f6f6f;
         text-decoration: none;
         background-color: transparent;
         cursor: not-allowed; }
@@ -3646,14 +3646,14 @@ tbody.collapse.in {
   background-color: #222;
   border-color: #090909; }
   .navbar-inverse .navbar-brand {
-    color: #9c9c9c; }
+    color: #959595; }
     .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
       color: #fff;
       background-color: transparent; }
   .navbar-inverse .navbar-text {
-    color: #9c9c9c; }
+    color: #959595; }
   .navbar-inverse .navbar-nav > li > a {
-    color: #9c9c9c; }
+    color: #959595; }
     .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
       color: #fff;
       background-color: transparent; }
@@ -3681,7 +3681,7 @@ tbody.collapse.in {
     .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
       background-color: #090909; }
     .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
-      color: #9c9c9c; }
+      color: #959595; }
       .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
         color: #fff;
         background-color: transparent; }
@@ -3692,11 +3692,11 @@ tbody.collapse.in {
       color: #444;
       background-color: transparent; } }
   .navbar-inverse .navbar-link {
-    color: #9c9c9c; }
+    color: #959595; }
     .navbar-inverse .navbar-link:hover {
       color: #fff; }
   .navbar-inverse .btn-link {
-    color: #9c9c9c; }
+    color: #959595; }
     .navbar-inverse .btn-link:hover, .navbar-inverse .btn-link:focus {
       color: #fff; }
     .navbar-inverse .btn-link[disabled]:hover, .navbar-inverse .btn-link[disabled]:focus,
@@ -3717,7 +3717,7 @@ tbody.collapse.in {
       padding: 0 5px;
       color: #ccc; }
   .breadcrumb > .active {
-    color: #767676; }
+    color: #6f6f6f; }
 
 .pagination {
   display: inline-block;
@@ -3767,7 +3767,7 @@ tbody.collapse.in {
   .pagination > .disabled > a,
   .pagination > .disabled > a:hover,
   .pagination > .disabled > a:focus {
-    color: #767676;
+    color: #6f6f6f;
     background-color: #fff;
     border-color: #ddd;
     cursor: not-allowed; }
@@ -3835,7 +3835,7 @@ tbody.collapse.in {
   .pager .disabled > a:hover,
   .pager .disabled > a:focus,
   .pager .disabled > span {
-    color: #767676;
+    color: #6f6f6f;
     background-color: #eaebed;
     cursor: not-allowed; }
 
@@ -3862,9 +3862,9 @@ a.label:hover, a.label:focus {
   cursor: pointer; }
 
 .label-default {
-  background-color: #767676; }
+  background-color: #6f6f6f; }
   .label-default[href]:hover, .label-default[href]:focus {
-    background-color: #5d5d5d; }
+    background-color: #565656; }
 
 .label-primary {
   background-color: #2572b4; }
@@ -3902,7 +3902,7 @@ a.label:hover, a.label:focus {
   vertical-align: baseline;
   white-space: nowrap;
   text-align: center;
-  background-color: #767676;
+  background-color: #6f6f6f;
   border-radius: 10px; }
   .badge:empty {
     display: none; }
@@ -4163,12 +4163,12 @@ a.list-group-item {
 
 .list-group-item.disabled, .list-group-item.disabled:hover, .list-group-item.disabled:focus {
   background-color: #eeeeee;
-  color: #767676;
+  color: #6f6f6f;
   cursor: not-allowed; }
   .list-group-item.disabled .list-group-item-heading, .list-group-item.disabled:hover .list-group-item-heading, .list-group-item.disabled:focus .list-group-item-heading {
     color: inherit; }
   .list-group-item.disabled .list-group-item-text, .list-group-item.disabled:hover .list-group-item-text, .list-group-item.disabled:focus .list-group-item-text {
-    color: #767676; }
+    color: #6f6f6f; }
 
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
   z-index: 2;
@@ -5386,14 +5386,14 @@ a {
   color: #777; }
 
 .navbar-inverse .navbar-nav > li > a:visited {
-  color: #9c9c9c; }
+  color: #959595; }
 
 @media (max-width: 767px) {
   .navbar-inverse .open .dropdown-menu > li > a:visited {
-    color: #9c9c9c; } }
+    color: #959595; } }
 
 .navbar-inverse .navbar-link:visited {
-  color: #9c9c9c; }
+  color: #959595; }
 
 /*
  *	Override the design of alerts and labels
