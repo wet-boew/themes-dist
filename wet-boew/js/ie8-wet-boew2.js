@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.27-development - 2017-11-22
+ * v4.0.27-development - 2017-11-24
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -9834,8 +9834,6 @@ var componentName = "wb-tabs",
 	setFocusEvent = "setfocus.wb",
 	controls = selector + " ul[role=tablist] a, " + selector + " ul[role=tablist] .tab-count",
 	initialized = false,
-	equalHeightClass = "wb-eqht",
-	equalHeightOffClass = equalHeightClass + "-off",
 	tabsAccordionClass = "tabs-acc",
 	nestedTglPanelSelector = "> .tabpanels > details > .tgl-panel",
 	activePanel = "-activePanel",
@@ -10499,10 +10497,6 @@ var componentName = "wb-tabs",
 									"aria-expanded": "true"
 								} );
 						}
-
-						// Enable equal heights for large view or disable for small view
-						$elm.toggleClass( equalHeightClass, !isSmallView );
-						$elm.toggleClass( equalHeightOffClass, isSmallView );
 
 						$summary.attr( "aria-hidden", !isSmallView );
 						$tablist.attr( "aria-hidden", isSmallView );
