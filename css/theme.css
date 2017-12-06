@@ -11210,32 +11210,6 @@ Carousel
 .gc-rprt-prblm-frm label[for=problem6] {
   display: none !important; }
 
-/* temporarily adding deleted WET styles back to help with right colum issues in GCWEB */
-/**
-  *	Disable pull-right/left on grid columns that do not match the current
-  *	breakpoint
-  */
-@media (max-width: 767px) {
-  .pull-left[class*=col-sm], .pull-left[class*=col-md], .pull-left[class*=col-lg], .pull-left[class*=followus],
-  .pull-right[class*=col-sm],
-  .pull-right[class*=col-md],
-  .pull-right[class*=col-lg],
-  .pull-right[class*=followus] {
-    float: none !important; } }
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .pull-left[class*=col-md], .pull-left[class*=col-lg], .pull-left[class*=followus],
-  .pull-right[class*=col-md],
-  .pull-right[class*=col-lg],
-  .pull-right[class*=followus] {
-    float: none !important; } }
-
-@media (min-width: 992px) and (max-width: 1199px) {
-  .pull-left[class*=col-lg], .pull-left[class*=followus],
-  .pull-right[class*=col-lg],
-  .pull-right[class*=followus] {
-    float: none !important; } }
-
 /*
 * News styles
 */
