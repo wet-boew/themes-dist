@@ -9097,6 +9097,8 @@ details {
     min-height: 1px;
     padding-left: 15px;
     padding-right: 15px;
+    position: relative; }
+  .col-xs-auto {
     width: auto; }
   /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -9262,6 +9264,8 @@ details {
   WET-BOEW
   @title: Small view and over (screen only)
  */
+  .col-sm-auto {
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Small view and over
@@ -9305,6 +9309,8 @@ details {
     left: auto; }
   [dir=rtl] #wb-sec.col-md-pull-9 {
     right: auto; }
+  .col-md-auto {
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
@@ -9396,6 +9402,8 @@ details {
     clear: left; }
   .clr-rght-lg {
     clear: right; }
+  .col-lg-auto {
+    width: auto; }
   /*
   WET-BOEW
   @title: Proximity CSS - Medium view and over
