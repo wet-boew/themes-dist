@@ -5,7 +5,10 @@ wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licenc
 	<defs>
 		<style type="text/css">
 			.fip_text {fill:#000;}.fip_flag {fill:#F00;}
-			@media screen and (min-height: 2.2em) {.fip_text, .fip_flag {fill:#FFF;}}
+			@media screen and (min-height: 2.2em) and (-ms-high-contrast: none),
+			screen and (min-height: 2.2em) and (-ms-high-contrast: active) {
+				.fip_text, .fip_flag {fill: #FFF;}
+			}
 		</style>
 	</defs>
 	<g id="wmms" transform="translate(-1, -1)">

@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.27 - 2017-12-14
+ * v4.0.28-development - 2018-02-22
  *
  */
 @charset "UTF-8";
@@ -9807,6 +9807,8 @@ details {
   #mb-pnl #wb-srch-sub-imprt, #mb-pnl #wb-srch-sub-imprt:hover, #mb-pnl #wb-srch-sub-imprt:focus, #mb-pnl #wb-srch-sub-imprt:active, #mb-pnl .sm-pnl a, #mb-pnl .sm-pnl summary, #mb-pnl .sm-pnl summary:hover, #mb-pnl .sm-pnl summary:focus {
     color: #fff; }
   #wmms {
+    -webkit-filter: brightness(0) invert(100%);
+    filter: brightness(0) invert(100%);
     height: 2.35em;
     left: 15px;
     margin-top: -8px;
@@ -9989,13 +9991,14 @@ details {
     text-decoration: underline; }
   #wmms {
     height: 1.9em;
+    margin-bottom: .375em;
     margin-top: -2.5em;
     position: absolute;
     right: 15px;
     top: -5px;
     z-index: 2; }
   #gcwu-sig {
-    margin: 2.8em 0 0.25em 15px; }
+    margin: 2.8em 0 0.625em 15px; }
   #wb-bnr {
     background: #29527d; }
   #wb-bar {

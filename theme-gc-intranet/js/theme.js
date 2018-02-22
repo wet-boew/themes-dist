@@ -15,11 +15,11 @@ var $document = wb.doc,
 	$fipImg,
 
 	onSmallView = function() {
-		$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra", "wmms" ) );
+		$fipImg.attr( "src", $fipImg.attr( "src" ).replace( "wmms-intra.png", "wmms.png" ) );
 	},
 
 	onMediumLargeView = function() {
-		$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\./, "wmms-intra." ) );
+		$fipImg.attr( "src", $fipImg.attr( "src" ).replace( /wmms\.png/, "wmms-intra.png" ) );
 	};
 
 $document.one( "timerpoke.wb", function() {

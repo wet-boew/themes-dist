@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.27 - 2017-12-14
+ * v4.0.28-development - 2018-02-22
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -3477,49 +3477,45 @@ var componentName = "wb-collapsible",
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
-$document.on( "timerpoke.wb", function() {
+// Do not bind events if details polyfill is active
+if ( Modernizr.details ) {
 
-	// Do not bind events if details polyfill is active
-	if ( Modernizr.details ) {
+	// Bind the the event handlers of the plugin
+	$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
+		var which = event.which,
+			currentTarget = event.currentTarget,
+			isClosed;
 
-		// Bind the the event handlers of the plugin
-		$document.on( "click keydown toggle." + componentName, selector + " summary", function( event ) {
-			var which = event.which,
-				currentTarget = event.currentTarget,
-				isClosed;
+		// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
+		if ( ( !which || which === 1 ) &&
+			( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
+			( event.type === "toggle" && event.namespace === componentName ) ) ) {
 
-			// Ignore middle/right mouse buttons and wb-toggle enhanced summary elements (except for toggle)
-			if ( ( !which || which === 1 ) &&
-				( currentTarget.className.indexOf( "wb-toggle" ) === -1 ||
-				( event.type === "toggle" && event.namespace === componentName ) ) ) {
+			details = currentTarget.parentNode;
+			isClosed = details.getAttribute( "open" ) === null;
+			key = "alert-collapsible-state-" + details.getAttribute( "id" );
 
-				details = currentTarget.parentNode;
-				isClosed = details.getAttribute( "open" ) === null;
-				key = "alert-collapsible-state-" + details.getAttribute( "id" );
-
-				if ( isClosed ) {
-					try {
-						localStorage.setItem( key, "open" );
-					} catch ( e ) {}
-				} else {
-					try {
-						localStorage.setItem( key, "closed" );
-					} catch ( e ) {}
-				}
-			} else if ( which === 13 || which === 32 ) {
-				event.preventDefault();
-				$( currentTarget ).trigger( "click" );
+			if ( isClosed ) {
+				try {
+					localStorage.setItem( key, "open" );
+				} catch ( e ) {}
+			} else {
+				try {
+					localStorage.setItem( key, "closed" );
+				} catch ( e ) {}
 			}
+		} else if ( which === 13 || which === 32 ) {
+			event.preventDefault();
+			$( currentTarget ).trigger( "click" );
+		}
 
-			/*
-			 * Since we are working with events we want to ensure that we are being passive about our control,
-			 * so returning true allows for events to always continue
-			 */
-			return true;
-		} );
-	}
-
-} );
+		/*
+		 * Since we are working with events we want to ensure that we are being passive about our control,
+		 * so returning true allows for events to always continue
+		 */
+		return true;
+	} );
+}
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -6152,6 +6148,9 @@ var componentName = "wb-lbx",
 		// Load Magnific Popup dependency and bind the init event handler
 		Modernizr.load( {
 			load: "site!deps/jquery.magnific-popup" + wb.getMode() + ".js",
+			testReady: function() {
+				return $.magnificPopup;
+			},
 			complete: function() {
 
 				// Set the dependency i18nText only once
@@ -6180,7 +6179,7 @@ var componentName = "wb-lbx",
 				}
 				spanTextFtr = spanTextFtr.replace( "'", "&#39;" );
 
-				overlayCloseFtr = "<button type='button' id='ftrClose' class='btn btn-sm btn-primary pull-left " + closeClassFtr +
+				overlayCloseFtr = "<button type='button' class='btn btn-sm btn-primary pull-left " + closeClassFtr +
 					"' title='" + closeTextFtr + " " + spanTextFtr + "'>" +
 					closeTextFtr +
 					"<span class='wb-inv'>" + spanTextFtr + "</span></button>";
@@ -7806,7 +7805,7 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 		if ( data.shareUrl !== undef ) {
 			$( "<div class='wb-share' data-wb-share=\'{\"type\": \"" +
 				( type === "audio" ? type : "video" ) + "\", \"title\": \"" +
-				data.title.replace( "'", "&apos;" ) + "\", \"url\": \"" + data.shareUrl +
+				data.title.replace( /'/g, "&apos;" ) + "\", \"url\": \"" + data.shareUrl +
 				"\", \"pnlId\": \"" + data.id + "-shr\"}\'></div>" )
 				.insertBefore( $media.parent() )
 				.trigger( "wb-init.wb-share" );
@@ -8329,7 +8328,7 @@ var componentName = "wb-overlay",
 					footer.style.border = "0";
 				}
 
-				overlayCloseFtr = "<button type='button' id='ftrClose' class='btn btn-sm btn-primary " + closeClassFtr +
+				overlayCloseFtr = "<button type='button' class='btn btn-sm btn-primary " + closeClassFtr +
 					"' style='" + buttonStyle +
 					"' title='" + closeTextFtr + " " + spanTextFtr + "'>" +
 					closeTextFtr +
@@ -8350,7 +8349,7 @@ var componentName = "wb-overlay",
 				closeText = i18nText.closeOverlay;
 			}
 			closeText = closeText.replace( "'", "&#39;" );
-			overlayClose = "<button type='button' id='hdrClose' class='mfp-close " + closeClass +
+			overlayClose = "<button type='button' class='mfp-close " + closeClass +
 				"' title='" + closeText + "'>&#xd7;<span class='wb-inv'> " +
 				closeText + "</span></button>";
 
