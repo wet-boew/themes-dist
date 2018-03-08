@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.27 - 2017-12-14
+ * v4.0.28-development - 2018-03-08
  *
  */
 @charset "UTF-8";
@@ -19,7 +19,7 @@ Left menu variables
 /*
  * HOW TO USE THIS FILE
  * Use this file to override Bootstrap variables and WET custom variables.
- * If there is a Bootstrap variable not shown here that you want to override, go to "../lib/bootstrap-sass-official/assets/stylesheets/bootstrap/variables" to view the variables that you can override. Simply copy and paste the variable and its applicable section (if applicable) from the Bootstrap file into this override file and override the variables as applicable.
+ * If there is a Bootstrap variable not shown here that you want to override, go to "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables" to view the variables that you can override. Simply copy and paste the variable and its applicable section (if applicable) from the Bootstrap file into this override file and override the variables as applicable.
  */
 .splash object {
   height: auto;
@@ -46,26 +46,26 @@ Left menu variables
   padding: 30px 30px 19px; }
   .splash .sp-bx .btn {
     -webkit-box-shadow: 0 4px #ddd;
-    box-shadow: 0 4px #ddd;
+            box-shadow: 0 4px #ddd;
     margin: 35px 0 14px;
     min-width: 110px; }
     @media (min-width: 768px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
-        box-shadow: 0 4px #ddd;
+                box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 110px; } }
     @media (min-width: 992px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
-        box-shadow: 0 4px #ddd;
+                box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 138px;
         padding: .5em 1.5em; } }
     @media (min-width: 1200px) {
       .splash .sp-bx .btn {
         -webkit-box-shadow: 0 4px #ddd;
-        box-shadow: 0 4px #ddd;
+                box-shadow: 0 4px #ddd;
         margin: 35px 0 14px;
         min-width: 138px;
         padding: .5em 1.5em; } }
@@ -144,8 +144,8 @@ Left menu variables
   background-color: fff;
   border-color: #fff currentColor #fff #fff;
   -webkit-border-image: none;
-  -o-border-image: none;
-  border-image: none;
+       -o-border-image: none;
+          border-image: none;
   border-style: solid none solid solid;
   border-width: 1px 0 1px 1px;
   color: #333;
