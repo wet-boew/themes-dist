@@ -9540,13 +9540,24 @@ aside.features {
 .gc-nttvs {
   border-top: 1px solid #ccc; }
 
-.gc-prtts a h2,
-.gc-prtts a h3,
-.gc-prtts a h4,
-.gc-nttvs a h2,
-.gc-nttvs a h3,
-.gc-nttvs a h4 {
-  font-size: 16px; }
+.gc-prtts a,
+.gc-nttvs a {
+  text-decoration: none; }
+  .gc-prtts a h2,
+  .gc-prtts a h3,
+  .gc-prtts a h4,
+  .gc-prtts a figcaption,
+  .gc-nttvs a h2,
+  .gc-nttvs a h3,
+  .gc-nttvs a h4,
+  .gc-nttvs a figcaption {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 23px;
+    text-decoration: underline; }
+  .gc-prtts a p:last-child,
+  .gc-nttvs a p:last-child {
+    color: black; }
 
 .gc-nws a h2,
 .gc-nws a h3,
