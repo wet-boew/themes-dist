@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.28-development - 2018-03-09
+ * v4.0.28-development - 2018-03-14
  *
  */
 @charset "UTF-8";
@@ -21,9 +21,13 @@ Left menu variables
  * Use this file to override Bootstrap variables and WET custom variables.
  * If there is a Bootstrap variable not shown here that you want to override, go to "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables" to view the variables that you can override. Simply copy and paste the variable and its applicable section (if applicable) from the Bootstrap file into this override file and override the variables as applicable.
  */
-.splash object {
+.splash object,
+.splash img {
   height: auto;
   max-width: 100%; }
+
+.splash img {
+  margin-bottom: .375em; }
 
 .splash #bg {
   height: 200%;

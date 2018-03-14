@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.28-development - 2018-03-09
+ * v4.0.28-development - 2018-03-14
  *
  */
 @charset "UTF-8";
@@ -9933,10 +9933,12 @@ header {
         position: absolute;
         right: 0;
         top: 0; }
-    header .brand object,
-    header .brand img {
+    header .brand img,
+    header .brand object {
       height: auto;
       max-height: 40px; }
+    header .brand img {
+      margin-bottom: .375em; }
 
 /*
  * Mobile Chevron
