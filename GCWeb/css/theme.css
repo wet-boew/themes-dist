@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.28-development - 2018-03-15
+ * v4.0.28-development - 2018-03-22
  *
  */
 @charset "UTF-8";
@@ -9777,9 +9777,17 @@ aside.features {
 .sect-lnks h4 a {
   font-size: 16px; }
 
+/* Deprecated as v4.0.28 */
 .gc-nttvs {
   border-top: 1px solid #ccc; }
 
+/* 
+ * Feature
+ *
+ * Deprecated as v4.0.28
+ * - style applied for: h2, h3, h4
+ * - class .gc-nttvs
+ */
 .gc-prtts a,
 .gc-nttvs a {
   text-decoration: none; }
@@ -11327,7 +11335,8 @@ table.nws-tbl > thead > tr > th {
   [dir=rtl] .gc-nttvs img {
     float: right;
     margin-left: 100%;
-    margin-right: 0; } }
+    margin-right: 0; }
+  /* Deprecated as v4.0.28 */ }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -11671,6 +11680,7 @@ table.nws-tbl > thead > tr > th {
  */
   .gc-nttvs {
     display: none; }
+  /* Deprecated as v4.0.28 */
   .jumbotron.pagebrand figcaption {
     position: static; }
   /*
