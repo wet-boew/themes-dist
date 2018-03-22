@@ -249,77 +249,63 @@
 				<details class="brdr-0">
 					<summary class="btn btn-default text-center">Report a problem on this page</summary>
 					<div class="well row">
-					<div class="gc-rprt-prblm">
-						<div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl">
-							<p><a href="#privacy" aria-controls="privacy" class="wb-lbx prvc-lnk" role="button">Privacy statement</a></p>
-							<section id="privacy" class="mfp-hide modal-dialog modal-content overlay-def">
-								<header class="modal-header">
-									<h2 class="modal-title">Privacy statement</h2>
-								</header>
-								<div class="modal-body">
-									<p>The information you provide through this survey is collected under the authority of the <a href="http://laws-lois.justice.gc.ca/eng/acts/H-5.7/page-1.html"><em>Department of Employment and Social Development Act (<abbr>DESDA</abbr>)</em></a> for the purpose of measuring the performance of Canada.ca and continually improving the website. Your participation is voluntary.</p>
-									<p>Please do not include sensitive personal information in the message box, such as your name, address, Social Insurance Number, personal finances, medical or work history or any other information by which you or anyone else can be identified by your comments or views.</p>
-									<p>Any personal information collected will be administered in accordance with the <a href="http://laws-lois.justice.gc.ca/eng/acts/H-5.7/page-1.html"><em>Department of Employment and Social Development Act</em></a>, the <a href="http://laws-lois.justice.gc.ca/eng/acts/P-21/index.html"><em>Privacy Act</em></a> and other applicable privacy laws governing the protection of personal information under the control of the Department of Employment and Social Development. Survey responses will not be attributed to individuals.</p>
-									<p>If you wish to obtain information related to this survey, you may submit a request to the Department of Employment and Social Development pursuant to the <a href="http://laws-lois.justice.gc.ca/eng/acts/A-1/FullText.html"><em>Access to Information Act</em></a>. Instructions for making a request are provided in the publication <a href="http://www.infosource.gc.ca/index-eng.asp">InfoSource</a>, copies of which are located in local Service Canada Centres.</p>
-									<p>You have the right to file a complaint with the Privacy Commissioner of Canada regarding the institution's handling of your personal information at: <a href="https://www.priv.gc.ca/en/report-a-concern/file-a-formal-privacy-complaint/">File a formal privacy complaint</a>.</p>
-									<p>When making a request, please refer to the name of this survey: Report a Problem on This Page.</p>
-								</div>
-							</section>
-							<form action="#">
-								<fieldset>
-									<legend><span class="field-name">Please select all that apply: </span></legend>
-										<div class="checkbox">
-											<label for="problem1"><input type="checkbox" data-reveal="#broken" name="problem" value="Something is broken" id="problem1" />Something is broken</label>
-										</div>
-										<div class="form-group hide" id="broken">
-											<label for="problem1-detail">Provide more details (optional):</label>
-											<input type="text" class="form-control full-width" id="problem1-detail">
-										</div>
-										<div class="checkbox">
-											<label for="problem2"><input type="checkbox" data-reveal="#spelling" name="problem" value="It has spelling or grammar mistakes" id="problem2" />The page has spelling or grammar mistakes</label>
-										</div>
-										<div class="form-group hide" id="spelling">
-											<label for="problem2-detail">Provide more details (optional):</label>
-											<input type="text" class="form-control full-width" id="problem2-detail">
-										</div>
-										<div class="checkbox">
-											<label for="problem3"><input type="checkbox" data-reveal="#wrong" name="problem" value="The information is wrong" id="problem3" />The information is wrong</label>
-										</div>
-										<div class="form-group hide" id="wrong">
-											<label for="problem3-detail">Provide more details (optional):</label>
-											<input type="text" class="form-control full-width" id="problem3-detail">
-										</div>
-										<div class="checkbox">
-											<label for="problem4"><input type="checkbox" data-reveal="#outdated" name="problem" value="The information is outdated" id="problem4" />The information is outdated</label>
-										</div>
-										<div class="form-group hide" id="outdated">
-											<label for="problem4-detail">Provide more details (optional):</label>
-											<input type="text" class="form-control full-width" id="problem4-detail">
-										</div>
-										<div class="checkbox">
-											<label for="problem5"><input type="checkbox" data-reveal="#find" name="problem" value="I can’t find what I’m looking for" id="problem5" />I can’t find what I’m looking for</label>
-										</div>
-										<div class="form-group hide" id="find">
-											<label for="problem5-detail">Describe what you’re looking for (optional):</label>
-											<input type="text" class="form-control full-width" id="problem5-detail">
-										</div>
-										<div class="checkbox">
-											<label for="problem6"><input type="checkbox" data-reveal="#confusing" name="problem" value="It’s confusing" id="problem6" />Other</label>
-										</div>
-										<div class="form-group hide" id="confusing">
-											<label for="problem6-detail">Provide more details (optional):</label>
-											<input type="text" class="form-control full-width" id="problem6-detail">
-										</div>
-					
-								</fieldset>
-								<button type="submit" class="btn btn-primary wb-toggle" data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'>Submit</button>
-							</form>
+						<div class="gc-rprt-prblm">
+							<div class="gc-rprt-prblm-frm gc-rprt-prblm-tggl">
+								<form action="#">
+									<fieldset>
+										<legend><span class="field-name">Please select all that apply: </span></legend>
+											<div class="checkbox">
+												<label for="problem1"><input type="checkbox" data-reveal="#broken" name="problem" value="Something is broken" id="problem1" />Something is broken</label>
+											</div>
+											<div class="form-group hide" id="broken">
+												<label for="problem1-detail">Provide more details (optional):</label>
+												<input type="text" class="form-control full-width" id="problem1-detail">
+											</div>
+											<div class="checkbox">
+												<label for="problem2"><input type="checkbox" data-reveal="#spelling" name="problem" value="It has spelling or grammar mistakes" id="problem2" />The page has spelling or grammar mistakes</label>
+											</div>
+											<div class="form-group hide" id="spelling">
+												<label for="problem2-detail">Provide more details (optional):</label>
+												<input type="text" class="form-control full-width" id="problem2-detail">
+											</div>
+											<div class="checkbox">
+												<label for="problem3"><input type="checkbox" data-reveal="#wrong" name="problem" value="The information is wrong" id="problem3" />The information is wrong</label>
+											</div>
+											<div class="form-group hide" id="wrong">
+												<label for="problem3-detail">Provide more details (optional):</label>
+												<input type="text" class="form-control full-width" id="problem3-detail">
+											</div>
+											<div class="checkbox">
+												<label for="problem4"><input type="checkbox" data-reveal="#outdated" name="problem" value="The information is outdated" id="problem4" />The information is outdated</label>
+											</div>
+											<div class="form-group hide" id="outdated">
+												<label for="problem4-detail">Provide more details (optional):</label>
+												<input type="text" class="form-control full-width" id="problem4-detail">
+											</div>
+											<div class="checkbox">
+												<label for="problem5"><input type="checkbox" data-reveal="#find" name="problem" value="I can’t find what I’m looking for" id="problem5" />I can’t find what I’m looking for</label>
+											</div>
+											<div class="form-group hide" id="find">
+												<label for="problem5-detail">Describe what you’re looking for (optional):</label>
+												<input type="text" class="form-control full-width" id="problem5-detail">
+											</div>
+											<div class="checkbox">
+												<label for="problem6"><input type="checkbox" data-reveal="#confusing" name="problem" value="It’s confusing" id="problem6" />Other</label>
+											</div>
+											<div class="form-group hide" id="confusing">
+												<label for="problem6-detail">Provide more details (optional):</label>
+												<input type="text" class="form-control full-width" id="problem6-detail">
+											</div>
+						
+									</fieldset>
+									<button type="submit" class="btn btn-primary wb-toggle" data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'>Submit</button>
+								</form>
+							</div>
+							<div class="gc-rprt-prblm-thnk gc-rprt-prblm-tggl hide">
+								<h3>Thank you for your help!</h3>
+								<p>You will not receive a reply. For enquiries, please <a href="https://www.canada.ca/en/contact.html">contact us</a>.</p>
+							</div>
 						</div>
-						<div class="gc-rprt-prblm-thnk gc-rprt-prblm-tggl hide">
-							<h3>Thank you for your help!</h3>
-							<p>You will not receive a reply. For enquiries, please <a href="https://www.canada.ca/en/contact.html">contact us</a>.</p>
-						</div>
-					</div>
 					</div>
 				</details>
 			</div>
