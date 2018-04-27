@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.29-development - 2018-04-25
+ * v4.0.28.1 - 2018-04-27
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -6208,7 +6208,7 @@ var componentName = "wb-frmvld",
 					"site!deps/additional-methods" + modeJS
 				],
 				testReady: function() {
-					return ( window.fromValid && window.fromValid.additional );
+					return ( $.validator && $.validator.methods.bic );
 				},
 				complete: function() {
 					var $elm = $( "#" + elmId ),
