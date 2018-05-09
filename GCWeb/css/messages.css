@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.28.1 - 2018-04-27
+ * v4.0.29-development - 2018-05-09
  *
  */
 @charset "UTF-8";
@@ -147,9 +147,8 @@ Left menu variables
 .error .srchbox input {
   background-color: fff;
   border-color: #fff currentColor #fff #fff;
-  -webkit-border-image: none;
-       -o-border-image: none;
-          border-image: none;
+  -o-border-image: none;
+     border-image: none;
   border-style: solid none solid solid;
   border-width: 1px 0 1px 1px;
   color: #333;

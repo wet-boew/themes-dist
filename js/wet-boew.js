@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.28.1 - 2018-04-27
+ * v4.0.29-development - 2018-05-09
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -5465,8 +5465,12 @@ var componentName = "wb-feeds",
 		generic: function( data ) {
 			var title = data.title;
 
-			if ( typeof( title ) === "object" && title.content ) {
-				title = title.content;
+			if ( typeof( title ) === "object" ) {
+				if ( title.content ) {
+					title = title.content;
+				} else if ( title.type === "xhtml" && title.div ) {
+					title = title.div.content;
+				}
 			}
 			return "<li><a href='" + data.link + "'>" + title + "</a><br />" +
 				( data.publishedDate !== "" ? " <small class='feeds-date'><time>" +
