@@ -1,0 +1,422 @@
+<!DOCTYPE html><!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="fr" dir="ltr">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+<title>[Nom de l’institution] - GCWU theme - Exemples pratiques - Boîte à outils de l'expérience Web
+</title>
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<!-- Meta data -->
+<meta name="description" content="La Boîte à outils de l’expérience Web (BOEW) rassemble différents composants réutilisables et prêts-à-utiliser pour la conception et la mise à jour de sites Web innovateurs qui sont à la fois accessibles, conviviaux et interopérables. Tous ces composants réutilisables sont des logiciels libres mis à la disposition des ministères et des collectivités Web externes.">
+<meta name="dcterms.title" content="[Nom de l’institution]- Boîte à outils de l'expérience Web">
+<meta name="dcterms.creator" content="French name of the content author / Nom en français de l'auteur du contenu">
+<meta name="dcterms.issued" title="W3CDTF" content="Date published (YYYY-MM-DD) / Date de publication (AAAA-MM-JJ)">
+<meta name="dcterms.modified" title="W3CDTF" content="Date modified (YYYY-MM-DD) / Date de modification (AAAA-MM-JJ)">
+<meta name="dcterms.subject" title="scheme" content="French subject terms / Termes de sujet en français">
+<meta name="dcterms.language" title="ISO639-2" content="fra"> <!-- Meta data-->
+<!--[if gte IE 9 | !IE ]><!-->
+<link href="./theme-gcwu-fegc/assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="./theme-gcwu-fegc/css/theme.min.css">
+<!--<![endif]-->
+<!--[if lt IE 9]>
+		<link href="./theme-gcwu-fegc/assets/favicon.ico" rel="shortcut icon" />
+		<link rel="stylesheet" href="./theme-gcwu-fegc/css/ie8-theme.min.css" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="./wet-boew/js/ie8-wet-boew.min.js"></script>
+		<![endif]-->
+<noscript><link rel="stylesheet" href="./wet-boew/css/noscript.min.css" /></noscript>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp">
+<li class="wb-slc">
+<a class="wb-sl" href="#wb-cont">Passer au contenu principal</a>
+</li>
+<li class="wb-slc visible-sm visible-md visible-lg">
+<a class="wb-sl" href="#wb-info">Passer à «&#160;À propos de ce site&#160;»</a>
+</li>
+</ul>
+<header role="banner">
+<div id="wb-bnr">
+<div id="wb-bar">
+<div class="container">
+<div class="row">
+<img id="gcwu-sig" src="./theme-gcwu-fegc/assets/sig-fr.svg" alt="Gouvernement du Canada / Government of Canada">
+<ul id="gc-bar" class="list-inline">
+<li><a href="http://www.canada.ca/fr/index.html" rel="external">Canada.ca</a></li>
+<li><a href="http://www.canada.ca/fr/services/index.html" rel="external">Services</a></li>
+<li><a href="http://www.canada.ca/fr/gouv/min/index.html" rel="external">Ministères</a></li>
+<li id="wb-lng"><h2>Sélection de la langue</h2>
+<ul class="list-inline">
+<li><a lang="en" href="institution-en.html">English</a></li>
+</ul>
+</li></ul>
+<section class="wb-mb-links col-xs-12 visible-sm visible-xs" id="wb-glb-mn">
+<h2>Recherche et menus</h2>
+<ul class="pnl-btn list-inline text-right">
+<li><a href="#mb-pnl" title="Recherche et menus" aria-controls="mb-pnl" class="overlay-lnk btn btn-sm btn-default" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Recherche et menus</span></span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+</section>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div id="wb-sttl" class="col-md-5">
+<a href="http://wet-boew.github.io/v4.0-ci/index-fr.html">
+<span>Boîte à outils de l'expérience Web</span>
+</a>
+</div>
+<img id="wmms" src="./theme-gcwu-fegc/assets/wmms.svg" alt="Symbole du gouvernement du Canada">
+<section id="wb-srch" class="visible-md visible-lg">
+<h2>Recherche</h2>
+<form action="https://google.ca/search" method="get" role="search" class="form-inline">
+<div class="form-group">
+<label for="wb-srch-q">Recherchez le site Web</label>
+<input id="wb-srch-q" class="form-control" name="q" type="search" value="" size="27" maxlength="150">
+<input type="hidden" name="q" value="site:wet-boew.github.io OR site:github.com/wet-boew/">
+</div>
+<button type="submit" id="wb-srch-sub" class="btn btn-default">Recherche</button>
+</form>
+</section>
+</div>
+</div>
+</div>
+<nav role="navigation" id="wb-sm" data-ajax-replace="./ajax/sitemenu-fr.html" data-trgt="mb-pnl" class="wb-menu visible-md visible-lg" typeof="SiteNavigationElement">
+<div class="container nvbar">
+<h2>Menu des sujets</h2>
+<div class="row">
+<ul class="list-inline menu">
+<li><a href="./index-fr.html">Projet de la BOEW</a></li>
+<li><a href="./docs/start-fr.html#implement">Mise en œuvre de la BOEW</a></li>
+<li><a href="./docs/start-fr.html">Contribuer à la BOEW</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<nav role="navigation" id="wb-bc" property="breadcrumb">
+<h2>Vous êtes ici :</h2>
+<div class="container">
+<div class="row">
+<ol class="breadcrumb">
+<li>
+<a href="https://www.canada.ca/fr.html">Accueil</a>
+</li>
+<li>
+<a href="https://www.canada.ca/fr/gouvernement/min.html">Ministères et organismes</a>
+</li>
+</ol>
+</div>
+</div>
+</nav>
+</header>
+<main role="main" property="mainContentOfPage" class="container">
+<h1 id="wb-cont" property="name" class="wb-inv">[Nom de l’institution]</h1>
+<p class="pagetag" property="description">[Nom de l’institution] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sagittis massa sed libero eleifend, ac iaculis urna tempor. Cras sagittis massa sed libero eleifend, ac iaculis urna tempor.</p>
+<section>
+<h2>Nouveautés</h2>
+<div class="row">
+<div class="col-lg-4 col-md-6">
+<a href="#">
+<figure>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/360x203.png" alt="" class="img-responsive thumbnail">
+<figcaption>[Titre de l’article]</figcaption>
+</figure>
+</a>
+<p class="mrgn-bttm-0"><small><time>AAAA-MM-JJ hh:mm</time> – Type de produit médiatique</small></p>
+<p>Brève description de la nouvelle.</p>
+</div>
+<div class="col-lg-4 col-md-6">
+<a href="#">
+<figure>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/360x203.png" alt="" class="img-responsive thumbnail">
+<figcaption>[Titre de l’article]</figcaption>
+</figure>
+</a>
+<p class="mrgn-bttm-0"><small>AAAA-MM-JJ hh:mm - Type de produit médiatique</small></p>
+<p>Brève description de la nouvelle.</p>
+</div>
+<div class="col-lg-4 col-xs-12">
+<ul class="list-unstyled lst-spcd">
+<li><a href="#">[Titre de l’article]</a><time class="small">[AAAA-MM-JJ hh:mm]</time></li>
+<li><a href="#">[Titre de l’article]</a><time class="small">[AAAA-MM-JJ hh:mm]</time></li>
+<li><a href="#">[Titre de l’article]</a><time class="small">[AAAA-MM-JJ hh:mm]</time></li>
+</ul>
+<p><strong><a href="#">Toutes les nouvelles</a></strong></p>
+</div>
+</div>
+</section>
+<div class="row">
+<section class="col-md-4 col-xs-12 pull-right lnkbx">
+<h2>En demande</h2>
+<ul>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+<li><a href="#">[Lien à une tâche principale]</a></li>
+</ul>
+</section>
+<section class="col-md-8 col-xs-12 pull-left">
+<h2>Services et renseignements</h2>
+<div class="wb-eqht row">
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+<div class="col-md-6">
+<h3 class="h5"><a href="#">[Suject ou sous-sujet]</a></h3>
+<p>Résumé des renseignements disponibles ou des tâches pouvant être accomplies sur la page. Supprimez les longs libellés et les messages promotionnels. Utilisez une formulation basée sur l'action.</p>
+</div>
+</div>
+</section>
+<div class="pull-right col-xs-12 col-md-4">
+<section class="lnkbx">
+<h2>Contactez-nous</h2>
+<ul>
+<li><a href="#">[Lien du numéro de contact]</a></li>
+<li><a href="#">[Lien du numéro de contact]</a></li>
+<li><a href="#">[Lien du numéro de contact]</a></li>
+</ul>
+</section>
+<section class="lnkbx">
+<h2>Autres renseignements pour les</h2>
+<ul>
+<li><a href="#">[Lien à un sujet pour un auditoire ciblé]</a></li>
+<li><a href="#">[Lien à un sujet pour un auditoire ciblé]</a></li>
+<li><a href="#">[Lien à un sujet pour un auditoire ciblé]</a></li>
+</ul>
+</section>
+</div>
+</div>
+<section class="whtwedo">
+<h2>Ce que nous faisons</h2>
+<div class="row wb-eqht">
+<section class="col-lg-4 col-md-6">
+<h3>La recherche</h3>
+<ul>
+<li><a href="#">[Notre étude 1]</a></li>
+<li><a href="#">[Notre étude 2 avec un long titre]</a></li>
+<li><a href="#">[Notre étude 3 avec un long titre]</a></li>
+<li><a href="#">[La recherche 4]</a></li>
+</ul>
+<p><a href="#">Tous les rapports d’étude connexes</a></p>
+</section>
+<section class="col-lg-4 col-md-6">
+<h3>Enquêtes</h3>
+<ul>
+<li><a href="#">[Enquête 1]</a></li>
+<li><a href="#">[Enquête 2 avec un long titre]</a></li>
+<li><a href="#">[Enquête 3]</a></li>
+<li><a href="#">[Enquête 4]</a></li>
+</ul>
+<p><a href="#">Toutes les enquêtes connexes</a></p>
+</section>
+<section class="col-lg-4 col-md-6">
+<h3>Consultations</h3>
+<ul>
+<li><a href="#">[Consultation 1]</a></li>
+<li><a href="#">[Consultation 2 avec un long titre]</a></li>
+<li><a href="#">[Consultation 3]</a></li>
+<li><a href="#">[Consultation 4 avec un long titre]</a></li>
+</ul>
+<p><a href="#">Toutes les consultations connexes</a></p>
+</section>
+</div>
+</section>
+<section class="gc-crprt">
+<h2>Renseignements sur l’organisation</h2>
+<div class="row">
+<div class="col-md-4">
+<ul>
+<li><a href="#">Mandat</a></li>
+<li><a href="#">Programmes</a></li>
+<li><a href="#">Structure organisationnelle</a></li>
+<li><a href="#">Portefeuille</a></li>
+<li><a href="#">Partenaires</a></li>
+<li><a href="#">Transparence</a></li>
+<li><a href="#">Possibilités d’emplois</a></li>
+<li><a href="#">Compte rendu du rendement des services</a></li>
+</ul>
+</div>
+<div class="col-md-8">
+<div class="wb-eqht row">
+<section class="col-md-4">
+<h3>Ministre</h3>
+<a href="#">
+<figure>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/218x291.png" alt="" class="img-responsive thumbnail">
+<figcaption>[L’honorable (nom du ministre)]</figcaption>
+</figure>
+</a>
+<p class="mrgn-tp-sm">Titre officiel du ministre</p>
+</section>
+<section class="col-md-4">
+<h3>Ministre</h3>
+<a href="#">
+<figure>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/218x291.png" alt="" class="img-responsive thumbnail">
+<figcaption>[L’honorable (nom du ministre)]</figcaption>
+</figure>
+</a>
+<p class="mrgn-tp-sm">Titre officiel du ministre</p>
+</section>
+<section class="col-md-4">
+<h3>Direction</h3>
+<a href="#">
+<figure>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/218x291.png" alt="" class="img-responsive thumbnail">
+<figcaption>[L’honorable (nom du ministre)]</figcaption>
+</figure>
+</a>
+<p class="mrgn-tp-sm">Titre officiel du ministre</p>
+</section>
+</div>
+</div>
+</div>
+</section>
+<section class="gc-prtts">
+<h2>En vedette</h2>
+<div class="row">
+<div class="col-lg-4 col-md-6 mrgn-bttm-md">
+<a href="#">
+<figure>
+<figcaption>[Lien à l’élément en vedette]</figcaption>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/360x203.png" alt="" class="img-responsive thumbnail mrgn-bttm-sm">
+<p>Brève description de l’élément en vedette.</p>
+</figure>
+</a>
+</div>
+<div class="col-lg-4 col-md-6 mrgn-bttm-md">
+<a href="#">
+<figure>
+<figcaption>[Lien à l’élément en vedette]</figcaption>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/360x203.png" alt="" class="img-responsive thumbnail mrgn-bttm-sm">
+<p>Brève description de l’élément en vedette.</p>
+</figure>
+</a>
+</div>
+<div class="col-lg-4 col-md-6 mrgn-bttm-md">
+<a href="#">
+<figure>
+<figcaption>[Lien à l’élément en vedette]</figcaption>
+<img src="http://wet-boew.github.io/themes-dist/GCWeb/img/360x203.png" alt="" class="img-responsive thumbnail mrgn-bttm-sm">
+<p>Brève description de l’élément en vedette.</p>
+</figure>
+</a>
+</div>
+</div>
+</section>
+<dl id="wb-dtmd">
+<dt>Date de modification&#160;:&#32;</dt>
+<dd><time property="dateModified">2018-06-08</time></dd>
+</dl>
+</main>
+<footer role="contentinfo" id="wb-info" class="visible-sm visible-md visible-lg wb-navcurr">
+<div class="container">
+<nav role="navigation">
+<h2>À propos de ce site</h2>
+<ul id="gc-tctr" class="list-inline">
+<li><a rel="license" href="http://wet-boew.github.io/wet-boew/License-fr.html">Avis</a></li>
+<li><a href="http://www.tbs-sct.gc.ca/tbs-sct/common/trans-fra.asp">Transparence</a></li>
+</ul>
+<div class="row">
+<section class="col-sm-3">
+<h3>Contactez-nous</h3>
+<ul class="list-unstyled">
+<li><a href="https://github.com/wet-boew/wet-boew/issues/new">Questions ou commentaires?</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>À propos</h3>
+<ul class="list-unstyled">
+<li><a href="http://wet-boew.github.io/v4.0-ci/index-fr.html#apropos">À propos de la Boîte à outils de l’expérience Web</a></li>
+<li><a href="http://www.tbs-sct.gc.ca/ws-nw/index-fra.asp">À propos des normes Web</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>Nouvelles</h3>
+<ul class="list-unstyled">
+<li><a href="https://github.com/wet-boew/wet-boew/pulse">Activité du projet récente</a></li>
+<li><a href="https://github.com/wet-boew/wet-boew/graphs">Statistiques du projet</a></li>
+</ul>
+</section>
+<section class="col-sm-3">
+<h3>Restez branchés</h3>
+<ul class="list-unstyled">
+<li><a href="https://twitter.com/BoiteExpWeb">Twitter</a></li>
+</ul>
+</section>
+</div>
+</nav>
+</div>
+<div id="gc-info">
+<div class="container">
+<nav role="navigation">
+<h2>Pied de page du gouvernement du Canada</h2>
+<ul class="list-inline">
+<li><a href="http://canadiensensante.gc.ca"><span>Santé</span></a></li>
+<li><a href="http://voyage.gc.ca"><span>Voyage</span></a></li>
+<li><a href="http://www.servicecanada.gc.ca/fra/accueil.shtml"><span>Service Canada</span></a></li>
+<li><a href="http://www.guichetemplois.gc.ca"><span>Emplois</span></a></li>
+<li><a href="http://plandaction.gc.ca/fr"><span>Économie</span></a></li>
+<li id="canada-ca"><a href="http://www.canada.ca/fr/index.html">Canada.ca</a></li>
+</ul> </nav>
+</div>
+</div>
+</footer>
+<!--[if gte IE 9 | !IE ]><!-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="./wet-boew/js/wet-boew.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+		<script src="./wet-boew/js/ie8-wet-boew2.min.js"></script>
+		
+		<![endif]-->
+<script src="./theme-gcwu-fegc/js/theme.min.js"></script>
+</body>
+</html>
