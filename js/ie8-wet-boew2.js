@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.29-development - 2018-07-04
+ * v4.0.29-development - 2018-07-12
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -2458,7 +2458,7 @@ var componentName = "wb-charts",
 							"/getcellvalue": function( elem ) {
 
 								// Get the number from the data cell, #3267
-								var cellValue = $.trim( $( elem ).text() );
+								var cellValue = $.trim( elem.dataset.wbChartsValue || $( elem ).text() );
 								return [
 									parseFloat( cellValue.replace( /(\d{1,3}(?:(?: |,)\d{3})*)(?:(?:.|,)(\d{1,2}))?$/, function( a, b, c ) {
 										return b.replace( / |,/g, "" ) + "." + c || "0";
@@ -6746,12 +6746,14 @@ var componentName = "wb-menu",
 
 		menuClose( $elm.find( ".active" ), true );
 
+		menu.addClass( "active" );
+
 		// Ignore if doesn't have a submenu
 		if ( menuLink.attr( "aria-haspopup" ) === "true" ) {
 
 			// Add the open state classes
 			menu
-				.addClass( "active sm-open" )
+				.addClass( "sm-open" )
 				.children( ".sm" )
 					.addClass( "open" )
 					.attr( {
