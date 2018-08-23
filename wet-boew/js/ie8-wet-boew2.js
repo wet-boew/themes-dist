@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.29-development - 2018-08-09
+ * v4.0.29-development - 2018-08-23
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4801,9 +4801,9 @@ var componentName = "wb-feeds",
 
 			// due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
 			return "<li><a class='feed-flickr' href='javascript:;' data-flickr='" +
-                wb.escapeAttribute( JSON.stringify( flickrData ) ) + "'><img src='" + flickrData.thumbnail + "' alt='" +
-                wb.escapeAttribute( flickrData.title ) + "' title='" + wb.escapeAttribute( flickrData.title ) +
-                "' class='img-responsive'/></a></li>";
+				wb.escapeAttribute( JSON.stringify( flickrData ) ) + "'><img src='" + flickrData.thumbnail + "' alt='" +
+				wb.escapeAttribute( flickrData.title ) + "' title='" + wb.escapeAttribute( flickrData.title ) +
+				"' class='img-responsive'/></a></li>";
 		},
 
 		/**
@@ -4819,10 +4819,10 @@ var componentName = "wb-feeds",
 
 			// Due to CORS we cannot default to simple ajax pulls of the image. We have to inline the content box
 			return "<li class='col-md-4 col-sm-6 feed-youtube' data-youtube='" +
-                wb.escapeAttribute( JSON.stringify( youtubeDate ) ) + "'><a href='javascript:;'><img src='" +
-                wb.pageUrlParts.protocol + "//img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" +
-                wb.escapeAttribute( youtubeDate.title ) + "' title='" + wb.escapeAttribute( youtubeDate.title ) +
-                "' class='img-responsive' /></a></li>";
+				wb.escapeAttribute( JSON.stringify( youtubeDate ) ) + "'><a href='javascript:;'><img src='" +
+				wb.pageUrlParts.protocol + "//img.youtube.com/vi/" + youtubeDate.videoId + "/mqdefault.jpg' alt='" +
+				wb.escapeAttribute( youtubeDate.title ) + "' title='" + wb.escapeAttribute( youtubeDate.title ) +
+				"' class='img-responsive' /></a></li>";
 		},
 
 		/**
@@ -4832,7 +4832,7 @@ var componentName = "wb-feeds",
 		 */
 		pinterest: function( data ) {
 			var content = fromCharCode( data.description ).replace( /<a href="\/pin[^"]*"><img ([^>]*)><\/a>([^<]*)(<a .*)?/, "<a href='" +
-                data.link + "'><img alt='' class='center-block' $1><br/>$2</a>$3" );
+				data.link + "'><img alt='' class='center-block' $1><br/>$2</a>$3" );
 			return "<li class='media'>" + content +
 			( data.publishedDate !== "" ? " <small class='small feeds-date'><time>" +
 			wb.date.toDateISO( data.publishedDate, true ) + "</time></small>" : "" ) + "</li>";
@@ -5349,25 +5349,89 @@ var componentName = "wb-filter",
 			replace( /_NBITEM_/g, nbItem ).
 			replace( /_TOTAL_/g, total );
 	},
+
+	/*
+	 * Takes in the text from the filter box
+	 * Returns:
+	 *  An array of search words
+	 *      Special characters are escaped
+	 *      Double and single quotes removed
+	 */
+	filterQueryParser = function( filter ) {
+
+		// Pattern to seperate the filter text into "words"
+		var pattern = /[^\s"]+|"([^"]*)"/gi;
+
+		// Make strings safe again for regex
+		// Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+		filter = filter.replace( /[.*+?^${}()|[\]\\]/g, "\\$&" );
+
+		// Apply the word match pattern and return
+		return filter.match( pattern );
+	},
+
+	/**
+	 * Build the Regular Expression that we are going
+	 * to use to filter content
+	 * This involves identifying the type of search being
+	 * applied and then breaking up the search string into
+	 * words
+	 */
+	buildSearchFilterRegularExp =  function( filterType, filter ) {
+
+		var words, wordRegExFilter = filter,
+			i, i_len;
+
+		switch ( filterType ) {
+
+		case "and":
+			words = filterQueryParser( filter );
+			if ( words ) {
+				wordRegExFilter = ".*";
+				i_len = words.length;
+				for ( i = 0; i < i_len; i++ ) {
+					wordRegExFilter = wordRegExFilter + ( "(?=.*" + words[ i ] + ")" );
+				}
+			}
+			break;
+
+		case "or": // If one word fall back on default
+			words = filterQueryParser( filter );
+			if ( words ) {
+				wordRegExFilter =  words.join( "|" );
+			}
+			break;
+
+		default:
+			break;
+
+		}
+
+		return new RegExp( wordRegExFilter, "i" );
+
+	},
+
 	filter = function( $field, $elm, settings ) {
 		var unAccent = function( str ) {
 				return str.normalize( "NFD" ).replace( /[\u0300-\u036f]/g, "" );
 			},
-			filter = unAccent( $field.val() ),
+			filter = unAccent( $field.val().trim() ),
 			fCallBack = settings.filterCallback,
 			secSelector = ( settings.section || "" )  + " ",
 			hndParentSelector = settings.hdnparentuntil,
 			$items = $elm.find( secSelector + settings.selector ),
 			itemsLength = $items.length,
-			i, $item, text;
+			i, $item, text, searchFilterRegularExp;
 
 		$elm.find( "." + filterClass ).removeClass( filterClass );
+
+		searchFilterRegularExp = buildSearchFilterRegularExp( settings.filterType, filter );
 
 		for ( i = 0; i < itemsLength; i += 1 ) {
 			$item = $items.eq( i );
 			text = unAccent( $item.text() );
 
-			if ( !text.match( new RegExp( filter, "i" ) ) ) {
+			if ( !text.match( searchFilterRegularExp ) ) {
 				if ( hndParentSelector ) {
 					$item = $item.parentsUntil( hndParentSelector );
 				}
@@ -6095,8 +6159,8 @@ var componentName = "wb-lbx",
 					}
 
 					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" )
-                        .find( ".activate-open" )
-                        .trigger( "wb-activate" );
+						.find( ".activate-open" )
+						.trigger( "wb-activate" );
 
 					this.contentContainer.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
 				},
@@ -6621,15 +6685,19 @@ var componentName = "wb-menu",
 								.innerHTML +
 						"</div></header><div class='modal-body'>" + panel + "</div>";
 				panelDOM.className += " wb-overlay modal-content overlay-def wb-panel-r";
-				$panel
+
+				// fix #8241
+				$( document ).ajaxStop( function() {
+					$panel
 					.trigger( "wb-init.wb-overlay" )
 					.find( "summary" )
 						.attr( "tabindex", "-1" )
 						.trigger( detailsInitEvent );
-				$panel
+					$panel
 					.find( ".mb-menu > li:first-child" )
-						.find( ".mb-item" )
-							.attr( "tabindex", "0" );
+					.find( ".mb-item" )
+						.attr( "tabindex", "0" );
+				} );
 
 				/*
 				 * Build the regular mega menu
@@ -9675,7 +9743,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @jeresiv
  */
- /*jshint scripturl:true*/
+/*jshint scripturl:true*/
 ( function( $, window, wb ) {
 "use strict";
 
@@ -9853,7 +9921,7 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 	// Lets reset the search;
 	$datatable.search( "" ).columns().search( "" );
 
-    // Lets loop throug all options
+	// Lets loop throug all options
 	$form.find( "[name]" ).each( function() {
 		var $elm = $( this ),
 			$value = ( $elm.is( "select" ) ) ? $elm.find( "option:selected" ).val() : $elm.val();
