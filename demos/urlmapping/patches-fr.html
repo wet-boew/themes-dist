@@ -5,7 +5,8 @@
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>Correspondance d'URL - Appliquer des correctifs JSON - Canada.ca</title>
+<title>Correspondance d'URL - Appliquer des correctifs JSON - Canada.ca
+</title>
 <meta content="width=device-width,initial-scale=1" name="viewport">
 <meta name="description" content="Exécute des requête d&#x27;application de correctifs JSON pré-établis selon la correspondance des paramètres de l&#x27;URL.">
 <!--[if gte IE 9 | !IE ]><!-->
@@ -40,7 +41,8 @@
 <li class="wb-slc">
 <a class="wb-sl" href="#wb-info">Passer à «&#160;Au sujet du gouvernement&#160;»</a>
 </li>
-</ul><header role="banner">
+</ul>
+<header role="banner">
 <div id="wb-bnr" class="container">
 <section id="wb-lng" class="visible-md visible-lg text-right">
 <h2 class="wb-inv">Sélection de la langue</h2>
@@ -207,12 +209,12 @@
 	}'&gt;&lt;/div&gt;
 
 &lt;ul&gt;
-	&lt;li&gt;&lt;a href=&quot;?#ex1&quot;&gt;Vide &lt;code&gt;?&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
+	&lt;li&gt;&lt;a href=&quot;?#ex1&quot;&gt;Vide &lt;code&gt;?&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?exemple1a#ex1&quot;&gt;Gatineau et Pomme &lt;code&gt;?exemple1a&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?exemple1b#ex1&quot;&gt;Ottawa et Orange &lt;code&gt;?exemple1b&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?exemple1c&amp;amp;exemple1d#ex1&quot;&gt;Hull et Kiwi &lt;code&gt;?exemple1c&amp;amp;exemple1d&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-	
+
 &lt;section class=&quot;well&quot; id=&quot;jmexemple1&quot; data-wb-jsonmanager='{
 			&quot;url&quot;: &quot;demo/empty.json&quot;,
 			&quot;name&quot;: &quot;exemple1&quot;,
@@ -238,7 +240,7 @@
 <details>
 <summary>Code source</summary>
 <pre><code>&lt;ul data-wb-urlmapping='{ &quot;ville&quot; : { &quot;action&quot;: &quot;patch&quot;, &quot;source&quot;: &quot;#jmexemple2&quot;, &quot;base&quot;: &quot;/ville&quot;, &quot;match&quot;: &quot;^[a-z][a-z][a-z]$&quot;, &quot;default&quot;: &quot;gat&quot; } }'&gt;
-	&lt;li&gt;&lt;a href=&quot;?#ex2&quot;&gt;Empty &lt;code&gt;?&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
+	&lt;li&gt;&lt;a href=&quot;?#ex2&quot;&gt;Empty &lt;code&gt;?&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?ville=gat#ex2&quot;&gt;Gatineau &lt;code&gt;?ville=gat&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?ville=ott#ex2&quot;&gt;Ottawa &lt;code&gt;?ville=ott&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?ville=vdm#ex2&quot;&gt;Val-des-monts &lt;code&gt;?ville=vdm&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
@@ -250,7 +252,7 @@
 </details>
 <h3 id="ex3">Être précis dans la correspondance</h3>
 <p>Les configuration suivante vont écraser/contourner les fonctionalitées par défaut pour l'application des correctifs.</p>
-<ul data-wb-urlmapping='{ 
+<ul data-wb-urlmapping='{
 		"ex3a" : { "action": "patch", "source": "#jmexemple3", "base": "/ville", "match": "^[a-z][a-z][a-z]$", "default": "vdm" },
 		"ex3b" : { "action": "patch", "source": "#jmexemple3", "base": "/ville", "qval": "gat" },
 		"ex3c=exemple" : { "action": "patch", "source": "#jmexemple3", "base": "/ville", "qval": "ott" },
@@ -273,13 +275,13 @@
 </ul>
 <details>
 <summary>Code source</summary>
-<pre><code>&lt;ul data-wb-urlmapping='{ 
+<pre><code>&lt;ul data-wb-urlmapping='{
 		&quot;ex3a&quot; : { &quot;action&quot;: &quot;patch&quot;, &quot;source&quot;: &quot;#jmexemple3&quot;, &quot;base&quot;: &quot;/ville&quot;, &quot;match&quot;: &quot;^[a-z][a-z][a-z]$&quot;, &quot;default&quot;: &quot;vdm&quot; },
 		&quot;ex3b&quot; : { &quot;action&quot;: &quot;patch&quot;, &quot;source&quot;: &quot;#jmexemple3&quot;, &quot;base&quot;: &quot;/ville&quot;, &quot;qval&quot;: &quot;gat&quot; },
 		&quot;ex3c=exemple&quot; : { &quot;action&quot;: &quot;patch&quot;, &quot;source&quot;: &quot;#jmexemple3&quot;, &quot;base&quot;: &quot;/ville&quot;, &quot;qval&quot;: &quot;ott&quot; },
 		&quot;ex3d&quot; : { &quot;action&quot;: &quot;patch&quot;, &quot;source&quot;: &quot;#jmexemple3&quot;, &quot;base&quot;: &quot;/pays/province&quot;, &quot;match&quot;: &quot;^[a-z][a-z]$&quot;, &quot;default&quot;: &quot;ma&quot; }
 	}'&gt;
-	&lt;li&gt;&lt;a href=&quot;?#ex3&quot;&gt;Vide &lt;code&gt;?&lt;/code&gt;&lt;/a&gt;&lt;/li&gt; 
+	&lt;li&gt;&lt;a href=&quot;?#ex3&quot;&gt;Vide &lt;code&gt;?&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?ex3a#ex3&quot;&gt;La base est &quot;/ville&quot;, repli sur le défaut &lt;code&gt;?ex3a&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?ex3a=gat#ex3&quot;&gt;La base est &quot;/ville&quot;, affiche Gatineau &lt;code&gt;?ex3a=gat&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 	&lt;li&gt;&lt;a href=&quot;?ex3a=ott#ex3&quot;&gt;La base est &quot;/ville&quot;, Affiche Ottawa &lt;code&gt;?ex3a=ott&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
@@ -381,7 +383,8 @@
 <li><a href="https://pm.gc.ca/fra">Premier ministre</a></li>
 <li><a href="https://www.canada.ca/fr/gouvernement/systeme.html">Comment le gouvernement fonctionne</a></li>
 <li><a href="https://ouvert.canada.ca/">Gouvernement ouvert</a></li>
-</ul> </nav>
+</ul>
+</nav>
 <div class="brand">
 <div class="container">
 <div class="row">

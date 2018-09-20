@@ -326,7 +326,7 @@ wb.add( selectorPreset );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @duboisp
  */
- /*global jsonpointer */
+/*global jsonpointer */
 ( function( $, window, wb ) {
 "use strict";
 
@@ -2450,7 +2450,7 @@ $document.on( fetchEvent, function( event ) {
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @duboisp
  */
- /*global jsonpointer, jsonpatch */
+/*global jsonpointer, jsonpatch */
 ( function( $, window, wb ) {
 "use strict";
 
