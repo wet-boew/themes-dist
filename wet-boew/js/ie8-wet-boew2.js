@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-10-10
+ * v4.0.29 - 2018-10-10
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -6304,19 +6304,23 @@ $document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
 		$lightbox = $( eventTarget ).closest( ".mfp-wrap" );
 		linkTarget = document.getElementById( eventTarget.getAttribute( "href" ).substring( 1 ) );
 
-		// Ignore same page links to within the overlay
+		// Ignore same page links to within the overlay and modal popups
 		if ( linkTarget && !$.contains( $lightbox[ 0 ], linkTarget ) ) {
+			if ( $lightbox.find( ".popup-modal-dismiss" ).length === 0 ) {
 
-			// Stop propagation of the click event
-			if ( event.stopPropagation ) {
-				event.stopImmediatePropagation();
+				// Stop propagation of the click event
+				if ( event.stopPropagation ) {
+					event.stopImmediatePropagation();
+				} else {
+					event.cancelBubble = true;
+				}
+
+				// Close the overlay and set focus to the same page link
+				$.magnificPopup.close();
+				$( linkTarget ).trigger( setFocusEvent );
 			} else {
-				event.cancelBubble = true;
+				return false;
 			}
-
-			// Close the overlay and set focus to the same page link
-			$.magnificPopup.close();
-			$( linkTarget ).trigger( setFocusEvent );
 		}
 	}
 } );
