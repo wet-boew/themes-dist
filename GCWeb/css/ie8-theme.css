@@ -6429,12 +6429,12 @@ q:before, q:after {
     white-space: nowrap; }
     #wb-bc li:before {
       color: #333;
-      content: ">";
+      content: "";
       font-family: "Glyphicons Halflings";
       font-size: 0.7em; }
 
 [dir=rtl] #wb-bc li:before {
-  content: "<";
+  content: "";
   display: inline-block; }
 
 /*
@@ -10673,6 +10673,7 @@ header .brand {
       font-weight: 800; }
   #wb-info .brand {
     background: #f8f8f8;
+    border-top: 4px solid #335175;
     line-height: 30px; }
     #wb-info .brand object,
     #wb-info .brand img {
@@ -10686,12 +10687,6 @@ header .brand {
   #wb-info .ftr-urlt-lnk li:before {
     content: "\2022";
     margin-right: 0.7em; }
-  #wb-info .landscape {
-    background: #26374a url(../assets/landscape.png) no-repeat right bottom; }
-    #wb-info .landscape a {
-      color: #fff; }
-      #wb-info .landscape a:hover {
-        text-decoration: underline; }
   #wb-info .tofpg {
     line-height: 90px; }
     #wb-info .tofpg a {

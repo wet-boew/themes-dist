@@ -6393,12 +6393,12 @@ q:before, q:after {
     white-space: nowrap; }
     #wb-bc li:before {
       color: #333;
-      content: ">";
+      content: "";
       font-family: "Glyphicons Halflings";
       font-size: 0.7em; }
 
 [dir=rtl] #wb-bc li:before {
-  content: "<";
+  content: "";
   display: inline-block; }
 
 /*
