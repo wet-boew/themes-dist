@@ -11645,6 +11645,27 @@ table.nws-tbl > thead > tr > th {
   padding-bottom: 0;
   padding-top: 0; }
 
+.table-columnfloat th:first-child {
+  float: left; }
+
+.table-columnfloat td:nth-of-type(1) {
+  clear: left;
+  float: left; }
+
+.table-columnfloat thead th:nth-child(2) {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px; }
+
+.table-columnfloat th:first-child, .table-columnfloat td:nth-of-type(1) {
+  border: none; }
+
+.table-columnfloat tr, .table-columnfloat th:not(:first-of-type), .table-columnfloat td {
+  border-bottom: 1px solid #ddd; }
+
 /*
  Views
  */
