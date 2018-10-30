@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-10-18
+ * v4.0.30-development - 2018-10-30
  *
  */
 @charset "UTF-8";
@@ -34,6 +34,8 @@ Left menu variables
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic&subset=latin,latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin,latin-ext");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1086,11 +1088,11 @@ html {
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 16px;
   line-height: 1.4375;
   color: #333333;
-  background-color: #f9f9f9; }
+  background-color: #fff; }
 
 input,
 button,
@@ -1127,7 +1129,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.4375;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2089,7 +2091,7 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
-    background-color: #f9f9f9; }
+    background-color: #fff; }
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -3613,7 +3615,7 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
-      background-color: #f9f9f9;
+      background-color: #fff;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -3671,7 +3673,7 @@ tbody.collapse.in {
     .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus,
     .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #f9f9f9; } }
+      border-bottom-color: #fff; } }
 
 .tab-content > .tab-pane {
   display: none; }
@@ -4355,7 +4357,7 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 23px;
   line-height: 1.4375;
-  background-color: #f9f9f9;
+  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -5203,7 +5205,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -5316,7 +5318,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6417,24 +6419,23 @@ q:before, q:after {
   WET-BOEW
   @title: Breadcrumb CSS
  */
-#wb-bc {
-  background-color: #f5f5f5; }
-  #wb-bc ol {
-    border-radius: 0;
-    margin-bottom: 0; }
-  #wb-bc li {
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; }
-    #wb-bc li:before {
-      color: #333;
-      content: "";
-      font-family: "Glyphicons Halflings";
-      font-size: 0.7em; }
+#wb-bc ol {
+  border-radius: 0;
+  margin-bottom: 0; }
+
+#wb-bc li {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+  #wb-bc li:before {
+    color: #333;
+    content: ">";
+    font-family: "Glyphicons Halflings";
+    font-size: 0.7em; }
 
 [dir=rtl] #wb-bc li:before {
-  content: "";
+  content: "<";
   display: inline-block; }
 
 /*
@@ -9019,7 +9020,7 @@ table.dataTable {
         background: #ccc;
         background: rgba(204, 204, 204, 0.9); }
       .wb-tabs [role="tablist"] > li.active {
-        background: #f9f9f9;
+        background: #fff;
         border-bottom: 0;
         cursor: default;
         padding-bottom: 1px;
@@ -10229,9 +10230,25 @@ details {
 .pagedetails .row div:first-child a, .pagedetails .row div:first-child details, .pagedetails div + .wb-share-inited {
   margin-top: .5em; }
 
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px; }
+main {
+  font-size: 20px; }
+  main .pagedetails {
+    font-size: 16px; }
+
+.cnt-width p, .cnt-width li, .cnt-width dt, .cnt-width dd {
+  width: 70ch; }
+
+.cnt-width p {
+  margin-bottom: 27.5; }
+
+.cnt-width li {
+  margin-bottom: 10px; }
+
+.cnt-width .lst-spcd > li {
+  margin-bottom: 20px; }
+
+.cnt-width .lst-dblspcd > li {
+  margin-bottom: 40px; }
 
 a {
   color: #284162; }
@@ -10254,29 +10271,34 @@ h1,
 .h4, h5,
 .h5, h6,
 .h6 {
-  font-family: Helvetica, Arial, sans-serif; }
+  font-family: Lato, sans-serif; }
 
 h1 {
   border-bottom: 1px solid #af3c43;
-  font-size: 34px;
   margin-bottom: .2em;
   margin-top: 1.25em;
   padding-bottom: .2em; }
 
+h1, .h1 {
+  font-size: 38px; }
+
 h2, .h2 {
-  font-size: 26px; }
+  font-size: 37px; }
 
 h3, .h3 {
-  font-size: 22px; }
+  font-size: 28px; }
 
 h4, .h4 {
-  font-size: 18px; }
+  font-size: 23px; }
 
 h5, .h5 {
-  font-size: 16px; }
+  font-size: 20px; }
 
 h6, .h6 {
-  font-size: 14px; }
+  font-size: 16px; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  font-weight: 600; }
 
 .h3,
 .h4,
@@ -10307,6 +10329,40 @@ aside.features {
     aside.features .thumbnail img {
       border: solid 1px #eee;
       max-width: 100%; }
+
+/* Home page banner
+ *
+ * Reference in:
+ * - views/_screen-lg-min
+ * - views/_screen-xs-min-to-screen-xs-max
+ * - views/_screen-md-min-to-screen-md-max
+ * - views/_screen-xs-max
+ */
+.home-banner {
+  background-image: url(../assets/bkg-home-banner.jpg);
+  background-repeat: no-repeat;
+  padding: 3em 0px; }
+  .home-banner .innerbox {
+    background-color: #26374a;
+    color: #fff;
+    padding: 20px;
+    width: 50%; }
+    .home-banner .innerbox h1 {
+      font-weight: 500;
+      margin-top: 10px; }
+    .home-banner .innerbox p {
+      margin-top: 15px; }
+
+/* Home page your gov
+ *
+ * Reference in:
+ * - views/_screen-sm-max
+ */
+.home-your-gov {
+  background-image: url(../assets/bkg-home-yourgov.jpg);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 35%; }
 
 /* Heading with links inside of rows */
 .departments a h2,
@@ -10358,8 +10414,7 @@ aside.features {
   font-size: 16px;
   margin-top: 15px; }
 
-.secondary .h1,
-.home .h1 {
+.secondary .h1 {
   border-bottom: 1px solid #af3c43;
   font-size: 27px;
   margin-bottom: .2em;
@@ -10367,18 +10422,12 @@ aside.features {
 
 .secondary .row h2 a,
 .secondary .row h3 a,
-.secondary .row h4 a,
-.home .row h2 a,
-.home .row h3 a,
-.home .row h4 a {
+.secondary .row h4 a {
   font-size: 16px; }
 
 .secondary .row a h2,
 .secondary .row a h3,
-.secondary .row a h4,
-.home .row a h2,
-.home .row a h3,
-.home .row a h4 {
+.secondary .row a h4 {
   font-size: 16px; }
 
 /* Summaries styled as default buttons */
@@ -10386,6 +10435,40 @@ details[open] > summary.btn-default {
   border: 1px outset #dcdee1;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px; }
+
+/*
+ * List responsive style
+ *
+ * It has variant defined for some specific views
+ * - views/_screen-lg-min
+ * - views/_screen-xs-max
+ */
+.list-responsive li {
+  float: left;
+  width: 50%; }
+  .list-responsive li:nth:child(2n+2) {
+    clear: right; }
+
+.list-responsive:after {
+  clear: both; }
+
+/* Double space list items
+	Might worth to publish it upstream here instead: https://github.com/wet-boew/wet-boew/blob/master/src/base/lists/_base.scss#L30
+ */
+.lst-dblspcd > li {
+  margin-bottom: 20px; }
+
+.lst-dblspcd ul,
+.lst-dblspcd ol {
+  margin-top: 20px; }
+
+/* Style only the figcaption as the link */
+a.figcaption {
+  text-decoration: none; }
+  a.figcaption * :not(figcaption) {
+    color: #000; }
+  a.figcaption figcaption {
+    text-decoration: underline; }
 
 /* Thumbnail Treatments */
 .thumbnail {
@@ -10560,6 +10643,26 @@ header {
     border-right: 11px solid #f8f8f8;
     float: right; }
 
+/* Home page banner */
+#hme-banner {
+  background-image: url(../assets/your-gov2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  padding-top: 1.25%;
+  width: 100%; }
+
+#hme-banner-bg {
+  background-color: #002b92;
+  color: #fff;
+  margin-left: 5%;
+  min-height: 150px;
+  padding: 8px;
+  width: 225px; }
+
+h2.hme-banner-bg {
+  border: none; }
+
 /*
  WET button overwrites
  */
@@ -10673,7 +10776,6 @@ header .brand {
       font-weight: 800; }
   #wb-info .brand {
     background: #f8f8f8;
-    border-top: 4px solid #335175;
     line-height: 30px; }
     #wb-info .brand object,
     #wb-info .brand img {
@@ -10687,6 +10789,12 @@ header .brand {
   #wb-info .ftr-urlt-lnk li:before {
     content: "\2022";
     margin-right: 0.7em; }
+  #wb-info .landscape {
+    background: #26374a url(../assets/landscape.png) no-repeat right bottom; }
+    #wb-info .landscape a {
+      color: #fff; }
+      #wb-info .landscape a:hover {
+        text-decoration: underline; }
   #wb-info .tofpg {
     line-height: 90px; }
     #wb-info .tofpg a {
@@ -10795,22 +10903,21 @@ main {
     border-radius: 0; }
   #wb-srch button,
   .srchbox button {
-    background-color: #335075;
+    background-color: #26374a;
     border: 0;
-    border-color: #335075;
+    border-color: #26374a;
     font-size: 17px; }
     #wb-srch button:hover, #wb-srch button:focus, #wb-srch button:active,
     .srchbox button:hover,
     .srchbox button:focus,
     .srchbox button:active {
-      background: #243850; }
+      background: #444; }
   #wb-srch .glyphicon,
   .srchbox .glyphicon {
     top: auto;
     vertical-align: middle; }
   #wb-srch input,
   .srchbox input {
-    background-color: #e0e0e0;
     border-color: #e0e0e0;
     border-right: 0;
     border-style: solid;
@@ -10887,6 +10994,153 @@ a.shr-opn, a.shr-opn:hover {
 /*
  * Site menu
  */
+/* Special style for the home page - GCWeb v2 */
+.home .gcweb-v2 {
+  border-top: 1px solid #ddd;
+  color: #284162;
+  margin-left: 0px; }
+
+.home .gcweb-v2 button[aria-haspopup=menu] {
+  background-color: #fff;
+  border-color: #fff;
+  color: #284162; }
+  .home .gcweb-v2 button[aria-haspopup=menu]:hover {
+    background-color: #444;
+    color: #fff; }
+
+/*
+ * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ *
+ * GCWeb v2 (markup reviewed)
+ *
+ */
+.gcweb-v2 {
+  /*
+	 * Level 0 - button menu
+	 */
+  border-top: 3px solid #38414d;
+  font-size: 20px;
+  /*
+	 * Level 1
+	 */
+  /*
+	 * Level 2
+	 */
+  /* The rest of items */
+  /* First menu item (represent the home link */
+  /* Undo for lower level */
+  /* SubSubMenu (MostRequested) for more iteroperability, use CSS class */
+  /* Grid of the submenu panel */ }
+  .gcweb-v2 button[aria-haspopup=menu] {
+    background-color: #26374a;
+    border: 1px solid #26374a;
+    color: #fff;
+    padding: .5em 1em;
+    text-transform: uppercase; }
+  .gcweb-v2 button[aria-haspopup=menu]:hover,
+  .gcweb-v2 button[aria-haspopup=menu][aria-expanded=true] {
+    background-color: #444;
+    border-color: #444;
+    color: #fff; }
+  .gcweb-v2 button[aria-haspopup=menu]:focus {
+    background-color: #fff;
+    border: 1px dotted #555;
+    color: #333; }
+  .gcweb-v2 [aria-haspopup=menu][aria-expanded=false] + [role=menu] {
+    display: none; }
+  .gcweb-v2 button[aria-haspopup=menu][aria-expanded=true] + [role=menu] {
+    z-index: 9999; }
+  .gcweb-v2 [role=menu] {
+    background-color: #444;
+    color: #fff;
+    padding: 0;
+    position: absolute; }
+  .gcweb-v2 [role=menu] {
+    list-style: none; }
+  .gcweb-v2 [role=menuitem] {
+    display: block;
+    padding: 14px 30px;
+    width: 360px; }
+  .gcweb-v2 [role=menuitem],
+  .gcweb-v2 [role=menuitem]:visited {
+    border-bottom: 1px solid #555;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none; }
+  .gcweb-v2 li:last-child [role=menuitem] {
+    border-bottom: none; }
+  .gcweb-v2 [role=menuitem]:hover,
+  .gcweb-v2 [role=menuitem][aria-expanded=true] + [role=menu] [role=menuitem]:focus,
+  .gcweb-v2 [role=menuitem][aria-expanded=true] {
+    background-color: #fff;
+    color: #333; }
+  .gcweb-v2 [role=menu] [role=menu] {
+    background-color: #fff;
+    -webkit-box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.1);
+    color: #000;
+    left: 360px;
+    margin-bottom: 25px;
+    min-height: 815px;
+    padding: 0px 39px 24px 39px;
+    top: 0;
+    width: 810px; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] {
+    min-height: auto; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menuitem] {
+    border-bottom: none;
+    color: #000;
+    width: auto; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] {
+    left: auto;
+    top: auto; }
+  .gcweb-v2 [role=menu] [role=menu] li [role=menuitem] {
+    color: #284162;
+    padding: 6px 0;
+    text-decoration: underline; }
+  .gcweb-v2 [role=menu] [role=menu] li [role=menuitem]:hover {
+    color: #0535d2; }
+  .gcweb-v2 [role=menu] [role=menu] li:first-child [role=menuitem] {
+    font-size: 32px;
+    font-weight: 600;
+    text-decoration: underline; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] li:first-child [role=menuitem] {
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: underline;
+    width: auto; }
+  .gcweb-v2 [role=menu] [role=menu] li:last-child [role=menu] {
+    list-style: disc;
+    padding-top: 0px; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    width: auto; }
+  .gcweb-v2 [role=menu] [role=menu] li {
+    width: 45%; }
+  .gcweb-v2 [role=menu] [role=menu] li:first-child {
+    margin-bottom: 1em;
+    width: 100%; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] li:first-child {
+    margin-bottom: 0px; }
+  .gcweb-v2 [role=menu] [role=menu] li:last-child {
+    left: 400px;
+    position: absolute;
+    top: 4em; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] li:last-child {
+    left: auto;
+    position: relative;
+    top: auto; }
+  .gcweb-v2 [role=menu] [role=menu] [role=menu] li {
+    width: 100%; }
+
+/*
+ *
+ * GCWeb v2 - END
+ *
+ * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ */
+/* GCWeb version 1.0 megamenu */
 #wb-sm {
   background: #335075; }
   #wb-sm .menu {
@@ -11729,6 +11983,13 @@ Carousel
   WET-BOEW
   @title: Extra-small view and under (screen only)
  */
+  /* Make a simple list multi-column and responsive (overide _defaults.scss) */
+  .list-responsive li {
+    clear: right;
+    width: 100%; }
+  /* Home page banner */
+  .home-banner .innerbox {
+    width: 100%; }
   /*
  Banner (small view and under)
  */
@@ -11749,6 +12010,8 @@ Carousel
   main .h1 {
     font-size: 28px;
     margin-top: 15px; }
+  .home-your-gov {
+    background-image: none; }
   /*
  Banner (small view and under)
  */
@@ -11844,6 +12107,14 @@ Carousel
   WET-BOEW
   @title: Large view and over (screen only)
  */
+  /* Make a simple list multi-column and responsive (overide _defaults.scss) */
+  .list-responsive li {
+    width: 25%; }
+    .list-responsive li:nth-child(4n+4) {
+      clear: right; }
+  /* Home page banner */
+  .home-banner .innerbox h1 {
+    width: 50%; }
   /*
  * Equal Heights overrides (large view and over)
  */
@@ -11913,7 +12184,10 @@ Carousel
   /*
   WET-BOEW
   @title: Extra-small view (screen only)
- */ }
+ */
+  /* Home page banner */
+  .home-banner .innerbox h1 {
+    width: 58.3%; } }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -11934,6 +12208,9 @@ Carousel
   WET-BOEW
   @title: Medium view (screen only)
  */
+  /* Home page banner */
+  .home-banner .innerbox h1 {
+    width: 58.3%; }
   /*
  * Equal Heights overrides (medium view)
  */
