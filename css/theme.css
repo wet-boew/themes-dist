@@ -10132,7 +10132,7 @@ h5, .h5 {
   font-size: 20px; }
 
 h6, .h6 {
-  font-size: 16px; }
+  font-size: 17px; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: 600; }
@@ -10173,6 +10173,7 @@ aside.features {
  * - views/_screen-lg-min
  * - views/_screen-xs-min-to-screen-xs-max
  * - views/_screen-md-min-to-screen-md-max
+ * - views/_screen-md-max
  * - views/_screen-xs-max
  */
 .home-banner {
@@ -10185,6 +10186,7 @@ aside.features {
     padding: 20px;
     width: 50%; }
     .home-banner .innerbox h1 {
+      border-bottom-width: 4px;
       font-weight: 500;
       margin-top: 10px; }
     .home-banner .innerbox p {
@@ -10336,48 +10338,6 @@ a.figcaption {
     margin-right: -1.1em; }
   .pagedetails details {
     margin-bottom: 0; }
-
-/* IE */
-.lt-ie9 {
-  /*
-	 Normalizes IE8 behaviour with floated boxes and border-box model. IE without it reports back an incorrect Offset.
-	 */
-  /*
-	* Fixes width of FIP PNG on Institutional pages
-	*/ }
-  .lt-ie9 h1,
-  .lt-ie9 .h1 {
-    font-size: 27px !important; }
-  .lt-ie9 h2,
-  .lt-ie9 .h2 {
-    font-size: 25px; }
-  .lt-ie9 h3,
-  .lt-ie9 .h3 {
-    font-size: 22px; }
-  .lt-ie9 h4,
-  .lt-ie9 .h4 {
-    font-size: 20px; }
-  .lt-ie9 h5,
-  .lt-ie9 .h5 {
-    font-size: 18px; }
-  .lt-ie9 h6,
-  .lt-ie9 .h6 {
-    font-size: 16px;
-    font-weight: bold; }
-  .lt-ie9 .priorities .thumbnail,
-  .lt-ie9 .features .thumbnail {
-    display: inline-block; }
-    .lt-ie9 .priorities .thumbnail > img,
-    .lt-ie9 .priorities .thumbnail a > img,
-    .lt-ie9 .features .thumbnail > img,
-    .lt-ie9 .features .thumbnail a > img {
-      display: inline-block; }
-  .lt-ie9 .priorities .thumbnail {
-    background-color: #eaebed; }
-  .lt-ie9 .sect-lnks {
-    vertical-align: top !important; }
-  .lt-ie9 .inst-brand img {
-    width: 100%; }
 
 #archived-bnr {
   background-color: #fd0; }
@@ -12025,9 +11985,6 @@ table.nws-tbl > thead > tr > th {
   .list-responsive > li {
     clear: right;
     width: 100%; }
-  /* Home page banner */
-  .home-banner .innerbox {
-    width: 100%; }
   /*
  Banner (small view and under)
  */
@@ -12227,6 +12184,11 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Medium view and under (screen only)
  */
+  /* Home page banner */
+  .home-banner .innerbox {
+    width: 75%; }
+    .home-banner .innerbox h1 {
+      width: 55%; }
   /*
  * Site menu (medium view and under)
  */
@@ -12404,8 +12366,10 @@ table.nws-tbl > thead > tr > th {
   @title: Extra-small view (screen only)
  */
   /* Home page banner */
-  .home-banner .innerbox h1 {
-    width: 58.3%; } }
+  .home-banner .innerbox {
+    width: 100%; }
+    .home-banner .innerbox h1 {
+      width: 59%; } }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
