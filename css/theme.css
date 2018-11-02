@@ -10076,7 +10076,7 @@ main {
   max-width: 70ch; }
 
 .cnt-width main p {
-  margin-bottom: 27.5; }
+  margin-bottom: 27.5px; }
 
 .cnt-width main li {
   margin-bottom: 10px; }
@@ -10286,7 +10286,7 @@ details[open] > summary.btn-default {
   float: left;
   padding-right: 5px;
   width: 50%; }
-  .list-responsive > li:nth:child(2n+2) {
+  .list-responsive > li:nth-child(2n+2) {
     clear: right; }
   .list-responsive > li:last-child:after {
     clear: both; }
@@ -11220,8 +11220,7 @@ a.shr-opn, a.shr-opn:hover {
     min-width: 38px; }
   .followus .googleplus {
     background-repeat: no-repeat;
-    background-size: 35px 35px;
-    padding-top: -1px; }
+    background-size: 35px 35px; }
 
 .icon {
   background-position: left center;
