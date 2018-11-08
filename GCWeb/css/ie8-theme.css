@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-06
+ * v4.0.30-development - 2018-11-08
  *
  */
 @charset "UTF-8";
@@ -10231,24 +10231,39 @@ details {
   margin-top: .5em; }
 
 main {
-  font-size: 20px; }
+  font-size: 20px;
+  line-height: 34px; }
   main .pagedetails {
     font-size: 16px; }
 
-.cnt-width main p, .cnt-width main li, .cnt-width main dt, .cnt-width main dd {
+.cnt-wdth-lmtd main p, .cnt-wdth-lmtd main li, .cnt-wdth-lmtd main dt, .cnt-wdth-lmtd main dd,
+main .cnt-wdth-lmtd p,
+main .cnt-wdth-lmtd li,
+main .cnt-wdth-lmtd dt,
+main .cnt-wdth-lmtd dd {
   max-width: 70ch; }
 
-.cnt-width main p {
+.cnt-wdth-lmtd main p,
+main .cnt-wdth-lmtd p {
   margin-bottom: 27.5px; }
 
-.cnt-width main li {
+.cnt-wdth-lmtd main li,
+main .cnt-wdth-lmtd li {
   margin-bottom: 10px; }
 
-.cnt-width main .lst-spcd > li {
+.cnt-wdth-lmtd main .lst-spcd > li,
+main .cnt-wdth-lmtd .lst-spcd > li {
   margin-bottom: 20px; }
 
-.cnt-width main .lst-dblspcd > li {
+.cnt-wdth-lmtd main .lst-spcd-2 > li,
+main .cnt-wdth-lmtd .lst-spcd-2 > li {
   margin-bottom: 40px; }
+
+.cnt-wdth-lmtd main .lst-spcd-2 ul,
+.cnt-wdth-lmtd main .lst-spcd-2 ol,
+main .cnt-wdth-lmtd .lst-spcd-2 ul,
+main .cnt-wdth-lmtd .lst-spcd-2 ol {
+  margin-top: 40px; }
 
 a {
   color: #284162; }
@@ -10269,8 +10284,7 @@ h1,
 .h2, h3,
 .h3, h4,
 .h4, h5,
-.h5, h6,
-.h6 {
+.h5 {
   font-family: Lato, sans-serif; }
 
 h1 {
@@ -10283,21 +10297,50 @@ h1, .h1 {
   font-size: 38px; }
 
 h2, .h2 {
-  font-size: 37px; }
+  font-size: 38px; }
 
 h3, .h3 {
-  font-size: 28px; }
+  font-size: 26px; }
 
 h4, .h4 {
-  font-size: 23px; }
+  font-size: 21px; }
 
 h5, .h5 {
-  font-size: 20px; }
+  font-size: 19px; }
 
 h6, .h6 {
-  font-size: 17px; }
+  font-size: 19px;
+  font-weight: 400; }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+.secondary main, .page-type-nav main {
+  font-size: 17px;
+  line-height: 26px; }
+
+.secondary .h1, .page-type-nav .h1 {
+  border-bottom: 1px solid #af3c43;
+  font-size: 27px;
+  margin-bottom: .2em;
+  padding-bottom: .2em; }
+
+.secondary h2,
+.secondary .h2, .page-type-nav h2,
+.page-type-nav .h2 {
+  font-size: 24px; }
+
+.secondary h3,
+.secondary .h3,
+.secondary h4,
+.secondary .h4,
+.secondary h5,
+.secondary .h5, .page-type-nav h3,
+.page-type-nav .h3,
+.page-type-nav h4,
+.page-type-nav .h4,
+.page-type-nav h5,
+.page-type-nav .h5 {
+  font-size: 20px; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   font-weight: 600; }
 
 .h3,
@@ -10330,41 +10373,51 @@ aside.features {
       border: solid 1px #eee;
       max-width: 100%; }
 
-/* Home page banner
- *
- * Reference in:
- * - views/_screen-lg-min
- * - views/_screen-xs-min-to-screen-xs-max
- * - views/_screen-md-min-to-screen-md-max
- * - views/_screen-md-max
- * - views/_screen-xs-max
- */
-.home-banner {
-  background-image: url(../assets/bkg-home-banner.jpg);
-  background-repeat: no-repeat;
-  padding: 3em 0px; }
-  .home-banner .innerbox {
-    background-color: #26374a;
-    color: #fff;
-    padding: 20px;
-    width: 50%; }
-    .home-banner .innerbox h1 {
-      border-bottom-width: 4px;
-      font-weight: 500;
-      margin-top: 10px; }
-    .home-banner .innerbox p {
-      margin-top: 15px; }
-
-/* Home page your gov
- *
- * Reference in:
- * - views/_screen-sm-max
- */
-.home-your-gov {
-  background-image: url(../assets/bkg-home-yourgov.jpg);
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: 35%; }
+.home {
+  /* Home page banner
+	 *
+	 * Reference in:
+	 * - views/_screen-lg-min
+	 * - views/_screen-xs-min-to-screen-xs-max
+	 * - views/_screen-md-min-to-screen-md-max
+	 * - views/_screen-md-max
+	 * - views/_screen-xs-max
+	 */
+  /* Home page Most requested section
+	 *
+	 * Reference in:
+	 * - views/_screen-sm-max
+	 */
+  /* Home page your gov
+	 *
+	 * Reference in:
+	 * - views/_screen-sm-max
+	 */ }
+  .home .home-banner {
+    background-image: url(../assets/bkg-home-banner.jpg);
+    background-repeat: no-repeat;
+    padding: 3em 0px; }
+    .home .home-banner .innerbox {
+      background-color: #26374a;
+      color: #fff;
+      padding: 20px;
+      width: 50%; }
+      .home .home-banner .innerbox h1 {
+        border-bottom-width: 4px;
+        font-weight: 500;
+        margin-top: 10px; }
+      .home .home-banner .innerbox p {
+        margin-top: 15px; }
+  .home .home-most-requested li {
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 26px;
+    margin-top: 0px; }
+  .home .home-your-gov {
+    background-image: url(../assets/bkg-home-yourgov.jpg);
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 35%; }
 
 /* Heading with links inside of rows */
 .departments a h2,
@@ -10416,22 +10469,6 @@ aside.features {
   font-size: 16px;
   margin-top: 15px; }
 
-.secondary .h1 {
-  border-bottom: 1px solid #af3c43;
-  font-size: 27px;
-  margin-bottom: .2em;
-  padding-bottom: .2em; }
-
-.secondary .row h2 a,
-.secondary .row h3 a,
-.secondary .row h4 a {
-  font-size: 16px; }
-
-.secondary .row a h2,
-.secondary .row a h3,
-.secondary .row a h4 {
-  font-size: 16px; }
-
 /* Summaries styled as default buttons */
 details[open] > summary.btn-default {
   border: 1px outset #dcdee1;
@@ -10457,11 +10494,11 @@ details[open] > summary.btn-default {
 /* Double space list items
 	Might worth to publish it upstream here instead: https://github.com/wet-boew/wet-boew/blob/master/src/base/lists/_base.scss#L30
  */
-.lst-dblspcd > li {
+.lst-spcd-2 > li {
   margin-bottom: 20px; }
 
-.lst-dblspcd ul,
-.lst-dblspcd ol {
+.lst-spcd-2 ul,
+.lst-spcd-2 ol {
   margin-top: 20px; }
 
 /* Style only the figcaption as the link */
@@ -10844,8 +10881,9 @@ main {
 .overlay-def header {
   background: #335075; }
 
-/* Profile on secondary pages */
-.secondary .profile .thumbnail {
+/* Profile on page-type-navigation pages
+ * was: ".secondary" which are now deprecated */
+.secondary .profile .thumbnail, .page-type-nav .profile .thumbnail {
   margin-top: 1.25em; }
 
 /*
@@ -11836,13 +11874,13 @@ Carousel
 #anti_infographic_4.modal-dialog {
   width: 50%; }
 
-.secondary .infostripe .h1 {
+.secondary .infostripe .h1, .page-type-nav .infostripe .h1 {
   font-size: 1.5em; }
 
-.secondary .infostripe.dbl .h1 {
+.secondary .infostripe.dbl .h1, .page-type-nav .infostripe.dbl .h1 {
   min-height: 3.1em; }
 
-.secondary .infostripe.trpl .h1 {
+.secondary .infostripe.trpl .h1, .page-type-nav .infostripe.trpl .h1 {
   min-height: 4em; }
 
 [lang=fr] .infostripe .col-md-6 {
@@ -11960,11 +11998,36 @@ Carousel
   WET-BOEW
   @title: Small view and under (screen only)
  */
-  main h1,
-  main .h1 {
-    font-size: 28px;
+  h1, .h1 {
+    font-size: 34px;
     margin-top: 15px; }
-  .home-your-gov {
+  h2, .h2 {
+    font-size: 34px; }
+  h3, .h3 {
+    font-size: 24px; }
+  h4, .h4 {
+    font-size: 20px; }
+  .secondary main, .page-type-nav main {
+    font-size: 20px; }
+  .secondary h2,
+  .secondary .h2, .page-type-nav h2,
+  .page-type-nav .h2 {
+    font-size: 24px; }
+  .secondary h3,
+  .secondary .h3,
+  .secondary h4,
+  .secondary .h4,
+  .secondary h5,
+  .secondary .h5, .page-type-nav h3,
+  .page-type-nav .h3,
+  .page-type-nav h4,
+  .page-type-nav .h4,
+  .page-type-nav h5,
+  .page-type-nav .h5 {
+    font-size: 21px; }
+  .home .home-most-requested li {
+    font-size: 19px; }
+  .home .home-your-gov {
     background-image: none; }
   /*
  Banner (small view and under)
@@ -12002,9 +12065,9 @@ Carousel
   @title: Medium view and under (screen only)
  */
   /* Home page banner */
-  .home-banner .innerbox {
+  .home .home-banner .innerbox {
     width: 75%; }
-    .home-banner .innerbox h1 {
+    .home .home-banner .innerbox h1 {
       width: 55%; }
   /*
  * Site menu (medium view and under)
@@ -12072,7 +12135,7 @@ Carousel
     .list-responsive > li:nth-child(4n+4) {
       clear: right; }
   /* Home page banner */
-  .home-banner .innerbox h1 {
+  .home .home-banner .innerbox h1 {
     width: 50%; }
   /*
  * Equal Heights overrides (large view and over)
@@ -12145,9 +12208,9 @@ Carousel
   @title: Extra-small view (screen only)
  */
   /* Home page banner */
-  .home-banner .innerbox {
+  .home .home-banner .innerbox {
     width: 100%; }
-    .home-banner .innerbox h1 {
+    .home .home-banner .innerbox h1 {
       width: 59%; } }
 
 /* Small view */
@@ -12170,7 +12233,7 @@ Carousel
   @title: Medium view (screen only)
  */
   /* Home page banner */
-  .home-banner .innerbox h1 {
+  .home .home-banner .innerbox h1 {
     width: 58.3%; }
   /*
  * Equal Heights overrides (medium view)
