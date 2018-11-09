@@ -3149,26 +3149,39 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
-/*
- *
- * GCWeb v2 - keyboard navigation prototype
- *
+/**
+ * @title Menu for GCWeb v2
+ * @overview Menu keyboard and mouse interaction with supporting responsiveness
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
  */
+( function( $, wb ) {
+"use strict";
 
-var globalTimeoutOn = {},
-	globalTimeoutOff = {},
-	globalTimeoutOnTry2,
-	globalTimeoutOffTry2,
+var globalTimeoutOn,
+	globalTimeoutOff,
 	hoverDelay = 350,
 	justOpened,
-	isMobileMode = document.querySelector( "html" ).className.indexOf( "smallview" ) !== -1; // Mobile vs Desktop
+	isMobileMode, // Mobile vs Desktop
+	isMediumView;
+
+function initIsMobileMode() {
+	var htmlClassName = document.querySelector( "html" ).className;
+	isMobileMode = htmlClassName.indexOf( "smallview" ) !== -1;
+	isMediumView = htmlClassName.indexOf( "mediumview" ) !== -1;
+}
 
 function OpenMenu( elm ) {
+
+	// If already open, do nothing
+	if ( elm.getAttribute( "aria-expanded" ) === "true" ) {
+		return;
+	}
 
 	// Close the one that is currently open for this level and deeper
 	var parentMenu = elm.parentElement.parentElement;
 
-	var menuOpen = parentMenu.querySelector( "[aria-haspopup][aria-expanded=true]:not(.gcweb-v2-not-tabble-persist)" );
+	var menuOpen = parentMenu.querySelector( "[aria-haspopup][aria-expanded=true]:not([data-keep-expanded=md-min])" );
 
 	// Only close other menu in tablet and desktop mode
 	if ( menuOpen && !isMobileMode ) {
@@ -3181,10 +3194,15 @@ function OpenMenu( elm ) {
 	justOpened = elm;
 	setTimeout( function() {
 		justOpened = false;
-	}, 200 );
+	}, hoverDelay );
 
 }
 function CloseMenu( elm, force ) {
+
+	// Ensure elm is targeted on the haspopup element
+	if ( !elm.hasAttribute( "aria-haspopup" ) ) {
+		elm = elm.previousElementSibling;
+	}
 
 	if ( !force ) {
 
@@ -3205,26 +3223,26 @@ function CloseMenu( elm, force ) {
 // On hover, wait for the delay before to open the menu
 function OpenMenuWithDelay( elm ) {
 
-	if ( elm.classList.contains( "gcweb-v2-not-tabble-persist" ) ) { // elm.getAttribute( "tabindex") === "-1" ) {
+	if ( elm.dataset.keepExpanded === "md-min" ) {
 		return;
 	}
 
 	// Prevent any pending to be open to trigger
-	clearTimeout( globalTimeoutOnTry2 );
+	clearTimeout( globalTimeoutOn );
 
-	globalTimeoutOnTry2 = setTimeout( function() {
+	globalTimeoutOn = setTimeout( function() {
 		OpenMenu( elm );
 	}, hoverDelay );
 }
 function CloseMenuWithDelay( elm ) {
 
-	if ( elm.classList.contains( "gcweb-v2-not-tabble-persist" ) ) { // elm.getAttribute( "tabindex") === "-1" ) {
+	if ( elm.dataset.keepExpanded === "md-min" ) {
 		return;
 	}
 
-	clearTimeout( globalTimeoutOffTry2 );
+	clearTimeout( globalTimeoutOff );
 
-	globalTimeoutOffTry2 = setTimeout( function() {
+	globalTimeoutOff = setTimeout( function() {
 		CloseMenu( elm );
 	}, hoverDelay );
 }
@@ -3234,6 +3252,7 @@ wb.doc.on( "mouseenter", "[aria-haspopup]", function( event ) {
 
 	// There is no "mouseenter" in mobile
 	if ( !isMobileMode ) {
+		clearTimeout( globalTimeoutOff );
 		OpenMenuWithDelay( event.currentTarget );
 	}
 } );
@@ -3259,7 +3278,7 @@ wb.doc.on( "mouseenter focusin", "[aria-haspopup] + [role=menu]", function( even
 
 	var elm = event.currentTarget.previousElementSibling;
 
-	if ( elm.classList.contains( "gcweb-v2-not-tabble-persist" ) ) { // elm.getAttribute( "tabindex") === "-1" ) {
+	if ( elm.dataset.keepExpanded === "md-min" ) {
 		return;
 	}
 
@@ -3267,8 +3286,8 @@ wb.doc.on( "mouseenter focusin", "[aria-haspopup] + [role=menu]", function( even
 	if ( isMobileMode ) {
 		return;
 	}
-	clearTimeout( globalTimeoutOnTry2 );
-	clearTimeout( globalTimeoutOffTry2 );
+
+	clearTimeout( globalTimeoutOff );
 } );
 
 
@@ -3276,6 +3295,7 @@ wb.doc.on( "mouseleave", "[aria-haspopup]", function( event ) {
 
 	// There is no "mouseenter" in mobile
 	if ( !isMobileMode ) {
+		clearTimeout( globalTimeoutOn );
 		CloseMenuWithDelay( event.currentTarget );
 	}
 } );
@@ -3298,7 +3318,7 @@ wb.doc.on( "mouseleave focusout", "[aria-haspopup] + [role=menu]", function( eve
 
 	var elm = event.currentTarget.previousElementSibling;
 
-	if ( elm.classList.contains( "gcweb-v2-not-tabble-persist" ) ) { // elm.getAttribute( "tabindex") === "-1" ) {
+	if ( elm.dataset.keepExpanded === "md-min" ) {
 		return;
 	}
 
@@ -3307,11 +3327,7 @@ wb.doc.on( "mouseleave focusout", "[aria-haspopup] + [role=menu]", function( eve
 		return;
 	}
 
-	clearTimeout( globalTimeoutOn[ elm.id ] );
-
-	globalTimeoutOff[ elm.id ] = setTimeout( function() {
-		CloseMenu( elm );
-	}, hoverDelay );
+	CloseMenuWithDelay( event.currentTarget );
 } );
 
 
@@ -3334,8 +3350,8 @@ wb.doc.on( "click", "[aria-haspopup]", function( event ) {
 
 	var elm = event.currentTarget;
 
-	// Only for mobile view
-	if ( isMobileMode ) {
+	// Only for mobile view or the menu button
+	if ( isMobileMode || elm.nodeName === "BUTTON" ) {
 
 		// Toggle
 		if ( elm.getAttribute( "aria-expanded" ) === "true" ) {
@@ -3352,55 +3368,45 @@ wb.doc.on( "click", "[aria-haspopup]", function( event ) {
 	}
 } );
 
-function transformForMobileMode() {
-
-	isMobileMode = true;
-
-	// CollapseThirdMenuLevel
-	// Expand the "most requested" link
+// This is for the "most requested" menu item
+function setMnu3LevelOrientationExpandState( isVertical, isExpanded ) {
 	var mnu3Level = document.querySelectorAll( "[role=menu] [role=menu] [role=menuitem][aria-haspopup=menu]" ),
-		i, i_len = mnu3Level.length;
+		i, i_len = mnu3Level.length,
+		expandState = ( isExpanded ? "true" : "false" ),
+		orientation = ( isVertical ? "vertical" : "horizontal" ),
+		expandStateItem = expandState;
 
 	for ( i = 0; i < i_len; i++ ) {
-		mnu3Level[ i ].setAttribute( "aria-expanded", "false" );
 
-		// Change the orientation of the preceding separator
-		mnu3Level[ i ].parentElement.previousElementSibling.setAttribute( "aria-orientation", "horizontal" );
+		// Keep it expanded if focus are inside submenu
+		expandStateItem = ( mnu3Level[ i ].nextElementSibling.querySelector( "[role=menuitem]:focus" ) ? "true" : expandState );
+
+		mnu3Level[ i ].setAttribute( "aria-expanded", expandStateItem );
+		mnu3Level[ i ].parentElement.previousElementSibling.setAttribute( "aria-orientation", orientation );
 	}
 }
 
-function transformForDesktopMode() {
+// Change the main menu mode
+wb.doc.on( wb.resizeEvents, function( event ) {
 
-	isMobileMode = false;
-
-	// ExpandThirdMenuLevel
-	// Expand the "most requested" link
-	var mnu3Level = document.querySelectorAll( "[role=menu] [role=menu] [role=menuitem][aria-haspopup=menu]" ),
-		i, i_len = mnu3Level.length;
-
-	for ( i = 0; i < i_len; i++ ) {
-		mnu3Level[ i ].setAttribute( "aria-expanded", "true" );
-
-		// Change the orientation of the preceding separator
-		mnu3Level[ i ].parentElement.previousElementSibling.setAttribute( "aria-orientation", "vertical" );
+	switch ( event.type ) {
+	case "xxsmallview":
+	case "xsmallview":
+	case "smallview":
+		isMobileMode = true;
+		setMnu3LevelOrientationExpandState( false, false );
+		break;
+	case "mediumview":
+		isMobileMode = false;
+		setMnu3LevelOrientationExpandState( false, true );
+		break;
+	case "largeview":
+	case "xlargeview":
+	default:
+		isMobileMode = false;
+		setMnu3LevelOrientationExpandState( true, true );
 	}
-}
-
-wb.doc.on( "mediumview.wb largeview.wb xlargeview.wb", transformForDesktopMode );
-wb.doc.on( "smallview.wb xsmallview.wb", transformForMobileMode );
-
-// If we are in mobile, collapse the third menu level
-if ( isMobileMode ) {
-	transformForMobileMode();
-}
-
-//
-// Initialisation of the keyboard navigation
-//
-
-// Make menu-item not tabbable
-$( ".gcweb-v2 [data-keep-expanded=md-min]" ).addClass( "gcweb-v2-not-tabble-persist" );
-$( ".gcweb-v2 [role=menuitem]" ).attr( "tabindex", -1 );
+} );
 
 /**
 * keycode - determines what action to take when a key is pressed
@@ -3439,6 +3445,14 @@ function keycode( code ) {
 	return false;
 };
 
+// Global hook, close the menu on "ESC" when its state are open.
+wb.doc.on( "keydown", function( event ) {
+	if ( event.keyCode === 27 ) {
+		CloseMenu( document.querySelector( ".gcweb-v2 button" ) );
+	}
+} );
+
+// Keyboard navigation for each menu item
 wb.doc.on( "keydown", ".gcweb-v2 button, .gcweb-v2 [role=menuitem]", function( event ) {
 
 	var elm = event.currentTarget,
@@ -3625,6 +3639,17 @@ wb.doc.on( "keydown", ".gcweb-v2 button, .gcweb-v2 [role=menuitem]", function( e
 	}
 
 } );
+
+// Initialization of the main
+
+initIsMobileMode();
+
+if ( isMobileMode || isMediumView ) {
+	setMnu3LevelOrientationExpandState( false, isMediumView );
+}
+
+
+} )( jQuery, wb );
 
 /**
  * @title WET-BOEW URL mapping
