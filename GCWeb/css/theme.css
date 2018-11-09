@@ -10325,8 +10325,13 @@ details[open] > summary.btn-default {
   width: 50%; }
   .list-responsive > li:nth-child(2n+2) {
     clear: right; }
-  .list-responsive > li:last-child:after {
-    clear: both; }
+
+.list-responsive:before, .list-responsive:after {
+  content: " ";
+  display: table; }
+
+.list-responsive:after {
+  clear: both; }
 
 /* Double space list items
 	Might worth to publish it upstream here instead: https://github.com/wet-boew/wet-boew/blob/master/src/base/lists/_base.scss#L30
@@ -10501,6 +10506,53 @@ h2.hme-banner-bg {
 main .btn-primary {
   background-color: #335075;
   border-color: #335075; }
+
+/* Call-to-action button style - new with GCWeb v2 */
+.btn-call-to-action {
+  color: #fff;
+  background-color: #318000;
+  border-color: #458259;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  padding: 10px 20px;
+  text-shadow: 1px 2px #333; }
+  .btn-call-to-action:focus, .btn-call-to-action.focus {
+    color: #fff;
+    background-color: #1d4d00;
+    border-color: #192f20; }
+  .btn-call-to-action:hover {
+    color: #fff;
+    background-color: #1d4d00;
+    border-color: #305a3e; }
+  .btn-call-to-action:active, .btn-call-to-action.active,
+  .open > .btn-call-to-action.dropdown-toggle {
+    color: #fff;
+    background-color: #1d4d00;
+    border-color: #305a3e; }
+    .btn-call-to-action:active:hover, .btn-call-to-action:active:focus, .btn-call-to-action:active.focus, .btn-call-to-action.active:hover, .btn-call-to-action.active:focus, .btn-call-to-action.active.focus,
+    .open > .btn-call-to-action.dropdown-toggle:hover,
+    .open > .btn-call-to-action.dropdown-toggle:focus,
+    .open > .btn-call-to-action.dropdown-toggle.focus {
+      color: #fff;
+      background-color: #102900;
+      border-color: #192f20; }
+  .btn-call-to-action:active, .btn-call-to-action.active,
+  .open > .btn-call-to-action.dropdown-toggle {
+    background-image: none; }
+  .btn-call-to-action.disabled:hover, .btn-call-to-action.disabled:focus, .btn-call-to-action.disabled.focus, .btn-call-to-action[disabled]:hover, .btn-call-to-action[disabled]:focus, .btn-call-to-action[disabled].focus,
+  fieldset[disabled] .btn-call-to-action:hover,
+  fieldset[disabled] .btn-call-to-action:focus,
+  fieldset[disabled] .btn-call-to-action.focus {
+    background-color: #318000;
+    border-color: #458259; }
+  .btn-call-to-action .badge {
+    color: #318000;
+    background-color: #fff; }
+
+.btn-call-to-action:visited {
+  color: #fff; }
 
 /*
  WET breadcrumb overwrites
