@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-09
+ * v4.0.30-development - 2018-11-13
  *
  */
 @charset "UTF-8";
@@ -10903,11 +10903,11 @@ a.shr-opn, a.shr-opn:hover {
   color: #284162;
   margin-left: 0px; }
 
-.home .gcweb-v2 button[aria-haspopup=menu] {
+.home .gcweb-v2 button[aria-haspopup=true] {
   background-color: #fff;
   border-color: #fff;
   color: #284162; }
-  .home .gcweb-v2 button[aria-haspopup=menu]:hover {
+  .home .gcweb-v2 button[aria-haspopup=true]:hover {
     background-color: #444;
     color: #fff; }
 
@@ -10934,24 +10934,24 @@ a.shr-opn, a.shr-opn:hover {
   /* Undo for lower level */
   /* SubSubMenu (MostRequested) for more iteroperability, use CSS class */
   /* Grid of the submenu panel */ }
-  .gcweb-v2 button[aria-haspopup=menu] {
+  .gcweb-v2 button[aria-haspopup=true] {
     background-color: #26374a;
     border: 1px solid #26374a;
     color: #fff;
     padding: .5em 1em;
     text-transform: uppercase; }
-  .gcweb-v2 button[aria-haspopup=menu]:hover,
-  .gcweb-v2 button[aria-haspopup=menu][aria-expanded=true] {
+  .gcweb-v2 button[aria-haspopup=true]:hover,
+  .gcweb-v2 button[aria-haspopup=true][aria-expanded=true] {
     background-color: #444;
     border-color: #444;
     color: #fff; }
-  .gcweb-v2 button[aria-haspopup=menu]:focus {
+  .gcweb-v2 button[aria-haspopup=true]:focus {
     background-color: #fff;
     border: 1px dotted #555;
     color: #333; }
-  .gcweb-v2 [aria-haspopup=menu][aria-expanded=false] + [role=menu] {
+  .gcweb-v2 [aria-haspopup=true][aria-expanded=false] + [role=menu] {
     display: none; }
-  .gcweb-v2 button[aria-haspopup=menu][aria-expanded=true] + [role=menu] {
+  .gcweb-v2 button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
     z-index: 9999; }
   .gcweb-v2 [role=menu] {
     background-color: #444;
@@ -12209,7 +12209,7 @@ table.nws-tbl > thead > tr > th {
     /* Mobile - Third level */ }
     .gcweb-v2 [role=menu] {
       position: static; }
-    .gcweb-v2 button[aria-haspopup=menu][aria-expanded=true] + [role=menu] {
+    .gcweb-v2 button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
       width: 95%; }
     .gcweb-v2 [role=menuitem] {
       width: auto; }
@@ -12382,10 +12382,10 @@ table.nws-tbl > thead > tr > th {
   .gcweb-v2 {
     /* SubSubMenu (MostRequested) keep it black
 	 *
-	 * Todo: check to use this CSS selector: [data-keep-expanded=md-min][role=menuitem][aria-haspopup=menu]
+	 * Todo: check to use this CSS selector: [data-keep-expanded=md-min][role=menuitem][aria-haspopup=true]
 	 */ }
-    .gcweb-v2 [role=menu] [role=menu] [role=menuitem][aria-haspopup=menu],
-    .gcweb-v2 [role=menu] [role=menu] [role=menuitem][aria-haspopup=menu]:hover {
+    .gcweb-v2 [role=menu] [role=menu] [role=menuitem][aria-haspopup=true],
+    .gcweb-v2 [role=menu] [role=menu] [role=menuitem][aria-haspopup=true]:hover {
       color: #000;
       font-size: 20px;
       font-weight: 600;
