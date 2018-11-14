@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-13
+ * v4.0.30-development - 2018-11-14
  *
  */
 @charset "UTF-8";
@@ -10394,8 +10394,9 @@ aside.features {
 	 * - views/_screen-sm-max
 	 */ }
   .home .home-banner {
-    background-image: url(../assets/bkg-home-banner.jpg);
+    background-image: url(https://cdn.canada.ca/gcweb-cdn-live/bkg-home-banner.jpg), url(../assets/bkg-home-banner.jpg);
     background-repeat: no-repeat;
+    background-size: 100% auto;
     padding: 3em 0px; }
     .home .home-banner .innerbox {
       background-color: #26374a;
