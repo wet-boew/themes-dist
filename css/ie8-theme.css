@@ -10230,6 +10230,10 @@ details {
 .pagedetails .row div:first-child a, .pagedetails .row div:first-child details, .pagedetails div + .wb-share-inited {
   margin-top: .5em; }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; }
+
 main {
   font-size: 1.25em;
   line-height: 1.7em; }
