@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>GCWeb theme - Meta information - Canada.ca
+<title>2 - Regression user acceptance testing of WET plugin for GCWeb theme version 2 - Canada.ca
 </title>
 <meta content="width=device-width,initial-scale=1" name="viewport">
 <meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities">
@@ -42,7 +42,7 @@
 <div class="row">
 <div class="col-md-12">
 <ul class="list-inline margin-bottom-none">
-<li><a lang="fr" href="index-fr.html">Français</a></li>
+<li><a lang="fr" href="2-wetplugin-gcweb2-fr.html">Français</a></li>
 </ul>
 </div>
 </div>
@@ -85,91 +85,309 @@
 </nav>
 </header>
 <main property="mainContentOfPage" class="container">
-<h1 property="name" id="wb-cont">GCWeb theme - Meta information</h1>
-<h2>GCWeb new look - V2</h2>
+<h1 property="name" id="wb-cont">2 - Regression user acceptance testing of WET plugin for GCWeb theme version 2</h1>
+<p>Evaluate if the new look impact WET plugin rendered in the GCWeb theme</p>
+<dl class="dl-horizontal">
+<dt>Evaluation report identifier</dt>
+<dd>2</dd>
+<dt>Type</dt>
+<dd>Functionality and aesthetic testing</dd>
+<dt>Asserted by:</dt>
+<dd>Oliver Gross (Github: @therealolivergross)</dd>
+<dt>Date:</dt>
+<dd>November 16, 2018</dd>
+<dt>Page:</dt>
+<dd><a href="http://wet-boew.github.io/themes-dist/GCWeb/demos/index-en.html">http://wet-boew.github.io/themes-dist/GCWeb/demos/index-en.html</a></dd>
+<dt>Subject</dt>
+<dd>Evaluate if the new GCWeb look version 2 style conflic with any WET plugin.</dd>
+<dt>Notes:</dt>
+<dd>This testing was a quick visual check at each WET plugin to know if there were any visible design conflic.</dd>
+</dl>
+<h2>Evaluation summary</h2>
+<dl class="dl-horizontal">
+<dt>Pass</dt>
+<dd>Score of 48/51</dd>
+<dt>Fail</dt>
+<dd>
 <ul>
-<li><a href="v2-migration.html">Migration instruction</a>
+<li>The Country Content WET plugin don't work, this is an upstream issue, see <a href="https://github.com/wet-boew/wet-boew/issues/8385">Github Issue #8365</a>.</li>
+<li>The play button is off-center for the multimedia video player.</li>
+</ul>
+</dd>
+<dt>Not tested</dt>
+<dd>
 <ul>
-<li>Change: Page footer</li>
-<li>Change: Page header Structure</li>
-<li>Change: Menu</li>
-<li>Change: Home Page</li>
-<li>Change: How to identify navigation pages (Themes, topics,...)</li>
+<li>The Favicon wasn't tested</li>
 </ul>
-</li>
-<li>New features (for web publisher):
-<ul>
-<li><a href="v2-migration.html#pg-dblspcd">Double space for list</a></li>
-<li><a href="v2-migration.html#pg-list">Responsive list</a></li>
-<li><a href="v2-migration.html#pg-linkfigure">Linked figure design pattern</a></li>
-<li><a href="../content-en.html#cnt-wdth-lmtd">Content block with a limited width</a></li>
-<li><a href="../content-en.html#call-to-action">Call to action button</a></li>
-</ul>
-</li>
-<li>Demos (Where you can see all the area where a change apply):
-<ul>
-<li><a href="../home-en.html">Home page</a></li>
-<li><a href="../content-limit-en.html">Content page - Limited width content</a></li>
-<li><a href="../content-en.html">Content page</a></li>
-<li><a href="../theme-en.html">Theme template</a></li>
-</ul>
-</li>
-<li><a href="temp-v2issue.html">Temporary internal list of issues and todo</a></li>
-</ul>
-<h3>Noticable visual difference with no markup change</h3>
-<p>This is a list of perceptible changes that would be visually noticiable if only the GCWeb javascript and CSS are replaced without doing any markup change as identified by the migration instruction.</p>
-<ul>
-<li><strong>Language Toggle link:</strong> Font changed</li>
-<li><strong>Breadcrumbs:</strong> Font changed</li>
-<li><strong>Breadcrumbs:</strong> arrow replaced with chevron</li>
-<li><strong>Search box:</strong> Larger, white background replaces grey, closer to menu</li>
-<li><strong>Menu:</strong> Font changed</li>
-<li><strong>Header:</strong> White background replaces light grey</li>
-<li><strong><code>&lt;h1&gt;</code>:</strong> Larger font</li>
-<li><strong>Text:</strong> Font larger</li>
-<li><strong>Social Media Strip:</strong> Lowered</li>
-<li><strong><code>&lt;h2&gt;</code>:</strong> Smaller font</li>
-<li><strong><code>&lt;p&gt;</code>:</strong> Larger font</li>
-</ul>
-<h3>Reference and notes</h3>
-<ul>
-<li>The menu was designed similary like the menu design pattern from WAI-ARIA 1.1</li>
-<li>The double role on list item in the menu was added as suggested by the W3C validator because the <code>role=none</code> are not widely supported yet.</li>
-<li>Originally the attribute <code>aria-haspopup</code> was set with the value <code>menu</code>. But in order to pass the whatwg validation, when the markup are validated as output by the server, as a best practice because w3c , the value of aria-haspopup was change to true. As per the WAI-ARIA 1.1 spec. the value <code>true</code> is equivalent to setting the value <code>menu</code> - <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-haspopup">https://www.w3.org/TR/wai-aria-1.1/#aria-haspopup</a> (Note the validation, as per WCAG 2.0 and WCAG 2.1 should be done after all JS has run and the DOM is mark "ready". Also the DOM markup should validate after any DOM manipulation that are happing in the page)</li>
-<li>The menu item focus are managed by using a Roving tabindex. - <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex">https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex</a></li>
-<li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/#menubutton">WAI-ARIA Practices 1.1 - 3.15 Menu Button</a></li>
-<li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/#menu">WAI-ARIA Practices 1.1 - 3.14 Menu or Menu bar</a></li>
-<li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-2/menubar-2.html">WAI-ARIA Practices 1.1 - Editor Menubar Example</a></li>
-<li><a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/menu-button/menu-button-actions.html">WAI-ARIA Practices 1.1 - Action Menu button using <code>element.focus()</code></a></li>
-</ul>
-<h4>Confusion about how to implement <code>[aria-expanded]</code></h4>
-<p>There is a confusion in the WAI-ARIA practice 1.1 vs WAI-ARIA 1.1 spec.</p>
-<ul>
-<li>
-<p>it's said: WAI-ARIA practice <a href="https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties-12">https://www.w3.org/TR/wai-aria-practices-1.1/#wai-aria-roles-states-and-properties-12</a></p>
-<p><q>5th bullet items that the [role=menuitem] has the [aria-expanded] state</q></p>
-</li>
-<li>
-<p>it's said: <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-expanded">https://www.w3.org/TR/wai-aria-1.1/#aria-expanded</a></p>
-<p><q>That states is only applicable (Inherits into Roles) for [role=menu] and [role=menubar]. This don't include [role=menuitem]</q></p>
-</li>
-<li>
-<p>it's illustrated: <a href="https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-2/menubar-2.html">https://www.w3.org/TR/wai-aria-practices-1.1/examples/menubar/menubar-2/menubar-2.html</a></p>
-<p><q>That the item with the [role=menuitem] has the [aria-expanded] state.</q></p>
-</li>
-</ul>
-<p>The next step will be to check throuly the W3C mailing list, errata, filled bug and other ressource to know if that was notified to W3C WAI group and to understand better the rational behind. Then, the next action will be to fix this design pattern if it needed and to ensure the w3c documents would be fixed in the near future.</p>
-<p>For now, we implemented the pattern as illustrated by WAI-ARIA Practice 1.1.</p>
-<h2>Evaluation and report</h2>
-<ul>
-<li>November 16, 2018: <a href="../evaluation-report/2-wetplugin-gcweb2.html">2 - Regression user acceptance testing of WET plugin for GCWeb theme version 2</a></li>
-<li>November 14, 2018: <a href="../evaluation-report/1-accessibility.html">1 - Accessibility assesment of GCWeb theme version 2</a></li>
-<li>October 22-26, 2018: Partial screen reader compatibility test has been made to the new menu, but for a different markup compared to the one published as Oct 31. From that test, the recommendation was to replace the button text "top menu" by "main menu".</li>
-</ul>
-<h2>Previous version</h2>
-<ul>
-<li>See GCWeb released with WET 4.0.29. All code change are documented in the migration instruction of GCWeb new look - V2.</li>
-</ul>
+</dd>
+</dl>
+<h2>Evaluation details: Result by each WET plugin</h2>
+<table class="table">
+<thead>
+<tr>
+<th>Plugin name</th>
+<th>Result</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Data JSON</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Do action</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Field flow</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Field flow advanced</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Field flow basic configuration</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>JSON Manager</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Template HTML 5</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>URL Mapping - Patching JSON</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>URL Mapping - Table filtering</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Calendar of Events</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Charts and graphs</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Charts and graphs - Customization</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Charts and graphs - Customizing pie charts</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Charts and graphs - Labels and reference values</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Charts and graphs - Simple and easy</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Charts and graphs - Specific test cases</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Collapsible alerts</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Country Content</th>
+<td>Fail</td>
+<td>Demo doesn’t seem to work</td>
+</tr>
+<tr>
+<th>Data Ajax</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Data Inview</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Data Picture</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Dismissable content</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Equal height</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Facebook embedded pages</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Favicon</th>
+<td>Not tested</td>
+<td></td>
+</tr>
+<tr>
+<th>Feeds</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Field flow</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Field flow advanced</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Field flow basic configuration</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Filter</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Footnotes</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Form validation</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Geomap</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Lightbox</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Menu</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Multimedia Player</th>
+<td>Fail</td>
+<td>Play button off-centre</td>
+</tr>
+<tr>
+<th>Multimedia Player - Audio-only</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Multimedia Player - Video</th>
+<td>Fail</td>
+<td>Play button off-centre</td>
+</tr>
+<tr>
+<th>Multimedia Player - YouTube</th>
+<td>Fail</td>
+<td>Play button off-centre</td>
+</tr>
+<tr>
+<th>Overlay</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Prettify</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Session Timeout</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Share widget</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Tabbed Interface</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Tabbed Interface - Carousel</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Tables</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Template HTML 5</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Text highlighting</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Toggle</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Twitter embedded timeline</th>
+<td>Pass</td>
+<td></td>
+</tr>
+<tr>
+<th>Zebra Striping</th>
+<td>Pass</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <div class="pagedetails">
 <div class="row">
 <div class="col-sm-6 col-md-5 col-lg-4">

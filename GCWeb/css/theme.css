@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-15
+ * v4.0.30-development - 2018-11-19
  *
  */
 @charset "UTF-8";
@@ -10068,8 +10068,8 @@ details {
   margin-top: .5em; }
 
 main {
-  font-size: 20px;
-  line-height: 34px; }
+  font-size: 1.25em;
+  line-height: 1.7em; }
   main .pagedetails {
     font-size: 16px; }
 
@@ -10782,6 +10782,9 @@ main {
 .wb-mltmd {
   margin-bottom: 10px;
   margin-top: 10px; }
+
+.wb-mltmd.video:not(.playing):not(.waiting) .display::after {
+  line-height: 1.5em; }
 
 /*
  * Overlay-specific overrides
