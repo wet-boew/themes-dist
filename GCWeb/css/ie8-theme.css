@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-19
+ * v4.0.30-development - 2018-11-20
  *
  */
 @charset "UTF-8";
@@ -10245,10 +10245,13 @@ main .cnt-wdth-lmtd p,
 main .cnt-wdth-lmtd li,
 main .cnt-wdth-lmtd dt,
 main .cnt-wdth-lmtd dd {
-  max-width: 70ch; }
+  max-width: 65ch; }
 
-.cnt-wdth-lmtd main p,
-main .cnt-wdth-lmtd p {
+.cnt-wdth-lmtd main p, .cnt-wdth-lmtd main ul, .cnt-wdth-lmtd main ol, .cnt-wdth-lmtd main dl,
+main .cnt-wdth-lmtd p,
+main .cnt-wdth-lmtd ul,
+main .cnt-wdth-lmtd ol,
+main .cnt-wdth-lmtd dl {
   margin-bottom: 27.5px; }
 
 .cnt-wdth-lmtd main li,
@@ -10288,7 +10291,8 @@ h1,
 .h2, h3,
 .h3, h4,
 .h4, h5,
-.h5 {
+.h5, h6,
+.h6, .home .home-most-requested li {
   font-family: Lato, sans-serif; }
 
 h1 {
@@ -10344,7 +10348,7 @@ h6, .h6 {
 .page-type-nav .h5 {
   font-size: 20px; }
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-weight: 600; }
 
 .h3,
@@ -10516,6 +10520,9 @@ a.figcaption {
   text-decoration: none; }
   a.figcaption * :not(figcaption) {
     color: #000; }
+  a.figcaption figure > *:not(blockquote):not(img):not(table):not(div) {
+    margin-left: .8ch;
+    margin-right: .8ch; }
   a.figcaption figcaption {
     text-decoration: underline; }
 
@@ -10675,13 +10682,15 @@ main .btn-primary {
   background-color: #335075;
   border-color: #335075; }
 
+.btn {
+  @export %defaults-alternative-font-family; }
+
 /* Call-to-action button style - new with GCWeb v2 */
 .btn-call-to-action {
   color: #fff;
   background-color: #318000;
   border-color: #458259;
   font-size: 1.1em;
-  font-weight: 600;
   margin-bottom: 25px;
   margin-top: 15px;
   padding: 10px 20px;
@@ -12042,6 +12051,8 @@ Carousel
   .list-responsive > li {
     clear: right;
     width: 100%; }
+  .home .home-banner .container {
+    padding: 0px; }
   /*
  Banner (small view and under)
  */
@@ -12219,6 +12230,11 @@ Carousel
   /* Embedding a Fluid Survey */
   .gc-fld-srvy-container {
     padding-bottom: 100%; }
+  /* Home page banner */
+  .home .home-banner .innerbox {
+    width: 100%; }
+    .home .home-banner .innerbox h1 {
+      width: 80%; }
   /*
  Banner (extra-extra-small view)
  */
