@@ -10161,6 +10161,10 @@ h6, .h6 {
   font-size: 17px;
   line-height: 26px; }
 
+.secondary h1 + p, .secondary h1 + div p, .page-type-nav h1 + p, .page-type-nav h1 + div p {
+  font-size: 20px;
+  line-height: 34px; }
+
 .secondary .h1, .page-type-nav .h1 {
   border-bottom: 1px solid #af3c43;
   font-size: 27px;
@@ -12451,6 +12455,8 @@ table.nws-tbl > thead > tr > th {
     width: 100%; }
     .home .home-banner .innerbox h1 {
       width: 80%; }
+  #wb-srch input {
+    max-width: 300px; }
   /*
  Banner (extra-extra-small view)
  */
@@ -12503,7 +12509,10 @@ table.nws-tbl > thead > tr > th {
   .home .home-banner .innerbox {
     width: 100%; }
     .home .home-banner .innerbox h1 {
-      width: 59%; } }
+      width: 59%; }
+  #wb-srch input {
+    max-width: 200px;
+    min-width: 150px; } }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
