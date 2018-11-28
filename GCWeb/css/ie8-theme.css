@@ -10380,6 +10380,80 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 .h6 {
   border: 0; }
 
+/* Exclude temporary the form element from the font update, keep same style as before
+ *
+ * - Rational: More testing and various adjustment need to be completed before to apply it
+ */
+:not(#wb-srch) .form-inline, .form-horizontal, .checkbox, .checkbox-inline, .radio, .radio-inline {
+  font-size: 16px;
+  line-height: 23px; }
+
+/* Force GCWeb release 4.0.29 font style
+ *
+ * This undo the font style introduced with gcweb v2 new look
+ *
+ * - Rational: This is to help the adoption of the new desing by allowing adopter to use
+ * a special CSS class on content like the one optimized for a desktop at 100% view port
+ * Example of content: high profile pages, campaign, application, .....
+ *
+ * This CSS are going to be removed in a future version
+ * Using this CSS hack should be temporary and be used to get some time to adapt the content
+ * as per the new font size parameter
+ *
+ */
+.force-style-gcweb-4-0-29 h1 {
+  margin-top: 1.25em; }
+
+.force-style-gcweb-4-0-29 h1,
+.force-style-gcweb-4-0-29 .h1 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 34px; }
+
+.force-style-gcweb-4-0-29 h2,
+.force-style-gcweb-4-0-29 .h2 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 26px; }
+
+.force-style-gcweb-4-0-29 h3,
+.force-style-gcweb-4-0-29 .h3 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 22px; }
+
+.force-style-gcweb-4-0-29 h4,
+.force-style-gcweb-4-0-29 .h4 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px; }
+
+.force-style-gcweb-4-0-29 h5,
+.force-style-gcweb-4-0-29 .h5 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px; }
+
+.force-style-gcweb-4-0-29 h6,
+.force-style-gcweb-4-0-29 .h6 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700; }
+
+.force-style-gcweb-4-0-29 .btn, .force-style-gcweb-4-0-29 .form-control {
+  padding: 6px 12px; }
+
+.force-style-gcweb-4-0-29 main,
+main.force-style-gcweb-4-0-29 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1em;
+  line-height: 1.4375em; }
+
+main .force-style-gcweb-4-0-29,
+.force-style-gcweb-4-0-29 .btn {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 23px; }
+
+/*
+ * END - Force GCWeb release 4.0.29 font style
+ *
+ */
 aside.site-related h2 {
   font-size: 28px;
   margin-top: 0; }
@@ -10706,20 +10780,17 @@ main .btn-primary {
   border-color: #335075; }
 
 .btn {
-  font-family: Lato, sans-serif;
-  font-size: 1.1em;
-  padding: .58em 1em; }
-
-input.btn {
-  padding-bottom: 2em; }
+  font-family: Lato, sans-serif; }
 
 /* Call-to-action button style - new with GCWeb v2 */
 .btn-call-to-action {
   color: #fff;
   background-color: #318000;
   border-color: #458259;
+  font-size: 1.1em;
   margin-bottom: 25px;
   margin-top: 15px;
+  padding: .58em 1em;
   text-shadow: 1px 2px #333; }
   .btn-call-to-action:focus, .btn-call-to-action.focus {
     color: #fff;
@@ -10756,6 +10827,9 @@ input.btn {
 
 .btn-call-to-action:visited {
   color: #fff; }
+
+input.btn.btn-call-to-action {
+  padding-bottom: 2em; }
 
 /*
  * Equal Heights overrides
