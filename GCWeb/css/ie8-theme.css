@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-26
+ * v4.0.30-development - 2018-11-28
  *
  */
 @charset "UTF-8";
@@ -10370,6 +10370,8 @@ h6, .h6 {
   font-size: 20px; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  -webkit-font-variant-ligatures: no-common-ligatures;
+          font-variant-ligatures: no-common-ligatures;
   font-weight: 600; }
 
 .h3,
