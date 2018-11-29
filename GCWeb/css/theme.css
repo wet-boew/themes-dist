@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-11-28
+ * v4.0.30-development - 2018-11-29
  *
  */
 @charset "UTF-8";
@@ -10218,12 +10218,14 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   border: 0; }
 
 /* Exclude temporary the form element from the font update, keep same style as before
- *
  * - Rational: More testing and various adjustment need to be completed before to apply it
  */
-:not(#wb-srch) .form-inline, .form-horizontal, .checkbox, .checkbox-inline, .radio, .radio-inline {
+:not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, .btn:not(.btn-call-to-action) {
   font-size: 16px;
   line-height: 23px; }
+
+.btn:not(.btn-call-to-action), .form-control {
+  padding: 6px 12px; }
 
 /* Force GCWeb release 4.0.29 font style
  *
@@ -10271,9 +10273,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: 700; }
-
-.force-style-gcweb-4-0-29 .btn, .force-style-gcweb-4-0-29 .form-control {
-  padding: 6px 12px; }
 
 .force-style-gcweb-4-0-29 main,
 main.force-style-gcweb-4-0-29 {

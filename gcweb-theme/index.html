@@ -71,7 +71,22 @@
 <div class="container">
 <h2 class="wb-inv">Menu</h2>
 <button type="button" aria-haspopup="true" aria-controls="gc-mnu" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
-<ul id="gc-mnu" role="menu" aria-orientation="vertical" data-ajax-append="../ajax/sitemenu-v2-en.html">
+<ul id="gc-mnu" role="menu" aria-orientation="vertical" data-ajax-replace="../ajax/sitemenu-v2-en.html">
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/jobs.html">Emplois et milieu de travail</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration et citoyenneté</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://voyage.gc.ca/">Voyage et tourisme</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/entreprises.html">Entreprises et industrie</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/benefits.html">Prestations</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/sante.html">Santé</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/impots.html">Impôts</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/environnement.html">Environnement et ressources naturelles</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/defense.html">Sécurité nationale et défense</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/en/services/transport.html">Transport et infrastructure</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="http://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
+<li role="none presentation"><a role="menuitem" tabindex="-1" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li>
 </ul>
 </div>
 </nav>
@@ -114,6 +129,12 @@
 <li><a href="../theme-en.html">Theme template</a></li>
 </ul>
 </li>
+<li>Workaround for implementer:
+<ul>
+<li>See the section bellow <a href="#temp-avoid-visual">Temporary avoiding the visual difference</a></li>
+<li><a href="../content-gcweb-4-0-29-font-style-en.html">Content page - GCWeb 4.0.29 font style</a></li>
+</ul>
+</li>
 <li><a href="temp-v2issue.html">Temporary internal list of issues and todo</a></li>
 </ul>
 <h3>Noticable visual difference with no markup change</h3>
@@ -131,6 +152,21 @@
 <li><strong><code>&lt;h2&gt;</code>:</strong> Smaller font</li>
 <li><strong><code>&lt;p&gt;</code>:</strong> Larger font</li>
 </ul>
+<h3 id="temp-avoid-visual">Temporary avoiding the visual difference</h3>
+<p>The increased font size and the new line-height might impact some visual design. Mostly the one where it was thighly designed for desktop first, like some campaign pages.</p>
+<p>Here a list of design items to look at:</p>
+<ul>
+<li>Pages where the number of characted (like in a title) are closely counted to ensure it fit in a specific container, like to remain in one single line. For example the title of a feature tile.</li>
+<li>Pages where there is textual content inside a column of a width of 1 and 2. Textual content inside a column of width of 3 might or might not cause issue. Those cases might require you to re-think how to present the information.</li>
+<li>Pages where datatables was intentionally skrinked in order to fit all columns inside the extra-large view port (desktop). For example a datatable with 10 columns or more in a report.</li>
+</ul>
+<p>The visual difference is avoided for:</p>
+<ul>
+<li>Form content inside a form</li>
+<li>Button (exception of the new call to action button)</li>
+<li>Content inside a container with the CSS class <code>force-style-gcweb-4-0-29</code></li>
+</ul>
+<p>Here a working example: <a href="../content-gcweb-4-0-29-font-style-en.html">Content page - GCWeb 4.0.29 font style</a></p>
 <h3>Reference and notes</h3>
 <ul>
 <li>The menu was designed similary like the menu design pattern from WAI-ARIA 1.1</li>
