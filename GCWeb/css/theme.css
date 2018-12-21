@@ -10058,6 +10058,19 @@ details {
   .wb-tabs > .tabpanels {
     overflow: visible !important; } }
 
+/* GCWeb Independant Component */
+/*
+ * Global small component style
+ *
+ * Use this style sheet to define style for small component
+ */
+/*
+ * Redacted inline text style
+ */
+.redacted {
+  word-break: break-all;
+  word-wrap: break-word; }
+
 /*
  * GCWeb Theme
  */
