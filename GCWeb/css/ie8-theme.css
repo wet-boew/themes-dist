@@ -10323,25 +10323,6 @@ h1 {
   margin-top: 1em;
   padding-bottom: .2em; }
 
-h1, .h1 {
-  font-size: 1.9em; }
-
-h2, .h2 {
-  font-size: 1.8em; }
-
-h3, .h3 {
-  font-size: 1.2em; }
-
-h4, .h4 {
-  font-size: 1.1em; }
-
-h5, .h5 {
-  font-size: 1em; }
-
-h6, .h6 {
-  font-size: .95em;
-  font-weight: 400; }
-
 .gc-srvinfo p, .gc-drmt p {
   font-size: 19px; }
 
@@ -10500,9 +10481,9 @@ aside.features {
       background-color: #355688;
       opacity: .9; }
     .home .home-banner.earth .innerbox {
-      background-color: #26374a; }
+      background-color: #2b1900; }
     .home .home-banner.earth .promo {
-      background-color: #26374a; }
+      background-color: #5c3e18; }
     .home .home-banner.vegetation .innerbox {
       background-color: #1a3902; }
     .home .home-banner.vegetation .promo {
@@ -10539,12 +10520,12 @@ aside.features {
 .priorities a h2,
 .priorities a h3,
 .priorities a h4 {
-  font-size: 16px; }
+  font-size: 20px; }
 
 .sect-lnks h2 a,
 .sect-lnks h3 a,
 .sect-lnks h4 a {
-  font-size: 16px; }
+  font-size: 20px; }
 
 /* Deprecated as v4.0.28 */
 .gc-nttvs {
@@ -10568,7 +10549,7 @@ aside.features {
   .gc-nttvs a h3,
   .gc-nttvs a h4,
   .gc-nttvs a figcaption {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     margin-top: 23px;
     text-decoration: underline; }
@@ -10579,7 +10560,7 @@ aside.features {
 .gc-nws a h2,
 .gc-nws a h3,
 .gc-nws a h4 {
-  font-size: 16px;
+  font-size: 20px;
   margin-top: 15px; }
 
 /* Summaries styled as default buttons */
@@ -10657,6 +10638,25 @@ a.figcaption {
     margin-right: -1.1em; }
   .pagedetails details {
     margin-bottom: 0; }
+
+h1, .h1 {
+  font-size: 1.9em; }
+
+h2, .h2 {
+  font-size: 1.8em; }
+
+h3, .h3 {
+  font-size: 1.2em; }
+
+h4, .h4 {
+  font-size: 1.1em; }
+
+h5, .h5 {
+  font-size: 1em; }
+
+h6, .h6 {
+  font-size: .95em;
+  font-weight: 400; }
 
 #archived-bnr {
   background-color: #fd0; }
