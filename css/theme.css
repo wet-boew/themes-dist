@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2018-12-21
+ * v4.0.30-development - 2018-12-27
  *
  */
 @charset "UTF-8";
@@ -10330,21 +10330,47 @@ aside.features {
 	 * - views/_screen-sm-max
 	 */ }
   .home .home-banner {
-    background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-banner.jpg), url(../assets/bkg-home-banner.jpg);
+    background-color: #eee;
+    background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-banner.jpg);
     background-repeat: no-repeat;
-    background-size: 100% auto; }
-    .home .home-banner .innerbox {
+    background-size: 100% auto;
+    color: #fff; }
+    .home .home-banner .innerbox, .home .home-banner.sky .innerbox {
       background-color: #26374a;
-      color: #fff;
       margin: 3em 0px;
       padding: 20px;
       width: 50%; }
-      .home .home-banner .innerbox h1 {
+      .home .home-banner .innerbox h1, .home .home-banner.sky .innerbox h1 {
         border-bottom-width: 4px;
         font-weight: 500;
         margin-top: 10px; }
-      .home .home-banner .innerbox p {
+      .home .home-banner .innerbox p, .home .home-banner.sky .innerbox p {
         margin-top: 15px; }
+    .home .home-banner .promo {
+      background-color: #355688;
+      opacity: .9; }
+    .home .home-banner.earth .innerbox {
+      background-color: #26374a; }
+    .home .home-banner.earth .promo {
+      background-color: #26374a; }
+    .home .home-banner.vegetation .innerbox {
+      background-color: #1a3902; }
+    .home .home-banner.vegetation .promo {
+      background-color: #295e01; }
+    .home .home-banner.night .innerbox {
+      background-color: #0d0c0b; }
+    .home .home-banner.night .promo {
+      background-color: #000; }
+    .home .home-banner.forest .innerbox {
+      background-color: #5a3700; }
+    .home .home-banner.forest .promo {
+      background-color: #745001; }
+    .home .home-banner.autumn .innerbox {
+      background-color: #4a1a00; }
+    .home .home-banner.autumn .promo {
+      background-color: #7a3900; }
+    .home .home-banner a.figcaption *, .home .home-banner a:visited.figcaption * {
+      color: #fff; }
   .home .home-most-requested li {
     font-size: 17px;
     font-weight: 600;
@@ -10355,18 +10381,6 @@ aside.features {
     background-position: right center;
     background-repeat: no-repeat;
     background-size: 35%; }
-
-/* well-dark */
-.well-dark, .well-dark a.figcaption * :not(figcaption) {
-  background-color: #222;
-  border-color: #000;
-  color: #fff; }
-
-.well-dark a {
-  color: #BCC9D7; }
-
-.well-dark a:visited {
-  color: #D8BFED; }
 
 /* Heading with links inside of rows */
 .departments a h2,
