@@ -76,21 +76,21 @@
 			<h2 class="wb-inv">Menu</h2>
 			<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
 			<ul role="menu" aria-orientation="vertical" data-ajax-replace="../ajax/sitemenu-v2-en.html">
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/jobs.html">Jobs and the workplace</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://travel.gc.ca/">Travel and tourism</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/health.html">Health</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
-				<li role="none presentation"><a role="menuitem" href="http://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
-				<li role="none presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Science and innovation</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/jobs.html">Jobs and the workplace</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+				<li role="presentation"><a role="menuitem" href="https://travel.gc.ca/">Travel and tourism</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/business.html">Business and industry</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/health.html">Health</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+				<li role="presentation"><a role="menuitem" href="http://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Money and finances</a></li>
+				<li role="presentation"><a role="menuitem" href="https://www.canada.ca/en/services/finance.html">Science and innovation</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -278,6 +278,15 @@ container
 		<p>By <cite>Shan Gu</cite> on behalf of Treasury Board Secretariat</p>
 	</footer>
 </blockquote>
+
+<h3>Technical note about the design of the menu</h3>
+<ul>
+	<li>The orientation of the sperator before the most requested sub-menu change from vertical to horizontal in tablet/mobile view</li>
+	<li>The most requested sub-menu has an attribute to indicate the JS plugin that sub-menu need to remain expanded in medium and large device. <code>data-keep-expanded="md-min"</code></li>
+	<li>The use of the <code>aria-controls</code> on menu item that open sub-menu might not required. Before to take a decision, we should do more testing to confirm the useless of that property on sub-menu items. Comments received from one user testing with a screen reader has recommended to remove it for the menu button.</li>
+	<li><code>role=none</code>: As per WAI-ARIA 1.1 practice, there example use the <code>role=none</code> for each list item. The W3C validator has recommended to use both role "none" and "presentation" because the role "none" is not yet widely supported. The use of the role "none" currently (2018-12-28) trigger an error by the validator.nu but not by the W3C validator. The issue is the validator.nu don't support yet WAI-ARIA 1.1 and because of that we would only keep one role <code>role=presentation</code> instead of having a dual role. The list item role should be updated once the role "none" would be widely supported.</li>
+	<li><code>aria-haspopup=menu</code>: As per WAI-ARIA 1.1, the <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-haspopup">aria-haspopup</a> property can have multiple value other than "true". The value set to "true" is the same as being set to "menu". Ideally, the menu design would use aria-haspopop=menu instead of aria-haspopup=true because it is more explicit. The validator.nu trigger an error when the aria-haspopup is set to menu instead of true because it don't support WAI-ARIA 1.1. The anchor and the button with the attribute aria-haspopup should be updated once validator.nu support WAI-ARIA 1.1. Using "menu" instead of "true" shouldn't impact assisstive technology that only support WAI-ARIA 1.0</li>
+</ul>
 
 <h2>Previous version</h2>
 <ul>
