@@ -10316,6 +10316,8 @@ aside.features {
 	 * Reference in:
 	 * - views/_screen-sm-max
 	 */ }
+  .home h2 {
+    font-size: 1.2em; }
   .home .home-banner {
     background-color: #eee;
     background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-banner.jpg);
@@ -12250,7 +12252,7 @@ table.nws-tbl > thead > tr > th {
   .list-responsive > li {
     clear: right;
     width: 100%; }
-  .home .home-banner .container {
+  .home .home-banner > .container {
     padding: 0px; }
   /*
  Banner (small view and under)
