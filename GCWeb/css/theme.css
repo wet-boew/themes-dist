@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2019-01-17
+ * v4.0.30-development - 2019-01-18
  *
  */
 @charset "UTF-8";
@@ -10122,31 +10122,6 @@ main .cnt-wdth-lmtd dt,
 main .cnt-wdth-lmtd dd {
   max-width: 65ch; }
 
-.cnt-wdth-lmtd main p, .cnt-wdth-lmtd main ul, .cnt-wdth-lmtd main ol, .cnt-wdth-lmtd main dl,
-main .cnt-wdth-lmtd p,
-main .cnt-wdth-lmtd ul,
-main .cnt-wdth-lmtd ol,
-main .cnt-wdth-lmtd dl {
-  margin-bottom: 27.5px; }
-
-.cnt-wdth-lmtd main li,
-main .cnt-wdth-lmtd li {
-  margin-bottom: 10px; }
-
-.cnt-wdth-lmtd main .lst-spcd > li,
-main .cnt-wdth-lmtd .lst-spcd > li {
-  margin-bottom: 20px; }
-
-.cnt-wdth-lmtd main .lst-spcd-2 > li,
-main .cnt-wdth-lmtd .lst-spcd-2 > li {
-  margin-bottom: 40px; }
-
-.cnt-wdth-lmtd main .lst-spcd-2 ul,
-.cnt-wdth-lmtd main .lst-spcd-2 ol,
-main .cnt-wdth-lmtd .lst-spcd-2 ul,
-main .cnt-wdth-lmtd .lst-spcd-2 ol {
-  margin-top: 40px; }
-
 a {
   color: #284162; }
   a img.thumbnail:hover {
@@ -10177,7 +10152,8 @@ h1 {
   padding-bottom: .2em; }
 
 .gc-srvinfo p, .gc-drmt p {
-  font-size: 17px; }
+  font-size: 17px;
+  line-height: 1.5em; }
 
 .gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6 {
   font-size: 20px;
