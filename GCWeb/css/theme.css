@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2019-01-18
+ * v4.0.30-development - 2019-01-22
  *
  */
 @charset "UTF-8";
@@ -10494,6 +10494,19 @@ h6, .h6 {
   font-size: .95em;
   font-weight: 400; }
 
+/*
+ * wet-boew plugin CSS overrides
+ */
+.wb-mltmd {
+  margin-bottom: 10px;
+  margin-top: 10px; }
+
+.wb-mltmd.video:not(.playing):not(.waiting) .display::after {
+  line-height: 1.5em; }
+
+.dataTables_wrapper .top {
+  font-size: 17px; }
+
 #archived-bnr {
   background-color: #fd0; }
   #archived-bnr p {
@@ -10895,16 +10908,6 @@ main {
     background-color: #fff;
     border: solid 1px #e1e4e7;
     padding: 18px; }
-
-/*
- * Multimedia player overrides
- */
-.wb-mltmd {
-  margin-bottom: 10px;
-  margin-top: 10px; }
-
-.wb-mltmd.video:not(.playing):not(.waiting) .display::after {
-  line-height: 1.5em; }
 
 /*
  * Overlay-specific overrides
@@ -12743,7 +12746,7 @@ table.nws-tbl > thead > tr > th {
  */
   .features, #wb-lng, #wb-glb-mn,
   #wb-srch,
-  #wb-sm, #wb-info, .tofpg, #wb-sec, .pagedetails details, .pagedetails .btn, .followus {
+  #wb-sm, #wb-info, .tofpg, .gcweb-v2, #wb-sec, .pagedetails details, .pagedetails .btn, .followus {
     display: none !important; }
   header .brand {
     margin-bottom: 0; }
