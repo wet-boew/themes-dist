@@ -10250,6 +10250,30 @@ main .force-style-gcweb-4-0-29,
  * END - Force GCWeb release 4.0.29 font style
  *
  */
+form .btn.btn-lg, form .btn-group-lg > .btn,
+.force-style-gcweb-4-0-29 .btn.btn-lg,
+.force-style-gcweb-4-0-29 .btn-group-lg > .btn {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px; }
+
+form .btn.btn-sm, form .btn-group-sm > .btn,
+.force-style-gcweb-4-0-29 .btn.btn-sm,
+.force-style-gcweb-4-0-29 .btn-group-sm > .btn {
+  padding: 5px 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 3px; }
+
+form .btn.btn-xs, form .btn-group-xs > .btn,
+.force-style-gcweb-4-0-29 .btn.btn-xs,
+.force-style-gcweb-4-0-29 .btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 3px; }
+
 aside.site-related h2 {
   font-size: 28px;
   margin-top: 0; }
