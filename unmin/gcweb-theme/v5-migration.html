@@ -7,7 +7,7 @@
 		<meta charset="utf-8" />
 		<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-		<title>Migration instruction - GCWeb theme V2  -  Canada.ca
+		<title>Migration instruction - GCWeb theme V5  -  Canada.ca
 </title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities" />
@@ -48,7 +48,7 @@
 	<section id="wb-lng" class="text-right">
 		<h2 class="wb-inv">Language selection</h2>
 		<ul class="list-inline margin-bottom-none">
-			<li><a lang="fr" href="v2-migration-fr.html">Français</a></li>
+			<li><a lang="fr" href="v5-migration-fr.html">Français</a></li>
 		</ul>
 	</section>
 		<div class="row">
@@ -71,7 +71,7 @@
 	</section>
 		</div>
 	</div>
-	<nav class="gcweb-v2" typeof="SiteNavigationElement">
+	<nav class="gcweb-menu" typeof="SiteNavigationElement">
 		<div class="container">
 			<h2 class="wb-inv">Menu</h2>
 			<button type="button" aria-haspopup="true" aria-expanded="false"><span class="wb-inv">Main </span>Menu <span class="expicon glyphicon glyphicon-chevron-down"></span></button>
@@ -112,7 +112,7 @@ container
 
 
 ">
-			<h1 property="name" id="wb-cont">Migration instruction - GCWeb theme V2</h1>
+			<h1 property="name" id="wb-cont">Migration instruction - GCWeb theme V5</h1>
 			
 			
 <div class="wb-prettify all-pre hide"></div>
@@ -133,6 +133,8 @@ container
 	<li><a href="#otherDiff">Other notable difference</a></li>
 </ul>
 
+
+<p><strong>Note for implementer that has used the GCWeb developer build on or before January 30, 2019</strong>. (This is not applicable for implemeter that has use the official GCWeb v5 release.) The top menu is now identified by using the CSS class <code>gcweb-menu</code> instead of <code>gcweb-v2</code>.</p>
 
 <h2 id="pg-footer">Page footer</h2>
 
@@ -188,7 +190,7 @@ container
 	<li>The color for the search button would be automated updated when the new style is applied.</li>
 	<li>Menu, see the following section for more details
 		<ul>
-			<li>The new menu style is applied when the CSS class <code>gcweb-v2</code> is applied to the navigation section of the main menu.
+			<li>The new menu style is applied when the CSS class <code>gcweb-menu</code> is applied to the navigation section of the main menu.
 				<ul>
 					<li>You will notice the "border-top" is added at the top of the menu.</li>
 					<li>You will notice the new styling for the menu button.</li>
@@ -388,7 +390,7 @@ container
 	<li>There is some translation string and markup variation between language for the button. It's the invisible complementary text.</li>
 </ul>
 
-<pre><code>&lt;nav class="gcweb-v2" typeof="SiteNavigationElement"&gt;
+<pre><code>&lt;nav class="gcweb-menu" typeof="SiteNavigationElement"&gt;
 	&lt;div class="container"&gt;
 		&lt;h2 class="wb-inv"&gt;Menu&lt;/h2&gt;
 		&lt;button type="button" aria-haspopup="true" aria-expanded="false"&gt;&lt;span class="wb-inv"&gt;Main &lt;/span&gt;Menu &lt;span class="expicon glyphicon glyphicon-chevron-down"&gt;&lt;/span&gt;&lt;/button&gt;
@@ -401,7 +403,7 @@ container
 &lt;/nav&gt;</code></pre>
 
 <h3>French version</h3>
-<pre><code>&lt;nav class="gcweb-v2" typeof="SiteNavigationElement"&gt;
+<pre><code>&lt;nav class="gcweb-menu" typeof="SiteNavigationElement"&gt;
 	&lt;div class="container"&gt;
 		&lt;h2 class="wb-inv"&gt;Menu&lt;/h2&gt;
 		&lt;button type="button" aria-haspopup="true" aria-expanded="false"&gt;Menu&lt;span class="wb-inv"&gt; principal&lt;/span&gt; &lt;span class="expicon glyphicon glyphicon-chevron-down"&gt;&lt;/span&gt;&lt;/button&gt;
@@ -431,7 +433,7 @@ container
 	<li>In the following working example, you can see a list of the top menu items which represents each theme.</li>
 </ul>
 
-<pre><code>&lt;nav class="gcweb-v2" typeof="SiteNavigationElement"&gt;
+<pre><code>&lt;nav class="gcweb-menu" typeof="SiteNavigationElement"&gt;
 	&lt;div class="container"&gt;
 		&lt;h2 class="wb-inv"&gt;Menu&lt;/h2&gt;
 		&lt;button aria-haspopup="true" type="button"&gt;&lt;span class="wb-inv"&gt;Main &lt;/span&gt;Menu &lt;span class="expicon glyphicon glyphicon-chevron-down"&gt;&lt;/span&gt;&lt;/button&gt;
@@ -456,7 +458,7 @@ container
 &lt;/nav&gt;</code></pre>
 
 <h3>French version</h3>
-<pre><code>&lt;nav class="gcweb-v2" typeof="SiteNavigationElement"&gt;
+<pre><code>&lt;nav class="gcweb-menu" typeof="SiteNavigationElement"&gt;
 	&lt;div class="container"&gt;
 		&lt;h2 class="wb-inv"&gt;Menu&lt;/h2&gt;
 		&lt;button type="button" aria-haspopup="true" aria-expanded="false"&gt;Menu&lt;span class="wb-inv"&gt; principal&lt;/span&gt; &lt;span class="expicon glyphicon glyphicon-chevron-down"&gt;&lt;/span&gt;&lt;/button&gt;
@@ -716,8 +718,8 @@ container
 
 <p>History:</p>
 <ul>
-	<li>Major - visual v2 - Move of the date modified after button as per the Content and IA spec.</li>
-	<li>Major - visual v2 - Include the CSS class container (only for the home page) when the CSS class container is not added to the main element.</li>
+	<li>Major - visual update v5 - Move of the date modified after button as per the Content and IA spec.</li>
+	<li>Major - visual update v5 - Include the CSS class container (only for the home page) when the CSS class container is not added to the main element.</li>
 	<li>Minor - v.4.0.28 - April 27, 2018 - Removal of the Privacy statement</li>
 	<li>Major - v.4.0.27 - December 14, 2017: Markup restructuration - Grid cell are now independant from the interactive elements to display the report a problem inline form.</li>
 	<li>Major - v.4.0.22 - August 9, 2016: Markup restructuration - Feedback link was change into an inline report a problem form.</li>
@@ -749,7 +751,7 @@ container
 
 <p>Some rules:</p>
 <ul>
-	<li>If the main element don't have the "container" CSS class, page details need to have that class set in order to keep it's content centered. Like for the home page with the visual v2.</li>
+	<li>If the main element don't have the "container" CSS class, page details need to have that class set in order to keep it's content centered. Like for the home page with the visual update v5.</li>
 	<li>If the page can be shared, the share button is added</li>
 </ul>
 

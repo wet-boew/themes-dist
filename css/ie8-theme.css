@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.30-development - 2019-01-25
+ * v4.0.30-development - 2019-01-30
  *
  */
 @charset "UTF-8";
@@ -10333,7 +10333,7 @@ legend {
 
 /* Force GCWeb release 4.0.29 font style
  *
- * This undo the font style introduced with gcweb v2 new look
+ * This undo the font style introduced with gcweb v5 new look
  *
  * - Rational: This is to help the adoption of the new desing by allowing adopter to use
  * a special CSS class on content like the one optimized for a desktop at 100% view port
@@ -10796,7 +10796,7 @@ main .btn-primary {
 .btn {
   font-family: Lato, sans-serif; }
 
-/* Call-to-action button style - new with GCWeb v2 */
+/* Call-to-action button style - new with GCWeb v5 */
 .btn-call-to-action {
   color: #fff;
   background-color: #318000;
@@ -11163,27 +11163,27 @@ a.shr-opn, a.shr-opn:hover {
 /*
  * Site menu
  */
-/* Special style for the home page - GCWeb v2 */
-.home .gcweb-v2 {
+/* Special style for the home page - GCWeb v5 (gcweb-menu) */
+.home .gcweb-menu {
   border-top: 1px solid #ddd;
   color: #284162;
   margin-left: 0px; }
 
-.home .gcweb-v2 button[aria-haspopup=true] {
+.home .gcweb-menu button[aria-haspopup=true] {
   background-color: #fff;
   border-color: #fff;
   color: #284162; }
-  .home .gcweb-v2 button[aria-haspopup=true]:hover {
+  .home .gcweb-menu button[aria-haspopup=true]:hover {
     background-color: #444;
     color: #fff; }
 
 /*
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  *
- * GCWeb v2 (markup reviewed)
+ * GCWeb v5 (gcweb-menu)
  *
  */
-.gcweb-v2 {
+.gcweb-menu {
   /*
 	 * Level 0 - button menu
 	 */
@@ -11201,59 +11201,59 @@ a.shr-opn, a.shr-opn:hover {
   /* Undo for lower level */
   /* SubSubMenu (MostRequested) for more iteroperability, use CSS class */
   /* Grid of the submenu panel */ }
-  .gcweb-v2 .container {
+  .gcweb-menu .container {
     padding: 0px; }
-  .gcweb-v2 button[aria-haspopup=true] {
+  .gcweb-menu button[aria-haspopup=true] {
     background-color: #26374a;
     border: 1px solid #26374a;
     color: #fff;
     padding: .5em 1em;
     text-transform: uppercase; }
-  .gcweb-v2 button[aria-haspopup=true]:hover,
-  .gcweb-v2 button[aria-haspopup=true][aria-expanded=true] {
+  .gcweb-menu button[aria-haspopup=true]:hover,
+  .gcweb-menu button[aria-haspopup=true][aria-expanded=true] {
     background-color: #444;
     border-color: #444;
     color: #fff; }
-  .gcweb-v2 button[aria-haspopup=true]:focus {
+  .gcweb-menu button[aria-haspopup=true]:focus {
     background-color: #fff;
     border: 1px dotted #555;
     color: #333; }
-  .gcweb-v2 [aria-haspopup=true][aria-expanded=false] + [role=menu] {
+  .gcweb-menu [aria-haspopup=true][aria-expanded=false] + [role=menu] {
     display: none; }
-  .gcweb-v2 button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
+  .gcweb-menu button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
     z-index: 9999; }
-  .gcweb-v2 [role=menu] {
+  .gcweb-menu [role=menu] {
     background-color: #444;
     color: #fff;
     list-style: none;
     padding: 0;
     position: absolute; }
-  .gcweb-v2 [role=menu] > li {
+  .gcweb-menu [role=menu] > li {
     border-left: #444 solid 1px; }
-  .gcweb-v2 [role=menu] > li:first-child {
+  .gcweb-menu [role=menu] > li:first-child {
     border-top: #444 solid 1px; }
-  .gcweb-v2 [role=menu] > li:last-child {
+  .gcweb-menu [role=menu] > li:last-child {
     border-bottom: #444 solid 1px; }
-  .gcweb-v2 [role=menu] > li [role=menu] > li {
+  .gcweb-menu [role=menu] > li [role=menu] > li {
     border: none; }
-  .gcweb-v2 [role=menuitem] {
+  .gcweb-menu [role=menuitem] {
     display: block;
     padding: 14px 30px;
     width: 360px; }
-  .gcweb-v2 [role=menuitem],
-  .gcweb-v2 [role=menuitem]:visited {
+  .gcweb-menu [role=menuitem],
+  .gcweb-menu [role=menuitem]:visited {
     border-bottom: 1px solid #555;
     color: #fff;
     font-size: 18px;
     text-decoration: none; }
-  .gcweb-v2 li:last-child [role=menuitem] {
+  .gcweb-menu li:last-child [role=menuitem] {
     border-bottom: none; }
-  .gcweb-v2 [role=menuitem]:hover,
-  .gcweb-v2 [role=menuitem][aria-expanded=true] + [role=menu] [role=menuitem]:focus,
-  .gcweb-v2 [role=menuitem][aria-expanded=true] {
+  .gcweb-menu [role=menuitem]:hover,
+  .gcweb-menu [role=menuitem][aria-expanded=true] + [role=menu] [role=menuitem]:focus,
+  .gcweb-menu [role=menuitem][aria-expanded=true] {
     background-color: #fff;
     color: #333; }
-  .gcweb-v2 [role=menu] [role=menu] {
+  .gcweb-menu [role=menu] [role=menu] {
     background-color: #fff;
     border-top: #eee solid 1px;
     -webkit-box-shadow: 10px 10px 10px 5px rgba(0, 0, 0, 0.1);
@@ -11265,84 +11265,84 @@ a.shr-opn, a.shr-opn:hover {
     padding: 0px 39px 24px 39px;
     top: 0;
     width: 810px; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] {
     border-top: none;
     min-height: auto; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menuitem] {
+  .gcweb-menu [role=menu] [role=menu] [role=menuitem] {
     border-bottom: none;
     color: #000;
     width: auto; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] {
     left: auto;
     top: auto; }
-  .gcweb-v2 [role=menu] [role=menu] li [role=menuitem] {
+  .gcweb-menu [role=menu] [role=menu] li [role=menuitem] {
     color: #284162;
     padding: 6px 0;
     text-decoration: underline; }
-  .gcweb-v2 [role=menu] [role=menu] li [role=menuitem]:hover {
+  .gcweb-menu [role=menu] [role=menu] li [role=menuitem]:hover {
     color: #0535d2; }
-  .gcweb-v2 [role=menu] [role=menu] li:first-child [role=menuitem] {
+  .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
     font-size: 32px;
     font-weight: 600;
     text-decoration: underline; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] li:first-child [role=menuitem] {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] li:first-child [role=menuitem] {
     font-size: 18px;
     font-weight: 400;
     text-decoration: underline;
     width: auto; }
-  .gcweb-v2 [role=menu] [role=menu] li:last-child [role=menu] {
+  .gcweb-menu [role=menu] [role=menu] li:last-child [role=menu] {
     list-style: disc;
     padding-top: 0px; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] {
     -webkit-box-shadow: none;
             box-shadow: none;
     width: auto; }
-  .gcweb-v2 [role=menu] [role=menu] li {
+  .gcweb-menu [role=menu] [role=menu] li {
     width: 45%; }
-  .gcweb-v2 [role=menu] [role=menu] li:first-child {
+  .gcweb-menu [role=menu] [role=menu] li:first-child {
     margin-bottom: 1.5em;
     width: 100%; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] li:first-child {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] li:first-child {
     margin-bottom: 0px; }
-  .gcweb-v2 [role=menu] [role=menu] li:last-child {
+  .gcweb-menu [role=menu] [role=menu] li:last-child {
     left: 400px;
     position: absolute;
     top: 4.5em; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] li:last-child {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] li:last-child {
     left: auto;
     position: relative;
     top: auto; }
-  .gcweb-v2 [role=menu] [role=menu] [role=menu] li {
+  .gcweb-menu [role=menu] [role=menu] [role=menu] li {
     width: 100%; }
 
-.wb-disable .gcweb-v2 [role=menu] {
+.wb-disable .gcweb-menu [role=menu] {
   position: static; }
 
-.wb-disable .gcweb-v2 [aria-haspopup=true][aria-expanded=false] + [role=menu] {
+.wb-disable .gcweb-menu [aria-haspopup=true][aria-expanded=false] + [role=menu] {
   display: block; }
 
-.wb-disable .gcweb-v2 [role=menu] > li {
+.wb-disable .gcweb-menu [role=menu] > li {
   float: left;
   padding-right: 5px;
   width: 50%; }
-  .wb-disable .gcweb-v2 [role=menu] > li:nth-child(2n+2) {
+  .wb-disable .gcweb-menu [role=menu] > li:nth-child(2n+2) {
     clear: right; }
-  .wb-disable .gcweb-v2 [role=menu] > li:nth-child(2n+3) {
+  .wb-disable .gcweb-menu [role=menu] > li:nth-child(2n+3) {
     clear: left; }
 
-.wb-disable .gcweb-v2 [role=menu] > li a {
+.wb-disable .gcweb-menu [role=menu] > li a {
   width: auto; }
 
-.wb-disable .gcweb-v2 [role=menu]:before, .wb-disable .gcweb-v2 [role=menu]:after {
+.wb-disable .gcweb-menu [role=menu]:before, .wb-disable .gcweb-menu [role=menu]:after {
   content: " ";
   display: table; }
 
-.wb-disable .gcweb-v2 [role=menu]:after {
+.wb-disable .gcweb-menu [role=menu]:after {
   clear: both; }
 
 /*
  *
- * GCWeb v2 - END
+ * GCWeb v5 (gcweb-menu) - END
  *
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  */
@@ -12474,7 +12474,7 @@ Carousel
  */
   .features, #wb-lng, #wb-glb-mn,
   #wb-srch,
-  #wb-sm, #wb-info, .tofpg, .gcweb-v2, #wb-sec, .pagedetails details, .pagedetails .btn, .followus {
+  #wb-sm, #wb-info, .tofpg, .gcweb-menu, #wb-sec, .pagedetails details, .pagedetails .btn, .followus {
     display: none !important; }
   header .brand {
     margin-bottom: 0; }
