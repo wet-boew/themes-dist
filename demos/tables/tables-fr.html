@@ -936,7 +936,127 @@
 </tr>
 </tbody>
 </table>
-<h3>Filtering Example</h3>
+<h3>Exemple de pagination</h3>
+<p>L'action de changer le nombre d'entrées à afficher dans une table ou bien le fait d'avoir un petit nombre de rangées ajusteront la pagination de cette table en conséquence. Si toutes les rangées peuvent être contenues dans une seule page, alors la pagination ne sera pas visible.</p>
+<table class="wb-tables table table-striped table-hover" data-page-length='25'>
+<thead>
+<tr>
+<th>Moteur de rendu</th>
+<th>Navigateur</th>
+<th>Platformes</th>
+<th>Version de moteur</th>
+<th>Niveau de CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="gradeX">
+<td>Trident</td>
+<td>Internet Explorer 4.0</td>
+<td>Win 95+</td>
+<td class="center">4</td>
+<td class="center">X</td>
+</tr>
+<tr class="gradeC">
+<td>Trident</td>
+<td>Internet Explorer 5.0</td>
+<td>Win 95+</td>
+<td class="center">5</td>
+<td class="center">C</td>
+</tr>
+<tr class="gradeA">
+<td>Trident</td>
+<td>Internet Explorer 5.5</td>
+<td>Win 95+</td>
+<td class="center">5.5</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Trident</td>
+<td>Internet Explorer 6</td>
+<td>Win 98+</td>
+<td class="center">6</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Trident</td>
+<td>Internet Explorer 7</td>
+<td>Win XP SP2+</td>
+<td class="center">7</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Trident</td>
+<td>Navigateur AOL (AOL desktop)</td>
+<td>Win XP</td>
+<td class="center">6</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Firefox 1.0</td>
+<td>Win 98+ / OSX.2+</td>
+<td class="center">1.7</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Firefox 1.5</td>
+<td>Win 98+ / OSX.2+</td>
+<td class="center">1.8</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Firefox 2.0</td>
+<td>Win 98+ / OSX.2+</td>
+<td class="center">1.8</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Firefox 3.0</td>
+<td>Win 2k+ / OSX.3+</td>
+<td class="center">1.9</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Camino 1.0</td>
+<td>OSX.2+</td>
+<td class="center">1.8</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Camino 1.5</td>
+<td>OSX.3+</td>
+<td class="center">1.8</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Netscape 7.2</td>
+<td>Win 95+ / Mac OS 8.6-9.2</td>
+<td class="center">1.7</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Netscape Browser 8</td>
+<td>Win 98SE+</td>
+<td class="center">1.7</td>
+<td class="center">A</td>
+</tr>
+<tr class="gradeA">
+<td>Gecko</td>
+<td>Netscape Navigator 9</td>
+<td>Win 98+ / OSX.2+</td>
+<td class="center">1.8</td>
+<td class="center">A</td>
+</tr>
+</tbody>
+</table>
+<h3>Exemple de filtrage</h3>
 <p>Le <a href="http://www.datatables.net/ref">DataTables API</a> (en anglais seulement) est entièrement accessible par le <code>data-wb-tables</code> attribut à l'aide d'un tableau JSON et pour filtrer vous pouvez utilizer le class <code>.wb-tables-filter</code> </p>
 <div class="row">
 <div class="col-md-3">
@@ -944,7 +1064,7 @@
 <details open>
 <summary><h4 class="h4">Options</h4></summary>
 <p class="mrgn-tp-md">Utilisez les options ci-dessous pour modifier vos résultats dans le tableau suivant.</p>
-<form class="wb-tables-filter" data-bind-to="dataset-filter">
+<form class="wb-tables-filter" data-bind-to="dataset-filter" lang="en">
 <div class="form-group">
 <label for="dt_type">Data Type</label>
 <select class="form-control" id="dt_type" name="dt_type" data-column="3">
@@ -1020,48 +1140,52 @@
 </select>
 </div>
 <div class="form-group">
-<label for="dt_audience">For</label>
-<select class="form-control" id="dt_audience" name="dt_audience" data-column="6">
-<option value="">Everyone</option>
-<option value="Media">Media</option>
-<option value="Farmers">Farmers</option>
-<option value="General Public">General Public</option>
-<option value="Rural Community">Rural Community</option>
-<option value="Travellers">Travellers</option>
-<option value="Visitors">Visitors</option>
-<option value="Business">Business</option>
-<option value="Students">Students</option>
-<option value="Parents">Parents</option>
-<option value="Youth">Youth</option>
-<option value="Employers">Employers</option>
-<option value="Job Seekers">Job Seekers</option>
-<option value="Government">Government</option>
-<option value="Scientists">Scientists</option>
-<option value="Veterans">Veterans</option>
-<option value="Seniors">Seniors</option>
-<option value="Children">Children</option>
-<option value="Educators">Educators</option>
-<option value="Aboriginal Peoples">Aboriginal Peoples</option>
-<option value="Non-Governmental Organizations">Non-Governmental Organizations</option>
-</select>
+<fieldset>
+<legend><span class="field-name">For</span></legend>
+<ul class="list-unstyled">
+<li class="checkbox"><label for="dt_audience1"><input type="checkbox" id="dt_audience1" name="dt_audience" data-column="6" value=""> Everyone</label></li>
+<li class="checkbox"><label for="dt_audience2"><input type="checkbox" id="dt_audience2" name="dt_audience" data-column="6" value="Media"> Media</label></li>
+<li class="checkbox"><label for="dt_audience3"><input type="checkbox" id="dt_audience3" name="dt_audience" data-column="6" value="Farmers"> Farmers</label></li>
+<li class="checkbox"><label for="dt_audience4"><input type="checkbox" id="dt_audience4" name="dt_audience" data-column="6" value="General Public"> General Public</label></li>
+<li class="checkbox"><label for="dt_audience5"><input type="checkbox" id="dt_audience5" name="dt_audience" data-column="6" value="Rural Community"> Rural Community</label></li>
+<li class="checkbox"><label for="dt_audience6"><input type="checkbox" id="dt_audience6" name="dt_audience" data-column="6" value="Travellers"> Travellers</label></li>
+<li class="checkbox"><label for="dt_audience7"><input type="checkbox" id="dt_audience7" name="dt_audience" data-column="6" value="Visitors"> Visitors</label></li>
+<li class="checkbox"><label for="dt_audience8"><input type="checkbox" id="dt_audience8" name="dt_audience" data-column="6" value="Business"> Business</label></li>
+<li class="checkbox"><label for="dt_audience9"><input type="checkbox" id="dt_audience9" name="dt_audience" data-column="6" value="Students"> Students</label></li>
+<li class="checkbox"><label for="dt_audience10"><input type="checkbox" id="dt_audience10" name="dt_audience" data-column="6" value="Parents"> Parents</label></li>
+<li class="checkbox"><label for="dt_audience11"><input type="checkbox" id="dt_audience11" name="dt_audience" data-column="6" value="Youth"> Youth</label></li>
+<li class="checkbox"><label for="dt_audience12"><input type="checkbox" id="dt_audience12" name="dt_audience" data-column="6" value="Employers"> Employers</label></li>
+<li class="checkbox"><label for="dt_audience13"><input type="checkbox" id="dt_audience13" name="dt_audience" data-column="6" value="Job Seekers"> Job Seekers</label></li>
+<li class="checkbox"><label for="dt_audience14"><input type="checkbox" id="dt_audience14" name="dt_audience" data-column="6" value="Government"> Government</label></li>
+<li class="checkbox"><label for="dt_audience15"><input type="checkbox" id="dt_audience15" name="dt_audience" data-column="6" value="Scientists"> Scientists</label></li>
+<li class="checkbox"><label for="dt_audience16"><input type="checkbox" id="dt_audience16" name="dt_audience" data-column="6" value="Veterans"> Veterans</label></li>
+<li class="checkbox"><label for="dt_audience17"><input type="checkbox" id="dt_audience17" name="dt_audience" data-column="6" value="Seniors"> Seniors</label></li>
+<li class="checkbox"><label for="dt_audience18"><input type="checkbox" id="dt_audience18" name="dt_audience" data-column="6" value="Children"> Children</label></li>
+<li class="checkbox"><label for="dt_audience19"><input type="checkbox" id="dt_audience19" name="dt_audience" data-column="6" value="Educators"> Educators</label></li>
+<li class="checkbox"><label for="dt_audience20"><input type="checkbox" id="dt_audience20" name="dt_audience" data-column="6" value="Aboriginal Peoples"> Aboriginal Peoples</label></li>
+<li class="checkbox"><label for="dt_audience21"><input type="checkbox" id="dt_audience21" data-column="6" value="Non-Governmental Organizations"> Non-Governmental Organizations</label></li>
+</ul>
+</fieldset>
 </div>
 <div class="form-group">
-<label for="dt_location">Location</label>
-<select class="form-control" id="dt_location" name="dt_location" data-column="5">
-<option value="">Anywhere</option>
-<option value="Manitoba">Manitoba</option>
-<option value="Canada">Canada</option>
-<option value="Nova Scotia">Nova Scotia</option>
-<option value="Alberta">Alberta</option>
-<option value="Ontario">Ontario</option>
-<option value="Newfoundland and Labrador">Newfoundland and Labrador</option>
-<option value="New Brunswick">New Brunswick</option>
-<option value="Saskatchewan">Saskatchewan</option>
-<option value="British Columbia">British Columbia</option>
-<option value="Quebec">Quebec</option>
-<option value="Yukon Territory">Yukon Territory</option>
-<option value="Prince Edward Island">Prince Edward Island</option>
-</select>
+<fieldset>
+<legend><span class="field-name">Location</span></legend>
+<ul class="list-unstyled">
+<li class="checkbox"><label for="dt_location1"><input type="checkbox" id="dt_location1" name="dt_location" data-column="5" value=""> Anywhere</label></li>
+<li class="checkbox"><label for="dt_location2"><input type="checkbox" id="dt_location2" name="dt_location" data-column="5" value="Manitoba"> Manitoba</label></li>
+<li class="checkbox"><label for="dt_location3"><input type="checkbox" id="dt_location3" name="dt_location" data-column="5" value="Canada"> Canada</label></li>
+<li class="checkbox"><label for="dt_location4"><input type="checkbox" id="dt_location4" name="dt_location" data-column="5" value="Nova Scotia"> Nova Scotia</label></li>
+<li class="checkbox"><label for="dt_location5"><input type="checkbox" id="dt_location5" name="dt_location" data-column="5" value="Alberta"> Alberta</label></li>
+<li class="checkbox"><label for="dt_location6"><input type="checkbox" id="dt_location6" name="dt_location" data-column="5" value="Ontario"> Ontario</label></li>
+<li class="checkbox"><label for="dt_location7"><input type="checkbox" id="dt_location7" name="dt_location" data-column="5" value="Newfoundland and Labrador"> Newfoundland and Labrador</label></li>
+<li class="checkbox"><label for="dt_location8"><input type="checkbox" id="dt_location8" name="dt_location" data-column="5" value="New Brunswick"> New Brunswick</label></li>
+<li class="checkbox"><label for="dt_location9"><input type="checkbox" id="dt_location9" name="dt_location" data-column="5" value="Saskatchewan"> Saskatchewan</label></li>
+<li class="checkbox"><label for="dt_location10"><input type="checkbox" id="dt_location10" name="dt_location" data-column="5" value="British Columbia"> British Columbia</label></li>
+<li class="checkbox"><label for="dt_location11"><input type="checkbox" id="dt_location11" name="dt_location" data-column="5" value="Quebec"> Quebec</label></li>
+<li class="checkbox"><label for="dt_location12"><input type="checkbox" id="dt_location12" name="dt_location" data-column="5" value="Yukon Territory"> Yukon Territory</label></li>
+<li class="checkbox"><label for="dt_location13"><input type="checkbox" id="dt_location13" name="dt_location" data-column="5" value="Prince Edward Island"> Prince Edward Island</label></li>
+</ul>
+</fieldset>
 </div>
 <div class="row">
 <div class="col-xs-6">

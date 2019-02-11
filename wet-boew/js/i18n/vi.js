@@ -1,10 +1,10 @@
 /*
- * Web Experience Toolkit (WET) / Boîte à outils de l"expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
+* Web Experience Toolkit (WET) / Boîte à outils de l"expérience Web (BOEW)
+* wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+*/
 /*
 ----- Vietnamese dictionary (il8n) ---
- */
+*/
 ( function( wb ) {
 "use strict";
 
@@ -107,6 +107,7 @@ wb.i18nDict = {
 	"frm-nosubmit": "Dạng không thể được nộp bởi vì ",
 	"errs-fnd": " lỗi đã được tìm thấy.",
 	"err-fnd": " lỗi đã được tìm thấy.",
+	"err-correct": "(Correct and resubmit)",
 
 	/* Date picker */
 	"date-hide": "Ẩn lịch",
