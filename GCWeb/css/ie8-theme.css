@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v5.1.0-development - 2019-02-23
+ * v5.1.0-development - 2019-03-01
  *
  */
 @charset "UTF-8";
@@ -11085,6 +11085,66 @@ main {
   [dir=rtl] #wb-srch input {
     margin-left: -4px;
     margin-right: auto; }
+
+.page-type-search label {
+  font-weight: normal; }
+
+.page-type-search .current, .page-type-search .current label {
+  font-weight: 700; }
+
+.page-type-search .location {
+  color: #006621;
+  padding-left: 0px; }
+  .page-type-search .location li {
+    display: inline-block; }
+    .page-type-search .location li + li:before {
+      content: "> "; }
+  .page-type-search .location cite {
+    font-style: normal; }
+
+.page-type-search .context-labels {
+  font-size: .8em;
+  list-style: none;
+  padding-left: 0px; }
+  .page-type-search .context-labels li {
+    background-color: #5e738b;
+    color: #fff;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 1px;
+    padding: 0 5px; }
+
+.page-type-search .results > section {
+  border-bottom: solid 1px #000;
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em; }
+
+.page-type-search .label li {
+  background-color: #5e738b;
+  color: white;
+  font-size: .8em;
+  font-weight: bold;
+  margin-top: 5px;
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.page-type-search .expand-collapse-buttons {
+  color: white;
+  font-size: .8em;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-right: 5px; }
+
+.page-type-search cite a {
+  color: #006621;
+  display: inline-block;
+  font-size: 1em;
+  margin-top: 10px; }
+
+.page-type-search .search-description {
+  line-height: 34px;
+  padding-bottom: 8px;
+  padding-top: 8px; }
 
 /*
  Secondary Navigation
