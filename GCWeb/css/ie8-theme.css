@@ -11792,23 +11792,9 @@ a.shr-opn, a.shr-opn:hover {
 /*
 Carousel
 */
-.carousel-s1 a,
-.carousel-s2 a {
-  text-decoration: none; }
-  .carousel-s1 a:hover,
-  .carousel-s2 a:hover {
-    text-decoration: underline; }
-
 /*
 Carousel
 */
-.carousel-s1 a,
-.carousel-s2 a {
-  text-decoration: none; }
-  .carousel-s1 a:hover,
-  .carousel-s2 a:hover {
-    text-decoration: underline; }
-
 /*
  * Social media centre
  */
