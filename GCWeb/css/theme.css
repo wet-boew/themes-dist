@@ -11683,6 +11683,10 @@ a.shr-opn, a.shr-opn:hover {
 /*
 Carousel
 */
+.carousel-s1 .wb-mltmd,
+.carousel-s2 .wb-mltmd {
+  margin-top: 0; }
+
 /*
  * Social media centre
  */
