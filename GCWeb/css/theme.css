@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v5.1.0-development - 2019-04-24
+ * v5.1.0-development - 2019-05-14
  *
  */
 @charset "UTF-8";
@@ -10287,11 +10287,11 @@ aside.features {
   /* Home page banner
 	 *
 	 * Reference in:
-	 * - views/_screen-lg-min
-	 * - views/_screen-xs-min-to-screen-xs-max
-	 * - views/_screen-md-min-to-screen-md-max
-	 * - views/_screen-md-max
-	 * - views/_screen-xs-max
+	 * - components/_screen-xxs-max
+	 * - components/_screen-xs-min-to-screen-xs-max
+	 * - components/_screen-md-min-to-screen-md-max
+	 * - components/_screen-md-max
+	 * - components/_screen-lg-min
 	 */
   /* Home page Most requested section
 	 *
@@ -10303,50 +10303,14 @@ aside.features {
 	 * Reference in:
 	 * - views/_screen-sm-max
 	 */ }
+  .home h1 {
+    border-bottom-width: 4px;
+    font-weight: 500;
+    margin-top: 10px; }
   .home h2 {
     font-size: 1.2em; }
-  .home .home-banner {
-    background-color: #eee;
-    background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-banner.jpg);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    color: #fff; }
-    .home .home-banner .innerbox, .home .home-banner.sky .innerbox {
-      background-color: #26374a;
-      margin: 2em 0px;
-      padding: 20px;
-      width: 50%; }
-      .home .home-banner .innerbox h1, .home .home-banner.sky .innerbox h1 {
-        border-bottom-width: 4px;
-        font-weight: 500;
-        margin-top: 10px; }
-      .home .home-banner .innerbox p, .home .home-banner.sky .innerbox p {
-        margin-top: 15px; }
-    .home .home-banner .promo {
-      background-color: #355688;
-      opacity: .9; }
-    .home .home-banner.earth .innerbox {
-      background-color: #2b1900; }
-    .home .home-banner.earth .promo {
-      background-color: #5c3e18; }
-    .home .home-banner.vegetation .innerbox {
-      background-color: #1a3902; }
-    .home .home-banner.vegetation .promo {
-      background-color: #295e01; }
-    .home .home-banner.night .innerbox {
-      background-color: #0d0c0b; }
-    .home .home-banner.night .promo {
-      background-color: #000; }
-    .home .home-banner.forest .innerbox {
-      background-color: #5a3700; }
-    .home .home-banner.forest .promo {
-      background-color: #745001; }
-    .home .home-banner.autumn .innerbox {
-      background-color: #4a1a00; }
-    .home .home-banner.autumn .promo {
-      background-color: #7a3900; }
-    .home .home-banner a.figcaption *, .home .home-banner a:visited.figcaption * {
-      color: #fff; }
+  .home .header-rwd {
+    margin: 2em 0px; }
   .home .home-most-requested li {
     font-size: 17px;
     font-weight: 600;
@@ -10448,8 +10412,8 @@ details[open] > summary.btn-default {
 /* Style only the figcaption as the link */
 a.figcaption {
   text-decoration: none; }
-  a.figcaption * :not(figcaption) {
-    color: #000; }
+  a.figcaption:not([class*="text-"]) * :not(figcaption) {
+    color: #333333; }
   a.figcaption figure > *:not(blockquote):not(img):not(table):not(div) {
     margin-left: .8ch;
     margin-right: .8ch; }
@@ -10502,6 +10466,28 @@ h5, .h5 {
 h6, .h6 {
   font-size: .95em;
   font-weight: 400; }
+
+/*
+ * Experimental feature
+ */
+.experimental .bg-darker {
+  background-color: #000; }
+
+.experimental .bg-gctheme {
+  background-color: #355688; }
+  .experimental .bg-gctheme.well.header-rwd {
+    background-color: #26374a; }
+
+.experimental .bg-cover, .experimental {
+  background-size: cover; }
+
+.experimental .bg-pnkDy {
+  background-color: #AD005F; }
+  .experimental .bg-pnkDy.well.header-rwd {
+    background-color: #570030; }
+
+.experimental .p-0 {
+  padding: 0px; }
 
 /*
  * wet-boew plugin CSS overrides
@@ -12051,6 +12037,24 @@ Carousel
   margin-bottom: 30px;
   margin-top: 15px; }
 
+.text-white, a.text-white:visited {
+  color: #fff; }
+
+a.text-white:hover, a.text-white:focus {
+  color: #b3ffff; }
+
+.bg-dark {
+  background-color: #343a40; }
+
+button.bg-dark:hover, button.bg-dark:focus {
+  background-color: #1d2124; }
+
+/*
+ * Well header responsive
+ */
+.well.header-rwd {
+  width: 100%; }
+
 /*
 * Template pages styles
 */
@@ -12305,8 +12309,6 @@ table.nws-tbl > thead > tr > th {
   .list-responsive > li {
     clear: right;
     width: 100%; }
-  .home .home-banner > .container {
-    padding: 0px; }
   /*
  Banner (small view and under)
  */
@@ -12316,6 +12318,17 @@ table.nws-tbl > thead > tr > th {
     margin-top: 20px; }
     #wb-glb-mn ul.chvrn li a {
       font-size: 1.7em; }
+  /*
+  WET-BOEW
+  @title: Extra-small view and under (screen only)
+ */
+  /*
+ * Well header responsive
+ */
+  [class*=col-] .well.header-rwd[class*=pstn-] {
+    left: 15px;
+    right: 15px;
+    width: inherit; }
   /*
   WET-BOEW
   @title: Extra-small view and under (screen only)
@@ -12520,11 +12533,17 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Medium view and under (screen only)
  */
-  /* Home page banner */
-  .home .home-banner .innerbox {
-    width: 75%; }
-    .home .home-banner .innerbox h1 {
-      width: 55%; }
+  /*
+ * Home page style
+ *
+ * Set a responsive with for the h1 in the Well header responsive
+ */
+  .home .well.header-rwd h1 {
+    width: 55%; }
+  /*
+  WET-BOEW
+  @title: Medium view and under (screen only)
+ */
   /*
  * Site menu (medium view and under)
  */
@@ -12556,6 +12575,25 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Small view and over (screen only)
  */
+  /*
+ * Experimental feature
+ */
+  .experimental .mb-sm-5 {
+    margin-bottom: 50px; }
+  .experimental .p-sm-3 {
+    padding: 15px; }
+  .experimental .px-sm-3 {
+    padding-left: 15px;
+    padding-right: 15px; }
+  /*
+  WET-BOEW
+  @title: Small view and over (screen only)
+ */
+  /*
+ * Well header responsive
+ */
+  .well.header-rwd {
+    width: 75%; }
   /*
   WET-BOEW
   @title: Small view and over (screen only)
@@ -12635,14 +12673,27 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Large view and over (screen only)
  */
+  /*
+ * Well header responsive
+ */
+  .well.header-rwd {
+    width: 50%; }
+  /*
+ * Home page style
+ *
+ * Set a responsive with for the h1 in the Well header responsive
+ */
+  .home .well.header-rwd h1 {
+    width: 50%; }
+  /*
+  WET-BOEW
+  @title: Large view and over (screen only)
+ */
   /* Make a simple list multi-column and responsive (overide _defaults.scss) */
   .list-responsive > li {
     width: 25%; }
     .list-responsive > li:nth-child(4n+4) {
       clear: right; }
-  /* Home page banner */
-  .home .home-banner .innerbox h1 {
-    width: 50%; }
   /*
  * Equal Heights overrides (large view and over)
  */
@@ -12662,14 +12713,20 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Extra-extra-small view (screen only)
  */
+  /*
+ * Home page style
+ *
+ * Set a responsive with for the h1 in the Well header responsive
+ */
+  .home .well.header-rwd h1 {
+    width: 80%; }
+  /*
+  WET-BOEW
+  @title: Extra-extra-small view (screen only)
+ */
   /* Embedding a Fluid Survey */
   .gc-fld-srvy-container {
     padding-bottom: 100%; }
-  /* Home page banner */
-  .home .home-banner .innerbox {
-    width: 100%; }
-    .home .home-banner .innerbox h1 {
-      width: 80%; }
   #wb-srch input {
     border-right: 1px solid #e0e0e0;
     max-width: 246px; }
@@ -12721,14 +12778,20 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Extra-small view (screen only)
  */
-  /* Home page banner */
-  .home .home-banner .innerbox {
-    width: 100%; }
-    .home .home-banner .innerbox h1 {
-      width: 59%; }
   #wb-srch input {
     max-width: 200px;
-    min-width: 150px; } }
+    min-width: 150px; }
+  /*
+  WET-BOEW
+  @title: Extra-small view (screen only)
+ */
+  /*
+ * Home page style
+ *
+ * Set a responsive with for the h1 in the Well header responsive
+ */
+  .home .well.header-rwd h1 {
+    width: 59%; } }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -12755,9 +12818,17 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Medium view (screen only)
  */
-  /* Home page banner */
-  .home .home-banner .innerbox h1 {
+  /*
+ * Home page style
+ *
+ * Set a responsive with for the h1 in the Well header responsive
+ */
+  .home .well.header-rwd h1 {
     width: 58.3%; }
+  /*
+  WET-BOEW
+  @title: Medium view (screen only)
+ */
   /*
  * Equal Heights overrides (medium view)
  */
