@@ -11,7 +11,7 @@
 /* main index */
 wb.i18nDict = {
 	"lang-code": "zh-Hans",
-	"lang-native": "繁体字",
+	"lang-native": "简体字",
 	add: "添加",
 	all: "全部",
 	tphp: "页首",
@@ -22,7 +22,7 @@ wb.i18nDict = {
 	matches: {
 		mixin: "找到[MIXIN]项目"
 	},
-	current: "（电流）",
+	current: "目前",
 	hide: "隐藏",
 	err: "错误",
 	colon: "：",
@@ -56,10 +56,10 @@ wb.i18nDict = {
 	last: "末",
 	page: "Page",
 	"srch-menus": "搜索和菜单",
-	email: "电釉",
+	email: "电子邮件",
 	"menu-close": "关闭菜单",
 	"overlay-close": "关闭叠加",
-	"esc-key": "（逃生键）",
+	"esc-key": "(退出键)",
 	show: "展示",
 
 	/* Tabbed interface */
@@ -163,7 +163,7 @@ wb.i18nDict = {
 	"st-to-msg-bgn": "#min#＃分#sec#秒，您的会话将自动失效。",
 	"st-to-msg-end": "选择“继续会话”来扩展您的会话。",
 	"st-msgbx-ttl": "会话超时警告",
-	"st-alrdy-to-msg": "很抱歉，您的会话已经过期。请重新登录。",
+	"st-alrdy-to-msg": "很抱歉，您的连线已经过期。请重新登录。",
 	"st-btn-cont": "继续会话",
 	"st-btn-end": "现在结束会话",
 
@@ -198,7 +198,8 @@ wb.i18nDict = {
 	"geo-allyttl": "说明：地图导航",
 	"geo-tgllyr": "该层的显示切换",
 	"geo-hdnlyr": "这层隐藏。",
-	"geo-bmapurl": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_CBCT_GEOM_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
+	"geo-bmap-url": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT3978/MapServer/WMTS/",
+	"geo-bmap-matrix-set": "default028mm",
 	"geo-bmapttl": "BaseMaps_CBMT3978",
 	"geo-bmapurltxt": "//geoappext.nrcan.gc.ca/arcgis/rest/services/BaseMaps/CBMT_TXT_3978/MapServer/WMTS/tile/1.0.0/BaseMaps_CBMT3978/{Style}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.jpg",
 	"geo-attrlnk": "//geogratis.gc.ca/geogratis/CBM_CBC?lang=en",
@@ -213,6 +214,7 @@ wb.i18nDict = {
 	"geo-aoi-south": "南",
 	"geo-aoi-west": "西方",
 	"geo-aoi-instructions": "抽奖箱在地图上或在下方输入坐标，然后点击“添加”按钮。",
+	"geo-aoi-title": "Draw box on map or enter coordinates",
 	"geo-aoi-btndraw": "画",
 	"geo-aoi-btnclear": "清除",
 	"geo-geoloc-btn": "放大到当前位置",
