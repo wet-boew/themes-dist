@@ -12678,6 +12678,16 @@ table.nws-tbl > thead > tr > th {
     color: #fff; }
 
 /*
+ * GCWeb custom iumplementation
+ *
+ * Copy and rename the folder "variant-default" to "variant".
+ * - the "variant" folder should not GIT conflict with your custom implementation when updating to the latest gcweb
+ */
+/*
+  Variant - GCWeb custom implementation
+  @title: Default SCSS
+ */
+/*
  Views
  */
 /* All screen views */
@@ -12749,7 +12759,11 @@ table.nws-tbl > thead > tr > th {
     float: right;
     margin-left: 100%;
     margin-right: 0; }
-  /* Deprecated as v4.0.28 */ }
+  /* Deprecated as v4.0.28 */
+  /*
+  Variant - GCWeb custom implementation
+  @title: All screen views
+ */ }
 
 /* Extra-small view and under */
 @media screen and (max-width: 767px) {
@@ -12824,7 +12838,11 @@ table.nws-tbl > thead > tr > th {
       margin-top: 0;
       padding-top: 15px; }
     .cmpgn-sctns .sctn-desc {
-      margin-bottom: 10px; } }
+      margin-bottom: 10px; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Extra-small view and under (screen only)
+ */ }
 
 /* Small view and under */
 @media screen and (max-width: 991px) {
@@ -12977,7 +12995,11 @@ table.nws-tbl > thead > tr > th {
     .gcweb-menu [aria-expanded=true]:not(button) + [role=menu] li:last-child [role=menu] [role=menuitem] {
       padding-left: 0px; }
     .gcweb-menu [role=menu] [role=menu] [role=menu] li {
-      width: auto; } }
+      width: auto; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Small view and under (screen only)
+ */ }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -13005,12 +13027,20 @@ table.nws-tbl > thead > tr > th {
   #wb-sm .menu {
     border-right: 1px solid #999; }
     #wb-sm .menu > li:last-child {
-      border-right: 0; } }
+      border-right: 0; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Medium view and under (screen only)
+ */ }
 
 /* Large view and under */
 @media screen and (max-width: 1599px) {
   /*
   WET-BOEW
+  @title: Large view and under (screen only)
+ */
+  /*
+  Variant - GCWeb custom implementation
   @title: Large view and under (screen only)
  */ }
 
@@ -13018,6 +13048,10 @@ table.nws-tbl > thead > tr > th {
 @media screen and (min-width: 480px) {
   /*
   WET-BOEW
+  @title: Extra-small view and over (screen only)
+ */
+  /*
+  Variant - GCWeb custom implementation
   @title: Extra-small view and over (screen only)
  */ }
 
@@ -13068,7 +13102,11 @@ table.nws-tbl > thead > tr > th {
   .cmpgn-sctns {
     margin-top: -10%; }
     .cmpgn-sctns img {
-      width: 40%; } }
+      width: 40%; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Small view and over (screen only)
+ */ }
 
 /* Medium view and over */
 @media screen and (min-width: 992px) {
@@ -13117,7 +13155,11 @@ table.nws-tbl > thead > tr > th {
     .wb-disable .gcweb-menu [role=menu] > li:nth-child(2n+2) {
       clear: none; }
     .wb-disable .gcweb-menu [role=menu] > li:nth-child(2n+3) {
-      clear: none; } }
+      clear: none; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Medium view and over (screen only)
+ */ }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
@@ -13157,7 +13199,11 @@ table.nws-tbl > thead > tr > th {
   .lt-ie9 .sect-lnks {
     width: 30%; }
   .lt-ie9 main.col-md-9 .sect-lnks {
-    width: 30%; } }
+    width: 30%; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Large view and over (screen only)
+ */ }
 
 /* Extra-extra-small view */
 @media screen and (max-width: 479px) {
@@ -13222,7 +13268,11 @@ table.nws-tbl > thead > tr > th {
     visibility: hidden;
     width: 0; }
     .prm-flpr .wb-tabs.carousel-s2 [role="tablist"] li .tab-count .curr-count {
-      font-size: 1em; } }
+      font-size: 1em; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Extra-extra-small view (screen only)
+ */ }
 
 /* Extra-small view */
 @media screen and (min-width: 480px) and (max-width: 767px) {
@@ -13243,7 +13293,11 @@ table.nws-tbl > thead > tr > th {
  * Set a responsive with for the h1 in the Well header responsive
  */
   .home .well.header-rwd h1 {
-    width: 59%; } }
+    width: 59%; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Extra-small view (screen only)
+ */ }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -13262,7 +13316,11 @@ table.nws-tbl > thead > tr > th {
   @title: Small view (screen only)
  */
   .cmpgn-sctns {
-    word-wrap: break-word; } }
+    word-wrap: break-word; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Small view (screen only)
+ */ }
 
 /* Medium view */
 @media screen and (min-width: 992px) and (max-width: 1199px) {
@@ -13315,12 +13373,20 @@ table.nws-tbl > thead > tr > th {
     .gcweb-menu [role=menu] [role=menu] [role=menu] {
       margin-bottom: 0px;
       padding-bottom: 0px;
-      position: relative; } }
+      position: relative; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Medium view (screen only)
+ */ }
 
 /* Large view */
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
   /*
   WET-BOEW
+  @title: Large view (screen only)
+ */
+  /*
+  Variant - GCWeb custom implementation
   @title: Large view (screen only)
  */ }
 
@@ -13328,6 +13394,10 @@ table.nws-tbl > thead > tr > th {
 @media screen and (min-width: 1600px) {
   /*
   WET-BOEW
+  @title: Extra-large view (screen only)
+ */
+  /*
+  Variant - GCWeb custom implementation
   @title: Extra-large view (screen only)
  */ }
 
@@ -13376,4 +13446,8 @@ table.nws-tbl > thead > tr > th {
   @title: Print view
  */
   .cmpgn-sctns {
-    margin-top: 20px; } }
+    margin-top: 20px; }
+  /*
+  Variant - GCWeb custom implementation
+  @title: Print view
+ */ }
