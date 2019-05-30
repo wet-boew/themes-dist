@@ -47,8 +47,10 @@
 </ul>
 </section>
 <div class="row">
-<div class="brand col-xs-5 col-md-4">
-<a href="https://www.canada.ca/en.html"><img src="../GCWeb/assets/sig-blk-en.svg" alt=""><span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+<div class="brand col-xs-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+<a href="https://www.canada.ca/en.html" property="url"><img src="../GCWeb/assets/sig-blk-en.svg" alt="" property="logo"><span class="wb-inv" property="name"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span></a>
+<meta property="areaServed" typeof="Country" content="Canada">
+<link property="logo" href="../GCWeb/assets/wmms-blk.svg">
 </div>
 <section id="wb-srch" class="col-lg-8 text-right">
 <h2>Search</h2>
@@ -98,7 +100,7 @@
 </div>
 </nav>
 </header>
-<main property="mainContentOfPage" class="container">
+<main property="mainContentOfPage" class="container" typeof="WebPageElement">
 <h1 property="name" id="wb-cont">GCWeb theme - Meta information</h1>
 <p>On this page:</p>
 <ul>
@@ -107,8 +109,8 @@
 <li><a href="#evaluation">Evaluation and report</a></li>
 <li><a href="#special-notes">Special notes</a></li>
 <li><a href="#customGCWebVariant">Customizing GCWeb for your implementation variant</a></li>
-<li><a href="#previousVersion">Previous version</a></li>
 <li><a href="#testCases">Test cases</a></li>
+<li><a href="release">Version history (Release notes)</a></li>
 </ul>
 <h2 id="menuCDN">Menu CDN</h2>
 <p>Principal publisher udpate those following HTML fragment file every time there is a change to Canada.ca top menu.</p>
@@ -273,10 +275,6 @@
 <li>Custom Style: Copy and rename the folder <code>src/variant-default</code> for <code>src/variant</code>. The custom SCSS added in <code>variant</code> would not conflict when updating your GCWeb version.</li>
 <li>Custom plugin: Follow the wet-boew plugin guidance/structure and add your code in <code>src/plugin</code> folder.</li>
 <li>Building: Use the GCWeb build system, all your custom CSS and custom plugin for your variant would be packaged together with GCWeb compiled files.</li>
-</ul>
-<h2 id="previousVersion">Previous version</h2>
-<ul>
-<li>See GCWeb released with WET 4.0.29. All code change are documented in the migration instruction of GCWeb new look - V5.</li>
 </ul>
 <h2 id="testCases">Test cases</h2>
 <ul>
