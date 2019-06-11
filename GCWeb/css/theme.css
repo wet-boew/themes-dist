@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v5.1.0-development - 2019-06-05
+ * v5.1.0-development - 2019-06-11
  *
  */
 @charset "UTF-8";
@@ -12596,6 +12596,10 @@ table.nws-tbl > thead > tr > th {
 	 *
 	 */
   /* ------------
+	 * Background image for heading
+	 *
+	 */
+  /* ------------
 	 * Utility
 	 *
 	 */
@@ -12620,6 +12624,13 @@ table.nws-tbl > thead > tr > th {
     background-color: #AD005F; }
     .experimental .bg-pnkDy.well.header-rwd {
       background-color: #570030; }
+  .experimental .bg-img-hdng {
+    background-image: url("../assets/x-blue-line.png");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    min-height: 60px;
+    padding-bottom: 35px;
+    padding-right: 80px; }
   .experimental .bg-cover, .experimental.bg-cover {
     background-size: cover; }
   .experimental .p-0 {
