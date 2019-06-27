@@ -12604,6 +12604,10 @@ table.nws-tbl > thead > tr > th {
 	 *
 	 */
   /* ------------
+	 * Stretched link
+	 *
+	 */
+  /* ------------
 	 * Theme color
 	 *
 	 */
@@ -12635,6 +12639,16 @@ table.nws-tbl > thead > tr > th {
     background-size: cover; }
   .experimental .p-0 {
     padding: 0px; }
+  .experimental .stretched-link:after {
+    background-color: transparent;
+    bottom: 0;
+    content: "";
+    left: 0;
+    pointer-events: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1; }
   .experimental.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
   .experimental.pnkDy-theme #wb-srch button,
   .experimental.pnkDy-theme .srchbox button {
