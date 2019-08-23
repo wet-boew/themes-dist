@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v6.0.0-development - 2019-07-31
+ * v6.0.0-development - 2019-08-23
  *
  */
 /*
@@ -11583,6 +11583,7 @@ a.shr-opn, a.shr-opn:hover {
     background-color: #26374a;
     border: 1px solid #26374a;
     color: #fff;
+    margin-left: 0;
     padding: .5em 1em;
     text-transform: uppercase; }
   .gcweb-menu button[aria-haspopup=true]:hover,
