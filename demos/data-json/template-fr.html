@@ -18,7 +18,7 @@
 		<link href="../../GCWeb/assets/favicon.ico" rel="shortcut icon" />
 		
 		<link rel="stylesheet" href="../../GCWeb/css/ie8-theme.min.css" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
 		<script src="../../wet-boew/js/ie8-wet-boew.min.js"></script>
 		<![endif]-->
 <!--[if lte IE 9]>
@@ -85,7 +85,7 @@
 <li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></li>
 <li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></li>
 <li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></li>
-<li role="presentation"><a role="menuitem" href="http://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
+<li role="presentation"><a role="menuitem" href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Canada et le monde</a></li>
 <li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></li>
 <li role="presentation"><a role="menuitem" href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></li>
 </ul>
@@ -96,10 +96,10 @@
 <div class="container">
 <ol class="breadcrumb">
 <li>
-<a href="http://wet-boew.github.io/wet-boew/index-fr.html">Accueil</a>
+<a href="https://wet-boew.github.io/wet-boew/index-fr.html">Accueil</a>
 </li>
 <li>
-<a href="http://wet-boew.github.io/wet-boew/demos/index-fr.html">Exemples pratiques</a>
+<a href="https://wet-boew.github.io/wet-boew/demos/index-fr.html">Exemples pratiques</a>
 </li>
 <li>Gabarit HTML 5</li>
 </ol>
@@ -704,11 +704,11 @@
 		]
 	}'&gt; *** [[fantastique]] ***&lt;/template&gt;</code></pre>
 <h2>Mise en forme d'un flux RSS</h2>
-<p>Le flux RSS suivant est lu à partir du service web <a href="https://developer.yahoo.com/yql/guide/yql_url.html" hreflang="en" lang="en">Yahoo YQL Web Service URLs</a>. Le lien directe vers le flux RSS est : <a href="http://www.tc.gc.ca/medias/rss/routier.xml"><code>http://www.tc.gc.ca/medias/rss/routier.xml</code></a></p>
+<p>Le flux RSS suivant est lu à partir du service web <a href="https://developer.yahoo.com/yql/guide/yql_url.html" hreflang="en" lang="en">Yahoo YQL Web Service URLs</a>. Le lien directe vers le flux RSS est : <a href="https://www.tc.gc.ca/medias/rss/routier.xml"><code>https://www.tc.gc.ca/medias/rss/routier.xml</code></a></p>
 <details>
 <summary>Source code</summary>
 <pre><code>&lt;div data-wb-json='{
-		&quot;url&quot;: &quot;https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%20%3D%20&amp;#39;http%3A%2F%2Fwww.tc.gc.ca%2Fmedias%2Frss%2Froutier.xml&amp;#39;%20limit%2019&amp;amp;format=json#/query/results/item&quot;,
+		&quot;url&quot;: &quot;https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%20%3D%20&amp;#39;https%3A%2F%2Fwww.tc.gc.ca%2Fmedias%2Frss%2Froutier.xml&amp;#39;%20limit%2019&amp;amp;format=json#/query/results/item&quot;,
 		&quot;mapping&quot;: [
 			{ &quot;selector&quot;: &quot;h3&quot;, &quot;value&quot;: &quot;/title&quot;, &quot;placeholder&quot;: &quot;&quot; },
 			{ &quot;selector&quot;: &quot;a&quot;, &quot;value&quot;: &quot;/description&quot; },
@@ -724,7 +724,7 @@
 &lt;/div&gt;</code></pre>
 </details>
 <div data-wb-json='{
-		"url": "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%20%3D%20&#39;http%3A%2F%2Fwww.tc.gc.ca%2Fmedias%2Frss%2Froutier.xml&#39;%20limit%2019&amp;format=json#/query/results/item",
+		"url": "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20feed%20where%20url%20%3D%20&#39;https%3A%2F%2Fwww.tc.gc.ca%2Fmedias%2Frss%2Froutier.xml&#39;%20limit%2019&amp;format=json#/query/results/item",
 		"mapping": [
 			{ "selector": "h3", "value": "/title", "placeholder": "" },
 			{ "selector": "a", "value": "/description" },
