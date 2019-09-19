@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v6.0.0-development - 2019-09-11
+ * v6.0.0-development - 2019-09-19
  *
  */
 /*
@@ -11036,7 +11036,7 @@ header {
   #wb-glb-mn ul {
     min-width: 150px; }
     #wb-glb-mn ul.chvrn {
-      background: #335075;
+      background: #26374a;
       display: inline-block;
       float: right;
       height: 2.75em; }
@@ -11108,8 +11108,8 @@ h2.hme-banner-bg {
  WET button overwrites
  */
 body .btn-primary {
-  background-color: #335075;
-  border-color: #335075; }
+  background-color: #26374a;
+  border-color: #26374a; }
 
 .btn {
   font-family: Lato, sans-serif; }
@@ -11368,7 +11368,7 @@ main {
  * Overlay-specific overrides
  */
 .overlay-def header {
-  background: #335075; }
+  background: #26374a; }
 
 /* Profile on page-type-navigation pages
  * was: ".secondary" which are now deprecated */
@@ -11491,7 +11491,7 @@ main {
   padding-bottom: 2em; }
   #wb-sec h3 {
     border: 1px solid #ddd;
-    border-bottom: 5px solid #335075;
+    border-bottom: 5px solid #26374a;
     font-size: 1.1em;
     margin: 15px 0 1px;
     padding: 15px; }
@@ -11513,7 +11513,7 @@ main {
       #wb-sec .list-group a.list-group-item.wb-navcurr {
         cursor: text; }
         #wb-sec .list-group a.list-group-item.wb-navcurr[href]:hover {
-          background-color: #335075; }
+          background-color: #26374a; }
     #wb-sec .list-group .list-group .list-group-item {
       background-color: #e6e5e5;
       color: black;
@@ -11725,7 +11725,7 @@ a.shr-opn, a.shr-opn:hover {
  */
 /* GCWeb version 1.0 megamenu */
 #wb-sm {
-  background: #335075; }
+  background: #26374a; }
   #wb-sm .menu {
     display: table;
     margin-bottom: 0;
@@ -11836,9 +11836,9 @@ a.shr-opn, a.shr-opn:hover {
   #mb-pnl .mfp-close {
     top: .55em; }
   #mb-pnl .srch-pnl form button {
-    background-color: #335075;
+    background-color: #26374a;
     border: 0;
-    border-color: #335075;
+    border-color: #26374a;
     border-radius: 0;
     position: relative; }
     #mb-pnl .srch-pnl form button:hover, #mb-pnl .srch-pnl form button:focus, #mb-pnl .srch-pnl form button:active {
@@ -12117,7 +12117,7 @@ a.shr-opn, a.shr-opn:hover {
     background-color: #f5f5f5;
     text-decoration: none; }
   .toc li .list-group-item.active, .toc li .list-group-item.active:focus, .toc li .list-group-item.active:hover {
-    background-color: #335075;
+    background-color: #26374a;
     color: #fff;
     cursor: auto;
     text-decoration: none;
@@ -12505,12 +12505,15 @@ Carousel
   .overlay-def .modal-header {
     background: #2e5274; }
   .wb-sl {
-    background: #335075;
+    background: #26374a;
     color: #fff;
     font-weight: 700; }
     .wb-sl:focus {
       color: #fff;
       text-decoration: none; }
+    .wb-sl:hover {
+      background-color: #444;
+      color: #fff; }
   /*
  * Carousel-specific overrides
  */
@@ -12602,14 +12605,14 @@ Carousel
   .dshbrd details {
     display: block; }
     .dshbrd details summary {
-      background: #335075;
+      background: #26374a;
       color: #fff;
       font-size: 1em;
       margin-top: 5px;
       max-height: 999px;
       padding: 1em; }
     .dshbrd details .cntnt {
-      border: 1px solid #335075;
+      border: 1px solid #26374a;
       padding: 15px; }
   /*
   WET-BOEW
