@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.31 - 2019-10-03
+ * v4.0.32-development - 2019-10-03
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -84,7 +84,7 @@ wb.download = function( blob, filename, title ) {
 "use strict";
 
 // Escapes the characters in a string for use in a jQuery selector
-// Based on http://totaldev.com/content/escaping-characters-get-valid-jquery-id
+// Based on https://totaldev.com/content/escaping-characters-get-valid-jquery-id
 wb.jqEscape = function( selector ) {
 	return selector.replace( /([;&,\.\+\*\~':"\\\!\^\/#$%@\[\]\(\)=>\|])/g, "\\$1" );
 };
@@ -1149,7 +1149,7 @@ wb.date = {
 
 /*
  * Returns a RFC4122 compliant Global Unique ID (GUID).
- * Originally from http://stackoverflow.com/a/2117523/455535
+ * Originally from https://stackoverflow.com/a/2117523/455535
  */
 wb.guid = function() {
 	return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace( /[xy]/g, function( replacementChar ) {
@@ -3599,7 +3599,7 @@ wb.add( selector );
 
 /**
  * @title WET-BOEW Country Content
- * @overview A basic AjaxLoader wrapper that inserts AJAXed in content based on a visitors country as resolved by http://freegeoip.net
+ * @overview A basic AjaxLoader wrapper that inserts AJAXed in content based on a visitors country as resolved by https://freegeoip.net
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @nschonni
  */
@@ -4369,7 +4369,7 @@ wb.add( selector );
 
 /**
  * @title WET-BOEW Responsive equal height
- * @overview Sets the same height for all elements in a container that are rendered on the same baseline (row). Adapted from http://codepen.io/micahgodbolt/pen/FgqLc.
+ * @overview Sets the same height for all elements in a container that are rendered on the same baseline (row). Adapted from https://codepen.io/micahgodbolt/pen/FgqLc.
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author @thomasgohard
  */
@@ -6291,7 +6291,8 @@ var componentName = "wb-lbx",
 		if ( !i18nText ) {
 			i18n = wb.i18n;
 			i18nText = {
-				fClose: i18n( "close" ),
+				close: i18n( "close" ),
+				oClose: i18n( "overlay-close" ),
 				tClose: i18n( "overlay-close" ) + i18n( "space" ) + i18n( "esc-key" ),
 				tLoading: i18n( "load" ),
 				gallery: {
@@ -6440,21 +6441,18 @@ var componentName = "wb-lbx",
 				hasFooter = footer.length,
 				hasButton = hasFooter && $( footer ).find( ".popup-modal-dismiss" ).length !== 0,
 				closeClassFtr = "popup-modal-dismiss",
-				closeTextFtr = i18nText.fClose,
-				spanTextFtr, overlayCloseFtr;
+				closeTextFtr = i18nText.close,
+				spanTextFtr = i18nText.oClose,
+				overlayCloseFtr;
 
 			if ( !hasButton ) {
-				if ( hasFooter ) {
-					spanTextFtr = footer.innerHTML + i18nText.tClose;
-				} else {
+				if ( !hasFooter ) {
 					footer = document.createElement( "div" );
 					footer.setAttribute( "class", "modal-footer" );
-					spanTextFtr = i18nText.tClose;
 				}
-				spanTextFtr = spanTextFtr.replace( "'", "&#39;" );
 
 				overlayCloseFtr = "<button type='button' class='btn btn-sm btn-primary pull-left " + closeClassFtr +
-					"' title='" + closeTextFtr + " " + spanTextFtr + "'>" +
+					"' title='" + spanTextFtr + "'>" +
 					closeTextFtr +
 					"<span class='wb-inv'>" + spanTextFtr + "</span></button>";
 
@@ -7802,7 +7800,7 @@ var componentName = "wb-mltmd",
 
 		// added &#160; (non-breaking space) to prevent caption space from collapsing
 		// Used .html() instead of .append for performance purposes
-		// http://jsperf.com/jquery-append-vs-html-list-performance/2
+		// https://jsperf.com/jquery-append-vs-html-list-performance/2
 		area.html( "&#160;" );
 
 		for ( i = 0; i < captionsLength; i += 1 ) {
@@ -8227,7 +8225,7 @@ $document.on( "click", selector, function( event ) {
 
 	// Optimized multiple class tests to include child glyphicon because Safari was reporting the click event
 	// from the child span not the parent button, forcing us to have to check for both elements
-	// JSPerf for multiple class matching http://jsperf.com/hasclass-vs-is-stackoverflow/7
+	// JSPerf for multiple class matching https://jsperf.com/hasclass-vs-is-stackoverflow/7
 	if ( className.match( /playpause|-play|-pause|display/ ) || $target.is( "object" ) || $target.is( "video" ) ) {
 		this.player( "getPaused" ) || this.player( "getEnded" ) ? this.player( "play" ) : this.player( "pause" );
 	} else if ( className.match( /\bcc\b|-subtitles/ )  ) {
@@ -8681,7 +8679,7 @@ var componentName = "wb-overlay",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			$elm, footer, closeTextFtr, overlayCloseFtr, $header, closeText, overlayClose;
+			$elm, footer, $header, closeText, overlayClose;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -8702,36 +8700,34 @@ var componentName = "wb-overlay",
 			var isPanel = ( $elm.attr( "class" ).indexOf( "wb-panel" ) > -1 ) ? true : false,
 				isPopup = ( $elm.attr( "class" ).indexOf( "wb-popup" ) > -1 ) ? true : false;
 			if ( isPanel || isPopup ) {
-				var hasFooter, closeClassFtr, spanTextFtr, buttonStyle = "";
-
 				footer = $elm.find( ".modal-footer" )[ 0 ];
-				hasFooter = ( footer && footer.length !== 0 ) ? true : false;
-				closeClassFtr = ( $elm.hasClass( "wb-panel-l" ) ? "pull-right " : "pull-left " )  + closeClass;
 
-				if ( hasFooter ) {
-					spanTextFtr = footer.innerHTML + i18nText.space + i18nText.esc;
-				} else {
-					footer = document.createElement( "div" );
-					footer.setAttribute( "class", "modal-footer" );
-					spanTextFtr = i18nText.esc;
-				}
+				var hasFooter = ( footer && footer.length !== 0 ) ? true : false,
+					hasButton = hasFooter && $( footer ).find( closeClass ).length !== 0,
+					closeClassFtr = ( $elm.hasClass( "wb-panel-l" ) ? "pull-right " : "pull-left " )  + closeClass,
+					closeTextFtr = i18nText.close,
+					spanTextFtr = i18nText.closeOverlay,
+					overlayCloseFtr;
 
-				closeTextFtr = i18nText.close;
-				spanTextFtr = spanTextFtr.replace( "'", "&#39;" );
+				if ( !hasButton ) {
+					if ( !hasFooter ) {
+						footer = document.createElement( "div" );
+						footer.setAttribute( "class", "modal-footer" );
+					}
 
-				if ( isPopup ) {
-					footer.style.border = "0";
-				}
+					if ( isPopup ) {
+						footer.style.border = "0";
+					}
 
-				overlayCloseFtr = "<button type='button' class='btn btn-sm btn-primary " + closeClassFtr +
-					"' style='" + buttonStyle +
-					"' title='" + closeTextFtr + " " + spanTextFtr + "'>" +
-					closeTextFtr +
-					"<span class='wb-inv'>" + spanTextFtr + "</span></button>";
+					overlayCloseFtr = "<button type='button' class='btn btn-sm btn-primary " + closeClassFtr +
+						"' title='" + spanTextFtr + "'>" +
+						closeTextFtr +
+						"<span class='wb-inv'>" + spanTextFtr + "</span></button>";
 
-				$( footer ).append( overlayCloseFtr );
-				if ( !hasFooter ) {
-					$elm.append( footer );
+					$( footer ).append( overlayCloseFtr );
+					if ( !hasFooter ) {
+						$elm.append( footer );
+					}
 				}
 			}
 
@@ -9810,7 +9806,7 @@ var componentName = "wb-share",
 			},
 			blogger: {
 				name: "Blogger",
-				url: "http://www.blogger.com/blog_this.pyra?t=&amp;u={u}&amp;n={t}"
+				url: "https://www.blogger.com/blog_this.pyra?t=&amp;u={u}&amp;n={t}"
 			},
 			digg: {
 				name: "Digg",
@@ -9818,11 +9814,11 @@ var componentName = "wb-share",
 			},
 			diigo: {
 				name: "Diigo",
-				url: "http://www.diigo.com/post?url={u}&amp;title={t}"
+				url: "https://www.diigo.com/post?url={u}&amp;title={t}"
 			},
 			facebook: {
 				name: "Facebook",
-				url: "http://www.facebook.com/sharer.php?u={u}&amp;t={t}"
+				url: "https://www.facebook.com/sharer.php?u={u}&amp;t={t}"
 			},
 			gmail: {
 				name: "Gmail",
@@ -9830,23 +9826,23 @@ var componentName = "wb-share",
 			},
 			linkedin: {
 				name: "LinkedIn®",
-				url: "http://www.linkedin.com/shareArticle?mini=true&amp;url={u}&amp;title={t}&amp;ro=false&amp;summary={d}&amp;source="
+				url: "https://www.linkedin.com/shareArticle?mini=true&amp;url={u}&amp;title={t}&amp;ro=false&amp;summary={d}&amp;source="
 			},
 			myspace: {
 				name: "MySpace",
-				url: "http://www.myspace.com/Modules/PostTo/Pages/?u={u}&amp;t={t}"
+				url: "https://www.myspace.com/Modules/PostTo/Pages/?u={u}&amp;t={t}"
 			},
 			pinterest: {
 				name: "Pinterest",
-				url: "http://www.pinterest.com/pin/create/button/?url={u}&amp;media={i}&amp;description={t}"
+				url: "https://www.pinterest.com/pin/create/button/?url={u}&amp;media={i}&amp;description={t}"
 			},
 			reddit: {
 				name: "reddit",
-				url: "http://reddit.com/submit?url={u}&amp;title={t}"
+				url: "https://reddit.com/submit?url={u}&amp;title={t}"
 			},
 			tumblr: {
 				name: "tumblr",
-				url: "http://www.tumblr.com/share/link?url={u}&amp;name={t}&amp;description={d}"
+				url: "https://www.tumblr.com/share/link?url={u}&amp;name={t}&amp;description={d}"
 			},
 			twitter: {
 				name: "Twitter",
@@ -9854,7 +9850,7 @@ var componentName = "wb-share",
 			},
 			yahoomail: {
 				name: "Yahoo! Mail",
-				url: "http://compose.mail.yahoo.com/?to=&subject={t}&body={u}%0A{d}"
+				url: "https://compose.mail.yahoo.com/?to=&subject={t}&body={u}%0A{d}"
 			}
 		}
 	},
@@ -9956,7 +9952,7 @@ var componentName = "wb-share",
 							.replace( /\{d\}/, pageDescription );
 					panel += "<li><a href='" + url + "' class='" + shareLink +
 						" " + ( siteProperties.isMailto ? "email" : key ) +
-						" btn btn-default' target='_blank'>" +
+						" btn btn-default' target='_blank' rel='noreferrer noopener'>" +
 						siteProperties.name + "</a></li>";
 				}
 
@@ -10149,9 +10145,16 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 		// Should be pushed upstream to DataTables
 		$elm.next( ".bottom" ).find( ".paginate_button" )
 			.attr( {
-				"role": "button",
-				"href": "javascript:;"
+				"href": "#" + $elm.context.id
 			} )
+
+			// This is required to override the datatable.js (v1.10.13) behavior to cancel the event propagation on anchor element.
+			.on( "keypress", function( evn ) {
+				if ( evn.keyCode === 13 ) {
+					window.location = evn.target.href;
+				}
+			} )
+
 			.not( ".previous, .next" )
 				.attr( "aria-pressed", "false" )
 				.html( function( index, oldHtml ) {
@@ -10178,8 +10181,8 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 	var $form = $( this ),
 		$datatable = $( "#" + $form.data( "bind-to" ) ).dataTable( { "retrieve": true } ).api();
 
-	// Lets reset the search;
-	$datatable.search( "" ).columns().search( "" );
+	// Lets reset the search
+	$datatable.search( "" ).columns().search( "" ).draw();
 
 	// Lets loop throug all options
 	var $lastColumn = -1, $cbVal = "";
