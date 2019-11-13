@@ -26,13 +26,21 @@ var $document = wb.doc,
 	actionMngEvent = [
 		"mapfilter",
 		"tocsv",
+		"loadJSON",
 		"patch",
 		"ajax",
 		"addClass",
 		"removeClass",
 		"tblfilter",
+		"withInput",
 		"run"
 	].join( "." + actionEvent + " " ) + "." + actionEvent,
+
+	patchDefault = {
+		op: "move",
+		path: "{base}",
+		from: "{base}/{qval}"
+	},
 
 	/**
 	 * @method init
@@ -263,6 +271,175 @@ var $document = wb.doc,
 		wb.download( new Blob( [ csvText ], { type: "text/plain;charset=utf-8" } ), fileName );
 
 	},
+
+	loadJSON = function( data ) {
+
+		// All the options need to be documented
+		// * url -> URL of the JSON file to load
+		// * nocache -> related to JSON-fetch, see similar
+		// * nocachekey -> related to JSON-fetch, see similar
+		// * source -> JQuery selector of with has a JSON-MANAGER
+
+
+		var source = data.source,
+			fileUrl = data.url;
+
+		// Add a flag to the JSON-Manager to put in a reload mode to avoid conflict with patches
+		$( source ).attr( "data-wb-jsonmanager-reload", "" );
+
+		// Trigger a JSON load on the source
+		$( source ).trigger( {
+			type: "json-fetch.wb",
+			fetch: {
+				url: fileUrl,
+				nocache: data.nocache,
+				nocachekey: data.nocachekey
+			}
+		} );
+
+	},
+
+	// From a user input or a predefined input, apply some tranformation to the command prior to execute it
+	// This functionality was already in the URL mapping and was moved here to be reused by any user input
+	withInput = function( event, data ) {
+
+		// * data.srcInput; // ex. jQuery Selector pointing to an input
+		// If cValue is specified (like from the URL mapping), the second parameter is ignored
+		var cValue = data.cValue || $( data.srcInput ).val() || "",
+			settingQuery = data,
+			dontTriggerWET = data.dntwb, // do not trigger WET
+			elm = event.target;
+
+// Test is actions is an array, in false this action must be rejected. The docs should contains that info too.
+
+		executePreRenderAction( elm.id, cValue, settingQuery.actions, dontTriggerWET );
+
+
+	},
+
+	executePreRenderAction = function( elmID, cValue, actions, dontTriggerWET ) {
+
+		var i, i_len, i_cache, cache_action,
+			regMatchValue,
+			pattern, cValueParsed,
+			defaultValue;
+
+
+		if ( !$.isArray( actions ) ) {
+			actions = [ actions ];
+		} else {
+			actions = $.extend( [], actions );
+		}
+
+		// Fix any action that was defined as query dependent
+		i_len = actions.length;
+		for ( i = 0; i !== i_len; i += 1 ) {
+			i_cache = actions[ i ];
+
+			cache_action = i_cache.action;
+			if ( !cache_action ) {
+				continue;
+			}
+
+			regMatchValue = i_cache.match;
+			defaultValue = i_cache.default;
+			cValueParsed = false;
+
+			// Abort if we try to match and there is no default set
+			if ( regMatchValue && !defaultValue ) {
+				throw "'match' and 'default' property need to be set";
+			}
+
+			// Validate the value if it match the regular expression / string pattern.
+			if ( !!defaultValue && cValue.length && typeof regMatchValue === "string" ) {
+				try {
+					pattern = new RegExp( regMatchValue );
+					cValueParsed = pattern.exec( cValue );
+
+					// Fall back on default if no match found
+					cValueParsed = !!cValueParsed ? cValueParsed : defaultValue;
+				} catch ( e ) { }
+			} else if ( !cValueParsed && !!defaultValue && !cValue ) {
+				cValueParsed = defaultValue;
+			}
+
+			if ( !i_cache.qval && cValueParsed ) {
+				i_cache.qval = cValueParsed;
+			}
+
+
+			switch ( cache_action ) {
+
+			case "patch":
+				var ops = i_cache.patches,
+					basePntr = i_cache.base || "/";
+				if ( !ops ) {
+					ops = [ patchDefault ];
+					i_cache.cumulative = true;
+				}
+				if ( !$.isArray( ops ) ) {
+					ops = [ ops ];
+				}
+				ops = patchFixArray( ops, i_cache.qval, basePntr );
+				i_cache.patches = ops;
+				break;
+			case "ajax":
+				if ( i_cache.trigger && dontTriggerWET ) {
+					i_cache.trigger = false;
+				}
+				i_cache.url = replaceMappingKeys( i_cache.url, i_cache.qval );
+				break;
+			case "tblfilter":
+				i_cache.value = replaceMappingKeys( i_cache.value, i_cache.qval );
+				break;
+			default:
+
+				// Just do the action as defined.
+				break;
+
+			}
+
+			// Postpone the action to be executed after the "withInput" action
+			addDelayedAction( elmID, postponeActions, i_cache );
+		}
+
+	},
+	patchFixArray = function( patchArray, val, basePointer ) {
+
+		var i, i_len = patchArray.length, i_cache,
+			patchesFixed = [], patch_cache;
+
+		if ( !basePointer ) {
+			basePointer = "/";
+		}
+
+		for ( i = 0; i !== i_len; i += 1 ) {
+			i_cache = patchArray[ i ];
+			patch_cache = $.extend( { }, i_cache );
+			if ( i_cache.path ) {
+				patch_cache.path = replaceMappingKeys( i_cache.path, val, basePointer );
+			}
+			if ( i_cache.from ) {
+				patch_cache.from = replaceMappingKeys( i_cache.from, val, basePointer );
+			}
+			if ( i_cache.value ) {
+				patch_cache.value = replaceMappingKeys( i_cache.value, val, basePointer );
+			}
+			patchesFixed.push( patch_cache );
+		}
+		return patchesFixed;
+	},
+	replaceMappingKeys = function( search, val, basePointer ) {
+		if ( !val ) {
+			return search;
+		}
+		if ( !basePointer ) {
+			return search.replace( /\{qval\}/, val );
+		} else {
+			return search.replace( /\{qval\}/, val ).replace( /\{base\}/, basePointer );
+		}
+	},
+
 	runAct = function( event, data ) {
 
 		var elm = event.target,
@@ -398,6 +575,12 @@ $document.on( actionMngEvent, selector, function( event, data ) {
 			break;
 		case "tocsv":
 			tblToCSV( data.source, data.filename );
+			break;
+		case "loadJSON":
+			loadJSON( data );
+			break;
+		case "withInput":
+			withInput( event, data );
 			break;
 		}
 	}
@@ -1067,6 +1250,10 @@ $document.on( "click", selector, function( event ) {
 
 	// Ensure that we only execute for anchor and button
 	if ( elm.nodeName === "BUTTON" || elm.nodeName === "A" ) {
+
+		if ( !elm.id ) {
+			elm.id = wb.getId();
+		}
 
 		if ( wb.isReady ) {
 
@@ -2602,10 +2789,12 @@ var componentName = "wb-jsonmanager",
 	postponeEvent = "postpone." + componentName,
 	patchesEvent = "patches." + componentName,
 	jsonFailedClass = "jsonfail",
+	reloadFlag = "data-" + componentName + "-reload",
 	dsNameRegistered = [],
 	datasetCache = {},
 	datasetCacheSettings = {},
 	dsDelayed = {},
+	dsPostponePatches = {},
 	$document = wb.doc,
 	defaults = {
 		ops: [
@@ -3080,6 +3269,14 @@ $document.on( "json-fetched.wb", selector, function( event ) {
 		}
 		datasetCacheSettings[ dsName ] = settings;
 
+		if ( elm.hasAttribute( reloadFlag ) ) {
+			elm.removeAttribute( reloadFlag );
+			i_cache = dsPostponePatches[ dsName ];
+			if ( i_cache ) {
+				$elm.trigger( i_cache );
+			}
+		}
+
 		if ( !settings.wait && dsDelayed[ dsName ] ) {
 			backlog = dsDelayed[ dsName ];
 			i_len = backlog.length;
@@ -3134,6 +3331,12 @@ $document.on( patchesEvent, selector, function( event ) {
 			return true;
 		}
 		dsName = "[" + settings.name + "]";
+
+		// Check if the patches need to be hold until the next json-fetch event
+		if ( elm.hasAttribute( reloadFlag ) ) {
+			dsPostponePatches[ dsName ] = event;
+			return true;
+		}
 
 		if ( !dsDelayed[ dsName ] ) {
 			throw "Applying patched on undefined dataset name: " + dsName;
@@ -3841,12 +4044,7 @@ var componentName = "wb-urlmapping",
 	initEvent = "wb-init." + componentName,
 	doMappingEvent = "domapping." + componentName,
 	$document = wb.doc,
-	authTrigger,
-	patchDefault = {
-		op: "move",
-		path: "{base}",
-		from: "{base}/{qval}"
-	},
+	authTrigger, // Flag to prevent instation of WET no more than twice by page load
 
 	/**
 	 * @method init
@@ -3882,128 +4080,6 @@ var componentName = "wb-urlmapping",
 			}
 		}
 	},
-	executeAction = function( $elm, cValue, actions ) {
-
-		var i, i_len, i_cache, cache_action,
-			regMatchValue,
-			pattern, cValueParsed,
-			defaultValue;
-
-		if ( !$.isArray( actions ) ) {
-			actions = [ actions ];
-		} else {
-			actions = $.extend( [], actions );
-		}
-
-		// Fix any action that was defined as query dependent
-		i_len = actions.length;
-		for ( i = 0; i !== i_len; i += 1 ) {
-			i_cache = actions[ i ];
-
-			cache_action = i_cache.action;
-			if ( !cache_action ) {
-				continue;
-			}
-
-			regMatchValue = i_cache.match;
-			defaultValue = i_cache.default;
-			cValueParsed = false;
-
-			// Abort if we try to match and there is no default set
-			if ( regMatchValue && !defaultValue ) {
-				throw "'match' and 'default' property need to be set";
-			}
-
-			// Validate the value if it match the regular expression / string pattern.
-			if ( !!defaultValue && cValue.length && typeof regMatchValue === "string" ) {
-				try {
-					pattern = new RegExp( regMatchValue );
-					cValueParsed = pattern.exec( cValue );
-
-					// Fall back on default if no match found
-					cValueParsed = !!cValueParsed ? cValueParsed : defaultValue;
-				} catch ( e ) { }
-			}
-
-			if ( !i_cache.qval && cValueParsed ) {
-				i_cache.qval = cValueParsed;
-			}
-
-
-			switch ( cache_action ) {
-
-			case "patch":
-				var ops = i_cache.patches,
-					basePntr = i_cache.base || "/";
-				if ( !ops ) {
-					ops = [ patchDefault ];
-					i_cache.cumulative = true;
-				}
-				if ( !$.isArray( ops ) ) {
-					ops = [ ops ];
-				}
-				ops = patchFixArray( ops, i_cache.qval, basePntr );
-				i_cache.patches = ops;
-				break;
-			case "ajax":
-				if ( i_cache.trigger && $elm[ 0 ] !== authTrigger ) {
-					i_cache.trigger = false;
-				}
-				i_cache.url = replaceMappingKeys( i_cache.url, i_cache.qval );
-				break;
-			case "tblfilter":
-				i_cache.value = replaceMappingKeys( i_cache.value, i_cache.qval );
-				break;
-			default:
-
-				// Just do the action as defined.
-				break;
-
-			}
-		}
-
-
-		// Send the list of actions to be dispatched by the actionmng
-		$elm.trigger( {
-			type: "do.wb-actionmng",
-			actions: actions
-		} );
-	},
-	patchFixArray = function( patchArray, val, basePointer ) {
-
-		var i, i_len = patchArray.length, i_cache,
-			patchesFixed = [], patch_cache;
-
-		if ( !basePointer ) {
-			basePointer = "/";
-		}
-
-		for ( i = 0; i !== i_len; i += 1 ) {
-			i_cache = patchArray[ i ];
-			patch_cache = $.extend( { }, i_cache );
-			if ( i_cache.path ) {
-				patch_cache.path = replaceMappingKeys( i_cache.path, val, basePointer );
-			}
-			if ( i_cache.from ) {
-				patch_cache.from = replaceMappingKeys( i_cache.from, val, basePointer );
-			}
-			if ( i_cache.value ) {
-				patch_cache.value = replaceMappingKeys( i_cache.value, val, basePointer );
-			}
-			patchesFixed.push( patch_cache );
-		}
-		return patchesFixed;
-	},
-	replaceMappingKeys = function( search, val, basePointer ) {
-		if ( !val ) {
-			return search;
-		}
-		if ( !basePointer ) {
-			return search.replace( /\{qval\}/, val );
-		} else {
-			return search.replace( /\{qval\}/, val ).replace( /\{base\}/, basePointer );
-		}
-	},
 	getUrlParams = function() {
 
 		// https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript#answer-2880929
@@ -4036,7 +4112,18 @@ $document.on( doMappingEvent, selector, function( event ) {
 		settingQuery = settings[ cKey + "=" + cValue ] || settings[ cKey ];
 
 		if ( typeof settingQuery === "object" ) {
-			executeAction( $elm, cValue, settingQuery );
+
+			// Send it to the action manager to get proccessed with the action "withInput"
+			$elm.trigger( {
+				type: "do.wb-actionmng",
+				actions: {
+					action: "withInput",
+					actions: settingQuery,
+					cValue: cValue,
+					dntwb: $elm[ 0 ] !== authTrigger
+				}
+			} );
+
 			if ( !settings.multiplequery ) {
 				break;
 			}

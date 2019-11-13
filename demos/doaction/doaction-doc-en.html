@@ -122,14 +122,16 @@
 <p>When executing a such action can make your page not WCAG compliant.</p>
 </section>
 <section>
-<h2>Working example</h2>
+<h2>Working examples</h2>
 <p>English:</p>
 <ul>
 <li><a href="tblfilter-en.html">Do action - Table filtering</a></li>
+<li><a href="json-en.html">Do action - Load JSON</a></li>
 </ul>
 <p>French:</p>
 <ul>
 <li><a href="tblfilter-fr.html" hreflang="fr" lang="fr">Exécuter des actions - Filtrer un tableau</a></li>
+<li><a href="json-fr.html" hreflang="fr" lang="fr">Exécuter des actions - JSON</a></li>
 </ul>
 </section>
 <section>
@@ -183,7 +185,131 @@
 <dt><code>&quot;patches&quot;: { ... }</code></dt>
 <dd>Contain a patch or an array of patch. See the JSON manager documentation to know how to create JSON patch operation.</dd>
 </dl>
+<h3>Load JSON</h3>
+<pre><code>&lt;button data-wb-doaction='{
+			&quot;action&quot;: &quot;loadJSON&quot;,
+			&quot;url&quot;: &quot;ajax/ajax-load.json&quot;,
+			&quot;source&quot;: &quot;#jsonloader&quot;
+	}' &gt;Ajax content&lt;/button&gt;</code></pre>
+<p>Where:</p>
+<dl class="dl-horizontal">
+<dt><code>&quot;action&quot;: &quot;ajax&quot;</code></dt>
+<dd>Will load a JSON file designated by the url onto a JSON manager specified by source.</dd>
+<dt><code>&quot;url&quot;: &quot;ajax/ajax-1.html&quot;</code></dt>
+<dd>URL of the JSON file.</dd>
+<dt><code>&quot;source&quot;: &quot;#smallloader&quot;</code></dt>
+<dd>A pointer to the JSON manager. "<code>#jsonloader</code>" is representing the id of the element containing the JSON manager.</dd>
+<dt><code>&quot;nocache&quot;</code></dt>
+<dd>See <a href="../jsonmanager/jsonmanager-doc-en.html#cachebusting">cache busting</a> configuration options for the JSON manager.</dd>
+<dt><code>&quot;nocachekey&quot;</code></dt>
+<dd>See <a href="../jsonmanager/jsonmanager-doc-en.html#cachebusting">cache busting</a> configuration options for the JSON manager.</dd>
+</dl>
+<h3>With Input</h3>
+<pre><code>&lt;button data-wb-doaction='{
+			&quot;action&quot;: &quot;withInput&quot;,
+			&quot;srcInput&quot;: &quot;#myfield&quot;,
+			&quot;actions&quot;: &quot;[... ]&quot;
+	}' &gt;Ajax content&lt;/button&gt;</code></pre>
+<p>Where:</p>
+<dl class="dl-horizontal">
+<dt><code>&quot;action&quot;: &quot;withInput&quot;</code></dt>
+<dd>Indicate that subsequent actions may use data from input field designated by srcInput.</dd>
+<dt><code>&quot;srcInput&quot;: &quot;#myfield&quot;</code></dt>
+<dd>The id of an input field whose value may be used in subsequent actions.</dd>
+<dt><code>&quot;actions&quot;: &quot;{ ... }&quot;</code></dt>
+<dd>An action or an array of actions.</dd>
+</dl>
 </section>
+<section>
+<h2>Binding actions to the page query</h2>
+<p>The following variable can be used to map the query information for ajax url, table filter or patches selector.</p>
+<dl class="dl-horizontal">
+<dt>{qval} string</dt>
+<dd>Query value in the url required to match a regular expression with <code>match</code> configuration. It can be specified by setting the parameter <code>qval</code>.</dd>
+<dt>{base} string</dt>
+<dd>Only for patches. Define the base string of a JSON pointer. Default value is <code>/</code>. It can be specified by setting the parameter <code>base</code>.</dd>
+</dl>
+<h3><code>match</code> and <code>default</code> configuration</h3>
+<p>If <code>match</code> is defined in your configuration, then the <code>default</code> configuration <strong>must</strong> be also defined.</p>
+<p>For security reason, any value retreived from the page URL always require to configure <code>match</code> that will contain a regular expresion. If there no match or the matching result is an empty string, the <code>default</code> configuration will be used as the value fallback.</p>
+<p>When you specify a regular expression, it is recommended to have it prefixed with "<code>^</code>" and suffixed with "<code>$</code>". Be careful to not use regular expression that could compromise the security.</p>
+</section>
+<h3>Example 1 - Ajax</h3>
+<p><code>data-wb-urlmapping='{ &quot;ajx&quot;: { &quot;action&quot;: &quot;ajax&quot;, &quot;url&quot;: &quot;ajax/ajax-{qval}.html&quot;, &quot;match&quot;: &quot;[A-Z][a-z][A-Z][a-z][A-Z][a-z]&quot;, &quot;default&quot;: &quot;default&quot; } }'</code></p>
+<p>Means that:</p>
+<dl class="dl-horizontal">
+<dt><code>?ajx</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-default.html</code></dd>
+<dt><code>?ajx=2</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-default.html</code></dd>
+<dt><code>?ajx=wetboew</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-default.html</code></dd>
+<dt><code>?ajx=canada</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-default.html</code></dd>
+<dt><code>?ajx=CaNaDa</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-CaNaDa.html</code></dd>
+</dl>
+<h3>Example 2 - Ajax</h3>
+<p><code>data-wb-urlmapping='{ &quot;ajx=2&quot;: { &quot;action&quot;: &quot;ajax&quot;, &quot;url&quot;: &quot;ajax/ajax-{qval}.html&quot;, &quot;match&quot;: &quot;[0-9]&quot;, &quot;default&quot;: &quot;null&quot; } }'</code></p>
+<p>Means that:</p>
+<dl class="dl-horizontal">
+<dt><code>?ajx</code></dt>
+<dd>Do nothing</dd>
+<dt><code>?ajx=2</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-2.html</code></dd>
+<dt><code>?ajx=wetboew</code></dt>
+<dd>Do nothing</dd>
+<dt><code>?ajx=CaNaDa</code></dt>
+<dd>Do nothing</dd>
+<dt><code>?ajx=5</code></dt>
+<dd>Do nothing</dd>
+</dl>
+<h3>Example 3 - Ajax</h3>
+<p><code>data-wb-urlmapping='{ &quot;ajx&quot;: { &quot;action&quot;: &quot;ajax&quot;, &quot;url&quot;: &quot;ajax/ajax-{qval}.html&quot;, &quot;qval&quot;: &quot;TEST&quot; } }'</code></p>
+<p>Means that:</p>
+<dl class="dl-horizontal">
+<dt><code>?ajx</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-TEST.html</code></dd>
+<dt><code>?ajx=2</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-TEST.html</code></dd>
+<dt><code>?ajx=wetboew</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-TEST.html</code></dd>
+<dt><code>?ajx=CaNaDa</code></dt>
+<dd>Will load ajax file: <code>ajax/ajax-TEST.html</code></dd>
+</dl>
+<p>Note: The result of <code>match</code> configuration is ignored when the query value is set.</p>
+<h3>Example 4 - Table filtering</h3>
+<pre><code>data-wb-urlmapping='{
+	&quot;date-search&quot;:
+		{
+			&quot;action&quot;: &quot;tblfilter&quot;,
+			&quot;source&quot;: &quot;#myDataTable&quot;,
+			&quot;column&quot;: 1,
+			&quot;value&quot;: &quot;{qval}&quot;,
+			&quot;match&quot;: &quot;[1-2][0-9][0-9][0-9]-[0,1][0-9]-[0-3][0-9]&quot;,
+			&quot;default&quot;: &quot;2016-07-23&quot;
+		}
+	}'</code></pre>
+<p>Means that:</p>
+<dl class="dl-horizontal">
+<dt><code>?</code></dt>
+<dd>Will show all result</dd>
+<dt><code>?date-search</code></dt>
+<dd>Will show result that match the default "2016-07-23" in the second column.</dd>
+<dt><code>?date-search=</code></dt>
+<dd>Will show result that match the default "2016-07-23" in the second column.</dd>
+<dt><code>?date-search=2016-07-26</code></dt>
+<dd>Will show result that match the string "2016-07-26" in the second column.</dd>
+<dt><code>?date-search=YYYY-MM-DD</code></dt>
+<dd>Will show result that match the default "2016-07-23" in the second column.</dd>
+</dl>
+
+<h2>Default patch operation</h2>
+<pre><code>{
+	op: "move",
+	path: "{base}",
+	from: "{base}/{qval}"
+}</code></pre>
 <section>
 <h2>Add pre-defined action identified by a group name</h2>
 <p>Defined in a attribute <code>data-wb-actionmng</code> set on an element.</p>
@@ -237,6 +363,8 @@
 <li>removeClass</li>
 <li>mapfilter</li>
 <li>tocsv</li>
+<li>loadJSON</li>
+<li>withInput</li>
 </ul>
 </td>
 <td><code>data-wb-doaction='{ "action": "<em>[Name of the action]</em>" }</code></td>
@@ -258,6 +386,10 @@
 <dd>Apply a geomap filter</dd>
 <dt>tocsv</dt>
 <dd>Download an HTML table in CSV</dd>
+<dt>loadJSON</dt>
+<dd>Load a JSON file into a specified <a href="../jsonmanager/jsonmanager-doc-en.html">JSON manager</a></dd>
+<dt>withInput</dt>
+<dd>Specify the value of an input field available to the action</dd>
 </dl>
 </td>
 </tr>
@@ -267,6 +399,7 @@
 <p>Available for:</p>
 <ul>
 <li>ajax</li>
+<li>loadJSON</li>
 </ul>
 </td>
 <td><code>data-wb-doaction='{ "action": "ajax", "url": "path/to/my/file.html" }</code></td>
@@ -335,6 +468,8 @@
 <li>addClass</li>
 <li>removeClass</li>
 <li>tocsv</li>
+<li>loadJSON</li>
+<li>withInput</li>
 </ul>
 </td>
 <td><code>data-wb-doaction='{ "action": "ajax", "target": "<em>[an ID]</em>" } }'</code></td>
@@ -360,6 +495,8 @@
 <li>removeClass</li>
 <li>mapfilter</li>
 <li>tocsv</li>
+<li>loadJSON</li>
+<li>withInput</li>
 </ul>
 </td>
 <td><code>data-wb-doaction='{ "action": "ajax", "target": "[an ID]", "trgbefore": <em>true</em> } }'</code></td>
@@ -384,6 +521,8 @@
 <li>addClass</li>
 <li>removeClass</li>
 <li>mapfilter</li>
+<li>loadJSON</li>
+<li>withInput</li>
 </ul>
 </td>
 <td><code>data-wb-doaction='{ "action": "ajax", "target": "[an ID]", "trggroup": "<em>[a name]</em>" } }'</code></td>
@@ -400,6 +539,7 @@
 <li>removeClass</li>
 <li>mapfilter</li>
 <li>tocsv</li>
+<li>loadJSON</li>
 </ul>
 </td>
 <td><code>data-wb-doaction='{ "action": "tblfilter", "source": "#jQuerySelector" }'</code></td>
@@ -618,6 +758,22 @@
 </dl>
 </td>
 </tr>
+<tr>
+<td>srcInput</td>
+<td><p>Define the input field so that it's value is available to the action</p>
+<p>Available for:</p>
+<ul>
+<li>withInput</li>
+</ul>
+</td>
+<td><code>data-wb-doaction='{ "action": "withInput", "srcInput": "#myField", ... }'</code></td>
+<td>
+<dl>
+<dt>String:</dt>
+<dd>jQuery selector of an input field when the action is set to <code>withInput</code></dd>
+</dl>
+</td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -761,6 +917,24 @@
 <pre><code>$( document ).on( "wb-ready.wb", function( event ) {
 });</code></pre>
 </td>
+</tr>
+<tr>
+<td><code>withInput.wb-actionmng</code>
+<ul>
+<li>withInput</li>
+</ul>
+</td>
+<td>Triggered automatically on withInput action execution.</td>
+<td>Used so that subsequent actions may use data from input field designated by srcInput.</td>
+</tr>
+<tr>
+<td><code>loadJSON.wb-actionmng</code>
+<ul>
+<li>loadJSON</li>
+</ul>
+</td>
+<td>Triggered automatically on loadJSON action execution.</td>
+<td>Load a JSON file designated by the url onto a JSON manager specified by source.</td>
 </tr>
 </tbody>
 </table>
