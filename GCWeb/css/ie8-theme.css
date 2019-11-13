@@ -12685,17 +12685,7 @@ Carousel
   /*
   WET-BOEW
   @title: Small view and over (screen only)
- */
-  /*
- * Experimental feature
- */
-  .experimental .mb-sm-5 {
-    margin-bottom: 50px; }
-  .experimental .p-sm-3 {
-    padding: 15px; }
-  .experimental .px-sm-3 {
-    padding-left: 15px;
-    padding-right: 15px; } }
+ */ }
 
 /* Medium view and over */
 @media screen and (min-width: 992px) {

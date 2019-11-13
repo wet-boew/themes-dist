@@ -12630,10 +12630,6 @@ table.nws-tbl > thead > tr > th {
 	 *
 	 */
   /* ------------
-	 * Stretched link
-	 *
-	 */
-  /* ------------
 	 * Theme color
 	 *
 	 */
@@ -12663,18 +12659,6 @@ table.nws-tbl > thead > tr > th {
     padding-right: 80px; }
   .experimental .bg-cover, .experimental.bg-cover {
     background-size: cover; }
-  .experimental .p-0 {
-    padding: 0px; }
-  .experimental .stretched-link:after {
-    background-color: rgba(0, 0, 0, 0);
-    bottom: 0;
-    content: "";
-    left: 0;
-    pointer-events: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 1; }
   .experimental.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
   .experimental.pnkDy-theme #wb-srch button,
   .experimental.pnkDy-theme .srchbox button {
@@ -13125,16 +13109,6 @@ table.nws-tbl > thead > tr > th {
   WET-BOEW
   @title: Small view and over (screen only)
  */
-  /*
- * Experimental feature
- */
-  .experimental .mb-sm-5 {
-    margin-bottom: 50px; }
-  .experimental .p-sm-3 {
-    padding: 15px; }
-  .experimental .px-sm-3 {
-    padding-left: 15px;
-    padding-right: 15px; }
   /*
   WET-BOEW
   @title: Small view and over (screen only)
