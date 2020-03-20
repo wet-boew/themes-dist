@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.33 - 2020-03-06
+ * v4.0.34 - 2020-03-20
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1387,6 +1387,150 @@ $document.on( "ajax-fetch.wb", function( event ) {
 			}, this );
 	}
 } );
+
+} )( jQuery, wb );
+
+/**
+ * @title WET-BOEW Set background image sourceset
+ * @overview Detects the change in screen width and replace the background image accordingly
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @namjohn920
+ */
+( function( $, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the plugin - meaning that they will be initialized once per page,
+ * not once per instance of plugin on the page. So, this is a good place to define
+ * variables that are common to all instances of the plugin on a page.
+ */
+var $document = wb.doc,
+	$window = wb.win,
+	componentName = "wb-bgimg-srcset",
+	selector = ".provisional[data-bgimg-srcset]",
+	inputs = {},
+	elm,
+	ids = [],
+
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+			ids.push( elm.id );
+			var userInputs;
+			if ( elm.dataset.bgimgSrcset ) {
+				userInputs = elm.dataset.bgimgSrcset.split( "," );
+			};
+
+			var i_len = userInputs.length;
+			inputs[ elm.id ] = [];
+
+			for ( var i = 0; i < i_len; i++ ) {
+				userInputs[ i ] = userInputs[ i ].trim();
+				userInputs[ i ] = userInputs[ i ].split( " " );
+				userInputs[ i ][ 1 ] = parseInt( userInputs[ i ][ 1 ].substring( 0, userInputs[ i ][ 1 ].length - 1 ) );
+				inputs[ elm.id ].push( userInputs[ i ] );
+			}
+
+			inputs[ elm.id ].sort(
+				function( a, b ) {
+					return a[ 1 ] > b[ 1 ] ? 1 : -1;
+				}
+			);
+
+			selectImage();
+
+				// Identify that initialization has completed
+			wb.ready( $( elm ), componentName );
+		}
+	},
+
+	selectImage = function() {
+		var screenWidth = window.innerWidth,
+			optimizedLink = {},
+			i_len = ids.length;
+
+		for ( var i = 0; i < i_len; i++ ) {
+			var optimizedSize = Infinity,
+				currentId = inputs[ ids[ i ] ],
+				currentId_len = inputs[ ids[ i ] ].length;
+
+			for ( var j = 0; j < currentId_len; j++ ) {
+				var currentInput = currentId[ j ];
+				if ( currentInput[ 1 ] >= screenWidth ) {
+					if ( optimizedSize > currentInput[ 1 ] ) {
+						optimizedSize = currentInput[ 1 ];
+						optimizedLink[ ids[ i ] ] = currentInput[ 0 ];
+					}
+				}
+			}
+			if ( optimizedSize === Infinity ) {
+				optimizedLink[ ids[ i ] ] = currentId[ currentId_len - 1 ][ 0 ];
+			}
+		}
+
+		for ( var link in optimizedLink ) {
+			var elm = document.getElementById( link );
+			elm.style.backgroundImage = "url(" + optimizedLink[ link ] + ")";
+		}
+	};
+
+$window.on( "resize", selectImage );
+
+	// Bind the init event of the plugin
+$document.on( "timerpoke.wb wb-init." + componentName, selector, init );
+
+	// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, wb );
+
+/**
+ * @title WET-BOEW Set background image
+ * @overview to be replaced by CSS 4: background-image:attr(data-bgimg, url)
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ */
+( function( $, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the plugin - meaning that they will be initialized once per page,
+ * not once per instance of plugin on the page. So, this is a good place to define
+ * variables that are common to all instances of the plugin on a page.
+ */
+var $document = wb.doc,
+	componentName = "wb-bgimg",
+	selector = ".provisional[data-bgimg], .provisional [data-bgimg], [data-bgimg]",
+
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+
+			//to be replaced by CSS 4: background-image:attr(data-bgimg, url)
+			elm.style.backgroundImage = "url(" + elm.dataset.bgimg + ")";
+
+			// Identify that initialization has completed
+			wb.ready( $( elm ), componentName );
+		}
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb wb-init." + componentName, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
 
 } )( jQuery, wb );
 
@@ -5411,10 +5555,11 @@ var componentName = "wb-filter",
 			$elm, elmTagName, filterUI, prependUI,
 			settings, setDefault,
 			inptId, totalEntries;
+
 		if ( elm ) {
 			$elm = $( elm );
-
 			elmTagName = elm.nodeName;
+
 			if ( [ "DIV", "SECTION", "ARTICLE" ].indexOf( elm.nodeName ) >= 0 ) {
 				setDefault = defaults.grp;
 				prependUI = true;
@@ -5631,7 +5776,7 @@ var componentName = "wb-fnote",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
-			$elm, footnoteDd, footnoteDt, i, len, dd, dt, dtId;
+			$elm, footnoteDd, footnoteDt, i, len, dd, dt;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -5643,10 +5788,8 @@ var componentName = "wb-fnote",
 			for ( i = 0; i !== len; i += 1 ) {
 				dd = footnoteDd[ i ];
 				dt = footnoteDt[ i ];
-				dtId = dd.id + "-dt";
 				dd.setAttribute( "tabindex", "-1" );
-				dd.setAttribute( "aria-labelledby", dtId );
-				dt.id = dtId;
+				dt.id = dd.id + "-dt";
 			}
 
 			// Remove "first/premier/etc"-style text from certain footnote return links (via the child spans that hold those bits of text)
@@ -6502,7 +6645,10 @@ $document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
 
 // Event handler for closing a modal popup
 $( document ).on( "click", ".popup-modal-dismiss", function( event ) {
-	event.preventDefault();
+	if ( !this.hasAttribute( "target" ) ) {
+		event.preventDefault();
+	}
+
 	$.magnificPopup.close();
 } );
 
@@ -9805,17 +9951,9 @@ var componentName = "wb-share",
 
 			// The definitions of the available bookmarking sites, in URL use
 			// '{u}' for the page URL, '{t}' for the page title, {i} for the image, and '{d}' for the description
-			bitly: {
-				name: "bitly",
-				url: "https://bitly.com/a/bitmarklet?u={u}"
-			},
 			blogger: {
 				name: "Blogger",
 				url: "https://www.blogger.com/blog_this.pyra?t=&amp;u={u}&amp;n={t}"
-			},
-			digg: {
-				name: "Digg",
-				url: "http://digg.com/submit?phase=2&amp;url={u}&amp;title={t}"
 			},
 			diigo: {
 				name: "Diigo",
@@ -9845,6 +9983,10 @@ var componentName = "wb-share",
 				name: "reddit",
 				url: "https://reddit.com/submit?url={u}&amp;title={t}"
 			},
+			tinyurl: {
+				name: "TinyURL",
+				url: "https://tinyurl.com/create.php?url={u}"
+			},
 			tumblr: {
 				name: "tumblr",
 				url: "https://www.tumblr.com/share/link?url={u}&amp;name={t}&amp;description={d}"
@@ -9856,6 +9998,10 @@ var componentName = "wb-share",
 			yahoomail: {
 				name: "Yahoo! Mail",
 				url: "https://compose.mail.yahoo.com/?to=&subject={t}&body={u}%0A{d}"
+			},
+			whatsapp: {
+				name: "Whatsapp",
+				url: "https://api.whatsapp.com/send?text={t}%0A{d}%0A{u}"
 			}
 		}
 	},
@@ -10124,11 +10270,28 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 	var $elm = $( event.target ),
 		pagination = $elm.next( ".bottom" ).find( "div:first-child" ),
 		paginate_buttons = $elm.next( ".bottom" ).find( ".paginate_button" ),
+		pbLength = paginate_buttons.length,
+		pHasLF = pagination.find( ".last, .first" ).length === 2,
+		pHasPN = pagination.find( ".previous, .next" ).length === 2,
 		ol = document.createElement( "OL" ),
 		li = document.createElement( "LI" );
 
 	// Determine if Pagination required
-	if ( paginate_buttons.length === 1 || ( pagination.find( ".previous, .next" ).length === 2 && paginate_buttons.length < 4 ) ) {
+	if (
+		pbLength === 1 ||
+		(
+			pbLength === 3 &&
+			(
+				pHasLF ||
+				pHasPN
+			)
+		) ||
+		(
+			pbLength === 5 &&
+			pHasLF &&
+			pHasPN
+		)
+	) {
 		pagination.addClass( "hidden" );
 	} else {
 
@@ -11323,7 +11486,7 @@ var componentName = "wb-txthl",
 				searchCriteria = "(?=([^>]*<))([\\s'])?(" + searchCriteria + ")(?!>)";
 
 				newText = elm.innerHTML.replace( new RegExp( searchCriteria, "gi" ), function( match, group1, group2, group3 ) {
-					return ( !group2 ? "" : group2 ) + "<mark class='txthl'>" + group3 + "</mark>";
+					return ( !group2 ? "" : group2 ) + "<mark>" + group3 + "</mark>";
 				} );
 				elm.innerHTML = newText;
 			}

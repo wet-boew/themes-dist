@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v6.0.0 - 2020-03-06
+ * v6.1.0 - 2020-03-20
  *
  */
 /*!
@@ -5906,7 +5906,8 @@ abbr[title] {
   abbr[title] {
     border-bottom: 0;
     -webkit-text-decoration: underline dotted;
-            text-decoration: underline dotted; } }
+            text-decoration: underline dotted;
+    text-decoration-skip-ink: none; } }
 
 /*
  *	Override the design of alerts and labels
@@ -6257,6 +6258,11 @@ caption {
   font-size: 1.1em;
   font-weight: bold;
   text-align: center; }
+
+mark {
+  background-color: #ff0;
+  color: #000;
+  font-weight: 700; }
 
 /*
   WET-BOEW
@@ -7388,6 +7394,9 @@ details.alert, details.alert[open] {
 
 .wb-fltr-out {
   display: none !important; }
+
+.wb-filter .input-group {
+  max-width: 100%; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -8522,55 +8531,55 @@ ol.linenums {
   width: 32px;
   height: 32px; }
 
-.shr-pg .digg:before {
+.shr-pg .diigo:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: 0px -32px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .diigo:before {
+.shr-pg .facebook:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -32px -32px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .facebook:before {
+.shr-pg .feed:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -64px 0px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .feed:before {
+.shr-pg .gmail:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -64px -32px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .gmail:before {
+.shr-pg .linkedin:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: 0px -64px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .linkedin:before {
+.shr-pg .myspace:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: 0px 0px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .myspace:before {
+.shr-pg .pinterest:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -64px -64px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .pinterest:before {
+.shr-pg .reddit:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -96px 0px;
   width: 32px;
   height: 32px; }
 
-.shr-pg .reddit:before {
+.shr-pg .tinyurl:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -96px -32px;
   width: 32px;
@@ -8588,9 +8597,15 @@ ol.linenums {
   width: 32px;
   height: 32px; }
 
-.shr-pg .yahoomail:before {
+.shr-pg .whatsapp:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
   background-position: -32px -96px;
+  width: 32px;
+  height: 32px; }
+
+.shr-pg .yahoomail:before {
+  background-image: url(../../wet-boew/assets/sprites_share.png);
+  background-position: -64px -96px;
   width: 32px;
   height: 32px; }
 
@@ -9190,11 +9205,6 @@ table.dataTable {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
-.wb-txthl .txthl {
-  background-color: #ff0;
-  color: #000;
-  font-weight: 700; }
-
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
@@ -10147,7 +10157,9 @@ details {
   .pstn-bttm-sm {
     position: absolute;
     bottom: 0;
-    top: auto; } }
+    top: auto; }
+  .wb-filter .input-group {
+    max-width: 80%; } }
 
 /* Medium view and over */
 @media screen and (min-width: 992px) {
@@ -10279,7 +10291,9 @@ details {
   .pstn-bttm-lg {
     position: absolute;
     bottom: 0;
-    top: auto; } }
+    top: auto; }
+  .wb-filter .input-group {
+    max-width: 60%; } }
 
 /* Extra-extra-small view */
 @media screen and (max-width: 479px) {
