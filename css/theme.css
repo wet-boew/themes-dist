@@ -12806,6 +12806,9 @@ table.nws-tbl > thead > tr > th {
     background-color: #000;
     color: #fff; }
 
+.provisional.icon-warning-light, .provisional .icon-warning-light {
+  color: #DF7200; }
+
 /*
  * GCWeb custom iumplementation
  *
