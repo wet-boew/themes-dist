@@ -357,49 +357,42 @@ container
 								<form action="#">
 									<fieldset>
 										<legend><span class="field-name">Please select all that apply: </span></legend>
-											<div class="checkbox">
-												<label for="problem1"><input type="checkbox" data-reveal="#broken" name="problem" value="Something is broken" id="problem1" />Something is broken</label>
-											</div>
-											<div class="form-group hide" id="broken">
-												<label for="problem1-detail">Provide more details (optional):</label>
-												<input type="text" class="form-control full-width" id="problem1-detail">
-											</div>
-											<div class="checkbox">
-												<label for="problem2"><input type="checkbox" data-reveal="#spelling" name="problem" value="It has spelling or grammar mistakes" id="problem2" />The page has spelling or grammar mistakes</label>
-											</div>
-											<div class="form-group hide" id="spelling">
-												<label for="problem2-detail">Provide more details (optional):</label>
-												<input type="text" class="form-control full-width" id="problem2-detail">
-											</div>
-											<div class="checkbox">
-												<label for="problem3"><input type="checkbox" data-reveal="#wrong" name="problem" value="The information is wrong" id="problem3" />The information is wrong</label>
-											</div>
-											<div class="form-group hide" id="wrong">
-												<label for="problem3-detail">Provide more details (optional):</label>
-												<input type="text" class="form-control full-width" id="problem3-detail">
-											</div>
-											<div class="checkbox">
-												<label for="problem4"><input type="checkbox" data-reveal="#outdated" name="problem" value="The information is outdated" id="problem4" />The information is outdated</label>
-											</div>
-											<div class="form-group hide" id="outdated">
-												<label for="problem4-detail">Provide more details (optional):</label>
-												<input type="text" class="form-control full-width" id="problem4-detail">
-											</div>
-											<div class="checkbox">
-												<label for="problem5"><input type="checkbox" data-reveal="#find" name="problem" value="I can’t find what I’m looking for" id="problem5" />I can’t find what I’m looking for</label>
-											</div>
-											<div class="form-group hide" id="find">
-												<label for="problem5-detail">Describe what you’re looking for (optional):</label>
-												<input type="text" class="form-control full-width" id="problem5-detail">
-											</div>
-											<div class="checkbox">
-												<label for="problem6"><input type="checkbox" data-reveal="#confusing" name="problem" value="It’s confusing" id="problem6" />Other</label>
-											</div>
-											<div class="form-group hide" id="confusing">
-												<label for="problem6-detail">Provide more details (optional):</label>
-												<input type="text" class="form-control full-width" id="problem6-detail">
-											</div>
-						
+										<div class="checkbox">
+											<label for="gc-rprt-prblm-f1">
+												<input type="checkbox" name="problem1" value="Yes" id="gc-rprt-prblm-f1" />A link, button or video is not working
+											</label>
+											<input name="problem1" type="hidden" value="No" />
+										</div>
+										<div class="checkbox">
+											<label for="gc-rprt-prblm-f2">
+												<input type="checkbox" name="problem2" value="Yes" id="gc-rprt-prblm-f2" />It has a spelling mistake
+											</label>
+											<input name="problem2" type="hidden" value="No" />
+										</div>
+										<div class="checkbox">
+											<label for="gc-rprt-prblm-f3">
+												<input type="checkbox" name="problem3" value="Yes" id="gc-rprt-prblm-f3" />Information is missing
+											</label>
+											<input name="problem3" type="hidden" value="No" />
+										</div>
+										<div class="checkbox">
+											<label for="gc-rprt-prblm-f4">
+												<input type="checkbox" name="problem4" value="Yes" id="gc-rprt-prblm-f4" />Information is outdated or wrong
+											</label>
+											<input name="problem4" type="hidden" value="No" />
+										</div>
+										<div class="checkbox">
+											<label for="gc-rprt-prblm-f5">
+												<input type="checkbox" name="problem5" value="Yes" id="gc-rprt-prblm-f5" />I can't find what I'm looking for
+											</label>
+											<input name="problem5" type="hidden" value="No" />
+										</div>
+										<div class="checkbox">
+											<label for="gc-rprt-prblm-f6">
+												<input type="checkbox" name="problem6" value="Yes" id="gc-rprt-prblm-f6" />Other issue not in this list
+											</label>
+											<input name="problem6" type="hidden" value="No" />
+										</div>
 									</fieldset>
 									<button type="submit" class="btn btn-primary wb-toggle" data-toggle='{"stateOff": "hide", "stateOn": "show", "selector": ".gc-rprt-prblm-tggl"}'>Submit</button>
 								</form>

@@ -12604,11 +12604,11 @@ button.bg-dark:hover, button.bg-dark:focus {
   .gc-archv .mfp-close.overlay-close {
     color: #000; }
 
-/* Report a problem Thank you message*/
+/* Report a problem Thank you message */
 .gc-rprt-prblm-thnk {
   padding-bottom: 25px; }
 
-/* Report a problem temporary fix for toggle */
+/* Report a problem temporary fix for toggle : GH issue #1336 */
 .gc-rprt-prblm-frm.gc-rprt-prblm-tggl.show {
   display: none !important; }
 
@@ -12630,7 +12630,7 @@ button.bg-dark:hover, button.bg-dark:focus {
   width: 100%;
   zoom: 1; }
 
-/* Hide RAP textarea and Other */
+/* Hide RAP textarea and Other : GH issue #1336 */
 .gc-rprt-prblm-frm .form-group {
   display: none !important; }
 
