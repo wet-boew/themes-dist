@@ -7,7 +7,7 @@
 		<meta charset="utf-8" />
 		<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 		wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-		<title>Accueil - Canada.ca  -  Canada.ca
+		<title>Fonctionalités provisoires - Thème de GCWeb  -  Canada.ca
 </title>
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<meta name="description" content="La Boîte à outils de l’expérience Web (BOEW) rassemble différents composants réutilisables et prêts-à-utiliser pour la conception et la mise à jour de sites Web innovateurs qui sont à la fois accessibles, conviviaux et interopérables. Tous ces composants réutilisables sont des logiciels libres mis à la disposition des ministères et des collectivités Web externes." />
@@ -34,7 +34,7 @@
 		
 		<noscript><link rel="stylesheet" href="../../wet-boew/css/noscript.css" /></noscript>
 	</head>
-	<body class="home page-type-nav" vocab="http://schema.org/" typeof="WebPage">
+	<body vocab="http://schema.org/" typeof="WebPage">
 		
 <nav>
 	<ul id="wb-tphp">
@@ -51,7 +51,7 @@
 	<section id="wb-lng" class="text-right">
 		<h2 class="wb-inv">Sélection de la langue</h2>
 		<ul class="list-inline margin-bottom-none">
-			<li><a lang="en" hreflang="en" href="home-en.html">English</a></li>
+			<li><a lang="en" hreflang="en" href="provisional-en.html">English</a></li>
 		</ul>
 	</section>
 		<div class="row">
@@ -97,182 +97,267 @@
 			</ul>
 		</div>
 	</nav>
+	<nav id="wb-bc" property="breadcrumb">
+		<h2>Vous êtes ici :</h2>
+		<div class="container">
+			<ol class="breadcrumb">
+								<li><a href="https://wet-boew.github.io/themes-dist/GCWeb/index-fr.html">Accueil GCWeb</a></li>
+				
+			</ol>
+		</div>
+	</nav>
 </header>
 <main property="mainContentOfPage" class="
-
+container
 
 
 
 
 
 " typeof="WebPageElement">
+			<h1 property="name" id="wb-cont">Fonctionalités provisoires - Thème de GCWeb</h1>
 			
 			
-<div class="experimental bg-cover" data-bgimg="https://www.canada.ca/content/dam/canada/carousel/bkg-home-banner.jpg">
-	<div class="container p-0 p-sm-3">
-		<div class="well header-rwd brdr-0 brdr-rds-0 text-white bg-gctheme">
-			<h1 property="name" id="wb-cont">Canada.ca</h1>
-			<p class="mrgn-tp-md">Le site officiel du gouvernement du Canada</p>
-		</div>
+
+<div class="alert alert-warning">
+	<h2>Fonctionalité instable</h2>
+	<p>À être utilisée <strong>à vos propre risque</strong>. Toutes les fonctionnalités décrites ci-dessous pourraient être retirées lors du lancement d'une version mineure ou majeure et sont exclues de l'API publique GCWeb.</p>
+	<p><small><a href="https://wet-boew.github.io/wet-boew-documentation/decision/7.html" lang="en">Renseignez-vous davantage sur la décision sur la conception en matière des fonctionnalités provisoires.</a></small></p>
+	<p>Les documents et les exemples pratiques de ces fonctionnalités pourraient être incomplets ou non disponibles.</p>
+</div>
+
+<h2>Disponibilité des fonctionalités</h2>
+
+<div class="alert alert-info">
+	<h2><code>.experimental</code> depricated</h2>
+	<p><code>.experimental</code> is now deprecated and it will not be supported in 6 months.
+	It has to be replaced by <code>.provisional</code></p>
+</div>
+
+<p>Le tableau suivant décrit jusqu’à quelle version de GCWeb chaque fonctionnalité sera disponible. La disponibilité des fonctionnalités sera réévaluée chaque fois qu’une version est publiée. Une fonctionnalité expérimentale retirée sera communiquée une version à l’avance.</p>
+
+<details>
+	<summary>Description des états</summary>
+	<dl class="dl-horizontal">
+		<dt>&lt;non spécifié&gt;</dt>
+		<dd>Provisoires</dd>
+		<dt>Retiré</dt>
+		<dd>La fonctionalité n'est plus disponible</dd>
+		<dt>Supporté</dt>
+		<dd>La fonctionalité est maintenu inclus et supporté par l'API publique de GCWeb.</dd>
+		<dt>Retiré après v.Majeur.Mineur</dt>
+		<dd>La version v.Major.Minor représente la dernière version que cette fonctionalité sera disponible. Les auteurs doit considérer une solution alternative ou de faire le retrait de l'utilisation de cette fonctionalité.</dd>
+	</dl>
+</details>
+
+<table class="table table-bordered">
+<thead>
+	<tr>
+		<th>Nom</th>
+		<th>Description</th>
+		<th class="nowrap">Disponible dans</th>
+		<th>État</th>
+	</tr>
+</thead>
+<tbody>
+	<tr>
+		<th>CSS <code>.p-0</code></th>
+		<td>Fixer un remplissage (<span lang="en">padding</span>) de 0px</td>
+		<td>v5.1</td>
+		<td>Supporté via wet-boew depuis v6.0</td>
+	</tr>
+	<tr>
+		<th>CSS <code>.mb-sm-5</code></th>
+		<td>Fixer la marge du bas à 50px pour la vue à partir d'un petit écran et plus</td>
+		<td>v5.1</td>
+		<td>Supporté via wet-boew depuis v6.0</td>
+	</tr>
+	<tr>
+		<th>CSS <code>.p-sm-3</code></th>
+		<td>Fixer les marges à 15px pour la vue à partir d'un petit écran et plus</td>
+		<td>v5.1</td>
+		<td>Supporté via wet-boew depuis v6.0</td>
+	</tr>
+	<tr>
+		<th>CSS <code>.px-sm-3</code></th>
+		<td>Fixer le <span lang="en">padding</span> de gauche et de droite à 15px pour la vue à partir d'un petit écran et plus</td>
+		<td>v5.1</td>
+		<td>Supporté via wet-boew depuis v6.0</td>
+	</tr>
+	<tr>
+		<th>CSS <code>.bg-darker</code></th>
+		<td>Couleur de fond noir complet</td>
+		<td>v5.1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>CSS <code>.bg-gctheme</code> et <code>.bg-gctheme.well.header-rwd</code></th>
+		<td>Couleur de fond de base du thème de GCWeb</td>
+		<td>v5.1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>CSS <code>.bg-pnkDy</code> et <code>.bg-pnkDy.well.header-rwd</code></th>
+		<td>Couleur de fond de la Journée rose</td>
+		<td>v5.1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>CSS <code>.pnkDy-theme</code> fixé globalement</th>
+		<td>Appliquer la couleur de gabarit « global » pour la couleur de la Journée rose de façon globale, comme cette propriété est définie sur l’élément <code>&lt;html&gt;</code> ou <code>&lt;body&gt;</code></td>
+		<td>v5.1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>CSS <code>.dark-theme</code> set global</th>
+		<td>Appliquer la couleur de gabarit « global » modifiée à noir complet de façon globale, comme cette propriété est définie sur l’élément <code>&lt;html&gt;</code> ou <code>&lt;body&gt;</code></td>
+		<td>v5.1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>CSS <code>.bg-cover</code></th>
+		<td>Image de fond de taille "couvrir"</td>
+		<td>v5.1</td>
+		<td>Moved to WET-BOEW. Use of <code>.provisional</code> is required in WET-BOEW</td>
+	</tr>
+	<tr>
+		<th>Plugin <code>[data-bgimg]</code></th>
+		<td>Prendre la valeur URL et la fixer en tant qu’image de fond. Il faut le remplacer par le sélecteur CSS4</td>
+		<td>v5.1</td>
+		<td>Moved to WET-BOEW. Use of <code>.provisional</code> is required in WET-BOEW</td>
+	</tr>
+	<tr>
+		<th>CSS <code>.bg-img-hdng</code></th>
+		<td>Ajouter une image de fond à un en-tête</td>
+		<td>v5.1</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>CSS <code>.stretched-link</code></th>
+		<td>Propage la zone cliquable d'une balise hyperlien jusqu'au premier élément parent qui est de position relative.</td>
+		<td>v5.1</td>
+		<td>Supporté via wet-boew depuis v6.0</td>
+	</tr>
+</tbody>
+</table>
+
+<h2>Documentation des fonctionalités provisoires</h2>
+
+<p>Les fonctionalités CSS provisoires doivent être accompagné avec la classe <code>.provisional</code> au sein de leur contexte d'utilisation.</p>
+
+<h2>Examples pratiques provisoires</h2>
+
+<h3 id="well-header-rwd-bgimg">En-tête adaptable de la boîte grise avec une image de fond</h3>
+
+<div class="provisional bg-cover well" data-bgimg="demos/tabs/img/investinourfuture.jpg">
+	<div class="well header-rwd mrgn-tp-md mrgn-bttm-md">
+		<h4 class="mrgn-tp-md">En-tête</h4>
+		<p>En-tête secondaire</p>
 	</div>
-	<div class="bg-gctheme opct-90">
-		<div class="container">
-			<div class="row">
-				<div class="mrgn-tp-md mrgn-bttm-md col-xs-12">
-					<p class="pull-left text-white mrgn-bttm-0">En vedette&nbsp;:&nbsp;</p>
-					<p class="pull-left mrgn-bttm-0"><a class="stretched-link text-white" href="#">[Titre de la promotion]</a></p>
-				</div>
-			</div>
+</div>
+
+
+<h3 id="well-header-rwd-dark">En-tête adaptable de la boîte grise avec une image de fond et des contrôles de remplissage</h3>
+<p>Principalement pour des pages de campagne ayant une largeur adaptable au contenu.</p>
+
+<div class="provisional bg-cover" data-bgimg="demos/tabs/img/investinourfuture.jpg">
+	<div class="container p-0 p-sm-3">
+		<div class="well header-rwd mrgn-tp-md mrgn-bttm-md bg-dark text-white brdr-0">
+			<h4 class="mrgn-tp-md">En-tête</h4>
+			<p>En-tête secondaire</p>
 		</div>
 	</div>
 </div>
 
-<section class="home-most-requested well well-sm brdr-0">
-	<div class="container">
-		<h2 class="mrgn-tp-md">En demande</h2>
-		<ul class="wb-eqht list-unstyled mrgn-tp-md mrgn-bttm-sm lst-spcd-2 list-responsive">
-			<li><a href="https://www.canada.ca/fr/gouvernement/ouvrir-session-dossier-compte-en-ligne.html">Se connecter à un compte</a></li>
-			<li><a href="https://www.canada.ca/fr/services/prestations/ae.html">Assurance-emploi et congés</a></li>
-			<li><a href="https://www.canada.ca/fr/services/prestations/pensionspubliques.html">Pensions publiques (RPC et SV)</a></li>
-			<li><a href="https://www.canada.ca/fr/immigration-refugies-citoyennete/services/passeports-canadiens.html">Obtenir un passeport</a></li>
-			<li><a href="https://meteo.gc.ca/canada_f.html">Météo</a></li>
-			<li><a href="https://www.canada.ca/fr/gouvernement/subventions-financement.html">Subventions et financement</a></li>
-			<li><a href="https://www.canada.ca/fr/gouvernement/changement-adresse.html">Changer votre adresse</a></li>
-			<li><a href="http://canadiensensante.gc.ca/recall-alert-rappel-avis/index-fra.php">Rappels et avis de sécurité </a></li>
-		</ul>
-	</div>
-</section>
-<section class="gc-srvinfo container">
-	<h2 class="wb-inv">Services et renseignements</h2>
-	<div class="wb-eqht row">
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/emplois.html">Emplois</a></h3>
-			<p>Trouver un emploi, formation, programmes d'embauche, permis de travail, numéro d'assurance sociale (NAS)</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/immigration-citoyennete.html">Immigration et citoyenneté</a></h3>
-			<p>Visiter, travailler, étudier, immigrer, réfugiés, résidents permanents, présenter une demande, vérifier l'état de la demande</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://voyage.gc.ca">Voyage et tourisme</a></h3>
-			<p>Au Canada ou à l'étranger, conseils, avis, passeports, visiter le Canada, événements, attractions</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/entreprises.html">Entreprises et industrie</a></h3>
-			<p>Démarrer une entreprise, permis, propriété intellectuelle, soutien aux entreprises, vendre au gouvernement</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/prestations.html">Prestations</a></h3>
-			<p>Assurance emploi, congés familiaux et congés de maladie, pensions, logement, aide financière aux études, personnes invalides</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/sante.html">Santé</a></h3>
-			<p>Alimentation, nutrition, maladies, vaccins, médicaments, sécurité des produits et rappels</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/impots.html">Impôts</a></h3>
-			<p>Impôt sur le revenu, TPS/TVH, limites de contribution, credits d’impôt, organismes de charité </p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/environnement.html">Environnement et ressources naturelles</a></h3>
-			<p>Météo, climat, agriculture, faune, pollution, conservation, pêches</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/defense.html">Sécurité nationale et défense</a></h3>
-			<p>Militaire, cybersécurité, sûreté des transports, sécuriser la frontière, contre-terrorisme</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/culture.html">Culture, histoire et sport</a></h3>
-			<p>Arts, médias, patrimoine, langues officielles, identité nationale et financement</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/police.html">Services de police, justice et urgences</a></h3>
-			<p>Sécurité, justice, se préparer en cas d'urgence, services aux victimes d'actes criminels</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/transport.html">Transport et infrastructure</a></h3>
-			<p>Aviation, transport maritime, transport routier, transport ferroviaire, marchandises dangereuses, projets d'infrastructure</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://international.gc.ca/world-monde/index.aspx?lang=fra">Le Canada et le monde</a></h3>
-			<p>Politique étrangère, ententes commerciales, développement international, enjeux mondiaux</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/finance.html">Argent et finances</a></h3>
-			<p>Finances personnelles, dossiers de crédit, se protéger de la fraude, financer votre éducation</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/science.html">Science et innovation</a></h3>
-			<p>Recherche scientifique sur la santé, l'environnement et l'espace, subventions et financement</p>
-		</div>
-	</div>
-</section>
-<section class="gc-srvinfo container mrgn-bttm-lg">
-	<h2>Par public</h2>
-	<div class="wb-eqht row">
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.aadnc-aandc.gc.ca/fra/1461766373625/1461766394598">Autochtones</a></h3>
-			<p>Programmes et services pour les Premières nations, les Inuits et les Métis</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/veterans.html">Vétérans</a></h3>
-			<p>Services pour les membres actifs et retraités des Forces armées canadiennes ou de la <abbr title="Gendarmerie royale du Canada">GRC</abbr> et leurs familles</p>
-		</div>
-		<div class="col-lg-4 col-md-6">
-			<h3><a href="https://www.canada.ca/fr/services/jeunesse.html">Jeunesse</a></h3>
-			<p>Programmes et services pour adolescents et jeunes adultes</p>
-		</div>
-	</div>
-</section>
-<section class="home-your-gov gc-srvinfo well well-sm brdr-0">
-	<div class="container">
-		<h2>Votre gouvernement</h2>
-		<div class="row">
-			<div class="col-lg-7 col-xs-12 col-md-6">
-				<div class="wb-eqht row">
-					<div class="col-lg-6">
-						<h3><a href="https://www.canada.ca/fr/contact.html">Contactez-nous</a></h3>
-						<p>Coordonnées des ministères et des agences, changez votre adresse</p>
-					</div>
-					<div class="col-lg-6">
-						<h3><a href="https://www.canada.ca/fr/gouvernement/min.html">Ministères et organismes</a></h3>
-						<p>Une liste des organisations gouvernementales et connexes actuelles</p>
-					</div>
-					<div class="col-lg-6">
-						<h3><a href="https://www.canada.ca/fr/gouvernement/systeme.html">Comment le gouvernement fonctionne</a></h3>
-						<p>La structure, les priorités, les finances et les réglementations du gouvernement</p>
-					</div>
-					<div class="col-lg-6">
-						<h3><a href="https://open.canada.ca/fr">Gouvernement ouvert</a></h3>
-						<p>Gouvernement accessible, informations et données ouvertes, dialogue ouvert</p>
-					</div>
-				</div>
+<pre><code>&lt;div class="provisional bg-cover" data-bgimg="demos/tabs/img/investinourfuture.jpg"&gt;
+	&lt;div class="container p-0 p-sm-3"&gt;
+		&lt;div class="well header-rwd mrgn-tp-md mrgn-bttm-md bg-dark text-white brdr-0"&gt;
+			&lt;h4 class="mrgn-tp-md"&gt;En-tête&lt;/h4&gt;
+			&lt;p&gt;En-tête secondaire&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<h3>Marge du bas pour la vue à partir d'un petit écran et plus</h3>
+<div class="row">
+	<div class="col-xs-12 provisional">
+		<div>
+			<img class="img-responsive full-width" src="demos/tabs/img/investinourfuture.jpg" alt="">
+			<div class="well pstn-bttm-sm mrgn-bttm-0 mb-sm-5">
+				<h4 class="mrgn-tp-md">En-tête</h4>
+				<p>En-tête secondaire</p>
 			</div>
 		</div>
 	</div>
-</section>
-<section class="container gc-features">
-	<h2>Initiatives du gouvernement</h2>
-	<div class="row wb-eqht">
-		<div class="col-sm-6">
-			<div class="well well-sm brdr-rds-0 eqht-trgt">
-				<img class="img-responsive full-width" src="../img/520x200.png" alt=""/>
-				<h3 class="h5"><a class="stretched-link" href="#">[Lien à l’élément en vedette]</a></h3>
-				<p>Brève description de l’élément en vedette.</p>
-				</div>
-		</div>
-		<div class="col-sm-6">
-			<div class="well well-sm brdr-rds-0 eqht-trgt">
-				<img class="img-responsive full-width" src="../img/520x200.png" alt=""/>
-				<h3 class="h5"><a class="stretched-link" href="#">[Lien à l’élément en vedette]</a></h3>
-				<p>Brève description de l’élément en vedette.</p>
-			</div>
+</div>
+<div class="well">
+	<p>Boîte grise secondaire</p>
+</div>
+
+<h3>Couleurs du gabarit de thème</h3>
+<ul>
+	<li><a href="xprmntl/pink-day-en.html">Journée rose</a></li>
+	<li><a href="xprmntl/dark-theme-en.html">Thème sombre</a></li>
+</ul>
+
+<details>
+	<summary>Échantillon du code JavaScript pour programmer l’ajout CSS pour la Journée rose</summary>
+	<p>Le script suivant ajoute la classe CSS seulement pour le 10 avril 2019 heure locale.</p>
+<pre><code>( function( d ) {
+"use strict";
+
+var t = new Date(),
+	msT = t.getTime(),
+	s = new Date( 2019, 3, 10, 0, 1 ),
+	e = new Date( 2019, 3, 10, 23, 59 );
+
+if ( s.getTime() &lt; msT && msT &lt; e.getTime() ) {
+	d.getElementsByTagName( "html" )[ 0 ].classList.add ("pnkDy-theme", "provisional");
+}
+
+} )( document );</code></pre>
+</details>
+
+<h3>Image de fond sur l'en-tête</h3>
+<p>Principalement pour la section Services et information.</p>
+<div class="row provisional" lang="en">
+	<div class="col-md-6 col-xs-12">
+		<h2 class="h3 full-width bg-img-hdng mrgn-tp-0">Impact Assessment</h2>
+		<h3 class="h5 mrgn-tp-sm"><a href="https://www.canada.ca/en/environmental-assessment-agency/services/environmental-assessments/basics-environmental-assessment.html">Impact assessments process</a></h3>
+		<p>Learn about the purpose and steps of impact assessments under the <em>Impact Assessment Act</em>.</p>
+		<h3 class="h5 mrgn-tp-sm"><a href="https://ceaa-acee.gc.ca/050/evaluations/?culture=en-CA">Canadian Impact Assessment Registry</a></h3>
+		<p>Information on potential and current IAs of projects subject to the federal IA process.</p>
+	</div>
+	<div class="col-md-6 col-xs-12">
+		<h2 class="h3 full-width bg-img-hdng mrgn-tp-0" data-bgimg="img/xprmntl/how-to-get-involved-orange.png">How to get involved</h2>
+		<h3 class="h5 mrgn-tp-sm"><a href="https://www.canada.ca/en/environmental-assessment-agency/services/public-participation.html">Public</a></h3>
+		<p>Learn how the public can participate in impact assessments.</p>
+		<h3 class="h5 mrgn-tp-sm"><a href="https://www.canada.ca/en/environmental-assessment-agency/programs/aboriginal-consultation-federal-environmental-assessment.html">Indigenous</a></h3>
+		<p>Learn about the Indigenous consultation process in impact assessments.</p>
+	</div>
+</div>
+
+<h3 id="stretched-link">Section <span lang="en">Features</span> avec des liens élargis</h3>
+<p>Dans l'exemple suivant, ajouter la classe <code>.stretched-link</code> à l'hyperlien situé à l'intérieur de la balise <code>&lt;h3&gt;</code> résulera en une propagation de la zone cliquable jusqu'au <code>&lt;div&gt;</code> parent qui contient la classe <code>.col-xy-z</code> parce que celui-ci est en position &laquo;&nbsp;relative&nbsp;&raquo;.</p>
+<div class="row wb-eqht provisional" lang="en">
+	<div class="col-sm-6">
+		<div class="well well-sm brdr-rds-0 eqht-trgt">
+			<img class="img-responsive full-width" src="https://www.canada.ca/content/dam/canada/activities/20190603-1-520x200.jpg" alt="">
+			<h3 class="h5"><a class="stretched-link" href="https://www.ic.gc.ca/eic/site/062.nsf/eng/h_00108.html">Learn more about Canada’s Digital Charter</a></h3>
+			<p>Learn how Canada’s Digital Charter will build a foundation of trust in a digital world.</p>
 		</div>
 	</div>
-</section>
+	<div class="col-sm-6">
+		<div class="well well-sm brdr-rds-0 eqht-trgt">
+			<img class="img-responsive full-width" src="https://www.canada.ca/content/dam/canada/activities/20190604-1-520x200.jpg" alt="">
+			<h3 class="h5"><a class="stretched-link" href="https://www.rcaanc-cirnac.gc.ca/eng/1466616436543/1534874922512">National Indigenous History Month</a></h3>
+			<p>Celebrate National Indigenous History Month in June</p>
+		</div>
+	</div>
+</div>
 
 	<div class="pagedetails
-	 container
+	
 	">
 		<div class="row">
 			<div class="col-sm-6 col-md-5 col-lg-4">
@@ -343,7 +428,7 @@
 		</div>
 		<dl id="wb-dtmd">
 			<dt>Date de modification&#160;:&#32;</dt>
-			<dd><time property="dateModified">2019-07-02</time></dd>
+			<dd><time property="dateModified">2019-09-03</time></dd>
 		</dl>
 	</div>
 </main>
