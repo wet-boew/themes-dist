@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v7.0.0 - 2020-04-22
+ * v7.0.0 - 2020-04-29
  *
  */
 /*
@@ -13087,6 +13087,9 @@ table.nws-tbl > thead > tr > th {
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.7);
           box-shadow: 0 2px 3px rgba(0, 0, 0, 0.7); }
 
+.wb-chtwzrd-btn-extrnl + .wb-chtwzrd-bubble-wrap {
+  display: none !important; }
+
 /* Chat Wizard */
 .wb-disable .wb-chtwzrd.hidden {
   display: block !important; }
@@ -13105,7 +13108,8 @@ table.nws-tbl > thead > tr > th {
 
 .wb-chtwzrd-container .header {
   max-height: 70px;
-  min-height: 39px; }
+  min-height: 39px;
+  padding-right: 84px; }
 
 .wb-chtwzrd-container .header .title {
   -webkit-box-orient: vertical;
@@ -13117,7 +13121,7 @@ table.nws-tbl > thead > tr > th {
   padding: 6px 0;
   text-overflow: ellipsis; }
 
-.wb-chtwzrd-container .minimize {
+.wb-chtwzrd-container .minimize, .wb-chtwzrd-container .reset {
   -webkit-appearance: none;
   background: transparent;
   border: 0;
@@ -13137,7 +13141,10 @@ table.nws-tbl > thead > tr > th {
   top: 0;
   width: 40px; }
 
-.wb-chtwzrd-container .minimize:focus {
+.wb-chtwzrd-container .reset {
+  right: 42px; }
+
+.wb-chtwzrd-container .minimize:focus, .wb-chtwzrd-container .reset:focus {
   opacity: 1;
   outline: 1px dotted #fff;
   outline-offset: -2px; }
@@ -13251,6 +13258,9 @@ table.nws-tbl > thead > tr > th {
 
 .wb-chtwzrd-contained .minimize {
   display: none; }
+
+.wb-chtwzrd-contained .reset {
+  right: 0; }
 
 /* Chat wizard Media queries */
 @media screen and (max-width: 1199px) {
