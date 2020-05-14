@@ -2741,9 +2741,9 @@ var componentName = "wb-fieldflow",
 			i18n = $elm.data( configData ).i18n,
 			attributes = data.attributes,
 			ctrlID = wb.getId(),
-			fieldsetPrefix = "<legend class='h5 ",
+			fieldsetPrefix = "<legend",
 			fieldsetSuffix = "</span>",
-			fieldsetHTML = "<fieldset id='" + ctrlID + "' data-" + originData + "='" + elm.id + "' " + sourceDataAttr + "='" + source.id + "' class='" + crtlSelectClass + " mrgn-bttm-md'",
+			fieldsetHTML = "<fieldset id='" + ctrlID + "' data-" + originData + "='" + elm.id + "' " + sourceDataAttr + "='" + source.id + "' class='" + crtlSelectClass + " chkbxrdio-grp mrgn-bttm-md'",
 			$out,
 			$tmpLabel, $cloneLbl, $prevContent,
 			radCheckOut = "",
@@ -2763,10 +2763,10 @@ var componentName = "wb-fieldflow",
 
 		// Create the legend
 		if ( isReq && useReqLabel ) {
-			fieldsetPrefix += " required";
+			fieldsetPrefix += " class='required'";
 			fieldsetSuffix += " <strong class='required'>(" + i18n.required + ")</strong>";
 		}
-		fieldsetPrefix += "'>";
+		fieldsetPrefix += ">";
 		fieldsetSuffix += "</legend>";
 		if ( !lblselector ) {
 			$out.append( $( fieldsetPrefix + data.label + fieldsetSuffix ) );
