@@ -48,23 +48,28 @@
 </nav>
 <header>
 	<div id="wb-bnr" class="container">
-	<section id="wb-lng" class="text-right">
+		<div class="row">
+	<section id="wb-lng" class="col-xs-3 col-sm-12 pull-right text-right">
 		<h2 class="wb-inv">Language selection</h2>
-		<ul class="list-inline margin-bottom-none">
-			<li><a lang="fr" hreflang="fr" href="facebook-fr.html">Français</a></li>
+		<ul class="list-inline mrgn-bttm-0">
+			<li>
+				<a lang="fr" hreflang="fr" href="facebook-fr.html">
+					<span class="hidden-xs">Français</span>
+					<abbr title="Français" class="visible-xs h3 mrgn-tp-sm mrgn-bttm-0 text-uppercase">fr</abbr>
+				</a>
+			</li>
 		</ul>
 	</section>
-		<div class="row">
-				<div class="brand col-xs-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
+				<div class="brand col-xs-9 col-sm-5 col-md-4" property="publisher" typeof="GovernmentOrganization">
 					<a href="https://www.canada.ca/en.html" property="url"><img src="../../../GCWeb/assets/sig-blk-en.svg" alt="Government of Canada" property="logo" /><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span></a>
 					<meta property="name" content="Government of Canada" />
 					<meta property="areaServed" typeOf="Country" content="Canada" />
 					<link property="logo" href="../../../GCWeb/assets/wmms-blk.svg" />
 				</div>
-	<section id="wb-srch" class="col-lg-8 text-right">
+	<section id="wb-srch" class="col-lg-offset-4 col-md-offset-4 col-sm-offset-2 col-xs-12 col-sm-5 col-md-4">
 		<h2>Search</h2>
-		<form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
-			<div class="form-group">
+		<form action="#" method="post" name="cse-search-box" role="search">
+			<div class="form-group wb-srch-qry">
 				<label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
 				<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search Canada.ca" />
 				<datalist id="wb-srch-q-ac">

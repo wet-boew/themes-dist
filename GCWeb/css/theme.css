@@ -11404,6 +11404,11 @@ main {
 #wb-srch,
 .srchbox {
   padding-top: 1em; }
+  #wb-srch .submit,
+  .srchbox .submit {
+    position: absolute;
+    right: 15px;
+    top: 1em; }
   #wb-srch input,
   #wb-srch button,
   .srchbox input,
@@ -11427,20 +11432,31 @@ main {
   #wb-srch input,
   .srchbox input {
     border-color: #e0e0e0;
-    border-right: 0;
     border-style: solid;
     -webkit-box-shadow: none;
             box-shadow: none;
     color: #555;
-    margin-right: -4px;
-    min-width: 246px;
     position: relative; }
+  #wb-srch .wb-srch-qry,
+  .srchbox .wb-srch-qry {
+    width: 100%; }
+    #wb-srch .wb-srch-qry input,
+    .srchbox .wb-srch-qry input {
+      max-width: inherit;
+      width: 100%; }
+
+#wb-srch-sub {
+  margin-left: 5px; }
 
 [dir=rtl] #wb-srch {
   text-align: left; }
   [dir=rtl] #wb-srch input {
     margin-left: -4px;
     margin-right: auto; }
+
+[dir=rtl] #wb-srch-sub {
+  margin-left: 0;
+  margin-right: 5px; }
 
 .page-type-search label {
   font-weight: normal; }
@@ -11501,6 +11517,9 @@ main {
   line-height: 34px;
   padding-bottom: 8px;
   padding-top: 8px; }
+
+input#wb-srch-q {
+  width: 100%; }
 
 /*
  Secondary Navigation
@@ -13332,19 +13351,6 @@ table.nws-tbl > thead > tr > th {
 @media screen {
   /*
   WET-BOEW
-  @title: Search all screen views
- */
-  #wb-srch .submit {
-    float: right; }
-  #wb-srch-sub {
-    margin-left: 5px; }
-  [dir=rtl] #wb-srch.submit {
-    float: left; }
-  [dir=rtl] #wb-srch-sub {
-    margin-left: 0;
-    margin-right: 5px; }
-  /*
-  WET-BOEW
   @title: All screen views
  */
   .overlay-def .modal-header {
@@ -13421,6 +13427,9 @@ table.nws-tbl > thead > tr > th {
  */
   header .brand a {
     margin-top: 15px; }
+  header .brand object,
+  header .brand img {
+    max-height: 30px; }
   #wb-glb-mn {
     margin-top: 20px; }
     #wb-glb-mn ul.chvrn li a {
@@ -13521,14 +13530,6 @@ table.nws-tbl > thead > tr > th {
     .dshbrd details .cntnt {
       border: 1px solid #26374a;
       padding: 15px; }
-  /*
-  WET-BOEW
-  @title: Search small view and under (screen only)
- */
-  #wb-srch {
-    width: 100%; }
-    #wb-srch .form-group {
-      display: inline-block; }
   /*
   WET-BOEW
   @title: Small view and under (screen only)
@@ -13867,17 +13868,18 @@ table.nws-tbl > thead > tr > th {
   .gc-fld-srvy-container {
     padding-bottom: 100%; }
   #wb-srch input {
-    border-right: 1px solid #e0e0e0;
-    max-width: 246px; }
+    max-width: inherit; }
   /*
  Banner (extra-extra-small view)
  */
-  header .brand, #wb-glb-mn {
+  header .brand.col-xs-5, #wb-glb-mn {
     float: none !important;
     width: auto !important; }
-  header .brand object,
-  header .brand img {
-    max-height: 25px; }
+  header .brand {
+    /* Solely for the purpose of having the previous header look decent */ }
+    header .brand object,
+    header .brand img {
+      padding-right: 0; }
   #wb-glb-mn ul {
     width: 100%; }
     #wb-glb-mn ul.chvrn {
@@ -13922,8 +13924,7 @@ table.nws-tbl > thead > tr > th {
   @title: Extra-small view (screen only)
  */
   #wb-srch input {
-    max-width: 200px;
-    min-width: 150px; }
+    max-width: 50%; }
   /*
   WET-BOEW
   @title: Extra-small view (screen only)
