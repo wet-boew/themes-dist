@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.35 - 2020-06-11
+ * v4.0.36 - 2020-06-15
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -12621,7 +12621,7 @@ var $document = wb.doc,
 
 				$.ajax( {
 					type: this.method,
-					url: this.attr,
+					url: this.action,
 					data: $.param( data )
 				} )
 				.done( function() {
