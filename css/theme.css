@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.0.0 - 2020-06-25
+ * v8.0.0 - 2020-07-22
  *
  */
 /*
@@ -12725,6 +12725,15 @@ table.nws-tbl > thead > tr > th {
 /*
  * Provisional feature
  */
+.provisional.bg-cover, .provisional .bg-cover {
+  background-size: cover; }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
 /*
 	Global Provisional styling
 
@@ -12741,10 +12750,6 @@ table.nws-tbl > thead > tr > th {
 	 */
   /* ------------
 	 * Background image for heading
-	 *
-	 */
-  /* ------------
-	 * Utility
 	 *
 	 */
   /* ------------
@@ -12775,8 +12780,6 @@ table.nws-tbl > thead > tr > th {
     min-height: 60px;
     padding-bottom: 35px;
     padding-right: 80px; }
-  .provisional .bg-cover, .provisional.bg-cover, .experimental .bg-cover, .experimental.bg-cover {
-    background-size: cover; }
   .provisional.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
   .provisional.pnkDy-theme #wb-srch button,
   .provisional.pnkDy-theme .srchbox button, .experimental.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
