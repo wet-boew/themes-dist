@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.0.0 - 2020-07-23
+ * v8.0.0 - 2020-07-30
  *
  */
 /*
@@ -12845,69 +12845,75 @@ table.nws-tbl > thead > tr > th {
     background-color: #000;
     color: #fff; }
 
-.provisional.icon-warning-light, .provisional .icon-warning-light {
-  color: #DF7200; }
-
-.provisional.alert {
-  background-clip: content-box;
-  background-color: inherit;
-  border-left: 6px solid #000;
-  margin-bottom: 23px;
-  margin-left: 10px;
-  padding: 0 0 0 15px; }
-  .provisional.alert > p, .provisional.alert > ul, .provisional.alert > ol {
-    margin-bottom: 0px; }
-  .provisional.alert > * {
-    margin-left: 15px; }
-  .provisional.alert details {
-    margin-left: .5em;
-    padding-top: 15px; }
-  .provisional.alert > :first-child:not(details) {
-    margin-top: auto;
-    padding-top: 15px; }
-  .provisional.alert > :last-child {
-    padding-bottom: 25px; }
-  .provisional.alert::before {
-    font-family: "Glyphicons Halflings";
-    font-size: 26px;
-    line-height: 2.3em;
-    margin-left: -1.27em;
-    padding: 2px;
-    position: absolute; }
-  .provisional.alert > :first-child {
-    margin-left: 15px; }
-
-.provisional.alert-info {
-  border-color: #269abc;
-  -o-border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%;
-     border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%; }
-  .provisional.alert-info::before {
-    color: #269abc;
-    content: ""; }
-
-.provisional.alert-success {
-  border-color: #278400;
-  -o-border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%;
-     border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%; }
-  .provisional.alert-success::before {
-    color: #278400;
-    content: ""; }
-
-.provisional.alert-warning {
-  border-color: #ee7100;
-  -o-border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%;
-     border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%; }
-  .provisional.alert-warning::before {
-    color: #ee7100;
-    content: ""; }
-
-.provisional.alert-danger {
-  border-color: #d3080c;
-  -o-border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%;
-     border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%; }
-  .provisional.alert-danger::before {
-    color: #d3080c;
-    content: ""; }
+.provisional {
+  /* H1 short bold red underline re-design
+	*/ }
+  .provisional.icon-warning-light, .provisional .icon-warning-light {
+    color: #DF7200; }
+  .provisional.alert {
+    background-clip: content-box;
+    background-color: inherit;
+    border-left: 6px solid #000;
+    margin-bottom: 23px;
+    margin-left: 10px;
+    padding: 0 0 0 15px; }
+    .provisional.alert > p, .provisional.alert > ul, .provisional.alert > ol {
+      margin-bottom: 0px; }
+    .provisional.alert > * {
+      margin-left: 15px; }
+    .provisional.alert details {
+      margin-left: .5em;
+      padding-top: 15px; }
+    .provisional.alert > :first-child:not(details) {
+      margin-top: auto;
+      padding-top: 15px; }
+    .provisional.alert > :last-child {
+      padding-bottom: 25px; }
+    .provisional.alert::before {
+      font-family: "Glyphicons Halflings";
+      font-size: 26px;
+      line-height: 2.3em;
+      margin-left: -1.27em;
+      padding: 2px;
+      position: absolute; }
+    .provisional.alert > :first-child {
+      margin-left: 15px; }
+  .provisional.alert-info {
+    border-color: #269abc;
+    -o-border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%;
+       border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%; }
+    .provisional.alert-info::before {
+      color: #269abc;
+      content: ""; }
+  .provisional.alert-success {
+    border-color: #278400;
+    -o-border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%;
+       border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%; }
+    .provisional.alert-success::before {
+      color: #278400;
+      content: ""; }
+  .provisional.alert-warning {
+    border-color: #ee7100;
+    -o-border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%;
+       border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%; }
+    .provisional.alert-warning::before {
+      color: #ee7100;
+      content: ""; }
+  .provisional.alert-danger {
+    border-color: #d3080c;
+    -o-border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%;
+       border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%; }
+    .provisional.alert-danger::before {
+      color: #d3080c;
+      content: ""; }
+  h1.provisional.gc-thickline {
+    border-bottom: none; }
+    h1.provisional.gc-thickline::after {
+      border-bottom: .18em solid #af3c43;
+      content: "";
+      display: block;
+      padding-bottom: 8px;
+      width: 70px; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -13331,6 +13337,74 @@ table.nws-tbl > thead > tr > th {
     width: 35px; }
   .wb-chtwzrd-contained .body {
     padding-bottom: 10px; } }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ *
+ *	Provisional GC Subway map menu
+*/
+.provisional {
+  /*** GC Subway mobile first styles ***/
+  /* Double H1 */ }
+  .provisional.gc-subway {
+    border-radius: 0px 6px 6px 0px;
+    border-right: 4px solid #26374a;
+    border-top: 4px solid #26374a;
+    margin-top: 38px; }
+    .provisional.gc-subway .gc-subway-steps {
+      clear: both;
+      list-style: none;
+      padding-left: .57em;
+      padding-top: 10px;
+      position: relative; }
+      .provisional.gc-subway .gc-subway-steps > li {
+        border-left: 4px solid #26374a;
+        padding: 0px 20px 30px 1em; }
+      .provisional.gc-subway .gc-subway-steps > li::first-line {
+        line-height: 1 !important; }
+      .provisional.gc-subway .gc-subway-steps > li > :first-child::before {
+        background-color: #fff;
+        border: 3px solid #26374a;
+        border-radius: 50%;
+        content: "";
+        height: 1.2em;
+        left: .05em;
+        position: absolute;
+        -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
+        transition: width .2s, height .2s, left .2s, margin-top .2s;
+        width: 1.2em; }
+      .provisional.gc-subway .gc-subway-steps > li.active > :first-child::before {
+        background-color: #26374a; }
+      .provisional.gc-subway .gc-subway-steps > li > a[href]:hover::before,
+      .provisional.gc-subway .gc-subway-steps > li > a[href]:focus::before {
+        height: 1.4em;
+        left: -.05em;
+        margin-top: -.1em;
+        width: 1.4em; }
+      .provisional.gc-subway .gc-subway-steps > li:last-child {
+        border-bottom: 4px solid #26374a;
+        border-bottom-left-radius: 6px;
+        border-left: 4px solid #26374a; }
+    .provisional.gc-subway li .gc-subway-steps {
+      margin-top: 20px;
+      padding-left: .55em; }
+      .provisional.gc-subway li .gc-subway-steps > li:last-child {
+        padding-bottom: 0px; }
+    .provisional.gc-subway h1 {
+      display: inline-block;
+      float: left; }
+  .provisional.gc-subway h1,
+  .provisional.gc-subway-section .gc-subway-h1 {
+    background-color: #fff;
+    border-bottom-width: 0px;
+    color: #555;
+    font-size: 1.3em;
+    margin-right: 20px;
+    margin-top: -19px;
+    padding: 0px 20px 10px 12px; }
 
 /*
  * GCWeb custom iumplementation
@@ -13799,7 +13873,41 @@ table.nws-tbl > thead > tr > th {
   /*
   Variant - GCWeb custom implementation
   @title: Medium view and over (screen only)
- */ }
+ */
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ *
+ *	Provisional GC Subway map menu
+*/
+  .provisional {
+    /*** GC subway desktop styles ***/
+    /* Double H1 */ }
+    .provisional.gc-subway {
+      border-right: 0px;
+      border-top: 0px;
+      margin-top: 25px;
+      padding-left: 15px; }
+      .provisional.gc-subway .gc-subway-menu-nav {
+        float: right;
+        width: 33.33%; }
+      .provisional.gc-subway .gc-subway-steps > li:last-child {
+        border-bottom: 0px;
+        border-left: 4px solid transparent; }
+    .provisional.gc-subway-section {
+      padding-right: 15px;
+      width: 66.66%; }
+      .provisional.gc-subway-section h1, .provisional.gc-subway-section .gc-subway-h1 {
+        margin-top: 0px; }
+      .provisional.gc-subway-section .gc-subway-h1 {
+        font-family: Lato, sans-serif;
+        font-weight: inherit;
+        margin-bottom: 0px;
+        margin-right: 0px;
+        padding-bottom: 0px !important;
+        padding-left: 0px; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
