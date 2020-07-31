@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.36 - 2020-07-30
+ * v4.0.37 - 2020-07-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -7158,11 +7158,9 @@ var componentName = "wb-lbx",
 						$content.attr( "role", "document" );
 					}
 
-					$wrap.append( "<span tabindex='0' class='lbx-end wb-inv'></span>" )
-						.find( ".activate-open" )
-						.trigger( "wb-activate" );
-
 					this.contentContainer.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
+
+					trapTabbing( $wrap );
 				},
 				close: function() {
 					$document.find( "body" ).removeClass( "wb-modal" );
@@ -7239,6 +7237,9 @@ var componentName = "wb-lbx",
 								.attr( "id", "lbx-title" );
 
 					mfpResponse.data = $response;
+				},
+				ajaxContentAdded: function() {
+					trapTabbing( this.wrap );
 				}
 			};
 		}
@@ -7281,10 +7282,29 @@ var componentName = "wb-lbx",
 
 				$( footer ).append( overlayCloseFtr );
 				if ( !hasFooter ) {
-					$modal.append( footer );
+					$( footer ).insertAfter( $modal.find( ".modal-body" ) );
 				}
 			}
 		}
+	},
+	trapTabbing = function( $wrap ) {
+
+		$wrap.on( "keydown", function( e ) {
+			if ( e.which === 9 ) {
+				var tabbable = $wrap.find( ".mfp-container :tabbable:visible" ),
+					firstTabbable = tabbable.first()[ 0 ],
+					lastTabbable = tabbable.last()[ 0 ],
+					currentFocus = $( document.activeElement )[ 0 ];
+
+				if ( !e.shiftKey && currentFocus === lastTabbable ) {
+					e.preventDefault();
+					firstTabbable.focus();
+				} else if ( e.shiftKey && ( currentFocus === firstTabbable || currentFocus === $wrap[ 0 ] ) ) {
+					e.preventDefault();
+					lastTabbable.focus();
+				}
+			}
+		} );
 	};
 
 // Bind the init event of the plugin
@@ -8286,6 +8306,7 @@ var componentName = "wb-mltmd",
 		"timeupdate",
 		"waiting",
 		"canplay",
+		"seeked",
 		"progress",
 		captionsLoadedEvent,
 		captionsLoadFailedEvent,
@@ -9268,6 +9289,7 @@ $document.on( multimediaEvents, selector, function( event, simulated ) {
 		break;
 
 	case "canplay":
+	case "seeked":
 		this.loading = clearTimeout( this.loading );
 		$this.removeClass( "waiting" );
 		break;
@@ -11017,6 +11039,9 @@ var componentName = "wb-steps",
 				buttonGroup = fieldset.querySelector( "div.buttons" );
 				if ( legend ) {
 					legend.classList.add( "wb-steps-active" );
+					legend.tabIndex = 0;
+					legend.focus();
+					legend.tabIndex = -1;
 				}
 				if ( elm ) {
 					elm.classList.remove( "hidden" );

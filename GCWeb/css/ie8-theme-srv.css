@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.0.0 - 2020-07-30
+ * v8.0.1 - 2020-07-31
  *
  */
 /*!
@@ -6272,9 +6272,11 @@ mark {
 .p-0 {
   padding: 0 !important; }
 
-.pl-2 .px-2 {
+.pl-2,
+.px-2 {
   padding-left: 5px !important; }
 
+.pr-2,
 .px-2 {
   padding-right: 5px !important; }
 
@@ -6282,6 +6284,7 @@ mark {
 .py-4 {
   padding-top: 30px !important; }
 
+.pb-4,
 .py-4 {
   padding-bottom: 30px !important; }
 
@@ -6467,12 +6470,12 @@ q:before, q:after {
 #wb-bc ol {
   border-radius: 0;
   margin-bottom: 0;
-  padding: 3px 13px; }
+  padding: 1px 13px; }
 
 #wb-bc li {
   max-width: 100%;
   overflow: hidden;
-  padding: 5px 2px;
+  padding: 7px 2px;
   text-overflow: ellipsis;
   white-space: nowrap; }
   #wb-bc li:before {
@@ -8514,6 +8517,13 @@ pre.prettyprint {
   pre.prettyprint.linenums {
     -webkit-box-shadow: 40px 0 0 #fbfbfc inset, 41px 0 0 #eee inset;
             box-shadow: 40px 0 0 #fbfbfc inset, 41px 0 0 #eee inset; }
+  pre.prettyprint code {
+    -moz-tab-size: 20px;
+      -o-tab-size: 20px;
+         tab-size: 20px; }
+    pre.prettyprint code ins {
+      font-weight: bold;
+      text-decoration: none; }
 
 ol.linenums {
   margin: 0 !important; }
