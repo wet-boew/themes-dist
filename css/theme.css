@@ -13375,47 +13375,59 @@ table.nws-tbl > thead > tr > th {
     border-right: 4px solid #26374a;
     border-top: 4px solid #26374a;
     margin-top: 38px; }
-    .provisional.gc-subway .gc-subway-steps {
+    .provisional.gc-subway ul {
       clear: both;
       list-style: none;
       padding-left: .57em;
       padding-top: 10px;
       position: relative; }
-      .provisional.gc-subway .gc-subway-steps > li {
+      .provisional.gc-subway ul li {
         border-left: 4px solid #26374a;
         padding: 0px 20px 30px 1em; }
-      .provisional.gc-subway .gc-subway-steps > li::first-line {
-        line-height: 1 !important; }
-      .provisional.gc-subway .gc-subway-steps > li > :first-child::before {
-        background-color: #fff;
-        border: 3px solid #26374a;
-        border-radius: 50%;
-        content: "";
-        height: 1.2em;
-        left: .05em;
-        position: absolute;
-        -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
-        transition: width .2s, height .2s, left .2s, margin-top .2s;
-        width: 1.2em; }
-      .provisional.gc-subway .gc-subway-steps > li.active > :first-child::before {
-        background-color: #26374a; }
-      .provisional.gc-subway .gc-subway-steps > li > a[href]:hover::before,
-      .provisional.gc-subway .gc-subway-steps > li > a[href]:focus::before {
-        height: 1.4em;
-        left: -.05em;
-        margin-top: -.1em;
-        width: 1.4em; }
-      .provisional.gc-subway .gc-subway-steps > li:last-child {
-        border-bottom: 4px solid #26374a;
-        border-bottom-left-radius: 6px;
-        border-left: 4px solid #26374a; }
-    .provisional.gc-subway li .gc-subway-steps {
-      margin-top: 20px;
-      padding-left: .55em; }
-      .provisional.gc-subway li .gc-subway-steps > li:last-child {
-        padding-bottom: 0px; }
+        .provisional.gc-subway ul li::first-line {
+          line-height: 1 !important; }
+        .provisional.gc-subway ul li :first-child::before {
+          background-color: #fff;
+          border: 3px solid #26374a;
+          border-radius: 50%;
+          content: "";
+          height: 1.2em;
+          left: .05em;
+          position: absolute;
+          -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
+          transition: width .2s, height .2s, left .2s, margin-top .2s;
+          width: 1.2em; }
+        .provisional.gc-subway ul li.active > :first-child::before {
+          background-color: #26374a; }
+        .provisional.gc-subway ul li a[href]:hover::before,
+        .provisional.gc-subway ul li a[href]:focus::before {
+          height: 1.4em;
+          left: -.05em;
+          margin-top: -.1em;
+          width: 1.4em; }
+        .provisional.gc-subway ul li:last-child {
+          border-bottom: 4px solid #26374a;
+          border-bottom-left-radius: 6px;
+          border-left: 4px solid #26374a; }
+        .provisional.gc-subway ul li ul {
+          margin-top: 20px;
+          padding-left: .55em; }
+          .provisional.gc-subway ul li ul li:last-child {
+            border-bottom-width: 0px;
+            padding-bottom: 0px; }
+          .provisional.gc-subway ul li ul.noline li {
+            -o-border-image: none;
+               border-image: none;
+            border-left: 4px solid transparent; }
+            .provisional.gc-subway ul li ul.noline li.active::before {
+              background-color: #26374a;
+              content: " ";
+              height: 4px;
+              margin-left: -2.8em;
+              margin-top: .5em;
+              position: absolute;
+              width: 1.6em; }
     .provisional.gc-subway h1 {
-      display: inline-block;
       float: left; }
   .provisional.gc-subway h1,
   .provisional.gc-subway-section .gc-subway-h1 {
@@ -13425,7 +13437,7 @@ table.nws-tbl > thead > tr > th {
     font-size: 1.3em;
     margin-right: 20px;
     margin-top: -19px;
-    padding: 0px 20px 10px 12px; }
+    padding: 0px 20px 10px 0px; }
 
 /*
  * GCWeb custom iumplementation
@@ -13909,12 +13921,15 @@ table.nws-tbl > thead > tr > th {
     .provisional.gc-subway {
       border-right: 0px;
       border-top: 0px;
+      display: none;
       margin-top: 25px;
       padding-left: 15px; }
+      .provisional.gc-subway.no-blink {
+        display: block; }
       .provisional.gc-subway .gc-subway-menu-nav {
         float: right;
         width: 33.33%; }
-      .provisional.gc-subway .gc-subway-steps > li:last-child {
+      .provisional.gc-subway ul li:last-child {
         border-bottom: 0px;
         border-left: 4px solid transparent; }
     .provisional.gc-subway-section {
@@ -13928,7 +13943,9 @@ table.nws-tbl > thead > tr > th {
         margin-bottom: 0px;
         margin-right: 0px;
         padding-bottom: 0px !important;
-        padding-left: 0px; } }
+        padding-left: 0px; }
+  .wb-disable .provisional.gc-subway {
+    display: block; } }
 
 /* Large view and over */
 @media screen and (min-width: 1200px) {
