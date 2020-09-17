@@ -12734,6 +12734,9 @@ Carousel
     font-size: 19px; }
   .home .home-your-gov {
     background-image: none; }
+  .provisional.gc-chckbxrdio.form-inline .label-inline {
+    margin-bottom: 20px;
+    padding-right: 20px; }
   /*
  Banner (small view and under)
  */
