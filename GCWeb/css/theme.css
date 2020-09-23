@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.0.2 - 2020-09-18
+ * v8.0.2 - 2020-09-23
  *
  */
 /*
@@ -13509,14 +13509,6 @@ table.nws-tbl > thead > tr > th {
             -o-border-image: none;
                border-image: none;
             border-left: 4px solid transparent; }
-            .provisional.gc-subway ul li ul.noline li.active::before {
-              background-color: #26374a;
-              content: " ";
-              height: 4px;
-              margin-left: -2.8em;
-              margin-top: .5em;
-              position: absolute;
-              width: 1.6em; }
     .provisional.gc-subway h1 {
       float: left; }
   .provisional.gc-subway h1,
