@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.0.2 - 2020-10-20
+ * v8.0.2 - 2020-10-22
  *
  */
 /*
@@ -12703,6 +12703,7 @@ Carousel
   /*
   WET-BOEW
   @title: Extra-small view and under (screen only)
+  @desc:  Variable $screen-xs-max <= 767px
  */
   /* Make a simple list multi-column and responsive (overide _defaults.scss) */
   .list-responsive > li {
@@ -12726,6 +12727,7 @@ Carousel
   /*
   WET-BOEW
   @title: Small view and under (screen only)
+  @desc:  Variable $screen-sm-max <= 991 px
  */
   h1, .h1 {
     font-size: 1.7em;
@@ -12767,6 +12769,7 @@ Carousel
   /*
   WET-BOEW
   @title: Medium view and under (screen only)
+  @desc:  Variable $screen-md-max <= 1199px
  */
   /*
  * Site menu (medium view and under)
@@ -12784,6 +12787,7 @@ Carousel
   /*
   WET-BOEW
   @title: Large view and under (screen only)
+  @desc:  Variable $screen-lg-max <= 1599px
  */ }
 
 /* Extra-small view and over */
@@ -12791,6 +12795,7 @@ Carousel
   /*
   WET-BOEW
   @title: Extra-small view and over (screen only)
+  @desc:  Variable $screen-xs-min >= 480px
  */ }
 
 /* Small view and over */
@@ -12798,6 +12803,7 @@ Carousel
   /*
   WET-BOEW
   @title: Small view and over (screen only)
+  @desc:  Variable $screen-sm-min >= 768px
  */ }
 
 /* Medium view and over */
@@ -12805,6 +12811,7 @@ Carousel
   /*
   WET-BOEW
   @title: Medium view and over (screen only)
+  @desc:  Variable $screen-md-min >= 992px
  */
   /*
  Social Media Icons Medium View and over
@@ -12827,6 +12834,7 @@ Carousel
   /*
   WET-BOEW
   @title: Large view and over (screen only)
+  @desc:  Variable $screen-lg-min >= 1200px
  */
   /* Make a simple list multi-column and responsive (overide _defaults.scss) */
   .list-responsive > li {
@@ -12851,6 +12859,7 @@ Carousel
   /*
   WET-BOEW
   @title: Extra-extra-small view (screen only)
+  @desc:  Variable $screen-xxs-max <= 479px
  */
   /* Embedding a Fluid Survey */
   .gc-fld-srvy-container {
@@ -12906,6 +12915,7 @@ Carousel
   /*
   WET-BOEW
   @title: Extra-small view (screen only)
+  @desc: Variable $screen-xs-min-to-screen-xs-max >= 480px <= 767px
  */
   #wb-srch input {
     max-width: 50%; } }
@@ -12915,6 +12925,7 @@ Carousel
   /*
   WET-BOEW
   @title: Small view (screen only)
+  @desc:  Variable $screen-sm-min-to-screen-sm-max >= 768px <= 991px
  */
   /*
   WET-BOEW
@@ -12928,6 +12939,7 @@ Carousel
   /*
   WET-BOEW
   @title: Medium view (screen only)
+  @desc:  Variable $screen-md-min-to-screen-md-max >= 992px <= 1199px
  */
   /*
  * Equal Heights overrides (medium view)
@@ -12947,6 +12959,7 @@ Carousel
   /*
   WET-BOEW
   @title: Large view (screen only)
+  @desc:  Variable $screen-lg-min-to-lg-max >= 1200 px <= 1599 px
  */ }
 
 /* Extra-large view */
@@ -12954,6 +12967,7 @@ Carousel
   /*
   WET-BOEW
   @title: Extra-large view (screen only)
+  @desc:  Variable $screen-xl-min >= 1600px
  */ }
 
 /* Print view */
