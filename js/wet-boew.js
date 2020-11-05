@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.38 - 2020-10-29
+ * v4.0.39 - 2020-11-05
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -5408,6 +5408,157 @@ wb.add( selector );
 } )( jQuery, window, wb );
 
 /**
+* @title WET-BOEW Exit script plugin
+* @overview Plugin redirects users to non secure site
+* @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+* @author @ipaksc
+*/
+( function( $, window, wb ) {
+"use strict";
+var componentName = "wb-exitscript",
+	selector = "." + componentName,
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+	exiturlparam = componentName + "-urlparam",
+	moDalId = componentName + "-modal",
+	i18n,
+	i18nDict = {
+		en: {
+			"msgboxHeader": "Warning",
+			"exitMsg": "You are about to leave a secure site, do you wish to continue?",
+			"targetWarning": "The link will open in a new browser window.",
+			"yesBtn": "Yes",
+			"cancelBtn": "Cancel"
+
+		},
+		fr: {
+			"msgboxHeader": "Avertissement",
+			"exitMsg": "Vous êtes sur le point de quitter un site sécurisé. Voulez-vous continuer?",
+			"targetWarning": "Le lien s'ouvrira dans une nouvelle fenêtre de navigateur.",
+			"yesBtn": "Oui",
+			"cancelBtn": "Annuler"
+
+		}
+	},
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+		var elm = wb.init( event, componentName, selector ),
+			settings,
+			queryString = window.location.search,
+			urlParams = new URLSearchParams( queryString ),
+			originalURL = urlParams.get( "exturl" ),
+			$elm;
+		if ( elm ) {
+			$elm = $( elm );
+			settings = $.extend(
+				true,
+				window[ componentName ],
+				wb.getData( $elm, componentName )
+
+			);
+
+			$elm.data( componentName, settings );
+
+			if ( settings.url ) {
+				$( this ).attr( "href", settings.url + "?exturl=" +  encodeURIComponent( this.href ) );
+			}
+
+			i18n = i18nDict[ wb.lang || "en" ];
+
+			// This conditional statement for a middle static exit page, to retrieve the URL to the non-secure site.
+			if ( $elm.hasClass( exiturlparam ) ) {
+				this.outerHTML = "<a href='" + originalURL + "'>" + originalURL + "</a>";
+			}
+			wb.ready( $elm, componentName );
+		}
+	};
+
+$document.on( "click", selector, function( event ) {
+
+	var elm = event.currentTarget,
+		$elm = $( elm ),
+		wrapper,
+		targetAttribute = "",
+		moDal = document.createDocumentFragment(),
+		tpl = document.createElement( "div" ),
+		settings =  $elm.data( componentName ),
+		msgboxHeader = i18n.msgboxHeader,
+		yesBtn = i18n.yesBtn,
+		cancelBtn = i18n.cancelBtn,
+		exitMsg = i18n.exitMsg,
+		targetWarning = i18n.targetWarning;
+
+	if ( settings.i18n ) {
+		msgboxHeader =  settings.i18n.msgboxHeader || i18n.msgboxHeader;
+		yesBtn = settings.i18n.yesBtn || i18n.yesBtn;
+		cancelBtn = settings.i18n.cancelBtn || i18n.cancelBtn;
+		exitMsg = settings.i18n.exitMsg || i18n.exitMsg;
+		targetWarning = settings.i18n.targetWarning || i18n.targetWarning;
+	}
+
+	if ( !settings.url ) {
+
+		event.preventDefault();
+	}
+
+	if ( this.hasAttribute( "target" ) ) {
+		targetAttribute = "target='" + this.getAttribute( "target" ) + "'";
+	} else {
+		targetAttribute = "target='" + targetAttribute + "'";
+	}
+
+	if ( this.getAttribute( "target" ) === "_blank" ) {
+		exitMsg = exitMsg  + " " + targetWarning;
+	}
+
+	if ( document.getElementById( moDalId ) ) {
+		document.getElementById( moDalId ).remove();
+
+	}
+
+	if ( !settings.url ) {
+		tpl.innerHTML = "<section id='" + moDalId + "' " + "class='mfp-hide modal-dialog modal-content overlay-def'>" +
+			"<header class='modal-header'><h2 class='modal-title'>" + msgboxHeader + "</h2></header>" +
+			"<div class='modal-body'>" +
+			"<p>" + exitMsg + "</p>" +
+			"</div>" +
+			"<div class='modal-footer'>" +
+			"<ul class='list-inline text-center'>" +
+			"<li><a class='btn btn-default pull-right popup-modal-dismiss'" + targetAttribute + " href='" + this.getAttribute( "href" ) + "'>" + yesBtn + "</a></li>" +
+			"<li><button class='btn btn-primary popup-modal-dismiss pull-left'>" + cancelBtn + "</button></li>" +
+			"</ul></div></section>";
+		moDal.appendChild( tpl );
+		wrapper = moDal.firstChild;
+		wrapper = wrapper.firstChild;
+		document.body.appendChild( wrapper );
+
+		$( wrapper ).trigger( "open.wb-lbx", [
+			[ {
+				src: "#" + moDalId,
+				type: "inline"
+			} ],
+
+			true
+
+		] );
+
+	}
+
+} );
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+/**
 * @title WET-BOEW Facebook embedded page
 * @overview Helps with implementing Facebook embedded pages.
 * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -7308,7 +7459,7 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 // Handler for clicking on a same page link within the overlay to outside the overlay
 $document.on( "click vclick", ".mfp-wrap a[href^='#']", function( event ) {
 	var which = event.which,
-		eventTarget = event.target,
+		eventTarget = event.currentTarget,
 		$lightbox, linkTarget;
 
 	// Ignore middle/right mouse buttons
@@ -8599,12 +8750,20 @@ var componentName = "wb-mltmd",
 				return data.replace( /<img|object [^>]*>/g, "" );
 			},
 			success: function( data ) {
-				elm.trigger( {
-					type: captionsLoadedEvent,
-					captions: data.indexOf( "<html" ) !== -1 ?
-						parseHtml( $( data ) ) :
-						parseXml( $( data ) )
-				} );
+				var captionItems = data.indexOf( "<html" ) !== -1 ?
+					parseHtml( $( data ) ) :
+					parseXml( $( data ) );
+
+				if ( captionItems.length ) {
+					elm.trigger( {
+						type: captionsLoadedEvent,
+						captions: captionItems
+					} );
+				} else {
+					elm.trigger( {
+						type: captionsLoadFailedEvent
+					} );
+				}
 			},
 			error: function( response, textStatus, errorThrown ) {
 				elm.trigger( {
@@ -8623,10 +8782,18 @@ var componentName = "wb-mltmd",
 	 * @fires ccloaded.wb-mltmd
 	 */
 	loadCaptionsInternal = function( elm, obj ) {
-		elm.trigger( {
-			type: captionsLoadedEvent,
-			captions: parseHtml( obj )
-		} );
+		var captionItems = parseHtml( obj );
+
+		if ( captionItems.length ) {
+			elm.trigger( {
+				type: captionsLoadedEvent,
+				captions: captionItems
+			} );
+		} else {
+			elm.trigger( {
+				type: captionsLoadFailedEvent
+			} );
+		}
 	},
 
 	/**
@@ -9070,7 +9237,7 @@ $document.on( "click", selector, function( event ) {
 	// JSPerf for multiple class matching https://jsperf.com/hasclass-vs-is-stackoverflow/7
 	if ( className.match( /playpause|-play|-pause|display/ ) || $target.is( "object" ) || $target.is( "video" ) ) {
 		this.player( "getPaused" ) || this.player( "getEnded" ) ? this.player( "play" ) : this.player( "pause" );
-	} else if ( className.match( /\bcc\b|-subtitles/ )  ) {
+	} else if ( className.match( /(^|\s)cc\b|-subtitles/ ) && !$target.attr( "disabled" ) && !$target.parent().attr( "disabled" ) ) {
 		this.player( "setCaptionsVisible", !this.player( "getCaptionsVisible" ) );
 	} else if ( className.match( /\bmute\b|-volume-(up|off)/ ) ) {
 		this.player( "setMuted", !this.player( "getMuted" ) );
@@ -9254,11 +9421,15 @@ $document.on( multimediaEvents, selector, function( event, simulated ) {
 
 	case "ccloadfail":
 		if ( eventNamespace === componentName ) {
-			$this.find( ".wb-mm-cc" )
-				.append( "<p class='errmsg'><span>" + i18nText.cc_error + "</span></p>" )
-				.end()
-				.find( ".cc" )
-				.attr( "disabled", "" );
+			if ( !$this.hasClass( "errmsg" ) ) {
+				$this.addClass( "cc_on errmsg" )
+					.find( ".wb-mm-cc" )
+					.append( "<div>" + i18nText.cc_error + "</div>" )
+					.end()
+					.find( ".cc" )
+					.attr( "disabled", "" )
+					.removeAttr( "aria-pressed" );
+			}
 		}
 		break;
 
@@ -12505,7 +12676,7 @@ var componentName = "wb-toggle",
 	 * @param {Object} data Simple key/value data object passed when the event was triggered
 	 */
 	initAria = function( link, data ) {
-		var i, len, elm, elms, parent, tabs, tab, panel, isOpen,
+		var i, len, elm, elms, parent, tabs, tab, panel, isOpen, wrapper,
 			ariaControls = "",
 			hasOpen = false;
 
@@ -12544,12 +12715,25 @@ var componentName = "wb-toggle",
 					if ( !tab.getAttribute( "id" ) ) {
 						tab.setAttribute( "id", wb.getId() );
 					}
-					tab.setAttribute( "role", "tab" );
-					tab.setAttribute( "aria-selected", isOpen );
-					tab.setAttribute( "tabindex", isOpen ? "0" : "-1" );
-					tab.setAttribute( "aria-posinset", i + 1 );
-					tab.setAttribute( "aria-setsize", len );
 
+					//Details and summary don't support aria roles and some aria attribute that is why they are wrapped in a div
+					if ( elm.nodeName.toLowerCase() === "details" ) {
+						wrapper = document.createElement( "div" );
+						wrapper.classList.add( "tgl-tab" );
+						wrapper.setAttribute( "role", "tab" );
+						wrapper.setAttribute( "aria-selected", isOpen );
+						wrapper.setAttribute( "tabindex", isOpen ? "0" : "-1" );
+						wrapper.setAttribute( "aria-posinset", i + 1 );
+						wrapper.setAttribute( "aria-setsize", len );
+						parent.replaceChild( wrapper, elm );
+						wrapper.appendChild( elm );
+					} else {
+						tab.setAttribute( "role", "tab" );
+						tab.setAttribute( "aria-selected", isOpen );
+						tab.setAttribute( "tabindex", isOpen ? "0" : "-1" );
+						tab.setAttribute( "aria-posinset", i + 1 );
+						tab.setAttribute( "aria-setsize", len );
+					}
 					panel.setAttribute( "role", "tabpanel" );
 					panel.setAttribute( "aria-labelledby", tab.getAttribute( "id" ) );
 					panel.setAttribute( "aria-expanded", isOpen );
@@ -12740,7 +12924,7 @@ var componentName = "wb-toggle",
 			if ( data.isTablist ) {
 
 				// Set the required aria attributes
-				$elms.find( selectorTab ).attr( {
+				$elms.find( selectorTab ).parents( selectorTab ).attr( {
 					"aria-selected": isOn,
 					tabindex: isOn ? "0" : "-1"
 				} );
