@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.1.1 - 2020-12-01
+ * v8.1.1 - 2020-12-07
  *
  */
 /*
@@ -13476,47 +13476,101 @@ table.nws-tbl > thead > tr > th {
     border-right: 4px solid #26374a;
     border-top: 4px solid #26374a;
     margin-top: 38px; }
-    .provisional.gc-subway ul {
+    .provisional.gc-subway ul,
+    .provisional.gc-subway dl {
       clear: both;
       list-style: none;
       padding-left: .57em;
       padding-top: 10px;
       position: relative; }
-      .provisional.gc-subway ul li {
+      .provisional.gc-subway ul dt,
+      .provisional.gc-subway dl dt {
         border-left: 4px solid #26374a;
-        padding: 0px 20px 30px 1em; }
-        .provisional.gc-subway ul li::first-line {
-          line-height: 1 !important; }
-        .provisional.gc-subway ul li :first-child::before {
+        padding: 0px 20px 3px 1em;
+        font-weight: normal; }
+        .provisional.gc-subway ul dt :first-child::before,
+        .provisional.gc-subway dl dt :first-child::before {
           background-color: #fff;
           border: 3px solid #26374a;
           border-radius: 50%;
           content: "";
           height: 1.2em;
-          left: .05em;
+          left: 0em;
+          position: absolute;
+          -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
+          transition: width .2s, height .2s, left .2s, margin-top .2s;
+          width: 1.3em; }
+        .provisional.gc-subway ul dt.active > :first-child::before,
+        .provisional.gc-subway dl dt.active > :first-child::before {
+          background-color: #26374a; }
+        .provisional.gc-subway ul dt a[href]:hover::before,
+        .provisional.gc-subway ul dt a[href]:focus::before,
+        .provisional.gc-subway dl dt a[href]:hover::before,
+        .provisional.gc-subway dl dt a[href]:focus::before {
+          height: 1.5em;
+          left: -.1em;
+          margin-top: -.1em;
+          width: 1.5em; }
+        .provisional.gc-subway ul dt:last-of-type,
+        .provisional.gc-subway dl dt:last-of-type {
+          border-left: 5px solid transparent;
+          padding-bottom: 0; }
+      .provisional.gc-subway ul dd,
+      .provisional.gc-subway dl dd {
+        border-left: 4px solid #26374a;
+        line-height: inherit !important;
+        margin-bottom: 0px;
+        margin-top: -3px;
+        padding: 0px 20px 20px 1em; }
+        .provisional.gc-subway ul dd:last-child,
+        .provisional.gc-subway dl dd:last-child {
+          border-left: 5px solid transparent;
+          padding-bottom: 0; }
+      .provisional.gc-subway ul li,
+      .provisional.gc-subway dl li {
+        border-left: 4px solid #26374a;
+        padding: 0px 20px 30px 1em; }
+        .provisional.gc-subway ul li :first-child::before,
+        .provisional.gc-subway dl li :first-child::before {
+          background-color: #fff;
+          border: 3px solid #26374a;
+          border-radius: 50%;
+          content: "";
+          height: 1.2em;
+          left: 0.05em;
           position: absolute;
           -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
           transition: width .2s, height .2s, left .2s, margin-top .2s;
           width: 1.2em; }
-        .provisional.gc-subway ul li.active > :first-child::before {
+        .provisional.gc-subway ul li.active > :first-child::before,
+        .provisional.gc-subway dl li.active > :first-child::before {
           background-color: #26374a; }
         .provisional.gc-subway ul li a[href]:hover::before,
-        .provisional.gc-subway ul li a[href]:focus::before {
-          height: 1.4em;
-          left: -.05em;
+        .provisional.gc-subway ul li a[href]:focus::before,
+        .provisional.gc-subway dl li a[href]:hover::before,
+        .provisional.gc-subway dl li a[href]:focus::before {
+          height: 1.5em;
+          left: -.1em;
           margin-top: -.1em;
-          width: 1.4em; }
-        .provisional.gc-subway ul li:last-child {
+          width: 1.5em; }
+        .provisional.gc-subway ul li::first-line,
+        .provisional.gc-subway dl li::first-line {
+          line-height: 1 !important; }
+        .provisional.gc-subway ul li:last-child,
+        .provisional.gc-subway dl li:last-child {
           border-bottom: 4px solid #26374a;
           border-bottom-left-radius: 6px;
           border-left: 4px solid #26374a; }
-        .provisional.gc-subway ul li ul {
+        .provisional.gc-subway ul li ul,
+        .provisional.gc-subway dl li ul {
           margin-top: 20px;
           padding-left: .55em; }
-          .provisional.gc-subway ul li ul li:last-child {
+          .provisional.gc-subway ul li ul li:last-child,
+          .provisional.gc-subway dl li ul li:last-child {
             border-bottom-width: 0px;
             padding-bottom: 0px; }
-          .provisional.gc-subway ul li ul.noline li {
+          .provisional.gc-subway ul li ul.noline li,
+          .provisional.gc-subway dl li ul.noline li {
             -o-border-image: none;
                border-image: none;
             border-left: 4px solid transparent; }
@@ -13531,6 +13585,10 @@ table.nws-tbl > thead > tr > th {
     margin-right: 20px;
     margin-top: -19px;
     padding: 0px 20px 10px 0px; }
+
+h1 ~ .provisional.gc-subway {
+  border-right: none;
+  border-top: none; }
 
 /*
  * GCWeb custom iumplementation
