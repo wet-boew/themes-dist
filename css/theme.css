@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.1.1 - 2020-12-07
+ * v8.1.1 - 2020-12-08
  *
  */
 /*
@@ -13488,8 +13488,8 @@ table.nws-tbl > thead > tr > th {
         border-left: 4px solid #26374a;
         padding: 0px 20px 3px 1em;
         font-weight: normal; }
-        .provisional.gc-subway ul dt :first-child::before,
-        .provisional.gc-subway dl dt :first-child::before {
+        .provisional.gc-subway ul dt a::before,
+        .provisional.gc-subway dl dt a::before {
           background-color: #fff;
           border: 3px solid #26374a;
           border-radius: 50%;
@@ -13500,13 +13500,21 @@ table.nws-tbl > thead > tr > th {
           -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
           transition: width .2s, height .2s, left .2s, margin-top .2s;
           width: 1.3em; }
-        .provisional.gc-subway ul dt.active > :first-child::before,
-        .provisional.gc-subway dl dt.active > :first-child::before {
-          background-color: #26374a; }
-        .provisional.gc-subway ul dt a[href]:hover::before,
-        .provisional.gc-subway ul dt a[href]:focus::before,
-        .provisional.gc-subway dl dt a[href]:hover::before,
-        .provisional.gc-subway dl dt a[href]:focus::before {
+        .provisional.gc-subway ul dt a.active,
+        .provisional.gc-subway dl dt a.active {
+          color: #333333;
+          text-decoration: none; }
+          .provisional.gc-subway ul dt a.active::before,
+          .provisional.gc-subway dl dt a.active::before {
+            background-color: #26374a; }
+          .provisional.gc-subway ul dt a.active:hover, .provisional.gc-subway ul dt a.active:focus,
+          .provisional.gc-subway dl dt a.active:hover,
+          .provisional.gc-subway dl dt a.active:focus {
+            color: #0535d2;
+            text-decoration: underline; }
+        .provisional.gc-subway ul dt a:not(.active):hover::before, .provisional.gc-subway ul dt a:not(.active):focus::before,
+        .provisional.gc-subway dl dt a:not(.active):hover::before,
+        .provisional.gc-subway dl dt a:not(.active):focus::before {
           height: 1.5em;
           left: -.1em;
           margin-top: -.1em;
@@ -13530,8 +13538,8 @@ table.nws-tbl > thead > tr > th {
       .provisional.gc-subway dl li {
         border-left: 4px solid #26374a;
         padding: 0px 20px 30px 1em; }
-        .provisional.gc-subway ul li :first-child::before,
-        .provisional.gc-subway dl li :first-child::before {
+        .provisional.gc-subway ul li a::before,
+        .provisional.gc-subway dl li a::before {
           background-color: #fff;
           border: 3px solid #26374a;
           border-radius: 50%;
@@ -13542,13 +13550,21 @@ table.nws-tbl > thead > tr > th {
           -webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
           transition: width .2s, height .2s, left .2s, margin-top .2s;
           width: 1.2em; }
-        .provisional.gc-subway ul li.active > :first-child::before,
-        .provisional.gc-subway dl li.active > :first-child::before {
-          background-color: #26374a; }
-        .provisional.gc-subway ul li a[href]:hover::before,
-        .provisional.gc-subway ul li a[href]:focus::before,
-        .provisional.gc-subway dl li a[href]:hover::before,
-        .provisional.gc-subway dl li a[href]:focus::before {
+        .provisional.gc-subway ul li a.active,
+        .provisional.gc-subway dl li a.active {
+          color: #333333;
+          text-decoration: none; }
+          .provisional.gc-subway ul li a.active::before,
+          .provisional.gc-subway dl li a.active::before {
+            background-color: #26374a; }
+          .provisional.gc-subway ul li a.active:hover, .provisional.gc-subway ul li a.active:focus,
+          .provisional.gc-subway dl li a.active:hover,
+          .provisional.gc-subway dl li a.active:focus {
+            color: #0535d2;
+            text-decoration: underline; }
+        .provisional.gc-subway ul li a:not(.active):hover::before, .provisional.gc-subway ul li a:not(.active):focus::before,
+        .provisional.gc-subway dl li a:not(.active):hover::before,
+        .provisional.gc-subway dl li a:not(.active):focus::before {
           height: 1.5em;
           left: -.1em;
           margin-top: -.1em;
@@ -13569,11 +13585,6 @@ table.nws-tbl > thead > tr > th {
           .provisional.gc-subway dl li ul li:last-child {
             border-bottom-width: 0px;
             padding-bottom: 0px; }
-          .provisional.gc-subway ul li ul.noline li,
-          .provisional.gc-subway dl li ul.noline li {
-            -o-border-image: none;
-               border-image: none;
-            border-left: 4px solid transparent; }
     .provisional.gc-subway h1 {
       float: left; }
   .provisional.gc-subway h1,
@@ -13909,6 +13920,16 @@ h1 ~ .provisional.gc-subway {
       padding-left: 0px; }
     .gcweb-menu [role=menu] [role=menu] [role=menu] li {
       width: auto; }
+  /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ * Small view and under (screen only) - Variable $screen-sm-max <= 991 px
+ *
+ *	Provisional GC Subway map menu
+*/
+  .provisional.gc-subway dt, .provisional.gc-subway li {
+    max-width: initial; }
   /*
   Variant - GCWeb custom implementation
   @title: Small view and under (screen only)
