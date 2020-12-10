@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.1.1 - 2020-12-08
+ * v8.1.1 - 2020-12-10
  *
  */
 /*
@@ -12576,6 +12576,12 @@ button.bg-dark:hover, button.bg-dark:focus {
  */
 .well.header-rwd {
   width: 100%; }
+
+/*
+* Panel title
+*/
+.panel-title {
+  font-size: 1.2em; }
 
 /*
 * Template pages styles
