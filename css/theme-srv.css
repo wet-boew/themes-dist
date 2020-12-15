@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.1.1 - 2020-12-10
+ * v9.0.0 - 2020-12-15
  *
  */
 /*!
@@ -7197,6 +7197,42 @@ details {
   details[open] {
     padding-bottom: 1em; }
 
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ * Components and helpers style for WET-BOEW
+ */
+/*
+ Background Utility CSS
+ */
+.bg-cover {
+  background-size: cover; }
+
+.bg-center {
+  background-position: center; }
+
+.bg-norepeat {
+  background-repeat: no-repeat; }
+
+/*
+ Additional color
+ */
+.bg-darker {
+  background-color: #000; }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+/*
+.provisional {
+	// Add provisional CSS here
+}
+*/
 /*
  Plugins
  */

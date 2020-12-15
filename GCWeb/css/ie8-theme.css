@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.1.1 - 2020-12-10
+ * v9.0.0 - 2020-12-15
  *
  */
 /*
@@ -7236,6 +7236,42 @@ details {
     padding-bottom: 1em; }
 
 /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ * Components and helpers style for WET-BOEW
+ */
+/*
+ Background Utility CSS
+ */
+.bg-cover {
+  background-size: cover; }
+
+.bg-center {
+  background-position: center; }
+
+.bg-norepeat {
+  background-repeat: no-repeat; }
+
+/*
+ Additional color
+ */
+.bg-darker {
+  background-color: #000; }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+/*
+.provisional {
+	// Add provisional CSS here
+}
+*/
+/*
  Plugins
  */
 /*
@@ -12315,13 +12351,13 @@ Carousel
 
 .backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper table :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
   display: none;
   visibility: hidden; }
 
 .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper :target .record-close, #mobile-centre_wrapper :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper table :target .record-close, #mobile-centre_wrapper table :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
   display: block;
   visibility: visible; }
 
@@ -12399,13 +12435,13 @@ Carousel
 
 .backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper table :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
   display: none;
   visibility: hidden; }
 
 .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper :target .record-close, #mobile-centre_wrapper :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper table :target .record-close, #mobile-centre_wrapper table :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
   display: block;
   visibility: visible; }
 
@@ -12443,8 +12479,7 @@ Carousel
         float: none; }
     .backgroundsize.csstransitions #mobile-centre tbody tr:hover {
       background-color: #e8e8e8;
-      border-color: #d6d6d6;
-      cursor: pointer; }
+      border-color: #d6d6d6; }
 
 .no-backgroundsize.no-csstransitions #mobile-centre tr,
 .backgroundsize.no-csstransitions #mobile-centre tr {

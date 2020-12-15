@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v8.1.1 - 2020-12-10
+ * v9.0.0 - 2020-12-15
  *
  */
 /*
@@ -7200,6 +7200,42 @@ details {
     padding-bottom: 1em; }
 
 /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ * Components and helpers style for WET-BOEW
+ */
+/*
+ Background Utility CSS
+ */
+.bg-cover {
+  background-size: cover; }
+
+.bg-center {
+  background-position: center; }
+
+.bg-norepeat {
+  background-repeat: no-repeat; }
+
+/*
+ Additional color
+ */
+.bg-darker {
+  background-color: #000; }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+/*
+.provisional {
+	// Add provisional CSS here
+}
+*/
+/*
  Plugins
  */
 /*
@@ -12208,13 +12244,13 @@ Carousel
 
 .backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper table :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
   display: none;
   visibility: hidden; }
 
 .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper :target .record-close, #mobile-centre_wrapper :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper table :target .record-close, #mobile-centre_wrapper table :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
   display: block;
   visibility: visible; }
 
@@ -12292,13 +12328,13 @@ Carousel
 
 .backgroundsize.csstransitions #mobile-centre tbody tr .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
+.backgroundsize.csstransitions #mobile-centre tbody tr .product-department, #mobile-centre_wrapper .record-close, #mobile-centre_wrapper table :target .product-data-compressed, #mobile-centre_wrapper .product-data-hidden, #mobile-centre_wrapper .product-data-expanded {
   display: none;
   visibility: hidden; }
 
 .backgroundsize.csstransitions #mobile-centre tbody tr:target .product-longdescription,
 .backgroundsize.csstransitions #mobile-centre tbody tr:target td.product-link-container,
-.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper :target .record-close, #mobile-centre_wrapper :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
+.backgroundsize.csstransitions #mobile-centre tbody tr:target .product-department, #mobile-centre_wrapper table :target .record-close, #mobile-centre_wrapper table :target .product-data-expanded, #mobile-centre_wrapper .product-data-compressed {
   display: block;
   visibility: visible; }
 
@@ -12336,8 +12372,7 @@ Carousel
         float: none; }
     .backgroundsize.csstransitions #mobile-centre tbody tr:hover {
       background-color: #e8e8e8;
-      border-color: #d6d6d6;
-      cursor: pointer; }
+      border-color: #d6d6d6; }
 
 .no-backgroundsize.no-csstransitions #mobile-centre tr,
 .backgroundsize.no-csstransitions #mobile-centre tr {
@@ -12571,17 +12606,103 @@ a.text-white:hover, a.text-white:focus {
 button.bg-dark:hover, button.bg-dark:focus {
   background-color: #1d2124; }
 
+.bg-gctheme {
+  background-color: #355688; }
+  .bg-gctheme.well.header-rwd {
+    background-color: #26374a; }
+
 /*
  * Well header responsive
  */
 .well.header-rwd {
   width: 100%; }
 
+.bg-darker.well.header-rwd h1 {
+  border-bottom-color: #6f6f6f; }
+
+/* H1 short bold red underline */
+h1.gc-thickline {
+  border-bottom: none; }
+  h1.gc-thickline::after {
+    border-bottom: .18em solid #af3c43;
+    content: "";
+    display: block;
+    padding-bottom: 8px;
+    width: 70px; }
+
 /*
 * Panel title
 */
 .panel-title {
   font-size: 1.2em; }
+
+/*
+ * Components
+ */
+.alert-info > :first-child::before, .alert-success > :first-child::before, .alert-warning > :first-child::before, .alert-danger > :first-child::before {
+  color: inherit;
+  content: none; }
+
+.alert {
+  background-clip: content-box;
+  background-color: inherit;
+  border-left: 6px solid #000;
+  margin-bottom: 23px;
+  margin-left: 10px;
+  padding: 0 0 0 15px; }
+  .alert > p, .alert > ul, .alert > ol {
+    margin-bottom: 0px; }
+  .alert > * {
+    margin-left: 15px; }
+  .alert details {
+    margin-left: .5em;
+    padding-top: 15px; }
+  .alert > :first-child:not(details) {
+    margin-top: auto;
+    padding-top: 15px; }
+  .alert > :last-child {
+    padding-bottom: 25px; }
+  .alert::before {
+    font-family: "Glyphicons Halflings";
+    font-size: 26px;
+    line-height: 2.3em;
+    margin-left: -1.27em;
+    padding: 2px;
+    position: absolute; }
+  .alert > :first-child {
+    margin-left: 15px; }
+
+.alert-info {
+  border-color: #269abc;
+  -o-border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%;
+     border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%; }
+  .alert-info::before {
+    color: #269abc;
+    content: ""; }
+
+.alert-success {
+  border-color: #278400;
+  -o-border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%;
+     border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%; }
+  .alert-success::before {
+    color: #278400;
+    content: ""; }
+
+.alert-warning {
+  border-color: #ee7100;
+  -o-border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%;
+     border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%; }
+  .alert-warning::before {
+    color: #ee7100;
+    content: ""; }
+
+.alert-danger {
+  border-color: #d3080c;
+  -o-border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%;
+     border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%; }
+  .alert-danger::before {
+    color: #d3080c;
+    content: ""; }
 
 /*
 * Template pages styles
@@ -12762,29 +12883,11 @@ table.nws-tbl > thead > tr > th {
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
  */
-.provisional {
-  /* Background size cover */
-  /* Background position center */ }
-  .provisional.bg-cover, .provisional .bg-cover {
-    background-size: cover; }
-  .provisional.bg-center {
-    background-position: center; }
-
-/*
- *
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- *
- */
 /*
 	Global Provisional styling
 
 	- Provisional  CSSspecific for view port are defined in the "views/[view port]" theme CSS
 */
-.provisional.alert-info > :first-child::before, .provisional.alert-success > :first-child::before, .provisional.alert-warning > :first-child::before, .provisional.alert-danger > :first-child::before {
-  color: inherit;
-  content: none; }
-
 .provisional, .experimental {
   /* ------------
 	 * Background color
@@ -12803,14 +12906,6 @@ table.nws-tbl > thead > tr > th {
 	 */
   /* Dark theme
 	 */ }
-  .provisional .bg-darker, .experimental .bg-darker {
-    background-color: #000; }
-    .provisional .bg-darker.well.header-rwd h1, .experimental .bg-darker.well.header-rwd h1 {
-      border-bottom-color: #6f6f6f; }
-  .provisional .bg-gctheme, .experimental .bg-gctheme {
-    background-color: #355688; }
-    .provisional .bg-gctheme.well.header-rwd, .experimental .bg-gctheme.well.header-rwd {
-      background-color: #26374a; }
   .provisional .bg-pnkDy, .experimental .bg-pnkDy {
     background-color: #AD005F; }
     .provisional .bg-pnkDy.well.header-rwd, .experimental .bg-pnkDy.well.header-rwd {
@@ -12887,161 +12982,104 @@ table.nws-tbl > thead > tr > th {
     background-color: #000;
     color: #fff; }
 
-.provisional {
-  /* H1 short bold red underline re-design
-	*/ }
-  .provisional.icon-warning-light, .provisional .icon-warning-light {
-    color: #DF7200; }
-  .provisional.alert {
-    background-clip: content-box;
-    background-color: inherit;
-    border-left: 6px solid #000;
-    margin-bottom: 23px;
-    margin-left: 10px;
-    padding: 0 0 0 15px; }
-    .provisional.alert > p, .provisional.alert > ul, .provisional.alert > ol {
-      margin-bottom: 0px; }
-    .provisional.alert > * {
-      margin-left: 15px; }
-    .provisional.alert details {
-      margin-left: .5em;
-      padding-top: 15px; }
-    .provisional.alert > :first-child:not(details) {
-      margin-top: auto;
-      padding-top: 15px; }
-    .provisional.alert > :last-child {
-      padding-bottom: 25px; }
-    .provisional.alert::before {
-      font-family: "Glyphicons Halflings";
-      font-size: 26px;
-      line-height: 2.3em;
-      margin-left: -1.27em;
-      padding: 2px;
-      position: absolute; }
-    .provisional.alert > :first-child {
-      margin-left: 15px; }
-  .provisional.alert-info {
-    border-color: #269abc;
-    -o-border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%;
-       border-image: linear-gradient(to bottom, #269abc 16px, #269abc 16px, transparent 16px, transparent 48px, #269abc 48px, #269abc 48px) 1 100%; }
-    .provisional.alert-info::before {
-      color: #269abc;
-      content: ""; }
-  .provisional.alert-success {
-    border-color: #278400;
-    -o-border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%;
-       border-image: linear-gradient(to bottom, #278400 16px, #278400 16px, transparent 16px, transparent 48px, #278400 48px, #278400 48px) 1 100%; }
-    .provisional.alert-success::before {
-      color: #278400;
-      content: ""; }
-  .provisional.alert-warning {
-    border-color: #ee7100;
-    -o-border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%;
-       border-image: linear-gradient(to bottom, #ee7100 16px, #ee7100 16px, transparent 16px, transparent 48px, #ee7100 48px, #ee7100 48px) 1 100%; }
-    .provisional.alert-warning::before {
-      color: #ee7100;
-      content: ""; }
-  .provisional.alert-danger {
-    border-color: #d3080c;
-    -o-border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%;
-       border-image: linear-gradient(to bottom, #d3080c 16px, #d3080c 16px, transparent 16px, transparent 48px, #d3080c 48px, #d3080c 48px) 1 100%; }
-    .provisional.alert-danger::before {
-      color: #d3080c;
-      content: ""; }
-  .provisional.gc-chckbxrdio label {
-    cursor: pointer;
-    display: block;
-    font-size: 20px; }
-  .provisional.gc-chckbxrdio legend {
-    float: none;
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    margin-top: 0; }
-  .provisional.gc-chckbxrdio input[type="radio"],
-  .provisional.gc-chckbxrdio input[type="checkbox"] {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px; }
-    .provisional.gc-chckbxrdio input[type="radio"][disabled] + label,
-    .provisional.gc-chckbxrdio input[type="checkbox"][disabled] + label {
-      cursor: not-allowed;
-      opacity: .5; }
-    .provisional.gc-chckbxrdio input[type="radio"] + label,
-    .provisional.gc-chckbxrdio input[type="checkbox"] + label {
-      display: inline-block;
-      line-height: 2;
-      margin-left: 36px;
-      width: auto; }
-    .provisional.gc-chckbxrdio input[type="radio"] + label::before,
-    .provisional.gc-chckbxrdio input[type="checkbox"] + label::before {
-      border: 4px solid #fff;
-      -webkit-box-shadow: 0 0 0 2px #000;
-              box-shadow: 0 0 0 2px #000;
-      content: "";
-      display: inline-block;
-      height: 36px;
-      left: 0;
-      position: absolute;
-      top: 2px;
-      width: 36px; }
-    .provisional.gc-chckbxrdio input[type="radio"] + label:hover::before,
-    .provisional.gc-chckbxrdio input[type="checkbox"] + label:hover::before {
-      background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e5e5), color-stop(50%, white));
-      background-image: linear-gradient(to bottom, #e6e5e5, white 50%); }
-    .provisional.gc-chckbxrdio input[type="radio"]:focus + label::before,
-    .provisional.gc-chckbxrdio input[type="checkbox"]:focus + label::before {
-      -webkit-box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc;
-              box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc; }
-  .provisional.gc-chckbxrdio input[type="radio"] + label::before {
-    border-radius: 50%; }
-  .provisional.gc-chckbxrdio input[type="radio"]:checked + label::before {
-    background: #444; }
-  .provisional.gc-chckbxrdio.checkbox input[type="checkbox"] + label,
-  .provisional.gc-chckbxrdio.checkbox input[type="checkbox"] + label + ul {
-    font-size: 17px;
-    min-height: 23px; }
-  .provisional.gc-chckbxrdio.checkbox input[type="checkbox"] + label::before {
-    height: 24px;
-    left: 6px;
-    top: 4px;
-    width: 24px; }
-  .provisional.gc-chckbxrdio.checkbox input[type="checkbox"]:checked + label::after {
-    border-width: 0 3px 3px 0;
-    height: 16px;
-    left: 14px;
-    top: 6px;
-    width: 9px; }
-  .provisional.gc-chckbxrdio input[type="checkbox"]:checked + label::after {
-    border-color: #333;
-    border-style: solid;
-    border-width: 0 5px 5px 0;
+.provisional.icon-warning-light, .provisional .icon-warning-light {
+  color: #DF7200; }
+
+.provisional.gc-chckbxrdio label {
+  cursor: pointer;
+  display: block;
+  font-size: 20px; }
+
+.provisional.gc-chckbxrdio legend {
+  float: none;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 0; }
+
+.provisional.gc-chckbxrdio input[type="radio"],
+.provisional.gc-chckbxrdio input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .provisional.gc-chckbxrdio input[type="radio"][disabled] + label,
+  .provisional.gc-chckbxrdio input[type="checkbox"][disabled] + label {
+    cursor: not-allowed;
+    opacity: .5; }
+  .provisional.gc-chckbxrdio input[type="radio"] + label,
+  .provisional.gc-chckbxrdio input[type="checkbox"] + label {
+    display: inline-block;
+    line-height: 2;
+    margin-left: 36px;
+    width: auto; }
+  .provisional.gc-chckbxrdio input[type="radio"] + label::before,
+  .provisional.gc-chckbxrdio input[type="checkbox"] + label::before {
+    border: 4px solid #fff;
+    -webkit-box-shadow: 0 0 0 2px #000;
+            box-shadow: 0 0 0 2px #000;
     content: "";
     display: inline-block;
-    height: 26px;
-    left: 12px;
+    height: 36px;
+    left: 0;
     position: absolute;
-    top: 4px;
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-    width: 13px; }
-  .provisional.gc-chckbxrdio.form-inline .label-inline {
-    padding-right: 20px; }
-    .provisional.gc-chckbxrdio.form-inline .label-inline label {
-      padding-left: 10px; }
-  h1.provisional.gc-thickline {
-    border-bottom: none; }
-    h1.provisional.gc-thickline::after {
-      border-bottom: .18em solid #af3c43;
-      content: "";
-      display: block;
-      padding-bottom: 8px;
-      width: 70px; }
+    top: 2px;
+    width: 36px; }
+  .provisional.gc-chckbxrdio input[type="radio"] + label:hover::before,
+  .provisional.gc-chckbxrdio input[type="checkbox"] + label:hover::before {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e5e5), color-stop(50%, white));
+    background-image: linear-gradient(to bottom, #e6e5e5, white 50%); }
+  .provisional.gc-chckbxrdio input[type="radio"]:focus + label::before,
+  .provisional.gc-chckbxrdio input[type="checkbox"]:focus + label::before {
+    -webkit-box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc;
+            box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc; }
+
+.provisional.gc-chckbxrdio input[type="radio"] + label::before {
+  border-radius: 50%; }
+
+.provisional.gc-chckbxrdio input[type="radio"]:checked + label::before {
+  background: #444; }
+
+.provisional.gc-chckbxrdio.checkbox input[type="checkbox"] + label,
+.provisional.gc-chckbxrdio.checkbox input[type="checkbox"] + label + ul {
+  font-size: 17px;
+  min-height: 23px; }
+
+.provisional.gc-chckbxrdio.checkbox input[type="checkbox"] + label::before {
+  height: 24px;
+  left: 6px;
+  top: 4px;
+  width: 24px; }
+
+.provisional.gc-chckbxrdio.checkbox input[type="checkbox"]:checked + label::after {
+  border-width: 0 3px 3px 0;
+  height: 16px;
+  left: 14px;
+  top: 6px;
+  width: 9px; }
+
+.provisional.gc-chckbxrdio input[type="checkbox"]:checked + label::after {
+  border-color: #333;
+  border-style: solid;
+  border-width: 0 5px 5px 0;
+  content: "";
+  display: inline-block;
+  height: 26px;
+  left: 12px;
+  position: absolute;
+  top: 4px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 13px; }
+
+.provisional.gc-chckbxrdio.form-inline .label-inline {
+  padding-right: 20px; }
+  .provisional.gc-chckbxrdio.form-inline .label-inline label {
+    padding-left: 10px; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
