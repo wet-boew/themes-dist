@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.0.0 - 2020-12-15
+ * v9.0.0 - 2020-12-24
  *
  */
 /*
@@ -14,6 +14,9 @@
 /*
  Global variables for GCWeb
  */
+/* Headings font-sizes */
+/* Small font-size */
+/* Bold weight */
 /*
 Left menu variables
 */
@@ -10698,7 +10701,7 @@ h1 {
   line-height: 1.5em; }
 
 .gc-srvinfo h3, .gc-srvinfo h4, .gc-srvinfo h5, .gc-srvinfo h6, .gc-drmt h3, .gc-drmt h4, .gc-drmt h5, .gc-drmt h6 {
-  font-size: 20px;
+  font-size: 1em;
   margin-bottom: 5px;
   margin-top: 23px; }
 
@@ -11021,7 +11024,7 @@ h5, .h5 {
   font-size: 1em; }
 
 h6, .h6 {
-  font-size: .95em;
+  font-size: 0.95em;
   font-weight: 400; }
 
 /*
