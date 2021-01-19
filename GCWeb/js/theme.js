@@ -3465,7 +3465,7 @@ var $document = wb.doc,
 		// Ensure the page contains at least two heading level 1
 		if ( $( "main h1" ).length < 2 ) {
 			$document.off( wb.resizeEvents, onResize );
-			$elm.addClass( "no-blink" );
+			$elm.addClass( "no-blink p-0" );
 			return;
 		}
 
