@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.0.0 - 2020-12-24
+ * v9.0.0 - 2021-01-19
  *
  */
 /*
@@ -12876,6 +12876,18 @@ table.nws-tbl > thead > tr > th {
 
 .table-columnfloat tr, .table-columnfloat th:not(:first-of-type), .table-columnfloat td {
   border-bottom: 1px solid #ddd; }
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+*/
+.wb-fieldflow-form .input-group .form-control:last-child {
+  border-radius: 4px 0 0 4px; }
+
+.wb-fieldflow-form .input-group input[type=submit] {
+  padding-bottom: 7px; }
 
 /*
  * Provisional feature
