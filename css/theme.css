@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.1.0 - 2021-02-04
+ * v9.1.0 - 2021-02-11
  *
  */
 /*
@@ -12100,6 +12100,7 @@ a.shr-opn, a.shr-opn:hover {
   content: "";
   height: 38px;
   margin-right: 10px;
+  margin-top: -6px;
   min-width: 38px; }
 
 .provisional.gc-followus h2 {
@@ -12110,18 +12111,20 @@ a.shr-opn, a.shr-opn:hover {
   font-size: 87%;
   font-weight: 600;
   list-style: none;
-  -webkit-margin-before: 1em;
-          margin-block-start: 1em;
+  -webkit-margin-before: calc(1em + 6px);
+          margin-block-start: calc(1em + 6px);
   -webkit-padding-start: 1em;
      -moz-padding-start: 1em;
           padding-inline-start: 1em; }
   .provisional.gc-followus ul li {
-    margin-bottom: 15px; }
+    margin-bottom: 21px; }
+    .provisional.gc-followus ul li:last-child {
+      margin-bottom: 15px; }
     .provisional.gc-followus ul li a {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      line-height: 38px;
+      line-height: 1.54;
       max-width: -webkit-max-content;
       max-width: -moz-max-content;
       max-width: max-content;
@@ -12155,7 +12158,7 @@ a.shr-opn, a.shr-opn:hover {
   background-image: url("../assets/social-media-icons/instagram.svg"); }
 
 .provisional.gc-followus .linkedin:before {
-  background-image: url("../assets/social-media-icons/linkedin.png"); }
+  background-image: url("../assets/social-media-icons/linkedin.svg"); }
 
 .shr-pg a {
   background-image: none; }
@@ -13094,6 +13097,7 @@ table.nws-tbl > thead > tr > th {
     color: #fff; }
 
 .provisional {
+  /* Responsive table - part of design, not responsive part */
   /* Theme/topic decorative image */
   /* Contributors */ }
   .provisional.icon-warning-light, .provisional .icon-warning-light {
@@ -13184,12 +13188,18 @@ table.nws-tbl > thead > tr > th {
     padding-right: 20px; }
     .provisional.gc-chckbxrdio.form-inline .label-inline label {
       padding-left: 10px; }
+  .provisional.gc-table caption {
+    text-align: left; }
+  .provisional.gc-table td ul {
+    -webkit-padding-start: 20px;
+       -moz-padding-start: 20px;
+            padding-inline-start: 20px; }
   .provisional.gc-topic-bg div {
     background: no-repeat;
     margin-left: -15px;
     min-height: 200px;
     overflow: hidden;
-    width: 50vw; }
+    width: calc(50vw - 15px); }
   .provisional.gc-contributors {
     margin-top: 38px; }
     .provisional.gc-contributors h2, .provisional.gc-contributors ul {
@@ -13861,7 +13871,7 @@ h1 ~ .provisional.gc-subway {
   /*
  Banner (small view and under)
  */
-  header .brand a {
+  header .brand img {
     margin-top: 15px; }
   header .brand object,
   header .brand img {
@@ -13950,7 +13960,8 @@ h1 ~ .provisional.gc-subway {
   /* PROVISIONAL features */
   .provisional {
     /* Checkboxes and radios */
-    /* Contributors */ }
+    /* Contributors */
+    /* Responsive tables cards */ }
     .provisional.gc-chckbxrdio.form-inline .label-inline {
       margin-bottom: 20px;
       padding-right: 20px; }
@@ -13963,10 +13974,42 @@ h1 ~ .provisional.gc-subway {
       .provisional.gc-contributors ul li {
         display: list-item;
         margin-right: 0; }
+    .provisional.gc-table .text-left {
+      clear: both;
+      display: block; }
+    .provisional.gc-table > tbody > tr > td:first-child,
+    .provisional.gc-table > tfoot > tr > td:first-child {
+      border-top: none; }
+    .provisional.gc-table tr {
+      border: 1px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+      padding: .35em; }
+    .provisional.gc-table caption {
+      font-size: 1.1em; }
+    .provisional.gc-table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px; }
+    .provisional.gc-table td {
+      display: block;
+      font-size: 1em;
+      text-align: right; }
+      .provisional.gc-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold; }
+      .provisional.gc-table td:last-child {
+        border-bottom: 0; }
   /*
  Banner (small view and under)
  */
-  header .brand a {
+  header .brand img {
     margin-top: 10px; }
   /*
  Details Summary Styling (small view and under)
