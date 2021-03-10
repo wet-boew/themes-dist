@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.1.0 - 2021-02-18
+ * v9.1.0 - 2021-03-10
  *
  */
 /*!
@@ -7488,21 +7488,22 @@ details.alert, details.alert[open] {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
-            flex-direction: column;
+            flex-direction: column; }
+    .wb-eqht-grd > [class*="col-"] > section, .wb-eqht-grd > [class*="col-"] .hght-inhrt {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+  .wb-eqht-grd.grow > [class*="col-"] {
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1; }
-  .wb-eqht-grd > [class*="col-"] > section, .wb-eqht-grd .hght-inhrt {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -8664,13 +8665,13 @@ ol.linenums {
 
 .shr-pg .blogger:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
-  background-position: -32px 0px;
+  background-position: 0px 0px;
   width: 32px;
   height: 32px; }
 
 .shr-pg .diigo:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
-  background-position: -32px -64px;
+  background-position: -32px 0px;
   width: 32px;
   height: 32px; }
 
@@ -8706,7 +8707,7 @@ ol.linenums {
 
 .shr-pg .pinterest:before {
   background-image: url(../../wet-boew/assets/sprites_share.png);
-  background-position: 0px 0px;
+  background-position: -32px -64px;
   width: 32px;
   height: 32px; }
 

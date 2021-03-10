@@ -357,8 +357,11 @@ var $document = wb.doc,
 					cValueParsed = pattern.exec( cValue );
 
 					// Fall back on default if no match found
-					cValueParsed = !!cValueParsed ? cValueParsed : defaultValue;
-				} catch ( e ) { }
+					cValueParsed = cValueParsed || defaultValue;
+				} catch ( e ) {
+
+					// continue regardless of error
+				}
 			} else if ( !cValueParsed && !!defaultValue && !cValue ) {
 				cValueParsed = defaultValue;
 			}
@@ -1826,6 +1829,7 @@ var componentName = "wb-data-json",
 		case "number":
 			return a === b;
 		case "object":
+			var i, l;
 			if ( a === null ) {
 				return b === null;
 			}
@@ -1833,7 +1837,7 @@ var componentName = "wb-data-json",
 				if (  $.isArray( b ) || a.length !== b.length ) {
 					return false;
 				}
-				for ( var i = 0, l = a.length; i < l; i++ ) {
+				for ( i = 0, l = a.length; i < l; i++ ) {
 					if ( !_equalsJSON( a[ i ], b[ i ] ) ) {
 						return false;
 					}
@@ -1845,7 +1849,7 @@ var componentName = "wb-data-json",
 			if ( _objectKeys( a ).length !== bLength ) {
 				return false;
 			}
-			for ( var i = 0; i < bLength; i++ ) {
+			for ( i = 0; i < bLength; i++ ) {
 				if ( !_equalsJSON( a[ i ], b[ i ] ) ) {
 					return false;
 				}
@@ -1856,8 +1860,9 @@ var componentName = "wb-data-json",
 		}
 	},
 	_objectKeys = function( obj ) {
+		var keys;
 		if ( $.isArray( obj ) ) {
-			var keys = new Array( obj.length );
+			keys = new Array( obj.length );
 			for ( var k = 0; k < keys.length; k++ ) {
 				keys[ k ] = "" + k;
 			}
@@ -1866,7 +1871,7 @@ var componentName = "wb-data-json",
 		if ( Object.keys ) {
 			return Object.keys( obj );
 		}
-		var keys = [];
+		keys = [];
 		for ( var i in obj ) {
 			if ( obj.hasOwnProperty( i ) ) {
 				keys.push( i );
@@ -2605,7 +2610,7 @@ var componentName = "wb-fieldflow",
 				label: labelTxt,
 				lblselector: labelSelector,
 				defaultselectedlabel: data.defaultselectedlabel,
-				required: !!!data.isoptional,
+				required: !data.isoptional,
 				noreqlabel: data.noreqlabel,
 				items: $items,
 				inline: data.inline
@@ -2618,7 +2623,7 @@ var componentName = "wb-fieldflow",
 			actions = data.actions,
 			lblselector = data.lblselector,
 			isReq = !!data.required,
-			useReqLabel = !!!data.noreqlabel,
+			useReqLabel = !data.noreqlabel,
 			items = data.items,
 			elm = event.target,
 			$elm = $( elm ),
@@ -2712,7 +2717,7 @@ var componentName = "wb-fieldflow",
 			actions = data.actions,
 			lblselector = data.lblselector,
 			isReq = !!data.required,
-			useReqLabel = !!!data.noreqlabel,
+			useReqLabel = !data.noreqlabel,
 			items = data.items,
 			elm = event.target,
 			$elm = $( elm ),
@@ -4038,6 +4043,7 @@ var componentName = "wb-jsonmanager",
 		case "number":
 			return a === b;
 		case "object":
+			var i, l;
 			if ( a === null ) {
 				return b === null;
 			}
@@ -4045,7 +4051,7 @@ var componentName = "wb-jsonmanager",
 				if (  $.isArray( b ) || a.length !== b.length ) {
 					return false;
 				}
-				for ( var i = 0, l = a.length; i < l; i++ ) {
+				for ( i = 0, l = a.length; i < l; i++ ) {
 					if ( !_equalsJSON( a[ i ], b[ i ] ) ) {
 						return false;
 					}
@@ -4057,7 +4063,7 @@ var componentName = "wb-jsonmanager",
 			if ( _objectKeys( a ).length !== bLength ) {
 				return false;
 			}
-			for ( var i = 0; i < bLength; i++ ) {
+			for ( i = 0; i < bLength; i++ ) {
 				if ( !_equalsJSON( a[ i ], b[ i ] ) ) {
 					return false;
 				}
@@ -4068,8 +4074,9 @@ var componentName = "wb-jsonmanager",
 		}
 	},
 	_objectKeys = function( obj ) {
+		var keys;
 		if ( $.isArray( obj ) ) {
-			var keys = new Array( obj.length );
+			keys = new Array( obj.length );
 			for ( var k = 0; k < keys.length; k++ ) {
 				keys[ k ] = "" + k;
 			}
@@ -4078,7 +4085,7 @@ var componentName = "wb-jsonmanager",
 		if ( Object.keys ) {
 			return Object.keys( obj );
 		}
-		var keys = [];
+		keys = [];
 		for ( var i in obj ) {
 			if ( obj.hasOwnProperty( i ) ) {
 				keys.push( i );
@@ -4732,7 +4739,7 @@ function keycode( code ) {
 
 
 	return false;
-};
+}
 
 // Global hook, close the menu on "ESC" when its state are open.
 $document.on( "keydown", function( event ) {
