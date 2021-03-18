@@ -1,4 +1,379 @@
 /**
+ * @title WET-BOEW Template polyfill
+ * @overview The <template> element hold elements for Javascript and templating usage. Based on code from http://ironlasso.com/template-tag-polyfill-for-internet-explorer/
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ */
+( function( $, document, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the polyfill - meaning that they will be initialized once per page.
+ * This polyfill is mostly used to support <template> element in IE11
+ */
+var componentName = "wb-template",
+	selector = "template",
+	initEvent = "wb-init." + componentName,
+	$document = wb.doc,
+
+	/**
+	 * @method polyfill
+	 * @param {DOM element} element that we need to apply the polyfill
+	 */
+	polyfill = function( elm ) {
+
+		if ( elm.content ) {
+			return;
+		}
+		var elPlate = elm,
+			qContent,
+			docContent;
+
+		qContent = elPlate.childNodes;
+		docContent = document.createDocumentFragment();
+
+		while ( qContent[ 0 ] ) {
+			docContent.appendChild( qContent[ 0 ] );
+		}
+
+		elPlate.content = docContent;
+
+	},
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+
+			polyfill( elm );
+
+			// Identify that initialization has completed
+			wb.ready( $( elm ), componentName );
+		}
+	};
+
+// Make it available of when template element is needed on the fly, like subtemplate support in IE11
+wb.tmplPolyfill = polyfill;
+
+// Bind the events of the polyfill
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the polyfill
+wb.add( selector );
+
+} )( jQuery, document, wb );
+
+/**
+ * @title WET-BOEW GC Subway map mutator
+ * @overview Plugin used to mutate DOM elements depending on viewport size, in order to follow order accessibility criteria while respecting UI
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @gormfrank
+ */
+( function( $, window, wb ) {
+"use strict";
+
+var $document = wb.doc,
+	componentName = "gc-subway",
+	selector = ".provisional." + componentName,
+	initEvent = "wb-init ." + componentName,
+	views = {
+		xxs: "xxsmallview",
+		xs: "xsmallview",
+		sm: "smallview",
+		md: "mediumview",
+		lg: "largeview",
+		xl: "xlargeview"
+	},
+	mainClass = "gc-subway-section",
+	toggleClass = "wb-inv",
+	desktopInited = false,
+	$html = wb.html,
+	$h1, $h2, $h1Copy, $menu, $main,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm;
+
+		if ( elm ) {
+			$elm = $( elm );
+
+			// trigger resizing
+			onResize( $elm );
+
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
+		}
+	},
+
+	/**
+	 * Mutate DOM depending on breakpoint
+	 * @method onResize
+	 * @param {jQuery DOM element | jQuery Event} $elm Element targetted by this plugin, which is the nav | Resizing event
+	 */
+	onResize = function( $elm ) {
+
+		if ( !$elm.length ) {
+			$elm = $( selector );
+		}
+
+		// Ensure the page contains at least two heading level 1
+		if ( $( "main h1" ).length < 2 ) {
+			$document.off( wb.resizeEvents, onResize );
+			$elm.addClass( "no-blink p-0" );
+			return;
+		}
+
+		// Desktop view, setup and mutate H1s
+		if ( $html.hasClass( views.md ) || $html.hasClass( views.lg ) ||
+			$html.hasClass( views.xl ) ) {
+
+			// Initiate desktop mode only once
+			if ( !desktopInited ) {
+				initDesktop( $elm );
+			}
+			$h1.addClass( toggleClass );
+			$h1Copy.prependTo( $main );
+			$h2.prependTo( $menu );
+		} else if ( ( $html.hasClass( views.sm ) || $html.hasClass( views.xs ) || $html.hasClass( views.xxs ) ) && desktopInited ) {
+
+			// Mobile view, mutate back to mobile first if needed
+			$h1.removeClass( toggleClass );
+			$h1Copy.remove();
+			$( "h2:first-child", $menu ).remove();
+		}
+	},
+
+	/**
+	 * Initate setup for desktop mode
+	 * @method initDesktop
+	 * @param {jQuery DOM element} $elm Element targetted by this plugin, which is the nav
+	 */
+	initDesktop = function( $elm ) {
+		$h1 = $( "h1", $elm );
+		$h2 = $( "<h2 class='h3 hidden-xs visible-md visible-lg mrgn-tp-0'>Sections</h2>" );
+		$h1Copy = $( "<p class='gc-subway-h1' aria-hidden='true'>" + $h1.text() + "</p>" );
+		$( "ul", $elm ).first().wrap( "<div class='gc-subway-menu-nav'></div>" );
+		$menu = $( ".gc-subway-menu-nav", $elm );
+		$elm.nextUntil( ".pagedetails, .gc-subway-section-end" ).wrapAll( "<section class='provisional " + mainClass + "'>" );
+		$main = $elm.next();
+
+		// Prevent on-load blinking on desktop
+		$elm.addClass( "no-blink" );
+
+		desktopInited = true;
+	};
+
+// Listen for resizing and mutate the DOM accordingly
+$document.on( wb.resizeEvents, onResize );
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector + ".provisional", init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+/**
+ * @title WET-BOEW JSON Fetch [ json-fetch ]
+ * @overview Load and filter data from a JSON file
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ */
+/*global jsonpointer */
+( function( $, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the plugin - meaning that they will be initialized once per page,
+ * not once per instance of plugin on the page. So, this is a good place to define
+ * variables that are common to all instances of the plugin on a page.
+ */
+var $document = wb.doc,
+	component = "json-fetch",
+	fetchEvent = component + ".wb",
+	jsonCache = { },
+	jsonCacheBacklog = { },
+	completeJsonFetch = function( callerId, refId, response, status, xhr, selector ) {
+		if ( !window.jsonpointer ) {
+
+			// JSON pointer library is loaded but not executed in memory yet, we need to wait a tick before to continue
+			setTimeout( function() {
+				completeJsonFetch( callerId, refId, response, status, xhr, selector );
+			}, 100 );
+			return false;
+		}
+		if ( selector ) {
+			response = jsonpointer.get( response, selector );
+		}
+		$( "#" + callerId ).trigger( {
+			type: "json-fetched.wb",
+			fetch: {
+				response: response,
+				status: status,
+				xhr: xhr,
+				refId: refId
+			}
+		}, this );
+	};
+
+// Event binding
+$document.on( fetchEvent, function( event ) {
+
+	var caller = event.element || event.target,
+		fetchOpts = event.fetch || { url: "" },
+		urlParts = fetchOpts.url.split( "#" ),
+		url = urlParts[ 0 ],
+		fetchNoCache = fetchOpts.nocache,
+		fetchNoCacheKey = fetchOpts.nocachekey || wb.cacheBustKey || "wbCacheBust",
+		fetchNoCacheValue,
+		fetchCacheURL,
+		hashPart,
+		datasetName,
+		selector = urlParts[ 1 ] || false,
+		callerId, refId = fetchOpts.refId,
+		cachedResponse;
+
+	// Filter out any events triggered by descendants
+	if ( caller === event.target || event.currentTarget === event.target ) {
+
+		if ( !caller.id ) {
+			caller.id = wb.getId();
+		}
+		callerId = caller.id;
+
+		if ( selector ) {
+
+			// If a Dataset Name exist let it managed by wb-jsonpatch plugin
+			hashPart = selector.split( "/" );
+			datasetName = hashPart[ 0 ];
+
+			// A dataset name must start with "[" character, if it is a letter, then follow JSON Schema (to be implemented)
+			if ( datasetName.charCodeAt( 0 ) === 91 ) {
+
+				// Let the wb-jsonpatch plugin to manage it
+				$( "#" + callerId ).trigger( {
+					type: "postpone.wb-jsonmanager",
+					postpone: {
+						callerId: callerId,
+						refId: refId,
+						dsname: datasetName,
+						selector: selector.substring( datasetName.length )
+					}
+				} );
+				return;
+			}
+			fetchOpts.url = url;
+		}
+
+		if ( fetchNoCache ) {
+			if ( fetchNoCache === "nocache" ) {
+				fetchNoCacheValue = wb.guid();
+			} else {
+				fetchNoCacheValue = wb.sessionGUID();
+			}
+			fetchCacheURL = fetchNoCacheKey + "=" + fetchNoCacheValue;
+
+			if ( url.indexOf( "?" ) !== -1 ) {
+				url = url + "&" + fetchCacheURL;
+			} else {
+				url = url + "?" + fetchCacheURL;
+			}
+			fetchOpts.url = url;
+		}
+
+		Modernizr.load( {
+			load: "site!deps/jsonpointer" + wb.getMode() + ".js",
+			complete: function() {
+
+				// Ensure this fetch has an URL. There is no URL when only using dataset name (a virtual JSON file).
+				if ( !url ) {
+					return;
+				}
+
+				if ( !fetchOpts.nocache ) {
+					cachedResponse = jsonCache[ url ];
+
+					if ( cachedResponse ) {
+						completeJsonFetch( callerId, refId, cachedResponse, "success", undefined, selector );
+						return;
+					} else {
+						if ( !jsonCacheBacklog[ url ] ) {
+							jsonCacheBacklog[ url ] = [ ];
+						} else {
+							jsonCacheBacklog[ url ].push( {
+								"callerId": callerId,
+								"refId": refId,
+								"selector": selector
+							} );
+							return;
+						}
+					}
+				}
+
+				$.ajax( fetchOpts )
+					.done( function( response, status, xhr ) {
+						var i, i_len, i_cache, backlog;
+
+						if ( !fetchOpts.nocache ) {
+							try {
+								jsonCache[ url ] = response;
+							} catch ( error ) {
+								return;
+							}
+						}
+
+						completeJsonFetch( callerId, refId, response, status, xhr, selector );
+
+						if ( jsonCacheBacklog[ url ] ) {
+							backlog = jsonCacheBacklog[ url ];
+
+							i_len = backlog.length;
+
+							for ( i = 0; i !== i_len; i += 1 ) {
+								i_cache = backlog[ i ];
+								completeJsonFetch( i_cache.callerId, i_cache.refId, response, status, xhr, i_cache.selector );
+							}
+						}
+
+					} )
+					.fail( function( xhr, status, error ) {
+						$( "#" + callerId ).trigger( {
+							type: "json-failed.wb",
+							fetch: {
+								xhr: xhr,
+								status: status,
+								error: error,
+								refId: refId
+							}
+						}, this );
+					}, this );
+			}
+		} );
+	}
+} );
+
+} )( jQuery, wb );
+
+/**
  * @title WET-BOEW Action Manager
  * @overview API that coordinate actions with other wet-boew plugin
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -148,9 +523,9 @@ var $document = wb.doc,
 			if ( trigger ) {
 				$( updtElm )
 					.find( wb.allSelectors )
-						.addClass( "wb-init" )
-						.filter( ":not(#" + updtElm.id + " .wb-init .wb-init)" )
-							.trigger( "timerpoke.wb" );
+					.addClass( "wb-init" )
+					.filter( ":not(#" + updtElm.id + " .wb-init .wb-init)" )
+					.trigger( "timerpoke.wb" );
 				updtElm.removeAttribute( "data-trigger-wet" );
 			}
 		} );
@@ -226,7 +601,7 @@ var $document = wb.doc,
 			// Need to add the first row, because the header are not included in the list of rows returned by the datatable plugin.
 			for ( j = 0; j < columns_len; j = j + 1 ) {
 				cellCSVText = rows[ 0 ].cells[ j ].textContent;
-				cellCSVText = cellCSVText.replace( /\"/g, "\"\"" );
+				cellCSVText = cellCSVText.replace( /"/g, "\"\"" );
 				if ( j ) {
 					csvText = csvText + ",\"" + cellCSVText + "\"";
 				} else {
@@ -256,7 +631,7 @@ var $document = wb.doc,
 				} else {
 					cellCSVText = rows[ i ].cells[ j ].textContent;
 				}
-				cellCSVText = cellCSVText.replace( /\"/g, "\"\"" );
+				cellCSVText = cellCSVText.replace( /"/g, "\"\"" );
 				cellCSVText = cellCSVText + "\"";
 				if ( j ) {
 					csvText = csvText + ",\"" + cellCSVText;
@@ -310,7 +685,7 @@ var $document = wb.doc,
 			dontTriggerWET = data.dntwb, // do not trigger WET
 			elm = event.target;
 
-// Test is actions is an array, in false this action must be rejected. The docs should contains that info too.
+		// Test is actions is an array, in false this action must be rejected. The docs should contains that info too.
 
 		executePreRenderAction( elm.id, cValue, settingQuery.actions, dontTriggerWET );
 
@@ -357,7 +732,7 @@ var $document = wb.doc,
 					cValueParsed = pattern.exec( cValue );
 
 					// Fall back on default if no match found
-					cValueParsed = cValueParsed || defaultValue;
+					cValueParsed = cValueParsed ? cValueParsed : defaultValue;
 				} catch ( e ) {
 
 					// continue regardless of error
@@ -1600,9 +1975,9 @@ var componentName = "wb-data-json",
 				if ( itmSettings.trigger ) {
 					$elm
 						.find( wb.allSelectors )
-							.addClass( "wb-init" )
-							.filter( ":not(#" + elm.id + " .wb-init .wb-init)" )
-								.trigger( "timerpoke.wb" );
+						.addClass( "wb-init" )
+						.filter( ":not(#" + elm.id + " .wb-init .wb-init)" )
+						.trigger( "timerpoke.wb" );
 				}
 			} else if ( jsonType === "replace" ) {
 				$elm.html( content );
@@ -1829,10 +2204,10 @@ var componentName = "wb-data-json",
 		case "number":
 			return a === b;
 		case "object":
-			var i, l;
 			if ( a === null ) {
 				return b === null;
 			}
+			var i, l;
 			if ( $.isArray( a ) ) {
 				if (  $.isArray( b ) || a.length !== b.length ) {
 					return false;
@@ -1873,7 +2248,7 @@ var componentName = "wb-data-json",
 		}
 		keys = [];
 		for ( var i in obj ) {
-			if ( obj.hasOwnProperty( i ) ) {
+			if ( Object.prototype.hasOwnProperty.call( obj, i ) ) {
 				keys.push( i );
 			}
 		}
@@ -1935,80 +2310,6 @@ for ( s = 0; s !== selectorsLength; s += 1 ) {
 }
 
 } )( jQuery, window, wb );
-
-/**
- * @title WET-BOEW Template polyfill
- * @overview The <template> element hold elements for Javascript and templating usage. Based on code from http://ironlasso.com/template-tag-polyfill-for-internet-explorer/
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
-( function( $, document, wb ) {
-"use strict";
-
-/*
- * Variable and function definitions.
- * These are global to the polyfill - meaning that they will be initialized once per page.
- * This polyfill is mostly used to support <template> element in IE11
- */
-var componentName = "wb-template",
-	selector = "template",
-	initEvent = "wb-init." + componentName,
-	$document = wb.doc,
-
-	/**
-	 * @method polyfill
-	 * @param {DOM element} element that we need to apply the polyfill
-	 */
-	polyfill = function( elm ) {
-
-		if ( elm.content ) {
-			return;
-		}
-		var elPlate = elm,
-			qContent,
-			docContent;
-
-		qContent = elPlate.childNodes;
-		docContent = document.createDocumentFragment();
-
-		while ( qContent[ 0 ] ) {
-			docContent.appendChild( qContent[ 0 ] );
-		}
-
-		elPlate.content = docContent;
-
-	},
-
-	/**
-	 * @method init
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	init = function( event ) {
-
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector );
-
-		if ( elm ) {
-
-			polyfill( elm );
-
-			// Identify that initialization has completed
-			wb.ready( $( elm ), componentName );
-		}
-	};
-
-// Make it available of when template element is needed on the fly, like subtemplate support in IE11
-wb.tmplPolyfill = polyfill;
-
-// Bind the events of the polyfill
-$document.on( "timerpoke.wb " + initEvent, selector, init );
-
-// Add the timer poke to initialize the polyfill
-wb.add( selector );
-
-} )( jQuery, document, wb );
 
 /**
  * @title WET-BOEW URL mapping
@@ -2358,9 +2659,9 @@ var componentName = "wb-fieldflow",
 			if ( trigger ) {
 				$( updtElm )
 					.find( wb.allSelectors )
-						.addClass( "wb-init" )
-						.filter( ":not(#" + updtElm.id + " .wb-init .wb-init)" )
-							.trigger( "timerpoke.wb" );
+					.addClass( "wb-init" )
+					.filter( ":not(#" + updtElm.id + " .wb-init .wb-init)" )
+					.trigger( "timerpoke.wb" );
 				updtElm.removeAttribute( "data-trigger-wet" );
 			}
 		} );
@@ -2662,7 +2963,7 @@ var componentName = "wb-fieldflow",
 		}
 		if ( attributes && typeof attributes === "object" ) {
 			for ( i in attributes ) {
-				if ( attributes.hasOwnProperty( i ) ) {
+				if ( Object.prototype.hasOwnProperty.call( attributes, i ) ) {
 					selectOut += " " + i + "='" + attributes[ i ] + "'";
 				}
 			}
@@ -2738,7 +3039,7 @@ var componentName = "wb-fieldflow",
 
 		if ( attributes && typeof attributes === "object" ) {
 			for ( i in attributes ) {
-				if ( attributes.hasOwnProperty( i ) ) {
+				if ( Object.prototype.hasOwnProperty.call( attributes, i ) ) {
 					fieldsetHTML += " " + i + "='" + attributes[ i ] + "'";
 				}
 			}
@@ -3407,320 +3708,6 @@ wb.add( selector );
 } )( jQuery, document, wb );
 
 /**
- * @title WET-BOEW GC Subway map mutator
- * @overview Plugin used to mutate DOM elements depending on viewport size, in order to follow order accessibility criteria while respecting UI
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @gormfrank
- */
-( function( $, window, wb ) {
-"use strict";
-
-var $document = wb.doc,
-	componentName = "gc-subway",
-	selector = ".provisional." + componentName,
-	initEvent = "wb-init ." + componentName,
-	views = {
-		xxs: "xxsmallview",
-		xs: "xsmallview",
-		sm: "smallview",
-		md: "mediumview",
-		lg: "largeview",
-		xl: "xlargeview"
-	},
-	mainClass = "gc-subway-section",
-	toggleClass = "wb-inv",
-	desktopInited = false,
-	skipLink = false,
-	$html = wb.html,
-	$h1, $h2, $h1Copy, $menu, $main,
-
-	/**
-	 * @method init
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	init = function( event ) {
-
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
-			h1,
-			$elm;
-
-		if ( elm ) {
-			$elm = $( elm );
-			$h1 = $( "h1", $elm );
-			h1 = $h1.get( 0 );
-
-			// Ensure the element have an ID
-			if ( !h1.id ) {
-				h1.id = wb.getId();
-			}
-
-			// Add subway H1 to skip links
-			if ( !skipLink ) {
-				skipLink = wb.addSkipLink( wb.i18n( "skip-prefix" ) + " " + h1.textContent, { href: "#" + h1.id } );
-			}
-
-			// trigger resizing
-			onResize( $elm );
-
-			// Identify that initialization has completed
-			wb.ready( $elm, componentName );
-		}
-	},
-
-	/**
-	 * Mutate DOM depending on breakpoint
-	 * @method onResize
-	 * @param {jQuery DOM element | jQuery Event} $elm Element targetted by this plugin, which is the nav | Resizing event
-	 */
-	onResize = function( $elm ) {
-
-		if ( !$elm.length ) {
-			$elm = $( selector );
-		}
-
-		// Ensure the page contains at least two heading level 1
-		if ( $( "main h1" ).length < 2 ) {
-			$document.off( wb.resizeEvents, onResize );
-			$elm.addClass( "no-blink p-0" );
-			return;
-		}
-
-		// Desktop view, setup and mutate H1s
-		if ( $html.hasClass( views.md ) || $html.hasClass( views.lg ) ||
-			$html.hasClass( views.xl ) ) {
-
-			// Initiate desktop mode only once
-			if ( !desktopInited ) {
-				initDesktop( $elm );
-			}
-			$h1.addClass( toggleClass );
-			$h1Copy.prependTo( $main );
-			$h2.prependTo( $menu );
-		} else if ( ( $html.hasClass( views.sm ) || $html.hasClass( views.xs ) || $html.hasClass( views.xxs ) ) && desktopInited ) {
-
-			// Mobile view, mutate back to mobile first if needed
-			$h1.removeClass( toggleClass );
-			$h1Copy.remove();
-			$( "h2:first-child", $menu ).remove();
-		}
-	},
-
-	/**
-	 * Initate setup for desktop mode
-	 * @method initDesktop
-	 * @param {jQuery DOM element} $elm Element targetted by this plugin, which is the nav
-	 */
-	initDesktop = function( $elm ) {
-		$h2 = $( "<h2 class='h3 hidden-xs visible-md visible-lg mrgn-tp-0'>Sections</h2>" );
-		$h1Copy = $( "<div class='gc-subway-h1' aria-hidden='true'>" + $h1.text() + "</div>" );
-		$( "ul", $elm ).first().wrap( "<div class='gc-subway-menu-nav'></div>" );
-		$menu = $( ".gc-subway-menu-nav", $elm );
-		$elm.nextUntil( ".pagedetails, .gc-subway-section-end" ).wrapAll( "<section class='provisional " + mainClass + "'>" );
-		$main = $elm.next();
-
-		// Prevent on-load blinking on desktop
-		$elm.addClass( "no-blink" );
-
-		desktopInited = true;
-	};
-
-// Listen for resizing and mutate the DOM accordingly
-$document.on( wb.resizeEvents, onResize );
-
-// Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector + ".provisional", init );
-
-// Add the timer poke to initialize the plugin
-wb.add( selector );
-
-} )( jQuery, window, wb );
-
-/**
- * @title WET-BOEW JSON Fetch [ json-fetch ]
- * @overview Load and filter data from a JSON file
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
-/*global jsonpointer */
-( function( $, wb ) {
-"use strict";
-
-/*
- * Variable and function definitions.
- * These are global to the plugin - meaning that they will be initialized once per page,
- * not once per instance of plugin on the page. So, this is a good place to define
- * variables that are common to all instances of the plugin on a page.
- */
-var $document = wb.doc,
-	component = "json-fetch",
-	fetchEvent = component + ".wb",
-	jsonCache = { },
-	jsonCacheBacklog = { },
-	completeJsonFetch = function( callerId, refId, response, status, xhr, selector ) {
-		if ( !window.jsonpointer ) {
-
-			// JSON pointer library is loaded but not executed in memory yet, we need to wait a tick before to continue
-			setTimeout( function() {
-				completeJsonFetch( callerId, refId, response, status, xhr, selector );
-			}, 100 );
-			return false;
-		}
-		if ( selector ) {
-			response = jsonpointer.get( response, selector );
-		}
-		$( "#" + callerId ).trigger( {
-			type: "json-fetched.wb",
-			fetch: {
-				response: response,
-				status: status,
-				xhr: xhr,
-				refId: refId
-			}
-		}, this );
-	};
-
-// Event binding
-$document.on( fetchEvent, function( event ) {
-
-	var caller = event.element || event.target,
-		fetchOpts = event.fetch || { url: "" },
-		urlParts = fetchOpts.url.split( "#" ),
-		url = urlParts[ 0 ],
-		fetchNoCache = fetchOpts.nocache,
-		fetchNoCacheKey = fetchOpts.nocachekey || wb.cacheBustKey || "wbCacheBust",
-		fetchNoCacheValue,
-		fetchCacheURL,
-		hashPart,
-		datasetName,
-		selector = urlParts[ 1 ] || false,
-		callerId, refId = fetchOpts.refId,
-		cachedResponse;
-
-	// Filter out any events triggered by descendants
-	if ( caller === event.target || event.currentTarget === event.target ) {
-
-		if ( !caller.id ) {
-			caller.id = wb.getId();
-		}
-		callerId = caller.id;
-
-		if ( selector ) {
-
-			// If a Dataset Name exist let it managed by wb-jsonpatch plugin
-			hashPart = selector.split( "/" );
-			datasetName = hashPart[ 0 ];
-
-			// A dataset name must start with "[" character, if it is a letter, then follow JSON Schema (to be implemented)
-			if ( datasetName.charCodeAt( 0 ) === 91 ) {
-
-				// Let the wb-jsonpatch plugin to manage it
-				$( "#" + callerId ).trigger( {
-					type: "postpone.wb-jsonmanager",
-					postpone: {
-						callerId: callerId,
-						refId: refId,
-						dsname: datasetName,
-						selector: selector.substring( datasetName.length )
-					}
-				} );
-				return;
-			}
-			fetchOpts.url = url;
-		}
-
-		if ( fetchNoCache ) {
-			if ( fetchNoCache === "nocache" ) {
-				fetchNoCacheValue = wb.guid();
-			} else {
-				fetchNoCacheValue = wb.sessionGUID();
-			}
-			fetchCacheURL = fetchNoCacheKey + "=" + fetchNoCacheValue;
-
-			if ( url.indexOf( "?" ) !== -1 ) {
-				url = url + "&" + fetchCacheURL;
-			} else {
-				url = url + "?" + fetchCacheURL;
-			}
-			fetchOpts.url = url;
-		}
-
-		Modernizr.load( {
-			load: "site!deps/jsonpointer" + wb.getMode() + ".js",
-			complete: function() {
-
-				// Ensure this fetch has an URL. There is no URL when only using dataset name (a virtual JSON file).
-				if ( !url ) {
-					return;
-				}
-
-				if ( !fetchOpts.nocache ) {
-					cachedResponse = jsonCache[ url ];
-
-					if ( cachedResponse ) {
-						completeJsonFetch( callerId, refId, cachedResponse, "success", undefined, selector );
-						return;
-					} else {
-						if ( !jsonCacheBacklog[ url ] ) {
-							jsonCacheBacklog[ url ] = [ ];
-						} else {
-							jsonCacheBacklog[ url ].push( {
-								"callerId": callerId,
-								"refId": refId,
-								"selector": selector
-							} );
-							return;
-						}
-					}
-				}
-
-				$.ajax( fetchOpts )
-					.done( function( response, status, xhr ) {
-						var i, i_len, i_cache, backlog;
-
-						if ( !fetchOpts.nocache ) {
-							try {
-								jsonCache[ url ] = response;
-							} catch ( error ) {
-								return;
-							}
-						}
-
-						completeJsonFetch( callerId, refId, response, status, xhr, selector );
-
-						if ( jsonCacheBacklog[ url ] ) {
-							backlog = jsonCacheBacklog[ url ];
-
-							i_len = backlog.length;
-
-							for ( i = 0; i !== i_len; i += 1 ) {
-								i_cache = backlog[ i ];
-								completeJsonFetch( i_cache.callerId, i_cache.refId, response, status, xhr, i_cache.selector );
-							}
-						}
-
-					} )
-					.fail( function( xhr, status, error ) {
-						$( "#" + callerId ).trigger( {
-							type: "json-failed.wb",
-							fetch: {
-								xhr: xhr,
-								status: status,
-								error: error,
-								refId: refId
-							}
-						}, this );
-					}, this );
-			}
-		} );
-	}
-} );
-
-} )( jQuery, wb );
-
-/**
  * @title WET-BOEW JSON Manager
  * @overview Manage JSON dataset, execute JSON patch operation.
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -4056,10 +4043,10 @@ var componentName = "wb-jsonmanager",
 		case "number":
 			return a === b;
 		case "object":
-			var i, l;
 			if ( a === null ) {
 				return b === null;
 			}
+			var i, l;
 			if ( $.isArray( a ) ) {
 				if (  $.isArray( b ) || a.length !== b.length ) {
 					return false;
@@ -4100,7 +4087,7 @@ var componentName = "wb-jsonmanager",
 		}
 		keys = [];
 		for ( var i in obj ) {
-			if ( obj.hasOwnProperty( i ) ) {
+			if ( Object.prototype.hasOwnProperty.call( obj, i ) ) {
 				keys.push( i );
 			}
 		}
@@ -4442,6 +4429,121 @@ $document.on( "op.submit.wb-fieldflow", ".wb-fieldflow", function( event, data )
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, window, wb );
+
+/**
+ * @title WET-BOEW URL mapping
+ * @overview Execute pre-configured action based on url query string
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ */
+( function( $, window, wb ) {
+"use strict";
+
+/*
+ * Variable and function definitions.
+ * These are global to the plugin - meaning that they will be initialized once per page,
+ * not once per instance of plugin on the page. So, this is a good place to define
+ * variables that are common to all instances of the plugin on a page.
+ */
+var componentName = "wb-urlmapping",
+	selector = "[data-" + componentName + "]",
+	initEvent = "wb-init." + componentName,
+	doMappingEvent = "domapping." + componentName,
+	$document = wb.doc,
+	authTrigger, // Flag to prevent instation of WET no more than twice by page load
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm;
+
+		if ( elm ) {
+			$elm = $( elm );
+
+			// Only allow the first wb-urlmapping instance to trigger WET
+			if ( !authTrigger ) {
+				authTrigger = elm;
+			}
+
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
+
+			if ( !wb.isReady ) {
+
+				// Execution of any action after WET is ready
+				$document.one( "wb-ready.wb", function( ) {
+					$elm.trigger( doMappingEvent );
+				} );
+			} else {
+				$elm.trigger( doMappingEvent );
+			}
+		}
+	},
+	getUrlParams = function() {
+
+		// https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript#answer-2880929
+		var urlParams = {},
+			pl = /\+/g, // Regex for replacing addition symbol with a space
+			search = /([^&=]+)=?([^&]*)/g,
+			decode = function( s ) {
+				return decodeURIComponent( s.replace( pl, " " ) );
+			},
+			query = window.location.search.substring( 1 ),
+			match = search.exec( query );
+
+		while ( match ) {
+			urlParams[ decode( match[ 1 ] ) ] = decode( match[ 2 ] );
+			match = search.exec( query );
+		}
+
+		return urlParams;
+	};
+
+$document.on( doMappingEvent, selector, function( event ) {
+
+	var $elm = $( event.target ),
+		urlParams = getUrlParams(),
+		cKey, cValue, settingQuery,
+		settings = $.extend( {}, window[ componentName ] || { }, wb.getData( $elm, componentName ) );
+
+	for ( cKey in urlParams ) {
+		cValue = urlParams[ cKey ];
+		settingQuery = settings[ cKey + "=" + cValue ] || settings[ cKey ];
+
+		if ( typeof settingQuery === "object" ) {
+
+			// Send it to the action manager to get proccessed with the action "withInput"
+			$elm.trigger( {
+				type: "do.wb-actionmng",
+				actions: {
+					action: "withInput",
+					actions: settingQuery,
+					cValue: cValue,
+					dntwb: $elm[ 0 ] !== authTrigger
+				}
+			} );
+
+			if ( !settings.multiplequery ) {
+				break;
+			}
+		}
+	}
+} );
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // Add the timer poke to initialize the plugin
 wb.add( selector );
@@ -4983,208 +5085,3 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 wb.add( selector );
 
 } )( jQuery, wb );
-
-/**
- * @title WET-BOEW URL mapping
- * @overview Execute pre-configured action based on url query string
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
-( function( $, window, wb ) {
-"use strict";
-
-/*
- * Variable and function definitions.
- * These are global to the plugin - meaning that they will be initialized once per page,
- * not once per instance of plugin on the page. So, this is a good place to define
- * variables that are common to all instances of the plugin on a page.
- */
-var componentName = "wb-urlmapping",
-	selector = "[data-" + componentName + "]",
-	initEvent = "wb-init." + componentName,
-	doMappingEvent = "domapping." + componentName,
-	$document = wb.doc,
-	authTrigger, // Flag to prevent instation of WET no more than twice by page load
-
-	/**
-	 * @method init
-	 * @param {jQuery Event} event Event that triggered the function call
-	 */
-	init = function( event ) {
-
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
-			$elm;
-
-		if ( elm ) {
-			$elm = $( elm );
-
-			// Only allow the first wb-urlmapping instance to trigger WET
-			if ( !authTrigger ) {
-				authTrigger = elm;
-			}
-
-			// Identify that initialization has completed
-			wb.ready( $elm, componentName );
-
-			if ( !wb.isReady ) {
-
-				// Execution of any action after WET is ready
-				$document.one( "wb-ready.wb", function( ) {
-					$elm.trigger( doMappingEvent );
-				} );
-			} else {
-				$elm.trigger( doMappingEvent );
-			}
-		}
-	},
-	getUrlParams = function() {
-
-		// https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript#answer-2880929
-		var urlParams = {},
-			pl = /\+/g, // Regex for replacing addition symbol with a space
-			search = /([^&=]+)=?([^&]*)/g,
-			decode = function( s ) {
-				return decodeURIComponent( s.replace( pl, " " ) );
-			},
-			query = window.location.search.substring( 1 ),
-			match = search.exec( query );
-
-		while ( match ) {
-			urlParams[ decode( match[ 1 ] ) ] = decode( match[ 2 ] );
-			match = search.exec( query );
-		}
-
-		return urlParams;
-	};
-
-$document.on( doMappingEvent, selector, function( event ) {
-
-	var $elm = $( event.target ),
-		urlParams = getUrlParams(),
-		cKey, cValue, settingQuery,
-		settings = $.extend( {}, window[ componentName ] || { }, wb.getData( $elm, componentName ) );
-
-	for ( cKey in urlParams ) {
-		cValue = urlParams[ cKey ];
-		settingQuery = settings[ cKey + "=" + cValue ] || settings[ cKey ];
-
-		if ( typeof settingQuery === "object" ) {
-
-			// Send it to the action manager to get proccessed with the action "withInput"
-			$elm.trigger( {
-				type: "do.wb-actionmng",
-				actions: {
-					action: "withInput",
-					actions: settingQuery,
-					cValue: cValue,
-					dntwb: $elm[ 0 ] !== authTrigger
-				}
-			} );
-
-			if ( !settings.multiplequery ) {
-				break;
-			}
-		}
-	}
-} );
-
-// Bind the init event of the plugin
-$document.on( "timerpoke.wb " + initEvent, selector, init );
-
-// Add the timer poke to initialize the plugin
-wb.add( selector );
-
-} )( jQuery, window, wb );
-
-/*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- */
-( function( $, document, wb ) {
-"use strict";
-
-var $document = wb.doc,
-	searchSelector = "#wb-srch-q",
-	$search = $( searchSelector ),
-	$searchDataList = $( "#" + $search.attr( "list" ) ),
-
-//Search Autocomplete
-	queryAutoComplete = function( query ) {
-		if ( query.length > 0 ) {
-			$( this ).trigger( {
-				type: "ajax-fetch.wb",
-				fetch: {
-					url: wb.pageUrlParts.protocol + "//clients1.google.com/complete/search?client=partner&sugexp=gsnos%2Cn%3D13&gs_rn=25&gs_ri=partner&partnerid=" + window.encodeURIComponent( "008724028898028201144:knjjdikrhq0+lang:" + wb.lang ) + "&types=t&ds=cse&cp=3&gs_id=b&hl=" + wb.lang + "&q=" + encodeURI( query ),
-					dataType: "jsonp",
-					jsonp: "callback"
-				}
-			} );
-		}
-	};
-
-//Queries  the autocomplete API
-$document.on( "change keyup", searchSelector, function( event ) {
-	var target = event.target,
-		query = event.target.value,
-		which = event.which;
-
-	switch ( event.type ) {
-	case "change":
-		queryAutoComplete.call( target, query );
-		break;
-	case "keyup":
-		if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
-
-			// Spacebar, a - z keys, 0 - 9 keys punctuation, and symbols
-			if ( which === 32 || ( which > 47 && which < 91 ) ||
-				( which > 95 && which < 112 ) || ( which > 159 && which < 177 ) ||
-				( which > 187 && which < 223 ) ) {
-				queryAutoComplete.call( target, query );
-			}
-		}
-	}
-} );
-
-//Processes the autocomplete API results
-$document.on( "ajax-fetched.wb", searchSelector, function( event ) {
-	var suggestions = event.fetch.response[ 1 ],
-		lenSuggestions = suggestions.length,
-		options = "",
-		indIssue, issue;
-
-	$searchDataList.empty();
-
-	for ( indIssue = 0; indIssue < lenSuggestions; indIssue += 1 ) {
-		issue = suggestions[ indIssue ];
-
-		options += "<option label=\"" + issue[ 0 ] + "\" value=\"" + issue[ 0 ] + "\"></option>";
-	}
-
-	if ( wb.ielt10 ) {
-		options = "<select>" + options + "</select>";
-	}
-
-	$searchDataList.append( options );
-
-	$search.trigger( "wb-update.wb-datalist" );
-} );
-
-window[ "wb-data-ajax" ] = {
-	corsFallback: function( fetchObj ) {
-		fetchObj.url = fetchObj.url.replace( ".html", ".htmlp" );
-		return fetchObj;
-	}
-};
-
-//Report a problem form - reveal textbox when checkbox is selected
-$( "[data-reveal]" ).change( function() {
-	var $elm = $( this ),
-		selector = $elm.attr( "data-reveal" );
-	return ( $elm.is( ":checked" ) ) ? $( selector ).removeClass( "hide" ) : $( selector ).addClass( "hide" );
-} );
-
-
-} )( jQuery, document, wb );

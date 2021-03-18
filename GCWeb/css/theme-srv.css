@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.2.0 - 2021-03-15
+ * v9.2.0 - 2021-03-18
  *
  */
 /*!
@@ -5910,7 +5910,8 @@ abbr[title] {
     border-bottom: 0;
     -webkit-text-decoration: underline dotted;
             text-decoration: underline dotted;
-    text-decoration-skip-ink: none; } }
+    -webkit-text-decoration-skip-ink: none;
+            text-decoration-skip-ink: none; } }
 
 /*
  *	Override the design of alerts and labels
@@ -7111,14 +7112,17 @@ q:before, q:after {
 
 .colcount-xxs-2 {
   -webkit-column-count: 2;
+     -moz-column-count: 2;
           column-count: 2; }
 
 .colcount-xxs-3 {
   -webkit-column-count: 3;
+     -moz-column-count: 3;
           column-count: 3; }
 
 .colcount-xxs-4 {
   -webkit-column-count: 4;
+     -moz-column-count: 4;
           column-count: 4; }
 
 .full-width {
@@ -10191,12 +10195,15 @@ details {
  */
   .colcount-xs-2 {
     -webkit-column-count: 2;
+       -moz-column-count: 2;
             column-count: 2; }
   .colcount-xs-3 {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3; }
   .colcount-xs-4 {
     -webkit-column-count: 4;
+       -moz-column-count: 4;
             column-count: 4; }
   /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -10246,12 +10253,15 @@ details {
  */
   .colcount-sm-2 {
     -webkit-column-count: 2;
+       -moz-column-count: 2;
             column-count: 2; }
   .colcount-sm-3 {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3; }
   .colcount-sm-4 {
     -webkit-column-count: 4;
+       -moz-column-count: 4;
             column-count: 4; }
   .pstn-lft-sm {
     position: absolute;
@@ -10290,12 +10300,15 @@ details {
  */
   .colcount-md-2 {
     -webkit-column-count: 2;
+       -moz-column-count: 2;
             column-count: 2; }
   .colcount-md-3 {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3; }
   .colcount-md-4 {
     -webkit-column-count: 4;
+       -moz-column-count: 4;
             column-count: 4; }
   .pstn-lft-md {
     position: absolute;
@@ -10380,12 +10393,15 @@ details {
  */
   .colcount-lg-2 {
     -webkit-column-count: 2;
+       -moz-column-count: 2;
             column-count: 2; }
   .colcount-lg-3 {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3; }
   .colcount-lg-4 {
     -webkit-column-count: 4;
+       -moz-column-count: 4;
             column-count: 4; }
   .pstn-lft-lg {
     position: absolute;
@@ -10494,12 +10510,15 @@ details {
  */
   .colcount-xl-2 {
     -webkit-column-count: 2;
+       -moz-column-count: 2;
             column-count: 2; }
   .colcount-xl-3 {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3; }
   .colcount-xl-4 {
     -webkit-column-count: 4;
+       -moz-column-count: 4;
             column-count: 4; } }
 
 /* Print view */
