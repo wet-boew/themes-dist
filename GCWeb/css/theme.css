@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.2.0 - 2021-03-31
+ * v9.2.0 - 2021-04-08
  *
  */
 /*
@@ -12075,7 +12075,7 @@ a.shr-opn, a.shr-opn:hover {
       right: -1em; }
 
 /*
- Social Media Icons
+ Social Media Icons, follow-us
 */
 .followus .foursquare, .followus .youtube, .followus .twitter, .followus .flickr, .followus .facebook, .followus .pinterest, .followus .linkedin, .followus .instagram, .followus .googleplus, .followus .reddit, .followus .rss, .followus .periscope, .followus .email {
   background-position: center center;
@@ -12125,7 +12125,7 @@ a.shr-opn, a.shr-opn:hover {
 .followus .email {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAWCAYAAABOm/V6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gQVECMqfCsMgwAAAshJREFUSMfF1s9P02AYwPFvyxwbHRuMrYOVVgS2BRNBDfHqxXDxz/Bq4sH/QA+e/B8MR+9e/QcUMk0IMBRho4R1g7LRbmPA6mFuqLAxfj9Jk6bv276fPHnep6+QnJ3xAq+Bl0CEm41PwBsX8AJ4y+3Ec2DYBbwCCClj7O1k6Q3KRO5OXNuqlVKRjVQSr6+PXSMDMCUCIwCylkCJTWHt5smuLV4LYL9ssZFK4g9GUMYnm8/Fvyd5fX1Exx7UIetXC6mWbTLLc/gHBpG1+D9jIuDUb51jyPgklpknu750NYBKifTSVwKhKOHhGCCcQJwIry+AEptizzQw0suXByx+oS+sEFLGEQThxByx1cseyc9w/BHFnSy5zAqO41wYEAgrDERHTwW0RQB4enpRE48pbG+S13/iOLVz1UADEIqOIoitlxLP+li314eWmKaQ09nWV3FqZ0P2Sxbp5TkC4SghZawtoCMEgNsroU1Ms5vTyW+uts1IpVQkk5rHHxxsWQMXQgC4PXVIIaeT11dPrZGKXUBPJekNRpC1eEeAcyGqlRJGOoUUCFHI6+QyKWpHh81xu7CNvvKd7h4fFbuImc10XD+uzgA2RjqFRwoQUkbZL9ts/vjG4UGVbq+PWu0Qy8zROxBBVuNU7CJGJgVAf0S9fCb+B9SLVUK7/wTXHTd2cYdq2SasxpDVeHN7y2qcPdNo/B8unoljgL8JaERXlwtZS9Cuz8hqrN5jgH5ZPX8mGjXgkfwMREcv1C09kp+wGsPaaZ8R8biRH1fywX4ZI71cBwzd67jKW2ZES7BnGpgtICJQBZpN6KBaIbu+hEfyExwaObPRdBLdPT5kLYFlGqfuGhGYB9haW+Do8ICtXwt1wKCGIAg4Tu1KLrenh7AaxzKzZNcWsXZzDUNJSM7OPPtz1nPf0hHvowv4DDwF3gEPAekGFnaADPABeP8bNrJaPIc3C6EAAAAASUVORK5CYII="); }
 
-.provisional.gc-followus .facebook:before, .provisional.gc-followus .twitter:before, .provisional.gc-followus .youtube:before, .provisional.gc-followus .instagram:before, .provisional.gc-followus .linkedin:before {
+.provisional.gc-followus .facebook::before, .provisional.gc-followus .twitter::before, .provisional.gc-followus .youtube::before, .provisional.gc-followus .instagram::before, .provisional.gc-followus .linkedin::before {
   background-repeat: no-repeat;
   background-size: cover;
   content: "";
@@ -12143,19 +12143,24 @@ a.shr-opn, a.shr-opn:hover {
   list-style: none;
   -webkit-margin-before: 1em;
           margin-block-start: 1em;
-  -webkit-padding-start: 1em;
-          padding-inline-start: 1em; }
+  -webkit-padding-start: calc(1em + 6px);
+          padding-inline-start: calc(1em + 6px); }
   .provisional.gc-followus ul li {
-    margin-bottom: 15px; }
+    margin-bottom: 21px; }
+    .provisional.gc-followus ul li:last-child {
+      margin-bottom: 15px; }
     .provisional.gc-followus ul li a {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      line-height: 38px;
+      line-height: 1.54;
       max-width: -webkit-max-content;
       max-width: -moz-max-content;
       max-width: max-content;
       text-decoration: none; }
+      .provisional.gc-followus ul li a::before {
+        margin-right: 10px;
+        margin-top: -6px; }
       .provisional.gc-followus ul li a:hover, .provisional.gc-followus ul li a:focus, .provisional.gc-followus ul li a:active {
         text-decoration: underline; }
   .provisional.gc-followus ul.list-inline {
@@ -12168,23 +12173,25 @@ a.shr-opn, a.shr-opn:hover {
         height: 38px;
         overflow: hidden;
         width: 38px; }
+        .provisional.gc-followus ul.list-inline li a::before {
+          margin-top: 0; }
         .provisional.gc-followus ul.list-inline li a:hover, .provisional.gc-followus ul.list-inline li a:focus, .provisional.gc-followus ul.list-inline li a:active {
           outline: solid 2px #0535d2; }
 
-.provisional.gc-followus .facebook:before {
+.provisional.gc-followus .facebook::before {
   background-image: url("../assets/gc-follow-us/facebook.svg"); }
 
-.provisional.gc-followus .twitter:before {
+.provisional.gc-followus .twitter::before {
   background-image: url("../assets/gc-follow-us/twitter.svg"); }
 
-.provisional.gc-followus .youtube:before {
+.provisional.gc-followus .youtube::before {
   background-image: url("../assets/gc-follow-us/youtube.svg"); }
 
-.provisional.gc-followus .instagram:before {
+.provisional.gc-followus .instagram::before {
   background-image: url("../assets/gc-follow-us/instagram.svg"); }
 
-.provisional.gc-followus .linkedin:before {
-  background-image: url("../assets/gc-follow-us/linkedin.png"); }
+.provisional.gc-followus .linkedin::before {
+  background-image: url("../assets/gc-follow-us/linkedin.svg"); }
 
 .shr-pg a {
   background-image: none; }
@@ -13238,7 +13245,7 @@ table.nws-tbl > thead > tr > th {
     margin-left: -15px;
     min-height: 200px;
     overflow: hidden;
-    width: 50vw; }
+    width: calc(50vw - 15px); }
   .provisional.gc-contributors {
     margin-top: 38px; }
     .provisional.gc-contributors h2, .provisional.gc-contributors ul {
@@ -13818,6 +13825,20 @@ h1 ~ .provisional.gc-subway {
   border-top: none; }
 
 /*
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ * GC Table provisional style
+ * -- Responsive table - part of design, not responsive part --
+ */
+.provisional.gc-table caption {
+  text-align: left; }
+
+.provisional.gc-table td ul {
+  -webkit-padding-start: 20px;
+          padding-inline-start: 20px; }
+
+/*
  * GCWeb custom iumplementation
  *
  * Copy and rename the folder "variant-default" to "variant".
@@ -13909,7 +13930,7 @@ h1 ~ .provisional.gc-subway {
   /*
  Banner (small view and under)
  */
-  header .brand a {
+  header .brand img {
     margin-top: 15px; }
   header .brand object,
   header .brand img {
@@ -14013,7 +14034,7 @@ h1 ~ .provisional.gc-subway {
   /*
  Banner (small view and under)
  */
-  header .brand a {
+  header .brand img {
     margin-top: 10px; }
   /*
  Details Summary Styling (small view and under)
@@ -14159,6 +14180,41 @@ h1 ~ .provisional.gc-subway {
 */
   .provisional.gc-subway dt, .provisional.gc-subway li {
     max-width: initial; }
+  /*
+ PROVISIONAL features: Responsive tables cards
+*/
+  .provisional.gc-table .text-left {
+    clear: both;
+    display: block; }
+  .provisional.gc-table > tbody > tr > td:first-child,
+  .provisional.gc-table > tfoot > tr > td:first-child {
+    border-top: none; }
+  .provisional.gc-table tr {
+    border: 1px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+    padding: .35em; }
+  .provisional.gc-table caption {
+    font-size: 1.1em; }
+  .provisional.gc-table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px; }
+  .provisional.gc-table td {
+    display: block;
+    font-size: 1em;
+    text-align: right; }
+    .provisional.gc-table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold; }
+    .provisional.gc-table td:last-child {
+      border-bottom: 0; }
   /*
   Variant - GCWeb custom implementation
   @title: Small view and under (screen only)
