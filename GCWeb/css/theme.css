@@ -10745,7 +10745,7 @@ h1 {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   -webkit-font-variant-ligatures: no-common-ligatures;
           font-variant-ligatures: no-common-ligatures;
-  font-weight: 600; }
+  font-weight: 700; }
 
 .h3,
 .h4,
@@ -10910,7 +10910,7 @@ aside.features {
     margin: 2em 0px; }
   .home .home-most-requested li {
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 26px;
     margin-top: 0px; }
   .home .home-your-gov {
@@ -11608,7 +11608,7 @@ input#wb-srch-q {
     background-color: #5e738b;
     color: #fff;
     display: inline-block;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1px;
     padding: 0 5px; }
 
@@ -11825,7 +11825,7 @@ a.shr-opn, a.shr-opn:hover {
     color: #0535d2; }
   .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
     font-size: 32px;
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: underline; }
   .gcweb-menu [role=menu] [role=menu] [role=menu] li:first-child [role=menuitem] {
     font-size: 18px;
@@ -12139,7 +12139,7 @@ a.shr-opn, a.shr-opn:hover {
 .provisional.gc-followus ul {
   display: block;
   font-size: 87%;
-  font-weight: 600;
+  font-weight: 700;
   list-style: none;
   -webkit-margin-before: 1em;
           margin-block-start: 1em;
@@ -13257,7 +13257,7 @@ table.nws-tbl > thead > tr > th {
               padding-inline-start: 0; }
       .provisional.gc-contributors ul li {
         display: inline-block;
-        font-weight: 600;
+        font-weight: 700;
         margin-right: .7em; }
 
 /*
@@ -14367,7 +14367,7 @@ h1 ~ .provisional.gc-subway {
     .gcweb-menu [role=menu] [role=menu] [role=menuitem][aria-haspopup=true]:hover {
       color: #000;
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none; }
   .wb-disable .gcweb-menu [role=menu] > li {
     float: left;
