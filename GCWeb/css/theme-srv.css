@@ -1230,22 +1230,22 @@ h6, .h6 {
     font-size: 75%; }
 
 h1, .h1 {
-  font-size: 34px; }
+  font-size: 1.9em; }
 
 h2, .h2 {
-  font-size: 26px; }
+  font-size: 1.8em; }
 
 h3, .h3 {
-  font-size: 22px; }
+  font-size: 1.2em; }
 
 h4, .h4 {
-  font-size: 18px; }
+  font-size: 1.1em; }
 
 h5, .h5 {
-  font-size: 16px; }
+  font-size: 1em; }
 
 h6, .h6 {
-  font-size: 14px; }
+  font-size: 0.95em; }
 
 p {
   margin: 0 0 11.5px; }
@@ -10601,7 +10601,7 @@ details {
   .mfp-content:before, .wb-overlay.open:before {
     content: attr(data-pgtitle);
     display: block;
-    font-size: 34px; }
+    font-size: 1.9em; }
   /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
