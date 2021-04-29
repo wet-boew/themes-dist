@@ -12359,9 +12359,12 @@ a.shr-opn, a.shr-opn:hover {
 /*
 Carousel
 */
-.carousel-s1 .wb-mltmd,
-.carousel-s2 .wb-mltmd {
-  margin-top: 0; }
+.carousel-s1,
+.carousel-s2 {
+  margin-bottom: 15px; }
+  .carousel-s1 .wb-mltmd,
+  .carousel-s2 .wb-mltmd {
+    margin-top: 0; }
 
 /*
  * Social media centre
@@ -12912,14 +12915,6 @@ h1.gc-thickline {
   .gc-archv .mfp-close.overlay-close {
     color: #000; }
 
-/* Report a problem Thank you message */
-.gc-rprt-prblm-thnk {
-  padding-bottom: 25px; }
-
-/* Report a problem temporary fix for toggle : GH issue #1336 */
-.gc-rprt-prblm-frm.gc-rprt-prblm-tggl.show {
-  display: none !important; }
-
 /* Embedding a Fluid Survey */
 .gc-fld-srvy-container {
   -webkit-overflow-scrolling: touch;
@@ -12937,6 +12932,17 @@ h1.gc-thickline {
   top: 0;
   width: 100%;
   zoom: 1; }
+
+/*
+ * CSS used for the legacy/obselete code
+ */
+/* Report a problem Thank you message */
+.gc-rprt-prblm-thnk {
+  padding-bottom: 25px; }
+
+/* Report a problem temporary fix for toggle : GH issue #1336 */
+.gc-rprt-prblm-frm.gc-rprt-prblm-tggl.show {
+  display: none !important; }
 
 /* Hide RAP textarea and Other : GH issue #1336 */
 .gc-rprt-prblm-frm .form-group {
@@ -12988,6 +12994,35 @@ table.nws-tbl > thead > tr > th {
   border-top: 0;
   padding-bottom: 0;
   padding-top: 0; }
+
+.nws-tbl .tp-rail {
+  display: inline-block; }
+
+.nws-tbl details summary, .nws-tbl details[open] {
+  border: 0; }
+
+.nws-tbl .one-dot {
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background: #000;
+  border-radius: 50%;
+  display: inline-block;
+  height: .5em;
+  vertical-align: middle;
+  width: .5em; }
+
+.nws-tbl .tp-rail.commit {
+  font-size: 1.15em;
+  font-weight: 600;
+  max-width: 67%;
+  min-width: 67%; }
+
+.largeview .nws-tbl .tp-rail.commit, .xlargeview .nws-tbl .tp-rail.commit {
+  max-width: 71%;
+  min-width: 71%; }
+
+table.dataTable.nws-tbl .label.label-success {
+  padding: .6em .6em .3em; }
 
 /*
  * tbl-floatcolumn
