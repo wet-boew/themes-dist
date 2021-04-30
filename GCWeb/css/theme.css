@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.2.0 - 2021-04-29
+ * v9.2.0 - 2021-04-30
  *
  */
 /*
@@ -10755,6 +10755,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 /* Exclude temporary the form element from the font update, keep same style as before
  * - Rational: More testing and various adjustment need to be completed before to apply it
+ * - Fieldflow is brought to speed with the visual update with a clearly defined temporary class .gc-font-2019, but the class can be tried out on other forms
  */
 :not(#wb-srch) form, .checkbox, .checkbox-inline, .radio, .radio-inline, form .btn:not(.btn-call-to-action) {
   font-size: 16px;
@@ -10765,6 +10766,19 @@ form .btn:not(.btn-call-to-action), .form-control {
 
 legend {
   line-height: 1.65em; }
+
+.gc-font-2019, .gc-font-2019 label, .gc-font-2019 fieldset legend, .gc-font-2019 input[type="submit"], .gc-font-2019 select, .gc-font-2019 .wb-fieldflow-label ~ p, .gc-font-2019 + div, .gc-font-2019 + div label, .gc-font-2019 + div fieldset legend, .gc-font-2019 + div input[type="submit"], .gc-font-2019 + div select, .gc-font-2019 + div .wb-fieldflow-label ~ p {
+  font-size: 20px;
+  line-height: 1.65em; }
+
+.gc-font-2019 fieldset legend, .gc-font-2019 + div fieldset legend {
+  margin-bottom: 11.5px; }
+
+.gc-font-2019 input[type="checkbox"], .gc-font-2019 input[type="radio"], .gc-font-2019 + div input[type="checkbox"], .gc-font-2019 + div input[type="radio"] {
+  margin-top: 11px; }
+
+.gc-font-2019 [type="submit"], .gc-font-2019 select, .gc-font-2019 + div [type="submit"], .gc-font-2019 + div select {
+  padding: .54em 1em; }
 
 /* Force GCWeb release 4.0.29 font style
  *
