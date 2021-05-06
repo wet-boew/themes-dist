@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.42.1 - 2021-04-30
+ * v4.0.42.2 - 2021-05-06
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -10556,6 +10556,7 @@ var componentName = "wb-steps",
 			 */
 			if ( form && hasStepsInitialized ) {
 				$( form ).children( "input" ).hide();
+				wb.ready( $( elm ), componentName );
 			}
 		}
 	},
@@ -10949,7 +10950,7 @@ $document.on( "submit", ".wb-tables-filter", function( event ) {
 				$value = ( $fData ) ? $fData : "-0";
 				$regex = "(" + $value.replace( /&nbsp;|\s/g, "\\s" ).replace( /\$/g, "\\$" ) + ")";
 			}
-		} else if ( $elm.is( "input[type='date']" ) ) {
+		} else if ( $elm.is( "input[type='date']" ) && $elm.val() ) {
 			var $minDate, $maxDate;
 
 			// Retain minimum date (always the first date input)
