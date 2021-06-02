@@ -13085,6 +13085,114 @@ table.dataTable.nws-tbl .label.label-success {
   padding-bottom: 7px; }
 
 /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ *
+ *	GC Checkboxes and radio buttons
+*/
+fieldset.gc-chckbxrdio {
+  border-top: 0;
+  padding-top: 0; }
+
+.gc-chckbxrdio label {
+  cursor: pointer;
+  display: block;
+  font-size: 20px; }
+
+.gc-chckbxrdio legend {
+  float: none;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 0; }
+
+.gc-chckbxrdio input[type="radio"],
+.gc-chckbxrdio input[type="checkbox"] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+  .gc-chckbxrdio input[type="radio"][disabled] + label,
+  .gc-chckbxrdio input[type="checkbox"][disabled] + label {
+    cursor: not-allowed;
+    opacity: .5; }
+  .gc-chckbxrdio input[type="radio"] + label,
+  .gc-chckbxrdio input[type="checkbox"] + label {
+    display: inline-block;
+    line-height: 2;
+    margin-left: 36px;
+    width: auto; }
+  .gc-chckbxrdio input[type="radio"] + label::before,
+  .gc-chckbxrdio input[type="checkbox"] + label::before {
+    border: 4px solid #fff;
+    -webkit-box-shadow: 0 0 0 2px #000;
+            box-shadow: 0 0 0 2px #000;
+    content: "";
+    display: inline-block;
+    height: 36px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 36px; }
+  .gc-chckbxrdio input[type="radio"] + label:hover::before,
+  .gc-chckbxrdio input[type="checkbox"] + label:hover::before {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e5e5), color-stop(50%, white));
+    background-image: linear-gradient(to bottom, #e6e5e5, white 50%); }
+  .gc-chckbxrdio input[type="radio"]:focus + label::before,
+  .gc-chckbxrdio input[type="checkbox"]:focus + label::before {
+    -webkit-box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc;
+            box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc; }
+
+.gc-chckbxrdio input[type="radio"] + label::before {
+  border-radius: 50%; }
+
+.gc-chckbxrdio input[type="radio"]:checked + label::before {
+  background: #444; }
+
+.gc-chckbxrdio.checkbox input[type="checkbox"] + label,
+.gc-chckbxrdio.checkbox input[type="checkbox"] + label + ul {
+  font-size: 17px;
+  min-height: 23px; }
+
+.gc-chckbxrdio.checkbox input[type="checkbox"] + label::before {
+  height: 24px;
+  left: 6px;
+  top: 4px;
+  width: 24px; }
+
+.gc-chckbxrdio.checkbox input[type="checkbox"]:checked + label::after {
+  border-width: 0 3px 3px 0;
+  height: 16px;
+  left: 14px;
+  top: 6px;
+  width: 9px; }
+
+.gc-chckbxrdio input[type="checkbox"]:checked + label::after {
+  border-color: #333;
+  border-style: solid;
+  border-width: 0 5px 5px 0;
+  content: "";
+  display: inline-block;
+  height: 26px;
+  left: 12px;
+  position: absolute;
+  top: 4px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  width: 13px; }
+
+.gc-chckbxrdio.form-inline .label-inline {
+  padding-right: 20px; }
+  .gc-chckbxrdio.form-inline .label-inline label {
+    padding-left: 10px; }
+
+/*
  * Provisional feature
  */
 /*
@@ -14061,11 +14169,7 @@ h1 ~ .provisional.gc-subway {
     background-image: none; }
   /* PROVISIONAL features */
   .provisional {
-    /* Checkboxes and radios */
     /* Contributors */ }
-    .provisional.gc-chckbxrdio.form-inline .label-inline {
-      margin-bottom: 20px;
-      padding-right: 20px; }
     .provisional.gc-contributors h2, .provisional.gc-contributors ul {
       display: block; }
     .provisional.gc-contributors ul {
@@ -14259,6 +14363,17 @@ h1 ~ .provisional.gc-subway {
     .provisional.gc-table td:last-child {
       border-bottom: 0; }
   /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ *
+ *	GC Checkboxes and radio buttons - Small devices maximum
+*/
+  .gc-chckbxrdio.form-inline .label-inline {
+    margin-bottom: 20px;
+    padding-right: 20px; }
+  /*
   Variant - GCWeb custom implementation
   @title: Small view and under (screen only)
  */ }
@@ -14336,6 +14451,19 @@ h1 ~ .provisional.gc-subway {
  */
   .well.header-rwd {
     width: 75%; }
+  /*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ *
+ *	GC Checkboxes and radio buttons - Small devices minimum
+*/
+  .form-inline .gc-chckbxrdio.checkbox input[type="checkbox"] {
+    position: absolute; }
+  .form-inline.gc-chckbxrdio .radio input[type="radio"],
+  .form-inline.gc-chckbxrdio .checkbox input[type="checkbox"] {
+    position: absolute; }
   /*
   WET-BOEW
   @title: Small view and over (screen only)
