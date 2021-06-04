@@ -5,3 +5,4 @@
  * v9.3.0 - 2021-06-04
  *
  */
+.bg-canadaday,body .bg-canadaday{background-color:#900}.panel-canadaday,hr.brdr-canadaday{border-color:#900}a.bg-canadaday:focus,a.bg-canadaday:hover,button.bg-canadaday:focus,button.bg-canadaday:hover{background-color:#6b0303}a.bg-canadaday:active,a.bg-canadaday:active:focus,a.bg-canadaday:active:hover,button.bg-canadaday:active{background-color:#000}a.bg-canadaday:active,a.bg-canadaday:focus,a.bg-canadaday:hover{color:#fff}
