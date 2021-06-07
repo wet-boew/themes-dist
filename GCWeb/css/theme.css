@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.3.0 - 2021-06-04
+ * v9.3.0 - 2021-06-07
  *
  */
 /*
@@ -16,7 +16,7 @@
  */
 /* Headings font-sizes */
 /* Small font-size */
-/* Bold weight */
+/* Font weight */
 /*
 Left menu variables
 */
@@ -13988,6 +13988,48 @@ h1 ~ .provisional.gc-subway {
 .provisional.gc-table td ul {
   -webkit-padding-start: 20px;
           padding-inline-start: 20px; }
+
+/* Provisional featured link component */
+.provisional.gc-featured-link {
+  background-color: #355688;
+  opacity: .9;
+  padding-bottom: 15px;
+  padding-top: 15px; }
+  .provisional.gc-featured-link p, .provisional.gc-featured-link a {
+    color: #fff; }
+  .provisional.gc-featured-link p {
+    float: left !important;
+    margin-bottom: 0px; }
+
+/* Provisional most requested component */
+.provisional.gc-most-requested {
+  border: none; }
+  .provisional.gc-most-requested h2 {
+    font-size: 1.1em;
+    margin-top: 15px; }
+  .provisional.gc-most-requested ul {
+    margin-bottom: 15px;
+    margin-top: 15px; }
+    .provisional.gc-most-requested ul li {
+      font-family: "Lato", sans-serif;
+      font-size: 87%;
+      font-weight: 700;
+      line-height: 1.5em; }
+
+/* Well bold provisional */
+.provisional.well.well-bold {
+  font-weight: 700; }
+  .provisional.well.well-bold strong {
+    font-weight: 400; }
+
+/* Feeds plugin GC override */
+.provisional.gc-feeds {
+  border: none; }
+  .provisional.gc-feeds li {
+    line-height: 1.65em;
+    padding: 0px; }
+    .provisional.gc-feeds li a {
+      font-weight: 700; }
 
 /*
  * GCWeb custom iumplementation
