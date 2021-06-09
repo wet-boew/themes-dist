@@ -14386,6 +14386,8 @@ h1 ~ .provisional.gc-subway {
     display: block;
     margin-bottom: .625em;
     padding: .35em; }
+  .provisional.gc-table > :last-child > tr:last-of-type {
+    margin-bottom: 0; }
   .provisional.gc-table caption {
     font-size: 1.1em; }
   .provisional.gc-table thead {
