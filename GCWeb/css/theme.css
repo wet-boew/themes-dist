@@ -14404,7 +14404,8 @@ h1 ~ .provisional.gc-subway {
     .provisional.gc-table td::before {
       content: attr(data-label);
       float: left;
-      font-weight: bold; }
+      font-weight: bold;
+      text-align: left; }
     .provisional.gc-table td:last-child {
       border-bottom: 0; }
   /*
