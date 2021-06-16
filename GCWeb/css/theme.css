@@ -14311,7 +14311,7 @@ h1 ~ .provisional.gc-subway {
   .provisional.gc-table tr {
     border: 1px solid #ddd;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 0.625em;
     padding: .35em; }
   .provisional.gc-table > :last-child > tr:last-of-type {
     margin-bottom: 0; }
@@ -14326,6 +14326,8 @@ h1 ~ .provisional.gc-subway {
     padding: 0;
     position: absolute;
     width: 1px; }
+  .provisional.gc-table tbody + tbody > tr:first-of-type {
+    margin-top: 0.625em; }
   .provisional.gc-table td {
     display: block;
     font-size: 1em;
