@@ -14375,6 +14375,17 @@ h1 ~ .provisional.gc-subway {
   /*
  PROVISIONAL features: Responsive tables cards
 */
+  .provisional.gc-table.table-bordered {
+    border: 0; }
+    .provisional.gc-table.table-bordered > thead > tr > th,
+    .provisional.gc-table.table-bordered > thead > tr > td,
+    .provisional.gc-table.table-bordered > tbody > tr > th,
+    .provisional.gc-table.table-bordered > tbody > tr > td,
+    .provisional.gc-table.table-bordered > tfoot > tr > th,
+    .provisional.gc-table.table-bordered > tfoot > tr > td {
+      border-bottom: 0;
+      border-left: 0;
+      border-right: 0; }
   .provisional.gc-table .text-left {
     clear: both;
     display: block; }
