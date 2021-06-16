@@ -14300,6 +14300,8 @@ h1 ~ .provisional.gc-subway {
       border-bottom: 0;
       border-left: 0;
       border-right: 0; }
+  .provisional.gc-table.dataTable.no-footer {
+    border-bottom: 0; }
   .provisional.gc-table .text-left {
     clear: both;
     display: block; }
