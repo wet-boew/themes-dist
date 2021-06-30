@@ -13209,7 +13209,7 @@ fieldset.gc-chckbxrdio {
 
 	- Provisional  CSSspecific for view port are defined in the "views/[view port]" theme CSS
 */
-.provisional, .experimental {
+.provisional {
   /* ------------
 	 * Background color
 	 *
@@ -13226,12 +13226,14 @@ fieldset.gc-chckbxrdio {
 	 * (with a contrast conforming to Level AAA)
 	 */
   /* Dark theme
-	 */ }
-  .provisional .bg-pnkDy, .experimental .bg-pnkDy {
+	 */
+  /* Theme/topic decorative image */
+  /* Contributors */ }
+  .provisional .bg-pnkDy {
     background-color: #AD005F; }
-    .provisional .bg-pnkDy.well.header-rwd, .experimental .bg-pnkDy.well.header-rwd {
+    .provisional .bg-pnkDy.well.header-rwd {
       background-color: #570030; }
-  .provisional .bg-img-hdng, .experimental .bg-img-hdng {
+  .provisional .bg-img-hdng {
     background-image: url("../assets/x-blue-line.png");
     background-position: right bottom;
     background-repeat: no-repeat;
@@ -13240,72 +13242,56 @@ fieldset.gc-chckbxrdio {
     padding-right: 80px; }
   .provisional.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
   .provisional.pnkDy-theme #wb-srch button,
-  .provisional.pnkDy-theme .srchbox button, .experimental.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
-  .experimental.pnkDy-theme #wb-srch button,
-  .experimental.pnkDy-theme .srchbox button {
+  .provisional.pnkDy-theme .srchbox button {
     background-color: #AD005F;
     border-color: #AD005F; }
   .provisional.pnkDy-theme .gcweb-menu button[aria-haspopup=true]:focus, .provisional.pnkDy-theme .gcweb-menu button[aria-haspopup=true]:hover,
   .provisional.pnkDy-theme #wb-srch button:focus, .provisional.pnkDy-theme #wb-srch button:hover,
-  .provisional.pnkDy-theme .srchbox button:focus, .provisional.pnkDy-theme .srchbox button:hover, .experimental.pnkDy-theme .gcweb-menu button[aria-haspopup=true]:focus, .experimental.pnkDy-theme .gcweb-menu button[aria-haspopup=true]:hover,
-  .experimental.pnkDy-theme #wb-srch button:focus, .experimental.pnkDy-theme #wb-srch button:hover,
-  .experimental.pnkDy-theme .srchbox button:focus, .experimental.pnkDy-theme .srchbox button:hover {
+  .provisional.pnkDy-theme .srchbox button:focus, .provisional.pnkDy-theme .srchbox button:hover {
     background-color: #570030;
     color: #fff; }
   .provisional.pnkDy-theme .gcweb-menu,
-  .provisional.pnkDy-theme .home .gcweb-menu, .experimental.pnkDy-theme .gcweb-menu,
-  .experimental.pnkDy-theme .home .gcweb-menu {
+  .provisional.pnkDy-theme .home .gcweb-menu {
     border-top-color: #AD005F; }
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true], .experimental.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true] {
     background-color: #ffffff;
     border-color: #ffffff; }
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true], .experimental.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true] {
     color: #AD005F; }
   .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:focus,
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:hover, .experimental.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:focus,
-  .experimental.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:hover {
+  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:hover {
     background-color: #AD005F;
     border-color: #AD005F;
     color: #ffffff; }
-  .provisional.pnkDy-theme #wb-info .landscape, .experimental.pnkDy-theme #wb-info .landscape {
+  .provisional.pnkDy-theme #wb-info .landscape {
     background-color: #AD005F; }
   .provisional.dark-theme .gcweb-menu button[aria-haspopup=true],
   .provisional.dark-theme #wb-srch button,
-  .provisional.dark-theme .srchbox button, .experimental.dark-theme .gcweb-menu button[aria-haspopup=true],
-  .experimental.dark-theme #wb-srch button,
-  .experimental.dark-theme .srchbox button {
+  .provisional.dark-theme .srchbox button {
     background-color: #000;
     border-color: #000;
     color: #fff; }
   .provisional.dark-theme .gcweb-menu button[aria-haspopup=true]:focus, .provisional.dark-theme .gcweb-menu button[aria-haspopup=true]:hover,
   .provisional.dark-theme #wb-srch button:focus, .provisional.dark-theme #wb-srch button:hover,
-  .provisional.dark-theme .srchbox button:focus, .provisional.dark-theme .srchbox button:hover, .experimental.dark-theme .gcweb-menu button[aria-haspopup=true]:focus, .experimental.dark-theme .gcweb-menu button[aria-haspopup=true]:hover,
-  .experimental.dark-theme #wb-srch button:focus, .experimental.dark-theme #wb-srch button:hover,
-  .experimental.dark-theme .srchbox button:focus, .experimental.dark-theme .srchbox button:hover {
+  .provisional.dark-theme .srchbox button:focus, .provisional.dark-theme .srchbox button:hover {
     background-color: #000;
     color: #fff; }
   .provisional.dark-theme .gcweb-menu,
-  .provisional.dark-theme .home .gcweb-menu, .experimental.dark-theme .gcweb-menu,
-  .experimental.dark-theme .home .gcweb-menu {
+  .provisional.dark-theme .home .gcweb-menu {
     border-top-color: #000; }
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true], .experimental.dark-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true] {
     background-color: #fff;
     border-color: #fff; }
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true], .experimental.dark-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true] {
     color: #000; }
   .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true]:focus,
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true]:hover, .experimental.dark-theme .home .gcweb-menu button[aria-haspopup=true]:focus,
-  .experimental.dark-theme .home .gcweb-menu button[aria-haspopup=true]:hover {
+  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true]:hover {
     background-color: #000;
     border-color: #000;
     color: #fff; }
-  .provisional.dark-theme #wb-info .landscape, .experimental.dark-theme #wb-info .landscape {
+  .provisional.dark-theme #wb-info .landscape {
     background-color: #000;
     color: #fff; }
-
-.provisional {
-  /* Theme/topic decorative image */
-  /* Contributors */ }
   .provisional.icon-warning-light, .provisional .icon-warning-light {
     color: #DF7200; }
   .provisional.gc-topic-bg div {
