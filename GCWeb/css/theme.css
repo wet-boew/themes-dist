@@ -13893,16 +13893,18 @@ h1 ~ .provisional.gc-subway {
           padding-inline-start: 20px; }
 
 /* Provisional featured link component */
-.provisional.gc-featured-link {
-  background-color: #355688;
-  opacity: .9;
-  padding-bottom: 15px;
-  padding-top: 15px; }
-  .provisional.gc-featured-link p, .provisional.gc-featured-link a {
-    color: #fff; }
-  .provisional.gc-featured-link p {
-    float: left !important;
-    margin-bottom: 0px; }
+.gc-featured-link {
+  background-color: #355688; }
+  .gc-featured-link.provisional {
+    font-family: Lato, sans-serif;
+    opacity: .9;
+    padding-bottom: 15px;
+    padding-top: 15px; }
+    .gc-featured-link.provisional p:first-of-type {
+      font-weight: 700;
+      margin-bottom: 0px; }
+    .gc-featured-link.provisional p, .gc-featured-link.provisional a {
+      color: #fff; }
 
 /* Provisional most requested component */
 .provisional.gc-most-requested {
