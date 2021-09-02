@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.43.1 - 2021-08-31
+ * v4.0.43.2 - 2021-09-02
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /* Modernizr (Custom Build) | MIT & BSD
@@ -13538,7 +13538,7 @@ var componentName = "wb-disable",
 			// Rebuild the query string
 			for ( param in pageUrl.params ) {
 				if ( param && Object.prototype.hasOwnProperty.call( pageUrl.params, param ) && param !== "wbdisable" ) {
-					nQuery += param + "=" + pageUrl.params[ param ] + "&#38;";
+					nQuery += param + "=" + pageUrl.params[ param ] + "&";
 				}
 			}
 
@@ -13569,7 +13569,7 @@ var componentName = "wb-disable",
 					}
 
 					// Remove variable from URL
-					var lc = window.location.href.replace( "wbdisable=false", "" ).replace( "?#", "#" );
+					var lc = window.location.href.replace( /&?wbdisable=false/gi, "" ).replace( "?&", "?" ).replace( "?#", "#" );
 					if ( lc.indexOf( "?" ) === ( lc.length - 1 ) ) {
 						lc = lc.replace( "?", "" );
 					}
