@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v9.5.0 - 2021-10-27
+ * v9.5.0 - 2021-11-03
  *
  */
 /*
@@ -13265,15 +13265,15 @@ fieldset.gc-chckbxrdio {
     background-color: #570030;
     color: #fff; }
   .provisional.pnkDy-theme .gcweb-menu,
-  .provisional.pnkDy-theme .home .gcweb-menu {
+  .provisional.pnkDy-theme.home .gcweb-menu {
     border-top-color: #AD005F; }
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true] {
     background-color: #ffffff;
     border-color: #ffffff; }
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true] {
     color: #AD005F; }
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:focus,
-  .provisional.pnkDy-theme .home .gcweb-menu button[aria-haspopup=true]:hover {
+  .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true]:focus,
+  .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true]:hover {
     background-color: #AD005F;
     border-color: #AD005F;
     color: #ffffff; }
@@ -13291,15 +13291,15 @@ fieldset.gc-chckbxrdio {
     background-color: #000;
     color: #fff; }
   .provisional.dark-theme .gcweb-menu,
-  .provisional.dark-theme .home .gcweb-menu {
+  .provisional.dark-theme.home .gcweb-menu {
     border-top-color: #000; }
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.dark-theme.home .gcweb-menu button[aria-haspopup=true] {
     background-color: #fff;
     border-color: #fff; }
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true] {
+  .provisional.dark-theme.home .gcweb-menu button[aria-haspopup=true] {
     color: #000; }
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true]:focus,
-  .provisional.dark-theme .home .gcweb-menu button[aria-haspopup=true]:hover {
+  .provisional.dark-theme.home .gcweb-menu button[aria-haspopup=true]:focus,
+  .provisional.dark-theme.home .gcweb-menu button[aria-haspopup=true]:hover {
     background-color: #000;
     border-color: #000;
     color: #fff; }
