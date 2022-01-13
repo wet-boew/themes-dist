@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.2.0 - 2021-12-22
+ * v10.2.0 - 2022-01-13
  *
  */
 /*
@@ -4349,7 +4349,7 @@ h2.hme-banner-bg {
     #wb-info .brand object,
     #wb-info .brand img {
       height: 40px;
-      margin-bottom: 10px;
+      margin-bottom: 2em;
       margin-top: 20px;
       width: auto; }
   #wb-info .ftr-urlt-lnk ul {
