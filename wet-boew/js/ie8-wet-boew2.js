@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.45.1 - 2022-01-13
+ * v4.0.46 - 2022-01-14
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -4653,6 +4653,88 @@ $document.on( "txt-rsz.wb win-rsz-width.wb win-rsz-height.wb", function() {
 wb.add( selector );
 
 } )( jQuery, window, wb );
+
+/**
+ * @title WET-BOEW Details closed on small screen
+ * @overview Closes details on defined viewport and down if they were not engaged, default is small
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @thomasgohard
+ */
+( function( $, wb ) {
+"use strict";
+
+/*
+* Variable and function definitions.
+* These are global to the plugin - meaning that they will be initialized once per page,
+* not once per instance of plugin on the page. So, this is a good place to define
+* variables that are common to all instances of the plugin on a page.
+*/
+var componentName = "wb-details-close",
+	selector = ".provisional." + componentName,
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+	views = [ "xxs", "xs", "sm", "md", "lg", "xl" ],
+	viewsClass = [ "xxsmallview", "xsmallview", "smallview", "mediumview", "largeview", "xlargeview" ],
+	breakpoint,
+
+	/**
+	 * @method init
+	 * @param {jQuery Event} event Event that triggered the function call
+	 */
+	init = function( event ) {
+
+		// Start initialization
+		// returns DOM object = proceed with init
+		// returns undefined = do not proceed with init (e.g., already initialized)
+		var elm = wb.init( event, componentName, selector ),
+			$elm, i;
+
+		if ( elm ) {
+			$elm = $( elm );
+
+			// Get the plugin JSON configuration set on attribute data-wb-details-close
+			// Will define one set settings for all .wb-details-close on the page
+			breakpoint = $elm.data( "breakpoint" ) || "sm";
+
+			// reset breakpoint if config is passed
+			if ( views.length === viewsClass.length ) {
+				i = views.indexOf( breakpoint );
+				viewsClass = viewsClass.slice( 0, i + 1 );
+			}
+
+			hideOnBreakpoint();
+
+			// Identify that initialization has completed
+			wb.ready( $elm, componentName );
+		}
+	},
+
+	/**
+	 * Toggle details depending on breakpoint
+	 * @method hideOnBreakpoint
+	 * @param {jQuery DOM element | jQuery Event} $elm Element targetted by this plugin, which is the details
+	 */
+	hideOnBreakpoint = function() {
+		var $elm = $( selector ),
+			viewsSelector = "html." + viewsClass.join( ", html." );
+
+		// If within the targetted views, keep details closed
+		if ( $( viewsSelector ).length ) {
+			$elm.removeAttr( "open" );
+		} else {
+
+			// If not, keep opened
+			$elm.attr( "open", "" );
+		}
+	};
+
+// Bind the init event of the plugin
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+// Add the timer poke to initialize the plugin
+wb.add( selector );
+
+} )( jQuery, wb );
 
 /**
  * @title WET-BOEW Dismissable content plugin
@@ -10935,7 +11017,8 @@ var componentName = "wb-tables",
 					processing: i18n( "process" ),
 					search: i18n( "filter" ),
 					thousands: i18n( "info1000" ),
-					zeroRecords: i18n( "infoEmpty" )
+					zeroRecords: i18n( "infoEmpty" ),
+					tblFilterInstruction: i18n( "tbFilterInst" )
 				};
 			}
 
@@ -10952,7 +11035,8 @@ var componentName = "wb-tables",
 				},
 				complete: function() {
 					var $elm = $( "#" + elmId ),
-						dataTableExt = $.fn.dataTableExt;
+						dataTableExt = $.fn.dataTableExt,
+						settings = wb.getData( $elm, componentName );
 
 					/*
 					 * Extend sorting support
@@ -10982,11 +11066,8 @@ var componentName = "wb-tables",
 						}
 					} );
 
-					// Add the container or the sorting icons
-					$elm.find( "th" ).append( "<span class='sorting-cnt'><span class='sorting-icons'></span></span>" );
-
 					// Create the DataTable object
-					$elm.dataTable( $.extend( true, {}, defaults, window[ componentName ], wb.getData( $elm, componentName ) ) );
+					$elm.dataTable( $.extend( true, {}, defaults, window[ componentName ], settings ) );
 				}
 			} );
 		}
@@ -11005,6 +11086,19 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 		pHasPN = pagination.find( ".previous, .next" ).length === 2,
 		ol = document.createElement( "OL" ),
 		li = document.createElement( "LI" );
+
+	// Handle sorting/ordering
+	var order = $elm.dataTable( { "retrieve": true } ).api().order();
+	$elm.find( "th" ).each( function( index ) {
+		var $th = $( this ),
+			$btn = $th.find( "button" );
+		if ( order && order[ 0 ][ 0 ] === index ) {
+			var label = ( order[ 0 ][ 1 ] === "desc" ) ? i18nText.aria.sortAscending : i18nText.aria.sortDescending;
+			label = $btn.text() + label;
+			$btn.attr( "title", label );
+		}
+		$th.removeAttr( "aria-label" );
+	} );
 
 	// Determine if Pagination required
 	if (
@@ -11068,6 +11162,21 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 
 // Identify that initialization has completed
 $document.on( "init.dt", function( event ) {
+	var $elm = $( event.target ),
+		settings = $.extend( true, {}, defaults, window[ componentName ], wb.getData( $elm, componentName ) );
+
+	// Handle sorting/ordering
+	var ordering = ( settings && settings.ordering === false ) ? false : true;
+	if ( ordering ) {
+		$elm.find( "th" ).each( function() {
+			var $th = $( this ),
+				label = ( $th.attr( "aria-sort" ) === "ascending" ) ? i18nText.aria.sortDescending : i18nText.aria.sortAscending;
+
+			$th.html( "<button type='button' class='sorting-cnt' aria-controls='" + $th.attr( "aria-controls" ) +  "' title='" + $th.text().replace( /'/g, "&#39;" ) + label + "'>" + $th.html() + " <span class='sorting-icons' aria-hidden='true'></span></button>" );
+			$th.removeAttr( "aria-label tabindex aria-controls" );
+		} );
+		$elm.attr( "aria-label", i18nText.tblFilterInstruction );
+	}
 	wb.ready( $( event.target ), componentName );
 } );
 
