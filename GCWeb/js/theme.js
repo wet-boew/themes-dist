@@ -347,6 +347,18 @@ $document.on( fetchEvent, function( event ) {
 					fetchOpts.jsonp = false;
 				}
 
+				// Sending Data
+				if ( fetchOpts.data ) {
+					try {
+						fetchOpts.data = ( typeof fetchOpts.data === "string" ? fetchOpts.data : JSON.stringify( fetchOpts.data ) );
+					} catch ( err ) {
+						throw "JSON fetch - Data being sent to server - " + err;
+					}
+
+					fetchOpts.method = fetchOpts.method || "POST";
+					fetchOpts.contentType = fetchOpts.contentType || "application/json";
+				}
+
 				$.ajax( fetchOpts )
 					.done( function( response, status, xhr ) {
 						var i, i_len, i_cache, backlog;
@@ -686,7 +698,10 @@ var $document = wb.doc,
 			fetch: {
 				url: fileUrl,
 				nocache: data.nocache,
-				nocachekey: data.nocachekey
+				nocachekey: data.nocachekey,
+				data: data.data,
+				contentType: data.contenttype,
+				method: data.method
 			}
 		} );
 
@@ -1923,19 +1938,22 @@ var componentName = "wb-data-json",
 			i_len = lstCall.length;
 			for ( i = 0; i !== i_len; i += 1 ) {
 				i_cache = lstCall[ i ];
-				loadJSON( elm, i_cache.url, i, i_cache.nocache, i_cache.nocachekey );
+				loadJSON( elm, i_cache.url, i, i_cache.nocache, i_cache.nocachekey, i_cache.data, i_cache.contenttype, i_cache.method );
 			}
 
 		}
 	},
 
-	loadJSON = function( elm, url, refId, nocache, nocachekey ) {
+	loadJSON = function( elm, url, refId, nocache, nocachekey, data, contentType, method ) {
 		var $elm = $( elm ),
 			fetchObj = {
 				url: url,
 				refId: refId,
 				nocache: nocache,
-				nocachekey: nocachekey
+				nocachekey: nocachekey,
+				data: data,
+				contentType: contentType,
+				method: method
 			};
 
 		$elm.trigger( {
@@ -4013,7 +4031,10 @@ var componentName = "wb-jsonmanager",
 							fetch: {
 								url: url,
 								nocache: elmData.nocache,
-								nocachekey: elmData.nocachekey
+								nocachekey: elmData.nocachekey,
+								data: elmData.data,
+								contentType: elmData.contenttype,
+								method: elmData.method
 							}
 						} );
 
