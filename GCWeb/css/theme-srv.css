@@ -2,7 +2,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.3.0 - 2022-01-26
+ * v10.4.0 - 2022-01-31
  *
  */
 /*!
@@ -9556,25 +9556,29 @@ fieldset {
  */
 label.required:before,
 legend.required:before,
-.checkbox.required:before,
-input.required[type="checkbox"]:before, label.required strong.required,
+.checkbox.required:before, label.required strong.required,
 legend.required strong.required,
-.checkbox.required strong.required,
-input[type="checkbox"].required strong.required {
+.checkbox.required strong.required {
   color: #d3080c;
   font-weight: 700; }
 
 label.required:before,
 legend.required:before,
-.checkbox.required:before,
-input[type="checkbox"].required:before {
+.checkbox.required:before {
   content: "* ";
-  margin-left: -0.665em; }
+  margin-left: -0.67em;
+  vertical-align: top; }
+
+.form-group.has-error .checkbox {
+  color: #333333; }
+
+.form-group .checkbox.checkbox-standalone label {
+  font-weight: 700; }
 
 [dir=rtl] label.required:before,
 [dir=rtl] legend.required:before {
   margin-left: auto;
-  margin-right: -0.665em; }
+  margin-right: -0.67em; }
 
 .btn {
   display: inline-block;

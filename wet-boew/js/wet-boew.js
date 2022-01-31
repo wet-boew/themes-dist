@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.46 - 2022-01-26
+ * v4.0.47 - 2022-01-31
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.3.3 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.3.3/LICENSE */
@@ -3582,6 +3582,41 @@ wb.guid = function() {
 
 wb.escapeAttribute = function( str ) {
 	return str.replace( /'/g, "&#39;" ).replace( /"/g, "&#34;" );
+};
+
+/*
+* Find most common Personal Identifiable Information (PII) in a string and return either the cleaned string either true/false
+* @param {string} str
+* @param {boolean} toClean
+* @return {string | true | false}
+* @example
+* wb.findPotentialPII( "email:test@test.com, phone:123 123 1234", true )
+* returns "email:, phone:",
+* wb.findPotentialPII( "email:test@test.com, phone:123 123 1234", false )
+* returns true
+*/
+wb.findPotentialPII = function( str, toClean ) {
+
+	if ( typeof str  !== "string" ) {
+		return false;
+	}
+	var regEx = [
+			/\b(?:\w*[\s\\.-]*?\d[\s\\.-]*?){5,}\b/ig, //5digits or more pattern
+			/\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig, //postal code pattern
+			/\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig //email pattern
+		],
+		isFound = false;
+
+	for ( var key in regEx ) {
+		if ( str.match( regEx[ key ] ) ) {
+			isFound = true;
+			if ( toClean ) {
+				str = str.replaceAll( regEx[ key ], "" );
+			}
+		}
+	}
+
+	return toClean && isFound ? str : isFound;
 };
 
 } )( wb );
@@ -8898,8 +8933,8 @@ var componentName = "wb-frmvld",
 
 							//Std If we have a label and the input field is inside the label
 							// need to add a css-implicite-input
-							if ( $form.find( "label" ).find( "input[name='" + $element.attr( "name" ) + "']" ).length > 0 ) {
-								$error.insertBefore( $form.find( "input[name='" + $element.attr( "name" ) + "']" ) );
+							if ( $form.find( "label" ).find( ".wb-server-error + input.css-implicite-input[name='" + $element.attr( "name" ) + "']" ).length > 0 ) {
+								$error.insertBefore( $form.find( ".wb-server-error + input.css-implicite-input[name='" + $element.attr( "name" ) + "']" ) );
 								return;
 							}
 
@@ -15577,6 +15612,8 @@ var $document = wb.doc,
 	componentName = "wb-postback",
 	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
+	failEvent = "fail" + selector,
+	successEvent = "success" + selector,
 	defaults = {},
 
 	init = function( event ) {
@@ -15640,9 +15677,11 @@ var $document = wb.doc,
 						data: $.param( data )
 					} )
 						.done( function() {
+							$elm.trigger( successEvent );
 							$selectorSuccess.removeClass( classToggle );
 						} )
-						.fail( function() {
+						.fail( function( response ) {
+							$elm.trigger( failEvent, response );
 							$selectorFailure.removeClass( classToggle );
 						} )
 						.always( function() {
