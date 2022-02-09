@@ -1,10 +1,9 @@
-/**
- * @title WET-BOEW Template polyfill
- * @overview The <template> element hold elements for Javascript and templating usage. Based on code from http://ironlasso.com/template-tag-polyfill-for-internet-explorer/
+/*!
+ * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
-( function( $, document, wb ) {
+ * v10.4.0 - 2022-02-09
+ *
+ */( function( $, document, wb ) {
 "use strict";
 
 /*
@@ -72,12 +71,6 @@ wb.add( selector );
 
 } )( jQuery, document, wb );
 
-/**
- * @title WET-BOEW GC Subway map mutator
- * @overview Plugin used to mutate DOM elements depending on viewport size, in order to follow order accessibility criteria while respecting UI
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @gormfrank
- */
 ( function( $, window, wb ) {
 "use strict";
 
@@ -202,12 +195,6 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
-/**
- * @title WET-BOEW JSON Fetch [ json-fetch ]
- * @overview Load and filter data from a JSON file
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 /*global jsonpointer */
 ( function( $, wb ) {
 "use strict";
@@ -403,12 +390,6 @@ $document.on( fetchEvent, function( event ) {
 
 } )( jQuery, wb );
 
-/**
- * @title WET-BOEW Action Manager
- * @overview API that coordinate actions with other wet-boew plugin
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 ( function( $, wb, document ) {
 "use strict";
 
@@ -1005,12 +986,6 @@ wb.add( selectorPreset );
 
 } )( jQuery, wb, document );
 
-/**
- * @title WET-BOEW Chat Wizard plugin container
- * @overview Plugin used to translate a form into a conversational form, hence a Chat Wizard
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @gormfrank
- */
 ( function( $, window, wb ) {
 "use strict";
 
@@ -1837,13 +1812,6 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
-/**
- * @title WET-BOEW Data Json [data-json-after], [data-json-append],
- * [data-json-before], [data-json-prepend], [data-json-replace], [data-json-replacewith] and [data-wb-json]
- * @overview Insert content extracted from JSON file.
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 /*global jsonpointer */
 ( function( $, window, wb ) {
 "use strict";
@@ -2333,12 +2301,6 @@ for ( s = 0; s !== selectorsLength; s += 1 ) {
 
 } )( jQuery, window, wb );
 
-/**
- * @title WET-BOEW URL mapping
- * @overview Execute pre-configured action based on url query string
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 ( function( $, window, wb ) {
 "use strict";
 
@@ -2395,12 +2357,6 @@ $document.on( "click", selector, function( event ) {
 
 } )( jQuery, window, wb );
 
-/**
- * @title WET-BOEW Field Flow
- * @overview Transform a basic list into a selectable list.
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 ( function( $, document, wb ) {
 "use strict";
 
@@ -3773,12 +3729,6 @@ wb.add( selector );
 
 } )( jQuery, document, wb );
 
-/**
- * @title WET-BOEW JSON Manager
- * @overview Manage JSON dataset, execute JSON patch operation.
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 /*global jsonpointer, jsonpatch */
 ( function( $, window, wb ) {
 "use strict";
@@ -4504,14 +4454,6 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
-/*
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- *
- * @author: duboisp
- * @description: Load suggestions from an array of string in a JSON file.
- *
- */
 ( function( $, document, wb ) {
 "use strict";
 
@@ -4782,12 +4724,6 @@ wb.add( selector );
 
 } )( jQuery, document, wb );
 
-/**
- * @title WET-BOEW URL mapping
- * @overview Execute pre-configured action based on url query string
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 ( function( $, window, wb ) {
 "use strict";
 
@@ -4897,12 +4833,6 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
-/**
- * @title WB5 Click postback adapter
- * @overview WB5 Click postback adapter toward wb-postback plugin
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 ( function( $, window, wb ) {
 "use strict";
 
@@ -4978,12 +4908,6 @@ wb.add( selector );
 
 } )( jQuery, window, wb );
 
-/**
- * @title Menu for GCWeb v5
- * @overview Menu keyboard and mouse interaction with supporting responsiveness
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * @author @duboisp
- */
 ( function( $, wb ) {
 "use strict";
 
