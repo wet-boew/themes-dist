@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.4.0 - 2022-02-09
+ * v10.4.0 - 2022-02-11
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -2013,7 +2013,33 @@ var componentName = "wb-data-json",
 			elmClass = elm.className,
 			elmAppendTo = elm,
 			dataTable,
+			dataTableAddRow,
 			template = settings.source ? document.querySelector( settings.source ) : elm.querySelector( "template" );
+
+		// If combined with wb-tables plugin
+		if ( elm.tagName === "TABLE" && elmClass.indexOf( "wb-tables" ) !== -1 ) {
+
+			//  Wait for its initialization before to applyTemplate
+			if ( elmClass.indexOf( "wb-tables-inited" ) === -1 ) {
+				$( elm ).one( "wb-ready.wb-tables,init.dt", function( ) {
+					applyTemplate( elm, settings, content );
+				} );
+				return;
+			}
+
+			// Edge case, when both plugin are ready at the same time, just wait for the next tick
+			if ( !$.fn.dataTable.isDataTable( elm ) && elmClass.indexOf( componentName + "-dtwait" ) === -1 ) {
+				elm.classList.add( componentName + "-dtwait" );
+				setTimeout( function( ) {
+					applyTemplate( elm, settings, content );
+				}, 50 );
+				return;
+			}
+
+			dataTable = $( elm ).dataTable( { "retrieve": true } ).api();
+			dataTableAddRow = dataTable.row.add;
+			selectorToClone = "tr"; // Only table row can be added
+		}
 
 		if ( !$.isArray( content ) ) {
 			if ( typeof content !== "object" ) {
@@ -2040,28 +2066,6 @@ var componentName = "wb-data-json",
 			mapping = [ mapping ];
 		}
 		mapping_len = mapping.length;
-
-		// Special support for adding row to a wb-table
-		// Condition must be meet:
-		//  * The element need to be a table
-		//  * Data-table need to be initialized
-		//  * The mapping need to be an array of string
-		if ( elm.tagName === "TABLE" && mapping && elmClass.indexOf( "wb-tables-inited" ) !== -1 && typeof mapping[ 0 ] === "string" ) {
-			dataTable = $( elm ).dataTable( { "retrieve": true } ).api();
-			for ( i = 0; i < i_len; i += 1 ) {
-				i_cache = content[ i ];
-				if ( filterPassJSON( i_cache, filterTrueness, filterFaslseness ) ) {
-					basePntr = "/" + i;
-					cached_value = [];
-					for ( j = 0; j < mapping_len; j += 1 ) {
-						cached_value.push( jsonpointer.get( content, basePntr + mapping[ j ] ) );
-					}
-					dataTable.row.add( cached_value );
-				}
-			}
-			dataTable.draw();
-			return;
-		}
 
 		if ( !template ) {
 			return;
@@ -2137,8 +2141,19 @@ var componentName = "wb-data-json",
 					}
 				}
 
-				elmAppendTo.appendChild( clone );
+				if ( dataTableAddRow ) {
+
+					// If wb-tables, use its API to add rows
+					dataTableAddRow( $( clone ) );
+				} else {
+					elmAppendTo.appendChild( clone );
+				}
 			}
+		}
+
+		// Refresh the dataTable display
+		if ( dataTableAddRow ) {
+			dataTable.draw();
 		}
 	},
 
