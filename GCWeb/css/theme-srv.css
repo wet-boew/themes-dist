@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.4.0 - 2022-02-11
+ * v10.5.0 - 2022-02-11
  *
  */
 /*!
@@ -6388,6 +6388,9 @@ fieldset {
   color: #fff; }
 
 a.text-white:hover, a.text-white:focus {
+  color: #b3ffff; }
+
+.btn.text-white:hover, .btn.text-white:focus {
   color: #b3ffff; }
 
 /* WET Core */
@@ -16473,6 +16476,9 @@ ol-geolocate button {
   color: #fff; }
 
 a.text-white:hover, a.text-white:focus {
+  color: #b3ffff; }
+
+.btn.text-white:hover, .btn.text-white:focus {
   color: #b3ffff; }
 
 /*
