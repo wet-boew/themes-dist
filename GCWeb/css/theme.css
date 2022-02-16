@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.5.0 - 2022-02-11
+ * v10.5.0 - 2022-02-16
  *
  */
 /*
@@ -12490,7 +12490,7 @@ aside.features {
       .provisional.gc-subway ul dd,
       .provisional.gc-subway dl dd {
         border-left: 4px solid #26374a;
-        line-height: inherit !important;
+        line-height: inherit;
         margin-bottom: 0px;
         margin-top: -3px;
         padding: 0px 20px 20px 1em; }
@@ -12535,7 +12535,7 @@ aside.features {
           width: 1.5em; }
         .provisional.gc-subway ul li::first-line,
         .provisional.gc-subway dl li::first-line {
-          line-height: 1 !important; }
+          line-height: 1; }
         .provisional.gc-subway ul li:last-child,
         .provisional.gc-subway dl li:last-child {
           border-bottom: 4px solid #26374a;
@@ -13163,16 +13163,16 @@ table.dataTable.nws-tbl .label.label-success {
  * Helper Classes
  */
 .margin-bottom-none {
-  margin-bottom: 0 !important; }
+  margin-bottom: 0; }
 
 .margin-bottom-small {
-  margin-bottom: .25em !important; }
+  margin-bottom: .25em; }
 
 .margin-top-large {
-  margin-top: 1.5em !important; }
+  margin-top: 1.5em; }
 
 .margin-top-medium {
-  margin-top: .75em !important; }
+  margin-top: .75em; }
 
 .clearfix:before, .clearfix:after {
   display: table;
