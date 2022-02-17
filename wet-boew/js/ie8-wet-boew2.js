@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.47.1 - 2022-02-16
+ * v4.0.47.2 - 2022-02-17
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -7021,6 +7021,8 @@ var componentName = "wb-lbx",
 					var $item = this.currItem,
 						$content = this.contentContainer,
 						$wrap = this.wrap,
+						$container = $wrap.find( ".mfp-container" ),
+						$containerParent = $container.parent(),
 						$modal = $wrap.find( ".modal-dialog" ),
 						$buttons = $wrap.find( ".mfp-close, .mfp-arrow" ),
 						len = $buttons.length,
@@ -7044,10 +7046,18 @@ var componentName = "wb-lbx",
 					this.contentContainer.attr( "data-pgtitle", document.getElementsByTagName( "H1" )[ 0 ].textContent );
 
 					trapTabbing( $wrap );
+
+					if ( !$containerParent.is( "dialog" ) ) {
+						$container.wrap( "<dialog class='mfp-container' open='open'></dialog>" );
+					} else {
+						$containerParent.attr( "open", "open" );
+					}
 				},
 				close: function() {
 					$document.find( "body" ).removeClass( "wb-modal" );
 					$document.find( modalHideSelector ).removeAttr( "aria-hidden" );
+					this.wrap.find( "dialog" ).removeAttr( "open" );
+
 				},
 				change: function() {
 					var $item = this.currItem,
@@ -9524,6 +9534,7 @@ var componentName = "wb-overlay",
 
 		$overlay
 			.addClass( "open" )
+			.attr( "role", "dialog" )
 			.attr( "aria-hidden", "false" );
 
 		if ( $overlay.hasClass( "wb-popup-full" ) || $overlay.hasClass( "wb-popup-mid" ) ) {
@@ -9554,6 +9565,7 @@ var componentName = "wb-overlay",
 
 		$overlay
 			.removeClass( "open" )
+			.removeAttr( "role" )
 			.attr( "aria-hidden", "true" );
 
 		if ( $overlay.hasClass( "wb-popup-full" ) || $overlay.hasClass( "wb-popup-mid" ) ) {
@@ -11207,7 +11219,7 @@ $document.on( "init.dt", function( event ) {
 			var $th = $( this ),
 				label = ( $th.attr( "aria-sort" ) === "ascending" ) ? i18nText.aria.sortDescending : i18nText.aria.sortAscending;
 
-			$th.html( "<button type='button' class='sorting-cnt' aria-controls='" + $th.attr( "aria-controls" ) +  "' title='" + $th.text().replace( /'/g, "&#39;" ) + label + "'>" + $th.html() + " <span class='sorting-icons' aria-hidden='true'></span></button>" );
+			$th.html( "<button type='button' aria-controls='" + $th.attr( "aria-controls" ) +  "' title='" + $th.text().replace( /'/g, "&#39;" ) + label + "'>" + $th.html() + "<span class='sorting-cnt'><span class='sorting-icons' aria-hidden='true'></span></span></button>" );
 			$th.removeAttr( "aria-label tabindex aria-controls" );
 		} );
 		$elm.attr( "aria-label", i18nText.tblFilterInstruction );
