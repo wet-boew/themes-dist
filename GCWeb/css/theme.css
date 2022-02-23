@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.5.1 - 2022-02-17
+ * v10.5.1 - 2022-02-23
  *
  */
 /*
@@ -15201,3 +15201,20 @@ Miscellaneous Utiliy CSS
   Variant - GCWeb custom implementation
   @title: Print view
  */ }
+
+/* Testing WCAG Spacing */
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ *The purpose of these utilities are to test WCAG success criterion 1.4.12: Text Spacing
+ */
+/* Text Spacing */
+.test-textSpacing * {
+  letter-spacing: .12em !important;
+  line-height: 1.5em !important;
+  word-spacing: .16em !important; }
+
+.test-textSpacing p {
+  margin-bottom: 2em !important; }
