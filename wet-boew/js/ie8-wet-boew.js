@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.47.2 - 2022-03-02
+ * v4.0.48 - 2022-03-03
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 // Copyright 2006 Google Inc.
@@ -3338,18 +3338,13 @@ var getUrlParts = function( url ) {
 
 			// A collection of the parameters of the query string part of the URL.
 			params: ( function() {
-				var results = {},
-					queryString = encodeURI( decodeURI( a.search.replace( /^\?/, "" ) ) ).replace( /'/g, "%27" ).split( "&" ),
-					len = queryString.length,
-					key, strings, i;
-
-				for ( i = 0; i !== len; i += 1 ) {
-					if ( ( key = queryString[ i ] ) !== null ) {
-						strings = key.split( "=" );
-						results[ strings[ 0 ] ] = strings[ 1 ];
-					}
+				var queryString = a.search.replace( /(^\?)/, "" );
+				if ( !queryString ) {
+					return {};
 				}
-				return results;
+				return queryString.split( "&" ).map( function( n ) {
+					return ( n = n.split( "=" ), this[ n[ 0 ] ] = decodeURIComponent( n[ 1 ] ), this );
+				}.bind( {} ) )[ 0 ];
 			}() )
 		};
 	},
