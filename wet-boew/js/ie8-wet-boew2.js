@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.49 - 2022-04-06
+ * v4.0.49.1 - 2022-04-06
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1273,7 +1273,7 @@ wb.findPotentialPII = function( str, toClean ) {
 	}
 	var regEx = [
 			/\d(?:[\s\-\\.\\/]?\d){7,}(?!\d)/ig, //8digits or more pattern
-			/\b\w{2}[\s\\.-]*?\d{6}\b/ig, //canadian nr passport pattern
+			/\b[A-Za-z]{2}[\s\\.-]*?\d{6}\b/ig, //canadian nr passport pattern
 			/\b(?:[a-zA-Z0-9_\-\\.]+)(?:@|%40)(?:[a-zA-Z0-9_\-\\.]+)\.(?:[a-zA-Z]{2,5})\b/ig, //email pattern
 			/\b[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d\b/ig, //postal code pattern
 			/\b(?:(username|user)[:=][a-zA-Z0-9_\-\\.]+)\b/ig,
@@ -11221,7 +11221,7 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 	$elm.find( "th" ).each( function( index ) {
 		var $th = $( this ),
 			$btn = $th.find( "button" );
-		if ( order && order[ 0 ][ 0 ] === index ) {
+		if ( order && order.length && order[ 0 ][ 0 ] === index ) {
 			var label = ( order[ 0 ][ 1 ] === "desc" ) ? i18nText.aria.sortAscending : i18nText.aria.sortDescending;
 			label = $btn.text() + label;
 			$btn.attr( "title", label );
