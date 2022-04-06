@@ -3638,6 +3638,12 @@ input[placeholder],
 *[placeholder] {
   color: #5c5c5c !important; }
 
+.input-group .form-control,
+.input-group .input-group-addon,
+.input-group .input-group-btn input,
+.input-group .input-group-btn button {
+  min-height: 39px; }
+
 /* Exclude temporary the form element from the font update, keep same style as before
  * - Rational: More testing and various adjustment need to be completed before to apply it
  * - Fieldflow is brought to speed with the visual update with a clearly defined temporary class .gc-font-2019, but the class can be tried out on other forms
@@ -11806,9 +11812,6 @@ main .gc-rms-lngth img {
 .wb-fieldflow-form .input-group .form-control:last-child {
   border-radius: 4px 0 0 4px; }
 
-.wb-fieldflow-form .input-group input[type=submit] {
-  padding-bottom: 7px; }
-
 /*
  *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -13890,6 +13893,8 @@ Miscellaneous Utiliy CSS
  */
   .pagedetails .pull-right {
     float: none !important; }
+  .wb-eqht-grd > [class*="col-"] {
+    width: 100%; }
   /*
   WET-BOEW
   @title: Extra-small view and under (screen only)
