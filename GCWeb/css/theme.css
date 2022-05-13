@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.5.5 - 2022-05-11
+ * v10.5.5 - 2022-05-13
  *
  */
 /*
@@ -12618,9 +12618,9 @@ h1 ~ .provisional.gc-subway {
       line-height: 1.5em; }
 
 /* Well bold provisional */
-.provisional.well.well-bold {
+.well.well-bold {
   font-weight: 700; }
-  .provisional.well.well-bold strong {
+  .well.well-bold strong {
     font-weight: 400; }
 
 /* Feeds plugin GC override */
