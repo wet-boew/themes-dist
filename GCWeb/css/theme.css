@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v10.5.5 - 2022-05-18
+ * v10.5.5 - 2022-05-19
  *
  */
 /*
@@ -4331,7 +4331,7 @@ details {
  WET breadcrumb overwrites
  for: GCWeb v5
  */
-.gcweb-menu ~ #wb-bc ol {
+#wb-bc ol {
   margin-top: 15px;
   padding-left: 0px;
   padding-right: 0px; }
@@ -4705,19 +4705,21 @@ main .pagedetails {
 /*
  * Site menu
  */
-/* Special style for the home page - GCWeb v5 (gcweb-menu) */
+/*
+ * Special style for the home page - GCWeb v5 (gcweb-menu)
+ */
 .home .gcweb-menu {
-  border-top: 1px solid #ddd;
-  color: #284162;
-  margin-left: 0px; }
-
-.home .gcweb-menu button[aria-haspopup=true] {
-  background-color: #fff;
-  border-color: #fff;
   color: #284162; }
-  .home .gcweb-menu button[aria-haspopup=true]:hover {
-    background-color: #444;
-    color: #fff; }
+  .home .gcweb-menu button[aria-haspopup=true] {
+    background-color: #fff;
+    border-color: #fff;
+    color: #284162; }
+    .home .gcweb-menu button[aria-haspopup=true]:hover {
+      background-color: #444;
+      color: #fff; }
+
+.home #wb-bnr + .gcweb-menu {
+  margin-left: 0px; }
 
 /*
  * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -4725,13 +4727,17 @@ main .pagedetails {
  * GCWeb v5 (gcweb-menu)
  *
  */
-.gcweb-menu {
+#wb-bnr + .gcweb-menu {
   /*
 	 * Level 0 - button menu
-	 */
+	*/
   border-top: 3px solid #38414d;
   font-size: 20px;
-  margin-top: 5px;
+  margin-top: 5px; }
+  #wb-bnr + .gcweb-menu .container {
+    padding: 0px; }
+
+.gcweb-menu {
   /*
 	 * Level 1
 	 */
@@ -4743,8 +4749,6 @@ main .pagedetails {
   /* Undo for lower level */
   /* SubSubMenu (MostRequested) for more iteroperability, use CSS class */
   /* Grid of the submenu panel */ }
-  .gcweb-menu .container {
-    padding: 0px; }
   .gcweb-menu button[aria-haspopup=true] {
     background-color: #26374a;
     border: 1px solid #26374a;
@@ -5074,6 +5078,26 @@ main .pagedetails {
       border-right: 1em solid rgba(0, 0, 0, 0);
       left: auto;
       right: -1em; }
+
+/*
+ * Specific classes for authentication section which include Sign-on/Sign-off button and the Contextual Sign-in button.
+ */
+#wb-so .btn {
+  border-radius: 0px;
+  margin-top: 5px; }
+
+#wb-so a.btn:hover {
+  background-color: #444; }
+
+/*
+ * Site header
+ */
+#wb-bnr + hr {
+  border-top: 3px solid #38414d;
+  margin-bottom: 0px;
+  margin-top: 5px; }
+  #wb-bnr + hr + .container {
+    font-size: 20px; }
 
 /*! Components (CSS type only) */
 .fade {
@@ -11331,7 +11355,6 @@ main .gc-rms-lngth img {
  */
 /*
 	Global Provisional styling
-
 	- Provisional  CSSspecific for view port are defined in the "views/[view port]" theme CSS
 */
 .provisional {
@@ -11375,8 +11398,8 @@ main .gc-rms-lngth img {
   .provisional.pnkDy-theme .srchbox button:focus, .provisional.pnkDy-theme .srchbox button:hover {
     background-color: #570030;
     color: #fff; }
-  .provisional.pnkDy-theme .gcweb-menu,
-  .provisional.pnkDy-theme.home .gcweb-menu {
+  .provisional.pnkDy-theme .gcweb-menu, .provisional.pnkDy-theme #wb-bnr + .gcweb-menu,
+  .provisional.pnkDy-theme.home .gcweb-menu, .provisional.pnkDy-theme #wb-bnr + hr {
     border-top-color: #AD005F; }
   .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true] {
     background-color: #ffffff;
@@ -11401,8 +11424,8 @@ main .gc-rms-lngth img {
   .provisional.dark-theme .srchbox button:focus, .provisional.dark-theme .srchbox button:hover {
     background-color: #000;
     color: #fff; }
-  .provisional.dark-theme .gcweb-menu,
-  .provisional.dark-theme.home .gcweb-menu {
+  .provisional.dark-theme .gcweb-menu, .provisional.dark-theme #wb-bnr + .gcweb-menu,
+  .provisional.dark-theme.home .gcweb-menu, .provisional.dark-theme #wb-bnr + hr {
     border-top-color: #000; }
   .provisional.dark-theme.home .gcweb-menu button[aria-haspopup=true] {
     background-color: #fff;
@@ -12706,6 +12729,9 @@ h1 ~ .provisional.gc-subway {
  *
  */
 .home {
+  /*
+	 * GCWeb menu
+	 */
   /* Home page banner
 	 *
 	 * Reference in:
@@ -12731,6 +12757,16 @@ h1 ~ .provisional.gc-subway {
     margin-top: 10px; }
   .home h2 {
     font-size: 1.2em; }
+  .home #wb-bnr + hr {
+    border-top: 1px solid #ddd;
+    color: #284162;
+    margin-left: 0px; }
+  .home #wb-bnr + .gcweb-menu {
+    border-top: 1px solid #ddd;
+    color: #284162;
+    margin-left: 0px; }
+    .home #wb-bnr + .gcweb-menu .container {
+      padding: 0px; }
   .home .header-rwd {
     margin: 2em 0px; }
   .home .home-most-requested li {
@@ -13886,8 +13922,14 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Extra-small view and under (screen only)
  */
-  .gcweb-menu button[aria-haspopup=true] {
+  .gcweb-menu > [role=menu] {
+    margin-left: -15px;
+    margin-right: -15px; }
+  #wb-bnr + .gcweb-menu button[aria-haspopup="true"] {
     margin-left: 15px !important; }
+  #wb-bnr + .gcweb-menu > [role=menu] {
+    margin-left: 0;
+    margin-right: 0; }
   /*
  * Share/feedback-specific overrides (extra-small view and under)
  */
@@ -13985,17 +14027,8 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Small view and under (screen only)
  */
-  #wb-info .ftr-urlt-lnk ul {
-    -webkit-column-count: 2;
-       -moz-column-count: 2;
-            column-count: 2; }
-  #wb-info .ftr-urlt-lnk li {
-    display: block;
-    margin-bottom: .2em; }
-  /*
-  WET-BOEW
-  @title: Small view and under (screen only)
- */
+  #wb-bnr + .gcweb-menu button[aria-haspopup="true"] {
+    margin-left: calc( 50% - 360px); }
   .gcweb-menu {
     /*
 	 * Mobile - first level
@@ -14012,11 +14045,8 @@ Miscellaneous Utiliy CSS
       width: 100%; }
     .gcweb-menu [role=menu] {
       position: static; }
-    .gcweb-menu button[aria-haspopup=true] {
-      margin-left: calc( 50% - 360px);
-      /* 360px is half the container, minus the padding */ }
-      .gcweb-menu button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
-        border-right: #eee solid 1px; }
+    .gcweb-menu button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
+      border-right: #eee solid 1px; }
     .gcweb-menu [role=menuitem] {
       width: auto; }
     .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
@@ -14100,6 +14130,24 @@ Miscellaneous Utiliy CSS
       padding-left: 0px; }
     .gcweb-menu [role=menu] [role=menu] [role=menu] li {
       width: auto; }
+  /*
+ * Specific classes for authentication section which include Sign-on/Sign-off button and the Contextual Sign-in button.
+ */
+  #wb-bnr + hr + .container .col-md-8 .gcweb-menu > [role=menu] {
+    margin-bottom: 50px; }
+  #wb-bnr + hr + .container .col-xs-5 {
+    margin-top: -50px; }
+  /*
+  WET-BOEW
+  @title: Small view and under (screen only)
+ */
+  #wb-info .ftr-urlt-lnk ul {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2; }
+  #wb-info .ftr-urlt-lnk li {
+    display: block;
+    margin-bottom: .2em; }
   /*
  Details Summary Styling (small view and under)
 */
@@ -14501,6 +14549,7 @@ Miscellaneous Utiliy CSS
   @title: Medium view and over (screen only)
  */
   .gcweb-menu {
+    margin-left: -15px;
     /* SubSubMenu (MostRequested) keep it black
 	 *
 	 * Todo: check to use this CSS selector: [data-keep-expanded=md-min][role=menuitem][aria-haspopup=true]
@@ -14511,6 +14560,8 @@ Miscellaneous Utiliy CSS
       font-size: 20px;
       font-weight: 700;
       text-decoration: none; }
+  #wb-bnr + .gcweb-menu {
+    margin-left: 0px; }
   .wb-disable .gcweb-menu [role=menu] > li {
     float: left;
     padding-right: 5px;
