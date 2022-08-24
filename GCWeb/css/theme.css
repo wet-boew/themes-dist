@@ -1999,6 +1999,46 @@ h6, .h6 {
 .lst-spcd-2 ol {
 	margin-top: 20px; }
 
+/* Display lists in columns using Flexbox
+ *	Add this class to a ul or ol to distribute its items in columns horizontally. Handles up to 4 columns.
+ *	It has variants defined for some specific views:
+ *	- _screen-sm-min
+ *	- _screen-md-min
+ *	- _screen-lg-min
+*/
+ul[class*=list-col] {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	    flex-wrap: wrap;
+	list-style: none;
+	padding-left: 0; }
+	ul[class*=list-col] > li {
+		-ms-flex-preferred-size: 100%;
+		    flex-basis: 100%;
+		-webkit-box-flex: 0;
+		    -ms-flex-positive: 0;
+		        flex-grow: 0;
+		-ms-flex-negative: 0;
+		    flex-shrink: 0; }
+
+ul.list-col-xs-1 > li {
+	-ms-flex-preferred-size: 100%;
+	    flex-basis: 100%; }
+
+ul.list-col-xs-2 > li {
+	-ms-flex-preferred-size: 50%;
+	    flex-basis: 50%; }
+
+ul.list-col-xs-3 > li {
+	-ms-flex-preferred-size: 33.33%;
+	    flex-basis: 33.33%; }
+
+ul.list-col-xs-4 > li {
+	-ms-flex-preferred-size: 25%;
+	    flex-basis: 25%; }
+
 /*
 	WET-BOEW
 	@title: Bootstrap overrides for WET-BOEW - Core CSS
@@ -14409,6 +14449,21 @@ Miscellaneous Utiliy CSS
   @title: Small view and over (screen only)
   @desc:  Variable $screen-sm-min >= 768px
  */
+	/*
+  @title: Baseline styles for small breakpoint and over
+*/
+	ul.list-col-sm-1 > li {
+		-ms-flex-preferred-size: 100%;
+		    flex-basis: 100%; }
+	ul.list-col-sm-2 > li {
+		-ms-flex-preferred-size: 50%;
+		    flex-basis: 50%; }
+	ul.list-col-sm-3 > li {
+		-ms-flex-preferred-size: 33.33%;
+		    flex-basis: 33.33%; }
+	ul.list-col-sm-4 > li {
+		-ms-flex-preferred-size: 25%;
+		    flex-basis: 25%; }
 	.wb-filter .input-group {
 		max-width: 80%; }
 	/*
@@ -14534,6 +14589,21 @@ Miscellaneous Utiliy CSS
 			margin-right: .7em; }
 		.provisional.gc-followus h2 {
 			margin-top: 0 !important; }
+	/*
+  @title: Baseline styles for medium breakpoint and over
+*/
+	ul.list-col-md-1 > li {
+		-ms-flex-preferred-size: 100%;
+		    flex-basis: 100%; }
+	ul.list-col-md-2 > li {
+		-ms-flex-preferred-size: 50%;
+		    flex-basis: 50%; }
+	ul.list-col-md-3 > li {
+		-ms-flex-preferred-size: 33.33%;
+		    flex-basis: 33.33%; }
+	ul.list-col-md-4 > li {
+		-ms-flex-preferred-size: 25%;
+		    flex-basis: 25%; }
 	/*
   WET-BOEW
   @title: Search medium view and over (screen only)
@@ -14725,6 +14795,21 @@ Miscellaneous Utiliy CSS
 		width: 25%; }
 		.list-responsive > li:nth-child(4n+4) {
 			clear: right; }
+	/*
+  @title: Baseline styles for large breakpoint and over
+*/
+	ul.list-col-lg-1 > li {
+		-ms-flex-preferred-size: 100%;
+		    flex-basis: 100%; }
+	ul.list-col-lg-2 > li {
+		-ms-flex-preferred-size: 50%;
+		    flex-basis: 50%; }
+	ul.list-col-lg-3 > li {
+		-ms-flex-preferred-size: 33.33%;
+		    flex-basis: 33.33%; }
+	ul.list-col-lg-4 > li {
+		-ms-flex-preferred-size: 25%;
+		    flex-basis: 25%; }
 	.wb-filter .input-group {
 		max-width: 60%; }
 	/*
