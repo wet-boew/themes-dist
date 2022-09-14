@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v11.3.0 - 2022-09-07
+ * v11.3.0 - 2022-09-14
  *
  */
 /*
@@ -12821,7 +12821,7 @@ h1 ~ .provisional.gc-subway {
 		background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov.jpg), url(../assets/bkg-home-yourgov.jpg);
 		background-position: right center;
 		background-repeat: no-repeat;
-		background-size: 35%; }
+		background-size: 38%; }
 
 /* The blog page template was removed on Sep 27, 2016 and introduced in 2014
  *
@@ -15111,7 +15111,13 @@ Miscellaneous Utiliy CSS
 	/*
   Variant - GCWeb custom implementation
   @title: Medium view (screen only)
- */ }
+ */
+	/*
+  WET-BOEW
+  @title: Search medium view and over (screen only)
+ */
+	.home .home-your-gov {
+		background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov-md.jpg), url(../assets/bkg-home-yourgov-md.jpg); } }
 
 /* Large view */
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
