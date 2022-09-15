@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v11.3.0 - 2022-09-14
+ * v11.3.1 - 2022-09-15
  *
  */
 /*
@@ -14547,6 +14547,23 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Bootstrap 4 suplemental style for WET-BOEW - Small view and over (screen only)
  */
+	/* Alignment */
+	.text-sm-left {
+		text-align: left; }
+	.text-sm-right {
+		text-align: right; }
+	/* Flexbox */
+	.d-sm-flex {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex; }
+	.flex-sm-wrap {
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap; }
+	.align-items-sm-center {
+		-webkit-box-align: center;
+		    -ms-flex-align: center;
+		        align-items: center; }
 	/* Margin */
 	.mb-sm-5 {
 		margin-bottom: 50px; }
