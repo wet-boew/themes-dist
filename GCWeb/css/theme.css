@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v11.3.1 - 2022-09-21
+ * v11.3.1 - 2022-09-22
  *
  */
 /*
@@ -12809,6 +12809,8 @@ h1 ~ .provisional.gc-subway {
 		margin-left: 0px; }
 		.home #wb-bnr + .gcweb-menu .container {
 			padding: 0px; }
+	.home #wb-so .btn {
+		margin-top: 3px; }
 	.home .header-rwd {
 		margin: 2em 0px; }
 	.home .home-most-requested li {
