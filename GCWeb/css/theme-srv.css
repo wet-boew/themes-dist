@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v11.4.0 - 2022-09-29
+ * v11.5.0 - 2022-09-29
  *
  */
 /*!
@@ -6369,9 +6369,19 @@ fieldset {
 	top: 0;
 	z-index: 1; }
 
-/* Position relative */
+/* Positioning */
 .position-relative {
 	position: relative !important; }
+
+/* Flexbox */
+.d-flex {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important; }
+
+.align-self-center {
+	-ms-flex-item-align: center !important;
+	    align-self: center !important; }
 
 /* Vertical alignment */
 .align-top {
@@ -16465,9 +16475,19 @@ ol-geolocate button {
 	top: 0;
 	z-index: 1; }
 
-/* Position relative */
+/* Positioning */
 .position-relative {
 	position: relative !important; }
+
+/* Flexbox */
+.d-flex {
+	display: -webkit-box !important;
+	display: -ms-flexbox !important;
+	display: flex !important; }
+
+.align-self-center {
+	-ms-flex-item-align: center !important;
+	    align-self: center !important; }
 
 /* Vertical alignment */
 .align-top {
