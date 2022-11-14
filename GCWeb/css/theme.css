@@ -4671,22 +4671,6 @@ h2.hme-banner-bg {
 					margin-left: 0;
 					margin-right: 10px; }
 
-/* START: To be removed once added to WET-BOEW */
-.d-flex {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex; }
-
-.align-items-center {
-	-webkit-box-align: center;
-	    -ms-flex-align: center;
-	        align-items: center; }
-
-.align-self-end {
-	-ms-flex-item-align: end;
-	    align-self: flex-end; }
-
-/* END */
 #wb-lng {
 	padding-top: 10px; }
 	#wb-lng li {
