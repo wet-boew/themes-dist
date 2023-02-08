@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v12.6.1 - 2023-02-06
+ * v12.6.1 - 2023-02-08
  *
  */
 /*
@@ -12611,141 +12611,116 @@ aside.features {
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
- *
- *	Provisional GC Subway map menu
 */
-.provisional {
-	/*** GC Subway mobile first styles ***/
-	/* Double H1 */ }
-	.provisional.gc-subway {
-		border-radius: 0px 6px 6px 0px;
-		border-right: 4px solid #26374a;
-		border-top: 4px solid #26374a;
-		margin-top: 38px; }
-		.provisional.gc-subway ul,
-		.provisional.gc-subway dl {
-			clear: both;
-			list-style: none;
-			padding-left: .57em;
-			padding-top: 10px;
+.gc-subway.provisional:not(.gc-subway-index) {
+	border: 4px solid #26374a;
+	border-radius: 6px;
+	margin: 2em 0 0 .5em;
+	padding-bottom: 1em;
+	position: relative; }
+	.gc-subway.provisional:not(.gc-subway-index) ul {
+		clear: both;
+		list-style: none;
+		margin-bottom: 0;
+		margin-left: -.685em;
+		padding-left: .5em; }
+		.gc-subway.provisional:not(.gc-subway-index) ul li {
+			border-left: 4px solid #26374a;
+			line-height: 1.25em;
+			padding-bottom: 1.25em;
+			padding-left: 1em;
 			position: relative; }
-			.provisional.gc-subway ul dt,
-			.provisional.gc-subway dl dt {
-				border-left: 4px solid #26374a;
-				padding: 0px 20px 3px 1em;
-				font-weight: normal; }
-				.provisional.gc-subway ul dt a::before,
-				.provisional.gc-subway dl dt a::before {
-					background-color: #fff;
+			.gc-subway.provisional:not(.gc-subway-index) ul li:last-child {
+				border-left-color: transparent;
+				padding-bottom: 0; }
+			.gc-subway.provisional:not(.gc-subway-index) ul li a {
+				display: inline-block; }
+				.gc-subway.provisional:not(.gc-subway-index) ul li a::before {
+					background-color: #26374a;
 					border: 3px solid #26374a;
 					border-radius: 50%;
+					-webkit-box-shadow: 0 0 0 10px #fff inset;
+					        box-shadow: 0 0 0 10px #fff inset;
 					content: "";
 					height: 1.2em;
-					left: 0em;
+					left: -.7em;
 					position: absolute;
-					-webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
-					transition: width .2s, height .2s, left .2s, margin-top .2s;
-					width: 1.3em; }
-				.provisional.gc-subway ul dt a.active,
-				.provisional.gc-subway dl dt a.active {
-					color: #333333;
-					text-decoration: none; }
-					.provisional.gc-subway ul dt a.active::before,
-					.provisional.gc-subway dl dt a.active::before {
-						background-color: #26374a; }
-					.provisional.gc-subway ul dt a.active:hover, .provisional.gc-subway ul dt a.active:focus,
-					.provisional.gc-subway dl dt a.active:hover,
-					.provisional.gc-subway dl dt a.active:focus {
-						color: #0535d2;
-						text-decoration: underline; }
-				.provisional.gc-subway ul dt a:not(.active):hover::before, .provisional.gc-subway ul dt a:not(.active):focus::before,
-				.provisional.gc-subway dl dt a:not(.active):hover::before,
-				.provisional.gc-subway dl dt a:not(.active):focus::before {
-					height: 1.5em;
-					left: -.1em;
-					margin-top: -.1em;
-					width: 1.5em; }
-				.provisional.gc-subway ul dt:last-of-type,
-				.provisional.gc-subway dl dt:last-of-type {
-					border-left: 5px solid transparent;
-					padding-bottom: 0; }
-			.provisional.gc-subway ul dd,
-			.provisional.gc-subway dl dd {
-				border-left: 4px solid #26374a;
-				line-height: inherit;
-				margin-bottom: 0px;
-				margin-top: -3px;
-				padding: 0px 20px 20px 1em; }
-				.provisional.gc-subway ul dd:last-child,
-				.provisional.gc-subway dl dd:last-child {
-					border-left: 5px solid transparent;
-					padding-bottom: 0; }
-			.provisional.gc-subway ul li,
-			.provisional.gc-subway dl li {
-				border-left: 4px solid #26374a;
-				padding: 0px 20px 30px 1em; }
-				.provisional.gc-subway ul li a::before,
-				.provisional.gc-subway dl li a::before {
-					background-color: #fff;
-					border: 3px solid #26374a;
-					border-radius: 50%;
-					content: "";
-					height: 1.2em;
-					left: 0.05em;
-					position: absolute;
-					-webkit-transition: width .2s, height .2s, left .2s, margin-top .2s;
-					transition: width .2s, height .2s, left .2s, margin-top .2s;
+					top: 0;
+					-webkit-transition: -webkit-box-shadow .25s ease;
+					transition: -webkit-box-shadow .25s ease;
+					transition: box-shadow .25s ease;
+					transition: box-shadow .25s ease, -webkit-box-shadow .25s ease;
 					width: 1.2em; }
-				.provisional.gc-subway ul li a.active,
-				.provisional.gc-subway dl li a.active {
-					color: #333333;
+				.gc-subway.provisional:not(.gc-subway-index) ul li a.active {
+					color: #333;
+					cursor: default;
 					text-decoration: none; }
-					.provisional.gc-subway ul li a.active::before,
-					.provisional.gc-subway dl li a.active::before {
-						background-color: #26374a; }
-					.provisional.gc-subway ul li a.active:hover, .provisional.gc-subway ul li a.active:focus,
-					.provisional.gc-subway dl li a.active:hover,
-					.provisional.gc-subway dl li a.active:focus {
-						color: #0535d2;
-						text-decoration: underline; }
-				.provisional.gc-subway ul li a:not(.active):hover::before, .provisional.gc-subway ul li a:not(.active):focus::before,
-				.provisional.gc-subway dl li a:not(.active):hover::before,
-				.provisional.gc-subway dl li a:not(.active):focus::before {
-					height: 1.5em;
-					left: -.1em;
-					margin-top: -.1em;
-					width: 1.5em; }
-				.provisional.gc-subway ul li::first-line,
-				.provisional.gc-subway dl li::first-line {
-					line-height: 1; }
-				.provisional.gc-subway ul li:last-child,
-				.provisional.gc-subway dl li:last-child {
-					border-bottom: 4px solid #26374a;
-					border-bottom-left-radius: 6px;
-					border-left: 4px solid #26374a; }
-				.provisional.gc-subway ul li ul,
-				.provisional.gc-subway dl li ul {
-					margin-top: 20px;
-					padding-left: .55em; }
-					.provisional.gc-subway ul li ul li:last-child,
-					.provisional.gc-subway dl li ul li:last-child {
-						border-bottom-width: 0px;
-						padding-bottom: 0px; }
-		.provisional.gc-subway h1 {
-			float: left; }
-	.provisional.gc-subway h1,
-	.provisional.gc-subway-section .gc-subway-h1 {
-		background-color: #fff;
-		border-bottom-width: 0px;
-		color: #555;
-		font-size: 1.3em;
-		margin-right: 20px;
-		margin-top: -19px;
-		padding: 0px 20px 10px 0px; }
+					.gc-subway.provisional:not(.gc-subway-index) ul li a.active::before {
+						-webkit-box-shadow: 0 0 0 10px #26374a inset;
+						        box-shadow: 0 0 0 10px #26374a inset; }
+					.gc-subway.provisional:not(.gc-subway-index) ul li a.active:hover, .gc-subway.provisional:not(.gc-subway-index) ul li a.active:focus {
+						color: #333;
+						text-decoration: none; }
+				.gc-subway.provisional:not(.gc-subway-index) ul li a:not(.active):hover::before, .gc-subway.provisional:not(.gc-subway-index) ul li a:not(.active):focus::before {
+					-webkit-box-shadow: 0 0 0 4px #fff inset;
+					        box-shadow: 0 0 0 4px #fff inset; }
+			.gc-subway.provisional:not(.gc-subway-index) ul li ul {
+				margin: 1em 0 0; }
+				.gc-subway.provisional:not(.gc-subway-index) ul li ul li:last-child {
+					padding-bottom: 0; }
+				.gc-subway.provisional:not(.gc-subway-index) ul li ul.noline li {
+					border-left-color: transparent; }
+					.gc-subway.provisional:not(.gc-subway-index) ul li ul.noline li::before {
+						display: none; }
+					.gc-subway.provisional:not(.gc-subway-index) ul li ul.noline li a.active::after {
+						background-color: #26374a;
+						content: "";
+						display: block;
+						height: 4px;
+						left: -1.75em;
+						position: absolute;
+						top: .5em;
+						width: 1.125em; }
 
-h1 ~ .provisional.gc-subway {
-	border-right: none;
-	border-top: none; }
+.gc-subway.provisional.gc-subway-index h2 {
+	position: static; }
+
+.gc-subway.provisional.gc-subway-index dl {
+	margin-left: .5em; }
+	.gc-subway.provisional.gc-subway-index dl dt, .gc-subway.provisional.gc-subway-index dl dd {
+		border-left: 4px solid #26374a;
+		font-weight: normal;
+		margin: 0;
+		padding-left: 1em;
+		position: relative; }
+		.gc-subway.provisional.gc-subway-index dl dt:last-of-type, .gc-subway.provisional.gc-subway-index dl dd:last-of-type {
+			border-left-color: transparent;
+			padding-bottom: 0; }
+	.gc-subway.provisional.gc-subway-index dl dt a::before {
+		background-color: #26374a;
+		border: 3px solid #26374a;
+		border-radius: 50%;
+		-webkit-box-shadow: 0 0 0 10px #fff inset;
+		        box-shadow: 0 0 0 10px #fff inset;
+		content: "";
+		height: 1.2em;
+		left: -.7em;
+		position: absolute;
+		top: 0;
+		-webkit-transition: -webkit-box-shadow .25s ease;
+		transition: -webkit-box-shadow .25s ease;
+		transition: box-shadow .25s ease;
+		transition: box-shadow .25s ease, -webkit-box-shadow .25s ease;
+		width: 1.2em; }
+	.gc-subway.provisional.gc-subway-index dl dd {
+		padding-bottom: 1.25em;
+		padding-top: .25em; }
+
+.gc-subway-section hgroup p {
+	display: none; }
+
+.gc-subway-support {
+	margin-top: 3em; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
@@ -13371,11 +13346,11 @@ table.dataTable.nws-tbl .label.label-success {
 .margin-top-medium {
 	margin-top: .75em; }
 
-.clearfix:before, .clearfix:after {
+.clearfix:before, .gc-subway-landmark-end:before, .clearfix:after, .gc-subway-landmark-end:after {
 	display: table;
 	content: " "; }
 
-.clearfix:after {
+.clearfix:after, .gc-subway-landmark-end:after {
 	clear: both; }
 
 .center-block {
@@ -14376,12 +14351,19 @@ Miscellaneous Utiliy CSS
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
- * Small view and under (screen only) - Variable $screen-sm-max <= 991 px
- *
- *	Provisional GC Subway map menu
+ * Small view and under (screen only) - Variable $screen-sm-max <= 991px
 */
-	.provisional.gc-subway dt, .provisional.gc-subway li {
-		max-width: initial; }
+	.gc-subway.provisional:not(.gc-subway-index) h1 {
+		background-color: #fff;
+		border-bottom: none;
+		color: #555;
+		float: left;
+		font-size: 1.3em;
+		margin-left: -.5em;
+		margin-top: -.75em;
+		padding: 0px 20px 10px 0px; }
+	.gc-subway.provisional:not(.gc-subway-index) ul {
+		padding-top: .5em; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -14848,44 +14830,56 @@ Miscellaneous Utiliy CSS
  Social Media Icons Medium View and over
 */
 	/*
- *
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  *
- *
- *	Provisional GC Subway map menu
+ * Medium view and over (screen only) - Variable $screen-md-min >= 992px
 */
-	.provisional {
-		/*** GC subway desktop styles ***/
-		/* Double H1 */ }
-		.provisional.gc-subway {
-			border-right: 0px;
-			border-top: 0px;
-			display: none;
-			margin-top: 25px;
-			padding-left: 15px; }
-			.provisional.gc-subway.no-blink {
-				display: block; }
-			.provisional.gc-subway .gc-subway-menu-nav {
-				float: right;
-				width: 33.33%; }
-			.provisional.gc-subway ul li:last-child {
-				border-bottom: 0px;
-				border-left: 4px solid transparent; }
-		.provisional.gc-subway-section {
-			padding-right: 15px;
-			width: 66.66%; }
-			.provisional.gc-subway-section h1, .provisional.gc-subway-section .gc-subway-h1 {
-				margin-top: 0px; }
-			.provisional.gc-subway-section .gc-subway-h1 {
-				font-family: Lato, sans-serif;
-				font-weight: inherit;
-				margin-bottom: 0px;
-				margin-right: 0px;
-				padding-bottom: 0px !important;
-				padding-left: 0px; }
-	.wb-disable .provisional.gc-subway {
-		display: block; }
+	/*** GC subway desktop styles ***/
+	.gc-subway.provisional:not(.gc-subway-index) {
+		border-color: transparent;
+		display: none;
+		float: right;
+		width: calc(33.33% - .5em); }
+		.gc-subway.provisional:not(.gc-subway-index).no-blink {
+			display: block; }
+		.wb-disable .gc-subway.provisional:not(.gc-subway-index) {
+			display: block; }
+		.gc-subway.provisional:not(.gc-subway-index) hgroup {
+			left: -.5em;
+			position: absolute;
+			top: -2em; }
+			.gc-subway.provisional:not(.gc-subway-index) hgroup h1 {
+				clip: rect(1px, 1px, 1px, 1px);
+				height: 1px;
+				margin: 0;
+				overflow: hidden;
+				position: absolute;
+				width: 1px; }
+		.gc-subway.provisional:not(.gc-subway-index) ul li:last-child:has(ul) {
+			border-left: 4px solid #26374a;
+			padding-bottom: 1.25em; }
+			.gc-subway.provisional:not(.gc-subway-index) ul li:last-child:has(ul)::after {
+				background-color: #26374a;
+				bottom: 0;
+				content: "";
+				height: 4px;
+				left: -.45em;
+				position: absolute;
+				width: .75em; }
+	.gc-subway-section {
+		float: left;
+		padding-right: 30px;
+		width: 66.66%; }
+		.gc-subway-section hgroup:first-of-type h1 {
+			margin-top: 0; }
+		.gc-subway-section hgroup:first-of-type p {
+			display: block;
+			font-size: 1.25em;
+			margin-bottom: 0; }
+	.gc-subway-support {
+		float: right;
+		width: 33.33%; }
 	/*
   WET-BOEW
   @title: Medium view and over (screen only)
