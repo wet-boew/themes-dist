@@ -12719,7 +12719,8 @@ aside.features {
 .gc-subway-section hgroup p {
 	display: none; }
 
-.gc-subway-support {
+.gc-subway-pagination {
+	margin-bottom: 3em;
 	margin-top: 3em; }
 
 /*
@@ -14360,10 +14361,11 @@ Miscellaneous Utiliy CSS
 		float: left;
 		font-size: 1.3em;
 		margin-left: -.5em;
+		margin-right: .5em;
 		margin-top: -.75em;
 		padding: 0px 20px 10px 0px; }
 	.gc-subway.provisional:not(.gc-subway-index) ul {
-		padding-top: .5em; }
+		padding-top: .25em; }
 	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -14838,9 +14840,7 @@ Miscellaneous Utiliy CSS
 	/*** GC subway desktop styles ***/
 	.gc-subway.provisional:not(.gc-subway-index) {
 		border-color: transparent;
-		display: none;
-		float: right;
-		width: calc(33.33% - .5em); }
+		display: none; }
 		.gc-subway.provisional:not(.gc-subway-index).no-blink {
 			display: block; }
 		.wb-disable .gc-subway.provisional:not(.gc-subway-index) {
@@ -14867,6 +14867,9 @@ Miscellaneous Utiliy CSS
 				left: -.45em;
 				position: absolute;
 				width: .75em; }
+	.gc-subway-wrapper {
+		float: right;
+		width: calc(33.33% - .5em - 5px); }
 	.gc-subway-section {
 		float: left;
 		padding-right: 30px;
@@ -14877,9 +14880,6 @@ Miscellaneous Utiliy CSS
 			display: block;
 			font-size: 1.25em;
 			margin-bottom: 0; }
-	.gc-subway-support {
-		float: right;
-		width: 33.33%; }
 	/*
   WET-BOEW
   @title: Medium view and over (screen only)
