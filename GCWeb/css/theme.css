@@ -4385,14 +4385,15 @@ details {
 	padding-right: 0px; }
 
 #wb-bc li:before {
-	position: relative;
-	top: -2px; }
+	content: "\e080";
+	padding: 0 4px 0 0;
+	position: relative; }
 
 #wb-bc li:first-child a {
 	padding-left: 0; }
 
 #wb-bc a {
-	padding: 5px 10px; }
+	padding: 5px 0; }
 
 /*
   WET-BOEW
