@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.60 - 2023-03-28
+ * v4.0.61 - 2023-03-29
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -9003,13 +9003,15 @@ var componentName = "wb-filter",
 			itemsObserver,
 			inptId, totalEntries,
 			secSelector,
-			uiTemplate, uiInpt, uiInfo;
+			uiTemplate, uiInpt, uiInfo,
+			uiNbItems, uiTotal, uiInfoID;
 
 		if ( elm ) {
 			$elm = $( elm );
 			elmTagName = elm.nodeName;
+			uiInfoID = elm.id + "-info";
 
-			if ( [ "DIV", "SECTION", "ARTICLE" ].indexOf( elm.nodeName ) >= 0 ) {
+			if ( [ "DIV", "SECTION", "ARTICLE" ].indexOf( elmTagName ) >= 0 ) {
 				setDefault = defaults.grp;
 				prependUI = true;
 			} else if ( elmTagName === "TABLE" ) {
@@ -9044,13 +9046,9 @@ var componentName = "wb-filter",
 			if ( !elm.id ) {
 				elm.id = wb.getId();
 			}
-			inptId = elm.id + "-inpt";
 
-			secSelector = ( settings.section || "" ) + " ";
-			totalEntries = $elm.find( secSelector + settings.selector ).length;
-			uiTemplate = settings.uiTemplate ? document.querySelector( settings.uiTemplate ) : "";
-
-			if ( uiTemplate ) {
+			if ( settings.uiTemplate ) {
+				uiTemplate = document.querySelector( settings.uiTemplate );
 				uiInpt = uiTemplate.querySelector( "input[type=search]" );
 
 				if ( uiInpt ) {
@@ -9061,23 +9059,25 @@ var componentName = "wb-filter",
 					uiInpt.setAttribute( "aria-controls", elm.id );
 
 					if ( uiInfo ) {
-						elm.infoText = uiInfo.textContent;
-						uiInfo.id = uiInfo.id || elm.id + "-info";
+						uiInfoID = uiInfo.id || uiInfoID;
+						uiInfo.id = uiInfoID;
 						uiInfo.setAttribute( "role", "status" );
 					}
 				} else {
 					console.error( componentName + ": " + "an <input type=\"search\"> is required in your UI template." );
 				}
+
+				if ( settings.source ) {
+					console.warn( componentName + ": " + "the 'source' option is not compatible with the 'uiTemplate' option. If both options are defined, only 'uiTemplate' will be registered." );
+				}
 			} else {
-				elm.infoText = i18nText.fltr_info;
+				inptId = elm.id + "-inpt";
 				filterUI = $( "<div class=\"input-group\">" +
 					"<label for=\"" + inptId + "\" class=\"input-group-addon\"><span class=\"glyphicon glyphicon-filter\" aria-hidden=\"true\"></span> " + i18nText.filter_label + "</label>" +
 					"<input id=\"" + inptId + "\" class=\"form-control " + inputClass + "\" data-" + dtNameFltrArea + "=\"" + elm.id + "\" aria-controls=\"" + elm.id + "\" type=\"search\">" +
 					"</div>" +
-					"<p role=\"status\" id=\"" + elm.id + "-info\">" + i18nText.fltr_info + "</p>" );
-			}
+					"<p role=\"status\" id=\"" + uiInfoID + "\">" + i18nText.fltr_info + "</p>" );
 
-			if ( !settings.uiTemplate ) {
 				if ( settings.source ) {
 					$( settings.source ).prepend( filterUI );
 				} else if ( prependUI ) {
@@ -9087,20 +9087,24 @@ var componentName = "wb-filter",
 				}
 			}
 
-			document.querySelector( "#" + elm.id + "-info [data-nbitem]" ).textContent = totalEntries;
-			document.querySelector( "#" + elm.id + "-info [data-total]" ).textContent = totalEntries;
+			secSelector = ( settings.section || "" ) + " ";
+			totalEntries = $elm.find( secSelector + settings.selector ).length;
+			uiNbItems = document.querySelector( "#" + uiInfoID + " [data-nbitem]" );
+			uiTotal = document.querySelector( "#" + uiInfoID + " [data-total]" );
 
-			itemsObserver = new MutationObserver( function() {
-				let itemsVisible = $elm.find( secSelector + notFilterClassSel + settings.selector + visibleSelector ).length,
-					infoElm = $( "#" + elm.id + "-info" );
+			if ( uiNbItems ) {
+				uiNbItems.textContent = totalEntries;
 
-				if ( infoElm ) {
-					document.querySelector( "#" + elm.id + "-info [data-nbitem]" ).textContent = itemsVisible;
-					document.querySelector( "#" + elm.id + "-info [data-total]" ).textContent = totalEntries;
-				}
-			} );
+				itemsObserver = new MutationObserver( function() {
+					uiNbItems.textContent = $elm.find( secSelector + notFilterClassSel + settings.selector + visibleSelector ).length;
+				} );
 
-			itemsObserver.observe( elm, { attributes: true, subtree: true } );
+				itemsObserver.observe( elm, { attributes: true, subtree: true } );
+			}
+
+			if ( uiTotal ) {
+				uiTotal.textContent = totalEntries;
+			}
 
 			wb.ready( $elm, componentName );
 		}
@@ -16562,6 +16566,49 @@ var componentName = "wb-twitter",
 			protocol = wb.pageUrlParts.protocol;
 
 		if ( eventTarget ) {
+			const twitterLink = eventTarget.firstElementChild;
+
+			// Ignore IE11
+			// Note: Twitter's widget no longer supports it...
+			if ( wb.ie11 ) {
+				wb.ready( $( eventTarget ), componentName );
+				return;
+			}
+
+			// If the plugin container's first child element is a Twitter link...
+			if ( twitterLink && twitterLink.matches( "a.twitter-timeline" ) ) {
+				const loadingDiv = document.createElement( "div" );
+				let observer;
+
+				// Add a loading icon below the link
+				loadingDiv.className = "twitter-timeline-loading";
+				twitterLink.after( loadingDiv );
+
+				// Remove the loading icon after the timeline widget appears
+				// Note: Twitter's widget script removes "a.twitter-timeline" upon filling-in the timeline's content... at which point the loading icon is no longer useful
+				observer = new MutationObserver( function( mutations ) {
+
+					// Check for DOM mutations
+					mutations.forEach( function( mutation ) {
+
+						// Deal only with removed HTML nodes
+						mutation.removedNodes.forEach( function( removedNode ) {
+
+							// If the removed node was a Twitter link, remove its adjacent loading icon and stop observing
+							if ( removedNode === twitterLink && mutation.nextSibling === loadingDiv ) {
+								loadingDiv.remove();
+								observer.disconnect();
+							}
+						} );
+					} );
+				} );
+
+				// Observe changes to the plugin container's direct child elements
+				observer.observe( eventTarget, {
+					childList: true
+				} );
+			}
+
 			Modernizr.load( {
 				load: ( protocol.indexOf( "http" ) === -1 ? "http:" : protocol ) + "//platform.twitter.com/widgets.js",
 				complete: function() {
