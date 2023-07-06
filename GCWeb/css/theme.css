@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.3.1 - 2023-06-30
+ * v13.3.1 - 2023-07-06
  *
  */
 /*
@@ -5228,7 +5228,7 @@ main .pagedetails {
 	border-radius: 0px;
 	margin-top: 5px; }
 
-#wb-so a.btn:hover {
+#wb-so a.btn-primary:hover {
 	background-color: #444; }
 
 /*
