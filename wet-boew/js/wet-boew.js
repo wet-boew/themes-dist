@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.63.1 - 2023-07-06
+ * v4.0.64 - 2023-07-07
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -8984,10 +8984,10 @@ var componentName = "wb-filter",
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
 	filterClass = "wb-fltr-out",
-	notFilterClassSel = ":not(." + filterClass + ")",
+	tagFilterClass = "wb-tgfltr-out",
+	notFilterClassSel = ":not(." + filterClass + "):not(." + tagFilterClass + ")",
 	inputClass = "wb-fltr-inpt",
 	dtNameFltrArea = "wbfltrid",
-	visibleSelector = ":visible",
 	selectorInput = "." + inputClass,
 	defaults = {
 		std: {
@@ -9002,7 +9002,7 @@ var componentName = "wb-filter",
 			section: ">tbody"
 		},
 		tblgrp: {
-			selector: "th:not([scope])",
+			selector: " th:not([scope])" + notFilterClassSel,
 			hdnparentuntil: "tbody",
 			section: ">tbody"
 		}
@@ -9110,7 +9110,7 @@ var componentName = "wb-filter",
 				uiNbItems.textContent = totalEntries;
 
 				itemsObserver = new MutationObserver( function() {
-					uiNbItems.textContent = $elm.find( secSelector + notFilterClassSel + settings.selector + visibleSelector ).length;
+					uiNbItems.textContent = $elm.find( secSelector + settings.selector + notFilterClassSel ).length;
 				} );
 
 				itemsObserver.observe( elm, { attributes: true, subtree: true } );
@@ -9217,11 +9217,13 @@ var componentName = "wb-filter",
 			fCallBack = filterCallback;
 		}
 		fCallBack.apply( this, arguments );
+
+		$elm.trigger( "wb-contentupdated" );
 	},
 	filterCallback = function( $field, $elm, settings ) {
-		var $sections =	$elm.find( settings.section + visibleSelector ),
+		var $sections =	$elm.find( settings.section ),
 			sectionsLength = $sections.length,
-			fndSelector = notFilterClassSel + settings.selector + visibleSelector,
+			fndSelector = notFilterClassSel + settings.selector,
 			s, $section;
 
 		for ( s = 0; s < sectionsLength; s += 1 ) {
@@ -13043,6 +13045,275 @@ wb.add( selector );
 } )( jQuery, window, document, wb );
 
 /**
+ * @title WET-BOEW Tag filter
+ * @overview Filter based content tagging
+ * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ * @author @duboisp
+ */
+( function( $, window, document, wb ) {
+"use strict";
+
+let i18n, i18nText;
+
+const componentName = "wb-paginate",
+	selector = ".provisional." + componentName,
+	initEvent = "wb-init" + selector,
+	$document = wb.doc,
+	filterClass = "wb-fltr-out",
+	pgFilterOutClass = "wb-pgfltr-out",
+	tagFilterClass = "wb-tgfltr-out",
+	pagerClass = "wb-paginate-pager",
+	pageData = "data-pagination-idx",
+	notFilterClassSel = ":not(." + filterClass + "):not(." + tagFilterClass + ")",
+	defaults = {
+		lst: {
+			selector: "li"
+		},
+		grp: {
+			selector: "> *"
+		},
+		tbl: {
+			selector: "tr",
+			section: ":scope > tbody"
+		},
+		itemsPerPage: 10
+	},
+
+	init = function( event ) {
+		const elm = wb.init( event, componentName, selector );
+
+		if ( elm ) {
+			var $elm = $( elm ),
+				paginationElm,
+				elmTagName = elm.nodeName,
+				setDefault,
+				uiTargetElm;
+
+			if ( !i18nText ) {
+				i18n = wb.i18n;
+				i18nText = {
+					prv: i18n( "prv" ),
+					nxt: i18n( "nxt" )
+				};
+			}
+
+			// Setup configurations
+			switch ( elmTagName ) {
+			case "UL":
+				setDefault = defaults.lst;
+				break;
+			case "TABLE":
+				setDefault = defaults.tbl;
+				break;
+			default:
+				setDefault = defaults.grp;
+				break;
+			}
+
+			elm.id = elm.id || wb.getId();
+			elm.pgSettings = $.extend( true, {}, setDefault, window[ componentName ], wb.getData( $elm, componentName ) );
+			elm.pgSettings.currPage = 1;
+			elm.pgSettings.itemsPerPage = elm.pgSettings.itemsPerPage || defaults.itemsPerPage;
+			elm.pgSettings.items = elm.querySelectorAll( ( elm.pgSettings.section || ":scope" ) + " " + elm.pgSettings.selector + notFilterClassSel );
+
+			// Setup pagination container
+			paginationElm = document.createElement( "div" );
+			paginationElm.id = componentName + "-" + elm.id;
+			paginationElm.classList.add( pagerClass );
+
+			// Add pagination container
+			if ( elm.pgSettings.uiTarget ) {
+				uiTargetElm = document.querySelector( elm.pgSettings.uiTarget );
+				uiTargetElm.appendChild( paginationElm );
+			} else if ( elm.pgSettings.section ) {
+				if ( elmTagName === "UL" || elmTagName === "TABLE" ) {
+					elm.after( paginationElm );
+				} else {
+					elm.querySelector( elm.pgSettings.section ).after( paginationElm );
+				}
+			} else {
+				elm.after( paginationElm );
+			}
+
+			// Show/hide items and generate pagination
+			updateItems( elm );
+			generateUI( elm );
+
+			wb.ready( $( elm ), componentName );
+		}
+	},
+
+	// Set or reset pagination UI
+	generateUI = function( elm ) {
+		var paginationUI = "",
+			currPage = elm.pgSettings.currPage,
+			pagesCount = elm.pgSettings.pagesCount,
+			paginationElm = document.querySelector( "#" + componentName + "-" + elm.id ),
+			i = 1;
+
+		// Make sure the defined current page is not bigger than the total pages
+		if ( currPage > pagesCount ) {
+			currPage = pagesCount;
+		}
+
+		// Only add pagination if there is more than one page
+		if ( pagesCount > 1 ) {
+			paginationUI = "<ol class=\"pagination\">";
+
+			// Add Previous page button
+			paginationUI += "<li" + ( i === currPage ? " class=\"disabled\"" : "" ) + "><a class=\"paginate-prev\" aria-controls=\"" + elm.id + "\" href=\"#" + elm.id + "\">" + i18nText.prv + "</a></li>";
+
+			// Add pages buttons
+			for ( i; i <= pagesCount; i++ ) {
+				paginationUI += "<li class=\"" + returnItemClass( currPage, pagesCount, i ) + "\"" + ( i === currPage ? " aria-current=\"page\"" : "" ) + "><a href=\"#" + elm.id + "\" " + pageData + "=\"" + i + "\" aria-controls=\"" + elm.id + "\"><span class=\"wb-inv\">Page </span>" + i + "</a></li>";
+			}
+
+			// Add Next page button
+			paginationUI += "<li" + ( i === currPage ? " class=\"disabled\"" : "" ) + "><a class=\"paginate-next\" aria-controls=\"" + elm.id + "\" href=\"#" + elm.id + "\">" + i18nText.nxt + "</a></li>";
+
+			paginationUI += "</ol>";
+		}
+
+		// Insert HTML
+		paginationElm.innerHTML = paginationUI;
+	},
+
+	// Show/hide items to reflect current page
+	updateItems = function( elm ) {
+		let currPage = elm.pgSettings.currPage,
+			items = elm.pgSettings.items,
+			itemsPerPage = elm.pgSettings.itemsPerPage;
+
+		items.forEach( function( item, index ) {
+			if ( ( index < ( itemsPerPage * currPage ) ) && ( index >= ( itemsPerPage * currPage ) - itemsPerPage ) ) {
+				item.classList.remove( pgFilterOutClass );
+			} else {
+				item.classList.add( pgFilterOutClass );
+			}
+		} );
+
+		elm.pgSettings.pagesCount = Math.ceil( items.length / itemsPerPage );
+	},
+
+	// Update pagination to reflect current page
+	goToPage = function( elm ) {
+		let paginationElm = document.querySelector( "#" + componentName + "-" + elm.id ),
+			pageItems = paginationElm.querySelectorAll( "li" ),
+			itemClass,
+			pageLink,
+			currPage = elm.pgSettings.currPage,
+			pagesCount = elm.pgSettings.pagesCount;
+
+		pageItems.forEach( function( pageItem, i ) {
+			pageLink = pageItem.querySelector( "a" );
+
+			if ( pageLink.classList.contains( "paginate-prev" ) ) {
+				if ( currPage > 1 ) {
+					pageItem.classList.remove( "disabled" );
+				} else {
+					pageItem.classList.add( "disabled" );
+				}
+			} else if ( pageLink.classList.contains( "paginate-next" ) ) {
+				if ( currPage < pagesCount ) {
+					pageItem.classList.remove( "disabled" );
+				} else {
+					pageItem.classList.add( "disabled" );
+				}
+			} else {
+				pageItem.className = "";
+				pageItem.removeAttribute( "aria-current" );
+
+				itemClass = returnItemClass( currPage, pagesCount, i );
+
+				if ( i === currPage ) {
+					pageItem.setAttribute( "aria-current", "page" );
+				}
+
+				pageItem.className = itemClass;
+			}
+		} );
+	},
+
+	// Return the list item classname
+	returnItemClass = function( currPage, pagesCount, i ) {
+		let itemClass = "";
+
+		if ( currPage > 1 && currPage < pagesCount ) {
+			if ( Math.abs( currPage - i ) > 1 ) {
+				itemClass += "hidden-xs hidden-sm";
+
+				if ( Math.abs( currPage - i ) > 2 ) {
+					itemClass += " hidden-md";
+				}
+			}
+		} else {
+			if ( Math.abs( currPage - i ) > 2 ) {
+				itemClass += "hidden-xs hidden-sm";
+
+				if ( Math.abs( currPage - i ) > 4 ) {
+					itemClass += " hidden-md";
+				}
+			}
+		}
+
+		if ( pagesCount > 10 ) {
+			if ( currPage <= 5 ) {
+				if ( i > 10 ) {
+					itemClass += " hidden";
+				}
+			} else if ( ( currPage > 5 ) && ( currPage < pagesCount - 5 ) ) {
+				if ( ( i < currPage - 4 ) || ( i > currPage + 5 ) ) {
+					itemClass += " hidden";
+				}
+			} else {
+				if ( i <= pagesCount - 10 ) {
+					itemClass += " hidden";
+				}
+			}
+		}
+
+		if ( i === currPage ) {
+			itemClass += " active";
+		}
+
+		return itemClass;
+	};
+
+// When a filter is updated
+$document.on( "click", "." + pagerClass + " a", function()  {
+	let elm = document.querySelector( "#" + this.getAttribute( "aria-controls" ) ),
+		pageDest = ( ( this.getAttribute( pageData ) ) * 1 ) || elm.pgSettings.currPage;
+
+	if ( this.classList.contains( "paginate-next" ) ) {
+		pageDest++;
+	} else if ( this.classList.contains( "paginate-prev" ) ) {
+		pageDest--;
+	}
+
+	if ( pageDest !== elm.pgSettings.currPage ) {
+		elm.pgSettings.currPage = pageDest;
+
+		updateItems( elm );
+		goToPage( elm );
+	}
+} );
+
+// Resets items and pagination
+$document.on( "wb-contentupdated", selector, function() {
+	this.pgSettings.currPage = 1;
+	this.pgSettings.items = this.pgSettings.items = this.querySelectorAll( ( this.pgSettings.section || ":scope" ) + " " + this.pgSettings.selector + notFilterClassSel );
+
+	updateItems( this );
+	generateUI( this );
+} );
+
+$document.on( "timerpoke.wb " + initEvent, selector, init );
+
+wb.add( selector );
+
+} )( jQuery, window, document, wb );
+
+/**
  * @title WET-BOEW Prettify Plugin
  * @overview Wrapper for Google Code Prettify library: https://github.com/google/code-prettify
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
@@ -15697,31 +15968,34 @@ wb.add( selector );
 ( function( $, window, document, wb ) {
 "use strict";
 
+let wait;
+
 const componentName = "wb-tagfilter",
 	selector = ".provisional." + componentName,
 	selectorCtrl = "." + componentName + "-ctrl",
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
-	filterOutClass = "wb-tgfltr-out",
+	filterOutClass = "wb-fltr-out",
+	tgFilterOutClass = "wb-tgfltr-out",
+	itemsWrapperClass = "wb-tagfilter-items",
+	noResultWrapperClass = "wb-tagfilter-noresult",
 
 	init = function( event ) {
 		const elm = wb.init( event, componentName, selector );
 
 		if ( elm ) {
+			const filterControls = elm.querySelectorAll( selectorCtrl ),
+				taggedItems = elm.querySelectorAll( "[data-wb-tags]" ),
+				taggedItemsWrapper = elm.querySelector( "." + itemsWrapperClass ),
+				noResultWrapper = elm.querySelector( "." + noResultWrapperClass );
+
 			elm.items = [];
 			elm.filters = {};
 			elm.activeFilters = [];
 
-			// Get all form inputs (radio buttons, checkboxes and select) within filters form
-			const filterControls = document.querySelectorAll( "#" + elm.id + " .wb-tagfilter-ctrl" ),
-				taggedItems = document.querySelectorAll( "#" + elm.id + " [data-wb-tags]" ),
-				taggedItemsWrapper = document.querySelector( "#" + elm.id + " .wb-tagfilter-items" );
-
 			if ( taggedItemsWrapper ) {
 				taggedItemsWrapper.id = taggedItemsWrapper.id || wb.getId(); // Ensure the element has an ID
 				taggedItemsWrapper.setAttribute( "aria-live", "polite" );
-			} else {
-				console.warn( componentName + ": You have to identify the wrapper of your tagged elements using the class 'wb-tagfilter-items'." );
 			}
 
 			// Handle filters
@@ -15731,15 +16005,16 @@ const componentName = "wb-tagfilter",
 				filterControls.forEach( function( item ) {
 					item.setAttribute( "aria-controls", taggedItemsWrapper.id );
 				} );
-			} else {
-				console.warn( componentName + ": You have no defined filter." );
 			}
 
 			// Handle tagged items
 			if ( taggedItems.length ) {
 				elm.items = buildTaggedItemsArr( taggedItems );
-			} else {
-				console.warn( componentName + ": You have no tagged items. Please add tags using the 'data-wb-tags' attribute." );
+			}
+
+			// Add accessibility to no result element
+			if ( noResultWrapper ) {
+				noResultWrapper.setAttribute( "role", "status" );
 			}
 
 			// Update list of visible items (in case of predefined filters)
@@ -15886,12 +16161,12 @@ const componentName = "wb-tagfilter",
 				matched = item.isMatched;
 
 			if ( matched ) {
-				if ( domItem.classList.contains( filterOutClass ) ) {
-					domItem.classList.remove( filterOutClass );
+				if ( domItem.classList.contains( tgFilterOutClass ) ) {
+					domItem.classList.remove( tgFilterOutClass );
 				}
 			} else {
-				if ( !domItem.classList.contains( filterOutClass ) ) {
-					domItem.classList.add( filterOutClass );
+				if ( !domItem.classList.contains( tgFilterOutClass ) ) {
+					domItem.classList.add( tgFilterOutClass );
 				}
 			}
 		} );
@@ -15904,6 +16179,8 @@ const componentName = "wb-tagfilter",
 		refineFilters( instance );
 		matchItemsToFilters( instance );
 		updateDOMItems( instance );
+
+		$( instance ).trigger( componentName + "-updated" );
 	};
 
 // When a filter is updated
@@ -15912,8 +16189,8 @@ $document.on( "change", selectorCtrl, function( event )  {
 		filterType = control.type,
 		filterName = control.name,
 		filterValue = control.value,
-		$elm = control.closest( selector ),
-		filterGroup = $elm.filters[ filterName ];
+		elm = control.closest( selector ),
+		filterGroup = elm.filters[ filterName ];
 
 	switch ( filterType ) {
 	case "checkbox":
@@ -15945,7 +16222,40 @@ $document.on( "change", selectorCtrl, function( event )  {
 	}
 
 	// Update list of visible items
-	update( $elm );
+	update( elm );
+} );
+
+// Reinitialize tagfilter if content on the page has been updated
+$document.on( "wb-contentupdated", selector, function()  {
+	let that = this;
+
+	if ( wait ) {
+		clearTimeout( wait );
+	}
+
+	wait = setTimeout( function() {
+		that.classList.remove( "wb-init", componentName + "-inited" );
+		$( that ).trigger( "wb-init." + componentName );
+	}, 100 );
+} );
+
+// Show no result message if on Firefox -- Remove once Firefox supports ":has()"
+$document.on( componentName + "-updated", selector, function() {
+	let supportsHas = window.getComputedStyle( document.documentElement ).getPropertyValue( "--supports-has" ); // Get "--supports-has" CSS property
+
+	if ( supportsHas === "false" ) {
+		let noResultItem = this.querySelector( "." + noResultWrapperClass );
+
+		if ( noResultItem ) {
+			let visibleItems = this.querySelectorAll( "." + itemsWrapperClass + " " + "[data-wb-tags]:not(." + tgFilterOutClass + ", ." + filterOutClass + ")" );
+
+			if ( visibleItems.length < 1 ) {
+				noResultItem.style.display = "block";
+			} else {
+				noResultItem.style.display = "none";
+			}
+		}
+	}
 } );
 
 $document.on( "timerpoke.wb " + initEvent, selector, init );
@@ -16698,6 +17008,7 @@ var componentName = "wb-data-json",
 	contentUpdatedEvent = "wb-contentupdated",
 	dataQueue = componentName + "-queue",
 	$document = wb.doc,
+	isExtensionRegistered,
 	s,
 
 	/**
@@ -16711,6 +17022,8 @@ var componentName = "wb-data-json",
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
 		var elm = wb.init( event, componentName, selector ),
+			jsSettings = window[ componentName ] || { },
+			prop,
 			$elm;
 
 		if ( elm ) {
@@ -16739,6 +17052,25 @@ var componentName = "wb-data-json",
 						url: url
 					} );
 				}
+			}
+
+			// Extend but not overwrite the functionTest and the functionForOperand if some was added
+			if ( !isExtensionRegistered ) {
+				if ( jsSettings.functionForTest ) {
+					for ( prop in jsSettings.functionForTest ) {
+						if ( !functionForTest[ prop ] ) {
+							functionForTest[ prop ] = jsSettings.functionForTest[ prop ];
+						}
+					}
+				}
+				if ( jsSettings.functionForOperand ) {
+					for ( prop in jsSettings.functionForOperand ) {
+						if ( !functionForOperand[ prop ] ) {
+							functionForOperand[ prop ] = jsSettings.functionForOperand[ prop ];
+						}
+					}
+				}
+				isExtensionRegistered = true;
 			}
 
 			// Identify that initialization has completed
@@ -16852,21 +17184,7 @@ var componentName = "wb-data-json",
 	// Apply the template as per the configuration
 	applyTemplate = function( elm, settings, content ) {
 
-		var mapping = settings.mapping || [ {} ],
-			mapping_len,
-			filterTrueness = settings.filter || [],
-			filterFaslseness = settings.filternot || [],
-			queryAll = settings.queryall,
-			i, i_len, i_cache,
-			j, j_cache, j_cache_attr,
-			basePntr,
-			clone, selElements,
-			cached_node,
-			cached_textContent,
-			cached_value,
-			selectorToClone = settings.tobeclone,
-			elmClass = elm.className,
-			elmAppendTo = elm,
+		var elmClass = elm.className,
 			dataTable,
 			dataTableAddRow,
 			template = settings.source ? document.querySelector( settings.source ) : elm.querySelector( "template" );
@@ -16893,9 +17211,51 @@ var componentName = "wb-data-json",
 
 			dataTable = $( elm ).dataTable( { "retrieve": true } ).api();
 			dataTableAddRow = dataTable.row.add;
-			selectorToClone = "tr"; // Only table row can be added
+			settings.tobeclone = "tr"; // Only table row can be added
 		}
 
+		if ( !template ) {
+			return;
+		}
+
+		// Needed when executing sub-template that wasn't polyfill, like in IE11
+		if ( !template.content ) {
+			wb.tmplPolyfill( template );
+		}
+
+		if ( !settings.streamline ) {
+			dataIterator( elm, content, settings );
+		} else {
+			processMapping( elm, elm, content, settings );
+		}
+
+		// Refresh the dataTable display
+		if ( dataTableAddRow ) {
+			dataTable.draw();
+		}
+	},
+
+	// Iterate over the dataset
+	dataIterator = function( elm, content, mappingConfig, useClone ) {
+
+		var i, i_len, i_cache,
+			elmAppendTo = elm,
+			clone, template,
+			dataTable, dataTableAddRow;
+
+		if ( mappingConfig.appendto ) {
+			elmAppendTo = $( mappingConfig.appendto ).get( 0 );
+		}
+
+		// Connection with data table plugin
+		if ( elm.tagName === "TABLE" && elm.className.indexOf( "wb-tables" ) !== -1 ) {
+			dataTable = $( elm ).dataTable( { "retrieve": true } ).api();
+			dataTableAddRow = dataTable.row.add;
+			mappingConfig.tobeclone = "tr";
+		}
+
+
+		// if content is object, transform into array @id and @value
 		if ( !$.isArray( content ) ) {
 			if ( typeof content !== "object" ) {
 				content = [ content ];
@@ -16917,105 +17277,574 @@ var componentName = "wb-data-json",
 		}
 		i_len = content.length;
 
+		// Get the template to be iterated.
+		if ( !useClone && mappingConfig.source ) {
+			template = document.querySelector( mappingConfig.source );
+		} else if ( !useClone && mappingConfig.template ) {
+			template = elm.querySelector( mappingConfig.template );
+		} else if ( !useClone ) {
+			template = elm.querySelectorAll( ":scope > template" );
+			if ( template.length === 1 || template[ 0 ].attributes.length === 0 ) {
+
+				// Only when there is one choice or take the first one only if only there is no attribute set on the element
+				template = template[ 0 ];
+			} else {
+
+				// let the mapping instructions to define which template to use
+				template = false;
+			}
+		}
+
+		// Iterate the data array
+		for ( i = 0; i < i_len; i += 1 ) {
+			i_cache = content[ i ];
+
+
+			// If the data are filtered. This is deprecated and are only for backward compatible purpose
+			if ( !filterPassJSON( i_cache, mappingConfig.filter, mappingConfig.filternot ) ) {
+				continue;
+			}
+
+			// Get the template (if applicable)
+			if ( !clone && useClone ) {
+				clone = useClone;
+			}
+
+			// Create a clone if one unique template is found
+			if ( !useClone && template && !mappingConfig.tobeclone ) {
+				clone = template.content.cloneNode( true );
+			} else if ( !useClone && template ) {
+				clone = template.content.querySelector( mappingConfig.tobeclone ).cloneNode( true );
+			}
+
+			// process the mapping, return value is the new clone object if applicable
+			var tmpClone;
+			tmpClone = processMapping( elm, clone, i_cache, mappingConfig );
+
+			// Remove the template flag, to ensure we do reuse it for the subsequent iteration
+			if ( tmpClone ) {
+				delete mappingConfig.template;
+				clone = tmpClone;
+			}
+
+			// Add the clone object
+			if ( dataTableAddRow ) {
+				dataTableAddRow( $( clone ) ); // If wb-tables, use its API to add rows
+			} else if ( !useClone && template ) {
+				elmAppendTo.appendChild( clone );
+			}
+		}
+
+		// Refresh the dataTable display (if applicable)
+		if ( dataTableAddRow ) {
+			dataTable.draw();
+		}
+
+	},
+
+	// Check if the mapping are met or not
+	canProcessMapping = function( content, mappingConfig ) {
+
+		var rawValue, value,
+			testableData,
+			operand = mappingConfig.operand || "softEq",
+			operandOutcome;
+
+		if ( !mappingConfig.test ) {
+			return;
+		}
+
+		// Get the value to be tested
+		try {
+			rawValue = getRawValue( content, mappingConfig.assess || mappingConfig.value );
+			value = getValue( rawValue );
+		} catch ( ex ) {
+
+			// If this is an error, the path probably don't exist
+			rawValue = undefined;
+			value = undefined;
+		}
+
+		// Get the function to use
+		if ( !functionForTest[ mappingConfig.test ] ) {
+			console.error( "The test function '" + mappingConfig.test + "' don't exist. Default to false test result" );
+			console.error( mappingConfig );
+			return false;
+		}
+		testableData = functionForTest[ mappingConfig.test ].call( mappingConfig, value, rawValue );
+
+		// Run the operand
+		if ( !functionForOperand[ operand ] ) {
+			console.error( "The operand '" + operand + "' don't exist" );
+			console.error( mappingConfig );
+			operand = "softEq";
+		}
+		operandOutcome = functionForOperand[ operand ].call( mappingConfig, testableData, mappingConfig.expect );
+
+		// If not true, go next
+		if ( !operandOutcome ) {
+			return false;
+		}
+
+		// Run mapping if satisfied
+		return true;
+	},
+
+	// Special mapping typed function
+	functionForTypedMapping = {
+
+		"rdf:Alt": function( elm, clone, content, mappingConfig ) {
+
+			var mapping = mappingConfig.mapping,
+				i, i_cache,
+				i_len = mapping.length,
+				value = content;
+
+			for ( i = 0; i < i_len || i === 0; i += 1 ) {
+				i_cache = mapping[ i ];
+
+				if ( canProcessMapping( content, i_cache ) ) {
+
+					// Clone the object to avoid conflict when it is reused for other data
+					i_cache = $.extend( true, {}, i_cache );
+
+					// Remove the test, because it was checked
+					delete i_cache.test;
+
+					// Navigate the content if specified
+					if ( i_cache.value ) {
+						value = getValue( content, i_cache.value );
+					}
+
+					// Process the mapping
+					processMapping( elm, clone, value, i_cache );
+
+					// End
+					return;
+				}
+			}
+		}
+	},
+
+	// Function called for testing the mapping condition, which can be extend via the js configuration
+	functionForTest = {
+
+		"fn:isArray": function( value ) {
+			return $.isArray( value );
+		},
+
+		"fn:isLiteral": function( value ) {
+
+			// Check if the value are set under the JSON-LD parameter @value
+			if ( value && value[ "@value" ] ) {
+				value = value[ "@value" ];
+			}
+
+			if ( value && typeof value !== "object" ) {
+				return true;
+			}
+
+			return false;
+		},
+
+		"fn:getType": function( value, rawValue ) {
+
+			var tp = value[ "@type" ] || rawValue[ "@type" ];
+
+			if ( tp === "@json" ) {
+				return "rdf:JSON";
+			} else if ( $.isArray( tp ) && tp.indexOf( "@json" ) !== -1 ) {
+				tp[ tp.indexOf( "@json" ) ] = "rdf:JSON";
+			}
+
+			if ( tp ) {
+				return tp;
+			} else {
+				return typeof value;
+			}
+		},
+
+		"fn:getValue": function( value ) {
+
+			return value;
+
+		},
+
+		"fn:guessType": function( value, rawValue ) {
+
+			var guessType;
+
+			if ( !value ) {
+				guessType = "undefined";
+			} else if ( value[ "@type" ] ) {
+				guessType = value[ "@type" ];
+			} else if ( rawValue[ "@type" ] ) {
+				guessType = rawValue[ "@type" ];
+			} else if ( value[ "@value" ] ) {
+
+				// Only if we are in JSON ld mode
+				// Check if the value are set under the JSON-LD parameter @value
+				value = value[ "@value" ];
+			}
+
+			// Edge case to convert the @json data type into its RDF form
+			if ( guessType && guessType !== "undefined" ) {
+				if ( guessType === "@json" ) {
+					guessType = "rdf:JSON";
+				} else if ( $.isArray( guessType ) && guessType.indexOf( "@json" ) !== -1 ) {
+					guessType[ guessType.indexOf( "@json" ) ] = "rdf:JSON";
+				}
+			}
+
+			if ( !guessType ) {
+				if ( typeof value === "string" && value.match( /^([a-z][a-z0-9+\-.]*):/i ) ) {
+					guessType = [ "xsd:anyURI", "rdfs:Literal" ];
+				} else if ( typeof value === "string" ) {
+					guessType = [ "xsd:string", "rdfs:Literal" ];
+				} else if ( typeof value === "boolean" ) {
+					guessType = [ "xsd:boolean", "rdfs:Literal" ];
+				} else if ( typeof value === "number" ) {
+					guessType = [ "xsd:double", "rdfs:Literal" ];
+				} else if ( typeof value === "undefined" ) {
+					guessType = "undefined";
+				} else if ( $.isArray( value ) ) {
+					guessType = "rdfs:Container";
+				} else {
+
+					// The type is a generic Object
+					guessType = "rdfs:Resource";
+				}
+			}
+
+			return guessType;
+		}
+
+	},
+
+	// Operand used to evaluate the testable output from functionForTest to determine if the mapping condition is met or not, which can be extend via the js configuration
+	functionForOperand = {
+
+		"softEq": function( value, expect ) {
+			var i, i_len;
+
+			if ( $.isArray( value ) && !$.isArray( expect ) && value.indexOf( expect ) !== -1 ) {
+				return true;
+			} else if ( $.isArray( value ) &&  $.isArray( expect ) ) {
+				i_len = expect.length;
+				for ( i = 0; i !== i_len; i++ ) {
+					if ( value.indexOf( expect[ i ] ) ) {
+						return true;
+					}
+				}
+			} else if ( expect && value === expect ) {
+				return true;
+			} else if ( !expect && value ) {
+				return true;
+			}
+
+			return false;
+
+		},
+
+		"eq": function( value, expect ) {
+
+			if ( _equalsJSON( value, expect ) ) {
+				return true;
+			}
+
+			return false;
+		},
+
+		"neq": function( value, expect ) {
+			if ( !_equalsJSON( value, expect ) ) {
+				return true;
+			}
+
+			return false;
+		},
+
+		"in": function( value, expect ) {
+
+			var i;
+
+			if ( !expect ) {
+				console.error( "Expected value is missing. Defaulting to false." );
+				console.error( this );
+				return false;
+			}
+
+			if ( $.isArray( value ) && !$.isArray( expect ) && value.indexOf( expect ) !== -1 ) {
+				return true;
+			} else if ( $.isArray( value ) &&  $.isArray( expect ) ) {
+				for ( i = 0; i !== expect.length; i++ ) {
+					if ( value.indexOf( expect[ i ] ) ) {
+						return true;
+					}
+				}
+			} else if ( !$.isArray( value ) &&  $.isArray( expect ) && expect.indexOf( value ) !== -1  ) {
+				return true;
+			} else if ( value === expect ) {
+				return true;
+			}
+
+			return false;
+		},
+
+		"nin": function( value, expect ) {
+			return !functionForOperand.in.call( this, value, expect );
+		}
+	},
+
+	// Mapping the data into a template or into a node
+	processMapping = function( elm, clone, content, mappingConfig ) {
+
+		var j, j_cache,
+			cached_node, cached_value,
+			queryAll = mappingConfig.queryall,
+			selElements,
+			mapping = mappingConfig.mapping,
+			mapping_len,
+			upstreamClone, template;
+
+
+		// Is this mapping a special mapping type?
+		if ( mappingConfig[ "@type" ] ) {
+			functionForTypedMapping[ mappingConfig[ "@type" ] ].call( content, elm, clone, content, mappingConfig );
+			return;
+		}
+
+		// Can we proceed?
+		if ( mappingConfig.test && !canProcessMapping( content, mappingConfig ) ) {
+			return;
+		}
+
+		// Check if there is some mapping configuration
+		if ( !mapping && !queryAll && !mappingConfig.template ) {
+			return;
+		}
+
+		// Clone mappingConfig to ensure it don't interfere with subsequent data iteration
+		mappingConfig = $.extend( true, {}, mappingConfig );
+
+		// If there is no clone, let use the element (parent)
+		clone = clone || elm;
+
+		// If there is a "template" property, get the inner template
+		if ( mappingConfig.template ) {
+			template = clone.querySelector( mappingConfig.template );
+
+			upstreamClone = clone; // Keep reference of the top clone
+
+			clone = template.content.cloneNode( true );
+
+			// Ensure we don't recreated it if during a subsequent iteration
+			delete mappingConfig.template;
+		}
+
+
+		// Is content an array? then iterate the content
+		if ( $.isArray( content ) ) {
+
+
+			dataIterator( clone, content, mappingConfig, clone );
+
+			// Case of where a template is associated with this mapping action
+			if ( template ) {
+				if ( template.parentNode ) {
+
+					if ( !mappingConfig.append ) {
+						template.parentNode.insertBefore( clone, template );
+					} else {
+						template.parentNode.appendChild( clone );
+					}
+				} else {
+					upstreamClone.appendChild( clone );
+				}
+
+				return elm;
+
+			}
+			return;
+		}
+
+		// Prepare the mapping object to be iterated
+		if ( !mapping ) {
+			mapping = [ {} ];
+		}
 		if ( !$.isArray( mapping ) ) {
 			mapping = [ mapping ];
 		}
 		mapping_len = mapping.length;
 
-		if ( !template ) {
-			return;
+		// Ensure the mapping is an array of Mapping Object
+		for ( j = 0; j < mapping_len || j === 0; j += 1 ) {
+			if ( typeof mapping[ j ] === "string" ) {
+				mapping[ j ] = {
+					value: mapping[ j ]
+				};
+			}
 		}
 
-		// Needed when executing sub-template that wasn't polyfill, like in IE11
-		if ( !template.content ) {
-			wb.tmplPolyfill( template );
-		}
+		if ( queryAll ) {
+			selElements = clone.querySelectorAll( queryAll );
 
-		if ( settings.appendto ) {
-			elmAppendTo = $( settings.appendto ).get( 0 );
-		}
-
-		for ( i = 0; i < i_len; i += 1 ) {
-			i_cache = content[ i ];
-
-			if ( filterPassJSON( i_cache, filterTrueness, filterFaslseness ) ) {
-
-				basePntr = "/" + i;
-
-				if ( !selectorToClone ) {
-					clone = template.content.cloneNode( true );
-				} else {
-					clone = template.content.querySelector( selectorToClone ).cloneNode( true );
-				}
-
-				if ( queryAll ) {
-					selElements = clone.querySelectorAll( queryAll );
-				}
-
-				for ( j = 0; j < mapping_len || j === 0; j += 1 ) {
-					j_cache = mapping[ j ];
-
-					// Get the node used to insert content
-					if ( selElements ) {
-						cached_node = selElements[ j ];
-					} else if ( j_cache.selector ) {
-						cached_node = clone.querySelector( j_cache.selector );
-					} else {
-						cached_node = clone;
-					}
-					j_cache_attr = j_cache.attr;
-					if ( j_cache_attr ) {
-						if ( !cached_node.hasAttribute( j_cache_attr ) ) {
-							cached_node.setAttribute( j_cache_attr, "" );
-						}
-						cached_node = cached_node.getAttributeNode( j_cache_attr );
-					}
-
-					// Get the value
-					if ( typeof i_cache === "string" ) {
-						cached_value = i_cache;
-					} else if ( typeof j_cache === "string" ) {
-						cached_value = jsonpointer.get( content, basePntr + j_cache );
-					} else {
-						cached_value = jsonpointer.get( content, basePntr + j_cache.value );
-					}
-
-					// Go to the next mapping if the value of JSON node don't exist to ensure we keep the default text set in the template, but move ahead if empty or null
-					if ( cached_value === undefined ) {
-						continue;
-					}
-
-					// Placeholder text replacement if any
-					if ( j_cache.placeholder ) {
-						cached_textContent = cached_node.textContent || "";
-						cached_value = cached_textContent.replace( j_cache.placeholder, cached_value );
-					}
-
-					// Set the value to the node
-					if ( j_cache.isHTML ) {
-						cached_node.innerHTML = cached_value;
-					} else if ( $.isArray( cached_value ) || cached_value && !( cached_value instanceof String ) && typeof cached_value === "object" ) {
-						applyTemplate( cached_node, j_cache, cached_value );
-					} else {
-						cached_node.textContent = cached_value;
-					}
-				}
-
-				if ( dataTableAddRow ) {
-
-					// If wb-tables, use its API to add rows
-					dataTableAddRow( $( clone ) );
-				} else {
-					elmAppendTo.appendChild( clone );
+			// Replicate this setting the in the mapping
+			for ( j = 0; j < selElements.length || j === 0; j += 1 ) {
+				if ( !mapping[ j ].selector && queryAll.indexOf( "nth-child" ) === -1 ) {
+					mapping[ j ].selector = queryAll + ":nth-child(" + ( j + 1 ) + ")";
+				} else if ( !mapping[ j ].selector ) {
+					mapping[ j ].selector = queryAll;
 				}
 			}
 		}
 
-		// Refresh the dataTable display
-		if ( dataTableAddRow ) {
-			dataTable.draw();
+
+		//
+		// Process the mapping
+		//
+		for ( j = 0; j < mapping_len || j === 0; j += 1 ) {
+			j_cache = mapping[ j ];
+
+			// Get the element to be updated
+			if ( j_cache.selector ) {
+				cached_node = clone.querySelector( j_cache.selector );
+			} else {
+				cached_node = clone;
+			}
+
+			// Get the value to be set
+			try {
+				cached_value = getRawValue( content, j_cache );
+			} catch ( ex ) {
+
+				// The path don't exist, let continue to the next mapping item
+				console.info( "JSON selector path for mapping don't exist in content" );
+				console.info( j_cache );
+				console.info( content );
+				continue;
+			}
+
+			// Go to the next mapping if the value of JSON node don't exist to ensure we keep the default text set in the template, but move ahead if empty or null
+			if ( typeof cached_value === "undefined" ) {
+				continue;
+			}
+
+			// Action the value
+			if ( $.isArray( cached_value ) && ( j_cache.mapping || j_cache.queryall ) ) {
+
+				// Deep dive into the content if a mapping exist
+				dataIterator( cached_node, cached_value, j_cache );
+
+			} else if ( j_cache.mapping || j_cache.queryall ) {
+				try {
+
+					// Map the inner mapping
+					processMapping( template || elm, cached_node, cached_value, j_cache );
+				} catch ( ex ) {
+
+					if ( ex === "cached_node: null" && typeof cached_value === "object" ) {
+
+						// If it fail, let iterate the cached_value object
+						dataIterator( cached_node, cached_value, j_cache );
+					} else {
+						throw ex;
+					}
+				}
+			} else if ( !cached_node && typeof cached_value === "object" ) {
+				throw "cached_node: null";
+			} else {
+
+				cached_value = getValue( cached_value );
+
+				// Serialize the value if it is an JS object
+				if ( typeof cached_value === "object" ) {
+					cached_value = JSON.stringify( cached_value );
+				}
+
+				// Map the value in the element
+				mapValue( cached_node, cached_value, j_cache );
+			}
+
+		}
+
+		// Add the template, if applicable
+		if ( template ) {
+			if ( template.parentNode ) {
+
+				if ( !mappingConfig.append ) {
+					template.parentNode.insertBefore( clone, template );
+				} else {
+					template.parentNode.appendChild( clone );
+				}
+			} else {
+				upstreamClone.appendChild( clone );
+			}
+
+			return elm;
+		}
+
+	},
+
+	// Extract the value of an JS object
+	getValue = function( source, pointer ) {
+
+		var value = getRawValue( source, pointer );
+
+		// for JSON-LD @value support
+		if ( typeof value === "object" && value[ "@value" ] ) {
+			value = value[ "@value" ];
+		}
+
+		return value;
+	},
+
+	// Extract the value without considering it possible JSON-LD value
+	getRawValue = function( source, pointer ) {
+
+		var value;
+		pointer = pointer || false; // Ensure pointer is defined
+
+		// Get the value if source is string or pointer is pointing to root
+		if ( typeof source === "string" || pointer === "/" || pointer === "/@value" || pointer.value === "/" || pointer.value === "/@value" ) {
+			value = source;
+		} else if ( typeof pointer === "string" ) {
+			value = jsonpointer.get( source, pointer );
+		} else if ( pointer.value ) {
+			value = jsonpointer.get( source, pointer.value );
+		} else {
+			value = source;
+		}
+
+		return value;
+	},
+
+	// Map a value into an HTML element or attribute
+	mapValue = function( element, value, mappingConfig ) {
+
+		var attributeName, placeholderText;
+
+		attributeName = mappingConfig.attr;
+		if ( attributeName ) {
+			if ( !element.hasAttribute( attributeName ) ) {
+				element.setAttribute( attributeName, "" );
+			}
+			element = element.getAttributeNode( attributeName );
+		}
+
+		// Placeholder text replacement if any
+		if ( mappingConfig.placeholder ) {
+			placeholderText = element.textContent || "";
+			value = placeholderText.replace( mappingConfig.placeholder, value );
+		}
+
+		// Set the value to the node
+		if ( mappingConfig.isHTML ) {
+			element.innerHTML = value;
+		} else {
+			element.textContent = value;
 		}
 	},
+
 
 	// Filtering a JSON
 	// Return true if trueness && falseness
@@ -17023,8 +17852,8 @@ var componentName = "wb-data-json",
 	// trueness and falseness is an array of { "path": "", "value": "" } object
 	filterPassJSON = function( obj, trueness, falseness ) {
 		var i, i_cache,
-			trueness_len = trueness.length,
-			falseness_len = falseness.length,
+			trueness_len = trueness ? trueness.length : 0,
+			falseness_len = falseness ? falseness.length : 0,
 			compareResult = false,
 			isEqual;
 
@@ -17074,7 +17903,7 @@ var componentName = "wb-data-json",
 			}
 			var i, l;
 			if ( $.isArray( a ) ) {
-				if (  $.isArray( b ) || a.length !== b.length ) {
+				if (  !$.isArray( b ) || a.length !== b.length ) {
 					return false;
 				}
 				for ( i = 0, l = a.length; i < l; i++ ) {
@@ -17089,7 +17918,7 @@ var componentName = "wb-data-json",
 			if ( _objectKeys( a ).length !== bLength ) {
 				return false;
 			}
-			for ( i = 0; i < bLength; i++ ) {
+			for ( i in a ) {
 				if ( !_equalsJSON( a[ i ], b[ i ] ) ) {
 					return false;
 				}
