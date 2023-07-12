@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.4.0 - 2023-07-07
+ * v13.4.1 - 2023-07-12
  *
  */
 /*
@@ -10590,6 +10590,9 @@ Carousel
 
 .wb-tagfilter-items:has(+ .wb-tagfilter-noresult):not(:has([data-wb-tags]:not(.wb-tgfltr-out):not(.wb-fltr-out))) {
 	display: none; }
+
+html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfilter-noresult {
+	display: none !important; }
 
 /*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
