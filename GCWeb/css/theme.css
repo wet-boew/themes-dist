@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.4.1 - 2023-07-18
+ * v13.5.0 - 2023-07-20
  *
  */
 /*
@@ -2087,6 +2087,12 @@ a {
 		padding: 10px 10px 10px 0; }
 	.dl-horizontal dt + dd {
 		padding-bottom: 0; } }
+
+.dl-inline dt, .dl-inline dd {
+	display: inline; }
+
+.dl-inline dd + dt {
+	margin-left: 15px; }
 
 /*
  *  Abbreviations with title attributes
