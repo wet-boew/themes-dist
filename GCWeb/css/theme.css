@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.5.0 - 2023-08-10
+ * v13.5.0 - 2023-08-14
  *
  */
 /*
@@ -11274,6 +11274,28 @@ ol-geolocate button {
 .feeds-cont button[data-youtube] {
 	border: none;
 	padding: 0; }
+
+.wb-paginate-pager {
+	text-align: center; }
+	.wb-paginate-pager .paginate-prev::before,
+	.wb-paginate-pager .paginate-next::after {
+		font-family: "Glyphicons Halflings";
+		font-weight: 400;
+		line-height: 1em;
+		position: relative;
+		top: .1em; }
+	.wb-paginate-pager .paginate-prev::before {
+		content: "\e091";
+		margin-right: .5em; }
+	.wb-paginate-pager .paginate-next::after {
+		content: "\e092";
+		margin-left: .5em; }
+	.wb-paginate-pager li.active:nth-last-child(2) a {
+		border-bottom-right-radius: 4px;
+		border-top-right-radius: 4px; }
+
+html:not(.wb-disable) .wb-pgfltr-out {
+	display: none !important; }
 
 /*
  * Components styles
