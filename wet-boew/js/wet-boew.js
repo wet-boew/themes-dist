@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.65 - 2023-08-15
+ * v4.0.66.1 - 2023-08-16
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -4442,9 +4442,10 @@ $document.on( "ajax-fetch.wb", function( event ) {
 				fetchData.pointer = $( "<div id='" + wb.getId() + "' data-type='" + responseType + "'></div>" )
 					.append( responseType === "string" ? response : "" );
 
-				response = $( response );
+				response = !xhr.responseJSON ? $( response ) : xhr.responseText;
 
 				fetchData.response = response;
+				fetchData.hasSelector = !!selector;
 				fetchData.status = status;
 				fetchData.xhr = xhr;
 
@@ -7114,11 +7115,21 @@ var componentName = "wb-data-ajax",
 		var $elm = $( elm ),
 			ajxInfo = getAjxInfo( elm ),
 			ajaxType = ajxInfo.type,
-			content, jQueryCaching;
+			content, jQueryCaching,
+			settings = wb.getData( $( elm ), shortName ) || {},
+			doEncode = settings.encode,
+			hasSelector = fetchObj.hasSelector;
 
 		// ajax-fetched event
 		content = fetchObj.response;
 		if ( content &&  content.length > 0 ) {
+
+			// If the fetched content need to be encoded
+			if ( doEncode && hasSelector ) {
+				content = content.html().replaceAll( "<", "&lt;" );
+			} else if ( doEncode && !hasSelector ) {
+				content = fetchObj.xhr.responseText.replaceAll( "<", "&lt;" );
+			}
 
 			//Prevents the force caching of nested resources
 			jQueryCaching = jQuery.ajaxSettings.cache;
@@ -7933,24 +7944,29 @@ var componentName = "wb-eqht",
 				currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
 				currentChildHeight = currentChild.offsetHeight;
 
-				if ( currentChildTop !== rowTop ) {
+				// if the current element is visible...
+				// note: hidden elements need to be excluded since they have a different top offset than visible ones
+				if ( currentChildHeight ) {
 
-					// as soon as we find an element not on this row (not the same top offset)
-					// we need to equalize each items in that row to align the next row.
-					equalize( row, tallestHeight );
+					// as soon as we find an element not on this row (not the same top offset)...
+					if ( currentChildTop !== rowTop ) {
 
-					// since the elements of the previous row was equalized
-					// we need to get the new top offset of the current element
-					currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
+						// we need to equalize each item in that row to align the next row
+						equalize( row, tallestHeight );
 
-					// reset the row, rowTop and tallestHeight
-					row.length = 0;
-					rowTop = currentChildTop;
-					tallestHeight = currentChildHeight;
+						// since the elements of the previous row was equalized
+						// we need to get the new top offset of the current element
+						currentChildTop = currentChild.getBoundingClientRect().top + window.pageYOffset;
+
+						// reset the row, rowTop and tallestHeight
+						row.length = 0;
+						rowTop = currentChildTop;
+						tallestHeight = currentChildHeight;
+					}
+
+					tallestHeight = Math.max( currentChildHeight, tallestHeight );
+					row.push( $children.eq( j ) );
 				}
-
-				tallestHeight = Math.max( currentChildHeight, tallestHeight );
-				row.push( $children.eq( j ) );
 			}
 
 			// equalize the last row
@@ -16245,7 +16261,7 @@ $document.on( "wb-contentupdated", selector, function( event, data )  {
 	if ( supportsHas === "false" ) {
 		let noResultItem = this.querySelector( "." + noResultWrapperClass );
 
-		if ( noResultItem ) {
+		if ( noResultItem && this.items.length > 0 ) {
 			let visibleItems = this.querySelectorAll( "." + itemsWrapperClass + " " + "[data-wb-tags]:not(." + tgFilterOutClass + ", ." + filterOutClass + ")" );
 
 			if ( visibleItems.length < 1 ) {
@@ -17599,6 +17615,7 @@ var componentName = "wb-data-json",
 
 		var j, j_cache,
 			cached_node, cached_value,
+			cached_value_is_HTML, cached_value_is_JSON, cached_value_is_IRI,
 			queryAll = mappingConfig.queryall,
 			selElements,
 			mapping = mappingConfig.mapping,
@@ -17618,7 +17635,7 @@ var componentName = "wb-data-json",
 		}
 
 		// Check if there is some mapping configuration
-		if ( !mapping && !queryAll && !mappingConfig.template ) {
+		if ( !mapping && !queryAll && !mappingConfig.template && typeof mapping !== "object" ) {
 			return;
 		}
 
@@ -17704,6 +17721,11 @@ var componentName = "wb-data-json",
 		for ( j = 0; j < mapping_len || j === 0; j += 1 ) {
 			j_cache = mapping[ j ];
 
+			// Reset the cache value special type flag
+			cached_value_is_IRI = false;
+			cached_value_is_HTML = false;
+			cached_value_is_JSON = false;
+
 			// Get the element to be updated
 			if ( j_cache.selector ) {
 				cached_node = clone.querySelector( j_cache.selector );
@@ -17728,13 +17750,23 @@ var componentName = "wb-data-json",
 				continue;
 			}
 
+			// Do the cache value contain special @type
+			if ( cached_value && cached_value[ "@value" ] && cached_value[ "@type" ] ) {
+				if ( !$.isArray( cached_value[ "@type" ] ) ) {
+					cached_value[ "@type" ] = [ cached_value[ "@type" ] ];
+				}
+				cached_value_is_IRI = cached_value[ "@type" ].indexOf( "@id" ) !== -1;
+				cached_value_is_HTML = cached_value[ "@type" ].indexOf( "rdf:HTML" ) !== -1;
+				cached_value_is_JSON = cached_value[ "@type" ].indexOf( "rdf:JSON" ) !== -1 || cached_value[ "@type" ].indexOf( "@json" ) !== -1;
+			}
+
 			// Action the value
 			if ( $.isArray( cached_value ) && ( j_cache.mapping || j_cache.queryall ) ) {
 
 				// Deep dive into the content if a mapping exist
 				dataIterator( cached_node, cached_value, j_cache );
 
-			} else if ( j_cache.mapping || j_cache.queryall ) {
+			} else if ( j_cache.mapping || j_cache.queryall || !j_cache.mapping && typeof j_cache.mapping === "object" ) {
 				try {
 
 					// Map the inner mapping
@@ -17749,14 +17781,32 @@ var componentName = "wb-data-json",
 						throw ex;
 					}
 				}
+			} else if ( cached_value_is_IRI && cached_value_is_HTML ) {
+
+				// The import file type are expected to be HTML
+				// Add the data-ajax instruction so the content would be added once the JSON mapping is completed and added on the page.
+				cached_node.dataset.wbAjax = JSON.stringify( {
+					url: cached_value[ "@value" ],
+					type: "replace",
+					dataType: cached_value_is_JSON ? "json" : null,
+					encode: j_cache.encode
+				} );
+			} else if ( cached_value_is_HTML && cached_value_is_JSON && !cached_value_is_IRI ) {
+
+				// Get content from the "@value" property which contain JSON value and use it as a string value
+				cached_value = JSON.stringify( cached_value[ "@value" ] );
+
+				// Map the value in the element
+				mapValue( cached_node, cached_value, j_cache );
+
 			} else if ( !cached_node && typeof cached_value === "object" ) {
 				throw "cached_node: null";
-			} else {
+			} else if ( mappingConfig.mapping !== null ) {
 
 				cached_value = getValue( cached_value );
 
-				// Serialize the value if it is an JS object
-				if ( typeof cached_value === "object" ) {
+				// Serialize the value if it is an JS object and its not a null object
+				if ( typeof cached_value === "object" &&  cached_value !== null ) {
 					cached_value = JSON.stringify( cached_value );
 				}
 
@@ -17836,11 +17886,13 @@ var componentName = "wb-data-json",
 			value = placeholderText.replace( mappingConfig.placeholder, value );
 		}
 
-		// Set the value to the node
-		if ( mappingConfig.isHTML ) {
-			element.innerHTML = value;
-		} else {
-			element.textContent = value;
+		// Exclude null values and replace with default text
+		if ( value !== null ) {
+			if ( mappingConfig.isHTML ) {
+				element.innerHTML = value;
+			} else {
+				element.textContent = value;
+			}
 		}
 	},
 
@@ -18452,24 +18504,51 @@ var componentName = "wb-jsonmanager",
 				fn: function( obj, key, tree ) {
 					var val = obj[ key ],
 						ref = this.ref,
-						mainTree = this.mainTree,
+						mainTree = this.mainTree || obj,
 						path = this.path,
-						newVal;
+						newVal,
+						refObject, refIsArray, valWasArray,
+						i, i_len, i_item,
+						j, j_len, j_item;
 
 					if ( val ) {
-						if ( Array.isArray( val ) ) {
-							val.forEach( ( item, i ) => {
-								item = item.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI
-								newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + item ) : jsonpointer.get( tree, ref + "/" + item );
-								if ( newVal ) {
-									applyPatch( tree, "replace", path + "/" + i, newVal );
+
+						refObject = jsonpointer.get( mainTree, ref );
+						refIsArray = Array.isArray( refObject );
+						valWasArray = Array.isArray( val );
+
+						if ( !valWasArray ) {
+							val =  [ val ];
+						}
+
+						i_len = val.length;
+
+						for ( i = 0; i !== i_len; i++ ) {
+							i_item = val[ i ];
+							newVal = undefined; // Reinit
+							if ( !refIsArray ) {
+								i_item = i_item.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI for JSON pointer compatibility
+								newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + i_item ) : jsonpointer.get( tree, ref + "/" + i_item );
+							} else {
+
+								// Iterate until we found a corresponding value in the property "@id"
+								j_len = refObject.length;
+								for ( j = 0; j !== j_len; j++ ) {
+									j_item = refObject[ j ];
+									if ( j_item[ "@id" ] && j_item[ "@id" ] === i_item ) {
+										newVal = j_item;
+										break;
+									}
 								}
-							} );
-						} else if ( typeof val === "string" ) {
-							val = val.replaceAll( "~", "~0" ).replaceAll( "/", "~1" ); // Escape slashed and tilde in val when the key is an IRI
-							newVal = mainTree ? jsonpointer.get( mainTree, ref + "/" + val ) : jsonpointer.get( tree, ref + "/" + val );
-							if ( newVal ) {
+								if ( !newVal ) {
+									console.error( "wb-swap: Unable to find a corresponding value for: " + val + " in reference " + ref );
+									break;
+								}
+							}
+							if ( newVal && !valWasArray ) {
 								applyPatch( tree, "replace", path, newVal );
+							} else if ( newVal ) {
+								applyPatch( tree, "replace", path + "/" + i, newVal );
 							}
 						}
 					}
@@ -18700,6 +18779,12 @@ var componentName = "wb-jsonmanager",
 			},
 			manageObjDir = function( selector, selectedValue, json_return ) {
 				var arrPath = selector.path.split( "/" ).filter( Boolean );
+
+				// Check if selectedValue is an empty value returned by querySelectorAll
+				if ( selectedValue && selectedValue instanceof NodeList && selectedValue.length === 0 ) {
+					selectedValue = null;
+				}
+
 				if ( arrPath.length > 1 ) {
 					var pointer = "";
 					pointer = arrPath.pop();
