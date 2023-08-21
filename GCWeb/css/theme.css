@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.6.0 - 2023-08-18
+ * v13.6.0 - 2023-08-21
  *
  */
 /*
@@ -11323,19 +11323,6 @@ html:not(.wb-disable) .wb-pgfltr-out {
 /*
  * Components styles
  */
-.gc-dwnld .gc-dwnld-txt {
-	text-decoration: underline; }
-	.gc-dwnld .gc-dwnld-txt:hover {
-		text-decoration: none; }
-	.gc-dwnld .gc-dwnld-txt span {
-		display: block; }
-
-.gc-dwnld .gc-dwnld-img {
-	margin-bottom: 0; }
-
-.gc-dwnld p {
-	margin-bottom: 0; }
-
 .gc-stp-stp {
 	border-bottom: solid 1px #ccc;
 	margin-bottom: 30px;
@@ -11683,6 +11670,19 @@ main .gc-rms-lngth img {
 				display: inline-block;
 				font-weight: 700;
 				margin-right: .7em; }
+
+.gc-dwnld .gc-dwnld-txt {
+	text-decoration: underline; }
+	.gc-dwnld .gc-dwnld-txt:hover {
+		text-decoration: none; }
+	.gc-dwnld .gc-dwnld-txt span {
+		display: block; }
+
+.gc-dwnld .gc-dwnld-img {
+	margin-bottom: 0; }
+
+.gc-dwnld p {
+	margin-bottom: 0; }
 
 /*
  *
