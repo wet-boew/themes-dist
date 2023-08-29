@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v13.7.0 - 2023-08-25
+ * v13.7.0 - 2023-08-29
  *
  */
 /*
@@ -12848,17 +12848,22 @@ aside.features {
 
 /* Provisional featured link component */
 .gc-featured-link {
-	background-color: #355688; }
-	.gc-featured-link.provisional {
-		font-family: Lato, sans-serif;
-		opacity: .9;
-		padding-bottom: 15px;
-		padding-top: 15px; }
-		.gc-featured-link.provisional p:first-of-type {
-			font-weight: 700;
-			margin-bottom: 0px; }
-		.gc-featured-link.provisional p, .gc-featured-link.provisional a {
-			color: #fff; }
+	background-color: #355688;
+	color: #fff;
+	font-family: Lato, sans-serif;
+	opacity: .9;
+	padding-bottom: 15px;
+	padding-top: 15px; }
+	.gc-featured-link p:first-of-type {
+		margin-bottom: 0px; }
+	.gc-featured-link a {
+		color: #fff;
+		font-weight: 700; }
+	html:not(.wb-disable) .gc-featured-link[data-bg-color] {
+		background-color: transparent;
+		color: #333333; }
+		html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
+			color: #333333; }
 
 /* Provisional most requested component */
 .provisional.gc-most-requested {
