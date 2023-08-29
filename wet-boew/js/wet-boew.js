@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.67 - 2023-08-29
+ * v4.0.67.2 - 2023-08-29
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -8891,14 +8891,20 @@ var componentName = "wb-feeds",
 
 $document.on( "ajax-fetched.wb data-ready.wb-feeds", selector + " " + feedLinkSelector, function( event, context ) {
 	var eventTarget = event.target,
-		data, response, $emlRss, limit, results;
+		data, response, responseRaw,
+		$emlRss, limit, results;
 
 	// Filter out any events triggered by descendants
 	if ( event.currentTarget === eventTarget ) {
 		$emlRss = $( eventTarget ).parentsUntil( selector ).parent();
 		switch ( event.type ) {
 		case "ajax-fetched":
-			response = event.fetch.response.get( 0 );
+			responseRaw = event.fetch.response;
+			if ( typeof responseRaw === "string" ) {
+				response = JSON.parse( responseRaw ); // Assuming we have fetch a JSON document, try to parse it.
+			} else {
+				response = responseRaw.get( 0 ); // fetched an HTML or XML document which has been parsed by jQuery and sanitized by DomPurify
+			}
 			if ( response.documentElement ) {
 				limit = getLimit( $emlRss[ Object.keys( $emlRss )[ 0 ] ] );
 				data = corsEntry( response, limit );
