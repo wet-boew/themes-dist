@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.67.2 - 2023-08-31
+ * v4.0.67.2 - 2023-09-01
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 // Copyright 2006 Google Inc.
