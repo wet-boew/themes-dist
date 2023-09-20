@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.68 - 2023-09-20
+ * v4.0.69 - 2023-09-20
  *
  *//**
  * @title WET-BOEW JQuery Helper Methods
@@ -1678,7 +1678,7 @@ wb.add( selector );
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  * @author WET Community
  */
-( function( $, wb ) {
+( function( $, wb, DOMPurify ) {
 "use strict";
 
 /*
@@ -1755,7 +1755,15 @@ $document.on( "ajax-fetch.wb", function( event ) {
 				fetchData.pointer = $( "<div id='" + wb.getId() + "' data-type='" + responseType + "'></div>" )
 					.append( responseType === "string" ? response : "" );
 
-				response = !xhr.responseJSON ? $( response ) : xhr.responseText;
+				if ( !xhr.responseJSON ) {
+					try {
+						response = $( response );
+					} catch ( e ) {
+						response = DOMPurify.sanitize( xhr.responseText );
+					}
+				} else {
+					response = xhr.responseText;
+				}
 
 				fetchData.response = response;
 				fetchData.hasSelector = !!selector;
@@ -1780,7 +1788,7 @@ $document.on( "ajax-fetch.wb", function( event ) {
 	}
 } );
 
-} )( jQuery, wb );
+} )( jQuery, wb, DOMPurify );
 
 /**
  * @title WET-BOEW Set background image
@@ -4493,7 +4501,7 @@ $document.on( "timerpoke.wb " + initEvent + " " + updateEvent + " ajax-fetched.w
 // Re-run WET for elements that have just been loaded if WET is already done initializing
 $document.on( contentUpdatedEvent, function( event ) {
 	if ( !wb.isDisabled ) {
-		let updtElm = event.currentTarget;
+		let updtElm = event.target;
 
 		$( updtElm )
 			.find( wb.allSelectors )
@@ -8787,6 +8795,7 @@ var componentName = "wb-mltmd",
 					cc_on: i18n( "cc", "on" ),
 					cc_off: i18n( "cc", "off" ),
 					cc_error: i18n( "cc-err" ),
+					fs: i18n( "fs" ),
 					mute_on: i18n( "mute", "on" ),
 					mute_off: i18n( "mute", "off" ),
 					duration: i18n( "dur" ),
@@ -9125,6 +9134,15 @@ var componentName = "wb-mltmd",
 			}
 			$this.trigger( captionsVisibleChangeEvent );
 			break;
+		case "fullscreen":
+			if ( this.object.requestFullscreen ) {
+				this.object.requestFullscreen();
+			} else if ( this.object.webkitRequestFullscreen ) { /* Safari */
+				this.object.webkitRequestFullscreen();
+			} else if ( this.object.msRequestFullscreen ) { /* IE11 */
+				this.object.msRequestFullscreen();
+			}
+			break;
 		case "getBuffering":
 			return this.object.buffering || false;
 		case "setBuffering":
@@ -9179,6 +9197,8 @@ var componentName = "wb-mltmd",
 			return this.object.getCurrentTime();
 		case "setCurrentTime":
 			return this.object.seekTo( args, true );
+		case "fullscreen":
+			return this.object.getIframe().requestFullscreen();
 		case "getMuted":
 			if ( !this.object.playedOnce && this.object.wasMutedPlay ) {
 				state = this.object.wasMutedPlay;
@@ -9365,6 +9385,7 @@ $document.on( initializedEvent, selector, function( event ) {
 
 		if ( settings !== undef ) {
 			data.shareUrl = settings.shareUrl;
+			data.fullscreen = settings.fullscreenBtn || false;
 		}
 
 		$this.addClass( type );
@@ -9490,6 +9511,11 @@ $document.on( youtubeEvent, selector, function( event, data ) {
 		data.media = $media;
 		data.ytPlayer = ytPlayer;
 
+		// The fullscreen button is not visible by default because there are no controls when in full screen.
+		if ( data.fullscreen ) {
+			$this.attr( "data-fullscreen-btn", true );
+		}
+
 		// Detect if the YT player reloads, like when magnific Popup show the modal, because it moves the iframe
 		// and then the iframe gets refreshed and reloaded. So the issue is that the iframe stops emitting the event
 		// needed to adjust the multimedia player controler, like the "onStateChange" event.
@@ -9569,6 +9595,11 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 		} else {
 			loadCaptionsInternal( $media, $( "#" + wb.jqEscape( captionsUrl.hash.substring( 1 ) ) ) );
 		}
+
+		// The fullscreen button is not visible by default because there are no controls when in full screen.
+		if ( data.fullscreen ) {
+			$this.attr( "data-fullscreen-btn", true );
+		}
 	}
 } );
 
@@ -9602,6 +9633,8 @@ $document.on( "click", selector, function( event ) {
 		this.player( "setCurrentTime", this.player( "getCurrentTime" ) + this.player( "getDuration" ) * 0.05 );
 	} else if ( className.includes( "cuepoint" ) ) {
 		$( this ).trigger( { type: "cuepoint", cuepoint: $target.data( "cuepoint" ) } );
+	} else if ( /fullscreen|fs/.test( className ) ) {
+		this.player( "fullscreen" );
 	}
 } );
 
@@ -9628,6 +9661,10 @@ $document.on( "keydown", dispCtrls, function( event ) {
 			// Mute/unmute if focused on the mute/unmute button or volume input.
 			if ( $( event.target ).hasClass( "mute" ) || event.target.nodeName === "INPUT" ) {
 				$playerTarget.find( ".mute" ).trigger( "click" );
+			} else if ( $( event.target ).hasClass( "fs" ) ) {
+
+				// Enter full screen if focused on the full screen button
+				$playerTarget.find( ".fs" ).trigger( "click" );
 			} else if ( $( event.target ).hasClass( "cc" ) ) {
 
 				// Show/hide captions if focused on the closed captions button.
@@ -16844,7 +16881,7 @@ var $document = wb.doc,
 
 	init = function( event ) {
 		var elm = wb.init( event, componentName, selector ),
-			$elm, settings, $selectedElm;
+			$elm, settings, $selectedElm, valuesList;
 
 		if ( elm ) {
 			$elm = $( elm );
@@ -16856,22 +16893,39 @@ var $document = wb.doc,
 				wb.getData( $elm, componentName )
 			);
 
-			$selectedElm = settings.selector ? $( settings.selector, $elm ) : $elm.children();
+			if ( settings.attribute ) {
+				if ( settings.values && Array.isArray( settings.values ) ) {
+					valuesList = settings.values;
+					shuffleArray( valuesList );
+					elm.setAttribute( settings.attribute, valuesList[ 0 ] );
+				} else {
+					throw componentName + ": You must define the property \"values\" to an array of strings when \"attribute\" property is defined.";
+				}
+			} else {
+				$selectedElm = settings.selector ? $( settings.selector, $elm ) : $elm.children();
 
-			if ( !$selectedElm.length ) {
-				throw componentName + " selector setting is invalid or no children";
-			}
+				if ( !$selectedElm.length ) {
+					throw componentName + " selector setting is invalid or no children";
+				}
 
-			if ( settings.shuffle ) {
-				$selectedElm = wb.shuffleDOM( $selectedElm );
-			}
+				if ( settings.shuffle ) {
+					$selectedElm = wb.shuffleDOM( $selectedElm );
+				}
 
-			if ( settings.toggle ) {
-				$selectedElm = wb.pickElements( $selectedElm, settings.number );
-				$selectedElm.toggleClass( settings.toggle );
+				if ( settings.toggle ) {
+					$selectedElm = wb.pickElements( $selectedElm, settings.number );
+					$selectedElm.toggleClass( settings.toggle );
+				}
 			}
 
 			wb.ready( $elm, componentName );
+		}
+	},
+
+	shuffleArray = function( array ) {
+		for ( let i = array.length - 1; i > 0; i-- ) {
+			const j = Math.floor( Math.random() * ( i + 1 ) );
+			[ array[ i ], array[ j ] ] = [ array[ j ], array[ i ] ];
 		}
 	};
 
