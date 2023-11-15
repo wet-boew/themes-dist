@@ -4812,11 +4812,6 @@ main .pagedetails {
 		margin-bottom: .25em;
 		margin-left: 1.1em;
 		margin-right: 1.1em; }
-	.pagedetails .datemod {
-		padding-bottom: 7px;
-		padding-top: 7px; }
-		.pagedetails .datemod #wb-dtmd {
-			margin-top: 0; }
 	.pagedetails details {
 		margin-bottom: 0; }
 		.pagedetails details .well {
