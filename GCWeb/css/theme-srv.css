@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.0.0 - 2023-11-21
+ * v14.1.0 - 2023-11-21
  *
  */
 /*!
@@ -9532,6 +9532,19 @@ select[multiple].input-lg,
 	.form-horizontal .form-group-sm .control-label {
 		padding-top: 6px;
 		font-size: 14px; } }
+
+/*
+	WET-BOEW
+	@title: Bootstrap overrides for WET-BOEW - Core CSS - table
+ */
+caption {
+	color: #333;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center; }
+
+.table-responsive > .table, th, td {
+	white-space: normal; }
 
 /*
 	WET-BOEW
