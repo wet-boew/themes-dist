@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.1.0 - 2023-12-06
+ * v14.1.0 - 2023-12-07
  *
  */
 /*
@@ -4447,21 +4447,24 @@ details {
 	#wb-so .row {
 		padding: 1em 0 0; }
 
-#archived-bnr {
-	background-color: #fd0; }
-	#archived-bnr p {
-		margin: 0;
-		text-align: center; }
-	#archived-bnr a {
-		color: #000;
-		display: block;
-		font-weight: 700;
-		padding: .75em 44px;
-		text-decoration: none; }
-		#archived-bnr a:hover, #archived-bnr a:focus {
-			text-decoration: underline; }
-	#archived-bnr .overlay-close {
+.gc-archv {
+	background-color: #ffd700 !important;
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+	padding: 25px 0px; }
+	.gc-archv.modal-content {
+		border: none;
+		border-radius: 0; }
+	.gc-archv h2 {
+		margin-top: 0; }
+	.gc-archv .mfp-close.overlay-close {
 		color: #000; }
+		.gc-archv .mfp-close.overlay-close:focus, .gc-archv .mfp-close.overlay-close:focus-visible {
+			outline: 5px auto #005fcc;
+			outline-offset: -2px; }
+
+.wb-disable .gc-arch.wb-overlay {
+	display: none; }
 
 /*
  Banner
@@ -11510,17 +11513,6 @@ h1.gc-thickline {
  */
 .gc-advnc-srvc .col-md-8 h2:first-child {
 	margin-top: 0; }
-
-/*
- * Archived template banner
- */
-.gc-archv {
-	background-color: #ffd700 !important;
-	padding: 25px 50px; }
-	.gc-archv h2 {
-		margin-top: 0; }
-	.gc-archv .mfp-close.overlay-close {
-		color: #000; }
 
 /* Embedding a Fluid Survey */
 .gc-fld-srvy-container {
