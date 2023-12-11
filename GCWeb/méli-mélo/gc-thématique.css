@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.1.0 - 2023-12-07
+ * v14.1.0 - 2023-12-11
  *
  */
 /* Thematic red */
@@ -112,13 +112,27 @@ h1.gc-thickline.canadaday::after {
 .panel-canadaday-card img {
     border-radius: 18px 18px 0px 0px;
 }
-.panel-canadaday-card .panel-heading>:not(img) {
+.panel-canadaday-card .panel-heading > :not(img) {
     padding-left: 15px;
     padding-right: 15px;
+	padding-top: 20px;
 }
 .panel-canadaday-card .panel-body {
     padding-bottom: 0 !important;
 }
+.panel-canadaday-card-compact img {
+    border-radius: 18px 0 0 18px !important;
+}
+
+.panel-canadaday-card p[class^="h"], .panel-canadaday-card p[class*=" h"] {
+    margin-top: 0 !important;
+}
+
+.panel-canadaday-card header {
+	position: inherit;
+}
+
+
 
 /*** Thematic blue ***/
 .bg-winterlude {
