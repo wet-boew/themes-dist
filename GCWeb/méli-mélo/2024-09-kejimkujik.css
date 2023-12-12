@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.1.0 - 2023-12-12
+ * v14.2.0 - 2023-12-12
  *
  */
 ul[class*=cnjnctn-type-] {
@@ -532,3 +532,48 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
 .gcweb-menu.campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
     text-decoration: none;
 }
+
+@charset "utf-8";
+/* CSS Document */
+  .wb-clipboard-init.copyarea:not(textarea):not(input) {
+      border: 1px solid #e3e3e3;
+      box-shadow: 0px 0px 8px #e3e3e3;
+      margin-left: 30px;
+      margin-right: 30px;
+      padding: 15px;
+      margin-bottom: 15px;
+  }
+
+  .copyarea::before, .copyarea::after {
+      clip: rect(1px,1px,1px,1px);
+      height: 1px;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+  }
+  .wb-clipboard-init.copyarea::before, .wb-clipboard-init.copyarea::after {
+      content: "";
+  }
+  .copyarea.copied:not(textarea):not(input) {
+      border: 1px solid #d6e9c6;
+      box-shadow: 0px 0px 18px #d6e9c6;
+  }
+  pre.wb-clipboard > button.wb-clipboard-btn {
+      font-family: Helvetica,Arial,sans-serif;
+  }
+button.wb-clipboard-btn:not(.btn-xs) {
+  font-size: 1em;
+  font-weight: 600;
+  padding: 5px 7px;
+}
+button.wb-clipboard-btn:not(.btn-xs) .glyphicon {
+  font-size: 1.2em;
+}
+  .wb-clipboard-text {
+      font-family: courier;
+      font-size: 16px;
+  }
+  textarea.wb-clipboard {
+      margin-bottom: 15px;
+  }
