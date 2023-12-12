@@ -13459,6 +13459,49 @@ table.nws-tbl > thead > tr > th {
 table.dataTable.nws-tbl .label.label-success {
 	padding: .6em .6em .3em; }
 
+/*
+ *
+ * Application template
+ *
+*/
+.info-banner {
+	background-color: #d9edf7;
+	color: #333333;
+	font-size: 20px;
+	line-height: 1.65em;
+	padding: 15px 0; }
+	.info-banner h2 {
+		float: left;
+		font-size: 1em;
+		line-height: 1.65em;
+		margin: 0 .25em 0 0; }
+		.info-banner h2:after {
+			content: ":";
+			margin-left: .125em; }
+	.info-banner .info-banner-actions {
+		-webkit-box-align: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		    -ms-flex-pack: justify;
+		        justify-content: space-between; }
+
+.application-bar {
+	background-color: #38414d;
+	color: #fff;
+	margin-top: 15px; }
+	.application-bar h2 {
+		border: none;
+		margin: 10px 0 8px; }
+		.application-bar h2 a {
+			color: #fff;
+			text-decoration: none; }
+			.application-bar h2 a:hover {
+				text-decoration: underline; }
+
 /*! Core - Utilities */
 /*
  * Helper Classes
@@ -14284,7 +14327,15 @@ Miscellaneous Utiliy CSS
 			margin-top: 0;
 			padding-top: 15px; }
 		.cmpgn-sctns .sctn-desc {
-			margin-bottom: 10px; } }
+			margin-bottom: 10px; }
+	/*
+ *
+ * Application template
+ *
+*/
+	.application-bar h2 {
+		font-size: 18px;
+		margin: 12px 0 9px; } }
 
 /* Small view and under */
 @media screen and (max-width: 991px) {
@@ -15642,7 +15693,14 @@ Miscellaneous Utiliy CSS
   @title: Print view
  */
 	.cmpgn-sctns {
-		margin-top: 20px; } }
+		margin-top: 20px; }
+	/*
+ *
+ * Application template
+ *
+*/
+	.application-bar h2 {
+		font-size: 34px; } }
 
 /* Testing WCAG Spacing */
 /*
