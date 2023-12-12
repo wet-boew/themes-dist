@@ -293,6 +293,7 @@ var $document = wb.doc,
 		"removeClass",
 		"tblfilter",
 		"withInput",
+		"selectInput",
 		"run"
 	].join( "." + actionEvent + " " ) + "." + actionEvent,
 
@@ -676,6 +677,20 @@ var $document = wb.doc,
 		}
 
 	},
+	selectInputAct = function( event, data ) {
+		var sourceElm = document.querySelector( data.source ) || event.currentTarget,
+			inputs;
+
+		inputs = sourceElm.querySelectorAll( "[value=\"" + data.value + "\"]" );
+
+		inputs.forEach( input => {
+			if ( input.nodeName === "OPTION" ) {
+				input.setAttribute( "selected", true );
+			} else if ( input.nodeName === "INPUT" ) {
+				input.setAttribute( "checked", true );
+			}
+		} );
+	},
 	patchFixArray = function( patchArray, val, basePointer ) {
 
 		var i, i_len = patchArray.length, i_cache,
@@ -841,6 +856,9 @@ $document.on( actionMngEvent, selector, function( event, data ) {
 			break;
 		case "patch":
 			patchAct( event, data );
+			break;
+		case "selectInput":
+			selectInputAct( event, data );
 			break;
 		case "mapfilter":
 			geomapAOIAct( event, data );
