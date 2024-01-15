@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.3.0 - 2024-01-09
+ * v14.3.0 - 2024-01-15
  *
  */
 ul[class*=cnjnctn-type-] {
@@ -460,18 +460,27 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
     background: #003c77;
     color: #fff;
 }
-/* remove table cell and text shadow*/
+/* remove table cell and text shadow */
 #wb-sm.campaign-menu .menu {
     border-right: 0px !important;
     display: block;
     text-shadow: none;
 }
 
- /* focus within mneu itme background */
+ /* focus within menu item background */
 #wb-sm.campaign-menu .menu .active, 
-#wb-sm.campaign-menu .menu .wb-navcurr {
+#wb-sm.campaign-menu .menu .wb-navcurr,
+#wb-sm.campaign-menu .menu > li a:focus {
     background: #ccc !important;
     color: #333 !important;
+}
+
+#wb-sm.campaign-menu .menu > li {
+    border-left: 1px solid #003c77;
+}
+
+#wb-sm.campaign-menu .menu > li:last-child {
+    border-right: 1px solid #003c77;
 }
 
 /* adjust menu padding to align height with GCMenu button */
@@ -479,18 +488,13 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
     padding: 0.5em 1em;
 }
 
-/* change menu item on-hover background*/
+/* change menu item on-hover background */
 #wb-sm.campaign-menu .menu > li a:hover{
     background: #ccc !important;
     color: #333 !important;
 }
 
-/* change menu item on-focus background */
-#wb-sm.campaign-menu .menu > li a:focus{
-    background: #003c77 !important;
-    color: #fff !important; 
-}
-/* change menuitem text color when mouse move to submenu item*/
+/* change menuitem text color when mouse move to submenu item */
 #wb-sm.campaign-menu .menu > li.active > a{
     background: #ccc!important;
     color: #333!important; 
@@ -502,7 +506,7 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
     color: #333 !important; 
 }
 
-/* hover on submenu item*/
+/* hover on submenu item */
 #wb-sm.campaign-menu .sm.open li a:active, 
 #wb-sm.campaign-menu .sm.open li a:focus, 
 #wb-sm.campaign-menu .sm.open li a:hover {
@@ -514,15 +518,6 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
 #wb-sm.campaign-menu .sm.open {
     border-bottom: 5px solid #003c77 !important;
 }
-
-
-/* add right border for last child item on md screen */
-@media screen and (max-width: 1199px) {
-    #wb-sm.campaign-menu .menu > li:last-child {
-        border-right: 1px solid #999;
-    }
-}
-
 
 /*** GCWEB Menu ***/
 /* default color */
@@ -541,7 +536,7 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
 /* button closed */
 .gcweb-menu.campaign-menu button[aria-haspopup=true]:focus {
     background-color: #003c77 !important;
-    border: 1px dotted #fff; /* For focus - Make sure the  */
+    border: 1px dotted #fff;
     color: #fff;
 }
 
@@ -555,7 +550,8 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
     background-color: #003c77 !important;
     color: #fff;
 }
-/* remove boder lines */
+
+/* remove border lines */
 .gcweb-menu.campaign-menu [role=menuitem], 
 .gcweb-menu.campaign-menu [role=menuitem]:visited,
 .gcweb-menu.campaign-menu [role=menu] > li,
@@ -566,7 +562,7 @@ ol.lst-stps.stps-strpd>li, ol.lst-stps-sub.stps-strpd>li {
     border: none;
 }
 
-/* submenu background and text color*/
+/* submenu background and text color */
 .gcweb-menu.campaign-menu [role=menu] [role=menu] li [role=menuitem] {
     background-color: #e1e1e1 !important;
     color: #333;
