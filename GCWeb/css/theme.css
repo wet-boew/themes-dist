@@ -11360,6 +11360,10 @@ ol-geolocate button {
 html:not(.wb-disable) .wb-pgfltr-out {
 	display: none !important; }
 
+/* Feeds plugin GC override */
+.feeds-cont li a {
+	font-weight: 700; }
+
 /*
  * Components styles
  */
@@ -12901,15 +12905,6 @@ aside.features {
 	font-weight: 700; }
 	.well.well-bold strong {
 		font-weight: 400; }
-
-/* Feeds plugin GC override */
-.provisional.gc-feeds {
-	border: none; }
-	.provisional.gc-feeds li {
-		line-height: 1.65em;
-		padding: 0px; }
-		.provisional.gc-feeds li a {
-			font-weight: 700; }
 
 /* Profile on page-type-navigation pages
  * was: ".secondary" which are now deprecated */
