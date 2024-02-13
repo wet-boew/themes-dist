@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.4.0 - 2024-01-17
+ * v14.4.0 - 2024-02-13
  *
  */
 /*
@@ -1915,7 +1915,6 @@ h6, .h6 {
  *
  */
 h1 {
-	border-bottom: 1px solid #af3c43;
 	margin-bottom: .2em;
 	margin-top: 1em;
 	padding-bottom: .2em; }
@@ -5297,6 +5296,13 @@ main .pagedetails {
 	margin-top: 5px; }
 	#wb-bnr + hr + .container {
 		font-size: 20px; }
+
+/* H1 short bold red underline */
+h1#wb-cont {
+	border-bottom: 0.18em solid #af3c43;
+	-o-border-image: linear-gradient(to right, #af3c43 71px, transparent 71px);
+	   border-image: linear-gradient(to right, #af3c43 71px, transparent 71px);
+	border-image-slice: 1; }
 
 /*! Components (CSS type only) */
 .fade {
@@ -11359,16 +11365,6 @@ html:not(.wb-disable) .wb-pgfltr-out {
  */
 .bg-gctheme {
 	background-color: #355688; }
-
-/* H1 short bold red underline */
-h1.gc-thickline {
-	border-bottom: none; }
-	h1.gc-thickline::after {
-		border-bottom: .18em solid #af3c43;
-		content: "";
-		display: block;
-		padding-bottom: 8px;
-		width: 70px; }
 
 /*
 * Panel title
