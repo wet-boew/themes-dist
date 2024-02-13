@@ -12900,10 +12900,10 @@ aside.features {
 			font-weight: 700;
 			line-height: 1.5em; }
 
-/* Well bold provisional */
-.well.well-bold {
+/* Bold content */
+.bold-content, .well.well-bold {
 	font-weight: 700; }
-	.well.well-bold strong {
+	.bold-content strong, .well.well-bold strong {
 		font-weight: 400; }
 
 /* Profile on page-type-navigation pages

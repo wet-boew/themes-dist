@@ -573,3 +573,15 @@ button.wb-clipboard-btn:not(.btn-xs) .glyphicon {
   textarea.wb-clipboard {
       margin-bottom: 15px;
   }
+
+/*------
+* Deprecated styles
+------*/
+
+/* Well bold */
+.well.well-bold {
+	font-weight: 700;
+}
+.well.well-bold strong {
+	font-weight: 400;
+}
