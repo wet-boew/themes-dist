@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.4.0 - 2024-02-13
+ * v14.4.0 - 2024-02-14
  *
  */
 /*
@@ -11832,7 +11832,7 @@ main .gc-rms-lngth img {
 .followus .email {
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAWCAYAAABOm/V6AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gQVECMqfCsMgwAAAshJREFUSMfF1s9P02AYwPFvyxwbHRuMrYOVVgS2BRNBDfHqxXDxz/Bq4sH/QA+e/B8MR+9e/QcUMk0IMBRho4R1g7LRbmPA6mFuqLAxfj9Jk6bv276fPHnep6+QnJ3xAq+Bl0CEm41PwBsX8AJ4y+3Ec2DYBbwCCClj7O1k6Q3KRO5OXNuqlVKRjVQSr6+PXSMDMCUCIwCylkCJTWHt5smuLV4LYL9ssZFK4g9GUMYnm8/Fvyd5fX1Exx7UIetXC6mWbTLLc/gHBpG1+D9jIuDUb51jyPgklpknu750NYBKifTSVwKhKOHhGCCcQJwIry+AEptizzQw0suXByx+oS+sEFLGEQThxByx1cseyc9w/BHFnSy5zAqO41wYEAgrDERHTwW0RQB4enpRE48pbG+S13/iOLVz1UADEIqOIoitlxLP+li314eWmKaQ09nWV3FqZ0P2Sxbp5TkC4SghZawtoCMEgNsroU1Ms5vTyW+uts1IpVQkk5rHHxxsWQMXQgC4PXVIIaeT11dPrZGKXUBPJekNRpC1eEeAcyGqlRJGOoUUCFHI6+QyKWpHh81xu7CNvvKd7h4fFbuImc10XD+uzgA2RjqFRwoQUkbZL9ts/vjG4UGVbq+PWu0Qy8zROxBBVuNU7CJGJgVAf0S9fCb+B9SLVUK7/wTXHTd2cYdq2SasxpDVeHN7y2qcPdNo/B8unoljgL8JaERXlwtZS9Cuz8hqrN5jgH5ZPX8mGjXgkfwMREcv1C09kp+wGsPaaZ8R8biRH1fywX4ZI71cBwzd67jKW2ZES7BnGpgtICJQBZpN6KBaIbu+hEfyExwaObPRdBLdPT5kLYFlGqfuGhGYB9haW+Do8ICtXwt1wKCGIAg4Tu1KLrenh7AaxzKzZNcWsXZzDUNJSM7OPPtz1nPf0hHvowv4DDwF3gEPAekGFnaADPABeP8bNrJaPIc3C6EAAAAASUVORK5CYII="); }
 
-.provisional.gc-followus .facebook::before, .provisional.gc-followus .twitter::before, .provisional.gc-followus .youtube::before, .provisional.gc-followus .instagram::before, .provisional.gc-followus .linkedin::before {
+.gc-followus ul .facebook::before, .gc-followus ul .twitter::before, .gc-followus ul .youtube::before, .gc-followus ul .instagram::before, .gc-followus ul .linkedin::before {
 	background-repeat: no-repeat;
 	background-size: cover;
 	content: "";
@@ -11840,10 +11840,11 @@ main .gc-rms-lngth img {
 	margin-right: 10px;
 	min-width: 38px; }
 
-.provisional.gc-followus h2 {
-	font-size: 1.1em; }
+.gc-followus h2 {
+	font-size: 1.1em;
+	margin-top: 0px; }
 
-.provisional.gc-followus ul {
+.gc-followus ul {
 	display: block;
 	font-size: 87%;
 	font-weight: 700;
@@ -11852,11 +11853,13 @@ main .gc-rms-lngth img {
 	        margin-block-start: 1em;
 	-webkit-padding-start: calc(1em + 6px);
 	        padding-inline-start: calc(1em + 6px); }
-	.provisional.gc-followus ul li {
-		margin-bottom: 21px; }
-		.provisional.gc-followus ul li:last-child {
-			margin-bottom: 15px; }
-		.provisional.gc-followus ul li a {
+	.gc-followus ul li {
+		margin-bottom: 29px; }
+		.gc-followus ul li:first-child {
+			margin-top: 34px; }
+		.gc-followus ul li:last-child {
+			margin-bottom: 23px; }
+		.gc-followus ul li a {
 			display: -webkit-box;
 			display: -ms-flexbox;
 			display: flex;
@@ -11865,40 +11868,39 @@ main .gc-rms-lngth img {
 			max-width: -moz-max-content;
 			max-width: max-content;
 			text-decoration: none; }
-			.provisional.gc-followus ul li a::before {
+			.gc-followus ul li a::before {
 				margin-right: 10px;
 				margin-top: -6px; }
-			.provisional.gc-followus ul li a:hover, .provisional.gc-followus ul li a:focus, .provisional.gc-followus ul li a:active {
+			.gc-followus ul li a:hover, .gc-followus ul li a:focus, .gc-followus ul li a:active {
 				text-decoration: underline; }
-	.provisional.gc-followus ul.list-inline {
+	.gc-followus ul.list-inline {
 		-webkit-padding-start: 0;
 		        padding-inline-start: 0; }
-		.provisional.gc-followus ul.list-inline li {
+		.gc-followus ul.list-inline li {
 			display: inline-block;
 			padding-right: 0; }
-			.provisional.gc-followus ul.list-inline li a {
+			.gc-followus ul.list-inline li:first-child {
+				margin-top: 0; }
+			.gc-followus ul.list-inline li a {
+				border-radius: 100%;
 				height: 38px;
 				overflow: hidden;
 				width: 38px; }
-				.provisional.gc-followus ul.list-inline li a::before {
+				.gc-followus ul.list-inline li a::before {
 					margin-top: 0; }
-				.provisional.gc-followus ul.list-inline li a:hover, .provisional.gc-followus ul.list-inline li a:focus, .provisional.gc-followus ul.list-inline li a:active {
-					outline: solid 2px #0535d2; }
-
-.provisional.gc-followus .facebook::before {
-	background-image: url("../assets/gc-follow-us/facebook.svg"); }
-
-.provisional.gc-followus .twitter::before {
-	background-image: url("../assets/gc-follow-us/twitter.svg"); }
-
-.provisional.gc-followus .youtube::before {
-	background-image: url("../assets/gc-follow-us/youtube.svg"); }
-
-.provisional.gc-followus .instagram::before {
-	background-image: url("../assets/gc-follow-us/instagram.svg"); }
-
-.provisional.gc-followus .linkedin::before {
-	background-image: url("../assets/gc-follow-us/linkedin.svg"); }
+				.gc-followus ul.list-inline li a:hover, .gc-followus ul.list-inline li a:focus, .gc-followus ul.list-inline li a:active {
+					outline: solid 2px #0535d2;
+					outline-offset: 1px; }
+	.gc-followus ul .facebook::before {
+		background-image: url("../assets/gc-follow-us/facebook.svg"); }
+	.gc-followus ul .twitter::before {
+		background-image: url("../assets/gc-follow-us/x.svg"); }
+	.gc-followus ul .youtube::before {
+		background-image: url("../assets/gc-follow-us/youtube.svg"); }
+	.gc-followus ul .instagram::before {
+		background-image: url("../assets/gc-follow-us/instagram.svg"); }
+	.gc-followus ul .linkedin::before {
+		background-image: url("../assets/gc-follow-us/linkedin.svg"); }
 
 .shr-pg a {
 	background-image: none; }
