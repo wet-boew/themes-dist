@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.5.0 - 2024-03-01
+ * v14.5.0 - 2024-03-04
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -2591,7 +2591,12 @@ var componentName = "wb-fieldflow",
 			}
 
 			if ( !itmLabel ) {
-				itmLabel = firstNode.nodeValue;
+				const $itmCachedClean = $( itmCached ).clone();
+
+				// Remove nested structure in grouping (ul) and nesting (.wb-fieldflow-sub) scenarios
+				$itmCachedClean.children( "ul, .wb-fieldflow-sub" ).remove();
+
+				itmLabel = $itmCachedClean.html();
 			}
 
 			// Set an id on the element
@@ -2610,7 +2615,7 @@ var componentName = "wb-fieldflow",
 		return parsedItms;
 	},
 	buildSelectOption = function( data ) {
-		var label = data.label,
+		var label = stripHtml( data.label ),
 			out = "<option value='" + wb.escapeAttribute( label ) + "'";
 
 		out += buildDataAttribute( data );
@@ -2638,7 +2643,7 @@ var componentName = "wb-fieldflow",
 		var fieldID = wb.getId(),
 			labelTxt = data.label,
 			label = "<label for='" + fieldID + "'>",
-			input = "<input id='" + fieldID + "' type='" + inputType + "' name='" + fieldName + "' value='" + wb.escapeAttribute( labelTxt ) + "'" + buildDataAttribute( data ),
+			input = "<input id='" + fieldID + "' type='" + inputType + "' name='" + fieldName + "' value='" + wb.escapeAttribute( stripHtml( labelTxt ) ) + "'" + buildDataAttribute( data ),
 			tag = !isInline && isGcChckbxrdio ? "li" : "div",
 			out = "<" + tag + " class='" + inputType;
 
@@ -2662,6 +2667,12 @@ var componentName = "wb-fieldflow",
 		out += "</label>" + "</" + tag + ">";
 
 		return out;
+	},
+
+	// Strip HTML markup from strings
+	// Created by Chris Coyier via CSS-Tricks (https://css-tricks.com/snippets/javascript/strip-html-tags-in-javascript/)
+	stripHtml = function( str ) {
+		return str.replace( /(<([^>]+)>)/gi, "" );
 	};
 
 $document.on( resetActionEvent, selector + ", ." + subComponentName, function( event ) {
