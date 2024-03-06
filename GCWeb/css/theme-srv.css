@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.5.0 - 2024-03-06
+ * v14.6.0 - 2024-03-06
  *
  */
 /*!
@@ -5819,6 +5819,19 @@ button.close {
  *  Firefox-safe line height on input[type="reset|button|submit"]
  */
 /*
+  WET-BOEW
+  @title: Bootstrap overrides for WET-BOEW - normalize.css
+ */
+/*
+ *	Restore user agent's "native" link outline styles
+ *	Prevents outlines from getting removed when the :focus pseudo-class is paired with :active and/or :hover
+ *	Matches normalize 6.0.0+'s default behaviour
+ */
+a:active,
+a:hover {
+	outline: revert; }
+
+/*
 	WET-BOEW
 	@title: Bootstrap overrides for WET-BOEW - Core CSS
  */
@@ -6730,6 +6743,19 @@ table {
 td,
 th {
 	padding: 0; }
+
+/*
+  WET-BOEW
+  @title: Bootstrap overrides for WET-BOEW - normalize.css
+ */
+/*
+ *	Restore user agent's "native" link outline styles
+ *	Prevents outlines from getting removed when the :focus pseudo-class is paired with :active and/or :hover
+ *	Matches normalize 6.0.0+'s default behaviour
+ */
+a:active,
+a:hover {
+	outline: revert; }
 
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
