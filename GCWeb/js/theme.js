@@ -2548,7 +2548,7 @@ var componentName = "wb-fieldflow",
 			// Is firstNode an anchor?
 			if ( firstNode.nodeName === "A" ) {
 				itmValue = firstNode.getAttribute( "href" );
-				itmLabel = $( firstNode ).html();
+				itmLabel = $( firstNode ).html().trim();
 				j_len = 1; // Force following elements to be ignored
 
 				actions.push( {
@@ -2596,7 +2596,7 @@ var componentName = "wb-fieldflow",
 				// Remove nested structure in grouping (ul) and nesting (.wb-fieldflow-sub) scenarios
 				$itmCachedClean.children( "ul, .wb-fieldflow-sub" ).remove();
 
-				itmLabel = $itmCachedClean.html();
+				itmLabel = $itmCachedClean.html().trim();
 			}
 
 			// Set an id on the element
