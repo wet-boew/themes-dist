@@ -11976,6 +11976,25 @@ main .gc-rms-lngth img {
 		max-width: 100%; }
 
 /*
+	Most requested component
+*/
+main:not(.container) .gc-most-requested,
+div:not(.container) .gc-most-requested {
+	background-color: #f5f5f5;
+	margin-bottom: 20px;
+	padding: 24px 0 12px; }
+	main:not(.container) .gc-most-requested h2,
+	div:not(.container) .gc-most-requested h2 {
+		font-size: 1.1em;
+		margin-top: 0; }
+	main:not(.container) .gc-most-requested ul li,
+	div:not(.container) .gc-most-requested ul li {
+		font-family: "Lato", sans-serif;
+		font-size: 19px;
+		font-weight: 700;
+		line-height: 1.8em; }
+
+/*
 	Github addition Widget Format
 	Use in:
 	+ Event page
@@ -12916,21 +12935,6 @@ aside.features {
 		color: #333333; }
 		html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 			color: #333333; }
-
-/* Provisional most requested component */
-.provisional.gc-most-requested {
-	border: none; }
-	.provisional.gc-most-requested h2 {
-		font-size: 1.1em;
-		margin-top: 15px; }
-	.provisional.gc-most-requested ul {
-		margin-bottom: 15px;
-		margin-top: 15px; }
-		.provisional.gc-most-requested ul li {
-			font-family: "Lato", sans-serif;
-			font-size: 87%;
-			font-weight: 700;
-			line-height: 1.5em; }
 
 /* Bold content */
 .bold-content, .well.well-bold {
@@ -15118,6 +15122,27 @@ Miscellaneous Utiliy CSS
 			display: block;
 			font-size: 1.25em;
 			margin-bottom: 0; }
+	/*
+	Most requested component
+*/
+	main:not(.container) .gc-most-requested h2,
+	div:not(.container) .gc-most-requested h2 {
+		float: left;
+		width: 16.666667%; }
+	main:not(.container) .gc-most-requested ul,
+	div:not(.container) .gc-most-requested ul {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		    flex-wrap: wrap;
+		list-style-position: inside;
+		padding-left: 1.3em; }
+		main:not(.container) .gc-most-requested ul li,
+		div:not(.container) .gc-most-requested ul li {
+			-ms-flex-preferred-size: 50%;
+			    flex-basis: 50%;
+			font-size: 87%; }
 	/*
   WET-BOEW
   @title: Medium view and over (screen only)
