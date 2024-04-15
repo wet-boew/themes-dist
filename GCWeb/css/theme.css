@@ -12897,15 +12897,16 @@ aside.features {
 	-webkit-padding-start: 20px;
 	        padding-inline-start: 20px; }
 
-/* Provisional featured link component */
+/* featured link component */
 .gc-featured-link {
 	background-color: #355688;
 	color: #fff;
 	font-family: Lato, sans-serif;
 	opacity: .9;
 	padding-bottom: 15px;
-	padding-top: 15px; }
-	.gc-featured-link p:first-of-type {
+	padding-top: 15px;
+	position: relative; }
+	.gc-featured-link p {
 		margin-bottom: 0px; }
 	.gc-featured-link a {
 		color: #fff;
