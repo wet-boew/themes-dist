@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.7.0 - 2024-04-11
+ * v14.7.0 - 2024-04-15
  *
  */
 /*
@@ -11958,6 +11958,22 @@ main .gc-rms-lngth img {
 	.icon.googleplus {
 		height: 45px;
 		padding-left: 48px; }
+
+/*
+	GC Ministers
+*/
+.gc-minister {
+	margin-bottom: 15px; }
+	.gc-minister h3 {
+		font-size: 20px;
+		margin-bottom: 15px;
+		margin-top: 15px; }
+	.gc-minister p, .gc-minister ul {
+		font-size: 17px; }
+	.gc-minister img {
+		border: 1px #ddd solid;
+		margin-bottom: 15px;
+		max-width: 100%; }
 
 /*
 	Github addition Widget Format
