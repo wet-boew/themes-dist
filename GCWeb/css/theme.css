@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v14.7.0 - 2024-04-15
+ * v14.7.0 - 2024-04-16
  *
  */
 /*
@@ -13535,6 +13535,18 @@ table.dataTable.nws-tbl .label.label-success {
 			.application-bar h2 a:hover {
 				text-decoration: underline; }
 
+/*
+* Institutional landing page template
+*/
+.page-type-ilp h2 {
+	font-size: 1.2em;
+	margin-top: 15px; }
+
+.page-type-ilp .gc-followus ul li {
+	margin-bottom: 21px; }
+	.page-type-ilp .gc-followus ul li:last-child {
+		margin-bottom: 15px; }
+
 /*! Core - Utilities */
 /*
  * Helper Classes
@@ -14735,7 +14747,15 @@ Miscellaneous Utiliy CSS
 			        padding-inline-start: 20px; }
 			.provisional.gc-contributors ul li {
 				display: list-item;
-				margin-right: 0; } }
+				margin-right: 0; }
+	/*
+* Institutional landing page template
+*/
+	.page-type-ilp .gc-followus {
+		margin-bottom: 40px;
+		margin-top: 40px; }
+	.page-type-ilp .wb-feeds {
+		margin-bottom: 40px; } }
 
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
