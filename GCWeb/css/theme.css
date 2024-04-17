@@ -11994,6 +11994,12 @@ div:not(.container) .gc-most-requested {
 		font-weight: 700;
 		line-height: 1.8em; }
 
+.provisional.gc-most-requested h2 {
+	white-space: nowrap; }
+
+.provisional.gc-most-requested ul {
+	display: block !important; }
+
 /*
 	Github addition Widget Format
 	Use in:
