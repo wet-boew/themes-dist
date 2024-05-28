@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.1.0 - 2024-05-24
+ * v15.1.0 - 2024-05-28
  *
  */
 /*
@@ -4580,26 +4580,6 @@ header {
 
 [dir=rtl] header .brand {
 	float: right; }
-
-/* Home page banner */
-#hme-banner {
-	background-image: url(../assets/your-gov2.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	height: auto;
-	padding-top: 1.25%;
-	width: 100%; }
-
-#hme-banner-bg {
-	background-color: #002b92;
-	color: #fff;
-	margin-left: 5%;
-	min-height: 150px;
-	padding: 8px;
-	width: 225px; }
-
-h2.hme-banner-bg {
-	border: none; }
 
 /*
  Site information
@@ -12306,9 +12286,6 @@ div:not(.container) .gc-most-requested {
 .well.header-rwd {
 	width: 100%; }
 
-.bg-darker.well.header-rwd h1 {
-	border-bottom-color: #6f6f6f; }
-
 /*
  * tbl-floatcolumn
  */
@@ -13219,15 +13196,7 @@ aside.features {
 	/*
 	 * GCWeb menu
 	 */
-	/* Home page banner
-	 *
-	 * Reference in:
-	 * - components/_screen-xxs-max
-	 * - components/_screen-xs-min-to-screen-xs-max
-	 * - components/_screen-md-min-to-screen-md-max
-	 * - components/_screen-md-max
-	 * - components/_screen-lg-min
-	 */
+	/* Home page banner */
 	/* Home page Most requested section
 	 *
 	 * Reference in:
@@ -13239,7 +13208,6 @@ aside.features {
 	 * - views/_screen-sm-max
 	 */ }
 	.home h1 {
-		border-bottom-width: 4px;
 		font-weight: 500;
 		margin-top: 10px; }
 	.home h2 {
@@ -14588,7 +14556,15 @@ Miscellaneous Utiliy CSS
 */
 	.application-bar h2 {
 		font-size: 18px;
-		margin: 12px 0 9px; } }
+		margin: 12px 0 9px; }
+	/*
+  WET-BOEW
+  @title: Small view and under (screen only)
+  @desc:  Variable $screen-xs-max <= 767 px
+ */
+	.home .header-rwd {
+		margin: 0;
+		opacity: 1; } }
 
 /* Small view and under */
 @media screen and (max-width: 991px) {
@@ -14972,18 +14948,7 @@ Miscellaneous Utiliy CSS
 	#wb-sm .menu {
 		border-right: 1px solid #999; }
 		#wb-sm .menu > li:last-child {
-			border-right: 0; }
-	/*
-  WET-BOEW
-  @title: Medium view and under (screen only)
- */
-	/*
- * Home page style
- *
- * Set a responsive with for the h1 in the Well header responsive
- */
-	.home .well.header-rwd h1 {
-		width: 55%; } }
+			border-right: 0; } }
 
 /* Large view and under */
 @media screen and (max-width: 1599px) {
@@ -15457,13 +15422,6 @@ Miscellaneous Utiliy CSS
 	.well.header-rwd {
 		width: 50%; }
 	/*
- * Home page style
- *
- * Set a responsive with for the h1 in the Well header responsive
- */
-	.home .well.header-rwd h1 {
-		width: 50%; }
-	/*
  * Equal Heights overrides (large view and over)
  */
 	.sect-lnks {
@@ -15582,17 +15540,6 @@ Miscellaneous Utiliy CSS
 	.dataTables_wrapper .dataTables_length {
 		width: 100%; }
 	/*
-  WET-BOEW
-  @title: Extra-extra-small view (screen only)
- */
-	/*
- * Home page style
- *
- * Set a responsive with for the h1 in the Well header responsive
- */
-	.home .well.header-rwd h1 {
-		width: 80%; }
-	/*
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
@@ -15638,18 +15585,7 @@ Miscellaneous Utiliy CSS
   @desc: Variable $screen-xs-min-to-screen-xs-max >= 480px <= 767px
  */
 	#wb-srch input {
-		max-width: 50%; }
-	/*
-  WET-BOEW
-  @title: Extra-small view (screen only)
- */
-	/*
- * Home page style
- *
- * Set a responsive with for the h1 in the Well header responsive
- */
-	.home .well.header-rwd h1 {
-		width: 59%; } }
+		max-width: 50%; } }
 
 /* Small view */
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -15713,17 +15649,6 @@ Miscellaneous Utiliy CSS
 			margin-bottom: 0px;
 			padding-bottom: 0px;
 			position: relative; }
-	/*
-  WET-BOEW
-  @title: Medium view (screen only)
- */
-	/*
- * Home page style
- *
- * Set a responsive with for the h1 in the Well header responsive
- */
-	.home .well.header-rwd h1 {
-		width: 58.3%; }
 	/*
  * Equal Heights overrides (medium view)
  */
