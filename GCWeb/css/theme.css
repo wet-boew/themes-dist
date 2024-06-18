@@ -15322,13 +15322,13 @@ Miscellaneous Utiliy CSS
 		display: flex;
 		-ms-flex-wrap: wrap;
 		    flex-wrap: wrap;
-		list-style-position: inside;
-		padding-left: 1.3em; }
+		padding-left: 2.5em; }
 		main:not(.container) .gc-most-requested ul li,
 		div:not(.container) .gc-most-requested ul li {
 			-ms-flex-preferred-size: 50%;
 			    flex-basis: 50%;
-			font-size: 87%; }
+			font-size: 87%;
+			padding-right: 1.3em; }
 	/*
   WET-BOEW
   @title: Medium view and over (screen only)
