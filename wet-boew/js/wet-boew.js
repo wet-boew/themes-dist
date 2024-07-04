@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.81 - 2024-07-02
+ * v4.0.81.1 - 2024-07-04
  *
  *//*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 2.4.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.4.4/LICENSE */
@@ -2221,7 +2221,32 @@ var getUrlParts = function( url ) {
 		},
 
 		getId: function() {
-			return "wb-auto-" + ( seed += 1 );
+			var idPrefix = "wb-auto-",
+				ids,
+				numberCandidate,
+				numbers = [];
+
+			// Check for conflicting hardcoded IDs the first time an ID is requested
+			if ( !seed ) {
+				ids = document.querySelectorAll( "[id^='" + idPrefix + "']" );
+
+				// Loop through elements whose IDs begin with the prefix
+				ids.forEach( function( currentElm ) {
+					numberCandidate = currentElm.id.substring( idPrefix.length );
+
+					// Verify whether the ID ends with a conflicting number and add it to an array
+					if ( numberCandidate.search( /^\d+$/ ) !== -1 ) {
+						numbers.push( numberCandidate );
+					}
+
+					console.error( "wb.getId: ID '" + currentElm.id + "' isn't supposed to be hardcoded in the page. Please remove it or change its prefix to something different than '" + idPrefix + "'." );
+				} );
+
+				// Set the seed to the array's highest number (will be incremented later)
+				seed = numbers.length ? Math.max.apply( null, numbers ) : seed;
+			}
+
+			return idPrefix + ( seed += 1 );
 		},
 
 		init: function( event, componentName, selector, noAutoId ) {
@@ -16545,7 +16570,7 @@ $document.on( "wb-contentupdated", selector, function( event, data )  {
 		supportsHas = window.getComputedStyle( document.documentElement ).getPropertyValue( "--supports-has" ); // Get "--supports-has" CSS property
 
 	// Reinitialize tagfilter if content on the page has been updated by another plugin
-	if ( data.source !== componentName ) {
+	if ( data && data.source !== componentName ) {
 		if ( wait ) {
 			clearTimeout( wait );
 		}
