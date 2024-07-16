@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.3.0 - 2024-07-15
+ * v15.3.0 - 2024-07-16
  *
  */
 /*
@@ -12044,6 +12044,10 @@ main .gc-rms-lngth img {
 			margin-top: 34px; }
 		.gc-followus ul li:last-child {
 			margin-bottom: 15px; }
+		.gc-followus ul li.more-ways {
+			display: block; }
+			.gc-followus ul li.more-ways a {
+				text-decoration: underline; }
 		.gc-followus ul li a {
 			display: -webkit-box;
 			display: -ms-flexbox;
@@ -12061,19 +12065,19 @@ main .gc-rms-lngth img {
 	.gc-followus ul.list-inline {
 		-webkit-padding-start: 0;
 		        padding-inline-start: 0; }
-		.gc-followus ul.list-inline li {
+		.gc-followus ul.list-inline li:not(.more-ways) {
 			display: inline-block;
 			padding-right: 0; }
-			.gc-followus ul.list-inline li:first-child {
+			.gc-followus ul.list-inline li:not(.more-ways):first-child {
 				margin-top: 0; }
-			.gc-followus ul.list-inline li a {
+			.gc-followus ul.list-inline li:not(.more-ways) a {
 				border-radius: 100%;
 				height: 38px;
 				overflow: hidden;
 				width: 38px; }
-				.gc-followus ul.list-inline li a::before {
+				.gc-followus ul.list-inline li:not(.more-ways) a::before {
 					margin-top: 0; }
-				.gc-followus ul.list-inline li a:hover, .gc-followus ul.list-inline li a:focus, .gc-followus ul.list-inline li a:active {
+				.gc-followus ul.list-inline li:not(.more-ways) a:hover, .gc-followus ul.list-inline li:not(.more-ways) a:focus, .gc-followus ul.list-inline li:not(.more-ways) a:active {
 					outline: solid 2px #0535d2;
 					outline-offset: 1px; }
 	.gc-followus ul .facebook::before {
