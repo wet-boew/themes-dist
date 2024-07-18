@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.3.0 - 2024-07-17
+ * v15.3.0 - 2024-07-18
  *
  */
 ul[class*=cnjnctn-type-] {
@@ -668,7 +668,8 @@ button.wb-clipboard-btn:not(.btn-xs) .glyphicon {
 }
 
 /* Customisation for the progress bar and text */
-.provisional.wb-steps.quiz progress.progressBar{
+.provisional.wb-steps.quiz progress.progressBar,
+.provisional.wb-steps.quiz label {
 	/*-webkit-appearance: progress-bar;*/
 	width: 100%;
 }
