@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.5.0 - 2024-08-23
+ * v15.5.0 - 2024-08-27
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -684,32 +684,32 @@ var $document = wb.doc,
 
 			switch ( cache_action ) {
 
-			case "patch":
-				var ops = i_cache.patches,
-					basePntr = i_cache.base || "/";
-				if ( !ops ) {
-					ops = [ patchDefault ];
-					i_cache.cumulative = true;
-				}
-				if ( !$.isArray( ops ) ) {
-					ops = [ ops ];
-				}
-				ops = patchFixArray( ops, i_cache.qval, basePntr );
-				i_cache.patches = ops;
-				break;
-			case "ajax":
-				if ( i_cache.trigger && dontTriggerWET ) {
-					i_cache.trigger = false;
-				}
-				i_cache.url = replaceMappingKeys( i_cache.url, i_cache.qval );
-				break;
-			case "tblfilter":
-				i_cache.value = replaceMappingKeys( i_cache.value, i_cache.qval );
-				break;
-			default:
+				case "patch":
+					var ops = i_cache.patches,
+						basePntr = i_cache.base || "/";
+					if ( !ops ) {
+						ops = [ patchDefault ];
+						i_cache.cumulative = true;
+					}
+					if ( !$.isArray( ops ) ) {
+						ops = [ ops ];
+					}
+					ops = patchFixArray( ops, i_cache.qval, basePntr );
+					i_cache.patches = ops;
+					break;
+				case "ajax":
+					if ( i_cache.trigger && dontTriggerWET ) {
+						i_cache.trigger = false;
+					}
+					i_cache.url = replaceMappingKeys( i_cache.url, i_cache.qval );
+					break;
+				case "tblfilter":
+					i_cache.value = replaceMappingKeys( i_cache.value, i_cache.qval );
+					break;
+				default:
 
-				// Just do the action as defined.
-				break;
+					// Just do the action as defined.
+					break;
 
 			}
 
@@ -880,39 +880,39 @@ $document.on( actionMngEvent, selector, function( event, data ) {
 
 	if ( actionEvent === event.namespace ) {
 		switch ( eventType ) {
-		case "run":
-			runAct( event, data );
-			break;
-		case "tblfilter":
-			tblflrAct( event, data );
-			break;
-		case "addClass":
-			addClassAct( event, data );
-			break;
-		case "removeClass":
-			remClassAct( event, data );
-			break;
-		case "ajax":
-			ajaxAct( event, data );
-			break;
-		case "patch":
-			patchAct( event, data );
-			break;
-		case "selectInput":
-			selectInputAct( event, data );
-			break;
-		case "mapfilter":
-			geomapAOIAct( event, data );
-			break;
-		case "tocsv":
-			tblToCSV( data.source, data.filename );
-			break;
-		case "loadJSON":
-			loadJSON( data );
-			break;
-		case "withInput":
-			withInput( event, data );
-			break;
+			case "run":
+				runAct( event, data );
+				break;
+			case "tblfilter":
+				tblflrAct( event, data );
+				break;
+			case "addClass":
+				addClassAct( event, data );
+				break;
+			case "removeClass":
+				remClassAct( event, data );
+				break;
+			case "ajax":
+				ajaxAct( event, data );
+				break;
+			case "patch":
+				patchAct( event, data );
+				break;
+			case "selectInput":
+				selectInputAct( event, data );
+				break;
+			case "mapfilter":
+				geomapAOIAct( event, data );
+				break;
+			case "tocsv":
+				tblToCSV( data.source, data.filename );
+				break;
+			case "loadJSON":
+				loadJSON( data );
+				break;
+			case "withInput":
+				withInput( event, data );
+				break;
 		}
 	}
 } );
@@ -3068,115 +3068,115 @@ $document.on( fieldflowActionsEvents, selector, function( event, data ) {
 	var eventType = event.type;
 
 	switch ( event.namespace ) {
-	case drawEvent:
-		switch ( eventType ) {
-		case componentName:
-			drwFieldflow( event, data );
+		case drawEvent:
+			switch ( eventType ) {
+				case componentName:
+					drwFieldflow( event, data );
+					break;
+				case "tblfilter":
+					drwTblFilter( event, data );
+					break;
+			}
 			break;
-		case "tblfilter":
-			drwTblFilter( event, data );
-			break;
-		}
-		break;
 
-	case createCtrlEvent:
-		switch ( eventType ) {
-		case "select":
-			ctrlSelect( event, data );
+		case createCtrlEvent:
+			switch ( eventType ) {
+				case "select":
+					ctrlSelect( event, data );
+					break;
+				case "checkbox":
+					data.typeRadCheck = "checkbox";
+					ctrlChkbxRad( event, data );
+					break;
+				case "radio":
+					data.typeRadCheck = "radio";
+					ctrlChkbxRad( event, data );
+					break;
+			}
 			break;
-		case "checkbox":
-			data.typeRadCheck = "checkbox";
-			ctrlChkbxRad( event, data );
-			break;
-		case "radio":
-			data.typeRadCheck = "radio";
-			ctrlChkbxRad( event, data );
-			break;
-		}
-		break;
 
-	case actionEvent:
-		switch ( eventType ) {
-		case "append":
-			actAppend( event, data );
-			break;
-		case "redir":
-			pushData( $( data.provEvt ), submitJQData, data, true );
-			break;
-		case "ajax":
-			actAjax( event, data );
-			break;
-		case "tblfilter":
-			actTblFilter( event, data );
-			break;
-		case "toggle":
-			if ( data.live ) {
-				subToggle( event, data );
-			} else {
-				data.preventSubmit = true;
-				pushData( $( data.provEvt ), submitJQData, data );
+		case actionEvent:
+			switch ( eventType ) {
+				case "append":
+					actAppend( event, data );
+					break;
+				case "redir":
+					pushData( $( data.provEvt ), submitJQData, data, true );
+					break;
+				case "ajax":
+					actAjax( event, data );
+					break;
+				case "tblfilter":
+					actTblFilter( event, data );
+					break;
+				case "toggle":
+					if ( data.live ) {
+						subToggle( event, data );
+					} else {
+						data.preventSubmit = true;
+						pushData( $( data.provEvt ), submitJQData, data );
+					}
+					break;
+				case "addClass":
+					if ( !data.source || !data.class ) {
+						return;
+					}
+					if ( data.live ) {
+						$( data.source ).addClass( data.class );
+					} else {
+						data.preventSubmit = true;
+						pushData( $( data.provEvt ), submitJQData, data );
+					}
+					break;
+				case "removeClass":
+					if ( !data.source || !data.class ) {
+						return;
+					}
+					if ( data.live ) {
+						$( data.source ).removeClass( data.class );
+					} else {
+						data.preventSubmit = true;
+						pushData( $( data.provEvt ), submitJQData, data );
+					}
+					break;
+				case "query":
+					actQuery( event, data );
+					break;
 			}
 			break;
-		case "addClass":
-			if ( !data.source || !data.class ) {
-				return;
-			}
-			if ( data.live ) {
-				$( data.source ).addClass( data.class );
-			} else {
-				data.preventSubmit = true;
-				pushData( $( data.provEvt ), submitJQData, data );
-			}
-			break;
-		case "removeClass":
-			if ( !data.source || !data.class ) {
-				return;
-			}
-			if ( data.live ) {
-				$( data.source ).removeClass( data.class );
-			} else {
-				data.preventSubmit = true;
-				pushData( $( data.provEvt ), submitJQData, data );
-			}
-			break;
-		case "query":
-			actQuery( event, data );
-			break;
-		}
-		break;
 
-	case submitEvent:
-		switch ( eventType ) {
-		case "redir":
-			subRedir( event, data );
+		case submitEvent:
+			switch ( eventType ) {
+				case "redir":
+					subRedir( event, data );
+					break;
+				case "ajax":
+					subAjax( event, data );
+					break;
+				case "toggle":
+					subToggle( event, data );
+					break;
+				case "addClass":
+					$( data.source ).addClass( data.class );
+					break;
+				case "removeClass":
+					$( data.source ).removeClass( data.class );
+					break;
+				case "query":
+					actQuery( event, data );
+					break;
+			}
 			break;
-		case "ajax":
-			subAjax( event, data );
-			break;
-		case "toggle":
-			subToggle( event, data );
-			break;
-		case "addClass":
-			$( data.source ).addClass( data.class );
-			break;
-		case "removeClass":
-			$( data.source ).removeClass( data.class );
-			break;
-		case "query":
-			actQuery( event, data );
-			break;
-		}
-		break;
 	}
 } );
 
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, function( event ) {
 	switch ( event.type ) {
-	case "timerpoke":
-	case "wb-init":
-		init( event );
-		break;
+		case "timerpoke":
+		case "wb-init":
+			init( event );
+			break;
 	}
 
 	/*
@@ -3266,17 +3266,17 @@ var $document = wb.doc,
 		if ( filter ) {
 
 			switch ( filterType ) {
-			case "startWith":
-				filter = "^" + filter;
-				break;
-			case "word":
-				filter = "^" + filter + "|\\s" + filter;
-				break;
-			case "any":
-			default:
+				case "startWith":
+					filter = "^" + filter;
+					break;
+				case "word":
+					filter = "^" + filter + "|\\s" + filter;
+					break;
+				case "any":
+				default:
 
-				// Keep the filter as is for the regular expression check
-				break;
+					// Keep the filter as is for the regular expression check
+					break;
 			}
 
 			filterRegExp = new RegExp( filter, "i" );
@@ -3395,20 +3395,20 @@ var $document = wb.doc,
 		}
 
 		switch ( event.type ) {
-		case "change":
-			wait = setTimeout( addDataListOptions.bind( datalistElm, query ), waitInterval );
-			break;
-		case "keyup":
-			if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
+			case "change":
+				wait = setTimeout( addDataListOptions.bind( datalistElm, query ), waitInterval );
+				break;
+			case "keyup":
+				if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
 
-				// Backspace, Spacebar, a - z keys, 0 - 9 keys punctuation, and symbols
-				if ( which === 8 ||  which === 32 || ( which > 47 && which < 91 ) ||
-					( which > 95 && which < 112 ) || ( which > 159 && which < 177 ) ||
-					( which > 187 && which < 223 ) ) {
+					// Backspace, Spacebar, a - z keys, 0 - 9 keys punctuation, and symbols
+					if ( which === 8 ||  which === 32 || ( which > 47 && which < 91 ) ||
+						( which > 95 && which < 112 ) || ( which > 159 && which < 177 ) ||
+						( which > 187 && which < 223 ) ) {
 
-					wait = setTimeout( addDataListOptions.bind( datalistElm, query ), waitInterval );
+						wait = setTimeout( addDataListOptions.bind( datalistElm, query ), waitInterval );
+					}
 				}
-			}
 		}
 	},
 
@@ -3444,13 +3444,13 @@ $document.on( "timerpoke.wb " + initEvent + " " + jsonFetched, selector, functio
 	if ( event.currentTarget === eventTarget ) {
 
 		switch ( event.type ) {
-		case "timerpoke":
-		case "wb-init":
-			init( event );
-			break;
-		case "json-fetched":
-			initSuggestion.call( eventTarget, event.fetch.response );
-			break;
+			case "timerpoke":
+			case "wb-init":
+				init( event );
+				break;
+			case "json-fetched":
+				initSuggestion.call( eventTarget, event.fetch.response );
+				break;
 		}
 	}
 	return true;
@@ -3890,21 +3890,21 @@ function setMnu3LevelOrientationExpandState( isVertical, isExpanded ) {
 $document.on( wb.resizeEvents, function( event ) {
 
 	switch ( event.type ) {
-	case "xxsmallview":
-	case "xsmallview":
-	case "smallview":
-		isMobileMode = true;
-		setMnu3LevelOrientationExpandState( false, false );
-		break;
-	case "mediumview":
-		isMobileMode = false;
-		setMnu3LevelOrientationExpandState( false, true );
-		break;
-	case "largeview":
-	case "xlargeview":
-	default:
-		isMobileMode = false;
-		setMnu3LevelOrientationExpandState( true, true );
+		case "xxsmallview":
+		case "xsmallview":
+		case "smallview":
+			isMobileMode = true;
+			setMnu3LevelOrientationExpandState( false, false );
+			break;
+		case "mediumview":
+			isMobileMode = false;
+			setMnu3LevelOrientationExpandState( false, true );
+			break;
+		case "largeview":
+		case "xlargeview":
+		default:
+			isMobileMode = false;
+			setMnu3LevelOrientationExpandState( true, true );
 	}
 } );
 
