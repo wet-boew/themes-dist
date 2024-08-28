@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.5.0 - 2024-08-27
+ * v15.5.0 - 2024-08-28
  *
  */
 /*
@@ -5352,7 +5352,10 @@ h1#wb-cont, hgroup#wb-cont h1 {
 	border-bottom: 0.18em solid #af3c43;
 	-o-border-image: linear-gradient(to right, #af3c43 71px, transparent 71px);
 	   border-image: linear-gradient(to right, #af3c43 71px, transparent 71px);
-	border-image-slice: 1; }
+	border-image-slice: 1;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-top-width: 0; }
 
 hgroup#wb-cont {
 	margin-top: 1em; }

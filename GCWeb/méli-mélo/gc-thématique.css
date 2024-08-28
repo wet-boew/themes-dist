@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.5.0 - 2024-08-27
+ * v15.5.0 - 2024-08-28
  *
  */
 /* Thematic red */
@@ -175,6 +175,9 @@ h1#wb-cont.empathy {
     border-bottom: 0.18em solid #5C2790;
     border-image: linear-gradient(to right, #5C2790 71px, transparent 71px);
     border-image-slice: 1;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-top-width: 0;
 }
 
 /*  Thematic Steps Quiz */
