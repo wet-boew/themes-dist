@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.6.0 - 2024-08-28
+ * v15.6.1 - 2024-09-11
  *
  */
 /*!
@@ -5860,9 +5860,8 @@ a {
 		border: 0 !important; }
 	.dl-horizontal dt {
 		border-top: 1px solid #ccc;
-		-webkit-hyphens: auto;
-		    -ms-hyphens: auto;
-		        hyphens: auto;
+		-ms-hyphens: auto;
+		    hyphens: auto;
 		padding: 10px 10px 10px 0;
 		text-align: left;
 		white-space: normal;
@@ -5881,7 +5880,6 @@ a {
 		grid-template-columns: minmax(min-content, min-content) auto; }
 		.dl-horizontal.dt-max dt {
 			-ms-hyphens: none;
-			-webkit-hyphens: none;
 			hyphens: none;
 			min-width: 20ch;
 			white-space: normal;
@@ -8113,9 +8111,8 @@ a {
 		border: 0 !important; }
 	.dl-horizontal dt {
 		border-top: 1px solid #ccc;
-		-webkit-hyphens: auto;
-		    -ms-hyphens: auto;
-		        hyphens: auto;
+		-ms-hyphens: auto;
+		    hyphens: auto;
 		padding: 10px 10px 10px 0;
 		text-align: left;
 		white-space: normal;
@@ -8134,7 +8131,6 @@ a {
 		grid-template-columns: minmax(min-content, min-content) auto; }
 		.dl-horizontal.dt-max dt {
 			-ms-hyphens: none;
-			-webkit-hyphens: none;
 			hyphens: none;
 			min-width: 20ch;
 			white-space: normal;
