@@ -865,18 +865,18 @@ wb.add( selector );
         if ( "noButton" in data === false ) {
             buttonId = wb.getId();
             switch ( data.btnAlign ) {
-				case "left":
-					btnAlign = "text-left ";
-					break;
-				case "right":
-					btnAlign = "text-right ";
-					break;
-				case "center":
-					btnAlign = "text-center ";
-					break;
-				case "none":
-				default:
-					btnAlign = "";
+                case "left":
+                    btnAlign = "text-left ";
+                    break;
+                case "right":
+                    btnAlign = "text-right ";
+                    break;
+                case "center":
+                    btnAlign = "text-center ";
+                    break;
+                case "none":
+                default:
+                    btnAlign = "";
             }
             if ( getDisplayType( elm ) === true ) {
                 containTag = "span";
