@@ -5355,6 +5355,15 @@ h1#wb-cont, hgroup#wb-cont h1 {
 	border-right-width: 0;
 	border-top-width: 0; }
 
+h1#wb-cont[dir="rtl"], hgroup#wb-cont[dir="rtl"] h1, [dir="rtl"] h1#wb-cont, [dir="rtl"] hgroup#wb-cont h1 {
+	border-bottom: 0.18em solid #af3c43;
+	-o-border-image: linear-gradient(to left, #af3c43 71px, transparent 71px);
+	   border-image: linear-gradient(to left, #af3c43 71px, transparent 71px);
+	border-image-slice: 1;
+	border-left-width: 0;
+	border-right-width: 0;
+	border-top-width: 0; }
+
 hgroup#wb-cont {
 	margin-top: 1em; }
 	hgroup#wb-cont p {
