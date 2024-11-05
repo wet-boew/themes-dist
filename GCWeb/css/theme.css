@@ -13259,6 +13259,17 @@ aside.features {
 		background-position: right center;
 		background-repeat: no-repeat;
 		background-size: 38%; }
+	.home .gc-srvinfo .container > p:last-child {
+		margin-bottom: 20px;
+		margin-top: 20px; }
+		.home .gc-srvinfo .container > p:last-child .btn-all-services {
+			border: 2px solid #26374a;
+			color: #26374a;
+			font-size: 1.1em;
+			font-weight: bold;
+			padding: .65em 1.1em; }
+			.home .gc-srvinfo .container > p:last-child .btn-all-services:hover {
+				text-decoration: underline; }
 
 /* The blog page template was removed on Sep 27, 2016 and introduced in 2014
  *
