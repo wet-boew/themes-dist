@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.7.0 - 2024-11-05
+ * v15.7.0 - 2024-11-06
  *
  */
 ul[class*=cnjnctn-type-] {
@@ -432,6 +432,31 @@ ol.lst-stps.stps-strpd:not(.ld-zr) > li:before, ol.lst-stps.stps-strpd:not(.ld-z
 		break-inside: avoid;
 		padding-top:1em;
 	}
+}
+/* Increment (start) */
+ol.lst-stps[start="2"] {
+  counter-set: item 1;  
+}
+ol.lst-stps[start="3"] {
+  counter-set: item 2;  
+}
+ol.lst-stps[start="4"] {
+  counter-set: item 3;  
+}
+ol.lst-stps[start="5"] {
+  counter-set: item 4;  
+}
+ol.lst-stps[start="6"] {
+  counter-set: item 5;  
+}
+ol.lst-stps[start="7"] {
+  counter-set: item 6;  
+}
+ol.lst-stps[start="8"] {
+  counter-set: item 7;  
+}
+ol.lst-stps[start="9"] {
+  counter-set: item 8;  
 }
 
 /*** Mega Menu ***/
