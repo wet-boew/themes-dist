@@ -5,13 +5,6 @@
  * v15.8.0 - 2024-11-12
  *
  */
-@charset "utf-8";
-/*!
- * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.7.0 - 2024-10-16
- *
- */
 ul[class*=cnjnctn-type-] {
   list-style-type: "";
   padding-left: 0;
@@ -440,294 +433,35 @@ ol.lst-stps.stps-strpd:not(.ld-zr) > li:before, ol.lst-stps.stps-strpd:not(.ld-z
 		padding-top:1em;
 	}
 }
-
-/*** Mega Menu ***/
-/* add background and text color for menu */
-#wb-sm.campaign-menu {
-    background: #26374a;
-    color: #fff;
+/* Increment (start) */
+ol.lst-stps[start="2"] {
+  counter-set: item 1;  
 }
-/* remove table cell and text shadow */
-#wb-sm.campaign-menu .menu {
-    border-right: 0px !important;
-    display: block;
-    text-shadow: none;
+ol.lst-stps[start="3"] {
+  counter-set: item 2;  
 }
-
- /* focus within menu item background */
-#wb-sm.campaign-menu .menu .active, 
-#wb-sm.campaign-menu .menu .wb-navcurr,
-#wb-sm.campaign-menu .menu > li a:focus {
-    background: #ccc !important;
-    color: #333 !important;
+ol.lst-stps[start="4"] {
+  counter-set: item 3;  
 }
-
-#wb-sm.campaign-menu .menu > li {
-    border-left: 1px solid #26374a;
+ol.lst-stps[start="5"] {
+  counter-set: item 4;  
 }
-
-#wb-sm.campaign-menu .menu > li:last-child {
-    border-right: 1px solid #26374a;
+ol.lst-stps[start="6"] {
+  counter-set: item 5;  
+}
+ol.lst-stps[start="7"] {
+  counter-set: item 6;  
+}
+ol.lst-stps[start="8"] {
+  counter-set: item 7;  
+}
+ol.lst-stps[start="9"] {
+  counter-set: item 8;  
 }
 
-/* adjust menu padding to align height with GCMenu button */
-#wb-sm.campaign-menu .menu > li a {
-    padding: 0.5em 1em;
+.wb-col-sum {
+    font-weight: bold;
 }
-
-/* change menu item on-hover background */
-#wb-sm.campaign-menu .menu > li a:hover{
-    background: #ccc !important;
-    color: #333 !important;
-}
-
-/* change menuitem text color when mouse move to submenu item */
-#wb-sm.campaign-menu .menu > li.active > a{
-    background: #ccc!important;
-    color: #333!important; 
-}
-
-/* submenu default color */
-#wb-sm.campaign-menu .sm.open li a {
-    background: #ccc !important;
-    color: #333 !important; 
-}
-
-/* hover on submenu item */
-#wb-sm.campaign-menu .sm.open li a:active, 
-#wb-sm.campaign-menu .sm.open li a:focus, 
-#wb-sm.campaign-menu .sm.open li a:hover {
-    background: #26374a !important;
-    color: #fff !important;    
-}
-
-/* submenu bottom bar color */
-#wb-sm.campaign-menu .sm.open {
-    border-bottom: 5px solid #26374a !important;
-}
-
-/*** GCWEB Menu ***/
-/* default color */
-.gcweb-menu.campaign-menu button[aria-haspopup=true] {
-    background-color: #26374a !important;
-    border: 1px solid #26374a;
-    color: #fff;
-}
-
-/* Button opened with white background */
-.gcweb-menu.campaign-menu button[aria-haspopup=true][aria-expanded=true] {
-    background-color: #fff !important;
-    color: #000;
-}
-
-/* button closed */
-.gcweb-menu.campaign-menu button[aria-haspopup=true]:focus {
-    background-color: #26374a !important;
-    border: 1px dotted #fff;
-    color: #fff;
-}
-
-/* add border for menu item area to align the width */
-.gcweb-menu.campaign-menu button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
-    border-right: #26374a solid 1px !important;
-}
-
-/* menu item background and color */
-.gcweb-menu.campaign-menu [role=menu] {
-    background-color: #26374a !important;
-    color: #fff;
-}
-
-/* remove border lines */
-.gcweb-menu.campaign-menu [role=menuitem], 
-.gcweb-menu.campaign-menu [role=menuitem]:visited,
-.gcweb-menu.campaign-menu [role=menu] > li,
-.gcweb-menu.campaign-menu [role=menu] > li:first-child,
-.gcweb-menu.campaign-menu [role=menu] > li:last-child,
-.gcweb-menu.campaign-menu [role=menu] [role=menu] [role=menuitem], 
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
-    border: none;
-}
-
-/* submenu background and text color */
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li [role=menuitem] {
-    background-color: #e1e1e1 !important;
-    color: #333;
-    padding-left: 65px;
-}
-
-/* submenu item paddings and margins */
-.gcweb-menu.campaign-menu [aria-expanded=true]:not(button) + [role=menu] li {
-    margin-left: 0px;
-}
-.gcweb-menu.campaign-menu [aria-expanded=true]:not(button) + [role=menu] li:first-child [role=menuitem], 
-.gcweb-menu.campaign-menu [aria-expanded=true]:not(button) + [role=menu] li:last-child [role=menuitem] {
-    padding-left: 65px;
-}
-
-/* submenu item on focus */
-.gcweb-menu.campaign-menu [role=menu] [role=menu] [role=menuitem]:focus, 
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem]:focus, 
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li:last-child [role=menuitem]:focus {
-    background-color: #e1e1e1 !important;
-    color: #333 !important;
-}
-
-/* submenu item on hover */
-.gcweb-menu.campaign-menu [role=menu] [role=menu] [role=menuitem]:hover, 
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem]:hover, 
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li:last-child [role=menuitem]:hover {
-    background: #26374a !important;
-    color: #fff !important;
-    text-decoration: none;
-}
-
-/* remove the underline of sub menu item */
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li [role=menuitem], 
-.gcweb-menu.campaign-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
-    text-decoration: none;
-}
-
-/*** Secondary colour cm-bg-darker ***/
-/* add background and text color for menu */
-#wb-sm.campaign-menu.cm-bg-darker {
-    background: #000;
-}
-
-#wb-sm.campaign-menu.cm-bg-darker .menu > li {
-    border-left: 1px solid #000;
-}
-
-#wb-sm.campaign-menu.cm-bg-darker .menu > li:last-child {
-    border-right: 1px solid #000;
-}
-
-/* hover on submenu item */
-#wb-sm.campaign-menu.cm-bg-darker .sm.open li a:active, 
-#wb-sm.campaign-menu.cm-bg-darker .sm.open li a:focus, 
-#wb-sm.campaign-menu.cm-bg-darker .sm.open li a:hover {
-    background: #000 !important;
-}
-
-/* submenu bottom bar color */
-#wb-sm.campaign-menu.cm-bg-darker .sm.open {
-    border-bottom: 5px solid #000 !important;
-}
-
-/*** GCWEB Menu ***/
-/* default color */
-.gcweb-menu.campaign-menu.cm-bg-darker button[aria-haspopup=true] {
-    background-color: #000 !important;
-    border: 1px solid #000;
-}
-
-.gcweb-menu.campaign-menu.cm-bg-darker button[aria-haspopup=true][aria-expanded=true] {
-    background-color: #fff !important;
-}
-
-/* button closed */
-.gcweb-menu.campaign-menu.cm-bg-darker button[aria-haspopup=true]:focus {
-    background-color: #000 !important;
-}
-
-/* add border for menu item area to align the width */
-.gcweb-menu.campaign-menu.cm-bg-darker button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
-    border-right: #000 solid 1px !important;
-}
-
-/* menu item background and color */
-.gcweb-menu.campaign-menu.cm-bg-darker [role=menu] {
-    background-color: #000 !important;
-}
-
-/* submenu item on hover */
-.gcweb-menu.campaign-menu.cm-bg-darker [role=menu] [role=menu] [role=menuitem]:hover, 
-.gcweb-menu.campaign-menu.cm-bg-darker [role=menu] [role=menu] li:first-child [role=menuitem]:hover, 
-.gcweb-menu.campaign-menu.cm-bg-darker [role=menu] [role=menu] li:last-child [role=menuitem]:hover {
-    background: #000 !important;
-}
-
-@charset "utf-8";
-/* CSS Document */
-  .wb-clipboard-init.copyarea:not(textarea):not(input) {
-      border: 1px solid #e3e3e3;
-      box-shadow: 0px 0px 8px #e3e3e3;
-      margin-left: 30px;
-      margin-right: 30px;
-      padding: 15px;
-      margin-bottom: 15px;
-  }
-
-  .copyarea::before, .copyarea::after {
-      clip: rect(1px,1px,1px,1px);
-      height: 1px;
-      margin: 0;
-      overflow: hidden;
-      position: absolute;
-      width: 1px;
-  }
-  .wb-clipboard-init.copyarea::before, .wb-clipboard-init.copyarea::after {
-      content: "";
-  }
-  .copyarea.copied:not(textarea):not(input) {
-      border: 1px solid #d6e9c6;
-      box-shadow: 0px 0px 18px #d6e9c6;
-  }
-  pre.wb-clipboard > button.wb-clipboard-btn {
-      font-family: Helvetica,Arial,sans-serif;
-  }
-button.wb-clipboard-btn:not(.btn-xs) {
-  font-size: 1em;
-  font-weight: 600;
-  padding: 5px 7px;
-}
-button.wb-clipboard-btn:not(.btn-xs) .glyphicon {
-  font-size: 1.2em;
-}
-  .wb-clipboard-text {
-      font-family: courier;
-      font-size: 16px;
-  }
-  textarea.wb-clipboard {
-      margin-bottom: 15px;
-  }
-
-/* Remove default bottom border for each questions of the Steps Form  */
-.provisional.wb-steps.quiz .steps-wrapper {
-	border-bottom: none;
-}
-
-.provisional.wb-steps.quiz .wb-tggle-fildst > legend:before {
-	content: "";
-	counter-increment: none;
-}
-
-/* Customisation for the progress bar and text */
-.provisional.wb-steps.quiz progress.progressBar,
-.provisional.wb-steps.quiz label {
-	/*-webkit-appearance: progress-bar;*/
-	width: 100%;
-}
-
-.provisional.wb-steps.quiz .progressText {
-	text-align: center;
-}
-
-/* Align with default text size since forms are temporary excluded */
-.provisional.wb-steps.quiz p {
-	font-size: 20px;
-}
-
-.cnt-wdth-lmtd main .panel.stepsquiz:has( .provisional.wb-steps.quiz ) {
-	max-width: 65ch;
-}
-
-.provisional.wb-steps.quiz .steps-wrapper .buttons .btn {
-	display: inline-block;
-	width: 48%;
-	margin: 10px 1%;
-}
-
 /*------
 * Deprecated styles
 ------*/
