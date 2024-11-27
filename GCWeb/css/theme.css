@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.8.0 - 2024-11-12
+ * v15.8.0 - 2024-11-27
  *
  */
 /*
@@ -12367,14 +12367,9 @@ fieldset.gc-chckbxrdio {
 
 .gc-chckbxrdio input[type="radio"],
 .gc-chckbxrdio input[type="checkbox"] {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px; }
+	margin-left: 10px;
+	opacity: 0;
+	z-index: 2; }
 	.gc-chckbxrdio input[type="radio"][disabled] + label,
 	.gc-chckbxrdio input[type="checkbox"][disabled] + label {
 		cursor: not-allowed;
@@ -12401,6 +12396,13 @@ fieldset.gc-chckbxrdio {
 	.gc-chckbxrdio input[type="checkbox"] + label:hover::before {
 		background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e5e5), color-stop(50%, white));
 		background-image: linear-gradient(to bottom, #e6e5e5, white 50%); }
+	.gc-chckbxrdio input[type="radio"]:hover,
+	.gc-chckbxrdio input[type="checkbox"]:hover {
+		cursor: pointer; }
+		.gc-chckbxrdio input[type="radio"]:hover + label::before,
+		.gc-chckbxrdio input[type="checkbox"]:hover + label::before {
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#e6e5e5), color-stop(50%, white));
+			background-image: linear-gradient(to bottom, #e6e5e5, white 50%); }
 	.gc-chckbxrdio input[type="radio"]:focus + label::before,
 	.gc-chckbxrdio input[type="checkbox"]:focus + label::before {
 		-webkit-box-shadow: 0 0 0 2px #000, 0 0 8px 4px #3b99fc;
@@ -12448,6 +12450,15 @@ fieldset.gc-chckbxrdio {
 	padding-right: 20px; }
 	.gc-chckbxrdio.form-inline .label-inline label {
 		padding-left: 10px; }
+
+@media (prefers-contrast: more) {
+	.gc-chckbxrdio input[type=checkbox]:focus + label::before {
+		border: 5px double #000; }
+	.gc-chckbxrdio input[type=radio]:focus + label::before {
+		border: 5px double #000; }
+	.gc-chckbxrdio input[type="radio"]:checked + label::before {
+		outline: 10px solid #444;
+		outline-offset: -20px; } }
 
 /*
  *
