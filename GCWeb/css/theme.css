@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.8.0 - 2024-12-05
+ * v15.8.0 - 2024-12-06
  *
  */
 /*
@@ -11793,6 +11793,13 @@ main .gc-rms-lngth img {
 	- Provisional  CSSspecific for view port are defined in the "views/[view port]" theme CSS
 */
 .provisional {
+	/*
+	*
+	*
+	* START: the following code has been deprecated as of version 16.0.0
+	*
+	*
+	*/
 	/* ------------
 	 * Background color
 	 *
@@ -11808,6 +11815,13 @@ main .gc-rms-lngth img {
 	/* Pink day - One day event in April
 	 * (with a contrast conforming to Level AAA)
 	 */
+	/*
+	*
+	*
+	* END: the above code has been deprecated as of version 16.0.0
+	*
+	*
+	*/
 	/* Dark theme
 	 */
 	/* Theme/topic decorative image */ }
@@ -11816,7 +11830,7 @@ main .gc-rms-lngth img {
 		.provisional .bg-pnkDy.well.header-rwd {
 			background-color: #570030; }
 	.provisional .bg-img-hdng {
-		background-image: url("../assets/x-blue-line.png");
+		background-image: url("https://www.canada.ca/content/dam/servcan/x-blue-line.png");
 		background-position: right bottom;
 		background-repeat: no-repeat;
 		min-height: 60px;
@@ -11849,6 +11863,8 @@ main .gc-rms-lngth img {
 		background-color: #c40b71; }
 	.provisional.pnkDy-theme #wb-info .landscape {
 		background-color: #AD005F; }
+	.provisional.icon-warning-light, .provisional .icon-warning-light {
+		color: #DF7200; }
 	.provisional.dark-theme .gcweb-menu button[aria-haspopup=true],
 	.provisional.dark-theme #wb-srch button,
 	.provisional.dark-theme .srchbox button {
@@ -11878,8 +11894,6 @@ main .gc-rms-lngth img {
 	.provisional.dark-theme #wb-info .landscape {
 		background-color: #000;
 		color: #fff; }
-	.provisional.icon-warning-light, .provisional .icon-warning-light {
-		color: #DF7200; }
 	.provisional.gc-topic-bg div {
 		background: no-repeat;
 		margin-left: -15px;
@@ -14806,26 +14820,6 @@ Miscellaneous Utiliy CSS
  */
 	.pagedetails .pull-right {
 		float: none !important; }
-	/*
-  WET-BOEW
-  @title: Footer extra-small view and under (screen only)
- */
-	#wb-info .gc-sub-footer, #wb-info .brand {
-		/* START: To support footer v3.0 */
-		/* END */
-		/* START: To support footer <= v2.0 */
-		/* END */ }
-		#wb-info .gc-sub-footer nav ul + h4, #wb-info .brand nav ul + h4 {
-			margin-top: 0; }
-			#wb-info .gc-sub-footer nav ul + h4::before, #wb-info .brand nav ul + h4::before {
-				border-width: 0 0 1px 0;
-				display: block !important;
-				height: 0;
-				margin: 1em 0;
-				position: static;
-				width: 1.5em; }
-		#wb-info .gc-sub-footer .row nav ul li:first-child::before, #wb-info .brand .row nav ul li:first-child::before {
-			display: inline; }
 	.wb-eqht-grd > [class*="col-"] {
 		width: 100%; }
 	/*
@@ -15027,42 +15021,12 @@ Miscellaneous Utiliy CSS
   WET-BOEW
   @title: Small view and under (screen only)
  */
-	#wb-info .gc-sub-footer, #wb-info .brand {
-		/* START: To support footer <= v2.0 */
-		/* END */ }
-		#wb-info .gc-sub-footer nav ul, #wb-info .brand nav ul {
-			/* START: To support footer v3.0 */
-			display: block;
-			/* END */ }
-			#wb-info .gc-sub-footer nav ul + h4, #wb-info .brand nav ul + h4 {
-				margin-top: 0; }
-				#wb-info .gc-sub-footer nav ul + h4::before, #wb-info .brand nav ul + h4::before {
-					border-width: 0 0 1px 0;
-					display: block !important;
-					height: 0;
-					margin: 1em 0;
-					position: static;
-					width: 1.5em; }
-			#wb-info .gc-sub-footer nav ul li, #wb-info .brand nav ul li {
-				display: block; }
-				#wb-info .gc-sub-footer nav ul li:not(:last-child), #wb-info .brand nav ul li:not(:last-child) {
-					margin-bottom: .75em; }
-				#wb-info .gc-sub-footer nav ul li::before, #wb-info .brand nav ul li::before {
-					display: none; }
-		#wb-info .gc-sub-footer .row nav, #wb-info .brand .row nav {
-			margin: .75em 0 3em; }
-			#wb-info .gc-sub-footer .row nav ul, #wb-info .brand .row nav ul {
-				-webkit-column-count: 2;
-				   -moz-column-count: 2;
-				        column-count: 2;
-				padding-top: 0; }
-			#wb-info .gc-sub-footer .row nav li, #wb-info .brand .row nav li {
-				display: block;
-				margin-bottom: .75em; }
-				#wb-info .gc-sub-footer .row nav li::before, #wb-info .brand .row nav li::before {
-					content: "\2022";
-					display: inline;
-					margin-right: .75em; }
+	#wb-info .gc-sub-footer nav ul li {
+		display: block; }
+		#wb-info .gc-sub-footer nav ul li:not(:last-child) {
+			margin-bottom: .75em; }
+		#wb-info .gc-sub-footer nav ul li::before {
+			display: none; }
 	/*
  Details Summary Styling (small view and under)
 */
@@ -15751,9 +15715,6 @@ Miscellaneous Utiliy CSS
 		.wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.prv, .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.tab-count, .wb-tabs.carousel-s2.show-thumbs [role="tablist"] li.nxt {
 			display: none; }
 	/*
- Social Media Icons Medium View and over
-*/
-	/*
   WET-BOEW
   @title: Medium view and over (screen only)
   @desc:  Variable $screen-md-min >= 992px
@@ -16362,20 +16323,12 @@ Miscellaneous Utiliy CSS
 	/*
  * Site information (extra-extra-small view)
  */
-	#wb-info .gc-sub-footer, #wb-info .brand {
-		/* START: To support footer <= v2.0 */
-		/* END */ }
-		#wb-info .gc-sub-footer object,
-		#wb-info .gc-sub-footer img, #wb-info .brand object,
-		#wb-info .brand img {
-			height: 25px;
-			margin-top: 15px;
-			max-width: 100%;
-			padding-right: 10px; }
-		#wb-info .gc-sub-footer .row nav ul, #wb-info .brand .row nav ul {
-			-webkit-column-count: 1;
-			   -moz-column-count: 1;
-			        column-count: 1; }
+	#wb-info .gc-sub-footer object,
+	#wb-info .gc-sub-footer img {
+		height: 25px;
+		margin-top: 15px;
+		max-width: 100%;
+		padding-right: 10px; }
 	/*
  Menu (extra-extra-small view)
  */

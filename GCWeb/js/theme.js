@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v15.8.0 - 2024-12-05
+ * v15.8.0 - 2024-12-06
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -988,20 +988,22 @@ var componentName = "wb-chtwzrd",
 	 * @param {jQuery Event} event Event that triggered the function call
 	 */
 	init = function( event ) {
+		setTimeout( function() {
 
-		// Start initialization
-		// returns DOM object = proceed with init
-		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
-			$elm;
-		if ( elm ) {
-			$elm = $( elm );
+			// Start initialization
+			// returns DOM object = proceed with init
+			// returns undefined = do not proceed with init (e.g., already initialized)
+			var elm = wb.init( event, componentName, selector ),
+				$elm;
+			if ( elm ) {
+				$elm = $( elm );
 
-			fireChtwzrd( $elm );
+				fireChtwzrd( $elm );
 
-			// Identify that initialization has completed
-			wb.ready( $elm, componentName );
-		}
+				// Identify that initialization has completed
+				wb.ready( $elm, componentName );
+			}
+		}, 500 );
 	},
 
 	/**
