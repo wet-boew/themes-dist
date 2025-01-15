@@ -1527,6 +1527,8 @@ html {
 main {
 	font-size: 20px;
 	line-height: 1.65em; }
+	main * {
+		word-break: break-word; }
 
 .cnt-wdth-lmtd main h2,
 main .cnt-wdth-lmtd h2 {
