@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.2.0 - 2025-02-04
+ * v16.2.0 - 2025-02-18
  *
  */
 /*
@@ -6425,7 +6425,7 @@ h1#wb-cont[dir=rtl], hgroup#wb-cont[dir=rtl] h1, [dir=rtl] h1#wb-cont, [dir=rtl]
 hgroup#wb-cont {
 	margin-top: 1em;
 }
-hgroup#wb-cont p {
+hgroup#wb-cont p:first-child {
 	color: #555;
 	font-size: 26px;
 	font-weight: 500;
@@ -6433,6 +6433,10 @@ hgroup#wb-cont p {
 }
 hgroup#wb-cont h1 {
 	margin-top: 0;
+}
+hgroup#wb-cont p.gc-byline {
+	font-weight: 700;
+	margin-bottom: 30px;
 }
 
 /*! Components (CSS type only) */
@@ -13978,11 +13982,6 @@ html:not(.wb-disable) .wb-pgfltr-out {
 	margin-bottom: 0;
 }
 
-.gc-byline {
-	font-weight: 700;
-	margin-bottom: 30px;
-}
-
 /*
  * Corporate information on Institution and Organization pages
 */
@@ -14326,6 +14325,12 @@ main .gc-rms-lngth img {
 	border-right: 5px solid transparent;
 	height: 0;
 	width: 0;
+}
+
+/* Byline */
+.gc-byline {
+	font-weight: 700;
+	margin-bottom: 30px;
 }
 
 /* Contributors */
