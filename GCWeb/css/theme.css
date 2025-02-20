@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.2.0 - 2025-02-18
+ * v16.2.0 - 2025-02-20
  *
  */
 /*
@@ -6437,6 +6437,23 @@ hgroup#wb-cont h1 {
 hgroup#wb-cont p.gc-byline {
 	font-weight: 700;
 	margin-bottom: 30px;
+}
+
+/* Contributors */
+.gc-contributors {
+	font-size: 20px;
+	margin-top: 38px;
+}
+.gc-contributors h2, .gc-contributors h3, .gc-contributors ul {
+	font-size: 87%;
+	margin-top: 0;
+}
+.gc-contributors ul {
+	-webkit-padding-start: 20px;
+	        padding-inline-start: 20px;
+}
+.gc-contributors ul li {
+	font-weight: 700;
 }
 
 /*! Components (CSS type only) */
@@ -14333,22 +14350,6 @@ main .gc-rms-lngth img {
 	margin-bottom: 30px;
 }
 
-/* Contributors */
-.gc-contributors {
-	margin-top: 38px;
-}
-.gc-contributors h2, .gc-contributors ul {
-	font-size: 87%;
-	margin-top: 0;
-}
-.gc-contributors ul {
-	-webkit-padding-start: 20px;
-	        padding-inline-start: 20px;
-}
-.gc-contributors ul li {
-	font-weight: 700;
-}
-
 /*
  Social Media Icons, follow-us
 */
@@ -18805,6 +18806,35 @@ Miscellaneous Utiliy CSS
 		margin-top: 16px;
 	}
 	/*
+	  WET-BOEW
+	  @title: Medium view and over (screen only)
+	  @desc:  Variable $screen-md-min >= 992px
+	*/
+	.gc-contributors {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.gc-contributors h2, .gc-contributors h3 {
+		line-height: 1.8em;
+		word-break: initial;
+	}
+	.gc-contributors ul {
+		-webkit-padding-start: 5px;
+		        padding-inline-start: 5px;
+	}
+	.gc-contributors ul li {
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+	.gc-contributors ul li::after {
+		content: "•";
+		margin-left: 0.7em;
+	}
+	.gc-contributors ul li:last-child::after {
+		content: none;
+	}
+	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
 	 * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
 	 */
@@ -18862,34 +18892,6 @@ Miscellaneous Utiliy CSS
 	}
 	.wb-tabs.carousel-s2.show-thumbs [role=tablist] li.prv, .wb-tabs.carousel-s2.show-thumbs [role=tablist] li.tab-count, .wb-tabs.carousel-s2.show-thumbs [role=tablist] li.nxt {
 		display: none;
-	}
-	/*
-	  WET-BOEW
-	  @title: Medium view and over (screen only)
-	  @desc:  Variable $screen-md-min >= 992px
-	*/
-	.gc-contributors {
-		display: -webkit-box;
-		display: -ms-flexbox;
-		display: flex;
-	}
-	.gc-contributors h2 {
-		line-height: 1.8em;
-	}
-	.gc-contributors ul {
-		-webkit-padding-start: 5px;
-		        padding-inline-start: 5px;
-	}
-	.gc-contributors ul li {
-		display: inline-block;
-		margin-right: 0.5em;
-	}
-	.gc-contributors ul li::after {
-		content: "•";
-		margin-left: 0.7em;
-	}
-	.gc-contributors ul li:last-child::after {
-		content: none;
 	}
 	/*
 	 * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
