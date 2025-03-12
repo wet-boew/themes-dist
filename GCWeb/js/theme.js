@@ -363,7 +363,7 @@ var $document = wb.doc,
 			actions = wb.getData( $elm, componentName );
 
 			if ( actions ) {
-				if ( !$.isArray( actions ) ) {
+				if ( !Array.isArray( actions ) ) {
 					actions = [ actions ];
 				}
 				i_len = actions.length;
@@ -410,7 +410,7 @@ var $document = wb.doc,
 			return;
 		}
 
-		if ( !$.isArray( ops ) ) {
+		if ( !Array.isArray( ops ) ) {
 			ops = [ ops ];
 		}
 
@@ -636,7 +636,7 @@ var $document = wb.doc,
 			defaultValue;
 
 
-		if ( !$.isArray( actions ) ) {
+		if ( !Array.isArray( actions ) ) {
 			actions = [ actions ];
 		} else {
 			actions = $.extend( [], actions );
@@ -691,7 +691,7 @@ var $document = wb.doc,
 						ops = [ patchDefault ];
 						i_cache.cumulative = true;
 					}
-					if ( !$.isArray( ops ) ) {
+					if ( !Array.isArray( ops ) ) {
 						ops = [ ops ];
 					}
 					ops = patchFixArray( ops, i_cache.qval, basePntr );
@@ -804,7 +804,7 @@ $document.on( "do." + actionEvent, function( event ) {
 	// Filter out any events triggered by descendants
 	if ( ( elm === event.target || event.currentTarget === event.target ) && elm.className.indexOf( componentName ) === -1 ) {
 
-		if ( !$.isArray( actions ) ) {
+		if ( !Array.isArray( actions ) ) {
 			actions = [ actions ];
 		}
 
@@ -1920,7 +1920,7 @@ var componentName = "wb-fieldflow",
 			}
 			config = $.extend( {}, defaults, wbDataElm );
 
-			if ( config.defaultIfNone && !$.isArray( config.defaultIfNone ) ) {
+			if ( config.defaultIfNone && !Array.isArray( config.defaultIfNone ) ) {
 				config.defaultIfNone = [ config.defaultIfNone ];
 			}
 
@@ -2734,7 +2734,7 @@ $document.on( resetActionEvent, selector + ", ." + subComponentName, function( e
 		if ( settings && settings.reset ) {
 			settingsReset = settings.reset;
 
-			if ( $.isArray( settingsReset ) ) {
+			if ( Array.isArray( settingsReset ) ) {
 				resetAction = settingsReset;
 			} else {
 				resetAction.push( settingsReset );
@@ -2818,7 +2818,7 @@ $document.on( "change", selectorForm + " " + crtlSelectSelector, function( event
 	}
 	if ( $optSel.length && $optSel.val() && settings && settings.default ) {
 		cacheAction = settings.default;
-		if ( $.isArray( cacheAction ) ) {
+		if ( Array.isArray( cacheAction ) ) {
 			actions = cacheAction;
 		} else {
 			actions.push( cacheAction );
@@ -2855,7 +2855,7 @@ $document.on( "change", selectorForm + " " + crtlSelectSelector, function( event
 						} catch ( error ) {
 							$.error( "Bad JSON object " + actionAttr );
 						}
-						if ( !$.isArray( cacheAction ) ) {
+						if ( !Array.isArray( cacheAction ) ) {
 							cacheAction = [ cacheAction ];
 						}
 					} else {
