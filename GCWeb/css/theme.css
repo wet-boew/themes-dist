@@ -5085,7 +5085,7 @@ input.btn.btn-call-to-action {
  *
  * This undo the font style introduced with gcweb v5 new look
  *
- * - Rational: This is to help the adoption of the new desing by allowing adopter to use
+ * - Rational: This is to help the adoption of the new design by allowing adopter to use
  * a special CSS class on content like the one optimized for a desktop at 100% view port
  * Example of content: high profile pages, campaign, application, .....
  *
@@ -5918,7 +5918,7 @@ main .pagedetails {
 	/* The rest of items */
 	/* First menu item (represent the home link */
 	/* Undo for lower level */
-	/* SubSubMenu (MostRequested) for more iteroperability, use CSS class */
+	/* SubSubMenu (MostRequested) for more interoperability, use CSS class */
 	/* Grid of the submenu panel */
 }
 .gcweb-menu button[aria-haspopup=true] {
@@ -17723,7 +17723,7 @@ Miscellaneous Utility CSS
 	  @title: Extra-small view and under (screen only)
 	  @desc:  Variable $screen-xs-max <= 767px
 	 */
-	/* Make a simple list multi-column and responsive (overide _defaults.scss) */
+	/* Make a simple list multi-column and responsive (override _defaults.scss) */
 	.list-responsive > li {
 		clear: right;
 		width: 100%;
@@ -19309,7 +19309,7 @@ Miscellaneous Utility CSS
 		-ms-flex-preferred-size: 25%;
 		    flex-basis: 25%;
 	}
-	/* Make a simple list multi-column and responsive (overide _defaults.scss) */
+	/* Make a simple list multi-column and responsive (override _defaults.scss) */
 	.list-responsive > li {
 		width: 25%;
 	}
