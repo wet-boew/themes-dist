@@ -1,9 +1,4 @@
-/*!
- * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
- * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.86.1 - 2025-03-18
- *
- *//*! Modernizr (Custom Build) | MIT & BSD */
+/*! Modernizr (Custom Build) | MIT & BSD */
 /*! @license DOMPurify 3.2.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.4/LICENSE */
 
 (function (global, factory) {
@@ -11975,8 +11970,6 @@ $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 $window.on( "resize", onResize );
 
-$document.on( "ready", onResize );
-
 $document.on( "ajax-fetched.wb " + templateLoadedEvent, selector, function( event ) {
 	var $this = $( this );
 
@@ -12088,6 +12081,7 @@ $document.on( initializedEvent, selector, function( event ) {
 
 		} else if ( media.error === null && media.currentSrc !== "" && media.currentSrc !== undef ) {
 			$this.trigger( renderUIEvent, [ type, data ] );
+			onResize();
 
 			// Identify that initialization has completed
 			wb.ready( $this, componentName );
@@ -12106,14 +12100,14 @@ $document.on( youtubeEvent, selector, function( event, data ) {
 
 		ytPlayer = new YT.Player( mId, {
 			videoId: data.youTubeId,
+			width: data.width,
+			height: data.height,
 			playerVars: {
 				autoplay: 0,
 				controls: 0,
+				hl: wb.lang,
 				origin: wb.pageUrlParts.host,
-				modestbranding: 1,
 				rel: 0,
-				showinfo: 0,
-				html5: 1,
 				cc_load_policy: 1
 			},
 			events: {
@@ -12515,20 +12509,21 @@ $document.on( resizeEvent, selector, function( event ) {
 	if ( event.namespace === componentName ) {
 		var media = event.target,
 			$media = $( media ),
-			ratio, newHeight;
+			figure = event.currentTarget,
+			ratio, newHeight,
+			heightDiff;
 
-		if ( $( event.currentTarget ).hasClass( "video" ) ) {
-			if ( media.videoWidth === 0 || media.videoWidth === undef ) {
-				ratio = $media.attr( "height" ) / $media.attr( "width" );
+		ratio = $media.attr( "height" ) / $media.attr( "width" );
 
-				// Calculate the new height based on the specified ratio or assume a default 16:9 ratio
-				newHeight = Math.round( $media.width() * ( !isNaN( ratio ) ? ratio : 0.5625 ) );
+		// Calculate the new height based on the specified ratio or assume a default 16:9 ratio
+		newHeight = Math.round( $media.width() * ( !isNaN( ratio ) ? ratio : 0.5625 ) );
 
-				$media.css( "height", newHeight + "px" );
-			} else {
-				$media.css( "height", "" );
-			}
+		if ( newHeight > window.innerHeight ) {
+			heightDiff = figure.offsetHeight - window.innerHeight;
+			newHeight = $media.height() - heightDiff;
 		}
+
+		$media.css( "height", newHeight + "px" );
 	}
 } );
 
@@ -15014,7 +15009,7 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 			$btn = $th.find( "button" );
 		if ( order && order.length && order[ 0 ][ 0 ] === index ) {
 			var label = ( order[ 0 ][ 1 ] === "desc" ) ? i18nText.aria.sortAscending : i18nText.aria.sortDescending;
-			label = $btn.text() + label;
+			label = $btn.text() + label.replace( /&#160;/g, " " );
 			$btn.attr( "title", label );
 		}
 		$th.removeAttr( "aria-label" );

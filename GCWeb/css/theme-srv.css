@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.4.0 - 2025-03-18
+ * v16.5.0 - 2025-03-19
  *
  */
 /*!
@@ -7216,7 +7216,7 @@ a:not([href]):hover, a:not([href]):focus {
 	}
 	.dl-horizontal.dt-max dt {
 		-ms-hyphens: none;
-		hyphens: none;
+		    hyphens: none;
 		min-width: 20ch;
 		white-space: normal;
 		width: auto;
@@ -7423,7 +7423,17 @@ fieldset[disabled] .btn, .btn.disabled, .btn[disabled] {
  *  Firefox-safe line height on input[type="reset|button|submit"]
  */
 input[type=reset], input[type=button], input[type=submit] {
-	height: 37px;
+	/*
+	 *  Form control width
+	 *
+	 *  Default should be representative of the expected length of input.
+	*  Full width should be only for cases when the expected length of input is
+	*  greater than the available width.
+	*  height:37px; rule of Bootstrap was overwritten by height: auto; first
+	*  then a min-height specified, in order to address the issue #8492. July 2019.
+	*/
+	height: auto;
+	min-height: 37px;
 }
 input[type=reset].btn-lg, .btn-group-lg > input[type=reset].btn, input[type=reset].input-lg, .input-group-lg > input[type=reset].form-control,
 .input-group-lg > input[type=reset].input-group-addon,
@@ -7445,20 +7455,6 @@ input[type=reset].btn-sm, .btn-group-sm > input[type=reset].btn, input[type=rese
 }
 input[type=reset].btn-xs, .btn-group-xs > input[type=reset].btn, input[type=button].btn-xs, .btn-group-xs > input[type=button].btn, input[type=submit].btn-xs, .btn-group-xs > input[type=submit].btn {
 	height: 25px;
-}
-
-/*
- *  Form control width
- *
- *  Default should be representative of the expected length of input.
- *  Full width should be only for cases when the expected length of input is
- *  greater than the available width.
- *  height:37px; rule of Bootstrap was overwritten by height: auto; first
- *  then a min-height specified, in order to address the issue #8492. July 2019.
- */
-input[type=button], input[type=reset], input[type=submit] {
-	height: auto;
-	min-height: 37px;
 }
 
 .form-control {
@@ -10014,7 +10010,7 @@ a:not([href]):hover, a:not([href]):focus {
 	}
 	.dl-horizontal.dt-max dt {
 		-ms-hyphens: none;
-		hyphens: none;
+		    hyphens: none;
 		min-width: 20ch;
 		white-space: normal;
 		width: auto;
@@ -11778,7 +11774,17 @@ caption {
  *  Firefox-safe line height on input[type="reset|button|submit"]
  */
 input[type=reset], input[type=button], input[type=submit] {
-	height: 37px;
+	/*
+	 *  Form control width
+	 *
+	 *  Default should be representative of the expected length of input.
+	*  Full width should be only for cases when the expected length of input is
+	*  greater than the available width.
+	*  height:37px; rule of Bootstrap was overwritten by height: auto; first
+	*  then a min-height specified, in order to address the issue #8492. July 2019.
+	*/
+	height: auto;
+	min-height: 37px;
 }
 input[type=reset].btn-lg, .btn-group-lg > input[type=reset].btn, input[type=reset].input-lg, .input-group-lg > input[type=reset].form-control,
 .input-group-lg > input[type=reset].input-group-addon,
@@ -11800,20 +11806,6 @@ input[type=reset].btn-sm, .btn-group-sm > input[type=reset].btn, input[type=rese
 }
 input[type=reset].btn-xs, .btn-group-xs > input[type=reset].btn, input[type=button].btn-xs, .btn-group-xs > input[type=button].btn, input[type=submit].btn-xs, .btn-group-xs > input[type=submit].btn {
 	height: 25px;
-}
-
-/*
- *  Form control width
- *
- *  Default should be representative of the expected length of input.
- *  Full width should be only for cases when the expected length of input is
- *  greater than the available width.
- *  height:37px; rule of Bootstrap was overwritten by height: auto; first
- *  then a min-height specified, in order to address the issue #8492. July 2019.
- */
-input[type=button], input[type=reset], input[type=submit] {
-	height: auto;
-	min-height: 37px;
 }
 
 .form-control {
@@ -12401,6 +12393,17 @@ tbody.collapse.in {
 .fade.reverse.in, .fade.out, .pop.out {
 	opacity: 0;
 	visibility: hidden;
+}
+
+@-webkit-keyframes spin {
+	from {
+		-webkit-transform: rotate(0);
+		        transform: rotate(0);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
 }
 
 @keyframes spin {
@@ -17601,6 +17604,8 @@ body.wb-modal .modal-dialog summary {
 .wb-mm-ctrls progress {
 	/* Important Thing */
 	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
 	background: #fff;
 	background-clip: padding-box;
 	border: 7px solid #3e3e3e;
@@ -17634,6 +17639,8 @@ body.wb-modal .modal-dialog summary {
 }
 .wb-mm-ctrls input[type=range] {
 	-webkit-appearance: none;
+	   -moz-appearance: none;
+	        appearance: none;
 	background: transparent;
 	display: inline-block;
 	height: 2.5em;
@@ -17650,6 +17657,7 @@ body.wb-modal .modal-dialog summary {
 }
 .wb-mm-ctrls input[type=range]::-webkit-slider-thumb {
 	-webkit-appearance: none;
+	        appearance: none;
 	background: #fff;
 	border: 1px solid #707070;
 	-webkit-box-sizing: content-box;
@@ -18948,12 +18956,11 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
  * wet-boew.github.io/wet-boew/License-eng.html / wet-boew.github.io/wet-boew/Licence-fra.html
 */
 .ol-overlay-container {
+	will-change: left, right, top, bottom;
 	z-index: 1000;
 }
 
 .ol-popup {
-	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
 	background-color: white;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -18961,7 +18968,8 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	display: block;
-	filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	        filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
 	font-size: 0.75em;
 	left: -50px;
 	min-width: 250px;
@@ -19047,7 +19055,7 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 }
 .wb-geomap-map.active {
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+	        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 	outline-color: #66afe9;
 }
 
@@ -19197,20 +19205,16 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 	will-change: contents, width;
 }
 
-.ol-overlay-container {
-	will-change: left, right, top, bottom;
-}
-
 .ol-unsupported {
 	display: none;
 }
 
 .ol-viewport .ol-unselectable {
-	-moz-user-select: none;
-	-ms-user-select: none;
 	-webkit-tap-highlight-color: transparent;
 	-webkit-user-select: none;
-	user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 
 .ol-control {
@@ -19523,8 +19527,6 @@ ol-geolocate button {
 }
 
 .tooltip-txt {
-	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
 	background: rgb(192, 192, 192);
 	border: solid 1px rgb(192, 192, 192);
 	border-radius: 5px;
@@ -19533,7 +19535,8 @@ ol-geolocate button {
 	        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 	color: rgb(51, 51, 51);
 	cursor: default;
-	filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	        filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
 	font-size: 0.8em;
 	left: 50%;
 	margin-left: -60px;
@@ -19587,27 +19590,17 @@ ol-geolocate button {
 
 .glyphicon-spin {
 	-webkit-animation: spin 1000ms infinite linear;
-	animation: spin 1000ms infinite linear;
+	        animation: spin 1000ms infinite linear;
 }
 
-@-webkit-keyframes spin {
-	0% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(359deg);
-		transform: rotate(359deg);
-	}
-}
 @keyframes spin {
 	0% {
 		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
+		        transform: rotate(0deg);
 	}
 	100% {
 		-webkit-transform: rotate(359deg);
-		transform: rotate(359deg);
+		        transform: rotate(359deg);
 	}
 }
 .skeleton-lgnd-1 {
@@ -20292,7 +20285,6 @@ html:not(.wb-disable) .wb-pgfltr-out {
 	display: none;
 }
 .tbl-gridify tbody,
-.tbl-gridify td,
 .tbl-gridify td {
 	display: block;
 }
