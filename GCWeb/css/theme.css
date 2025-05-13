@@ -19850,6 +19850,9 @@ Miscellaneous Utility CSS
      * (Grid of the submenu panel)
      */
   }
+  .gcweb-menu [role=menu] [role=menu] {
+    width: 610px;
+  }
   .gcweb-menu [role=menu] [role=menu] li {
     width: 100%;
   }
