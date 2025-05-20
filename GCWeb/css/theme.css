@@ -1532,19 +1532,19 @@ main .glyphicon {
 }
 .cndwrdmrk:before, .cndwrdmrk:after, .icn-sig-en:before,
 .icn-sig-fr:before {
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke: 1px transparent;
   display: block;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  text-decoration: none;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+  -webkit-text-stroke: 1px transparent;
+  text-transform: none;
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
   font-family: "gcweb";
   font-style: normal;
   font-variant: normal;
   font-weight: normal;
-  line-height: 1;
-  text-decoration: none;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
-  text-transform: none;
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
 }
 
 .icn-sig-en,
@@ -2675,8 +2675,8 @@ main table caption p, main h1, main h2, main h3, main h4, main h5, main h6, main
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
   font-size: unset;
+  -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
@@ -5574,9 +5574,9 @@ header .brand img {
 }
 #wb-info .gc-sub-footer nav ul li, #wb-info .brand nav ul li {
   display: inline-block;
-  margin-bottom: 0;
   -webkit-margin-end: 0.5rem;
           margin-inline-end: 0.5rem;
+  margin-bottom: 0;
 }
 #wb-info .gc-sub-footer nav ul li:not(:first-child)::before, #wb-info .brand nav ul li:not(:first-child)::before {
   content: "•";
@@ -14075,9 +14075,9 @@ html:not(.wb-disable) .wb-pgfltr-out {
 
 /* Embedding a Fluid Survey */
 .gc-fld-srvy-container {
-  -webkit-overflow-scrolling: touch;
   height: 0;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   padding-bottom: 70%;
   position: relative;
@@ -15332,9 +15332,9 @@ aside.features .thumbnail img {
 
 .wb-chtwzrd-container .header .title {
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
   display: -webkit-box;
   font-size: 19px;
+  -webkit-line-clamp: 2;
   line-height: 1.35;
   overflow: hidden;
   padding: 6px 0;
@@ -15546,9 +15546,9 @@ aside.features .thumbnail img {
     width: 100%;
   }
   .wb-chtwzrd-container .conversation {
-    -ms-flex-positive: 1;
     -webkit-box-flex: 1;
     flex-grow: 1;
+    -ms-flex-positive: 1;
     max-height: none;
     min-height: 2em;
   }
@@ -16378,8 +16378,6 @@ table.nws-tbl > thead > tr > th {
 }
 
 .nws-tbl .one-dot {
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   background: #000;
   border-radius: 50%;
   display: inline-block;
