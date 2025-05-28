@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.6.1 - 2025-05-27
+ * v16.6.1 - 2025-05-28
  *
  */
 /*
@@ -16468,6 +16468,71 @@ table.dataTable.nws-tbl .label.label-success {
   margin-bottom: 15px;
 }
 
+/*
+  WET-BOEW
+  @title: Theme template
+  @desc:  Styles specific to the Theme template for GCWeb
+*/
+.page-type-theme #wb-bnr + hr {
+  border-top: 1px solid #ddd;
+}
+.page-type-theme #wb-bc li:first-child a {
+  border-left: solid #26374a 5px;
+  padding-left: 8px;
+}
+.page-type-theme #wb-bc .breadcrumb {
+  margin-bottom: 15px;
+}
+.page-type-theme #gridContainer > nav #menuBtn {
+  border-radius: 0;
+  display: block;
+  margin: 0.25em 0 1em -15px;
+  text-align: left;
+  width: calc(100% + 30px);
+}
+.page-type-theme #gridContainer > nav #menuBtn .glyphicon-chevron-down {
+  margin-left: 10px;
+}
+.page-type-theme #gridContainer > nav #menuBtn.expanded .glyphicon-chevron-down {
+  -webkit-transform: rotate(180deg) translateY(2px);
+          transform: rotate(180deg) translateY(2px);
+}
+.wb-disable .page-type-theme #gridContainer > nav #menuBtn {
+  display: none;
+}
+.page-type-theme #gridContainer > nav li a {
+  color: #295376;
+  display: block;
+  font-size: 16px;
+  line-height: 1.65em;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+.page-type-theme #gridContainer > nav li a:hover {
+  background-color: #f5f5f5;
+  color: #284162;
+  text-decoration: underline;
+}
+.page-type-theme #gridContainer > nav li.active a, .page-type-theme #gridContainer > nav li.active a:hover {
+  background-color: #26374a;
+  color: #fff;
+}
+.page-type-theme #gridContainer > nav li.active a:focus {
+  outline: 5px auto #fff;
+  outline-offset: -5px;
+}
+.page-type-theme #gridContainer > nav + section h1#wb-cont {
+  border: none;
+  font-size: 1.2em;
+  line-height: 1.1;
+  margin: 10px 0 11.5px;
+}
+.page-type-theme #gridContainer > nav + section .gc-most-requested h2 {
+  float: none;
+  font-size: 1em;
+  width: auto;
+}
+
 /*! Core - Utilities */
 .clearfix:before, .gc-subway-landmark-end:before, .clearfix:after, .gc-subway-landmark-end:after {
   display: table;
@@ -18284,6 +18349,41 @@ Miscellaneous Utility CSS
   .page-type-ilp .wb-feeds {
     margin-bottom: 40px;
   }
+  /*
+    WET-BOEW
+    @title: theme component
+    @desc:  Styles specific to the theme component for GCWeb
+  */
+  .page-type-theme #gridContainer > nav #theme-sl-start,
+  .page-type-theme #gridContainer > nav #theme-sl-end {
+    display: none !important;
+  }
+  .page-type-theme #gridContainer > nav #menuBtn.expanded + ul {
+    display: block;
+  }
+  .page-type-theme #gridContainer > nav ul {
+    display: none;
+  }
+  .wb-disable .page-type-theme #gridContainer > nav ul {
+    display: block;
+  }
+  .page-type-theme #gridContainer > nav ul li {
+    border-bottom: #f5f5f5 solid 1px;
+    position: relative;
+  }
+  .page-type-theme #gridContainer > nav ul li a::after {
+    content: "›";
+    font-size: 1.5em;
+    margin-left: 10px;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+  }
+  .page-type-theme #gridContainer > nav ul li.active a::after {
+    display: none;
+  }
 }
 /* Medium view and under */
 @media screen and (max-width: 1199px) {
@@ -19065,6 +19165,65 @@ Miscellaneous Utility CSS
   }
   /*
     WET-BOEW
+    @title: theme component
+    @desc:  Styles specific to the theme component for GCWeb
+  */
+  .page-type-theme {
+    overflow-x: hidden;
+  }
+  .page-type-theme #gridContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 970px;
+  }
+  .page-type-theme #gridContainer > nav {
+    border-right: 5px solid #26374a;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 300px;
+            flex: 0 0 300px;
+  }
+  .page-type-theme #gridContainer > nav .wb-sl {
+    display: block;
+    font-size: 0.8em;
+    margin: 0 5px 5px;
+    text-align: center;
+  }
+  .page-type-theme #gridContainer > nav .container {
+    padding: 0;
+    width: auto;
+  }
+  .page-type-theme #gridContainer > nav #menuBtn {
+    display: none;
+  }
+  .page-type-theme #gridContainer > nav + section {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 0%;
+            flex: 1 0 0%;
+  }
+  .page-type-theme #gridContainer > nav + section .container {
+    padding-left: 35px;
+    width: auto;
+  }
+  .page-type-theme #gridContainer > nav + section .gc-most-requested {
+    position: relative;
+  }
+  .page-type-theme #gridContainer > nav + section .gc-most-requested::after {
+    background-color: #f5f5f5;
+    bottom: 0;
+    content: "";
+    left: calc(100% - 1px);
+    position: absolute;
+    top: 0;
+    width: 9999px;
+  }
+  .page-type-theme #gridContainer > nav + section .gc-most-requested ul li::after {
+    width: 240px;
+  }
+  /*
+    WET-BOEW
     @title: Proximity CSS - Medium view and over
    */
   .colcount-md-2 {
@@ -19425,6 +19584,17 @@ Miscellaneous Utility CSS
   }
   .lt-ie9 main.col-md-9 .sect-lnks {
     width: 30%;
+  }
+  /*
+    WET-BOEW
+    @title: Sidebar component
+    @desc:  Styles specific to the sidebar component for GCWeb
+  */
+  .page-type-theme #gridContainer {
+    width: 1170px;
+  }
+  .page-type-theme #gridContainer > nav + section .gc-most-requested ul li::after {
+    width: 335px;
   }
   /*
     WET-BOEW
