@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.6.1 - 2025-05-28
+ * v16.6.1 - 2025-05-30
  *
  */
 /*
@@ -1612,7 +1612,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: italic;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0OIpQlx3QUlC5A4PNr4ARMQ_m87A.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0OIpQlx3QUlC5A4PNr4ARMQ_m87A.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -1621,7 +1621,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: italic;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0OIpQlx3QUlC5A4PNr4ARCQ_k.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0OIpQlx3QUlC5A4PNr4ARCQ_k.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
@@ -1630,7 +1630,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: italic;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0TIpQlx3QUlC5A4PNr4Az5ZuyNzW1aPQ.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0TIpQlx3QUlC5A4PNr4Az5ZuyNzW1aPQ.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -1639,7 +1639,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: italic;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0TIpQlx3QUlC5A4PNr4Az5ZuyDzW0.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0TIpQlx3QUlC5A4PNr4Az5ZuyDzW0.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
@@ -1648,7 +1648,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0IIpQlx3QUlC5A4PNr6zRAW_0.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0IIpQlx3QUlC5A4PNr6zRAW_0.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -1657,7 +1657,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0IIpQlx3QUlC5A4PNr5TRA.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0IIpQlx3QUlC5A4PNr5TRA.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
@@ -1666,7 +1666,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0NIpQlx3QUlC5A4PNjXhFVatyB1Wk.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0NIpQlx3QUlC5A4PNjXhFVatyB1Wk.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -1675,7 +1675,7 @@ main .glyphicon {
   font-family: "Noto Sans";
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0NIpQlx3QUlC5A4PNjXhFVZNyB.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/notosans/v25/o-0NIpQlx3QUlC5A4PNjXhFVZNyB.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /*
@@ -1687,73 +1687,73 @@ main .glyphicon {
 /* latin-ext */
 @font-face {
   font-display: optional;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: italic;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6u8w4BMUTPHjxsAUi-qJCY.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6u8w4BMUTPHjxsAUi-qJCY.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
   font-display: fallback;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: italic;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6u8w4BMUTPHjxsAXC-q.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6u8w4BMUTPHjxsAXC-q.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
 @font-face {
   font-display: optional;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: italic;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6u_w4BMUTPHjxsI5wq_FQft1dw.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6u_w4BMUTPHjxsI5wq_FQft1dw.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
   font-display: fallback;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: italic;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6u_w4BMUTPHjxsI5wq_Gwft.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6u_w4BMUTPHjxsI5wq_Gwft.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
 @font-face {
   font-display: optional;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6uyw4BMUTPHjxAwXjeu.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6uyw4BMUTPHjxAwXjeu.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
   font-display: fallback;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6uyw4BMUTPHjx4wXg.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6uyw4BMUTPHjx4wXg.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
 @font-face {
   font-display: optional;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6u9w4BMUTPHh6UVSwaPGR_p.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6u9w4BMUTPHh6UVSwaPGR_p.woff2") format("woff2");
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
   font-display: fallback;
-  font-family: "Lato";
+  font-family: Lato;
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/lato/v22/S6u9w4BMUTPHh6UVSwiPGQ.woff2) format("woff2");
+  src: url("https://fonts.gstatic.com/s/lato/v22/S6u9w4BMUTPHh6UVSwiPGQ.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 * {
@@ -5357,8 +5357,8 @@ details[open] > summary {
  */
 #wb-bc ol {
   margin-top: 15px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-left: 0;
+  padding-right: 0;
 }
 #wb-bc li:before {
   content: "\e080";
@@ -5405,7 +5405,7 @@ details[open] > summary {
   background-color: #ffd700 !important;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  padding: 25px 0px;
+  padding: 25px 0;
 }
 .gc-archv.modal-content {
   border: none;
@@ -5516,7 +5516,7 @@ header .brand img {
   text-decoration: underline;
 }
 #wb-info .gc-main-footer, #wb-info .landscape {
-  background: #26374a url(../assets/landscape.png) no-repeat right bottom;
+  background: #26374a url("../assets/landscape.png") no-repeat right bottom;
   color: #fff;
   /* Start: to support footer version 2.0 (with gcweb v4.0.22) */
   /* END */
@@ -5895,7 +5895,7 @@ main .pagedetails {
 }
 
 .home #wb-bnr + .gcweb-menu {
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 /*
@@ -5913,7 +5913,7 @@ main .pagedetails {
   margin-top: 5px;
 }
 #wb-bnr + .gcweb-menu .container {
-  padding: 0px;
+  padding: 0;
 }
 
 .gcweb-menu {
@@ -6003,7 +6003,7 @@ main .pagedetails {
   left: 360px;
   margin-bottom: 25px;
   min-height: 815px;
-  padding: 0px 39px 24px 39px;
+  padding: 0 39px 24px;
   top: 0;
   width: 810px;
 }
@@ -6041,7 +6041,7 @@ main .pagedetails {
 }
 .gcweb-menu [role=menu] [role=menu] li:last-child [role=menu] {
   list-style: disc;
-  padding-top: 0px;
+  padding-top: 0;
 }
 .gcweb-menu [role=menu] [role=menu] [role=menu] {
   -webkit-box-shadow: none;
@@ -6056,7 +6056,7 @@ main .pagedetails {
   width: 100%;
 }
 .gcweb-menu [role=menu] [role=menu] [role=menu] li:first-child {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .gcweb-menu [role=menu] [role=menu] li:last-child {
   left: 400px;
@@ -6396,7 +6396,7 @@ main .pagedetails {
  * Specific classes for authentication section which include Sign-on/Sign-off button and the Contextual Sign-in button.
  */
 #wb-so .btn {
-  border-radius: 0px;
+  border-radius: 0;
   margin-top: 5px;
 }
 #wb-so a.btn-primary:hover {
@@ -6408,7 +6408,7 @@ main .pagedetails {
  */
 #wb-bnr + hr {
   border-top: 3px solid #38414d;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 5px;
 }
 #wb-bnr + hr + .container {
@@ -13925,7 +13925,7 @@ html:not(.wb-disable) .wb-pgfltr-out {
   padding: 0 0 0 15px;
 }
 .alert > p, .alert > ul, .alert > ol {
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .alert > * {
   margin-left: 15px;
@@ -14202,8 +14202,8 @@ main .gc-rms-lngth img {
   border-top-color: #AD005F;
 }
 .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true] {
-  background-color: #ffffff;
-  border-color: #ffffff;
+  background-color: #fff;
+  border-color: #fff;
 }
 .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true] {
   color: #AD005F;
@@ -14212,7 +14212,7 @@ main .gc-rms-lngth img {
 .provisional.pnkDy-theme.home .gcweb-menu button[aria-haspopup=true]:hover {
   background-color: #AD005F;
   border-color: #AD005F;
-  color: #ffffff;
+  color: #fff;
 }
 .provisional.pnkDy-theme #wb-info .gc-contextual {
   background-color: #c40b71;
@@ -14453,7 +14453,7 @@ main .gc-rms-lngth img {
 
 .gc-followus h2 {
   font-size: 1.6875rem;
-  margin-top: 0px;
+  margin-top: 0;
 }
 .gc-followus ul {
   display: block;
@@ -14627,7 +14627,7 @@ main .gc-rms-lngth img {
   margin-top: 0;
 }
 .gc-most-requested ul li {
-  font-family: "Lato", sans-serif;
+  font-family: Lato, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 1.8em;
@@ -15343,6 +15343,8 @@ aside.features .thumbnail img {
 
 .wb-chtwzrd-container .minimize, .wb-chtwzrd-container .reset {
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background: transparent;
   border: 0;
   color: #fff;
@@ -15771,7 +15773,7 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 }
 .page-type-search .location {
   color: #006621;
-  padding-left: 0px;
+  padding-left: 0;
 }
 .page-type-search .location li {
   display: inline-block;
@@ -15785,7 +15787,7 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 .page-type-search .context-labels {
   font-size: 0.8em;
   list-style: none;
-  padding-left: 0px;
+  padding-left: 0;
 }
 .page-type-search .context-labels li {
   background-color: #5e738b;
@@ -15863,34 +15865,34 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 .home #wb-bnr + hr {
   border-top: 1px solid #ddd;
   color: #284162;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .home #wb-bnr + .gcweb-menu {
   border-top: 1px solid #ddd;
   color: #284162;
-  margin-left: 0px;
+  margin-left: 0;
 }
 .home #wb-bnr + .gcweb-menu .container {
-  padding: 0px;
+  padding: 0;
 }
 .home #wb-so .btn {
   margin-top: 3px;
 }
 .home .header-rwd {
-  margin: 1em 0px;
+  margin: 1em 0;
 }
 .home .home-most-requested li {
   font-family: Lato, sans-serif;
   font-size: 17px;
   font-weight: 700;
   line-height: 26px;
-  margin-top: 0px;
+  margin-top: 0;
 }
 .home .gc-srvinfo p {
   font-size: 17px;
 }
 .home .home-your-gov {
-  background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov.jpg), url(../assets/bkg-home-yourgov.jpg);
+  background-image: url("https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov.jpg"), url("../assets/bkg-home-yourgov.jpg");
   background-position: right center;
   background-repeat: no-repeat;
   background-size: 38%;
@@ -18053,7 +18055,7 @@ Miscellaneous Utility CSS
     color: #000;
   }
   .gcweb-menu [role=menu] [role=menu] li:first-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
   .gcweb-menu [role=menu] [role=menu] li [role=menuitem] {
     padding-bottom: 14px;
@@ -18070,7 +18072,7 @@ Miscellaneous Utility CSS
   }
   .gcweb-menu [aria-expanded=true]:not(button) + [role=menu] li:first-child,
   .gcweb-menu [aria-expanded=true]:not(button) + [role=menu] li:last-child {
-    margin-left: 0px;
+    margin-left: 0;
   }
   .gcweb-menu [aria-haspopup]:not(button)::before,
   .gcweb-menu [role=treegrid] > [role=row] > [role=rowheader]::before {
@@ -18119,7 +18121,7 @@ Miscellaneous Utility CSS
     margin-left: 100px;
   }
   .gcweb-menu [aria-expanded=true]:not(button) + [role=menu] li:last-child [role=menu] [role=menuitem] {
-    padding-left: 0px;
+    padding-left: 0;
   }
   .gcweb-menu [role=menu] [role=menu] [role=menu] li {
     width: auto;
@@ -18187,7 +18189,7 @@ Miscellaneous Utility CSS
     margin-left: -0.5em;
     margin-right: 0.5em;
     margin-top: -0.75em;
-    padding: 0px 20px 10px 0px;
+    padding: 0 20px 10px 0;
   }
   .gc-subway.provisional:not(.gc-subway-index) ul {
     padding-top: 0.25em;
@@ -18944,7 +18946,7 @@ Miscellaneous Utility CSS
     text-decoration: none;
   }
   #wb-bnr + .gcweb-menu {
-    margin-left: 0px;
+    margin-left: 0;
   }
   .wb-disable .gcweb-menu [role=menu] > li {
     float: left;
@@ -20095,11 +20097,11 @@ Miscellaneous Utility CSS
     top: auto;
   }
   .gcweb-menu [role=menu] [role=menu] [role=menu] li:last-child {
-    margin-top: 0px;
+    margin-top: 0;
   }
   .gcweb-menu [role=menu] [role=menu] [role=menu] {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0;
     position: relative;
   }
   /*
@@ -20123,7 +20125,7 @@ Miscellaneous Utility CSS
     @title: Search medium view and over (screen only)
    */
   .home .home-your-gov {
-    background-image: url(https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov-md.jpg), url(../assets/bkg-home-yourgov-md.jpg);
+    background-image: url("https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov-md.jpg"), url("../assets/bkg-home-yourgov-md.jpg");
   }
 }
 /* Large view */
