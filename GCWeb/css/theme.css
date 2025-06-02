@@ -6002,10 +6002,13 @@ main .pagedetails {
   color: #000;
   left: 360px;
   margin-bottom: 25px;
-  min-height: 815px;
+  min-height: 880px;
   padding: 0 39px 24px;
   top: 0;
   width: 810px;
+}
+[lang=fr] .gcweb-menu [role=menu] [role=menu] {
+  min-height: 931px;
 }
 .gcweb-menu [role=menu] [role=menu] [role=menu] {
   border-top: none;
