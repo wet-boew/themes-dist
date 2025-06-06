@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.7.0 - 2025-06-04
+ * v16.7.0 - 2025-06-06
  *
  */( function( $, document, wb ) {
 "use strict";
