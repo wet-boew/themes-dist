@@ -2736,7 +2736,7 @@ a.figcaption {
 a.figcaption:not([class*=text-]) * :not(figcaption) {
   color: #333333;
 }
-a.figcaption figure > *:not(blockquote):not(img):not(table):not(div) {
+a.figcaption figure > *:not(blockquote, img, table, div) {
   margin-left: 0.8ch;
   margin-right: 0.8ch;
 }
@@ -11761,7 +11761,7 @@ body.wb-modal .modal-dialog summary {
   height: calc(3.3em + 1em);
 }
 
-.wb-mltmd.video:not(.playing):not(.waiting) .display::after {
+.wb-mltmd.video:not(.playing, .waiting) .display::after {
   line-height: 1.5em;
 }
 
