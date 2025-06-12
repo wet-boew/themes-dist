@@ -5849,7 +5849,7 @@ main .pagedetails {
 }
 
 /*
-  @title: Page feedback tool - Base
+  @title: GC feedback - Base
  */
 #gc-pft {
   /* In noscript/basic HTML mode... */
@@ -18952,7 +18952,7 @@ Miscellaneous Utility CSS
   /*
    * Share/feedback-specific overrides (medium view and over)
    */
-  /* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the page feedback tool. */
+  /* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the GC feedback. */
   .pagedetails div:has(#gc-pft) + .wb-share-inited {
     margin-top: 16px;
   }
@@ -20033,7 +20033,7 @@ Miscellaneous Utility CSS
   /*
    * Share/feedback-specific overrides (small view and over)
    */
-  /* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the page feedback tool. */
+  /* Add a larger top margin on the share button (only if its plugin has initialized) if adjacent to the GC feedback. */
   .pagedetails div:has(#gc-pft) + .wb-share-inited {
     margin-top: 29px;
   }
@@ -20224,7 +20224,7 @@ Miscellaneous Utility CSS
     display: none !important;
   }
   /*
-    @title: Page feedback tool - Print view
+    @title: GC feedback - Print view
    */
   #gc-pft {
     display: none !important;
