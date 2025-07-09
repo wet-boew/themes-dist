@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.7.0 - 2025-06-16
+ * v16.7.0 - 2025-07-09
  *
  */
 /* Thematic red */
@@ -136,32 +136,32 @@ h1.gc-thickline.canadaday::after {
 
 .choose-canada-banner {
 	background-image: url("https://canada.ca/content/dam/pch/images/campaigns/choose-canada/Banner1920x315.jpg");
+}
 
-	.well {
-		background-image: linear-gradient(to right, #8C0D13, #BB1119);
-		border: 0;
-		border-radius: 0;
-		color: #fff;
-		margin-bottom: 0;
-		padding: 15px;
-		position: relative;
+.choose-canada-banner .well {
+	background-image: linear-gradient(to right, #8C0D13, #BB1119);
+	border: 0;
+	border-radius: 0;
+	color: #fff;
+	margin-bottom: 0;
+	padding: 15px;
+	position: relative;
+}
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			right: 100%;
-			bottom: 0;
-			width: 9999px;
-			background-image: linear-gradient(to right, #BB1119, #8C0D13);
-		}
+.choose-canada-banner .well::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 100%;
+	bottom: 0;
+	width: 9999px;
+	background-image: linear-gradient(to right, #BB1119, #8C0D13);
+}
 
-		h1#wb-cont {
-			border-bottom-color: #fff;
-			border-image-source: linear-gradient(to right, #fff 71px, transparent 71px);
-			margin-top: 10px;
-		}
-	}
+.choose-canada-banner .well h1#wb-cont {
+	border-bottom-color: #fff;
+	border-image-source: linear-gradient(to right, #fff 71px, transparent 71px);
+	margin-top: 10px;
 }
 
 .choose-canada-card {
@@ -170,16 +170,16 @@ h1.gc-thickline.canadaday::after {
 	margin-bottom: 1.5em !important;
 	overflow: hidden;
 	position: relative;
+}
 
-	.card-body {
-		padding: 20px;
-	}
+.choose-canada-card .card-body {
+	padding: 20px;
+}
 
-	.card-title {
-		font-size: 1.2em;
-		margin-bottom: .75em;
-		margin-top: 0 !important;
-	}
+.choose-canada-card .card-title {
+	font-size: 1.2em;
+	margin-bottom: .75em;
+	margin-top: 0 !important;
 }
 
 /* Thematic purple */
