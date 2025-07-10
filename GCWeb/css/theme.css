@@ -6390,6 +6390,15 @@ hgroup#wb-cont p.gc-byline {
   font-weight: 700;
 }
 
+/*! GCDS Components complementary style */
+/*
+ * GCDS card co-existence workaround
+ *
+*/
+.gcdscardcontainer.section > gcds-grid[equal-row-height] > div.gcdscard > gcds-card {
+  height: 100%;
+}
+
 /*! Components (CSS type only) */
 .fade {
   opacity: 0;
