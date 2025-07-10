@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v16.7.0 - 2025-07-09
+ * v16.7.0 - 2025-07-10
  *
  */
 /*
@@ -5512,22 +5512,16 @@ header .brand img {
 #wb-info .gc-contextual a:hover {
   text-decoration: underline;
 }
-#wb-info .gc-main-footer, #wb-info .landscape {
+#wb-info .gc-main-footer {
   background: #26374a url("../assets/landscape.png") no-repeat right bottom;
   color: #fff;
-  /* Start: to support footer version 2.0 (with gcweb v4.0.22) */
-  /* END */
 }
-#wb-info .gc-main-footer nav h2.wb-inv + ul, #wb-info .landscape nav h2.wb-inv + ul {
-  padding-bottom: 1em;
-  padding-top: 0.6em;
-}
-#wb-info .gc-main-footer h4, #wb-info .landscape h4 {
+#wb-info .gc-main-footer h4 {
   margin-bottom: 2rem;
   margin-top: 1.75rem;
   position: relative;
 }
-#wb-info .gc-main-footer h4::before, #wb-info .landscape h4::before {
+#wb-info .gc-main-footer h4::before {
   border-bottom: 4px solid #fff;
   content: "";
   display: block;
@@ -5535,118 +5529,50 @@ header .brand img {
   top: -1.5rem;
   width: 40px;
 }
-#wb-info .gc-main-footer a, #wb-info .landscape a {
+#wb-info .gc-main-footer a {
   color: #fff;
 }
-#wb-info .gc-main-footer a:hover, #wb-info .landscape a:hover {
+#wb-info .gc-main-footer a:hover {
   text-decoration: underline;
 }
-#wb-info .gc-sub-footer, #wb-info .brand {
+#wb-info .gc-sub-footer {
   background: #f8f8f8;
   color: #333;
   padding: 1.75rem 0 2.25rem;
-  /* START: To support footer <= v2.0 */
-  /* END */
 }
 #wb-info .gc-sub-footer object,
-#wb-info .gc-sub-footer img, #wb-info .brand object,
-#wb-info .brand img {
+#wb-info .gc-sub-footer img {
   height: 40px;
   width: auto;
 }
-#wb-info .gc-sub-footer nav, #wb-info .brand nav {
+#wb-info .gc-sub-footer nav {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   padding-bottom: 0;
   padding-top: 0;
-  /* START: To support footer v3.0 */
-  /* END */
 }
-#wb-info .gc-sub-footer nav ul, #wb-info .brand nav ul {
-  display: inline-block;
+#wb-info .gc-sub-footer nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-#wb-info .gc-sub-footer nav ul li, #wb-info .brand nav ul li {
+#wb-info .gc-sub-footer nav ul li {
   display: inline-block;
   -webkit-margin-end: 0.5rem;
           margin-inline-end: 0.5rem;
   margin-bottom: 0;
 }
-#wb-info .gc-sub-footer nav ul li:not(:first-child)::before, #wb-info .brand nav ul li:not(:first-child)::before {
+#wb-info .gc-sub-footer nav ul li:not(:first-child)::before {
   content: "•";
   -webkit-margin-end: 0.7rem;
           margin-inline-end: 0.7rem;
 }
-#wb-info .gc-sub-footer nav h4, #wb-info .brand nav h4 {
-  margin: 0;
-}
-#wb-info .gc-sub-footer nav ul + h4, #wb-info .brand nav ul + h4 {
-  display: inline-block;
-  margin: 0;
-}
-#wb-info .gc-sub-footer nav ul + h4::before, #wb-info .brand nav ul + h4::before {
-  border: 1px solid #333;
-  border-width: 0 0 0 1px;
-  content: "";
-  display: block;
-  height: 1em;
-  margin: 0 0.75em 0 0.4em;
-  position: relative;
-  top: 0.1875em;
-}
-#wb-info .gc-sub-footer .wtrmrk, #wb-info .brand .wtrmrk {
+#wb-info .gc-sub-footer .wtrmrk {
   text-align: right;
 }
-[dir=rtl] #wb-info .gc-sub-footer .wtrmrk, [dir=rtl] #wb-info .brand .wtrmrk {
+[dir=rtl] #wb-info .gc-sub-footer .wtrmrk {
   text-align: left;
-}
-#wb-info .gc-sub-footer .row ul, #wb-info .brand .row ul {
-  list-style-type: none;
-  margin-bottom: 0;
-  padding: 0;
-  padding-top: 1em;
-}
-#wb-info .gc-sub-footer .row ul li, #wb-info .brand .row ul li {
-  display: inline-block;
-  margin-right: 0.5em;
-}
-[dir=rtl] #wb-info .gc-sub-footer .row ul li, [dir=rtl] #wb-info .brand .row ul li {
-  margin-left: 0.5em;
-  margin-right: 0;
-}
-#wb-info .gc-sub-footer .row ul li:not(:first-child):before, #wb-info .brand .row ul li:not(:first-child):before {
-  content: "•";
-  margin-right: 0.75em;
-}
-[dir=rtl] #wb-info .gc-sub-footer .row ul li:not(:first-child):before, [dir=rtl] #wb-info .brand .row ul li:not(:first-child):before {
-  margin-left: 0.75em;
-  margin-right: 0;
-}
-#wb-info .gc-sub-footer .row nav, #wb-info .brand .row nav {
-  padding-bottom: 0;
-  padding-top: 0;
-}
-#wb-info .gc-sub-footer .tofpg, #wb-info .brand .tofpg {
-  line-height: 40px;
-}
-#wb-info .gc-sub-footer .tofpg a, #wb-info .brand .tofpg a {
-  color: #000;
-}
-#wb-info .gc-sub-footer .tofpg a span, #wb-info .brand .tofpg a span {
-  margin-left: 25px;
-}
-#wb-info .gc-sub-footer .tofpg a:hover, #wb-info .brand .tofpg a:hover {
-  text-decoration: none;
-}
-[dir=rtl] #wb-info .gc-sub-footer .tofpg, [dir=rtl] #wb-info .brand .tofpg {
-  float: right;
-}
-[dir=rtl] #wb-info .gc-sub-footer .tofpg a span, [dir=rtl] #wb-info .brand .tofpg a span {
-  margin-left: 0;
-  margin-right: 10px;
 }
 
 #wb-lng {
