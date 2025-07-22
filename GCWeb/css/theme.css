@@ -5640,6 +5640,14 @@ header .brand img {
   color: #555;
   position: relative;
 }
+#wb-srch input:focus, #wb-srch input:active,
+.srchbox input:focus,
+.srchbox input:active {
+  -webkit-box-shadow: inset 0 0 1px rgb(0, 0, 0), 0 0 8px rgba(102, 175, 233, 0.6);
+          box-shadow: inset 0 0 1px rgb(0, 0, 0), 0 0 8px rgba(102, 175, 233, 0.6);
+  outline: #66afe9 solid 1px;
+  position: relative;
+}
 #wb-srch .wb-srch-qry,
 .srchbox .wb-srch-qry {
   width: 100%;
