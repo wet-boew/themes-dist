@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.1.1 - 2025-08-12
+ * v17.2.0 - 2025-08-13
  *
  */
 /*
@@ -12130,16 +12130,8 @@ ol.linenums li {
   margin: 10px 1%;
   width: 48%;
 }
-.wb-steps.quiz fieldset:not(:first-child) legend {
-  border-top: 1px solid #e5e5e5;
-  padding-top: 10px;
-}
-.wb-steps.quiz fieldset:not(:first-child):not(:has(legend)) {
-  border-top: 1px solid #e5e5e5;
-  padding-top: 10px;
-}
-.wb-steps.quiz fieldset legend {
-  float: none;
+.wb-steps.quiz fieldset legend + * {
+  clear: left;
 }
 .wb-steps.quiz .wb-tggle-fildst > legend:before {
   content: "";
