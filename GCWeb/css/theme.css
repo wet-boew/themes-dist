@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.2.0 - 2025-08-19
+ * v17.2.0 - 2025-08-22
  *
  */
 /*
@@ -16426,6 +16426,10 @@ table.dataTable.nws-tbl .label.label-success {
 .page-type-ilp h2 {
   font-size: 1.8125rem;
   margin-top: 15px;
+}
+.page-type-ilp .gc-most-requested h2 {
+  font-size: 22px;
+  margin-top: 0;
 }
 .page-type-ilp .gc-followus ul li {
   margin-bottom: 21px;
