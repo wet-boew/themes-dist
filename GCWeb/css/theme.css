@@ -5767,7 +5767,7 @@ main .pagedetails {
 .pagedetails details {
   margin-bottom: 0;
 }
-.pagedetails details .well {
+.pagedetails details .well, .pagedetails details a.gc-dwnld {
   margin-left: -1.1em;
   margin-right: -1.1em;
 }
@@ -9440,7 +9440,7 @@ button.list-group-item-danger.active:focus {
   padding-bottom: 75%;
 }
 
-.well {
+.well, a.gc-dwnld {
   min-height: 20px;
   padding: 19px;
   margin-bottom: 20px;
@@ -9450,7 +9450,7 @@ button.list-group-item-danger.active:focus {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-.well blockquote {
+.well blockquote, a.gc-dwnld blockquote {
   border-color: #ddd;
   border-color: rgba(0, 0, 0, 0.15);
 }
@@ -14146,7 +14146,7 @@ main .gc-rms-lngth img {
 .provisional .bg-pnkDy {
   background-color: #AD005F;
 }
-.provisional .bg-pnkDy.well.header-rwd {
+.provisional .bg-pnkDy.well.header-rwd, .provisional a.bg-pnkDy.header-rwd.gc-dwnld {
   background-color: #570030;
 }
 .provisional .bg-img-hdng {
@@ -14248,6 +14248,41 @@ main .gc-rms-lngth img {
 }
 .gc-dwnld p {
   margin-bottom: 0;
+}
+
+a.gc-dwnld {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 30px;
+}
+a.gc-dwnld > img {
+  -ms-flex-item-align: start;
+      align-self: start;
+  border: 5px solid #eaebed;
+  max-width: 25%;
+}
+a.gc-dwnld > span {
+  display: block;
+}
+a.gc-dwnld.vertical {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 15px;
+}
+a.gc-dwnld.vertical > img {
+  -ms-flex-item-align: center;
+      align-self: center;
+  max-width: 100%;
+}
+a.gc-dwnld:hover {
+  text-decoration: none;
+}
+a.gc-dwnld:hover > img {
+  -webkit-box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.15);
+          box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.15);
 }
 
 /*
@@ -14735,11 +14770,11 @@ main .gc-rms-lngth img {
 /*
  * Well header responsive
  */
-.bg-gctheme.well.header-rwd {
+.bg-gctheme.well.header-rwd, a.bg-gctheme.header-rwd.gc-dwnld {
   background-color: #26374a;
 }
 
-.well.header-rwd {
+.well.header-rwd, a.header-rwd.gc-dwnld {
   width: 100%;
 }
 
@@ -14933,7 +14968,7 @@ fieldset.gc-chckbxrdio {
 .gc-features img {
   width: 100%;
 }
-.gc-features .well {
+.gc-features .well, .gc-features a.gc-dwnld {
   border-radius: 0;
   position: relative;
 }
@@ -15716,10 +15751,10 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 }
 
 /* Bold content */
-.bold-content, .well.well-bold {
+.bold-content, .well.well-bold, a.well-bold.gc-dwnld {
   font-weight: 700;
 }
-.bold-content strong, .well.well-bold strong {
+.bold-content strong, .well.well-bold strong, a.well-bold.gc-dwnld strong {
   font-weight: 400;
 }
 
@@ -17218,7 +17253,7 @@ button.bg-dark:hover, button.bg-dark:focus {
 /*
 Panels
  */
-.panel:not(:has(.panel, .well)):has(.stretched-link):hover, .panel:not(:has(.panel, .well)):has(.stretched-link:focus), .well:not(:has(.panel, .well)):has(.stretched-link):hover, .well:not(:has(.panel, .well)):has(.stretched-link:focus) {
+.panel:not(:has(.panel, .well)):has(.stretched-link):hover, .panel:not(:has(.panel, .well)):has(.stretched-link:focus), .well:not(:has(.panel, .well)):has(.stretched-link):hover, a.gc-dwnld:not(:has(.panel, .well)):has(.stretched-link):hover, .well:not(:has(.panel, .well)):has(.stretched-link:focus), a.gc-dwnld:not(:has(.panel, .well)):has(.stretched-link:focus) {
   -webkit-box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.15);
           box-shadow: 1px 5px 7px rgba(0, 0, 0, 0.15);
 }
@@ -17841,7 +17876,7 @@ Miscellaneous Utility CSS
   /*
    * Well header responsive
    */
-  [class*=col-] .well.header-rwd[class*=pstn-] {
+  [class*=col-] .well.header-rwd[class*=pstn-], [class*=col-] a.header-rwd[class*=pstn-].gc-dwnld {
     left: 15px;
     right: 15px;
     width: inherit;
@@ -18463,7 +18498,7 @@ Miscellaneous Utility CSS
   /*
    * Well header responsive
    */
-  .well.header-rwd {
+  .well.header-rwd, a.header-rwd.gc-dwnld {
     width: 75%;
   }
   /*
@@ -19530,7 +19565,7 @@ Miscellaneous Utility CSS
   /*
    * Well header responsive
    */
-  .well.header-rwd {
+  .well.header-rwd, a.header-rwd.gc-dwnld {
     width: 50%;
   }
   /*
