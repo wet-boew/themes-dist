@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.90.1 - 2025-09-08
+ * v4.0.91 - 2025-09-09
  *
  */
 
@@ -7436,13 +7436,12 @@ wb.add( selector );
 * not once per instance of plugin on the page. So, this is a good place to define
 * variables that are common to all instances of the plugin on a page.
 */
-var componentName = "wb-details-close",
-	selector = ".provisional." + componentName,
+const componentName = "wb-details-close",
+	selector = "." + componentName,
 	initEvent = "wb-init" + selector,
 	$document = wb.doc,
 	views = [ "xxs", "xs", "sm", "md", "lg", "xl" ],
-	viewsClass = [ "xxsmallview", "xsmallview", "smallview", "mediumview", "largeview", "xlargeview" ],
-	breakpoint,
+	viewsClasses = [ "xxsmallview", "xsmallview", "smallview", "mediumview", "largeview", "xlargeview" ],
 
 	/**
 	 * @method init
@@ -7453,45 +7452,23 @@ var componentName = "wb-details-close",
 		// Start initialization
 		// returns DOM object = proceed with init
 		// returns undefined = do not proceed with init (e.g., already initialized)
-		var elm = wb.init( event, componentName, selector ),
-			$elm, i;
+		let elm = wb.init( event, componentName, selector );
 
 		if ( elm ) {
-			$elm = $( elm );
+			let $elm = $( elm ),
+				breakpoint = elm.dataset.breakpoint || "sm", // Get the target breakpoint from data attribute or default to "sm"
+				viewBreakpointIndex = views.indexOf( breakpoint ), // Get the index of the target breakpoint
+				viewBreakpoint = viewsClasses.slice( 0, viewBreakpointIndex + 1 ), // Get the target and smaller view classes
+				viewsSelector = "html." + viewBreakpoint.join( ", html." ); // Create a selector for the target and smaller views
 
-			// Get the plugin JSON configuration set on attribute data-wb-details-close
-			// Will define one set settings for all .wb-details-close on the page
-			breakpoint = $elm.data( "breakpoint" ) || "sm";
-
-			// reset breakpoint if config is passed
-			if ( views.length === viewsClass.length ) {
-				i = views.indexOf( breakpoint );
-				viewsClass = viewsClass.slice( 0, i + 1 );
+			// If within the targetted views, keep details closed. If not, keep opened.
+			if ( document.querySelector( viewsSelector ) ) {
+				elm.removeAttribute( "open" );
+			} else {
+				elm.setAttribute( "open", "" );
 			}
 
-			hideOnBreakpoint();
-
-			// Identify that initialization has completed
 			wb.ready( $elm, componentName );
-		}
-	},
-
-	/**
-	 * Toggle details depending on breakpoint
-	 * @method hideOnBreakpoint
-	 * @param {jQuery DOM element | jQuery Event} $elm Element targetted by this plugin, which is the details
-	 */
-	hideOnBreakpoint = function() {
-		var $elm = $( selector ),
-			viewsSelector = "html." + viewsClass.join( ", html." );
-
-		// If within the targetted views, keep details closed
-		if ( $( viewsSelector ).length ) {
-			$elm.removeAttr( "open" );
-		} else {
-
-			// If not, keep opened
-			$elm.attr( "open", "" );
 		}
 	};
 
@@ -12090,6 +12067,15 @@ $document.on( initializedEvent, selector, function( event ) {
 
 			// Defaults config set on the video element
 			data.isInitMuted = $media.get( 0 ).muted;
+
+			// Set default Youtube video dimensions if none specified
+			if ( $media[ 0 ].width && $media[ 0 ].height ) {
+				data.width = $media[ 0 ].width;
+				data.height = $media[ 0 ].height;
+			} else {
+				data.width = 640;
+				data.height = 360;
+			}
 
 			if ( youTube.ready === false ) {
 				$document.one( youtubeReadyEvent, function() {
