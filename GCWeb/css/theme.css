@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.4.0 - 2025-09-09
+ * v17.4.0 - 2025-09-11
  *
  */
 /*
@@ -4484,17 +4484,15 @@ legend {
 fieldset {
   border-top: 1px solid #e5e5e5;
   padding-top: 10px;
+}
+fieldset:first-child {
+  border-top: 0;
+}
+fieldset {
   /*
    *  Allows fieldSet/legend to have a bottom border under legend title
    *  https://github.com/wet-boew/wet-boew/issues/7766
    */
-  /*
-   *  Fieldset/legend as a label for a group of checkboxes or radio buttons
-   *  https://github.com/wet-boew/wet-boew/issues/5797
-   */
-}
-fieldset:first-child {
-  border-top: 0;
 }
 fieldset.legend-brdr-bttm {
   border-top: 0;
@@ -4503,6 +4501,12 @@ fieldset.legend-brdr-bttm legend {
   border-bottom: 1px solid #e5e5e5;
   float: none;
   margin-bottom: 10px;
+}
+fieldset {
+  /*
+   *  Fieldset/legend as a label for a group of checkboxes or radio buttons
+   *  https://github.com/wet-boew/wet-boew/issues/5797
+   */
 }
 fieldset.chkbxrdio-grp {
   border-top: 0;
@@ -4970,11 +4974,6 @@ body .btn-primary {
   color: #fff;
   background-color: #318000;
   border-color: #458259;
-  font-size: 1.1em;
-  margin-bottom: 25px;
-  margin-top: 15px;
-  padding: 0.58em 1em;
-  text-shadow: 1px 2px #333;
 }
 .btn-call-to-action:focus, .btn-call-to-action.focus {
   color: #fff;
@@ -5004,6 +5003,13 @@ body .btn-primary {
 .btn-call-to-action .badge {
   color: #318000;
   background-color: #fff;
+}
+.btn-call-to-action {
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  padding: 0.58em 1em;
+  text-shadow: 1px 2px #333;
 }
 
 .btn-call-to-action:visited {
@@ -5398,15 +5404,15 @@ details[open] > summary {
   padding: 1em 0 0;
 }
 
+.gc-archv.modal-content {
+  border: none;
+  border-radius: 0;
+}
 .gc-archv {
   background-color: #ffd700 !important;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   padding: 25px 0;
-}
-.gc-archv.modal-content {
-  border: none;
-  border-radius: 0;
 }
 .gc-archv h2 {
   margin-top: 0;
@@ -5749,15 +5755,15 @@ a.shr-opn:hover, a.shr-opn {
   margin-top: 0.5em;
 }
 
-.pagedetails {
-  padding-bottom: 2em;
-  padding-top: 2em;
-}
 .pagedetails.text-right .shr-pg {
   text-align: left;
 }
 main .pagedetails {
   font-size: 16px;
+}
+.pagedetails {
+  padding-bottom: 2em;
+  padding-top: 2em;
 }
 .pagedetails.row details {
   margin-bottom: 0.25em;
@@ -5785,9 +5791,6 @@ main .pagedetails {
 /*
   @title: GC feedback - Base
  */
-#gc-pft {
-  /* In noscript/basic HTML mode... */
-}
 #gc-pft details {
   margin-bottom: 15px;
   margin-top: 0;
@@ -5795,9 +5798,16 @@ main .pagedetails {
 #gc-pft .gc-pft-no {
   font-weight: 700;
 }
+#gc-pft {
+  /* In noscript/basic HTML mode... */
+}
 .no-js #gc-pft, .wb-disable #gc-pft {
   /* Disable row gutters (default selector isn't specific-enough) */
+}
+.no-js #gc-pft, .wb-disable #gc-pft {
   /* Make the legend full width */
+}
+.no-js #gc-pft, .wb-disable #gc-pft {
   /* Left-align the legend and yes/no buttons */
 }
 .no-js #gc-pft .nojs-text-left, .wb-disable #gc-pft .nojs-text-left {
@@ -5845,19 +5855,6 @@ main .pagedetails {
   padding: 0;
 }
 
-.gcweb-menu {
-  /*
-   * Level 1
-   */
-  /*
-   * Level 2
-   */
-  /* The rest of items */
-  /* First menu item (represent the home link */
-  /* Undo for lower level */
-  /* SubSubMenu (MostRequested) for more interoperability, use CSS class */
-  /* Grid of the submenu panel */
-}
 .gcweb-menu button[aria-haspopup=true] {
   background-color: #26374a;
   border: 1px solid #26374a;
@@ -5882,6 +5879,11 @@ main .pagedetails {
 }
 .gcweb-menu button[aria-haspopup=true][aria-expanded=true] + [role=menu] {
   z-index: 9999;
+}
+.gcweb-menu {
+  /*
+   * Level 1
+   */
 }
 .gcweb-menu [role=menu] {
   background-color: #444;
@@ -5923,6 +5925,11 @@ main .pagedetails {
   background-color: #fff;
   color: #333;
 }
+.gcweb-menu {
+  /*
+   * Level 2
+   */
+}
 .gcweb-menu [role=menu] [role=menu] {
   background-color: #fff;
   border-top: #eee solid 1px;
@@ -5953,6 +5960,9 @@ main .pagedetails {
   color: #000;
   width: auto;
 }
+.gcweb-menu {
+  /* The rest of items */
+}
 .gcweb-menu [role=menu] [role=menu] li [role=menuitem] {
   color: #284162;
   padding: 6px 0;
@@ -5961,10 +5971,16 @@ main .pagedetails {
 .gcweb-menu [role=menu] [role=menu] li [role=menuitem]:hover {
   color: #0535d2;
 }
+.gcweb-menu {
+  /* First menu item (represent the home link */
+}
 .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
   font-size: 32px;
   font-weight: 700;
   text-decoration: underline;
+}
+.gcweb-menu {
+  /* Undo for lower level */
 }
 .gcweb-menu [role=menu] [role=menu] [role=menu] li:first-child [role=menuitem] {
   font-size: 18px;
@@ -5972,9 +5988,15 @@ main .pagedetails {
   text-decoration: underline;
   width: auto;
 }
+.gcweb-menu {
+  /* SubSubMenu (MostRequested) for more interoperability, use CSS class */
+}
 .gcweb-menu [role=menu] [role=menu] li:last-child [role=menu] {
   list-style: disc;
   padding-top: 0;
+}
+.gcweb-menu {
+  /* Grid of the submenu panel */
 }
 .gcweb-menu [role=menu] [role=menu] li {
   width: 45%;
@@ -7642,7 +7664,6 @@ tbody.collapse.in {
   border-top: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  -webkit-overflow-scrolling: touch;
 }
 .navbar-collapse:before, .navbar-collapse:after {
   display: table;
@@ -7650,6 +7671,9 @@ tbody.collapse.in {
 }
 .navbar-collapse:after {
   clear: both;
+}
+.navbar-collapse {
+  -webkit-overflow-scrolling: touch;
 }
 .navbar-collapse.in {
   overflow-y: auto;
@@ -7676,13 +7700,6 @@ tbody.collapse.in {
   }
 }
 
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-}
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
   max-height: 340px;
@@ -7692,6 +7709,13 @@ tbody.collapse.in {
   .navbar-fixed-bottom .navbar-collapse {
     max-height: 200px;
   }
+}
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 @media (min-width: 768px) {
   .navbar-fixed-top,
@@ -7839,8 +7863,6 @@ tbody.collapse.in {
   border-bottom: 1px solid transparent;
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 6.5px;
-  margin-bottom: 6.5px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -7899,6 +7921,10 @@ tbody.collapse.in {
   .navbar-form .form-group:last-child {
     margin-bottom: 0;
   }
+}
+.navbar-form {
+  margin-top: 6.5px;
+  margin-bottom: 6.5px;
 }
 @media (min-width: 768px) {
   .navbar-form {
@@ -11435,9 +11461,6 @@ body.wb-modal .modal-dialog summary {
 .wb-mltmd {
   display: block;
   position: relative;
-  /*
-    Light Skinning of mediacontrols
-   */
 }
 .wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display {
   cursor: pointer;
@@ -11477,6 +11500,11 @@ body.wb-modal .modal-dialog summary {
   display: block;
   margin-left: -2px;
   width: 1.2em;
+}
+.wb-mltmd {
+  /*
+    Light Skinning of mediacontrols
+   */
 }
 .wb-mltmd.skn-lt {
   border-bottom: 1px solid #ddd;
@@ -11526,8 +11554,6 @@ body.wb-modal .modal-dialog summary {
   padding-top: 2em;
   position: relative;
   width: 100%;
-  /* Progress Bar */
-  /* Slider polyfill styles */
 }
 .wb-mm-ctrls .btn {
   background: transparent;
@@ -11574,6 +11600,9 @@ body.wb-modal .modal-dialog summary {
 .wb-mm-ctrls .wb-mm-prgrss {
   display: table-cell;
   vertical-align: middle;
+}
+.wb-mm-ctrls {
+  /* Progress Bar */
 }
 .wb-mm-ctrls progress {
   /* Important Thing */
@@ -11667,6 +11696,9 @@ body.wb-modal .modal-dialog summary {
   border: 1px solid #707070;
   height: 1.3em;
   width: 10px;
+}
+.wb-mm-ctrls {
+  /* Slider polyfill styles */
 }
 .wb-mm-ctrls .fd-slider {
   display: inline-block;
@@ -12689,12 +12721,6 @@ table.dataTable tbody tr.selected {
    * Default, minimal, shared style
    */
   /* For backwards compatibility. Should be removed in v4.1 */
-  /**
-   * Style 1 - Basic carousel style
-   */
-  /**
-   * Style 2 - Slider-like carousel style
-   */
 }
 .wb-tabs details[open] {
   border-top-left-radius: 0;
@@ -12777,6 +12803,11 @@ table.dataTable tbody tr.selected {
   position: relative;
   z-index: 1;
 }
+.wb-tabs {
+  /**
+   * Style 1 - Basic carousel style
+   */
+}
 .wb-tabs.carousel-s1 {
   border-top: 0;
 }
@@ -12797,6 +12828,11 @@ table.dataTable tbody tr.selected {
 }
 .wb-tabs.carousel-s1 [role=tablist] > li.tab-count.active, .wb-tabs.carousel-s1 [role=tablist] > li.tab-count:focus, .wb-tabs.carousel-s1 [role=tablist] > li.tab-count:hover {
   cursor: default;
+}
+.wb-tabs {
+  /**
+   * Style 2 - Slider-like carousel style
+   */
 }
 .wb-tabs.carousel-s2 {
   background: #eee;
@@ -12933,17 +12969,9 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 .wb-twitter {
   position: relative;
   /* Align the loading icon relative to the center of the Twitter link in browsers that support :has() */
-  /* Display the loading icon as normal content */
-  /* Prevent the iframe from getting too wide */
-  /* When the iframe gets populated, Twitter's third party widget script injects a style attribute with a width in pixels... but it sometimes gets wider than its container (causing skip links to look misaligned). This sets min/max widths to avoid that behaviour and avoid truncating content if the iframe gets too narrow. */
-  /* The timeline's minimum widths are documented in https://developer.twitter.com/en/docs/twitter-for-websites/timelines/overview's Dimensions section... went with the narrowest width that works in practice. */
-  /* Make focus outline rings rounded and scroll horizontally if the inner iframe gets too narrow to fit */
-  /* Completely hide the start notice initially... */
-  /* Completely hide the end notice initially... */
 }
 .wb-twitter:has(a.twitter-timeline + .twitter-timeline-loading) {
   display: inline-block;
-  /* Counteract the iframe width fix (see below) to prevent the loading icon from shifting sideways when the empty iframe first appears */
 }
 .wb-twitter:has(a.twitter-timeline + .twitter-timeline-loading) a.twitter-timeline + .twitter-timeline-loading::before {
   left: 0;
@@ -12952,8 +12980,14 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 .wb-twitter:has(a.twitter-timeline + .twitter-timeline-loading) a.twitter-timeline + .twitter-timeline-loading::after {
   margin: auto;
 }
+.wb-twitter:has(a.twitter-timeline + .twitter-timeline-loading) {
+  /* Counteract the iframe width fix (see below) to prevent the loading icon from shifting sideways when the empty iframe first appears */
+}
 .wb-twitter:has(a.twitter-timeline + .twitter-timeline-loading) iframe {
   min-width: 0;
+}
+.wb-twitter {
+  /* Display the loading icon as normal content */
 }
 .wb-twitter a.twitter-timeline + .twitter-timeline-loading {
   margin-top: 5px;
@@ -12968,13 +13002,24 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 .wb-twitter a.twitter-timeline + .twitter-timeline-loading::after {
   margin-left: calc((100px - 1em) / 2);
 }
+.wb-twitter {
+  /* Prevent the iframe from getting too wide */
+  /* When the iframe gets populated, Twitter's third party widget script injects a style attribute with a width in pixels... but it sometimes gets wider than its container (causing skip links to look misaligned). This sets min/max widths to avoid that behaviour and avoid truncating content if the iframe gets too narrow. */
+  /* The timeline's minimum widths are documented in https://developer.twitter.com/en/docs/twitter-for-websites/timelines/overview's Dimensions section... went with the narrowest width that works in practice. */
+}
 .wb-twitter iframe {
   max-width: 100%;
   min-width: 224px;
 }
+.wb-twitter {
+  /* Make focus outline rings rounded and scroll horizontally if the inner iframe gets too narrow to fit */
+}
 .wb-twitter .twitter-timeline-rendered {
   border-radius: 12px;
   overflow-x: auto;
+}
+.wb-twitter {
+  /* Completely hide the start notice initially... */
 }
 .wb-twitter .wb-twitter-notice-start {
   /* setfocus.wb() automatically adds a tabindex="-1" attribute to the end notice if a skip to start link gets activated */
@@ -13004,6 +13049,9 @@ html:not(.wb-disable) .wb-tagfilter-items:not(:has([data-wb-tags])) + .wb-tagfil
 .wb-twitter .wb-twitter-skip a {
   background-color: #000;
   color: #FFF;
+}
+.wb-twitter {
+  /* Completely hide the end notice initially... */
 }
 .wb-twitter .wb-twitter-notice-end {
   /* setfocus.wb() automatically adds a tabindex="-1" attribute to the end notice if a skip to end link gets activated */
@@ -14121,33 +14169,18 @@ main .gc-rms-lngth img {
    * Background colour
    *
    */
-  /* ------------
-   * Background image for heading
-   *
-   */
-  /* ------------
-   * Theme color
-   *
-   */
-  /* Pink day - One day event in April
-   * (with a contrast conforming to Level AAA)
-   */
-  /*
-  *
-  *
-  * END: the above code has been deprecated as of version 16.0.0
-  *
-  *
-  */
-  /* Dark theme
-   */
-  /* Theme/topic decorative image */
 }
 .provisional .bg-pnkDy {
   background-color: #AD005F;
 }
 .provisional .bg-pnkDy.well.header-rwd, .provisional a.bg-pnkDy.header-rwd.gc-dwnld {
   background-color: #570030;
+}
+.provisional {
+  /* ------------
+   * Background image for heading
+   *
+   */
 }
 .provisional .bg-img-hdng {
   background-image: url("https://www.canada.ca/content/dam/servcan/x-blue-line.png");
@@ -14156,6 +14189,15 @@ main .gc-rms-lngth img {
   min-height: 60px;
   padding-bottom: 35px;
   padding-right: 80px;
+}
+.provisional {
+  /* ------------
+   * Theme color
+   *
+   */
+  /* Pink day - One day event in April
+   * (with a contrast conforming to Level AAA)
+   */
 }
 .provisional.pnkDy-theme .gcweb-menu button[aria-haspopup=true],
 .provisional.pnkDy-theme #wb-srch button,
@@ -14192,6 +14234,17 @@ main .gc-rms-lngth img {
 .provisional.icon-warning-light, .provisional .icon-warning-light {
   color: #DF7200;
 }
+.provisional {
+  /*
+  *
+  *
+  * END: the above code has been deprecated as of version 16.0.0
+  *
+  *
+  */
+  /* Dark theme
+   */
+}
 .provisional.dark-theme .gcweb-menu button[aria-haspopup=true],
 .provisional.dark-theme #wb-srch button,
 .provisional.dark-theme .srchbox button {
@@ -14225,6 +14278,9 @@ main .gc-rms-lngth img {
 .provisional.dark-theme #wb-info .landscape {
   background-color: #000;
   color: #fff;
+}
+.provisional {
+  /* Theme/topic decorative image */
 }
 .provisional.gc-topic-bg div {
   background: no-repeat;
@@ -14685,16 +14741,16 @@ a.gc-dwnld:hover > img {
   right: 5px;
   top: 5px;
 }
-.fd-wdgt .feeds-date {
-  display: inline-block;
-  float: none !important;
-  padding-top: 10px;
-}
 .fd-wdgt .feeds-date:before {
   content: "";
 }
 .fd-wdgt .feeds-date:after {
   content: "";
+}
+.fd-wdgt .feeds-date {
+  display: inline-block;
+  float: none !important;
+  padding-top: 10px;
 }
 .fd-wdgt .media-body img {
   display: block;
@@ -15837,29 +15893,17 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
  * @title: Home page exclusive style
  *
  */
-.home {
-  /*
-   * GCWeb menu
-   */
-  /* Home page banner */
-  /* Home page Most requested section
-   *
-   * Reference in:
-   * - views/_screen-sm-max
-   */
-  /* Home page Services and information */
-  /* Home page your gov
-   *
-   * Reference in:
-   * - views/_screen-sm-max
-   */
-}
 .home h1 {
   font-weight: 500;
   margin-top: 10px;
 }
 .home h2 {
   font-size: 1.2em;
+}
+.home {
+  /*
+   * GCWeb menu
+   */
 }
 .home #wb-bnr + hr {
   border-top: 1px solid #ddd;
@@ -15877,8 +15921,18 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 .home #wb-so .btn {
   margin-top: 3px;
 }
+.home {
+  /* Home page banner */
+}
 .home .header-rwd {
   margin: 1em 0;
+}
+.home {
+  /* Home page Most requested section
+   *
+   * Reference in:
+   * - views/_screen-sm-max
+   */
 }
 .home .home-most-requested li {
   font-family: Lato, sans-serif;
@@ -15887,8 +15941,18 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   line-height: 26px;
   margin-top: 0;
 }
+.home {
+  /* Home page Services and information */
+}
 .home .gc-srvinfo p {
   font-size: 17px;
+}
+.home {
+  /* Home page your gov
+   *
+   * Reference in:
+   * - views/_screen-sm-max
+   */
 }
 .home .home-your-gov {
   background-image: url("https://www.canada.ca/content/dam/canada/carousel/bkg-home-yourgov.jpg"), url("../assets/bkg-home-yourgov.jpg");
@@ -15962,9 +16026,6 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   visibility: visible;
 }
 
-.backgroundsize.csstransitions {
-  /* Layout of fields */
-}
 .backgroundsize.csstransitions #social-media-centre tbody {
   padding-top: 2em;
 }
@@ -15996,6 +16057,9 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 .backgroundsize.csstransitions #social-media-centre tbody tr .product-department {
   height: 3em;
   white-space: normal;
+}
+.backgroundsize.csstransitions {
+  /* Layout of fields */
 }
 .backgroundsize.csstransitions .product-listing {
   border: 0;
@@ -16191,8 +16255,6 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 
 #mobile-centre_wrapper {
   /* Layout of fields */
-  /* Expand/collapse record functionality */
-  /* Data visibility */
 }
 #mobile-centre_wrapper .product-record {
   display: inline-block;
@@ -16244,6 +16306,9 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 #mobile-centre_wrapper .product-link:hover, #mobile-centre_wrapper .product-link:focus {
   text-decoration: none;
 }
+#mobile-centre_wrapper {
+  /* Expand/collapse record functionality */
+}
 #mobile-centre_wrapper .record-expand {
   color: inherit;
   text-decoration: none;
@@ -16254,6 +16319,9 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 }
 #mobile-centre_wrapper .record-close {
   float: right;
+}
+#mobile-centre_wrapper {
+  /* Data visibility */
 }
 #mobile-centre_wrapper .product-listing {
   border: 1px solid #ddd;
@@ -18003,21 +18071,14 @@ Miscellaneous Utility CSS
   #wb-bnr + .gcweb-menu button[aria-haspopup=true] {
     margin-left: calc(50% - 360px);
   }
+  .gcweb-menu .container {
+    padding: 0;
+    width: 100%;
+  }
   .gcweb-menu {
     /*
      * Mobile - first level
      */
-    /*
-     * Mobile - Second level
-     */
-    /* Reset the style set by the panel */
-    /* Arrow for menu item with submenu */
-    /* Menu text style */
-    /* Mobile - Third level */
-  }
-  .gcweb-menu .container {
-    padding: 0;
-    width: 100%;
   }
   .gcweb-menu [role=menu] {
     position: static;
@@ -18028,6 +18089,12 @@ Miscellaneous Utility CSS
   }
   .gcweb-menu [role=menuitem] {
     width: auto;
+  }
+  .gcweb-menu {
+    /*
+     * Mobile - Second level
+     */
+    /* Reset the style set by the panel */
   }
   .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
     font-size: 18px;
@@ -18079,6 +18146,9 @@ Miscellaneous Utility CSS
   .gcweb-menu [aria-expanded=true]:not(button) + [role=menu] li:last-child {
     margin-left: 0;
   }
+  .gcweb-menu {
+    /* Arrow for menu item with submenu */
+  }
   .gcweb-menu [aria-haspopup]:not(button)::before,
   .gcweb-menu [role=treegrid] > [role=row] > [role=rowheader]::before {
     content: "► ";
@@ -18086,6 +18156,9 @@ Miscellaneous Utility CSS
   .gcweb-menu [aria-haspopup][aria-expanded=true]:not(button)::before,
   .gcweb-menu [role=treegrid] > [role=row][aria-expanded=true] > [role=rowheader]::before {
     content: "▼ ";
+  }
+  .gcweb-menu {
+    /* Menu text style */
   }
   .gcweb-menu [role=menu] [role=menu] [role=menuitem],
   .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem] {
@@ -18110,6 +18183,9 @@ Miscellaneous Utility CSS
   .gcweb-menu [role=menu] [role=menu] li:first-child [role=menuitem],
   .gcweb-menu [role=menu] [role=menu] li:last-child [role=menuitem] {
     background-color: #e1e1e1;
+  }
+  .gcweb-menu {
+    /* Mobile - Third level */
   }
   .gcweb-menu [role=menu] [role=menu] li:last-child {
     left: auto;
@@ -19068,12 +19144,12 @@ Miscellaneous Utility CSS
    * Medium view and over (screen only) - Variable $screen-md-min >= 992px
   */
   /*** GC subway desktop styles ***/
+  .gc-subway.provisional:not(.gc-subway-index).no-blink {
+    display: block;
+  }
   .gc-subway.provisional:not(.gc-subway-index) {
     border-color: transparent;
     display: none;
-  }
-  .gc-subway.provisional:not(.gc-subway-index).no-blink {
-    display: block;
   }
   .wb-disable .gc-subway.provisional:not(.gc-subway-index), .no-js .gc-subway.provisional:not(.gc-subway-index) {
     display: block;
