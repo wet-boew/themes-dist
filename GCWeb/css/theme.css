@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.4.0 - 2025-09-16
+ * v17.4.0 - 2025-09-17
  *
  */
 /*
@@ -15111,6 +15111,182 @@ aside.features .thumbnail img {
   padding-left: 0;
 }
 
+ul[class*=cnjnctn-type-] {
+  list-style-type: "";
+  padding-left: 0;
+}
+
+[class*=cnjnctn-type-] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  margin-bottom: 15px;
+  margin-right: 0;
+  margin-top: 15px;
+  min-height: 3em;
+  position: relative;
+}
+[class*=cnjnctn-type-].brdr-0 [class*=cnjnctn-col]:after {
+  border-left: none;
+}
+[class*=cnjnctn-type-]:not(.brdr-0) [class*=cnjnctn-col] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col] {
+  width: 100%;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col]:not(:first-child) {
+  margin-top: 1.8em;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col]:not(:first-child):after {
+  border-left: 3px solid #6f6f6f;
+  content: " ";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col]:not(:first-child):before {
+  border-color: #6f6f6f;
+  border-style: solid;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  font-size: 0.8em;
+  font-weight: 600;
+  height: 1.8em;
+  left: auto;
+  line-height: 1.7em;
+  margin-top: -3.8em;
+  padding: 0.3em;
+  position: absolute;
+  text-align: center;
+  width: 1.8em;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col]:first-child:not([class*=mrgn-tp-]) {
+  margin-top: 15px;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col]:last-child:not([class*=mrgn-bttm-]) {
+  margin-bottom: 0;
+}
+[class*=cnjnctn-type-] [class*=cnjnctn-col]:not(:last-child) {
+  margin-bottom: 1.8em;
+  margin-right: 1.5em;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-90 {
+  -ms-flex-preferred-size: 90%;
+      flex-basis: 90%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-80 {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-75 {
+  -ms-flex-preferred-size: 75%;
+      flex-basis: 75%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-70 {
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-60 {
+  -ms-flex-preferred-size: 60%;
+      flex-basis: 60%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-50 {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-40 {
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-30 {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-25 {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+[class*=cnjnctn-type-] .cnjnctn-col-20 {
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+}
+[class*=cnjnctn-type-].cnjnctn-xs {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+[class*=cnjnctn-type-].cnjnctn-xs:not(.brdr-0) [class*=cnjnctn-col] {
+  min-height: 3em;
+  padding-left: 0;
+  padding-right: 0;
+}
+[class*=cnjnctn-type-].cnjnctn-xs [class*=cnjnctn-col]:not(:first-child) {
+  margin-left: 1.4em;
+  margin-top: 0;
+  position: relative;
+}
+[class*=cnjnctn-type-].cnjnctn-xs [class*=cnjnctn-col]:not(:first-child):after {
+  -o-border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+     border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #6f6f6f), color-stop(0.3em, #6f6f6f), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #6f6f6f), color-stop(2.35em, #6f6f6f)) 1 100%;
+     border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+  border-left: 3px solid #6f6f6f;
+  margin-left: -1.6em;
+}
+[class*=cnjnctn-type-].cnjnctn-xs [class*=cnjnctn-col]:not(:first-child):before {
+  margin-top: 0.3em;
+}
+[class*=cnjnctn-type-].cnjnctn-xs:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.cnjnctn-type-or [class*=cnjnctn-col]:not(:first-child):before {
+  border-radius: 50%;
+  border-width: 3px;
+}
+.cnjnctn-type-or.cnjnctn-xs [class*=cnjnctn-col]:not(:first-child):before {
+  margin-left: -3.3em;
+}
+
+.cnjnctn-type-and [class*=cnjnctn-col]:not(:first-child):before {
+  border-width: 3px 0;
+}
+.cnjnctn-type-and.cnjnctn-xs > [class*=cnjnctn-col]:not(:first-child):before {
+  border-width: 3px 0;
+  margin-left: -3.15em;
+}
+
+html:lang(en) .cnjnctn-type-and [class*=cnjnctn-col]:not(:first-child):before {
+  content: "and";
+}
+html:lang(en) .cnjnctn-type-or [class*=cnjnctn-col]:not(:first-child):before {
+  content: "or";
+}
+
+html:lang(fr) .cnjnctn-type-and [class*=cnjnctn-col]:not(:first-child):before {
+  content: "et";
+}
+html:lang(fr) .cnjnctn-type-or [class*=cnjnctn-col]:not(:first-child):before {
+  content: "ou";
+}
+
+@media (prefers-contrast: more) {
+  [class*=cnjnctn-type-].cnjnctn-xs [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #fff), color-stop(0.3em, #fff), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #fff), color-stop(2.35em, #fff)) 1 100%;
+       border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+    border-left: none;
+  }
+}
 /*
  * CSS used for the legacy/obsolete code
  */
@@ -18969,6 +19145,58 @@ Miscellaneous Utility CSS
   .mx-sm-auto {
     margin-left: auto !important;
   }
+  /*
+   * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+   * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+   *
+   * Small view and over (screen only) - Variable $screen-sm-min >= 768px
+  */
+  /*** Conjunctions styles ***/
+  [class*=cnjnctn-type-].cnjnctn-sm {
+    border-left: 0 solid transparent;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  [class*=cnjnctn-type-].cnjnctn-sm:not(.brdr-0) [class*=cnjnctn-col] {
+    min-height: 3em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  [class*=cnjnctn-type-].cnjnctn-sm [class*=cnjnctn-col]:not(:first-child) {
+    margin-left: 1.4em;
+    margin-top: 0;
+    position: relative;
+  }
+  [class*=cnjnctn-type-].cnjnctn-sm [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #6f6f6f), color-stop(0.3em, #6f6f6f), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #6f6f6f), color-stop(2.35em, #6f6f6f)) 1 100%;
+       border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+    border-left: 3px solid #6f6f6f;
+    margin-left: -1.6em;
+  }
+  [class*=cnjnctn-type-].cnjnctn-sm [class*=cnjnctn-col]:not(:first-child):before {
+    margin-top: 0.3em;
+  }
+  [class*=cnjnctn-type-].cnjnctn-sm [class*=cnjnctn-col]:not(:last-child) {
+    margin-bottom: 0;
+  }
+  .cnjnctn-type-or.cnjnctn-sm [class*=cnjnctn-col]:not(:first-child):before {
+    margin-left: -3.3em;
+  }
+  .cnjnctn-type-and.cnjnctn-sm [class*=cnjnctn-col]:not(:first-child):before {
+    border-width: 3px 0;
+    margin-left: -3.15em;
+  }
+}
+@media screen and (min-width: 768px) and (prefers-contrast: more) {
+  [class*=cnjnctn-type-].cnjnctn-sm [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #fff), color-stop(0.3em, #fff), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #fff), color-stop(2.35em, #fff)) 1 100%;
+       border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+    border-left: none;
+  }
 }
 /* Medium view and over */
 @media screen and (min-width: 992px) {
@@ -19593,6 +19821,58 @@ Miscellaneous Utility CSS
   .mx-md-auto {
     margin-left: auto !important;
   }
+  /*
+   * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+   * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+   *
+   * Medium view and over (screen only) - Variable $screen-md-min >= 992px
+  */
+  /*** Conjunctions styles ***/
+  [class*=cnjnctn-type-].cnjnctn-md {
+    border-left: 0 solid transparent;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  [class*=cnjnctn-type-].cnjnctn-md:not(.brdr-0) [class*=cnjnctn-col] {
+    min-height: 3em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  [class*=cnjnctn-type-].cnjnctn-md [class*=cnjnctn-col]:not(:first-child) {
+    margin-left: 1.4em;
+    margin-top: 0;
+    position: relative;
+  }
+  [class*=cnjnctn-type-].cnjnctn-md [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #6f6f6f), color-stop(0.3em, #6f6f6f), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #6f6f6f), color-stop(2.35em, #6f6f6f)) 1 100%;
+       border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+    border-left: 3px solid #6f6f6f;
+    margin-left: -1.6em;
+  }
+  [class*=cnjnctn-type-].cnjnctn-md [class*=cnjnctn-col]:not(:first-child):before {
+    margin-top: 0.3em;
+  }
+  [class*=cnjnctn-type-].cnjnctn-md [class*=cnjnctn-col]:not(:last-child) {
+    margin-bottom: 0;
+  }
+  .cnjnctn-type-or.cnjnctn-md [class*=cnjnctn-col]:not(:first-child):before {
+    margin-left: -3.3em;
+  }
+  .cnjnctn-type-and.cnjnctn-md [class*=cnjnctn-col]:not(:first-child):before {
+    border-width: 3px 0;
+    margin-left: -3.15em;
+  }
+}
+@media screen and (min-width: 992px) and (prefers-contrast: more) {
+  [class*=cnjnctn-type-].cnjnctn-md [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #fff), color-stop(0.3em, #fff), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #fff), color-stop(2.35em, #fff)) 1 100%;
+       border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+    border-left: none;
+  }
 }
 /* Large view and over */
 @media screen and (min-width: 1200px) {
@@ -19966,6 +20246,58 @@ Miscellaneous Utility CSS
   .ml-lg-auto,
   .mx-lg-auto {
     margin-left: auto !important;
+  }
+  /*
+   * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+   * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+   *
+   * Large view and over (screen only) - Variable $screen-lg-min >= 1200px
+  */
+  /*** Conjunctions styles ***/
+  [class*=cnjnctn-type-].cnjnctn-lg {
+    border-left: 0 solid transparent;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  [class*=cnjnctn-type-].cnjnctn-lg:not(.brdr-0) [class*=cnjnctn-col] {
+    min-height: 3em;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  [class*=cnjnctn-type-].cnjnctn-lg [class*=cnjnctn-col]:not(:first-child) {
+    margin-left: 1.4em;
+    margin-top: 0;
+    position: relative;
+  }
+  [class*=cnjnctn-type-].cnjnctn-lg [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #6f6f6f), color-stop(0.3em, #6f6f6f), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #6f6f6f), color-stop(2.35em, #6f6f6f)) 1 100%;
+       border-image: linear-gradient(to bottom, #6f6f6f 0.3em, #6f6f6f 0.3em, transparent 0.3em, transparent 2.35em, #6f6f6f 2.35em, #6f6f6f 2.35em) 1 100%;
+    border-left: 3px solid #6f6f6f;
+    margin-left: -1.6em;
+  }
+  [class*=cnjnctn-type-].cnjnctn-lg [class*=cnjnctn-col]:not(:first-child):before {
+    margin-top: 0.3em;
+  }
+  [class*=cnjnctn-type-].cnjnctn-lg [class*=cnjnctn-col]:not(:last-child) {
+    margin-bottom: 0;
+  }
+  .cnjnctn-type-or.cnjnctn-lg [class*=cnjnctn-col]:not(:first-child):before {
+    margin-left: -3.3em;
+  }
+  .cnjnctn-type-and.cnjnctn-lg [class*=cnjnctn-col]:not(:first-child):before {
+    border-width: 3px 0;
+    margin-left: -3.15em;
+  }
+}
+@media screen and (min-width: 1200px) and (prefers-contrast: more) {
+  [class*=cnjnctn-type-].cnjnctn-lg [class*=cnjnctn-col]:not(:first-child):after {
+    -o-border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+       border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #fff), color-stop(0.3em, #fff), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #fff), color-stop(2.35em, #fff)) 1 100%;
+       border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
+    border-left: none;
   }
 }
 /* Extra-extra-small view */
