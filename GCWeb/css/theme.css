@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.4.0 - 2025-09-22
+ * v17.5.0 - 2025-09-23
  *
  */
 /*
@@ -17464,8 +17464,12 @@ a.text-white:hover, a.text-white:focus {
  *
  * Components and helpers style for WET-BOEW
  */
-.wb-disable .nojs-hide, .nojs-show {
+.wb-disable .nojs-hide, .wbdisable-show, .nojs-show {
   display: none !important;
+}
+
+.wb-disable .wbdisable-show, .wb-disable .nojs-show {
+  display: block !important;
 }
 
 /*
@@ -17515,9 +17519,6 @@ Miscellaneous Utility CSS
   max-width: max-content;
 }
 
-.wb-disable .nojs-show {
-  display: block !important;
-}
 /*
  *
  * @title: Text-level modifiers
