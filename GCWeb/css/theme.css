@@ -15287,6 +15287,169 @@ html:lang(fr) .cnjnctn-type-or [class*=cnjnctn-col]:not(:first-child):before {
     border-left: none;
   }
 }
+/* CSS Document */
+ol.lst-stps {
+  counter-reset: item;
+  list-style-type: none;
+  padding-left: 0;
+}
+ol.lst-stps > li {
+  content: counter(item);
+  counter-increment: item;
+}
+ol.lst-stps > li:before {
+  border-style: solid;
+  border-width: 3px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  content: counter(item);
+  float: left;
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  line-height: 2;
+  margin-left: -3.2em;
+  margin-right: 10px;
+  margin-top: -8px;
+  position: relative;
+  text-align: center;
+  width: 2em;
+}
+ol.lst-stps > li ol.lst-stps-sub {
+  clear: both;
+  counter-reset: subitem;
+  padding-left: 0;
+}
+ol.lst-stps > li ol.lst-stps-sub > li:before {
+  border-style: solid;
+  border-width: 3px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  content: counter(item) "" counter(subitem, lower-alpha) "";
+  counter-increment: subitem;
+  float: left;
+  font-family: Lato, sans-serif;
+  font-weight: 600;
+  line-height: 2;
+  margin-left: -3.2em;
+  margin-right: 10px;
+  margin-top: -8px;
+  position: relative;
+  text-align: center;
+  width: 2em;
+}
+ol.lst-stps > li ol.lst-stps-sub.stps-strpd > li {
+  padding-left: 3em;
+}
+ol.lst-stps.ld-zr > li:before {
+  border-width: 0 3px 0 0;
+  content: counter(item, decimal-leading-zero);
+  font-size: 1.4em;
+  line-height: 1.4;
+  margin-top: 0;
+  padding-bottom: 0.8em;
+  padding-left: 0.5em;
+}
+ol.lst-stps.ld-zr > li ol.lst-stps-sub > li:before {
+  border-width: 0 3px 0 0;
+  line-height: 1.4;
+  margin-top: 0;
+  padding-bottom: 0.8em;
+}
+ol.lst-stps:not(.stps-strpd) > li {
+  margin-top: 20px;
+  min-height: 3em;
+  padding-left: 3.2em;
+  padding-right: 15px;
+}
+ol.lst-stps:not(.ld-zr) > li:before {
+  border-radius: 50%;
+}
+ol.lst-stps:not(.ld-zr) > li ol.lst-stps-sub > li:before {
+  border-radius: 50%;
+  font-size: 0.8em;
+}
+ol.lst-stps.stps-strpd > li {
+  min-height: 4em;
+  padding-bottom: 20px;
+  padding-left: 3.6em;
+  padding-right: 15px;
+  padding-top: 20px;
+}
+ol.lst-stps.stps-strpd > li :first-child:is(h2, h3, h4, h5, h6, p) {
+  margin-top: auto;
+}
+ol.lst-stps.stps-strpd > li:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+ol.lst-stps.stps-strpd > li:nth-child(odd) ol.lst-stps-sub.stps-strpd > li:nth-child(even) {
+  background-color: #f5f5f5;
+}
+ol.lst-stps.stps-strpd > li:nth-child(odd) ol.lst-stps-sub.stps-strpd > li:nth-child(odd) {
+  background-color: #fff !important;
+}
+ol.lst-stps.stps-strpd > li:nth-child(even) ol.lst-stps-sub.stps-strpd > li:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+ol.lst-stps.stps-strpd:not(.ld-zr) > li:before {
+  background-color: #fff;
+}
+ol.lst-stps.stps-strpd:not(.ld-zr) > li ol.lst-stps-sub.stps-strpd > li:before {
+  background-color: #fff;
+}
+ol.lst-stps {
+  /* Increment (start) */
+}
+ol.lst-stps[start="2"] {
+  counter-set: item 1;
+}
+ol.lst-stps[start="3"] {
+  counter-set: item 2;
+}
+ol.lst-stps[start="4"] {
+  counter-set: item 3;
+}
+ol.lst-stps[start="5"] {
+  counter-set: item 4;
+}
+ol.lst-stps[start="6"] {
+  counter-set: item 5;
+}
+ol.lst-stps[start="7"] {
+  counter-set: item 6;
+}
+ol.lst-stps[start="8"] {
+  counter-set: item 7;
+}
+ol.lst-stps[start="9"] {
+  counter-set: item 8;
+}
+
+ol.lst-stps-sub {
+  list-style-type: none;
+}
+ol.lst-stps-sub:not(.stps-strpd) > li {
+  margin-top: 20px;
+  min-height: 2em;
+  padding-left: 2.6em;
+  padding-right: 15px;
+}
+ol.lst-stps-sub.stps-strpd > li {
+  min-height: 4em;
+  padding-left: 3.6em;
+  padding-right: 15px;
+}
+ol.lst-stps-sub.stps-strpd > li :first-child:is(h2, h3, h4, h5, h6, p) {
+  margin-top: auto;
+}
+
+@media print {
+  ol.lst-stps > li {
+    -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
+            break-inside: avoid;
+    padding-top: 1em;
+  }
+}
 /*
  * CSS used for the legacy/obsolete code
  */
@@ -19197,6 +19360,32 @@ Miscellaneous Utility CSS
        border-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.3em, #fff), color-stop(0.3em, #fff), color-stop(0.3em, transparent), color-stop(2.35em, transparent), color-stop(2.35em, #fff), color-stop(2.35em, #fff)) 1 100%;
        border-image: linear-gradient(to bottom, #fff 0.3em, #fff 0.3em, transparent 0.3em, transparent 2.35em, #fff 2.35em, #fff 2.35em) 1 100%;
     border-left: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  ol.lst-stps:not(.stps-strpd) > li {
+    padding-left: 2.6em;
+  }
+  ol.lst-stps.ld-zr:not(.stps-strpd) > li {
+    padding-left: 2.8em;
+  }
+  ol.lst-stps.ld-zr > li ol.lst-stps-sub:not(.stps-strpd) > li {
+    padding-left: 2.8em;
+  }
+  ol.lst-stps.ld-zr > li:before {
+    font-size: 1.2em;
+  }
+  ol.lst-stps > li:before {
+    font-size: 0.8em;
+  }
+  ol.lst-stps.stps-strpd > li {
+    padding-left: 3em;
+  }
+  ol.lst-stps-sub:not(.stps-strpd) > li {
+    padding-left: 2.6em;
+  }
+  ol.lst-stps-sub.stps-strpd > li {
+    padding-left: 3em;
   }
 }
 /* Medium view and over */
