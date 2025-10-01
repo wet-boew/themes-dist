@@ -21374,6 +21374,7 @@ Miscellaneous Utility CSS
   #gcwu-sig,
   #wmms {
     height: 2em;
+    max-width: 100%;
   }
   #wmms {
     float: right;
