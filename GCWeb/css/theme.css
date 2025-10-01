@@ -19649,6 +19649,15 @@ Miscellaneous Utility CSS
     display: block;
     width: 335px;
   }
+  .gc-most-requested ul li:nth-child(2):last-child {
+    -webkit-column-break-after: column;
+       -moz-column-break-after: column;
+            break-after: column;
+    -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
+            break-inside: avoid-column;
+    display: block;
+  }
   .container .gc-most-requested h2 {
     float: none;
   }
