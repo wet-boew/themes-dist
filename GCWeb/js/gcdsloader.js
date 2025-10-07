@@ -12,9 +12,9 @@
 //
 // Configuration updated during the build process with info in package.json
 //
-const gcdsVersion = "0.36.0", // pkg.peerDependencies[ "@cdssnc/gcds-components" ]
-	gcdsSriJs = "sha384-dyE8IpLmFMtdU/ftC4nFeuLMvr2vMI8s1UY2OXl9pbzizebJeCfWp9iLhiVXdXtA", // pkg[ "io.github.wet-boew" ].gcdsSriJs
-	gcdsSriCss = "sha384-0CRuUE9X0B5RfCdDx1BDT6Ru1MajB7Ngy0CmoORlBF+ey/W8T75AKwLehkl+QaGR"; // pkg[ "io.github.wet-boew" ].gcdsSriCss
+const gcdsVersion = "0.43.1", // pkg.peerDependencies[ "@cdssnc/gcds-components" ]
+	gcdsSriJs = "sha384-LvlLD5RBuKfWk4D3tLBoQb10idfyXY2NzeDN/WylPZcZm1mWEvAAUvtaBOrq3Aw5", // pkg[ "io.github.wet-boew" ].gcdsSriJs
+	gcdsSriCss = "sha384-nbfuI8ypmBcicF3iEfQgDR5GbezYoSB81DQu2M3imy8Cp5ynFJWqdJ64Qond1esU"; // pkg[ "io.github.wet-boew" ].gcdsSriCss
 
 
 //
