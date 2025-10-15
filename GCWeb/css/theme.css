@@ -16124,7 +16124,8 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   margin-top: 10px;
 }
 .home h2 {
-  font-size: 1.2em;
+  font-size: 29px;
+  margin-top: 1rem;
 }
 .home {
   /*
@@ -16162,16 +16163,22 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 }
 .home .home-most-requested li {
   font-family: Lato, sans-serif;
-  font-size: 17px;
+  font-size: 17.5px;
   font-weight: 700;
   line-height: 26px;
   margin-top: 0;
 }
 .home {
+  /* Home page GC features */
+}
+.home .gc-features {
+  margin-bottom: -1em;
+}
+.home {
   /* Home page Services and information */
 }
 .home .gc-srvinfo p {
-  font-size: 17px;
+  font-size: 18px;
 }
 .home {
   /* Home page your gov
@@ -16186,8 +16193,15 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   background-repeat: no-repeat;
   background-size: 38%;
 }
+.home .home-your-gov ul {
+  margin-bottom: 1rem;
+}
+.home .home-your-gov li {
+  font-size: 18px;
+  line-height: 2.3;
+}
 .home .gc-srvinfo .container > p:last-child {
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   margin-top: 20px;
 }
 .home .gc-srvinfo .container > p:last-child .btn-all-services {
@@ -18667,6 +18681,9 @@ Miscellaneous Utility CSS
     @title: Small view and under (screen only)
     @desc:  Variable $screen-sm-max <= 991 px
    */
+  .home h2 {
+    font-size: 26px;
+  }
   .home .home-most-requested li {
     font-size: 19px;
   }
