@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.6.0 - 2025-10-16
+ * v17.7.0 - 2025-10-20
  *
  */
 /*
@@ -5263,7 +5263,7 @@ details[open] > summary {
 	@title: Accessibility Additions to WET-BOEW - Site template
  */
 .wb-show-onfocus, .wb-inv, .wb-invisible, .wb-twitter .wb-twitter-notice-start[tabindex], .wb-twitter .wb-twitter-notice-end[tabindex], .wb-twitter .wb-twitter-skip a, #mb-pnl .srch-pnl label, .wb-fnote dt, .wb-calevt-cal .cal-days td ul, #mb-pnl h3, #wb-info h2, #wb-sec h2, #wb-bc h2, #wb-sm h2, #wb-srch label, #wb-srch h2, #wb-glb-mn h2, #wb-lng h2, .wb-sl {
-  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
   height: 1px;
   margin: 0;
   overflow: hidden;
@@ -5272,7 +5272,7 @@ details[open] > summary {
 }
 
 .wb-show-onfocus:focus, .wb-twitter .wb-twitter-notice-end[tabindex]:focus, .wb-twitter .wb-twitter-skip a:focus, .wb-disable .wb-slc .wb-sl, .wb-sl:focus {
-  clip: rect(auto, auto, auto, auto);
+  clip-path: none;
   height: inherit;
   margin: inherit;
   overflow: inherit;
@@ -10308,7 +10308,7 @@ table.dataTable thead .sorting-icons:after, table.dataTable thead .sorting-icons
 .wb-calevt-cal .cal-days td:hover ul, .wb-calevt-cal .cal-days td ul.ev-details {
   background-color: #fff;
   border: 1px solid #333;
-  clip: rect(auto, auto, auto, auto);
+  clip-path: none;
   color: #000;
   height: inherit;
   list-style-type: none;
@@ -11965,7 +11965,7 @@ ol.linenums li {
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
  */
 #wb-rsz {
-  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
   margin: 0;
   overflow: hidden;
   position: absolute;
@@ -12688,11 +12688,6 @@ table.dataTable tbody tr.selected {
           box-shadow: none;
 }
 
-.wb-tabs.carousel-s1 [role=tablist] > li.active a, .wb-tabs.carousel-s1 [role=tablist] > li:focus a, .wb-tabs.carousel-s1 [role=tablist] > li:hover a {
-  border-top: 0;
-  padding-top: 10px;
-}
-
 .wb-tabs.carousel-s2 [role=tablist] > li.control, .wb-tabs.carousel-s1 [role=tablist] > li.control, .wb-tabs [role=tablist] > li a, .wb-tabs [role=tablist] > li {
   display: inline-block;
 }
@@ -12731,7 +12726,11 @@ table.dataTable tbody tr.selected {
 }
 .wb-tabs [role=tablist] {
   border-spacing: 10px 0;
-  display: table;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -12740,9 +12739,9 @@ table.dataTable tbody tr.selected {
 .wb-tabs [role=tablist] > li {
   background: #ebf2fc;
   color: #000;
-  cursor: pointer;
-  display: table-cell;
-  left: -10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
   text-align: center;
   border-color: #ccc;
@@ -12754,18 +12753,17 @@ table.dataTable tbody tr.selected {
   padding: 10px;
   text-decoration: none;
 }
-.wb-tabs [role=tablist] > li:focus, .wb-tabs [role=tablist] > li:hover {
+.wb-tabs [role=tablist] > li a:focus, .wb-tabs [role=tablist] > li a:hover {
   background: #ccc;
   background: rgba(204, 204, 204, 0.9);
 }
 .wb-tabs [role=tablist] > li.active {
-  background: #fff;
   border-bottom: 0;
-  cursor: default;
   padding-bottom: 1px;
   z-index: 2;
 }
 .wb-tabs [role=tablist] > li.active a {
+  background: #fff;
   border-color: #666;
   border-style: solid;
   border-width: 4px 0 0 0;
@@ -12782,9 +12780,8 @@ table.dataTable tbody tr.selected {
 .wb-tabs [role=tablist] > li.tab-count .curr-count {
   font-size: 1.5em;
 }
-.wb-tabs [role=tablist] > li.tab-count:focus, .wb-tabs [role=tablist] > li.tab-count:hover {
-  background: transparent;
-  cursor: default;
+.wb-tabs [role=tablist] > li + li {
+  margin-left: 10px;
 }
 .wb-tabs [role=tablist].generated li {
   border-bottom: 0;
@@ -12816,18 +12813,11 @@ table.dataTable tbody tr.selected {
   left: 1em;
   position: static;
 }
-.wb-tabs.carousel-s1 [role=tablist] > li.prv {
-  margin-right: 5px;
-}
 .wb-tabs.carousel-s1 [role=tablist] > li.tab-count {
   background: none;
   border: 0;
   font-size: 0.9em;
   padding: 0 0.1em;
-  top: 0.55em;
-}
-.wb-tabs.carousel-s1 [role=tablist] > li.tab-count.active, .wb-tabs.carousel-s1 [role=tablist] > li.tab-count:focus, .wb-tabs.carousel-s1 [role=tablist] > li.tab-count:hover {
-  cursor: default;
 }
 .wb-tabs {
   /**
@@ -12849,12 +12839,18 @@ table.dataTable tbody tr.selected {
 .wb-tabs.carousel-s2 [role=tablist] > li.prv a {
   padding-left: 1em;
 }
+.wb-tabs.carousel-s2 [role=tablist] > li.tab-count {
+  margin: 10px;
+}
 .wb-tabs.carousel-s2 [role=tablist] > li.plypause {
   background: none;
   border: 0;
-  float: right;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin-right: 0;
   padding: 2px 0;
+  text-align: right;
 }
 .wb-tabs.carousel-s2 [role=tablist] > li.plypause a {
   font-size: 1.5em;
@@ -13834,16 +13830,26 @@ ol-geolocate button {
   padding: 0;
 }
 
-.wb-paginate-pager {
-  text-align: center;
+.wb-paginate-pager li.active:nth-last-child(2) button, .wb-paginate-pager .paginate-next {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
-.wb-paginate-pager .paginate-prev::before,
-.wb-paginate-pager .paginate-next::after {
+
+.wb-paginate-pager li.active:nth-child(2) button, .wb-paginate-pager .paginate-prev {
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+
+.wb-paginate-pager .paginate-next::after, .wb-paginate-pager .paginate-prev::before {
   font-family: "Glyphicons Halflings";
   font-weight: 400;
   line-height: 1em;
   position: relative;
   top: 0.1em;
+}
+
+.wb-paginate-pager {
+  text-align: center;
 }
 .wb-paginate-pager .paginate-prev::before {
   content: "\e091";
@@ -13853,17 +13859,8 @@ ol-geolocate button {
   content: "\e092";
   margin-left: 0.5em;
 }
-.wb-paginate-pager li.active:nth-last-child(2) a {
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
-}
-.wb-paginate-pager li.active:nth-last-child(2) button {
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
-}
-.wb-paginate-pager .pagination > li.active > button {
-  cursor: default;
-  outline-offset: -2px;
+.wb-paginate-pager .paginate-prev {
+  margin-left: 0;
 }
 .wb-paginate-pager .pagination > li > button {
   background-color: #eaebed;
@@ -13882,19 +13879,6 @@ ol-geolocate button {
 .wb-paginate-pager .pagination > li > button:focus {
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
-}
-.wb-paginate-pager .pagination > li.disabled + li > button {
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-.wb-paginate-pager .pagination > li:first-child > button {
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-  margin-left: 0;
-}
-.wb-paginate-pager .pagination > li:last-child > button {
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
 }
 .wb-paginate-pager .pagination > .active > button, .wb-paginate-pager .pagination > .active > button:focus, .wb-paginate-pager .pagination > .active > button:hover {
   background-color: #2572b4;
@@ -20687,7 +20671,9 @@ Miscellaneous Utility CSS
     @title: Print view
    */
   .pg-brk-aft {
-    page-break-after: always;
+    -webkit-column-break-after: always;
+       -moz-column-break-after: always;
+            break-after: always;
   }
   a[href]:after {
     content: none;
@@ -20879,7 +20865,9 @@ Miscellaneous Utility CSS
     margin-bottom: 0.5em;
   }
   .wb-tabs.carousel-s2 figure, .wb-tabs.carousel-s1 figure {
-    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
+            break-inside: avoid;
   }
   .wb-tabs.carousel-s2 figcaption, .wb-tabs.carousel-s1 figcaption {
     border: 1px solid #000;
