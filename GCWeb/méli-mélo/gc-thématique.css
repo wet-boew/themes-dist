@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.7.0 - 2025-10-22
+ * v17.7.0 - 2025-10-27
  *
  */
 /* Thematic red */
@@ -218,15 +218,6 @@ h1.gc-thickline.canadaday::after {
     color: #471F70;
 }
 
-/* Thematic Heading 1 */
-h1#wb-cont.empathy {
-    border-bottom: 0.18em solid #5C2790;
-    border-image: linear-gradient(to right, #5C2790 71px, transparent 71px);
-    border-image-slice: 1;
-	border-left-width: 0;
-	border-right-width: 0;
-	border-top-width: 0;
-}
 /* Thematic text color */
 .text-empathy {
 	color: #5C2790;
