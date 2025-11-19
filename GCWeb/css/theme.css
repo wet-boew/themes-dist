@@ -16066,31 +16066,29 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   margin-top: 1.25em;
 }
 
-.page-type-search label {
-  font-weight: normal;
+.page-type-search .alert {
+  margin-top: 30px;
 }
-.page-type-search .current, .page-type-search .current label {
+.page-type-search .current {
   font-weight: 700;
 }
-.page-type-search .location {
-  color: #006621;
-  padding-left: 0;
+.page-type-search .results > section {
+  border-bottom: solid 1px #000;
+  margin-bottom: 1.5em;
+  padding-bottom: 1.5em;
 }
-.page-type-search .location li {
+.page-type-search .results > section cite a {
+  color: #1b6c1c;
   display: inline-block;
+  font-size: 1em;
+  margin-top: 10px;
 }
-.page-type-search .location li + li:before {
-  content: "> ";
-}
-.page-type-search .location cite {
-  font-style: normal;
-}
-.page-type-search .context-labels {
+.page-type-search .results > section .context-labels {
   font-size: 0.8em;
   list-style: none;
   padding-left: 0;
 }
-.page-type-search .context-labels li {
+.page-type-search .results > section .context-labels li {
   background-color: #5e738b;
   color: #fff;
   display: inline-block;
@@ -16098,37 +16096,30 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   margin-bottom: 1px;
   padding: 0 5px;
 }
-.page-type-search .results > section {
-  border-bottom: solid 1px #000;
-  margin-bottom: 1.5em;
-  padding-bottom: 1.5em;
+.page-type-search .results > section h2 {
+  font-size: 1.1em;
 }
-.page-type-search .label li {
-  background-color: #5e738b;
-  color: white;
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-top: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+.page-type-search .results > section h3 {
+  font-size: 1.375rem;
 }
-.page-type-search .expand-collapse-buttons {
-  color: white;
-  font-size: 0.8em;
-  font-weight: bold;
-  padding-left: 5px;
-  padding-right: 5px;
+.page-type-search .results > section .location {
+  color: #1b6c1c;
+  padding-left: 0;
 }
-.page-type-search cite a {
-  color: #006621;
+.page-type-search .results > section .location li {
   display: inline-block;
-  font-size: 1em;
-  margin-top: 10px;
 }
-.page-type-search .search-description {
-  line-height: 34px;
-  padding-bottom: 8px;
-  padding-top: 8px;
+.page-type-search .results > section .location li + li:before {
+  content: "> ";
+}
+.page-type-search .results > section .location cite {
+  font-style: normal;
+}
+.page-type-search .results > section .location li, .page-type-search .results > section cite a {
+  word-break: break-word;
+}
+.page-type-search .results > section p {
+  font-size: 1em;
 }
 
 /*
