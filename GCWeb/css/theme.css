@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.7.0 - 2025-11-14
+ * v17.7.0 - 2025-11-19
  *
  */
 /*
@@ -15319,6 +15319,11 @@ ol.lst-stps[start="8"] {
 
 ol.lst-stps[start="9"] {
   counter-set: item 8;
+}
+
+/* Full width exception li (for exempt designs, e.g. grids, tables, etc.) */
+.cnt-wdth-lmtd .lst-stps > li:has(div, section, table), .cnt-wdth-lmtd .lst-stps .lst-stps-sub > li:has(div, section, table) {
+  max-width: none;
 }
 
 /*
