@@ -13903,6 +13903,31 @@ html:not(.wb-disable) .wb-pgfltr-out {
   font-weight: 700;
 }
 
+/* Geomap plugin GC override */
+.wb-geomap.large-checkboxes .geomap-lgnd-layer.gc-chckbxrdio input[type=checkbox] + label {
+  padding-left: 4px;
+}
+.wb-geomap.large-checkboxes .geomap-lgnd-layer.gc-chckbxrdio input[type=checkbox] + label::before {
+  left: 2px;
+}
+.wb-geomap.large-checkboxes .geomap-lgnd-layer.gc-chckbxrdio input[type=checkbox] + label::after {
+  left: 10px;
+}
+.wb-geomap.large-checkboxes .wb-geomap-layers table td .gc-chckbxrdio {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.wb-geomap.large-checkboxes .wb-geomap-layers table td .gc-chckbxrdio label {
+  margin-left: 28px;
+  padding-left: 0;
+}
+.wb-geomap.large-checkboxes .wb-geomap-layers table td .gc-chckbxrdio label::before {
+  left: 2px;
+}
+.wb-geomap.large-checkboxes .wb-geomap-layers table td .gc-chckbxrdio label::after {
+  left: 10px;
+}
+
 /*
  * Components styles
  */
