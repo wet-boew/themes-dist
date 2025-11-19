@@ -19388,7 +19388,7 @@ Miscellaneous Utility CSS
     margin-right: 0.5em;
   }
   .gc-contributors ul li::after {
-    content: "•";
+    content: "|";
     margin-left: 0.7em;
   }
   .gc-contributors ul li:last-child::after {
