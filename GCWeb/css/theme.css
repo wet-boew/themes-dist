@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.8.0 - 2025-11-19
+ * v17.8.0 - 2025-11-21
  *
  */
 /*
@@ -19353,11 +19353,11 @@ Miscellaneous Utility CSS
   }
   .gc-contributors ul li {
     display: inline-block;
-    margin-right: 0.5em;
+    margin-right: 0.25rem;
   }
   .gc-contributors ul li::after {
     content: "|";
-    margin-left: 0.7em;
+    margin-left: 0.25rem;
   }
   .gc-contributors ul li:last-child::after {
     content: none;
