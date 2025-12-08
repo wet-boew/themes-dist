@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.0.0 - 2025-12-05
+ * v18.0.0 - 2025-12-08
  *
  */
 /*
@@ -16024,19 +16024,16 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 .page-type-search .current {
   font-weight: 700;
 }
+.page-type-search #wb-land h2 {
+  font-size: 1.5rem;
+}
 .page-type-search .results > section {
   border-bottom: solid 1px #000;
   margin-bottom: 1.5em;
   padding-bottom: 1.5em;
 }
-.page-type-search .results > section cite a {
-  color: #1b6c1c;
-  display: inline-block;
-  font-size: 1em;
-  margin-top: 10px;
-}
 .page-type-search .results > section .context-labels {
-  font-size: 0.8em;
+  font-size: 1rem;
   list-style: none;
   padding-left: 0;
 }
@@ -16048,11 +16045,11 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
   margin-bottom: 1px;
   padding: 0 5px;
 }
-.page-type-search .results > section h2 {
-  font-size: 1.1em;
-}
 .page-type-search .results > section h3 {
   font-size: 1.375rem;
+}
+.page-type-search .results > section .location, .page-type-search .results > section p {
+  font-size: 1.125rem;
 }
 .page-type-search .results > section .location {
   color: #1b6c1c;
@@ -16060,18 +16057,17 @@ html:not(.wb-disable) .gc-featured-link[data-bg-color] a {
 }
 .page-type-search .results > section .location li {
   display: inline-block;
+  word-break: break-word;
 }
 .page-type-search .results > section .location li + li:before {
   content: "> ";
 }
 .page-type-search .results > section .location cite {
   font-style: normal;
-}
-.page-type-search .results > section .location li, .page-type-search .results > section cite a {
   word-break: break-word;
 }
-.page-type-search .results > section p {
-  font-size: 1em;
+.page-type-search .results > section .location cite a {
+  color: #1b6c1c;
 }
 
 /*
