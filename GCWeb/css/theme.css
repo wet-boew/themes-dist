@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.0.0 - 2025-12-09
+ * v18.1.0 - 2025-12-09
  *
  */
 /*
@@ -5227,7 +5227,8 @@ details summary {
   border: 1px solid #ddd;
   border-radius: 4px;
   color: #295376;
-  padding: 5px 15px;
+  padding: 5px 15px 5px 30px;
+  text-indent: -16px;
 }
 details summary:focus, details summary:hover {
   background-color: transparent;
@@ -12707,7 +12708,6 @@ table.dataTable tbody tr.selected {
 }
 .wb-tabs > .tabpanels > details > summary, .wb-tabs > details > summary {
   margin: -6px -12px;
-  padding: 6px 12px;
 }
 
 .csstransitions .wb-tabs [role=tabpanel].out {
