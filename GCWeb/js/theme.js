@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.0.0 - 2025-12-08
+ * v18.0.0 - 2025-12-09
  *
  */( function( $, document, wb ) {
 "use strict";
@@ -731,6 +731,7 @@ var $document = wb.doc,
 				input.setAttribute( "checked", true );
 			}
 		} );
+		$( sourceElm ).trigger( "wb-contentupdated" );
 	},
 	patchFixArray = function( patchArray, val, basePointer ) {
 
