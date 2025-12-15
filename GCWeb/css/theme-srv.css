@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.1.1 - 2025-12-10
+ * v18.1.1 - 2025-12-15
  *
  */
 /*!
@@ -1416,7 +1416,7 @@ html {
 }
 
 body {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Canadian Aboriginal", sans-serif;
   font-size: 16px;
   line-height: 1.4375;
   color: #333333;
@@ -6381,7 +6381,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Canadian Aboriginal", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4375;
@@ -6502,7 +6502,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Canadian Aboriginal", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4375;
@@ -9402,7 +9402,7 @@ html {
 }
 
 body {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Canadian Aboriginal", sans-serif;
   font-size: 16px;
   line-height: 1.4375;
   color: #333333;
@@ -15723,7 +15723,7 @@ table.dataTable thead .sorting-icons:after, table.dataTable thead .sorting-icons
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Canadian Aboriginal", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4375;
@@ -15844,7 +15844,7 @@ table.dataTable thead .sorting-icons:after, table.dataTable thead .sorting-icons
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Canadian Aboriginal", sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.4375;
