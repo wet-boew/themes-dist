@@ -2,16 +2,18 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.1.1 - 2026-01-05
+ * v18.1.1 - 2026-01-21
  *
  */
 /* AI answers components styles */
 .aia-banner {
 	background: #1a2838;
+	bottom: 0;
 	color: #fff;
-	position: sticky;
-	top: 0;
-	z-index: 2;
+	left: 0;
+	position: fixed;
+	right: 0;
+	z-index: 400;
 }
 
 .aia-banner p {
@@ -68,6 +70,11 @@
 	padding: .5rem 0 .5rem .75rem;
 }
 
+/* Footer adjustment when banner is visible */
+body.aia-banner-visible #wb-info {
+	margin-bottom: 3.375rem;
+}
+
 @media screen and (max-width: 767px) {
 	.aia-banner p {
 		font-size: 1rem;
@@ -76,6 +83,11 @@
 
 	.aia-banner p a {
 		display: block;
+	}
+
+	/* Footer adjustment when banner is visible */
+	body.aia-banner-visible #wb-info {
+		margin-bottom: 5rem;
 	}
 }
 
