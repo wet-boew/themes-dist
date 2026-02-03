@@ -16823,6 +16823,29 @@ table.dataTable.nws-tbl .label.label-success {
   width: auto;
 }
 
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+/*
+  @title: All screen views - Splash page
+ */
+#gcwu-sig,
+#wmms {
+  height: 2em;
+  max-width: 100%;
+}
+
+#wmms {
+  float: right;
+}
+
+header:not(:has(#wb-lng)) {
+  margin-top: 1.2em;
+}
+
 /*! Core - Utilities */
 .clearfix:before, .gc-subway-landmark-end:before, .clearfix:after, .gc-subway-landmark-end:after {
   display: table;
