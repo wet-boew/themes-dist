@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.1.2 - 2026-02-03
+ * v18.2.0 - 2026-02-03
  *
  */
 /*!
@@ -12556,6 +12556,10 @@ tbody.collapse.in {
           animation-name: fadein;
 }
 
+.wb-disable .fade {
+  opacity: 1;
+}
+
 @-webkit-keyframes fadein {
   0% {
     opacity: 0;
@@ -16461,7 +16465,7 @@ details.alert:before, details.alert[open]:before {
 details.alert summary, details.alert[open] summary {
   border-width: 0;
   margin-right: 15px;
-  padding-left: 5px;
+  padding-left: 21px;
 }
 details.alert summary:focus, details.alert summary:hover, details.alert[open] summary:focus, details.alert[open] summary:hover {
   text-decoration: none;
@@ -17503,7 +17507,7 @@ body.wb-modal .modal-dialog summary {
   height: auto;
   width: 100%;
 }
-.wb-mltmd.cc_on .wb-mm-cc {
+.wb-mltmd.cc_on.played:not(.youtube) .wb-mm-cc {
   display: table;
   height: calc(2.875em + 1em);
   padding: 0.5em;
