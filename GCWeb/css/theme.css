@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.3.0 - 2026-02-17
+ * v18.3.0 - 2026-02-23
  *
  */
 /*
@@ -14224,6 +14224,9 @@ a.gc-dwnld:hover > img {
 .gc-srvinfo p, .gc-drmt p {
   font-size: 18px;
   line-height: 1.5;
+}
+.gc-srvinfo .input-group, .gc-drmt .input-group {
+  max-width: 65ch;
 }
 
 /*
