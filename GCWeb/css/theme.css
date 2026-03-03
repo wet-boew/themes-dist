@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v18.4.0 - 2026-03-02
+ * v18.4.0 - 2026-03-03
  *
  */
 /*
@@ -187,8 +187,7 @@ a:hover {
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 b,
@@ -2598,11 +2597,10 @@ abbr[title] {
   text-decoration: none;
 }
 
-@supports ((-webkit-text-decoration: underline dotted) or (text-decoration: underline dotted)) {
+@supports (text-decoration: underline dotted) {
   abbr[title] {
     border-bottom: 0;
-    -webkit-text-decoration: underline dotted;
-            text-decoration: underline dotted;
+    text-decoration: underline dotted;
     -webkit-text-decoration-skip-ink: none;
             text-decoration-skip-ink: none;
   }
