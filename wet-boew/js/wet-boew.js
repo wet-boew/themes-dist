@@ -1,12 +1,12 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.95.1 - 2026-04-01
+ * v4.0.96 - 2026-04-01
  *
  */
 
 /*! Modernizr (Custom Build) | MIT & BSD */
-/*! @license DOMPurify 3.3.2 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.3.2/LICENSE */
+/*! @license DOMPurify 3.3.3 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.3.3/LICENSE */
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -319,7 +319,7 @@
   function createDOMPurify() {
     let window = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getGlobal();
     const DOMPurify = root => createDOMPurify(root);
-    DOMPurify.version = '3.3.2';
+    DOMPurify.version = '3.3.3';
     DOMPurify.removed = [];
     if (!window || !window.document || window.document.nodeType !== NODE_TYPE.document || !window.Element) {
       // Not running in a browser, provide a factory function
@@ -1964,12 +1964,13 @@ var getUrlParts = function( url ) {
 			// Filter out any events triggered by descendants and only initializes
 			// the element once (if is an event and document node is not the target)
 			if ( !isEvent || isDocumentNode || ( event.currentTarget === node &&
-				node.className.indexOf( initedClass ) === -1 ) ) {
+				node.classList &&
+				!node.classList.contains( initedClass ) ) ) {
 
 				this.initQueue += 1;
 				this.remove( selector );
 				if ( !isDocumentNode ) {
-					node.className += " " + initedClass;
+					node.classList.add( initedClass );
 
 					if ( !noAutoId && !node.id ) {
 						node.id = wb.getId();
@@ -2266,14 +2267,6 @@ yepnope.addPrefix( "i18n", function( resourceObj ) {
 	return resourceObj;
 } );
 
-/**
- * @prefix: mthjx! - adds the root directory of MathJax resources
- */
-yepnope.addPrefix( "mthjx", function( resourceObj ) {
-	resourceObj.url = paths.js + "/MathJax/" + resourceObj.url;
-	return resourceObj;
-} );
-
 /*-----------------------------
  * Deps loading, call "complete" callback when the deps is ready if a testReady is defined
  *-----------------------------*/
@@ -2336,99 +2329,6 @@ Modernizr.load( [
 			"plyfll!progress.min.js",
 			"plyfll!progress.min.css"
 		]
-	}, {
-		test: Modernizr.mathml,
-
-		// Cleanup Modernizr test and add selector to global timer
-		complete: function() {
-			var	componentName = "wb-math",
-				selector = "math",
-				math = document.getElementsByTagName( selector ),
-				$document = wb.doc;
-
-			// Cleanup elements that Modernizr.mathml test leaves behind.
-			if ( math.length ) {
-				document.body.removeChild( math[ math.length - 1 ].parentNode );
-			}
-
-			// Defer loading the polyfill till an element is detected due to the size
-			if ( !Modernizr.mathml ) {
-				let isTrident = new Boolean( window.navigator.msSaveOrOpenBlob );
-
-				// Bind the init event of the plugin
-				$document.one( "timerpoke.wb wb-init." + componentName, selector, function() {
-
-					// Start initialization
-					wb.init( document, componentName, selector );
-
-					// Disable MathJax's context menu to more closely mimic native MathML implementations
-					window.MathJax = {
-						options: {
-							enableMenu: false
-						}
-					};
-
-					// Extra tasks for IE11
-					if ( isTrident ) {
-
-						// Load an ES6 polyfill
-						Modernizr.load( "timeout=500!https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" );
-
-						// Specify the CDN's font URL
-						// Note: IE11 is unable to resolve this on its own
-						window.MathJax.chtml = {
-							fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2"
-						};
-					}
-
-					// Load the MathML dependency. Since the polyfill is only loaded
-					// when !Modernizr.mathml, we can skip the test here.
-					Modernizr.load( [ {
-
-						// Load latest version of MathJax 3 from a CDN
-						// Also load a CSS workaround for a MathJax 3.2.0 bug (refer to CSS file for details)
-						load: [
-							"timeout=500!https://cdn.jsdelivr.net/npm/mathjax@3/es5/mml-chtml.js",
-							"plyfll!mathml.min.css"
-						],
-						complete: function() {
-
-							// Wait a moment to reduce the risk of a race condition
-							setTimeout( function() {
-
-								// Specify a font URL for a local copy of MathJax 3 for IE11
-								// Note: Useful if IE11 has internet access but fails to reach the CDN
-								if ( isTrident && !window.MathJax.startup ) {
-									window.MathJax.chtml.fontURL = paths.js + "/MathJax/output/chtml/fonts/woff-v2";
-								}
-
-								// Fall back on a local copy of MathJax 3 if the CDN is unreachable
-								// Note: Won't work with IE11 in isolated networks (ES6 polyfill has no local fallback)
-								Modernizr.load( [ {
-									test: window.MathJax.startup,
-									nope: "mthjx!mml-chtml.js",
-									complete: function() {
-
-										// Try loading a local copy of MathJax 2 as a last ditch effort
-										Modernizr.load( [ {
-											test: window.MathJax.startup,
-											nope: "mthjx!MathJax.js?config=Accessible",
-											complete: function() {
-
-												// Identify that initialization has completed
-												wb.ready( $document, componentName );
-											}
-										} ] );
-									}
-								} ] );
-							}, 100 );
-						}
-					} ] );
-				} );
-
-				wb.add( selector );
-			}
-		}
 	}, {
 		test: Modernizr.meter,
 		nope: [
@@ -14599,6 +14499,10 @@ var componentName = "wb-share",
 			linkedin: {
 				name: "LinkedIn®",
 				url: "https://www.linkedin.com/shareArticle?mini=true&amp;url={u}&amp;title={t}&amp;ro=false&amp;summary={d}&amp;source="
+			},
+			mastodon: {
+				name: "Mastodon",
+				url: "https://share.joinmastodon.org/#text={t}%20{u}"
 			},
 			myspace: {
 				name: "MySpace",
