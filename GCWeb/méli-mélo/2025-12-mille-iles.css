@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v19.2.0 - 2026-06-17
+ * v19.2.0 - 2026-06-19
  *
  */
 ul[class*=cnjnctn-type-] {
@@ -514,6 +514,10 @@ ol.lst-stps[start="9"] {
     /* hides anything not assigned to the cell */
   .wb-math-grid  div.mg-row > :not(.mg-cell) {
       display: none;
+    }
+    /* keeps width minimal to size of contents (when using full-width) */
+  .wb-math-grid div.mg-cell.mg-min-wdth {
+      width: 1%;
     }
 
 /*------
