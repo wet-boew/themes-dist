@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v19.2.0 - 2026-06-19
+ * v19.2.0 - 2026-06-29
  *
  */// ============================================
 // Accessible Combo Box Web Component
@@ -5278,6 +5278,10 @@ var $document = wb.doc,
 	componentName = "page-type-theme",
 	selector = "." + componentName,
 	initEvent = "wb-init " + selector,
+	themeMenuBtn,
+	themeNav,
+	themeNavUL,
+	elementsToHide = "#theme-content, #theme-features, .pagedetails, .gc-contextual, .gc-main-footer",
 
 	/**
 	 * @method init
@@ -5291,41 +5295,49 @@ var $document = wb.doc,
 		var elm = wb.init( event, componentName, selector );
 
 		if ( elm && event.currentTarget === event.target ) {
+			themeMenuBtn = document.querySelector( "#menu-btn" );
+			themeNav = document.querySelector( "#theme-nav" );
+			themeNavUL = themeNav.querySelector( "ul" );
+			elementsToHide = document.querySelectorAll( elementsToHide );
 
-			let themeMenuBtn = document.querySelector( "#menu-btn" ),
-				themeMenuIcon = themeMenuBtn.querySelector( ".glyphicon" ),
-				$themeNav = $( "#theme-nav" ),
-				themeNavUL = document.querySelector( "#theme-nav ul" );
-
-
+			// Set attributes
 			themeNavUL.id = themeNavUL.id || wb.getId();
-			$themeNav.trigger( "navcurr.wb" ); // Highlight the current page in the menu
 			themeMenuBtn.setAttribute( "aria-controls", themeNavUL.id );
 			themeMenuBtn.setAttribute( "aria-expanded", "false" );
-			themeMenuIcon.setAttribute( "aria-hidden", "true" );
 
-			if ( themeNavUL.querySelector( ".wb-navcurr" ) ) {
-				themeNavUL.querySelector( ".wb-navcurr" ).setAttribute( "aria-current", "page" );
-			}
+			// Highlight the current page in the menu
+			$( themeNav ).trigger( "navcurr.wb" );
+			themeNavUL.querySelector( ".wb-navcurr" )?.setAttribute( "aria-current", "page" );
 
 			// Identify that initialization has completed
 			wb.ready( $( elm ), componentName );
 		}
+	},
+	toggleMenu = function() {
+		let expanded = themeMenuBtn.getAttribute( "aria-expanded" ) === "true";
+		themeMenuBtn.setAttribute( "aria-expanded", !expanded );
+		themeMenuBtn.classList.toggle( "expanded", !expanded );
+		elementsToHide.forEach( element => {
+			element.classList.toggle( "hidden-xs", !expanded );
+			element.classList.toggle( "hidden-sm", !expanded );
+		} );
 	};
 
 // Bind the init event of the plugin
 $document.on( "timerpoke.wb " + initEvent, selector, init );
 
 // On click of the menu button
-$document.on( "click", "#menuBtn", function( event ) {
-	let themeMenuBtn = event.currentTarget;
+$document.on( "click", "#menu-btn", function() {
+	toggleMenu();
+} );
 
-	if ( themeMenuBtn.getAttribute( "aria-expanded" ) === "true" ) {
-		themeMenuBtn.setAttribute( "aria-expanded", "false" );
-		themeMenuBtn.classList.remove( "expanded" );
-	} else {
-		themeMenuBtn.setAttribute( "aria-expanded", "true" );
-		themeMenuBtn.classList.add( "expanded" );
+// Close menu on Escape key and restore hidden elements
+$document.on( "keydown", function( event ) {
+	var key = event.key || event.keyCode;
+	if ( key === "Escape" || key === "Esc" || key === 27 ) {
+		if ( themeMenuBtn && themeMenuBtn.getAttribute( "aria-expanded" ) === "true" ) {
+			toggleMenu();
+		}
 	}
 } );
 
