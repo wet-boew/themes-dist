@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v19.3.1 - 2026-06-29
+ * v19.3.1 - 2026-07-07
  *
  */// ============================================
 // Accessible Combo Box Web Component
