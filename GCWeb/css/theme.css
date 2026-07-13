@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v19.3.1 - 2026-07-07
+ * v19.3.1 - 2026-07-13
  *
  */
 /*
@@ -9690,6 +9690,11 @@ table.dataTable thead .sorting-icons:after, table.dataTable thead .sorting-icons
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+gc-combobox.select-all-unstyled::part(select-all) {
+  border: none;
+  font-weight: normal;
 }
 
 /*
