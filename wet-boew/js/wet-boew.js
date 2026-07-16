@@ -1,7 +1,7 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.96.3 - 2026-07-13
+ * v4.0.97 - 2026-07-16
  *
  */
 
@@ -11804,20 +11804,20 @@ var componentName = "wb-menu",
 	/**
 	 * @method menuDisplay
 	 * @param {jQuery DOM element} $elm The plugin element
-	 * @param {jQuery event} menu The menu to display
+	 * @param {jQuery DOM element} $menu The menu to display
 	 */
-	menuDisplay = function( $elm, menu ) {
-		var menuLink = menu.children( "a" );
+	menuDisplay = function( $elm, $menu ) {
+		var $menuLink = $menu.children( "a" );
 
 		menuClose( $elm.find( ".active" ), true );
 
-		menu.addClass( "active" );
+		$menu.addClass( "active" );
 
 		// Ignore if doesn't have a submenu
-		if ( menuLink.attr( "aria-haspopup" ) === "true" ) {
+		if ( $menuLink.attr( "aria-haspopup" ) === "true" ) {
 
 			// Add the open state classes
-			menu
+			$menu
 				.addClass( "sm-open" )
 				.children( ".sm" )
 				.addClass( "open" )
@@ -11998,7 +11998,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 		$menu = $menuItem.parent().closest( "[role^='menu']" ),
 		inMenuBar = $menu.attr( "role" ) === "menubar",
 		$menuLink, $parentMenu, $parent, $subMenu, result,
-		menuitemSelector, isOpen, menuItemOffsetTop, menuContainer;
+		isOpen, menuItemOffsetTop, menuContainer;
 
 	// Define keycodes. (Make const when WET supports ES6)
 	var TAB_KC = 9,
@@ -12066,13 +12066,12 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 
 		// Menu item is not within a menu bar
 		} else {
-			menuitemSelector = menuItemSelector;
 
 			// Up / down arrow = Previous / next menu item
 			if ( which === UP_KC || which === DOWN_KC ) {
 				event.preventDefault();
 				menuIncrement(
-					$menu.children( "li" ).find( menuitemSelector ),
+					$menu.children( "li" ).find( menuItemSelector ),
 					$menuItem,
 					which === UP_KC ? -1 : 1
 				);
@@ -12120,7 +12119,7 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 							"aria-hidden": "false"
 						} )
 						.find( "[role=menuitem]:first" )
-						.trigger( "setfocus.wb" );
+						.trigger( focusEvent );
 				}
 
 			// Escape, left / right arrow without a submenu
@@ -12163,16 +12162,16 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 					if ( $parentMenu.length !== 0 ) {
 						event.preventDefault();
 						$menu.closest( "li" )
-							.find( menuitemSelector )
+							.find( menuItemSelector )
 							.trigger( "click" )
-							.trigger( "setfocus.wb" );
+							.trigger( focusEvent );
 
 					// No higher-level menu but the current submenu is open
 					} else if ( $menuItem.parent().children( "ul" ).attr( "aria-hidden" ) === "false" ) {
 						event.preventDefault();
 						$menuItem
 							.trigger( "click" )
-							.trigger( "setfocus.wb" );
+							.trigger( focusEvent );
 					}
 				}
 
@@ -12184,14 +12183,14 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				// Try to find a match in the next siblings
 				result = selectByLetter(
 					which,
-					$parent.nextAll().find( menuitemSelector ).get()
+					$parent.nextAll().find( menuItemSelector ).get()
 				);
 
 				// If couldn't find a match, try the previous siblings
 				if ( !result ) {
 					result = selectByLetter(
 						which,
-						$parent.prevAll().find( menuitemSelector ).get()
+						$parent.prevAll().find( menuItemSelector ).get()
 					);
 				}
 			}
@@ -16082,6 +16081,14 @@ $document.on( "draw.dt", selector, function( event, settings ) {
 
 		updatePaginationMarkup( pagination, $elm.get( 0 ).id );
 		updatePaginationMarkup( pagination_top );
+	}
+
+	if ( wb.isReady ) {
+		$elm
+			.find( wb.allSelectors )
+			.addClass( "wb-init" )
+			.filter( ":not(#" + $elm.id + " .wb-init .wb-init)" )
+			.trigger( "timerpoke.wb" );
 	}
 
 	// Identify that the table has been updated
