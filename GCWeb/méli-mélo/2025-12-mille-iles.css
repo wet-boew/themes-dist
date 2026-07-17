@@ -9,7 +9,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v17.8.1 - 2025-12-01
+ * v19.2.0 - 2026-06-17
  *
  */
 ul[class*=cnjnctn-type-] {
@@ -466,58 +466,63 @@ ol.lst-stps[start="9"] {
   counter-set: item 8;  
 }
 
-/* Remove default bottom border for each questions of the Steps Form  */
-.provisional.wb-steps.quiz .steps-wrapper {
-	border-bottom: none;
-}
-
-.provisional.wb-steps.quiz .wb-tggle-fildst > legend:before {
-	content: "";
-	counter-increment: none;
-}
-
-/* Customisation for the progress bar and text */
-.provisional.wb-steps.quiz progress.progressBar {
-	/*-webkit-appearance: progress-bar;*/
-	width: 100%;
-}
-
-.provisional.wb-steps.quiz .progressText {
-	text-align: center;
-}
-
-/* Align with default text size since forms are temporary excluded */
-.provisional.wb-steps.quiz p {
-	font-size: 20px;
-}
-
-.cnt-wdth-lmtd main .panel.stepsquiz:has( .provisional.wb-steps.quiz ) {
-	max-width: 65ch;
-}
-
-.provisional.wb-steps.quiz .steps-wrapper .buttons .btn {
-	display: inline-block;
-	width: 48%;
-	margin: 10px 1%;
-}
-
-/* Fix nested fieldsets */
-.provisional.wb-steps.quiz fieldset:not(:first-child):has(legend) legend {
-	border-top: 1px solid #e5e5e5;
-	padding-top: 10px;
-}
-
-.provisional.wb-steps.quiz fieldset:not(:first-child):not(:has(legend)) {
-	border-top: 1px solid #e5e5e5;
-	padding-top: 10px;
-}
-
-.provisional.wb-steps.quiz fieldset legend {
-	float: none;
-}
 .wb-col-sum {
     font-weight: bold;
 }
+    .wb-math-grid {
+      border-collapse: collapse;
+      display: table;
+      position: relative;
+    }
+    .wb-math-grid.mg-spcd {
+		border-collapse: separate;
+		border-spacing: 0px 5px;
+	}
+    .wb-math-grid.p-0 div.mg-cell, div.mg-row.p-0 div.mg-cell {
+      line-height: 1.2em;
+      padding: 0px;
+    }
+   .wb-math-grid div.mg-row {
+      display: table-row;
+    }
+    .wb-math-grid div.mg-row > div.mg-cell {
+      display: table-cell;
+      padding: 0px 3px 0px 3px;
+    }
+  .wb-math-grid div.mg-row >  div.mg-cell:before {
+      content: " ";
+    }
+    .mg-scroll {
+      overflow-x: auto;
+      padding: 5px 5px 5px 0px;
+    }
+    @media screen and (max-width: 767px) {
+      .mg-scroll {
+        border: 1px solid #ddd;
+        overflow-x: scroll;
+        width: 100%;
+      }
+    }
+    .wb-math-grid div.mg-cell.mg-brdr-tp, .wb-math-grid div.mg-row.mg-brdr-tp div.mg-cell {
+      border-top: 3px solid #333;
+    }
+    .wb-math-grid div.mg-cell.mg-brdr-bttm, div.mg-row.mg-brdr-bttm div.mg-cell {
+      border-bottom: 3px solid #333;
+    }
+    .wb-math-grid div.mg-cell.mg-brdr-lft {
+      border-left: 3px solid #333;
+    }
+    .wb-math-grid div.mg-cell.mg-brdr-rght {
+      border-right: 3px solid #333;
+    }
+    .wb-math-grid div.mg-cell.mg-brdr-otln {
+      border: 3px solid #333;
+    }
+    /* hides anything not assigned to the cell */
+  .wb-math-grid  div.mg-row > :not(.mg-cell) {
+      display: none;
+    }
+
 /*------
 * Deprecated styles
 ------*/
