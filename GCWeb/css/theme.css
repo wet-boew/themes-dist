@@ -5430,6 +5430,21 @@ details[open] > summary {
 .gc-archv h2 {
   margin-top: 0;
 }
+.gc-archv.wb-overlay {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+.gc-archv.overlay-def .modal-title {
+  font-size: 1.8125rem;
+  line-height: 1.37;
+  padding: 0;
+}
+@media screen and (max-width: 991px) {
+  .gc-archv.overlay-def .modal-title {
+    font-size: 1.625rem;
+    line-height: 1.23;
+  }
+}
 .gc-archv .mfp-close.overlay-close {
   color: #000;
 }
@@ -5438,8 +5453,8 @@ details[open] > summary {
   outline-offset: -2px;
 }
 
-.wb-disable .gc-arch.wb-overlay {
-  display: none;
+.wb-disable .gc-archv.wb-overlay {
+  display: none !important;
 }
 
 /*
