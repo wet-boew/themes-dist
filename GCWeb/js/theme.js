@@ -1,7 +1,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v20.0.0 - 2026-11-05
+ * v20.0.0 - 2026-11-09
  *
  */// ============================================
 // Accessible Combo Box Web Component
@@ -356,7 +356,6 @@ class GcComboBoxComponent extends HTMLElement {
 	width: 100%;
 }
 
-
 .wb-inv {
 	position: absolute;
 	width: 1px;
@@ -381,12 +380,12 @@ class GcComboBoxComponent extends HTMLElement {
 	font-size: 75%;
 	font-weight: 700;
 	line-height: 1;
-	padding: .4em .6em .4em;
+	padding: 0.4em 0.6em 0.4em;
 	text-align: center;
 	vertical-align: baseline;
 	white-space: nowrap;
 
-&:hover {
+	&:hover {
 		background-color: rgba(0, 0, 0, 0.15);
 	}
 

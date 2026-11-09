@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v20.0.0 - 2026-11-05
+ * v20.0.0 - 2026-11-09
  *
  */
 /* AI answers components styles */
@@ -31,23 +31,23 @@
 }
 
 .aia-banner .aia-close {
-    background: none;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    cursor: pointer;
-    font-family: Arial, sans-serif;
-    font-size: 2rem;
-    font-weight: normal;
-    height: 45px;
-    line-height: 1;
-    padding: 0;
+	background: none;
+	border: none;
+	border-radius: 50%;
+	color: white;
+	cursor: pointer;
+	font-family: Arial, sans-serif;
+	font-size: 2rem;
+	font-weight: normal;
+	height: 45px;
+	line-height: 1;
+	padding: 0;
 	position: absolute;
-    right: 2px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: background-color 0.2s ease;
-    width: 45px;
+	right: 2px;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: background-color 0.2s ease;
+	width: 45px;
 }
 
 .aia-banner .aia-close:hover {
@@ -56,7 +56,7 @@
 
 .aia-banner .aia-close:focus {
 	background-color: rgb(255, 255, 255, 0.1);
-    box-shadow: 0 0 0 2px white;
+	box-shadow: 0 0 0 2px white;
 	outline: none;
 }
 
@@ -66,7 +66,7 @@
 }
 
 .aia-rescue p {
-    margin: 0;
+	margin: 0;
 	padding: .5rem 0 .5rem .75rem;
 }
 
@@ -219,25 +219,25 @@ body.aia-banner-visible #wb-info {
 
 /* Thematic red */
 .bg-canadaday {
-    background-color: #A30D26;
+	background-color: #A30D26;
 }
 .panel-canadaday,
 hr.brdr-canadaday {
-    border-color: #A30D26;
+	border-color: #A30D26;
 }
 /* Hover and focus state */
 a.bg-canadaday:hover,
 a.bg-canadaday:focus,
 button.bg-canadaday:hover,
 button.bg-canadaday:focus {
-    background-color: #800613;
+	background-color: #800613;
 }
 /* Active state */
 a.bg-canadaday:active,
 a.bg-canadaday:active:focus,
 a.bg-canadaday:active:hover,
 button.bg-canadaday:active {
-    background-color: #680106 !important;
+	background-color: #680106 !important;
 }
 /* Force link text to remain white for hover,
 focus and active states. */
@@ -247,43 +247,43 @@ a.bg-canadaday:active,
 button.bg-canadaday:hover,
 button.bg-canadaday:focus,
 button.bg-canadaday:active {
-    color: #fff !important;
+	color: #fff !important;
 }
 /** details/summary **/
 details.bg-canadaday {
-    margin: 0;
+	margin: 0;
 }
 details.bg-canadaday * {
-    color: #fff;
+	color: #fff;
 }
 details.bg-canadaday summary {
-    background-color: #A30D26;
-    color: #fff;
-    border: 1px solid #A30D26;
+	background-color: #A30D26;
+	color: #fff;
+	border: 1px solid #A30D26;
 }
 details.bg-canadaday[open] > summary {
-    border: none;
-    border-bottom: 1px solid #fff;
+	border: none;
+	border-bottom: 1px solid #fff;
 }
 details.bg-canadaday[open] {
-    border: 1px solid #A30D26;
-    padding-bottom: 0.35em;
+	border: 1px solid #A30D26;
+	padding-bottom: 0.35em;
 }
 details.bg-canadaday a:focus,
 details.bg-canadaday a:hover {
-    color: #b3ffff;
+	color: #b3ffff;
 }
 /* Thematic beige */
 .bg-canadaday-beige {
-    background-color: #F9F1DE;
+	background-color: #F9F1DE;
 }
 /* Hover and focus state */
 a.bg-canadaday-beige:hover,
 a.bg-canadaday-beige:focus,
 button.bg-canadaday-beige:hover,
 button.bg-canadaday-beige:focus {
-    background-color: #F9E0C1;
-    color: #000 !important;    
+	background-color: #F9E0C1;
+	color: #000 !important;
 }
 /* Active state */
 a.bg-canadaday-beige:active,
@@ -292,59 +292,57 @@ a.bg-canadaday-beige:active:hover,
 button.bg-canadaday-beige:active,
 button.bg-canadaday-beige:active:focus,
 button.bg-canadaday-beige:active:hover {
-    background-color: #F6D3B2 !important;
-    color: #000 !important;    
+	background-color: #F6D3B2 !important;
+	color: #000 !important;
 }
 /*** Thematic Heading 1 ***/
 @media screen and (min-width: 768px) {
-    h1.gc-thickline.canadaday {
-        font-size: 2.4em;
-    }
+	h1.gc-thickline.canadaday {
+		font-size: 2.4em;
+	}
 }
 @media screen and (min-width: 992px) {
-    h1.gc-thickline.canadaday {
-        font-size: 2.8em;
-    }
+	h1.gc-thickline.canadaday {
+		font-size: 2.8em;
+	}
 }
 h1.gc-thickline.canadaday::after {
-    border-bottom: 0.18em solid #A30D26;
-    width: 0.95em;
+	border-bottom: 0.18em solid #A30D26;
+	width: 0.95em;
 }
 /* Thematic Card */
 .panel-canadaday-card {
-    border: 0px !important;
-    border-radius: 18px !important;
-    box-shadow: 0px 3px 6px #00000029;
+	border: 0px !important;
+	border-radius: 18px !important;
+	box-shadow: 0px 3px 6px #00000029;
 }
 .panel-canadaday-card header.panel-heading {
-    background-color: transparent;
-    border: none;    
-    padding: 0;
-} 
+	background-color: transparent;
+	border: none;
+	padding: 0;
+}
 .panel-canadaday-card img {
-    border-radius: 18px 18px 0px 0px;
+	border-radius: 18px 18px 0px 0px;
 }
 .panel-canadaday-card .panel-heading > :not(img) {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 	padding-top: 20px;
 }
 .panel-canadaday-card .panel-body {
-    padding-bottom: 0 !important;
+	padding-bottom: 0 !important;
 }
 .panel-canadaday-card-compact img {
-    border-radius: 18px 0 0 18px !important;
+	border-radius: 18px 0 0 18px !important;
 }
 
 .panel-canadaday-card p[class^="h"], .panel-canadaday-card p[class*=" h"] {
-    margin-top: 0 !important;
+	margin-top: 0 !important;
 }
 
 .panel-canadaday-card header {
 	position: inherit;
 }
-
-
 
 .choose-canada-banner {
 	background-image: url("https://canada.ca/content/dam/pch/images/campaigns/choose-canada/Banner1920x315.jpg");
@@ -397,7 +395,7 @@ h1.gc-thickline.canadaday::after {
 /* Thematic purple */
 .btn-empathy.btn-primary,
 .empathy.wb-steps.quiz .btn-primary {
-    background-color: #5C2790;
+	background-color: #5C2790;
 }
 
 /* Purple button hover and focus state */
@@ -407,16 +405,16 @@ h1.gc-thickline.canadaday::after {
 .empathy.wb-steps.quiz .btn-primary:hover,
 .empathy.wb-steps.quiz .btn-primary:focus,
 .empathy.wb-steps.quiz .btn-primary:active {
-    background-color: #D6B9EC;
-    color: #5c2790;
+	background-color: #D6B9EC;
+	color: #5c2790;
 }
 
 /* Light Purple button default state */
 .btn-empathy.btn-default,
 .empathy.wb-steps.quiz .btn-default {
-    background-color: #FFF;
-    border-color: #5C2790;
-    color: #5C2790;
+	background-color: #FFF;
+	border-color: #5C2790;
+	color: #5C2790;
 }
 /* Light Purple button hover and focus state */
 .btn-empathy.btn-default:hover,
@@ -425,9 +423,9 @@ h1.gc-thickline.canadaday::after {
 .empathy.wb-steps.quiz .btn-default:hover,
 .empathy.wb-steps.quiz .btn-default:focus,
 .empathy.wb-steps.quiz .btn-default:active  {
-    background-color: #D6B9EC;
-    border-color: #471F70;
-    color: #471F70;
+	background-color: #D6B9EC;
+	border-color: #471F70;
+	color: #471F70;
 }
 
 /* Thematic text color */
@@ -439,40 +437,40 @@ h1.gc-thickline.canadaday::after {
 
 /* Thematic progress bar customization */
 .empathy.wb-steps.quiz progress {
-    /* Reset the default browser styles */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: #5c2790 solid 1px;
+	/* Reset the default browser styles */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: #5c2790 solid 1px;
 
-    background-color: #777;
-    color: #DED0F1;
+	background-color: #777;
+	color: #DED0F1;
 }
 
 /* Webkit Browsers - Chrome, Opera and Safari */
 .empathy.wb-steps.quiz progress::-webkit-progress-bar {
-    background-color: #777;
+	background-color: #777;
 }
 .empathy.wb-steps.quiz progress::-webkit-progress-value {
-    background-color: #DED0F1;
+	background-color: #DED0F1;
 }
 
 /* Mozilla Firefox */
 .empathy.wb-steps.quiz progress::-moz-progress-bar {
-    background-color: #DED0F1;
+	background-color: #DED0F1;
 }
 
 /* Thematic radio buttons, check boxes and legend */
 .empathy.wb-steps.quiz .gc-chckbxrdio input[type="radio"]:checked + label::before {
-    background: #5c2790;
+	background: #5c2790;
 }
 
 .empathy.wb-steps.quiz .gc-chckbxrdio input[type="checkbox"]:checked + label::after {
-    border-color: #5c2790;
+	border-color: #5c2790;
 }
 
 .empathy.provisional.wb-steps.quiz .wb-tggle-fildst > legend.wb-steps-active {
-    color: #5c2790;;
+	color: #5c2790;;
 
 }
 
@@ -485,14 +483,14 @@ h1.gc-thickline.canadaday::after {
 }
 
 .empathy.services-and-information .empathy.cards:hover {
-    background-color: #6c3c9b;
-    color: #fff;
-    cursor: pointer;
+	background-color: #6c3c9b;
+	color: #fff;
+	cursor: pointer;
 }
 
 /* Added to specifically target the link*/
 .empathy.services-and-information .empathy.cards:hover a {
-    color: #fff;
+	color: #fff;
 }
 
 .empathy.quiz-content {
@@ -502,38 +500,38 @@ h1.gc-thickline.canadaday::after {
 
 @media screen and (min-width: 992px) {
 	.empathy.quiz-img {
-	width: 100%;
-        }
+		width: 100%;
+	}
 }
 
 /* checklist.html specific css */
 @media screen {
 	.empathy.cards details summary {
-	border: 0;
-	list-style-position: outside;
-	margin-left: 0px;
-	padding-left: 0px;
+		border: 0;
+		list-style-position: outside;
+		margin-left: 0px;
+		padding-left: 0px;
 	}
 	.empathy.cards details[open] {
-	border: 0;
+		border: 0;
 	}
 }
 
 @media print {
 	details[open] > summary::marker {
-	content: "\2B1C\0020";
-	display: none;
+		content: "\2B1C\0020";
+		display: none;
 	}
 }
 
 /*** Thematic blue ***/
 .bg-winterlude {
-    background-color: #003c77;
+	background-color: #003c77;
 }
 /** panel, hr **/
 .panel-winterlude,
 hr.brdr-winterlude {
-    border-color: #003c77;
+	border-color: #003c77;
 }
 /** a, button **/
 /* Hover and focus state */
@@ -541,7 +539,7 @@ a.bg-winterlude:hover,
 a.bg-winterlude:focus,
 button.bg-winterlude:hover,
 button.bg-winterlude:focus {
-    background-color: #2c6cb5 !important;
+	background-color: #2c6cb5 !important;
 }
 /* Active state */
 a.bg-winterlude:active,
@@ -550,7 +548,7 @@ a.bg-winterlude:active:hover,
 button.bg-winterlude:active,
 button.bg-winterlude:active:focus,
 button.bg-winterlude:active:hover {
-    background-color: #000000 !important;
+	background-color: #000000 !important;
 }
 /* Force link text to remain white for hover, focus and active states. */
 a.bg-winterlude:hover,
@@ -559,35 +557,35 @@ a.bg-winterlude:active,
 button.bg-winterlude:hover,
 button.bg-winterlude:focus,
 button.bg-winterlude:active {
-    color: #fff !important;
+	color: #fff !important;
 }
 /** details/summary **/
 details.bg-winterlude {
-   margin: 0;
+	margin: 0;
 }
 details.bg-winterlude * {
-   color: #fff;
+	color: #fff;
 }
 details.bg-winterlude summary {
-   background-color: #003c77;
-    color: #fff;
-    border: 1px solid #003c77;
+	background-color: #003c77;
+	color: #fff;
+	border: 1px solid #003c77;
 }
 details.bg-winterlude[open]>summary {
-    border: none;
-    border-bottom: 1px solid #fff;    
+	border: none;
+	border-bottom: 1px solid #fff;
 }
 details.bg-winterlude[open] {
-    border: 1px solid #003c77;
-    padding-bottom: 0.35em;
-} 
+	border: 1px solid #003c77;
+	padding-bottom: 0.35em;
+}
 details.bg-winterlude a:focus, details.bg-winterlude a:hover {
-   color: #b3ffff;
+	color: #b3ffff;
 }
 
 /*** Thematic light blue ***/
 .bg-winterlude-lightblue {
-    background-color: #c7e6f5;
+	background-color: #c7e6f5;
 }
 /** a, button **/
 /* Hover and focus state */
@@ -595,8 +593,8 @@ a.bg-winterlude-lightblue:hover,
 a.bg-winterlude-lightblue:focus,
 button.bg-winterlude-lightblue:hover,
 button.bg-winterlude-lightblue:focus {
-    color: #000 !important;
-    background-color: #84c8e6 !important;
+	color: #000 !important;
+	background-color: #84c8e6 !important;
 }
 /* Active state */
 a.bg-winterlude-lightblue:active,
@@ -605,145 +603,144 @@ a.bg-winterlude-lightblue:active:hover,
 button.bg-winterlude-lightblue:active,
 button.bg-winterlude-lightblue:active:focus,
 button.bg-winterlude-lightblue:active:hover {
-    color: #000 !important;
-    background-color: #009ec9 !important;
+	color: #000 !important;
+	background-color: #009ec9 !important;
 }
 
 /*** Thematic Heading 1 ***/
 @media screen and (min-width: 768px) {
-    h1.winterlude {
-        font-size: 2.4em;
-    }
+	h1.winterlude {
+		font-size: 2.4em;
+	}
 }
 @media screen and (min-width: 992px) {
-    h1.winterlude {
-        font-size: 2.8em;
-    }
+	h1.winterlude {
+		font-size: 2.8em;
+	}
 }
 h1.winterlude {
-    border-bottom: none !important;
+	border-bottom: none !important;
 }
 h1.winterlude::after {
-    border-bottom: 0.18em solid #2c6cb5 !important;
-    content: "";
-    display: block;
-    padding-bottom: 8px;
-    width: 0.95em;
+	border-bottom: 0.18em solid #2c6cb5 !important;
+	content: "";
+	display: block;
+	padding-bottom: 8px;
+	width: 0.95em;
 }
 
 /* ZEV theme */
 /* General Backgrounds */
 .bg-zev-purple {
-  background-color: #7B1964;
+	background-color: #7B1964;
 }
 
 .bg-zev-green {
-  background-color: #9AC43F;
+	background-color: #9AC43F;
 }
 
 /* Buttons */
 .btn-zev-purple {
-  color: #FFFFFF;
-  background-color: #7B1964;
-  border-color: #551145;
+	color: #FFFFFF;
+	background-color: #7B1964;
+	border-color: #551145;
 }
 
 .btn-zev-purple:active, .btn-zev-purple:focus, .btn-zev-purple:hover {
-  color: #FFFFFF;
-  background-color: #551145;
-  border-color: #551145;
+	color: #FFFFFF;
+	background-color: #551145;
+	border-color: #551145;
 }
 
 .btn-zev-purple:visited {
-  color: #FFFFFF;
+	color: #FFFFFF;
 }
 
 .btn-zev-green {
-  color: #292929;
-  background-color: #9AC43F;
-  border-color: #7a9c30;
+	color: #292929;
+	background-color: #9AC43F;
+	border-color: #7a9c30;
 }
 
 .btn-zev-green:active, .btn-zev-green:focus, .btn-zev-green:hover {
-  color: #292929;
-  background-color: #7a9c30;
-  border-color: #7a9c30;
+	color: #292929;
+	background-color: #7a9c30;
+	border-color: #7a9c30;
 }
 
 .btn-zev-green:visited {
-  color: #292929;
+	color: #292929;
 }
 
 /* Wells */
 .well.bg-zev-green, .well.bg-zev-purple {
-  padding: 24px;
-  border-radius: 0;
-  box-shadow: none;
+	padding: 24px;
+	border-radius: 0;
+	box-shadow: none;
 }
 .well.bg-zev-green .well-link, .well.bg-zev-purple .well-link {
-  font-weight: bold;
+	font-weight: bold;
 }
 .well.bg-zev-green.well-sm, .well.bg-zev-purple.well-sm {
-  padding: 9px;
-  border-radius: 0;
+	padding: 9px;
+	border-radius: 0;
 }
 .well.bg-zev-green > :first-child, .well.bg-zev-purple > :first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 .well.bg-zev-green > :last-child, .well.bg-zev-purple > :last-child {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 .well.bg-zev-green {
-  background-color: #9AC43F;
-  border: 1px solid #7a9c30;
-  color: #292929;
+	background-color: #9AC43F;
+	border: 1px solid #7a9c30;
+	color: #292929;
 }
 .well.bg-zev-green .well-link, .well.bg-zev-green .well-text {
-  color: #1D270C;
+	color: #1D270C;
 }
 .well.bg-zev-green .well-link:focus, .well.bg-zev-green .well-link:hover {
-  color: #394C15;
+	color: #394C15;
 }
 .well.bg-zev-purple {
-  background-color: #7B1964;
-  border: 1px solid #551145;
-  color: #FFFFFF;
+	background-color: #7B1964;
+	border: 1px solid #551145;
+	color: #FFFFFF;
 }
 .well.bg-zev-purple .well-link, .well.bg-zev-purple .well-text {
-  color: #F8D3ED;
+	color: #F8D3ED;
 }
 .well.bg-zev-purple .well-link:focus, .well.bg-zev-purple .well-link:hover {
-  color: #FD8BD5;
+	color: #FD8BD5;
 }
 
 /* Panels */
 .panel-zev-green {
-  border-color: #9AC43F;
-  border-radius: 0;
-  border: 3px solid #9AC43F;
+	border-color: #9AC43F;
+	border-radius: 0;
+	border: 3px solid #9AC43F;
 }
 
 .panel-zev-green > .panel-heading,
 .panel-zev-green > .panel-footer {
-  color: #292929;
-  background-color: #9AC43F;
-  border-radius: 0;
-  border: 1px solid #9AC43F;
-  margin: -1px;
+	color: #292929;
+	background-color: #9AC43F;
+	border-radius: 0;
+	border: 1px solid #9AC43F;
+	margin: -1px;
 }
 
 .panel-zev-purple {
-  border-color: #7B1964;
-  border-radius: 0;
-  border: 3px solid #7B1964;
+	border-color: #7B1964;
+	border-radius: 0;
+	border: 3px solid #7B1964;
 }
 
 .panel-zev-purple > .panel-heading,
 .panel-zev-purple > .panel-footer {
-  color: #FFFFFF;
-  background-color: #7B1964;
-  border-radius: 0;
-  border: 1px solid #7B1964;
-  margin: -1px;
+	color: #FFFFFF;
+	background-color: #7B1964;
+	border-radius: 0;
+	border: 1px solid #7B1964;
+	margin: -1px;
 }
-

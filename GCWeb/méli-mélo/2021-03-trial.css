@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v20.0.0 - 2026-11-05
+ * v20.0.0 - 2026-11-09
  *
  */
 @charset "utf-8";
@@ -16,4 +16,4 @@ h1 {
 	color: red;
 }
 p em.wb-bonjour {
-  font-size: 200%; }
+	font-size: 200%; }
