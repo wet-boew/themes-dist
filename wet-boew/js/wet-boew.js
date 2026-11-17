@@ -1,12 +1,12 @@
 /*!
  * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v4.0.98.1 - 2026-11-16
+ * v4.0.98.2 - 2026-11-17
  *
  */
 
 /*! Modernizr (Custom Build) | MIT & BSD */
-/*! @license DOMPurify 3.4.17 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.17/LICENSE */
+/*! @license DOMPurify 3.4.18 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.4.18/LICENSE */
 (function(global, factory) {
 	typeof exports === "object" && typeof module !== "undefined" ? module.exports = factory() : typeof define === "function" && define.amd ? define([], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, global.DOMPurify = factory());
 })(this, function() {
@@ -105,6 +105,7 @@
 		return this._invoke("return", e);
 	};
 	const entries = Object.entries;
+	const objectKeys = Object.keys;
 	const setPrototypeOf = Object.setPrototypeOf;
 	const isFrozen = Object.isFrozen;
 	const getPrototypeOf = Object.getPrototypeOf;
@@ -130,7 +131,6 @@
 		return new Func(...args);
 	};
 	const arrayForEach = unapply(Array.prototype.forEach);
-	Array.prototype.indexOf;
 	const arrayLastIndexOf = unapply(Array.prototype.lastIndexOf);
 	const arrayPop = unapply(Array.prototype.pop);
 	const arrayPush = unapply(Array.prototype.push);
@@ -152,7 +152,11 @@
 	const symbolToString = typeof Symbol === "undefined" ? null : unapply(Symbol.prototype.toString);
 	const objectHasOwnProperty = unapply(Object.prototype.hasOwnProperty);
 	const objectToString = unapply(Object.prototype.toString);
-	const regExpTest = unapply(RegExp.prototype.test);
+	const regExpTestRaw = RegExp.prototype.test;
+	const regExpTest = function regExpTest(regExp, value) {
+		if (regExp instanceof RegExp) regExp.lastIndex = 0;
+		return apply(regExpTestRaw, regExp, [value]);
+	};
 	const typeErrorCreate = unconstruct(TypeError);
 	/**
 	* Creates a new function that calls the given function with a specified thisArg and arguments.
@@ -162,7 +166,6 @@
 	*/
 	function unapply(func) {
 		return function(thisArg) {
-			if (thisArg instanceof RegExp) thisArg.lastIndex = 0;
 			for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) args[_key3 - 1] = arguments[_key3];
 			return apply(func, thisArg, args);
 		};
@@ -236,6 +239,19 @@
 		return newObject;
 	}
 	/**
+	* Copy a flat lookup table
+	*
+	* @param set - The set to copy.
+	* @returns A new prototype-free set with the same entries.
+	*/
+	function cloneSet(set) {
+		const newSet = create(null);
+		const keys = objectKeys(set);
+		let l = keys.length;
+		while (l--) newSet[keys[l]] = set[keys[l]];
+		return newSet;
+	}
+	/**
 	* Convert non-node values into strings without depending on direct property access.
 	*
 	* @param value - The value to stringify.
@@ -304,6 +320,7 @@
 		return null;
 	}
 	function isRegex(value) {
+		if (!value) return false;
 		try {
 			regExpTest(value, "");
 			return true;
@@ -446,8 +463,6 @@
 		"defs",
 		"desc",
 		"ellipse",
-		"enterkeyhint",
-		"exportparts",
 		"filter",
 		"font",
 		"g",
@@ -455,14 +470,12 @@
 		"glyphref",
 		"hkern",
 		"image",
-		"inputmode",
 		"line",
 		"lineargradient",
 		"marker",
 		"mask",
 		"metadata",
 		"mpath",
-		"part",
 		"path",
 		"pattern",
 		"polygon",
@@ -962,6 +975,7 @@
 	const MUSTACHE_EXPR = seal(/{{[\w\W]*|^[\w\W]*}}/g);
 	const ERB_EXPR = seal(/<%[\w\W]*|^[\w\W]*%>/g);
 	const TMPLIT_EXPR = seal(/\${[\w\W]*/g);
+	const TMPL_MARKER_SERIALIZED = seal(/{{|}}|\${|<%|%>|&lt;%|%&gt;/);
 	const DATA_ATTR = seal(/^data-[\-\w.\u00B7-\uFFFF]+$/);
 	const ARIA_ATTR = seal(/^aria-[\-\w]+$/);
 	const IS_ALLOWED_URI = seal(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|sms|cid|xmpp|matrix):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i);
@@ -973,19 +987,15 @@
 	const COMMENT_MARKUP_PROBE = seal(/<[/\w]/g);
 	const FALLBACK_TAG_CLOSE = seal(/<\/no(script|embed|frames)/i);
 	const SELF_CLOSING_TAG = seal(/\/>/i);
+	const ATTR_VALUE_BREAKOUT = seal(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i);
+	const LEADING_WHITESPACE = seal(/^[\r\n\t ]+/);
 	const NODE_TYPE = {
 		element: 1,
-		attribute: 2,
 		text: 3,
-		cdataSection: 4,
-		entityReference: 5,
-		entityNode: 6,
 		processingInstruction: 7,
 		comment: 8,
 		document: 9,
-		documentType: 10,
-		documentFragment: 11,
-		notation: 12
+		documentFragment: 11
 	};
 	const LITERAL_TEXT_ELEMENTS = freeze(addToSet({}, [
 		"style",
@@ -1042,39 +1052,33 @@
 		};
 	};
 	/**
-	* Resolve a set-valued configuration option: a fresh set built from
-	* cfg[key] when it is an own array property (seeded with a clone of
-	* options.base when given, case-normalized via options.transform),
-	* the fallback set otherwise.
+	* Resolve a set-valued configuration option.
 	*
 	* @param cfg the cloned, prototype-free configuration object
 	* @param key the configuration property to read
 	* @param fallback the set to use when the option is absent or not an array
-	* @param options transform and optional base set to merge into
-	* @returns the resolved set
+	* @param options case transform, and an optional base set to extend a copy of
+	* @returns a fresh set built from cfg[key], or the fallback
 	*/
 	const _resolveSetOption = function _resolveSetOption(cfg, key, fallback, options) {
-		return objectHasOwnProperty(cfg, key) && arrayIsArray(cfg[key]) ? addToSet(options.base ? clone(options.base) : {}, cfg[key], options.transform) : fallback;
+		return objectHasOwnProperty(cfg, key) && arrayIsArray(cfg[key]) ? addToSet(options.base ? cloneSet(options.base) : {}, cfg[key], options.transform) : fallback;
 	};
 	/**
-	* Resolve an object-valued configuration option: a prototype-free clone
-	* of cfg[key] when it is an own, truthy object property, else a fresh
-	* fallback built by makeFallback (fresh on every parse, so a previous
-	* parse can never leak state into the next one).
+	* Resolve an object-valued configuration option.
 	*
 	* @param cfg the cloned, prototype-free configuration object
 	* @param key the configuration property to read
-	* @param makeFallback builds the fallback value when the option is absent
-	* @returns the resolved object
+	* @param fallback the read-only value to use when the option is absent
+	* @returns a prototype-free clone of cfg[key], or the fallback
 	*/
-	const _resolveObjectOption = function _resolveObjectOption(cfg, key, makeFallback) {
+	const _resolveObjectOption = function _resolveObjectOption(cfg, key, fallback) {
 		const value = objectHasOwnProperty(cfg, key) ? cfg[key] : void 0;
-		return value && typeof value === "object" ? clone(value) : makeFallback();
+		return value && typeof value === "object" ? clone(value) : fallback;
 	};
 	function createDOMPurify() {
 		let window = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : getGlobal();
 		const DOMPurify = (root) => createDOMPurify(root);
-		DOMPurify.version = "3.4.17";
+		DOMPurify.version = "3.4.18";
 		DOMPurify.removed = [];
 		if (!window || !window.document || window.document.nodeType !== NODE_TYPE.document || !window.Element) {
 			DOMPurify.isSupported = false;
@@ -1083,11 +1087,7 @@
 		let document = window.document;
 		const originalDocument = document;
 		const currentScript = originalDocument.currentScript;
-		window.DocumentFragment;
-		const HTMLTemplateElement = window.HTMLTemplateElement, Node = window.Node, Element = window.Element, NodeFilter = window.NodeFilter;
-		window.NamedNodeMap === void 0 && (window.NamedNodeMap || window.MozNamedAttrMap);
-		window.HTMLFormElement;
-		const DOMParser = window.DOMParser, trustedTypes = window.trustedTypes;
+		const HTMLTemplateElement = window.HTMLTemplateElement, Node = window.Node, Element = window.Element, NodeFilter = window.NodeFilter, DOMParser = window.DOMParser, trustedTypes = window.trustedTypes;
 		const ElementPrototype = Element.prototype;
 		const cloneNode = lookupGetter(ElementPrototype, "cloneNode");
 		const remove = lookupGetter(ElementPrototype, "remove");
@@ -1130,6 +1130,9 @@
 			} finally {
 				IN_TRUSTED_TYPES_POLICY--;
 			}
+		};
+		const _signOutput = function _signOutput(html) {
+			return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(html) : html;
 		};
 		const _createTrustedScriptURL = function _createTrustedScriptURL(scriptUrl) {
 			_assertNotInTrustedTypesPolicy();
@@ -1175,26 +1178,7 @@
 			...mathMl,
 			...xml
 		]);
-		let CUSTOM_ELEMENT_HANDLING = Object.seal(create(null, {
-			tagNameCheck: {
-				writable: true,
-				configurable: false,
-				enumerable: true,
-				value: null
-			},
-			attributeNameCheck: {
-				writable: true,
-				configurable: false,
-				enumerable: true,
-				value: null
-			},
-			allowCustomizedBuiltInElements: {
-				writable: true,
-				configurable: false,
-				enumerable: true,
-				value: false
-			}
-		}));
+		let CUSTOM_ELEMENT_HANDLING = null;
 		let FORBID_TAGS = null;
 		let FORBID_ATTR = null;
 		const EXTRA_ELEMENT_HANDLING = Object.seal(create(null, {
@@ -1231,7 +1215,7 @@
 		let KEEP_CONTENT = true;
 		let IN_PLACE = false;
 		let IN_PLACE_VISITED = null;
-		let USE_PROFILES = {};
+		let USE_PROFILES = false;
 		let FORBID_CONTENTS = null;
 		const DEFAULT_FORBID_CONTENTS = addToSet({}, [
 			"annotation-xml",
@@ -1298,16 +1282,17 @@
 			SVG_NAMESPACE,
 			HTML_NAMESPACE
 		], stringToString);
-		const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze([
+		const DEFAULT_MATHML_TEXT_INTEGRATION_POINTS = freeze(addToSet({}, [
 			"mi",
 			"mo",
 			"mn",
 			"ms",
 			"mtext"
-		]);
-		let MATHML_TEXT_INTEGRATION_POINTS = addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS);
-		const DEFAULT_HTML_INTEGRATION_POINTS = freeze(["annotation-xml"]);
-		let HTML_INTEGRATION_POINTS = addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS);
+		]));
+		let MATHML_TEXT_INTEGRATION_POINTS = null;
+		const DEFAULT_HTML_INTEGRATION_POINTS = freeze(addToSet({}, ["annotation-xml"]));
+		let HTML_INTEGRATION_POINTS = null;
+		const DEFAULT_CUSTOM_ELEMENT_HANDLING = freeze(create(null));
 		const COMMON_SVG_AND_HTML_ELEMENTS = addToSet({}, [
 			"title",
 			"style",
@@ -1331,7 +1316,6 @@
 		*/
 		const _parseConfig = function _parseConfig() {
 			let cfg = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
-			if (CONFIG && CONFIG === cfg) return;
 			if (!cfg || typeof cfg !== "object") cfg = {};
 			cfg = clone(cfg);
 			PARSER_MEDIA_TYPE = SUPPORTED_PARSER_MEDIA_TYPES.indexOf(cfg.PARSER_MEDIA_TYPE) === -1 ? DEFAULT_PARSER_MEDIA_TYPE : cfg.PARSER_MEDIA_TYPE;
@@ -1348,8 +1332,8 @@
 				base: DEFAULT_DATA_URI_TAGS
 			});
 			FORBID_CONTENTS = _resolveSetOption(cfg, "FORBID_CONTENTS", DEFAULT_FORBID_CONTENTS, { transform: transformCaseFunc });
-			FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", clone({}), { transform: transformCaseFunc });
-			FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", clone({}), { transform: transformCaseFunc });
+			FORBID_TAGS = _resolveSetOption(cfg, "FORBID_TAGS", create(null), { transform: transformCaseFunc });
+			FORBID_ATTR = _resolveSetOption(cfg, "FORBID_ATTR", create(null), { transform: transformCaseFunc });
 			USE_PROFILES = objectHasOwnProperty(cfg, "USE_PROFILES") ? cfg.USE_PROFILES && typeof cfg.USE_PROFILES === "object" ? clone(cfg.USE_PROFILES) : cfg.USE_PROFILES : false;
 			ALLOW_ARIA_ATTR = cfg.ALLOW_ARIA_ATTR !== false;
 			ALLOW_DATA_ATTR = cfg.ALLOW_DATA_ATTR !== false;
@@ -1368,9 +1352,9 @@
 			IN_PLACE = cfg.IN_PLACE || false;
 			IS_ALLOWED_URI$1 = isRegex(cfg.ALLOWED_URI_REGEXP) ? cfg.ALLOWED_URI_REGEXP : IS_ALLOWED_URI;
 			NAMESPACE = typeof cfg.NAMESPACE === "string" ? cfg.NAMESPACE : HTML_NAMESPACE;
-			MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(cfg, "MATHML_TEXT_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_MATHML_TEXT_INTEGRATION_POINTS));
-			HTML_INTEGRATION_POINTS = _resolveObjectOption(cfg, "HTML_INTEGRATION_POINTS", () => addToSet({}, DEFAULT_HTML_INTEGRATION_POINTS));
-			const customElementHandling = _resolveObjectOption(cfg, "CUSTOM_ELEMENT_HANDLING", () => create(null));
+			MATHML_TEXT_INTEGRATION_POINTS = _resolveObjectOption(cfg, "MATHML_TEXT_INTEGRATION_POINTS", DEFAULT_MATHML_TEXT_INTEGRATION_POINTS);
+			HTML_INTEGRATION_POINTS = _resolveObjectOption(cfg, "HTML_INTEGRATION_POINTS", DEFAULT_HTML_INTEGRATION_POINTS);
+			const customElementHandling = _resolveObjectOption(cfg, "CUSTOM_ELEMENT_HANDLING", DEFAULT_CUSTOM_ELEMENT_HANDLING);
 			CUSTOM_ELEMENT_HANDLING = create(null);
 			if (objectHasOwnProperty(customElementHandling, "tagNameCheck") && isRegexOrFunction(customElementHandling.tagNameCheck)) CUSTOM_ELEMENT_HANDLING.tagNameCheck = customElementHandling.tagNameCheck;
 			if (objectHasOwnProperty(customElementHandling, "attributeNameCheck") && isRegexOrFunction(customElementHandling.attributeNameCheck)) CUSTOM_ELEMENT_HANDLING.attributeNameCheck = customElementHandling.attributeNameCheck;
@@ -1379,6 +1363,7 @@
 			if (SAFE_FOR_TEMPLATES) ALLOW_DATA_ATTR = false;
 			if (RETURN_DOM_FRAGMENT) RETURN_DOM = true;
 			if (USE_PROFILES) {
+				if ((objectHasOwnProperty(cfg, "ALLOWED_TAGS") || objectHasOwnProperty(cfg, "ALLOWED_ATTR")) && typeof console !== "undefined" && typeof console.warn === "function") console.warn("DOMPurify: USE_PROFILES overrides ALLOWED_TAGS and ALLOWED_ATTR. Do not use these options together.");
 				ALLOWED_TAGS = addToSet({}, text);
 				ALLOWED_ATTR = create(null);
 				if (USE_PROFILES.html === true) {
@@ -1406,19 +1391,19 @@
 			if (objectHasOwnProperty(cfg, "ADD_TAGS")) {
 				if (typeof cfg.ADD_TAGS === "function") EXTRA_ELEMENT_HANDLING.tagCheck = cfg.ADD_TAGS;
 				else if (arrayIsArray(cfg.ADD_TAGS)) {
-					if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) ALLOWED_TAGS = clone(ALLOWED_TAGS);
+					if (ALLOWED_TAGS === DEFAULT_ALLOWED_TAGS) ALLOWED_TAGS = cloneSet(ALLOWED_TAGS);
 					addToSet(ALLOWED_TAGS, cfg.ADD_TAGS, transformCaseFunc);
 				}
 			}
 			if (objectHasOwnProperty(cfg, "ADD_ATTR")) {
 				if (typeof cfg.ADD_ATTR === "function") EXTRA_ELEMENT_HANDLING.attributeCheck = cfg.ADD_ATTR;
 				else if (arrayIsArray(cfg.ADD_ATTR)) {
-					if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) ALLOWED_ATTR = clone(ALLOWED_ATTR);
+					if (ALLOWED_ATTR === DEFAULT_ALLOWED_ATTR) ALLOWED_ATTR = cloneSet(ALLOWED_ATTR);
 					addToSet(ALLOWED_ATTR, cfg.ADD_ATTR, transformCaseFunc);
 				}
 			}
 			if (objectHasOwnProperty(cfg, "ADD_FORBID_CONTENTS") && arrayIsArray(cfg.ADD_FORBID_CONTENTS)) {
-				if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) FORBID_CONTENTS = clone(FORBID_CONTENTS);
+				if (FORBID_CONTENTS === DEFAULT_FORBID_CONTENTS) FORBID_CONTENTS = cloneSet(FORBID_CONTENTS);
 				addToSet(FORBID_CONTENTS, cfg.ADD_FORBID_CONTENTS, transformCaseFunc);
 			}
 			if (KEEP_CONTENT) ALLOWED_TAGS["#text"] = true;
@@ -1428,7 +1413,7 @@
 				"body"
 			]);
 			if (ALLOWED_TAGS.table) {
-				addToSet(ALLOWED_TAGS, ["tbody"]);
+				ALLOWED_TAGS.tbody = true;
 				delete FORBID_TAGS.tbody;
 			}
 			if (cfg.TRUSTED_TYPES_POLICY) {
@@ -1449,8 +1434,7 @@
 				if (trustedTypesPolicy === void 0) trustedTypesPolicy = _getDefaultTrustedTypesPolicy();
 				if (trustedTypesPolicy && typeof emptyHTML === "string") emptyHTML = _createTrustedHTML("");
 			}
-			if (freeze) freeze(cfg);
-			CONFIG = cfg;
+			CONFIG = freeze(cfg);
 		};
 		const ALL_SVG_TAGS = addToSet({}, [
 			...svg$1,
@@ -1462,39 +1446,39 @@
 		* Namespace rules for an element in the SVG namespace.
 		*
 		* @param tagName the element's lowercase tag name
-		* @param parent the (possibly simulated) parent node
+		* @param parentNamespace the (possibly simulated) parent's namespace
 		* @param parentTagName the parent's lowercase tag name
 		* @returns true if a spec-compliant parser could produce this element
 		*/
-		const _checkSvgNamespace = function _checkSvgNamespace(tagName, parent, parentTagName) {
-			if (parent.namespaceURI === HTML_NAMESPACE) return tagName === "svg";
-			if (parent.namespaceURI === MATHML_NAMESPACE) return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
+		const _checkSvgNamespace = function _checkSvgNamespace(tagName, parentNamespace, parentTagName) {
+			if (parentNamespace === HTML_NAMESPACE) return tagName === "svg";
+			if (parentNamespace === MATHML_NAMESPACE) return tagName === "svg" && (parentTagName === "annotation-xml" || MATHML_TEXT_INTEGRATION_POINTS[parentTagName]);
 			return Boolean(ALL_SVG_TAGS[tagName]);
 		};
 		/**
 		* Namespace rules for an element in the MathML namespace.
 		*
 		* @param tagName the element's lowercase tag name
-		* @param parent the (possibly simulated) parent node
+		* @param parentNamespace the (possibly simulated) parent's namespace
 		* @param parentTagName the parent's lowercase tag name
 		* @returns true if a spec-compliant parser could produce this element
 		*/
-		const _checkMathMlNamespace = function _checkMathMlNamespace(tagName, parent, parentTagName) {
-			if (parent.namespaceURI === HTML_NAMESPACE) return tagName === "math";
-			if (parent.namespaceURI === SVG_NAMESPACE) return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
+		const _checkMathMlNamespace = function _checkMathMlNamespace(tagName, parentNamespace, parentTagName) {
+			if (parentNamespace === HTML_NAMESPACE) return tagName === "math";
+			if (parentNamespace === SVG_NAMESPACE) return tagName === "math" && HTML_INTEGRATION_POINTS[parentTagName];
 			return Boolean(ALL_MATHML_TAGS[tagName]);
 		};
 		/**
 		* Namespace rules for an element in the HTML namespace.
 		*
 		* @param tagName the element's lowercase tag name
-		* @param parent the (possibly simulated) parent node
+		* @param parentNamespace the (possibly simulated) parent's namespace
 		* @param parentTagName the parent's lowercase tag name
 		* @returns true if a spec-compliant parser could produce this element
 		*/
-		const _checkHtmlNamespace = function _checkHtmlNamespace(tagName, parent, parentTagName) {
-			if (parent.namespaceURI === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) return false;
-			if (parent.namespaceURI === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) return false;
+		const _checkHtmlNamespace = function _checkHtmlNamespace(tagName, parentNamespace, parentTagName) {
+			if (parentNamespace === SVG_NAMESPACE && !HTML_INTEGRATION_POINTS[parentTagName]) return false;
+			if (parentNamespace === MATHML_NAMESPACE && !MATHML_TEXT_INTEGRATION_POINTS[parentTagName]) return false;
 			return !ALL_MATHML_TAGS[tagName] && (COMMON_SVG_AND_HTML_ELEMENTS[tagName] || !ALL_SVG_TAGS[tagName]);
 		};
 		/**
@@ -1507,21 +1491,17 @@
 			const elementNamespace = _readNamespaceURI(element);
 			const tagName = stringToLowerCase(_readNodeName(element));
 			const parentNode = getParentNode(element);
-			let parent;
-			let parentTagName;
+			let parentNamespace = NAMESPACE;
+			let parentTagName = "template";
 			if (parentNode && _readNodeType(parentNode) === NODE_TYPE.element) {
-				parent = { namespaceURI: _readNamespaceURI(parentNode) };
+				parentNamespace = _readNamespaceURI(parentNode);
 				parentTagName = stringToLowerCase(_readNodeName(parentNode));
-			} else {
-				parent = { namespaceURI: NAMESPACE };
-				parentTagName = "template";
 			}
 			if (!ALLOWED_NAMESPACES[elementNamespace]) return false;
-			if (elementNamespace === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parent, parentTagName);
-			if (elementNamespace === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parent, parentTagName);
-			if (elementNamespace === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parent, parentTagName);
-			if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && ALLOWED_NAMESPACES[elementNamespace]) return true;
-			return false;
+			if (elementNamespace === SVG_NAMESPACE) return _checkSvgNamespace(tagName, parentNamespace, parentTagName);
+			if (elementNamespace === MATHML_NAMESPACE) return _checkMathMlNamespace(tagName, parentNamespace, parentTagName);
+			if (elementNamespace === HTML_NAMESPACE) return _checkHtmlNamespace(tagName, parentNamespace, parentTagName);
+			return PARSER_MEDIA_TYPE === "application/xhtml+xml";
 		};
 		/**
 		* _forceRemove
@@ -1538,17 +1518,10 @@
 			}
 		};
 		/**
-		* _stripAttributeNode
-		*
-		* Remove a single Attr node case/namespace-exactly on an attribute-teardown
-		* path. Name-based removeAttribute() ASCII-lowercases its lookup key for an
-		* HTML element in an HTML document and so silently misses a case-preserved
-		* handler (e.g. `ONERROR` off an XML/XHTML import) - the same defect
-		* _removeAttribute() was fixed for, which a name-based call would reintroduce
-		* on these IN_PLACE teardown paths. Unlike _removeAttribute this does not
-		* record into DOMPurify.removed: the neutralize passes intentionally do not
-		* book-keep. A clobbered/detached node falls back to best-effort name-based
-		* removal.
+		* Removes an Attr node as that exact node, without book-keeping. Name-based
+		* removal lowercases the name in HTML documents and would miss a
+		* case-preserved one such as `ONERROR`, so it is only the fallback for
+		* clobbered or detached nodes.
 		*
 		* @param element the element to strip the attribute from
 		* @param attribute the Attr node to remove
@@ -1578,12 +1551,7 @@
 					remove(child);
 				} catch (_) {}
 			});
-			const attributes = _readNodeType(root) === NODE_TYPE.element ? getAttributes(root) : null;
-			if (attributes) for (let i = attributes.length - 1; i >= 0; --i) {
-				const attribute = attributes[i];
-				const name = attribute && attribute.name;
-				if (typeof name === "string") _stripAttributeNode(root, attribute, name);
-			}
+			if (_readNodeType(root) === NODE_TYPE.element) _stripAttributes(root, false);
 		};
 		/**
 		* Removes an attribute, preferably as its exact Attr node: name-based
@@ -1604,14 +1572,10 @@
 				attribute: attr || null,
 				from: element
 			});
-			try {
-				if (attr) removeAttributeNode(element, attr);
-				else element.removeAttribute(name);
-			} catch (_) {
-				try {
-					element.removeAttribute(name);
-				} catch (_) {}
-			}
+			if (attr) _stripAttributeNode(element, attr, name);
+			else try {
+				element.removeAttribute(name);
+			} catch (_) {}
 			if (name === "is") {
 				if (RETURN_DOM || RETURN_DOM_FRAGMENT) try {
 					_forceRemove(element);
@@ -1622,19 +1586,19 @@
 			}
 		};
 		/**
-		* Removes every attribute the configuration does not allow. Used to
-		* neutralize nodes discarded from an in-place tree.
+		* Removes an element's attributes without book-keeping. Used to neutralize
+		* nodes discarded from an in-place tree.
 		*
 		* @param element the element to strip
+		* @param keepAllowed whether attributes on the allowlist stay
 		*/
-		const _stripDisallowedAttributes = function _stripDisallowedAttributes(element) {
+		const _stripAttributes = function _stripAttributes(element, keepAllowed) {
 			const attributes = getAttributes(element);
 			if (!attributes) return;
 			for (let i = attributes.length - 1; i >= 0; --i) {
 				const attribute = attributes[i];
 				const name = attribute && attribute.name;
-				if (typeof name !== "string" || ALLOWED_ATTR[transformCaseFunc(name)]) continue;
-				_stripAttributeNode(element, attribute, name);
+				if (typeof name === "string" && !(keepAllowed && ALLOWED_ATTR[transformCaseFunc(name)])) _stripAttributeNode(element, attribute, name);
 			}
 		};
 		/**
@@ -1669,7 +1633,7 @@
 		*/
 		const _neutralizeSubtree = function _neutralizeSubtree(root) {
 			_walkTree(root, (node) => {
-				if (_readNodeType(node) === NODE_TYPE.element) _stripDisallowedAttributes(node);
+				if (_readNodeType(node) === NODE_TYPE.element) _stripAttributes(node, true);
 			});
 		};
 		/**
@@ -1700,7 +1664,7 @@
 				if (_readNodeType(node) === NODE_TYPE.element) setAdd(reachable, node);
 			});
 			arrayForEach(before, (node) => {
-				if (_readNodeType(node) === NODE_TYPE.element && !setHas(reachable, node)) _stripDisallowedAttributes(node);
+				if (_readNodeType(node) === NODE_TYPE.element && !setHas(reachable, node)) _stripAttributes(node, true);
 			});
 		};
 		/**
@@ -1773,9 +1737,7 @@
 			while (node = iterator.nextNode()) {
 				if (!setHas(original, node) || setHas(IN_PLACE_VISITED, node)) continue;
 				if (inShadow) _executeHooks(hooks.uponSanitizeShadowNode, node, null);
-				_sanitizeElements(node, root);
-				_sanitizeAttributes(node, root);
-				if (_isDocumentFragment(node.content)) _sanitizeShadowDOM2(node.content);
+				_sanitizeNode(node, root);
 			}
 		};
 		/**
@@ -1807,7 +1769,7 @@
 		* and strips linkage attributes. It cannot undo a patch that already fired.
 		*
 		* TODO: if the shipped feature can patch through `for` on <label>/<output>,
-		* drop that pair here too (see test/declarative-patch-probe.html).
+		* drop that pair here too.
 		*
 		* @param root the in-place root to sweep
 		*/
@@ -1843,7 +1805,7 @@
 			let leadingWhitespace = null;
 			if (FORCE_BODY) dirty = "<remove></remove>" + dirty;
 			else {
-				const matches = stringMatch(dirty, /^[\r\n\t ]+/);
+				const matches = stringMatch(dirty, LEADING_WHITESPACE);
 				leadingWhitespace = matches && matches[0];
 			}
 			if (PARSER_MEDIA_TYPE === "application/xhtml+xml" && NAMESPACE === HTML_NAMESPACE) dirty = "<html xmlns=\"http://www.w3.org/1999/xhtml\"><head></head><body>" + dirty + "</body></html>";
@@ -1863,14 +1825,18 @@
 			return WHOLE_DOCUMENT ? doc.documentElement : body;
 		};
 		/**
-		* Creates a NodeIterator object that you can use to traverse filtered lists of nodes or elements in a document.
+		* Creates a NodeIterator over `root`. ownerDocument is read through the
+		* cached getter: a form child named "ownerDocument" shadows the direct
+		* read and would make createNodeIterator throw.
 		*
-		* @param root The root element or node to start traversing on.
+		* @param root The node to start traversing on.
+		* @param characterDataOnly whether to skip elements
 		* @return The created NodeIterator
 		*/
 		const _createNodeIterator = function _createNodeIterator(root) {
+			let characterDataOnly = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
 			const doc = getOwnerDocument ? getOwnerDocument(root) : root.ownerDocument;
-			return createNodeIterator.call(doc || root, root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
+			return createNodeIterator.call(doc || root, root, (characterDataOnly ? 0 : NodeFilter.SHOW_ELEMENT) | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_TEXT | NodeFilter.SHOW_PROCESSING_INSTRUCTION | NodeFilter.SHOW_CDATA_SECTION, null);
 		};
 		/**
 		* Replace template expression syntax (mustache, ERB, template
@@ -1887,21 +1853,11 @@
 			return value;
 		};
 		/**
-		* Strip template-engine expressions ({{...}}, ${...}, <%...%>) from the
-		* character data of an element subtree. Used as the final safety net for
-		* SAFE_FOR_TEMPLATES on every DOM-returning code path so that expressions
-		* which only form after text-node normalization (e.g. fragments split across
-		* stripped elements) cannot survive into a template-evaluating framework.
-		*
-		* Walks text/comment/CDATA/processing-instruction nodes and mutates `.data`
-		* in place rather than round-tripping through innerHTML. This preserves
-		* descendant node references (important for IN_PLACE callers), avoids a
-		* serialize/reparse cycle, and reads literal character data — which means
-		* `<%...%>` in text content matches the ERB regex against its real bytes
-		* instead of the HTML-entity-escaped form innerHTML would produce.
-		*
-		* Attribute values are not visited here; SAFE_FOR_TEMPLATES handling for
-		* attributes is performed during the per-node `_sanitizeAttributes` pass.
+		* Strips template expressions from the character data under `node`,
+		* template contents included. Runs after the walk, since an expression can
+		* also form when a removed element leaves two text nodes adjacent. Works on
+		* the nodes rather than on markup, which keeps node references intact and
+		* sees `<%` unescaped. Attribute values are handled in _sanitizeAttributes.
 		*
 		* @param node The root element whose character data should be scrubbed.
 		*/
@@ -1914,23 +1870,15 @@
 			});
 		};
 		/**
-		* _scrubOwnCharacterData
-		*
-		* Non-recursive core of _scrubTemplateExpressions: normalize `node` and
-		* strip template expressions from its own character data only. Does not
-		* enter <template>.content or attached shadow roots (NodeIterator never
-		* does). Used by _sanitizeShadowDOM, where every nested template content
-		* and shadow root is already walked - and therefore scrubbed - by its own
-		* recursive _sanitizeShadowDOM call; recursing here as well would rescrub
-		* each nested fragment once per ancestor, which is quadratic in nesting
-		* depth.
+		* Normalizes `node` and strips template expressions from its own character
+		* data. Template contents and shadow roots are not entered, their own
+		* _sanitizeShadowDOM call scrubs them.
 		*
 		* @param node The root whose own character data should be scrubbed.
 		*/
 		const _scrubOwnCharacterData = function _scrubOwnCharacterData(node) {
 			node.normalize();
-			const doc = getOwnerDocument ? getOwnerDocument(node) : node.ownerDocument;
-			const walker = createNodeIterator.call(doc || node, node, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_COMMENT | NodeFilter.SHOW_CDATA_SECTION | NodeFilter.SHOW_PROCESSING_INSTRUCTION, null);
+			const walker = _createNodeIterator(node, true);
 			let currentNode = walker.nextNode();
 			while (currentNode) {
 				currentNode.data = _stripTemplateExpressions(currentNode.data);
@@ -1938,13 +1886,9 @@
 			}
 		};
 		/**
-		* _isClobbered
-		*
-		* Detect DOM-clobbering on HTMLFormElement nodes. Form is the only HTML
-		* interface with [LegacyOverrideBuiltIns]; a descendant element with a
-		* `name` attribute matching a prototype property shadows that property
-		* on direct reads. We use this check at the IN_PLACE entry-point and
-		* during attribute sanitization to refuse clobbered forms.
+		* Detects DOM clobbering on a form, the only element whose named children
+		* shadow its own properties. Each probe compares a direct read with what
+		* the property has to be.
 		*
 		* @param element element to check for clobbering attacks
 		* @return true if clobbered, false if safe
@@ -1956,42 +1900,26 @@
 			return typeof element.nodeName !== "string" || typeof element.textContent !== "string" || typeof element.removeChild !== "function" || element.attributes !== getAttributes(element) || typeof element.removeAttribute !== "function" || typeof element.removeAttributeNode !== "function" || typeof element.getAttributeNode !== "function" || typeof element.setAttribute !== "function" || typeof element.namespaceURI !== "string" || typeof element.insertBefore !== "function" || typeof element.hasChildNodes !== "function" || element.nodeType !== getNodeType(element) || element.childNodes !== getChildNodes(element);
 		};
 		/**
-		* Checks whether the given value is a DocumentFragment from any realm.
+		* Reads nodeType through the cached getter, so the result holds for nodes
+		* from any realm (GHSA-4w3q-35jp-p934) and cannot be clobbered.
 		*
-		* The realm-independent replacement reads `nodeType` through the cached
-		* Node.prototype getter and compares to the DOCUMENT_FRAGMENT_NODE
-		* constant (11). nodeType is a numeric value resolved from the node's
-		* internal slot, identical across realms for the same kind of node.
-		*
-		* @param value object to check
-		* @return true if value is a DocumentFragment-shaped node from any realm
+		* @param value anything
+		* @return the node type, or null if value is not a DOM node
 		*/
-		const _isDocumentFragment = function _isDocumentFragment(value) {
-			if (!getNodeType || typeof value !== "object" || value === null) return false;
+		const _nodeTypeOf = function _nodeTypeOf(value) {
+			if (!getNodeType || typeof value !== "object" || value === null) return null;
 			try {
-				return getNodeType(value) === NODE_TYPE.documentFragment;
+				const nodeType = getNodeType(value);
+				return typeof nodeType === "number" ? nodeType : null;
 			} catch (_) {
-				return false;
+				return null;
 			}
 		};
-		/**
-		* Checks whether the given object is a DOM node, including nodes that
-		* originate from a different window/realm (e.g. an iframe's
-		* contentDocument). The previous `value instanceof Node` check was
-		* realm-bound: nodes from a different window failed it, causing
-		* sanitize() to silently stringify them and reset IN_PLACE to false,
-		* returning the original node unsanitized. See GHSA-4w3q-35jp-p934.
-		*
-		* @param value object to check whether it's a DOM node
-		* @return true if value is a DOM node from any realm
-		*/
+		const _isDocumentFragment = function _isDocumentFragment(value) {
+			return _nodeTypeOf(value) === NODE_TYPE.documentFragment;
+		};
 		const _isNode = function _isNode(value) {
-			if (!getNodeType || typeof value !== "object" || value === null) return false;
-			try {
-				return typeof getNodeType(value) === "number";
-			} catch (_) {
-				return false;
-			}
+			return _nodeTypeOf(value) !== null;
 		};
 		function _executeHooks(hooks, currentNode, data) {
 			if (hooks.length === 0) return;
@@ -2007,13 +1935,14 @@
 		*
 		* @param currentNode the node to inspect
 		* @param tagName the node's transformCaseFunc'd tag name
+		* @param nodeType the node's type, read through the cached getter
 		* @return true if the node must be removed
 		*/
-		const _isUnsafeNode = function _isUnsafeNode(currentNode, tagName) {
-			if (SAFE_FOR_XML && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
-			if (SAFE_FOR_XML && LITERAL_TEXT_ELEMENTS[tagName] && _readNodeType(currentNode) === NODE_TYPE.element && _readNamespaceURI(currentNode) === HTML_NAMESPACE && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent))) return true;
-			if (currentNode.nodeType === NODE_TYPE.processingInstruction) return true;
-			if (SAFE_FOR_XML && currentNode.nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
+		const _isUnsafeNode = function _isUnsafeNode(currentNode, tagName, nodeType) {
+			if (SAFE_FOR_XML && nodeType === NODE_TYPE.element && currentNode.hasChildNodes() && !_isNode(currentNode.firstElementChild) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent) && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.innerHTML)) return true;
+			if (SAFE_FOR_XML && LITERAL_TEXT_ELEMENTS[tagName] && nodeType === NODE_TYPE.element && _readNamespaceURI(currentNode) === HTML_NAMESPACE && (_isNode(currentNode.firstElementChild) || typeof currentNode.textContent === "string" && regExpTest(ELEMENT_MARKUP_PROBE, currentNode.textContent))) return true;
+			if (nodeType === NODE_TYPE.processingInstruction) return true;
+			if (SAFE_FOR_XML && nodeType === NODE_TYPE.comment && regExpTest(COMMENT_MARKUP_PROBE, currentNode.data)) return true;
 			return false;
 		};
 		/**
@@ -2037,17 +1966,9 @@
 			return false;
 		};
 		/**
-		* Handle a node whose tag is forbidden or not allowlisted: keep
-		* allowed custom elements (false return exits _sanitizeElements
-		* early - the namespace and fallback-tag removal checks are
-		* intentionally skipped for kept custom elements), else hoist
-		* content per KEEP_CONTENT and remove.
-		*
-		* A kept custom element is the ONLY case in which this function
-		* returns false, so the caller uses that return value to run the
-		* afterSanitizeElements hook on the kept element and keep the
-		* element-hook lifecycle consistent with normal allowlisted
-		* elements (GHSA-c2j3-45gr-mqc4).
+		* Handles a node whose tag is forbidden or not allowlisted: hoists its
+		* content per KEEP_CONTENT and removes it. The one exception is a custom
+		* element allowed via CUSTOM_ELEMENT_HANDLING, which is kept.
 		*
 		* @param currentNode the disallowed node
 		* @param tagName the node's transformCaseFunc'd tag name
@@ -2070,11 +1991,9 @@
 			return true;
 		};
 		/**
-		* Fork a hook-mutable allowlist off its shared binding the first time a
-		* (possibly lazily-installed) uponSanitize* hook is about to see it, so the
-		* hook cannot widen the per-instance default or the setConfig binding by
-		* reference and leak past the call. Returns the set unchanged once it is
-		* already call-local, so repeated calls across elements are idempotent.
+		* Forks an allowlist off its shared binding (the instance default or the
+		* setConfig() capture) before a hook sees it, so a hook's widening stays
+		* within the call. A set that is already call-local is returned as is.
 		*
 		* @param hookList the uponSanitize* hook array for this event
 		* @param set the current ALLOWED_TAGS / ALLOWED_ATTR binding
@@ -2085,7 +2004,7 @@
 		*/
 		const _forkSharedAllowlist = function _forkSharedAllowlist(hookList, set, defaultSet, setConfigSet) {
 			if (hookList.length === 0) return set;
-			return set === defaultSet || set === setConfigSet ? clone(set) : set;
+			return set === defaultSet || set === setConfigSet ? cloneSet(set) : set;
 		};
 		/**
 		* A hook may have detached the node it was called for. If so, treat it as
@@ -2119,13 +2038,14 @@
 				return true;
 			}
 			const tagName = transformCaseFunc(_readNodeName(currentNode));
+			const nodeType = _readNodeType(currentNode);
 			ALLOWED_TAGS = _forkSharedAllowlist(hooks.uponSanitizeElement, ALLOWED_TAGS, DEFAULT_ALLOWED_TAGS, SET_CONFIG_ALLOWED_TAGS);
 			_executeHooks(hooks.uponSanitizeElement, currentNode, {
 				tagName,
 				allowedTags: ALLOWED_TAGS
 			});
 			if (_handleHookDetachedNode(currentNode, root)) return true;
-			if (_isUnsafeNode(currentNode, tagName)) {
+			if (_isUnsafeNode(currentNode, tagName, nodeType)) {
 				_forceRemove(currentNode);
 				return true;
 			}
@@ -2137,7 +2057,7 @@
 				}
 				return removed;
 			}
-			if (_readNodeType(currentNode) === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
+			if (nodeType === NODE_TYPE.element && !_checkValidNamespace(currentNode)) {
 				_forceRemove(currentNode);
 				return true;
 			}
@@ -2145,9 +2065,10 @@
 				_forceRemove(currentNode);
 				return true;
 			}
-			if (SAFE_FOR_TEMPLATES && currentNode.nodeType === NODE_TYPE.text) {
-				const content = _stripTemplateExpressions(currentNode.textContent);
-				if (currentNode.textContent !== content) {
+			if (SAFE_FOR_TEMPLATES && nodeType === NODE_TYPE.text) {
+				const text = currentNode.textContent;
+				const content = _stripTemplateExpressions(text);
+				if (text !== content) {
 					arrayPush(DOMPurify.removed, { element: currentNode.cloneNode() });
 					currentNode.textContent = content;
 				}
@@ -2172,9 +2093,10 @@
 			if (ALLOW_ARIA_ATTR && regExpTest(ARIA_ATTR$1, lcName)) return true;
 			if (!nameIsPermitted) return _isBasicCustomElement(lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, lcTag) && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.attributeNameCheck, lcName, lcTag) || lcName === "is" && CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements && _matchesNameCheck(CUSTOM_ELEMENT_HANDLING.tagNameCheck, value);
 			if (URI_SAFE_ATTRIBUTES[lcName]) return true;
-			if (regExpTest(IS_ALLOWED_URI$1, stringReplace(value, ATTR_WHITESPACE$1, ""))) return true;
+			const compactValue = stringReplace(value, ATTR_WHITESPACE$1, "");
+			if (regExpTest(IS_ALLOWED_URI$1, compactValue)) return true;
 			if ((lcName === "src" || lcName === "xlink:href" || lcName === "href") && lcTag !== "script" && stringIndexOf(value, "data:") === 0 && DATA_URI_TAGS[lcTag]) return true;
-			if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, stringReplace(value, ATTR_WHITESPACE$1, ""))) return true;
+			if (ALLOW_UNKNOWN_PROTOCOLS && !regExpTest(IS_SCRIPT_OR_DATA$1, compactValue)) return true;
 			return !value;
 		};
 		const RESERVED_CUSTOM_ELEMENT_NAMES = addToSet({}, [
@@ -2218,21 +2140,8 @@
 			return value;
 		};
 		/**
-		* Write a modified attribute value back onto the element. On
-		* success, re-probe for clobbering introduced by the new value and
-		* remove the element when found; otherwise, when this writeback is the
-		* recreate half of the SANITIZE_NAMED_PROPS remove-and-recreate, pop the
-		* removal entry that path recorded so it does not show as removed. On
-		* failure, remove the attribute instead.
-		*
-		* Returns true only on a clean write (the value was set and the new value
-		* introduced no clobbering). The caller uses that, together with its own
-		* knowledge of whether this attribute pushed a DOMPurify.removed record, to
-		* decide whether to pop that record. The pop must happen ONLY for the
-		* named-prop remove-and-recreate; popping on any other value change (trim,
-		* template scrubbing, Trusted Types) would consume an unrelated _forceRemove
-		* subtree-cleanup record and let that detached subtree keep a live event
-		* handler through the IN_PLACE neutralization pass (SO-001).
+		* Writes a changed attribute value back. If the new value clobbers, the
+		* element is removed; if the write fails, the attribute is.
 		*
 		* @param currentNode the element carrying the attribute
 		* @param name the attribute name as present on the element
@@ -2255,20 +2164,17 @@
 			}
 		};
 		/**
-		* _isUnsafeAttributeValue
-		*
-		* Value-based attribute checks that the attribute walk applies before any
-		* hook can force-keep an attribute, shared with the public
-		* isValidAttribute() so that it never approves a value sanitize() would
-		* strip.
+		* Value checks that apply before a hook can force-keep an attribute. Also
+		* used by isValidAttribute(), so it never approves a value that sanitize()
+		* would strip.
 		*
 		* @param name the attribute name as found on the node (case preserved)
 		* @param value the attribute value
 		* @returns true if the attribute must be removed because of its value
 		*/
 		const _isUnsafeAttributeValue = function _isUnsafeAttributeValue(name, value) {
-			if (SAFE_FOR_XML && regExpTest(/((--!?|])>)|<\/(style|script|title|xmp|textarea|noscript|iframe|noembed|noframes)/i, value)) return true;
-			return stringToLowerCase(name) === "attributename" && stringMatch(value, "href") !== null;
+			if (SAFE_FOR_XML && regExpTest(ATTR_VALUE_BREAKOUT, value)) return true;
+			return stringToLowerCase(name) === "attributename" && stringIndexOf(value, "href") !== -1;
 		};
 		/**
 		* _sanitizeAttributes
@@ -2295,7 +2201,7 @@
 				forceKeepAttr: void 0
 			};
 			let l = attributes.length;
-			const lcTag = transformCaseFunc(currentNode.nodeName);
+			const lcTag = transformCaseFunc(_readNodeName(currentNode));
 			while (l--) {
 				const attr = attributes[l];
 				const name = attr.name, namespaceURI = attr.namespaceURI, attrValue = attr.value;
@@ -2341,6 +2247,18 @@
 			_handleHookDetachedNode(currentNode, root);
 		};
 		/**
+		* Sanitizes one node: the node itself, its attributes and, for a
+		* template, its content.
+		*
+		* @param node the node to sanitize
+		* @param root the current walk root
+		*/
+		const _sanitizeNode = function _sanitizeNode(node, root) {
+			_sanitizeElements(node, root);
+			_sanitizeAttributes(node, root);
+			if (_isDocumentFragment(node.content)) _sanitizeShadowDOM2(node.content);
+		};
+		/**
 		* _sanitizeShadowDOM
 		*
 		* @param fragment to iterate over recursively
@@ -2351,9 +2269,7 @@
 			_executeHooks(hooks.beforeSanitizeShadowDOM, fragment, null);
 			while (shadowNode = shadowIterator.nextNode()) {
 				_executeHooks(hooks.uponSanitizeShadowNode, shadowNode, null);
-				_sanitizeElements(shadowNode, fragment);
-				_sanitizeAttributes(shadowNode, fragment);
-				if (_isDocumentFragment(shadowNode.content)) _sanitizeShadowDOM2(shadowNode.content);
+				_sanitizeNode(shadowNode, fragment);
 				if (_readNodeType(shadowNode) === NODE_TYPE.element) {
 					const innerSr = getShadowRoot(shadowNode);
 					if (_isDocumentFragment(innerSr)) {
@@ -2429,8 +2345,6 @@
 				ALLOWED_TAGS = SET_CONFIG_ALLOWED_TAGS;
 				ALLOWED_ATTR = SET_CONFIG_ALLOWED_ATTR;
 			} else _parseConfig(cfg);
-			if (hooks.uponSanitizeElement.length > 0 || hooks.uponSanitizeAttribute.length > 0) ALLOWED_TAGS = clone(ALLOWED_TAGS);
-			if (hooks.uponSanitizeAttribute.length > 0) ALLOWED_ATTR = clone(ALLOWED_ATTR);
 			DOMPurify.removed = [];
 			const inPlace = IN_PLACE && typeof dirty !== "string" && _isNode(dirty);
 			let inPlaceNodes = [];
@@ -2459,7 +2373,7 @@
 				else body.appendChild(importedNode);
 				_sanitizeAttachedShadowRoots(body);
 			} else {
-				if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(dirty) : dirty;
+				if (!RETURN_DOM && !SAFE_FOR_TEMPLATES && !WHOLE_DOCUMENT && dirty.indexOf("<") === -1) return _signOutput(dirty);
 				body = _initDocument(dirty);
 				if (!body) return RETURN_DOM ? null : RETURN_TRUSTED_TYPE ? emptyHTML : "";
 			}
@@ -2468,11 +2382,7 @@
 			try {
 				if (inPlace) _sanitizeAttachedShadowRoots(dirty);
 				const nodeIterator = _createNodeIterator(walkRoot);
-				while (currentNode = nodeIterator.nextNode()) {
-					_sanitizeElements(currentNode, walkRoot);
-					_sanitizeAttributes(currentNode, walkRoot);
-					if (_isDocumentFragment(currentNode.content)) _sanitizeShadowDOM2(currentNode.content);
-				}
+				while (currentNode = nodeIterator.nextNode()) _sanitizeNode(currentNode, walkRoot);
 				if (inPlace) _sanitizeUnvisitedNodes(dirty, inPlaceNodes);
 			} catch (error) {
 				if (inPlace) {
@@ -2497,10 +2407,14 @@
 				if (ALLOWED_ATTR.shadowroot || ALLOWED_ATTR.shadowrootmode) returnNode = importNode.call(originalDocument, returnNode, true);
 				return returnNode;
 			}
-			let serializedHTML = WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
+			const serialize = () => WHOLE_DOCUMENT ? body.outerHTML : body.innerHTML;
+			let serializedHTML = serialize();
+			if (SAFE_FOR_TEMPLATES && regExpTest(TMPL_MARKER_SERIALIZED, serializedHTML)) {
+				_scrubOwnCharacterData(body);
+				serializedHTML = serialize();
+			}
 			if (WHOLE_DOCUMENT && ALLOWED_TAGS["!doctype"] && body.ownerDocument && body.ownerDocument.doctype && body.ownerDocument.doctype.name && regExpTest(DOCTYPE_NAME, body.ownerDocument.doctype.name)) serializedHTML = "<!DOCTYPE " + body.ownerDocument.doctype.name + ">\n" + serializedHTML;
-			if (SAFE_FOR_TEMPLATES) serializedHTML = _stripTemplateExpressions(serializedHTML);
-			return trustedTypesPolicy && RETURN_TRUSTED_TYPE ? _createTrustedHTML(serializedHTML) : serializedHTML;
+			return _signOutput(serializedHTML);
 		};
 		DOMPurify.setConfig = function() {
 			let cfg = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
@@ -11719,7 +11633,11 @@ var componentName = "wb-menu",
 	navCurrentEvent = "navcurr.wb",
 	focusEvent = "setfocus.wb",
 	detailsInitEvent = "wb-init.wb-details",
-	menuItemSelector = "> a, > details > summary",
+	menuItemSelectorA = "> a",
+	menuItemSelectorSummary = "> details > summary",
+	menuItemSelector = menuItemSelectorA + ", " + menuItemSelectorSummary,
+	stillInMenu = false,
+	stillInMenuItem = false,
 	$document = wb.doc,
 
 	// Used for half second delay on showing/hiding menus because of mouse hover
@@ -11760,7 +11678,7 @@ var componentName = "wb-menu",
 				} );
 			} else {
 
-				//Enhance menus that don't rely on the data-ajax plugin
+				// Enhance menus that don't rely on the data-ajax plugin
 				ajaxFetch = $elm.data( "ajax-replace" ) || $elm.data( "ajax-append" ) || $elm.data( "ajax-prepend" );
 				if ( !ajaxFetch ) {
 					onAjaxLoaded( $elm, $elm );
@@ -11770,59 +11688,20 @@ var componentName = "wb-menu",
 	},
 
 	/**
-	 * Lets set some aria states and attributes
-	 * @method drizzleAria
-	 * @param {jQuery DOM elements} $elements The collection of elements
-	 */
-	drizzleAria = function( $elements ) {
-		var length = $elements.length,
-			$elm, $subMenu, i;
-
-		// Lets tweak for aria
-		for ( i = 0; i !== length; i += 1 ) {
-			$elm = $elements.eq( i );
-			$subMenu = $elm.siblings( "ul" );
-
-			$elm.attr( {
-				"aria-posinset": ( i + 1 ),
-				"aria-setsize": length,
-				role: "menuitem"
-			} );
-
-			// if there is a submenu lets put in the aria for it
-			if ( $subMenu.length !== 0 ) {
-
-				$elm.attr( "aria-haspopup", "true" );
-
-				$subMenu.attr( {
-					"aria-expanded": "false",
-					"aria-hidden": "true"
-				} );
-
-				// recurse into submenu
-				drizzleAria( $subMenu.children( "li" ).find( menuItemSelector ) );
-			}
-		}
-	},
-
-	/**
 	 * @method createCollapsibleSection
 	 * @return {string}
 	 */
-	createCollapsibleSection = function( section, sectionIndex, sectionsLength, $items, itemsLength ) {
+	createCollapsibleSection = function( section, $items, itemsLength ) {
 
 		// Use details/summary for the collapsible mechanism
 		var k, $elm, elm, $item, $subItems, subItemsLength,
 			$section = $( section ),
-			posinset = "' aria-posinset='",
-			menuitem = " role='menuitem' aria-setsize='",
-			sectionHtml = "<li><details>" + "<summary class='mb-item" +
+			sectionHtml = "<li><details><summary class='mb-item" +
 				( $section.hasClass( "wb-navcurr" ) || $section.children( ".wb-navcurr" ).length !== 0 ? " wb-navcurr'" : "'" ) +
-				menuitem + sectionsLength + posinset + ( sectionIndex + 1 ) +
-				"' aria-haspopup='true'>" + $section.text() + "</summary>" +
-				"<ul class='list-unstyled mb-sm' role='menu' aria-expanded='false' aria-hidden='true'>";
+				">" + $section.text() + "</summary>" +
+				"<ul class='list-unstyled mb-sm'>";
 
-		// Convert each of the list items into WAI-ARIA menuitems
+		// Convert each of the list items into menuitems
 		for ( k = 0; k !== itemsLength; k += 1 ) {
 			$item = $items.eq( k );
 			$elm = $item.find( menuItemSelector );
@@ -11831,14 +11710,9 @@ var componentName = "wb-menu",
 			subItemsLength = $subItems.length;
 
 			if ( elm && subItemsLength === 0 && elm.nodeName.toLowerCase() === "a" ) {
-				sectionHtml += "<li>" + $item[ 0 ].innerHTML.replace(
-					/(<a\s)/,
-					"$1" + menuitem + itemsLength +
-							posinset + ( k + 1 ) +
-							"' tabindex='-1' "
-				) + "</li>";
+				sectionHtml += "<li>" + $item[ 0 ].innerHTML + "</li>";
 			} else {
-				sectionHtml += createCollapsibleSection( elm, k, itemsLength, $subItems, $subItems.length );
+				sectionHtml += createCollapsibleSection( elm, $subItems, $subItems.length );
 			}
 		}
 
@@ -11851,9 +11725,10 @@ var componentName = "wb-menu",
 	 * @return {string}
 	 */
 	createMobilePanelMenu = function( allProperties ) {
+
 		var panel = "",
 			sectionHtml, properties, sections, section, parent, $items,
-			linkHtml, i, j, len, sectionsLength, itemsLength;
+			linkHtml, i, j, len, itemsLength;
 
 		// Process the secondary and site menus
 		len = allProperties.length;
@@ -11861,15 +11736,14 @@ var componentName = "wb-menu",
 			properties = allProperties[ i ];
 			sectionHtml = "";
 			sections = properties[ 0 ];
-			sectionsLength = sections.length;
-			for ( j = 0; j !== sectionsLength; j += 1 ) {
+			for ( j = 0; j !== sections.length; j += 1 ) {
 				section = sections[ j ];
 				$items = $( section.parentNode ).find( "> ul > li" );
 				itemsLength = $items.length;
 
 				// Collapsible section
 				if ( itemsLength !== 0 ) {
-					sectionHtml += createCollapsibleSection( section, j, sectionsLength, $items, itemsLength );
+					sectionHtml += createCollapsibleSection( section, $items, itemsLength );
 				} else {
 					parent = section.parentNode;
 
@@ -11888,22 +11762,21 @@ var componentName = "wb-menu",
 							section.innerHTML + "</a>";
 					}
 
-					// Convert the list item to a WAI-ARIA menuitem
+					// Convert the list item to a menuitem
+					// Note: Injects a new class attribute to the beginning of the link... which supersedes its original class
 					sectionHtml += "<li class='no-sect'>" +
 						linkHtml.replace(
 							/(<a\s)/,
-							"$1 class='mb-item' " + "role='menuitem' aria-setsize='" +
-								sectionsLength + "' aria-posinset='" + ( j + 1 ) +
-								"' tabindex='-1' "
+							"$1class='mb-item' "
 						) + "</li>";
 				}
 			}
 
 			// Create the panel section
-			panel += "<nav role='navigation' typeof='SiteNavigationElement' id='" +
+			panel += "<nav typeof='SiteNavigationElement' id='" +
 				properties[ 1 ] + "' class='" + properties[ 1 ] + " wb-menu wb-menu-inited'>" +
 				"<h3>" + properties[ 2 ] + "</h3>" +
-				"<ul class='list-unstyled mb-menu' role='menu'>" +
+				"<ul class='list-unstyled mb-menu'>" +
 				sectionHtml + "</ul></nav>";
 		}
 
@@ -11920,7 +11793,7 @@ var componentName = "wb-menu",
 			inner = function() {
 				var $ajaxed = $ajaxResult && $ajaxResult.attr( "data-type" ) === "string" ? $ajaxResult : $elm,
 					$menubar = $ajaxed.find( ".menu" ),
-					$menu = $menubar.find( "> li > a" ),
+					$menu = $menubar.find( "> li " + menuItemSelectorA + ", > li " + menuItemSelectorSummary ),
 					target = $elm.data( "trgt" ),
 					$secnav = $( "#wb-sec" ),
 					$language = $( "#wb-lng" ),
@@ -11979,11 +11852,6 @@ var componentName = "wb-menu",
 					// Add the site menu
 					if ( $menubar.length !== 0 ) {
 
-						// Add the menubar role if it is missing
-						if ( !$menubar.attr( "role" ) ) {
-							$menubar.attr( "role", "menubar" );
-						}
-
 						allProperties.push( [
 							$menu.get(),
 							"sm-pnl",
@@ -12029,16 +11897,43 @@ var componentName = "wb-menu",
 				/*
 				 * Build the regular mega menu
 				 */
-				$ajaxed
-					.find( ":discoverable" )
-					.attr( "tabindex", "-1" );
 
-				if ( $menu.length !== 0 ) {
-					$menu[ 0 ].setAttribute( "tabindex", "0" );
-					drizzleAria( $menu );
-					$menu
-						.filter( "[aria-haspopup=true]" )
-						.append( "<span class='expicon glyphicon glyphicon-chevron-down'></span>" );
+				// Revise the menu bar's structure as needed
+				if ( $menubar.length ) {
+
+					// Remove hardcoded role attributes (menu/menubar pattern leftovers...)
+					$ajaxed.find( "ul[role]" ).removeAttr( "role" );
+
+					// Loop over top-level menu items
+					$menubar.children( "li" ).each( function() {
+						const $topLevelLi = $( this );
+						const $item = $topLevelLi.find( ".item" ).first();
+						const $submenu = $item.next( ".sm" );
+
+						// If the item has a submenu...
+						if ( $item.length && $submenu.length ) {
+							const arrowIcon = "<span class='expicon glyphicon glyphicon-chevron-down' aria-hidden='true'></span>";
+
+							// Remove its href attribute
+							$item.removeAttr( "href" );
+
+							// Add an arrow icon
+							$item.append( arrowIcon );
+
+							// Transform link/submenu combination into a details/summary structure
+							if ( $item.prop( "nodeName" ).toLowerCase() === "a" ) {
+
+								// Rename the link's tag to summary
+								const newSummary = "<summary" + $item[ 0 ].outerHTML.slice( 2, -2 ) + "summary>";
+
+								// Create a details element, add the summary and its submenu
+								const $newDetails = $( "<details>" + newSummary + $submenu[ 0 ].outerHTML + "</details>" );
+
+								// Replace the item's contents with the details element
+								$topLevelLi.empty().append( $newDetails );
+							}
+						}
+					} );
 				}
 
 				// Replace elements
@@ -12066,7 +11961,7 @@ var componentName = "wb-menu",
 
 					// Open up the secondary menu if it has wb-navcurr and has a submenu
 					$menuItem = $panel.find( "#sec-pnl .wb-navcurr.mb-item" );
-					if ( $menuItem.attr( "aria-haspopup" ) === "true" ) {
+					if ( $menuItem.length && $menuItem.prop( "nodeName" ).toLowerCase() === "summary" ) {
 						$menuItem
 							.trigger( "click" )
 							.parent()
@@ -12081,7 +11976,7 @@ var componentName = "wb-menu",
 			footerAjaxLength = $footerAjax.length,
 			ajaxCount = 0;
 
-		//Delay the execution the menu until any ajaxed footer content is in
+		// Delay the execution of the menu until any ajaxed footer content is in
 		if ( footerAjaxLength === 0 ) {
 			inner();
 		} else {
@@ -12100,15 +11995,11 @@ var componentName = "wb-menu",
 	 * @param {jQuery object} $panel Current panel
 	 */
 	initOverlay = function( $panel ) {
+
 		$panel
 			.trigger( "wb-init.wb-overlay" )
 			.find( "summary" )
-			.attr( "tabindex", "-1" )
 			.trigger( detailsInitEvent );
-		$panel
-			.find( ".mb-menu > li:first-child" )
-			.find( ".mb-item" )
-			.attr( "tabindex", "0" );
 	},
 
 	/**
@@ -12118,40 +12009,36 @@ var componentName = "wb-menu",
 	 * @param {integer} indexChange Requested relative change to the menu item index
 	 */
 	menuIncrement = function( $menuItems, $current, indexChange ) {
-		var menuItemsLength = $menuItems.length,
-			index = $menuItems.index( $current ) + indexChange;
+		const oldIndex = $menuItems.index( $current );
+		let newIndex = oldIndex + indexChange;
 
-		// Correct out-of-range indexes
-		index = index === menuItemsLength ? 0 : index === -1 ? menuItemsLength - 1 : index;
+		// Clamp out-of-range indexes
+		// Credit: Stack Overflow answer (https://stackoverflow.com/a/11409978) by CAFxX (cafxx)
+		newIndex = Math.max( 0, Math.min( newIndex, $menuItems.length - 1 ) );
 
-		// Move to the new menu item
-		$menuItems.eq( index ).trigger( focusEvent );
+		// Move to the new menu item... if it's changed
+		if ( oldIndex !== newIndex ) {
+			$menuItems.eq( newIndex ).trigger( focusEvent );
+		}
 	},
 
 	/**
 	 * @method menuClose
-	 * @param {jQuery DOM element} $elm Parent of the element to close
+	 * @param {jQuery DOM element} $elm Parent LI(s) of the element(s) to close
 	 * @param {boolean} removeActive Whether or not to keep the active class
 	 */
 	menuClose = function( $elm, removeActive ) {
+
+		// Adjust top-level menu item's class and open attribute
 		$elm
-			.removeClass( "sm-open" )
-			.children( ".open" )
-			.removeClass( "open" )
-			.attr( {
-				"aria-hidden": "true",
-				"aria-expanded": "false"
-			} )
-
-		// Close nested submenus
-			.find( "details" )
+			.children( "[open]" )
 			.removeAttr( "open" )
-			.children( "ul" )
-			.attr( {
-				"aria-hidden": "true",
-				"aria-expanded": "false"
-			} );
 
+			// Close nested submenus
+			.find( "details" )
+			.removeAttr( "open" );
+
+		// Remove active class
 		if ( removeActive ) {
 			$elm.removeClass( "active" );
 		}
@@ -12161,49 +12048,36 @@ var componentName = "wb-menu",
 	 * @method menuDisplay
 	 * @param {jQuery DOM element} $elm The plugin element
 	 * @param {jQuery DOM element} $menu The menu to display
+	 * @param {boolean} autoExpand (Optional) Whether to open the submenu (default is true)
+	 * @param {string} eventType (Optional) Type of event that was triggered (default is undefined)
 	 */
-	menuDisplay = function( $elm, $menu ) {
-		var $menuLink = $menu.children( "a" );
+	menuDisplay = function( $elm, $menu, autoExpand = true, eventType ) {
+		var $menuLink = $menu.find( menuItemSelector );
+		const $activeLis = $elm.find( ".active" );
 
-		menuClose( $elm.find( ".active" ), true );
+		// If another menubar menuitem was already active, close it
+		if ( $activeLis.not( $menu ).length ) {
+
+			// Exempt open submenus if navigating via keyboard (to avoid unexpected auto-closing when reverse-tabbing)
+			const $filteredActiveLis = eventType === "focusin" ? $activeLis.not( ":has([open])" ) : $activeLis;
+
+			menuClose( $filteredActiveLis, true );
+		}
 
 		$menu.addClass( "active" );
 
-		// Ignore if doesn't have a submenu
-		if ( $menuLink.attr( "aria-haspopup" ) === "true" ) {
+		// Ignore if it doesn't have a submenu or isn't meant to auto-expand
+		if ( $menuLink.length && $menuLink.prop( "nodeName" ).toLowerCase() === "summary" && autoExpand ) {
 
-			// Add the open state classes
-			$menu
-				.addClass( "sm-open" )
-				.children( ".sm" )
-				.addClass( "open" )
-				.attr( {
-					"aria-hidden": "false",
-					"aria-expanded": "true"
-				} );
+			// Expand the submenu
+			$menuLink.parent().attr( "open", "open" );
+
+			// Prevent unexpected auto-closing behaviour
+			// Notes:
+			// * When hovering from a submenu dropdown with an open nested submenu to another menubar menuitem... prevents the latter from auto-closing right as its submenu is trying to auto-expand
+			// * Prevents similar auto-closing behaviour when clicking into the top/bottom spaces of nested submenus that are open
+			stillInMenu = true;
 		}
-	},
-
-	/**
-	 * Searches for the next link that has link text starting with a specific letter
-	 * @method selectByLetter
-	 * @param {integer} charCode The charCode of the letter to search for
-	 * @param {DOM elements} links Collection of links to search
-	 */
-	selectByLetter = function( charCode, links ) {
-		var len = links.length,
-			keyChar = String.fromCharCode( charCode ),
-			link, i;
-
-		for ( i = 0; i !== len; i += 1 ) {
-			link = links[ i ];
-			if ( link.innerHTML.charAt( 0 ) === keyChar ) {
-				$( link ).trigger( focusEvent );
-				return true;
-			}
-		}
-
-		return false;
 	};
 
 // Bind the events of the plugin
@@ -12245,6 +12119,9 @@ $document.on( "timerpoke.wb " + initEvent + " ajax-fetched.wb ajax-failed.wb", s
 $document.on( "mouseleave", selector + " .menu", function( event ) {
 	var $currentTarget = $( event.currentTarget );
 
+	// Prevent hovering out of a focused menu from causing auto-reopening behaviour on focusin (i.e. mixed keyboard/mouse usage)
+	stillInMenu = false;
+
 	// Clear the timeout for open/closing menus
 	clearTimeout( globalTimeout );
 
@@ -12253,48 +12130,49 @@ $document.on( "mouseleave", selector + " .menu", function( event ) {
 	}, hoverDelay );
 } );
 
+// Focusout equivalent for mouseleave
+// Prevents active (highlight) effect from getting "stuck" when tabbing beyond menubar menuitems
+$document.on( "focusout", selector + " .menu:has(.active)", function( event ) {
+	var $currentTarget = $( event.currentTarget );
+
+	// Close the active open submenu if focus landed outside of it
+	// Notes:
+	// * event.relatedTarget should correspond to the interactive element that's gaining focus
+	// * When pressing the Escape key to close nested submenus, event.relatedTarget is inexplicably null... using a flag variable (stillInMenu) to work around it
+	if ( $currentTarget.find( event.relatedTarget ).length === 0 && !stillInMenu ) {
+		menuClose( $currentTarget.find( ".active" ), true );
+	}
+
+	stillInMenu = false;
+} );
+
 // Prevent opening another menu if mouse re-enters already opened menu
+// Note: Prevents submenus from changing when quickly hovering from a submenu's first item to a different menu bar item and back to the initial submenu item
 $document.on( "mouseenter", selector + " .sm", function() {
-	if ( $( this ).attr( "aria-expanded" ) === "true" ) {
+	if ( $( this ).parent().attr( "open" ) ) {
 		clearTimeout( globalTimeout );
 	}
 } );
 
-// Touchscreen "touches" on menubar items should close the submenu if it is open
-$document.on( "click", selector + " .item[aria-haspopup=true]", function( event ) {
-	var which = event.which,
-		$this, $parent;
-
-	// Ignore middle and right mouse buttons
-	if ( !which || which === 1 ) {
-		event.preventDefault();
-		$this = $( this );
-		$parent = $this.parent();
-
-		// Open the submenu if it is closed
-		if ( !$parent.hasClass( "sm-open" ) ) {
-			$this.trigger( "focusin" );
-		}
-	}
-} );
-
 // Click on menu items with submenus should open and close those submenus
-$document.on( "click", selector + " [role=menu] [aria-haspopup=true]", function( event ) {
+$document.on( "click", selector + " summary", function( event ) {
+
 	var menuItem = event.currentTarget,
 		parent = menuItem.parentNode,
-		submenu = parent.getElementsByTagName( "ul" )[ 0 ],
-		isOpen = submenu.getAttribute( "aria-hidden" ) === "false",
+		isOpen = parent.hasAttribute( "open" ),
 		menuItemOffsetTop, menuContainer;
 
-	// Close any other open menus
+	// Close any other open submenus
 	if ( !isOpen ) {
-		$( parent )
-			.closest( "[role^='menu']" )
-			.find( "[aria-hidden=false]" )
-			.parent()
-			.find( "[aria-haspopup=true]" )
-			.not( menuItem )
-			.trigger( "click" );
+		menuClose(
+			$( parent )
+				.closest( "ul" )
+				.find( "[open]" )
+				.find( "summary" )
+				.not( menuItem )
+				.closest( "li" ),
+			true
+		);
 
 		// Ensure the opened menu is in view if in a mobile panel
 		menuContainer = document.getElementById( "mb-pnl" );
@@ -12305,19 +12183,16 @@ $document.on( "click", selector + " [role=menu] [aria-haspopup=true]", function(
 			menuContainer.scrollTop = menuItemOffsetTop;
 		}
 	}
-
-	submenu.setAttribute( "aria-expanded", !isOpen );
-	submenu.setAttribute( "aria-hidden", isOpen );
 } );
 
-// Clicks and touches outside of menus should close any open menus
+// Clicks and touches outside of the menu bar's submenus should close them
 $document.on( "click", function( event ) {
 	var $openMenus,
 		which = event.which;
 
 	// Ignore middle and right mouse buttons
 	if ( event.type === "" || ( !which || which === 1 ) ) {
-		$openMenus = $( selector + " .sm-open" );
+		$openMenus = $( selector + " .menu > li:has(> [open])" );
 		if ( $openMenus.length !== 0 &&
 			$( event.target ).closest( selector ).length === 0 ) {
 
@@ -12328,38 +12203,53 @@ $document.on( "click", function( event ) {
 
 $document.on( "mouseover focusin", selector + " .item", function( event ) {
 	var $elm = $( event.currentTarget ),
-		$parent = $elm.parent(),
-		$container = $parent.closest( selector );
+		$parentLi = $elm.closest( "li" ),
+		$container = $parentLi.closest( selector );
 
 	// Clear the timeout for open/closing menus
 	clearTimeout( globalTimeout );
 
-	if ( event.type === "focusin" ) {
-		menuDisplay( $container, $parent );
-	} else {
+	// Manage menu bar item highlighting when focusing or auto-expand submenus when hovering over them
+	if ( event.type === "focusin" && !stillInMenu ) {
+
+		// Highlight the menubar menuitem... but don't auto-expand it for keyboard users
+		// Note: Also passes over an event type to prevent open dropdowns from auto-closing when reverse-tabbing
+		menuDisplay( $container, $parentLi, false, event.type );
+	} else if ( !stillInMenuItem ) {
+
+		// Auto-expand submenus when hovering over menu items
 		globalTimeout = setTimeout( function() {
-			menuDisplay( $container, $parent );
+			menuDisplay( $container, $parentLi );
+
+			stillInMenuItem = true;
 		}, hoverDelay );
 	}
+} );
+
+// Set stillInMenu to false when hovering between menu items or outside the menu bar
+// Note: Prevents submenus from automatically re-expanding if the user clicks on a menu item to collapse it
+$document.on( "mouseleave", selector + " .item", function() {
+	stillInMenuItem = false;
 } );
 
 /*
  * Keyboard bindings
  */
-$document.on( "keydown", selector + " [role=menuitem]", function( event ) {
+$document.on( "keydown", selector + " a[href], " + selector + " summary", function( event ) {
 	var menuItem = event.currentTarget,
 		which = event.which,
 		$menuItem = $( menuItem ),
-		hasPopup = $menuItem.attr( "aria-haspopup" ) === "true",
-		$menu = $menuItem.parent().closest( "[role^='menu']" ),
-		inMenuBar = $menu.attr( "role" ) === "menubar",
-		$menuLink, $parentMenu, $parent, $subMenu, result,
+		hasPopup = menuItem.nodeName.toLowerCase() === "summary",
+		$menu = $menuItem.parent().closest( "ul" ),
+		inMenuBar = $menu.hasClass( "menu" ),
+		$menuLink, $parentMenu, $parent, $subMenu,
 		isOpen, menuItemOffsetTop, menuContainer;
 
-	// Define keycodes. (Make const when WET supports ES6)
-	var TAB_KC = 9,
+	// Define keycodes.
+	const END_KC = 35,
 		ENTER_KC = 13,
 		ESC_KC = 27,
+		HOME_KC = 36,
 		LEFT_KC = 37,
 		UP_KC = 38,
 		RIGHT_KC = 39,
@@ -12368,72 +12258,58 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 
 	if ( !( event.ctrlKey || event.altKey || event.metaKey ) ) {
 
-		// Tab key = Hide all sub-menus
-		if ( which === TAB_KC ) {
-			menuClose( $( selector + " .active" ), true );
-
-		//Enter or spacebar on a link = follow the link and close menus
-		} else if ( menuItem.nodeName === "A" && menuItem.hasAttribute( "href" ) &&
+		// Enter or spacebar on a link = follow the link and close menus
+		if ( menuItem.nodeName === "A" && menuItem.hasAttribute( "href" ) &&
 			( which === ENTER_KC || which === SPACE_KC ) ) {
 
 			event.preventDefault();
 			menuItem.click();
 			menuClose( $( selector + " .active" ), true );
 
-		// Menu item is within a menu bar
-		} else if ( inMenuBar ) {
-
-			// Left / right arrow = Previous / next menu item
-			if ( which === LEFT_KC || which === RIGHT_KC ) {
-				event.preventDefault();
-				menuIncrement(
-					$menu.find( "> li > a" ),
-					$menuItem,
-					which === LEFT_KC ? -1 : 1
-				);
-
-			// Enter sub-menu
-			} else if ( hasPopup && ( which === ENTER_KC || which === SPACE_KC || which === UP_KC || which === DOWN_KC ) ) {
-				event.preventDefault();
-				$parent = $menuItem.parent();
-				$subMenu = $parent.find( ".sm" );
-
-				// Open the submenu if it is not already open
-				if ( !$subMenu.hasClass( "open" ) ) {
-					menuDisplay( $menu.closest( selector ), $parent );
-				}
-
-				// Set focus on the first submenu item
-				$subMenu.children( "li" ).eq( 0 ).find( menuItemSelector ).trigger( focusEvent );
-
-			// Hide sub-menus and set focus
-			} else if ( which === ESC_KC ) {
-				event.preventDefault();
-				menuClose( $menu.closest( selector ).find( ".active" ), false );
-
-			// Letters only
-			} else if ( which > 64 && which < 91 ) {
-				event.preventDefault();
-				selectByLetter(
-					which,
-					$menuItem.parent().find( "> ul > li > a, > ul > li > details > summary" ).get()
-				);
-			}
-
-		// Menu item is not within a menu bar
+		// Menu item is within a menu
 		} else {
 
-			// Up / down arrow = Previous / next menu item
-			if ( which === UP_KC || which === DOWN_KC ) {
+			// Left-up / right-down arrow (or opposite for RTL) = Previous / next menu item
+			if ( which === LEFT_KC || which === UP_KC || which === RIGHT_KC || which === DOWN_KC ) {
 				event.preventDefault();
+
+				// Setup variables to track forward arrow key actions
+				// Note: Inverts left/right arrow keys in right-to-left (RTL) scenarios
+				const isRTL = menuItem.closest( "[dir=rtl]" ) ? true : false;
+				const arrowKeyForward = ( !isRTL && which === RIGHT_KC ) || ( isRTL && which === LEFT_KC ) || which === DOWN_KC ? true : false;
+
+				// If the focused menu item is a summary for an open details element and the user is trying to advance... focus onto its submenu's first item
+				if ( hasPopup && $menuItem.parent().attr( "open" ) && arrowKeyForward ) {
+					let $parentLi = $menuItem.closest( "li" );
+					$subMenu = $parentLi.find( "ul" );
+
+					// Set focus on the first submenu item
+					$subMenu.children( "li" ).eq( 0 ).find( menuItemSelector ).trigger( focusEvent );
+
+				// Otherwise, focus onto the previous menu item
+				} else {
+					menuIncrement(
+						$menu.children( "li" ).find( menuItemSelector ),
+						$menuItem,
+						arrowKeyForward ? 1 : -1
+					);
+				}
+
+			// HOME / END keys = First / last menu item
+			} else if ( which === HOME_KC || which === END_KC ) {
+				event.preventDefault();
+				const $menuItems = $menu.children( "li" ).find( menuItemSelector );
+				const index = $menuItems.index( $menuItem );
+
 				menuIncrement(
-					$menu.children( "li" ).find( menuItemSelector ),
+					$menuItems,
 					$menuItem,
-					which === UP_KC ? -1 : 1
+					which === HOME_KC ? -index : $menuItems.length - 1 - index
 				);
 
-			// Enter, space, or right arrow with a submenu
-			} else if ( hasPopup && ( which === ENTER_KC || which === SPACE_KC || which === RIGHT_KC ) ) {
+			// Toggle sub-menu
+			// Enter, space or Escape key with a submenu
+			} else if ( hasPopup && ( ( which === ENTER_KC || which === SPACE_KC ) || ( which === ESC_KC && $menuItem.parent().attr( "open" ) ) ) ) {
 				$parent = $menuItem.parent();
 
 				// Prevent handling by details.js polyfill
@@ -12441,18 +12317,20 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 				event.preventDefault();
 
 				// If the menu item is a summary element
-				if ( menuItem.nodeName.toLowerCase( "summary" ) ) {
+				if ( menuItem.nodeName.toLowerCase() === "summary" ) {
+					let menuBarJustOpened = false;
 					isOpen = !!$parent.attr( "open" );
 
-					// Close any other open menus
+					// Display collapsed submenu
 					if ( !isOpen ) {
-						$( parent )
-							.closest( "[role^='menu']" )
-							.find( "[aria-hidden=false]" )
-							.parent()
-							.find( "[aria-haspopup=true]" )
-							.not( menuItem )
-							.trigger( "click" );
+
+						// Re-activate focused menubar item and re-expand its submenu
+						// Note: If a collapsed submenu's parent menu bar item is being opened in mixed keyboard/mouse scenarios, call menuDisplay on it to avoid the risk of multiple submenus becoming open at the same time
+						// Example of a scenario this helps with: Tab to the menu demo page's section 1, hover to section 3, press space (will open section 1 and close section 3), then hover to section 2... without this logic, both section 1+2's dropdowns will appear simultaneously
+						if ( inMenuBar && !$menuItem.parent().attr( "open" ) && which !== ESC_KC ) {
+							menuDisplay( $menuItem.closest( selector ), $menuItem.closest( "li" ) );
+							menuBarJustOpened = true;
+						}
 
 						// Ensure the opened menu is in view if in a mobile panel
 						menuContainer = document.getElementById( "mb-pnl" );
@@ -12462,91 +12340,40 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 
 							menuContainer.scrollTop = menuItemOffsetTop;
 						}
+					}
 
-						// Ensure the menu is opened or stays open
+					// Ensure the menu is opened or stays open
+					if ( !menuBarJustOpened ) {
 						$menuItem.trigger( "click" );
 					}
-
-					// Update the WAI-ARIA states and move focus to
-					// the first submenu item
-					$parent.children( "ul" )
-						.attr( {
-							"aria-expanded": "true",
-							"aria-hidden": "false"
-						} )
-						.find( "[role=menuitem]:first" )
-						.trigger( focusEvent );
 				}
 
-			// Escape, left / right arrow without a submenu
-			} else if ( which === ESC_KC || which === LEFT_KC || which === RIGHT_KC ) {
+			// Escape key
+			} else if ( which === ESC_KC ) {
 				$parent = $menu.parent();
-				$parentMenu = $parent.closest( "[role^='menu']" );
-				if ( which === LEFT_KC || which === RIGHT_KC ) {
-					event.preventDefault();
-				}
+				$parentMenu = $parent.closest( "ul" );
 
 				// If the parent menu is a menubar
-				if ( $parentMenu.attr( "role" ) === "menubar" ) {
-					$menuLink = $menu.siblings( "a" );
+				if ( $parentMenu.hasClass( "menu" ) ) {
+					$menuLink = $menu.siblings( "a, summary" );
 
-					// Escape key = Close menu and return to menu bar item
-					if ( which === ESC_KC ) {
-						event.preventDefault();
-						$menuLink.trigger( focusEvent );
+					// Close menu and return to menu bar item
+					event.preventDefault();
+					$menuLink.trigger( focusEvent );
 
-						// Close the menu but keep the referring link active
-						setTimeout( function() {
-							menuClose( $menuLink.parent(), false );
-						}, 100 );
+					// Close the menu but keep the referring link active
+					setTimeout( function() {
+						menuClose( $menuLink.parent().closest( "li" ), false );
+					}, 100 );
 
-					// Left / right key = Next / previous menu bar item
-					} else if ( $parentMenu.attr( "role" ) === "menubar" ) {
-						menuIncrement(
-							$parentMenu.find( "> li > a" ),
-							$menuLink,
-							which === LEFT_KC ? -1 : 1
-						);
-					}
-
-				// Escape or left arrow: Go up a level if there is a higher-level
-				// menu or close the current submenu if there isn't
-				} else if ( which !== RIGHT_KC ) {
-
-					// There is a higher-level menu
-					if ( $parentMenu.length !== 0 ) {
-						event.preventDefault();
-						$menu.closest( "li" )
-							.find( menuItemSelector )
-							.trigger( "click" )
-							.trigger( focusEvent );
-
-					// No higher-level menu but the current submenu is open
-					} else if ( $menuItem.parent().children( "ul" ).attr( "aria-hidden" ) === "false" ) {
-						event.preventDefault();
-						$menuItem
-							.trigger( "click" )
-							.trigger( focusEvent );
-					}
-				}
-
-			// Select a menu item in the current menu by the first letter
-			} else if ( which > 64 && which < 91 ) {
-				event.preventDefault();
-				$parent = $menuItem.closest( "li" );
-
-				// Try to find a match in the next siblings
-				result = selectByLetter(
-					which,
-					$parent.nextAll().find( menuItemSelector ).get()
-				);
-
-				// If couldn't find a match, try the previous siblings
-				if ( !result ) {
-					selectByLetter(
-						which,
-						$parent.prevAll().find( menuItemSelector ).get()
-					);
+				// Go up a level if there is a higher-level menu
+				} else if ( $parentMenu.length !== 0 ) {
+					event.preventDefault();
+					stillInMenu = true;
+					$menu.closest( "li" )
+						.find( menuItemSelectorSummary )
+						.trigger( "click" )
+						.trigger( focusEvent );
 				}
 			}
 		}
@@ -12554,7 +12381,8 @@ $document.on( "keydown", selector + " [role=menuitem]", function( event ) {
 } );
 
 // Prevent Firefox from double-triggering menu behaviour
-$document.on( "keyup", selector + " [role=menuitem]", function( event ) {
+// Note: Might no longer be an issue in modern versions of Firefox
+$document.on( "keyup", selector + " a[href], " + selector + " summary", function( event ) {
 	event.preventDefault();
 	return false;
 } );
@@ -13030,15 +12858,69 @@ var componentName = "wb-mltmd",
 				} else {
 					$this.removeClass( captionClass );
 				}
+
+				// Sync browser's caption button with text tracks
+				$.each( this.object.textTracks || [], function( i, track ) {
+					if ( track.kind === "captions" ) {
+						track.mode = args ? "showing" : "disabled";
+					}
+				} );
+
 				$this.trigger( captionsVisibleChangeEvent );
 				break;
 			case "fullscreen":
-				if ( this.object.requestFullscreen ) {
-					this.object.requestFullscreen();
-				} else if ( this.object.webkitRequestFullscreen ) { /* Safari */
-					this.object.webkitRequestFullscreen();
-				} else if ( this.object.msRequestFullscreen ) { /* IE11 */
-					this.object.msRequestFullscreen();
+				$this = $( this.object );
+				var fullscreenTarget = this.object.parentElement.parentElement;
+
+				// makes pressing the esc key exit the fullscreen
+				document.addEventListener( "keydown", function( e ) {
+					if ( e.key === "Escape" ) {
+						if ( document.fullscreenElement ) {
+							document.exitFullscreen();
+						}
+					}
+				}, true );
+
+				// fixes issues with pausing/playing not working when video element is pressed
+				this.object.addEventListener( "click", function() {
+					var vid = $this.get( 0 );
+					if ( document.fullscreenElement ) {
+						if ( vid.paused ) {
+							vid.play();
+						} else if ( vid.played ) {
+							vid.pause();
+						}
+					}
+				}, false );
+
+				// fullscreen minimizes when button is pressed
+				this.object.addEventListener( "fullscreenchange", function() {
+					document.exitFullscreen();
+				}, false );
+
+				// custom controls on minimized screen and native controls on fs
+				document.addEventListener( "fullscreenchange", function() {
+					if ( document.fullscreenElement !== null ) {
+						$this.attr( "controls", true );
+					} else {
+						$this.removeAttr( "controls" );
+					}
+				} );
+
+				if ( document.fullscreenElement ) {
+					document.exitFullscreen();
+				} else {
+					if ( $this ) {
+						this.object.setAttribute( "playsinline", "true" );
+					}
+
+					if ( fullscreenTarget.requestFullscreen ) {
+						fullscreenTarget.requestFullscreen();
+					} else if ( fullscreenTarget.webkitRequestFullscreen ) { /* Safari */
+						fullscreenTarget.webkitRequestFullscreen();
+					} else if ( fullscreenTarget.msRequestFullscreen ) { /* IE11 */
+						fullscreenTarget.msRequestFullscreen();
+					}
 				}
 				break;
 			case "getBuffering":
@@ -13528,6 +13410,31 @@ $document.on( renderUIEvent, selector, function( event, type, data ) {
 			loadCaptionsInternal( $media, $( "#" + wb.jqEscape( captionsUrl.hash.substring( 1 ) ) ) );
 		}
 
+		// Keep the browser's captions button in sync with the player's captions
+		if ( this.object.textTracks ) {
+
+			// Browsers hide the native captions button when a track fails to load, so we hide
+			// the original <track> and add an empty one to ensure the button is always there
+			$media.children( "track[kind='captions']" ).each( function( i, track ) {
+				$media.get( 0 ).addTextTrack( "captions", track.label, track.srclang );
+				track.kind = "metadata";
+			} );
+
+			this.object.textTracks.addEventListener( "change", function() {
+				var nativeCaptionsOn = false;
+
+				$.each( this, function( i, track ) {
+					if ( track.kind === "captions" && track.mode === "showing" ) {
+						nativeCaptionsOn = true;
+					}
+				} );
+
+				if ( nativeCaptionsOn !== $this.get( 0 ).player( "getCaptionsVisible" ) ) {
+					$this.get( 0 ).player( "setCaptionsVisible", nativeCaptionsOn );
+				}
+			} );
+		}
+
 		// The fullscreen button is not visible by default because there are no controls when in full screen.
 		if ( data.fullscreen ) {
 			$this.attr( "data-fullscreen-btn", true );
@@ -13994,7 +13901,7 @@ var componentName = "wb-navcurr",
 				if ( match ) {
 					link.className += " " + className;
 					if ( menu.className.indexOf( "wb-menu" ) !== -1 && link.className.indexOf( "item" ) === -1 ) {
-						$( link ).closest( ".sm" ).parent().children( "a" ).addClass( className );
+						$( link ).closest( ".sm" ).parent().children( "summary" ).addClass( className );
 					}
 				}
 

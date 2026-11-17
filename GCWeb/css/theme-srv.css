@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v20.0.0 - 2026-11-16
+ * v20.0.1 - 2026-11-17
  *
  */
 /*!
@@ -7953,7 +7953,7 @@ a.text-white:hover, a.text-white:focus {
   display: none;
 }
 
-.wb-twitter .wb-twitter-notice-start[tabindex], .wb-disable .wb-tabs > .tabpanels > details, .wb-disable .wb-tabs > details, .wb-menu .sm.open li {
+.wb-twitter .wb-twitter-notice-start[tabindex], .wb-disable .wb-tabs > .tabpanels > details, .wb-disable .wb-tabs > details, .wb-menu details[open] .sm li {
   display: block;
 }
 
@@ -7961,7 +7961,8 @@ a.text-white:hover, a.text-white:focus {
   display: block !important;
 }
 
-.wb-menu .active > a, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus, .wb-menu .menu > li a {
+.wb-menu .active > a, .wb-menu .menu > li a,
+.wb-menu .menu > li summary, .wb-menu .menu > li a:hover, .wb-menu .menu > li a:focus {
   text-decoration: none;
 }
 
@@ -17276,26 +17277,43 @@ body.wb-modal .modal-dialog summary {
 }
 
 .wb-menu .sm {
-  display: none;
-  max-height: 0;
   overflow: hidden;
   position: relative;
 }
-.wb-menu .sm.open {
+.wb-menu .sm details > * {
+  margin-left: -1.1em;
+  margin-right: -1.1em;
+}
+.wb-menu details::details-content {
+  /* Prevent find in page searches (aka hidden=until-found) from auto-expanding collapsed details elements containing hits */
+  display: none;
+}
+.wb-menu details[open]::details-content {
+  /* Allow find-in-page searches on expanded details elements */
+  display: block;
+}
+.wb-menu details[open] .sm {
   display: inline;
-  max-height: 1000px;
+  margin-left: -1.1em;
   min-width: 12.5em;
   position: absolute;
   text-transform: none;
   top: auto;
   z-index: 500;
 }
-.wb-menu .sm.open li a {
+.wb-menu details[open] .sm li a,
+.wb-menu details[open] .sm li summary {
   text-align: left;
 }
-.wb-menu .sm details > * {
-  margin-left: -1.1em;
-  margin-right: -1.1em;
+.wb-menu details summary.item:focus {
+  /* Make the menu bar's summary item outlines consistent with link items */
+  outline-offset: -2px;
+  outline-style: revert;
+  outline-width: revert;
+}
+.wb-menu summary > .glyphicon:first-child {
+  /* Counteract a summary heading override that makes the menu bar's arrow icons very tall */
+  display: inline-block;
 }
 .wb-menu .menu {
   margin-left: 0;
@@ -17308,13 +17326,26 @@ body.wb-modal .modal-dialog summary {
 }
 .wb-menu .menu > li a {
   display: block;
+}
+.wb-menu .menu > li a,
+.wb-menu .menu > li summary {
   padding: 1em;
   text-align: center;
 }
-.wb-menu .menu > li a[aria-haspopup]:hover, .wb-menu .menu > li a[aria-haspopup]:focus {
+.wb-menu .menu > li > details[open] {
+  padding-bottom: 0;
+}
+.wb-menu .menu > li > details[open] > summary {
+  display: inline-block !important;
+  margin-bottom: 0;
+}
+.wb-menu .menu > li > details > summary {
   cursor: default;
 }
-.wb-menu .sm-open .expicon {
+.wb-menu .menu > li > details > summary::marker {
+  content: none;
+}
+.wb-menu .active > details[open] .expicon {
   z-index: -1;
 }
 .wb-menu details {
@@ -17408,7 +17439,11 @@ body.wb-modal .modal-dialog summary {
 [dir=rtl] .wb-menu .menu > li {
   float: right;
 }
-[dir=rtl] .wb-menu .sm.open li a {
+[dir=rtl] .wb-menu details[open] .sm {
+  margin-right: -1.1em;
+}
+[dir=rtl] .wb-menu details[open] .sm li a,
+[dir=rtl] .wb-menu details[open] .sm li summary {
   text-align: right;
 }
 [dir=rtl] .expicon {
@@ -17477,6 +17512,76 @@ body.wb-modal .modal-dialog summary {
   vertical-align: middle;
 }
 
+:-webkit-full-screen figcaption, :-webkit-full-screen .wb-mm-ctrls {
+  display: none !important;
+}
+
+:-ms-fullscreen figcaption, :-ms-fullscreen .wb-mm-ctrls {
+  display: none !important;
+}
+
+:fullscreen figcaption, :fullscreen .wb-mm-ctrls {
+  display: none !important;
+}
+:-webkit-full-screen .display {
+  height: 100%;
+}
+:-ms-fullscreen .display {
+  height: 100%;
+}
+:fullscreen .display {
+  height: 100%;
+}
+:-webkit-full-screen video {
+  height: 100% !important;
+  object-fit: contain;
+}
+:-ms-fullscreen video {
+  height: 100% !important;
+  object-fit: contain;
+}
+:fullscreen video {
+  height: 100% !important;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+:-webkit-full-screen .wb-mm-cc {
+  bottom: 8em;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: auto;
+}
+:-ms-fullscreen .wb-mm-cc {
+  bottom: 8em;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: auto;
+}
+:fullscreen .wb-mm-cc {
+  bottom: 8em;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: auto;
+}
+:-webkit-full-screen:not(.cc_on) .wb-mm-cc {
+  display: none;
+}
+:-ms-fullscreen:not(.cc_on) .wb-mm-cc {
+  display: none;
+}
+:fullscreen:not(.cc_on) .wb-mm-cc {
+  display: none;
+}
+
 .wb-mltmd {
   display: block;
   position: relative;
@@ -17487,6 +17592,7 @@ body.wb-modal .modal-dialog summary {
 }
 .wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:before {
   text-align: center;
+  z-index: 1;
 }
 .wb-mltmd.video:not(.playing):not(.waiting):not(.youtube) .display:after {
   color: #fff;
@@ -17553,6 +17659,7 @@ body.wb-modal .modal-dialog summary {
 .wb-mm-cc {
   background-color: #000;
   color: #fff;
+  position: relative;
   text-align: center;
   -webkit-transition: all 0.26s ease;
   transition: all 0.26s ease;
