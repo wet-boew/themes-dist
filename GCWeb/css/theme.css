@@ -5575,7 +5575,6 @@ header .brand img {
   color: #333;
   padding: 1.75rem 0 2.25rem;
 }
-#wb-info .gc-sub-footer object,
 #wb-info .gc-sub-footer img {
   height: 40px;
   width: auto;
@@ -19592,6 +19591,13 @@ Miscellaneous Utility CSS
   }
   .gc-contributors ul li:last-child::after {
     content: none;
+  }
+  /*
+    WET-BOEW
+    @title: Medium view and over (screen only)
+   */
+  #wb-info .gc-sub-footer img {
+    height: 48px;
   }
   /*
    * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
