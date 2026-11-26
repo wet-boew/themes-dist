@@ -2,7 +2,7 @@
 /*!
  * @title Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
  * @license wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
- * v20.0.1 - 2026-11-23
+ * v20.0.1 - 2026-11-26
  *
  */
 /*
@@ -15446,7 +15446,6 @@ ol.lst-stps.stps-strpd:not(.ld-zr) > li ol.lst-stps-sub.stps-strpd > li:before {
   background-color: #fff;
 }
 
-/* Increment (start) */
 ol.lst-stps[start="2"] {
   counter-set: item 1;
 }
@@ -15477,6 +15476,366 @@ ol.lst-stps[start="8"] {
 
 ol.lst-stps[start="9"] {
   counter-set: item 8;
+}
+
+ol.lst-stps[start="10"] {
+  counter-set: item 9;
+}
+
+ol.lst-stps[start="11"] {
+  counter-set: item 10;
+}
+
+ol.lst-stps[start="12"] {
+  counter-set: item 11;
+}
+
+ol.lst-stps[start="13"] {
+  counter-set: item 12;
+}
+
+ol.lst-stps[start="14"] {
+  counter-set: item 13;
+}
+
+ol.lst-stps[start="15"] {
+  counter-set: item 14;
+}
+
+ol.lst-stps[start="16"] {
+  counter-set: item 15;
+}
+
+ol.lst-stps[start="17"] {
+  counter-set: item 16;
+}
+
+ol.lst-stps[start="18"] {
+  counter-set: item 17;
+}
+
+ol.lst-stps[start="19"] {
+  counter-set: item 18;
+}
+
+ol.lst-stps[start="20"] {
+  counter-set: item 19;
+}
+
+ol.lst-stps[start="21"] {
+  counter-set: item 20;
+}
+
+ol.lst-stps[start="22"] {
+  counter-set: item 21;
+}
+
+ol.lst-stps[start="23"] {
+  counter-set: item 22;
+}
+
+ol.lst-stps[start="24"] {
+  counter-set: item 23;
+}
+
+ol.lst-stps[start="25"] {
+  counter-set: item 24;
+}
+
+ol.lst-stps[start="26"] {
+  counter-set: item 25;
+}
+
+ol.lst-stps[start="27"] {
+  counter-set: item 26;
+}
+
+ol.lst-stps[start="28"] {
+  counter-set: item 27;
+}
+
+ol.lst-stps[start="29"] {
+  counter-set: item 28;
+}
+
+ol.lst-stps[start="30"] {
+  counter-set: item 29;
+}
+
+ol.lst-stps[start="31"] {
+  counter-set: item 30;
+}
+
+ol.lst-stps[start="32"] {
+  counter-set: item 31;
+}
+
+ol.lst-stps[start="33"] {
+  counter-set: item 32;
+}
+
+ol.lst-stps[start="34"] {
+  counter-set: item 33;
+}
+
+ol.lst-stps[start="35"] {
+  counter-set: item 34;
+}
+
+ol.lst-stps[start="36"] {
+  counter-set: item 35;
+}
+
+ol.lst-stps[start="37"] {
+  counter-set: item 36;
+}
+
+ol.lst-stps[start="38"] {
+  counter-set: item 37;
+}
+
+ol.lst-stps[start="39"] {
+  counter-set: item 38;
+}
+
+ol.lst-stps[start="40"] {
+  counter-set: item 39;
+}
+
+ol.lst-stps[start="41"] {
+  counter-set: item 40;
+}
+
+ol.lst-stps[start="42"] {
+  counter-set: item 41;
+}
+
+ol.lst-stps[start="43"] {
+  counter-set: item 42;
+}
+
+ol.lst-stps[start="44"] {
+  counter-set: item 43;
+}
+
+ol.lst-stps[start="45"] {
+  counter-set: item 44;
+}
+
+ol.lst-stps[start="46"] {
+  counter-set: item 45;
+}
+
+ol.lst-stps[start="47"] {
+  counter-set: item 46;
+}
+
+ol.lst-stps[start="48"] {
+  counter-set: item 47;
+}
+
+ol.lst-stps[start="49"] {
+  counter-set: item 48;
+}
+
+ol.lst-stps[start="50"] {
+  counter-set: item 49;
+}
+
+ol.lst-stps[start="51"] {
+  counter-set: item 50;
+}
+
+ol.lst-stps[start="52"] {
+  counter-set: item 51;
+}
+
+ol.lst-stps[start="53"] {
+  counter-set: item 52;
+}
+
+ol.lst-stps[start="54"] {
+  counter-set: item 53;
+}
+
+ol.lst-stps[start="55"] {
+  counter-set: item 54;
+}
+
+ol.lst-stps[start="56"] {
+  counter-set: item 55;
+}
+
+ol.lst-stps[start="57"] {
+  counter-set: item 56;
+}
+
+ol.lst-stps[start="58"] {
+  counter-set: item 57;
+}
+
+ol.lst-stps[start="59"] {
+  counter-set: item 58;
+}
+
+ol.lst-stps[start="60"] {
+  counter-set: item 59;
+}
+
+ol.lst-stps[start="61"] {
+  counter-set: item 60;
+}
+
+ol.lst-stps[start="62"] {
+  counter-set: item 61;
+}
+
+ol.lst-stps[start="63"] {
+  counter-set: item 62;
+}
+
+ol.lst-stps[start="64"] {
+  counter-set: item 63;
+}
+
+ol.lst-stps[start="65"] {
+  counter-set: item 64;
+}
+
+ol.lst-stps[start="66"] {
+  counter-set: item 65;
+}
+
+ol.lst-stps[start="67"] {
+  counter-set: item 66;
+}
+
+ol.lst-stps[start="68"] {
+  counter-set: item 67;
+}
+
+ol.lst-stps[start="69"] {
+  counter-set: item 68;
+}
+
+ol.lst-stps[start="70"] {
+  counter-set: item 69;
+}
+
+ol.lst-stps[start="71"] {
+  counter-set: item 70;
+}
+
+ol.lst-stps[start="72"] {
+  counter-set: item 71;
+}
+
+ol.lst-stps[start="73"] {
+  counter-set: item 72;
+}
+
+ol.lst-stps[start="74"] {
+  counter-set: item 73;
+}
+
+ol.lst-stps[start="75"] {
+  counter-set: item 74;
+}
+
+ol.lst-stps[start="76"] {
+  counter-set: item 75;
+}
+
+ol.lst-stps[start="77"] {
+  counter-set: item 76;
+}
+
+ol.lst-stps[start="78"] {
+  counter-set: item 77;
+}
+
+ol.lst-stps[start="79"] {
+  counter-set: item 78;
+}
+
+ol.lst-stps[start="80"] {
+  counter-set: item 79;
+}
+
+ol.lst-stps[start="81"] {
+  counter-set: item 80;
+}
+
+ol.lst-stps[start="82"] {
+  counter-set: item 81;
+}
+
+ol.lst-stps[start="83"] {
+  counter-set: item 82;
+}
+
+ol.lst-stps[start="84"] {
+  counter-set: item 83;
+}
+
+ol.lst-stps[start="85"] {
+  counter-set: item 84;
+}
+
+ol.lst-stps[start="86"] {
+  counter-set: item 85;
+}
+
+ol.lst-stps[start="87"] {
+  counter-set: item 86;
+}
+
+ol.lst-stps[start="88"] {
+  counter-set: item 87;
+}
+
+ol.lst-stps[start="89"] {
+  counter-set: item 88;
+}
+
+ol.lst-stps[start="90"] {
+  counter-set: item 89;
+}
+
+ol.lst-stps[start="91"] {
+  counter-set: item 90;
+}
+
+ol.lst-stps[start="92"] {
+  counter-set: item 91;
+}
+
+ol.lst-stps[start="93"] {
+  counter-set: item 92;
+}
+
+ol.lst-stps[start="94"] {
+  counter-set: item 93;
+}
+
+ol.lst-stps[start="95"] {
+  counter-set: item 94;
+}
+
+ol.lst-stps[start="96"] {
+  counter-set: item 95;
+}
+
+ol.lst-stps[start="97"] {
+  counter-set: item 96;
+}
+
+ol.lst-stps[start="98"] {
+  counter-set: item 97;
+}
+
+ol.lst-stps[start="99"] {
+  counter-set: item 98;
 }
 
 /* Full width exception li (for exempt designs, e.g. grids, tables, etc.) */
